@@ -60,13 +60,13 @@ class Admin extends CI_Controller {
 		$menue['menue']		= $this->admin->get_menue();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
-		$this->load->view('templates/admin/header', $header);
-	//	$this->load->view('templates/admin/styles');
-	//	$this->load->view('admin/styles_admin');
-		$this->load->view('templates/admin/menue', $menue);
-		$this->load->view('templates/admin/submenue', $menue);
-		$this->load->view('admin/landingpages/content');
-		$this->load->view('templates/admin/footer'); 
+		$this->load->view('backend/templates/admin/header', $header);
+	//	$this->load->view('backend/templates/admin/styles');
+	//	$this->load->view('backend/admin/styles_admin');
+		$this->load->view('backend/templates/admin/menue', $menue);
+		$this->load->view('backend/templates/admin/submenue', $menue);
+		$this->load->view('backend/admin/landingpages/content');
+		$this->load->view('backend/templates/admin/footer'); 
 	}
 	
 	/**
@@ -85,13 +85,13 @@ class Admin extends CI_Controller {
 		$menue['menue']		= $this->admin->get_menue();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
-		$this->load->view('templates/admin/header', $header);
-	//	$this->load->view('templates/admin/styles');
-	//	$this->load->view('admin/styles_admin');
-		$this->load->view('templates/admin/menue', $menue);
-		$this->load->view('templates/admin/submenue', $menue);
-		$this->load->view('admin/landingpages/files');
-		$this->load->view('templates/admin/footer');
+		$this->load->view('backend/templates/admin/header', $header);
+	//	$this->load->view('backend/templates/admin/styles');
+	//	$this->load->view('backend/admin/styles_admin');
+		$this->load->view('backend/templates/admin/menue', $menue);
+		$this->load->view('backend/templates/admin/submenue', $menue);
+		$this->load->view('backend/admin/landingpages/files');
+		$this->load->view('backend/templates/admin/footer');
 	}
 	
 	/**
@@ -110,13 +110,13 @@ class Admin extends CI_Controller {
 		$menue['menue']		= $this->admin->get_menue();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
-		$this->load->view('templates/admin/header', $header);
-	//	$this->load->view('templates/admin/styles');
-	//	$this->load->view('admin/styles_admin');
-		$this->load->view('templates/admin/menue', $menue);
-		$this->load->view('templates/admin/submenue', $menue);
-		$this->load->view('admin/landingpages/menue');
-		$this->load->view('templates/admin/footer');
+		$this->load->view('backend/templates/admin/header', $header);
+	//	$this->load->view('backend/templates/admin/styles');
+	//	$this->load->view('backend/admin/styles_admin');
+		$this->load->view('backend/templates/admin/menue', $menue);
+		$this->load->view('backend/templates/admin/submenue', $menue);
+		$this->load->view('backend/admin/landingpages/menue');
+		$this->load->view('backend/templates/admin/footer');
 	}
 	
 	/**
@@ -135,13 +135,13 @@ class Admin extends CI_Controller {
 		$menue['menue']		= $this->admin->get_menue();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
-		$this->load->view('templates/admin/header', $header);
-	//	$this->load->view('templates/admin/styles');
-	//	$this->load->view('admin/styles_admin');
-		$this->load->view('templates/admin/menue', $menue);
-		$this->load->view('templates/admin/submenue', $menue);
-		$this->load->view('admin/landingpages/system');
-		$this->load->view('templates/admin/footer');
+		$this->load->view('backend/templates/admin/header', $header);
+	//	$this->load->view('backend/templates/admin/styles');
+	//	$this->load->view('backend/admin/styles_admin');
+		$this->load->view('backend/templates/admin/menue', $menue);
+		$this->load->view('backend/templates/admin/submenue', $menue);
+		$this->load->view('backend/admin/landingpages/system');
+		$this->load->view('backend/templates/admin/footer');
 	}
 	
 	/**
@@ -160,13 +160,13 @@ class Admin extends CI_Controller {
 		$menue['menue']		= $this->admin->get_menue();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
-		$this->load->view('templates/admin/header', $header);
-	//	$this->load->view('templates/admin/styles');
-	//	$this->load->view('admin/styles_admin');
-		$this->load->view('templates/admin/menue', $menue);
-		$this->load->view('templates/admin/submenue', $menue);
-		$this->load->view('admin/landingpages/user');
-		$this->load->view('templates/admin/footer');
+		$this->load->view('backend/templates/admin/header', $header);
+	//	$this->load->view('backend/templates/admin/styles');
+	//	$this->load->view('backend/admin/styles_admin');
+		$this->load->view('backend/templates/admin/menue', $menue);
+		$this->load->view('backend/templates/admin/submenue', $menue);
+		$this->load->view('backend/admin/landingpages/user');
+		$this->load->view('backend/templates/admin/footer');
 	}
 	
 	/**
@@ -187,13 +187,13 @@ class Admin extends CI_Controller {
 		$data['qlink']		= $this->admin->get_quicklinks();
 		$data['message']	= $this->admin->get_adminmessage();
 		
-		$this->load->view('templates/admin/header', $header);
-		$this->load->view('templates/admin/styles');
-		$this->load->view('admin/styles_admin');
-		$this->load->view('templates/admin/menue', $menue);
-		$this->load->view('templates/admin/submenue', $menue);
-		$this->load->view('admin/dashboard', $data);
-		$this->load->view('templates/admin/footer');
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/styles');
+		$this->load->view('backend/admin/styles_admin');
+		$this->load->view('backend/templates/admin/menue', $menue);
+		$this->load->view('backend/templates/admin/submenue', $menue);
+		$this->load->view('backend/admin/dashboard', $data);
+		$this->load->view('backend/templates/admin/footer');
 	}
 	
 	/**
@@ -208,9 +208,9 @@ class Admin extends CI_Controller {
 	{	
 		$header['title'] = 'Backend Login';	
 		$data['error'] = $error;
-		$this->load->view('templates/admin/header_login', $header);
-		$this->load->view('admin/login', $data);
-		$this->load->view('templates/admin/footer_login');
+		$this->load->view('backend/templates/admin/header_login', $header);
+		$this->load->view('backend/admin/login', $data);
+		$this->load->view('backend/templates/admin/footer_login');
 	}
 	
 	/**
@@ -285,12 +285,12 @@ class Admin extends CI_Controller {
 		$data['error'] = $error;	
 		$this->session->set_userdata('check_user_id', $userID);
 		
-		$this->load->view('templates/admin/header_login', $header);
+		$this->load->view('backend/templates/admin/header_login', $header);
 		if($error == 'success')
-			$this->load->view('admin/change_pw_login_success');
+			$this->load->view('backend/admin/change_pw_login_success');
 		else
-			$this->load->view('admin/change_pw_login', $data);
-		$this->load->view('templates/admin/footer_login');
+			$this->load->view('backend/admin/change_pw_login', $data);
+		$this->load->view('backend/templates/admin/footer_login');
 	}
 	
 	public function check_change_pw_login()

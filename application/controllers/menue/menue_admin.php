@@ -44,13 +44,13 @@ class Menue_Admin extends CI_Controller {
 		$data['area'] = $this->area;
 		$data['menue_arr'] = $this->menue->get_menue_list();
 	
-		$this->load->view('templates/admin/header', $header);
-		$this->load->view('templates/admin/styles');
-		$this->load->view('menue/styles_menue');
-		$this->load->view('templates/admin/menue', $menue);	
-		$this->load->view('templates/admin/submenue', $menue);	
-		$this->load->view('menue/menueliste_admin', $data);
-		$this->load->view('templates/admin/footer');
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/styles');
+		$this->load->view('backend/menue/styles_menue');
+		$this->load->view('backend/templates/admin/menue', $menue);	
+		$this->load->view('backend/templates/admin/submenue', $menue);	
+		$this->load->view('backend/menue/menueliste_admin', $data);
+		$this->load->view('backend/templates/admin/footer');
 	}
 	
 	public function create_menue()
@@ -73,13 +73,13 @@ class Menue_Admin extends CI_Controller {
 			$data['menue_arr'] = $this->menue->get_menue_list();
 			$data['mode'] = 'create';
 		
-			$this->load->view('templates/admin/header', $header);
-			$this->load->view('templates/admin/styles');
-			$this->load->view('menue/styles_menue');
-			$this->load->view('templates/admin/menue', $menue);	
-			$this->load->view('templates/admin/submenue', $menue);	
-			$this->load->view('menue/createEditMenue_admin', $data);
-			$this->load->view('templates/admin/footer');	
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/styles');
+			$this->load->view('backend/menue/styles_menue');
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);	
+			$this->load->view('backend/menue/createEditMenue_admin', $data);
+			$this->load->view('backend/templates/admin/footer');	
 		}
 		else redirect($this->session->userdata('menueliste_redirect'), 'refresh');
 	}
@@ -104,13 +104,13 @@ class Menue_Admin extends CI_Controller {
 			$data['menue_arr'] = $this->menue->get_menue_list();
 			$data['mode'] = 'edit';
 		
-			$this->load->view('templates/admin/header', $header);
-			$this->load->view('templates/admin/styles');
-			$this->load->view('menue/styles_menue');
-			$this->load->view('templates/admin/menue', $menue);	
-			$this->load->view('templates/admin/submenue', $menue);	
-			$this->load->view('menue/createEditMenue_admin', $data);
-			$this->load->view('templates/admin/footer');	
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/styles');
+			$this->load->view('backend/menue/styles_menue');
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);	
+			$this->load->view('backend/menue/createEditMenue_admin', $data);
+			$this->load->view('backend/templates/admin/footer');	
 		}
 		else redirect($this->session->userdata('menueliste_redirect'), 'refresh');
 	}

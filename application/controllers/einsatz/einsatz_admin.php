@@ -41,14 +41,14 @@ class Einsatz_Admin extends CI_Controller {
 		$data['einsatz'] = $this->einsatz->get_einsatz_list($year);
 		$data['years']	 = $this->einsatz->get_einsatz_years();	
 	
-		$this->load->view('templates/admin/header', $header);
-		$this->load->view('templates/admin/styles');
-		$this->load->view('einsatz/styles_einsatz');
-		$this->load->view('templates/admin/menue', $menue);	
-		$this->load->view('templates/admin/submenue', $menue);	
-		$this->load->view('templates/admin/jquery-tablesorter-cp');
-		$this->load->view('einsatz/einsatzliste_admin', $data);
-		$this->load->view('templates/admin/footer');	
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/styles');
+		$this->load->view('backend/einsatz/styles_einsatz');
+		$this->load->view('backend/templates/admin/menue', $menue);	
+		$this->load->view('backend/templates/admin/submenue', $menue);	
+		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
+		$this->load->view('backend/einsatz/einsatzliste_admin', $data);
+		$this->load->view('backend/templates/admin/footer');	
 	}
 	
 	public function create_einsatz()
@@ -73,14 +73,14 @@ class Einsatz_Admin extends CI_Controller {
 			$einsatz['types'] 		= $this->einsatz->get_einsatz_type_list();
 			$einsatz['templates']	= $this->einsatz->get_einsatz_templates();
 		
-			$this->load->view('templates/admin/header', $header);
-			$this->load->view('templates/admin/styles');
-			$this->load->view('einsatz/styles_einsatz');
-			$this->load->view('templates/admin/menue', $menue);	
-			$this->load->view('templates/admin/submenue', $menue);
-			$this->load->view('einsatz/createEinsatz_admin', $einsatz);
-			$this->load->view('einsatz/tiny_mce_inc');
-			$this->load->view('templates/admin/footer');
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/styles');
+			$this->load->view('backend/einsatz/styles_einsatz');
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/einsatz/createEinsatz_admin', $einsatz);
+			$this->load->view('backend/einsatz/tiny_mce_inc');
+			$this->load->view('backend/templates/admin/footer');
 		}
 		else redirect($this->session->userdata('einsatzliste_redirect'), 'refresh');
 	}
@@ -107,14 +107,14 @@ class Einsatz_Admin extends CI_Controller {
 			$einsatz['types'] 		= $this->einsatz->get_einsatz_type_list();
 			$einsatz['einsatz']		= $this->einsatz->get_einsatz($id);
 		
-			$this->load->view('templates/admin/header', $header);
-			$this->load->view('templates/admin/styles');
-			$this->load->view('einsatz/styles_einsatz');
-			$this->load->view('templates/admin/menue', $menue);	
-			$this->load->view('templates/admin/submenue', $menue);
-			$this->load->view('einsatz/editEinsatz_admin', $einsatz); 
-			$this->load->view('einsatz/tiny_mce_inc');
-			$this->load->view('templates/admin/footer');
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/styles');
+			$this->load->view('backend/einsatz/styles_einsatz');
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/einsatz/editEinsatz_admin', $einsatz); 
+			$this->load->view('backend/einsatz/tiny_mce_inc');
+			$this->load->view('backend/templates/admin/footer');
 		}
 		else redirect($this->session->userdata('einsatzliste_redirect'), 'refresh');	
 	}
@@ -217,14 +217,14 @@ class Einsatz_Admin extends CI_Controller {
 			$einsatz['images']		= $this->einsatz->get_images($id);
 			$einsatz['error']		= $error;
 		
-			$this->load->view('templates/admin/header', $header);
-			$this->load->view('templates/admin/styles');
-			$this->load->view('einsatz/styles_einsatz');
-			$this->load->view('templates/admin/menue', $menue);	
-			$this->load->view('templates/admin/submenue', $menue);
-			$this->load->view('einsatz/image_upload', $einsatz); 
-			$this->load->view('einsatz/tiny_mce_inc');
-			$this->load->view('templates/admin/footer');
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/styles');
+			$this->load->view('backend/einsatz/styles_einsatz');
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/einsatz/image_upload', $einsatz); 
+			$this->load->view('backend/einsatz/tiny_mce_inc');
+			$this->load->view('backend/templates/admin/footer');
 		}
 	}
 	

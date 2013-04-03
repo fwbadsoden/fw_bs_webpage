@@ -74,7 +74,6 @@ $db['habib']['dbprefix'] = 'fw_';
 $db['habib']['pconnect'] = TRUE;
 $db['habib']['db_debug'] = TRUE;
 $db['habib']['cache_on'] = TRUE;
-$db['habib']['cachedir'] = '/kunden/267644_65812/webseiten/feuerwehr/ci_system/cache/db';
 $db['habib']['char_set'] = 'utf8';
 $db['habib']['dbcollat'] = 'utf8_general_ci';
 $db['habib']['swap_pre'] = '';

@@ -53,12 +53,12 @@ class News_Admin extends CI_Controller {
 		$data['news_pagination'] 	= $this->pagination->create_links();
 		$this->config->set_item('base_url', $base_url);		
 	
-		$this->load->view('templates/admin/header', $header);
-		$this->load->view('templates/admin/styles');
-		$this->load->view('templates/admin/menue', $menue);	
-		$this->load->view('templates/admin/submenue', $menue);	
-		$this->load->view('news/newsliste_admin', $data);
-		$this->load->view('templates/admin/footer');	
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/styles');
+		$this->load->view('backend/templates/admin/menue', $menue);	
+		$this->load->view('backend/templates/admin/submenue', $menue);	
+		$this->load->view('backend/news/newsliste_admin', $data);
+		$this->load->view('backend/templates/admin/footer');	
 	}
 }
 ?>

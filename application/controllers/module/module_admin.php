@@ -55,14 +55,14 @@ class Module_Admin extends CI_Controller {
 			$data['module'] = $this->module->get_modules();
 			$data['setting'] = $this->module->get_settings();
 		
-			$this->load->view('templates/admin/header', $header);
-			$this->load->view('templates/admin/styles');
-			$this->load->view('module/styles_module');
-			$this->load->view('templates/admin/menue', $menue);	
-			$this->load->view('templates/admin/submenue', $menue);
-			$this->load->view('templates/admin/jquery-tablesorter-cp');
-			$this->load->view('module/settingliste_admin', $data);
-			$this->load->view('templates/admin/footer');
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/styles');
+			$this->load->view('backend/module/styles_module');
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
+			$this->load->view('backend/module/settingliste_admin', $data);
+			$this->load->view('backend/templates/admin/footer');
 		}
 		else redirect($this->session->userdata('settingliste_redirect'), 'refresh');
 	 }
@@ -119,14 +119,14 @@ class Module_Admin extends CI_Controller {
 		$data['language'] = $this->module->get_languages();
 		$data['module'] = $this->module->get_modules();
 	
-		$this->load->view('templates/admin/header', $header);
-		$this->load->view('templates/admin/styles');
-		$this->load->view('module/styles_module');
-		$this->load->view('templates/admin/menue', $menue);	
-		$this->load->view('templates/admin/submenue', $menue);	
-		$this->load->view('templates/admin/jquery-tablesorter-cp');
-		$this->load->view('module/languageliste_admin', $data);
-		$this->load->view('templates/admin/footer');
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/styles');
+		$this->load->view('backend/module/styles_module');
+		$this->load->view('backend/templates/admin/menue', $menue);	
+		$this->load->view('backend/templates/admin/submenue', $menue);	
+		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
+		$this->load->view('backend/module/languageliste_admin', $data);
+		$this->load->view('backend/templates/admin/footer');
 	 }	
 
 	/** +++++++++++++++ ROUTEN +++++++++++++++++ */	
@@ -149,14 +149,14 @@ class Module_Admin extends CI_Controller {
 		$data['route'] = $this->module->get_routes();
 		$data['module'] = $this->module->get_modules();
 	
-		$this->load->view('templates/admin/header', $header);
-		$this->load->view('templates/admin/styles');
-		$this->load->view('module/styles_module');
-		$this->load->view('templates/admin/menue', $menue);	
-		$this->load->view('templates/admin/submenue', $menue);	
-		$this->load->view('templates/admin/jquery-tablesorter-cp');
-		$this->load->view('module/routeliste_admin', $data);
-		$this->load->view('templates/admin/footer');	
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/styles');
+		$this->load->view('backend/module/styles_module');
+		$this->load->view('backend/templates/admin/menue', $menue);	
+		$this->load->view('backend/templates/admin/submenue', $menue);	
+		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
+		$this->load->view('backend/module/routeliste_admin', $data);
+		$this->load->view('backend/templates/admin/footer');	
 	 }
 	 
 	public function create_route()
@@ -179,13 +179,13 @@ class Module_Admin extends CI_Controller {
 			$menue['submenue']		= $this->admin->get_submenue();
 			$data['module'] = $this->module->get_modules();
 		
-			$this->load->view('templates/admin/header', $header);
-			$this->load->view('templates/admin/styles');
-			$this->load->view('module/styles_module');
-			$this->load->view('templates/admin/menue', $menue);	
-			$this->load->view('templates/admin/submenue', $menue);
-			$this->load->view('module/createRoute_admin', $data);
-			$this->load->view('templates/admin/footer');
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/styles');
+			$this->load->view('backend/module/styles_module');
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/module/createRoute_admin', $data);
+			$this->load->view('backend/templates/admin/footer');
 		}
 		else redirect($this->session->userdata('routeliste_redirect'), 'refresh');
 	}
@@ -211,13 +211,13 @@ class Module_Admin extends CI_Controller {
 			$data['module'] = $this->module->get_modules();
 			$data['route'] = $this->module->get_route($id);
 		
-			$this->load->view('templates/admin/header', $header);
-			$this->load->view('templates/admin/styles');
-			$this->load->view('module/styles_module');
-			$this->load->view('templates/admin/menue', $menue);	
-			$this->load->view('templates/admin/submenue', $menue);
-			$this->load->view('module/editRoute_admin', $data);
-			$this->load->view('templates/admin/footer');
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/styles');
+			$this->load->view('backend/module/styles_module');
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/module/editRoute_admin', $data);
+			$this->load->view('backend/templates/admin/footer');
 		}
 		else redirect($this->session->userdata('routeliste_redirect'), 'refresh');
 	}

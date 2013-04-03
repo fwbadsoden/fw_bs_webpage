@@ -55,14 +55,14 @@ class User_Admin extends CI_Controller {
 		$data['user'] = $this->user->get_user_list($this->area);	
 		$data['area'] = $this->area;
 	
-		$this->load->view('templates/admin/header', $header);
-		$this->load->view('templates/admin/styles');
-		$this->load->view('user/styles_user');
-		$this->load->view('templates/admin/menue', $menue);	
-		$this->load->view('templates/admin/submenue', $menue);	
-		$this->load->view('templates/admin/jquery-tablesorter-cp');
-		$this->load->view('user/userliste_admin', $data);
-		$this->load->view('templates/admin/footer');		
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/styles');
+		$this->load->view('backend/user/styles_user');
+		$this->load->view('backend/templates/admin/menue', $menue);	
+		$this->load->view('backend/templates/admin/submenue', $menue);	
+		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
+		$this->load->view('backend/user/userliste_admin', $data);
+		$this->load->view('backend/templates/admin/footer');		
 	}
 	
 	public function create_user()
@@ -89,13 +89,13 @@ class User_Admin extends CI_Controller {
 			$menue['menue']			= $this->admin->get_menue();
 			$menue['submenue'] 		= $this->admin->get_submenue();
 			
-			$this->load->view('templates/admin/header', $header);
-			$this->load->view('templates/admin/styles');
-			$this->load->view('user/styles_user');
-			$this->load->view('templates/admin/menue', $menue);
-			$this->load->view('templates/admin/submenue', $menue);
-			$this->load->view('user/createUser_admin');
-			$this->load->view('templates/admin/footer');
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/styles');
+			$this->load->view('backend/user/styles_user');
+			$this->load->view('backend/templates/admin/menue', $menue);
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/user/createUser_admin');
+			$this->load->view('backend/templates/admin/footer');
 		}
 		else redirect($this->session->userdata('userliste_redirect'), 'refresh');
 	}
@@ -121,13 +121,13 @@ class User_Admin extends CI_Controller {
 			$user['user']			= $this->user->get_user($id);
 			$user['id']				= $id;
 			
-			$this->load->view('templates/admin/header', $header);
-			$this->load->view('templates/admin/styles');
-			$this->load->view('user/styles_user');
-			$this->load->view('templates/admin/menue', $menue);
-			$this->load->view('templates/admin/submenue', $menue);
-			$this->load->view('user/editUser_admin', $user);
-			$this->load->view('templates/admin/footer');	
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/styles');
+			$this->load->view('backend/user/styles_user');
+			$this->load->view('backend/templates/admin/menue', $menue);
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/user/editUser_admin', $user);
+			$this->load->view('backend/templates/admin/footer');	
 		}
 		else redirect($this->session->userdata('userliste_redirect'), 'refresh');
 	}

@@ -38,14 +38,14 @@ class Fahrzeug_Admin extends CI_Controller {
 		$menue['submenue']	= $this->admin->get_submenue();
 		$data['fahrzeug'] = $this->fahrzeug->get_fahrzeug_list();
 	
-		$this->load->view('templates/admin/header', $header);
-		$this->load->view('templates/admin/styles');
-		$this->load->view('fahrzeug/styles_fahrzeug');
-		$this->load->view('templates/admin/menue', $menue);	
-		$this->load->view('templates/admin/submenue', $menue);	
-		$this->load->view('templates/admin/jquery-tablesorter-cp');
-		$this->load->view('fahrzeug/fahrzeugliste_admin', $data);
-		$this->load->view('templates/admin/footer');
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/styles');
+		$this->load->view('backend/fahrzeug/styles_fahrzeug');
+		$this->load->view('backend/templates/admin/menue', $menue);	
+		$this->load->view('backend/templates/admin/submenue', $menue);	
+		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
+		$this->load->view('backend/fahrzeug/fahrzeugliste_admin', $data);
+		$this->load->view('backend/templates/admin/footer');
 	}
 	
 	public function create_fahrzeug()
@@ -67,14 +67,14 @@ class Fahrzeug_Admin extends CI_Controller {
 			$menue['menue']			= $this->admin->get_menue();
 			$menue['submenue']		= $this->admin->get_submenue();
 		
-			$this->load->view('templates/admin/header', $header);
-			$this->load->view('templates/admin/styles');
-			$this->load->view('fahrzeug/styles_fahrzeug');
-			$this->load->view('templates/admin/menue', $menue);	
-			$this->load->view('templates/admin/submenue', $menue);
-			$this->load->view('fahrzeug/createFahrzeug_admin');
-			$this->load->view('fahrzeug/tiny_mce_inc');
-			$this->load->view('templates/admin/footer');
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/styles');
+			$this->load->view('backend/fahrzeug/styles_fahrzeug');
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/fahrzeug/createFahrzeug_admin');
+			$this->load->view('backend/fahrzeug/tiny_mce_inc');
+			$this->load->view('backend/templates/admin/footer');
 		}
 		else redirect($this->session->userdata('fahrzeugliste_redirect'), 'refresh');
 	}
@@ -99,14 +99,14 @@ class Fahrzeug_Admin extends CI_Controller {
 			$menue['submenue']		= $this->admin->get_submenue();
 			$fahrzeug['fahrzeug'] 	= $this->fahrzeug->get_fahrzeug($id);
 		
-			$this->load->view('templates/admin/header', $header);
-			$this->load->view('templates/admin/styles');
-			$this->load->view('fahrzeug/styles_fahrzeug');
-			$this->load->view('templates/admin/menue', $menue);	
-			$this->load->view('templates/admin/submenue', $menue);
-			$this->load->view('fahrzeug/editFahrzeug_admin', $fahrzeug);
-			$this->load->view('fahrzeug/tiny_mce_inc');
-			$this->load->view('templates/admin/footer');
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/styles');
+			$this->load->view('backend/fahrzeug/styles_fahrzeug');
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/fahrzeug/editFahrzeug_admin', $fahrzeug);
+			$this->load->view('backend/fahrzeug/tiny_mce_inc');
+			$this->load->view('backend/templates/admin/footer');
 		}
 		else redirect($this->session->userdata('fahrzeugliste_redirect'), 'refresh');		
 	}
@@ -218,14 +218,14 @@ class Fahrzeug_Admin extends CI_Controller {
 			$fahrzeug['images']		= $this->fahrzeug->get_images($id);
 			$fahrzeug['error']		= $error;
 		
-			$this->load->view('templates/admin/header', $header);
-			$this->load->view('templates/admin/styles');
-			$this->load->view('fahrzeug/styles_fahrzeug');
-			$this->load->view('templates/admin/menue', $menue);	
-			$this->load->view('templates/admin/submenue', $menue);
-			$this->load->view('fahrzeug/image_upload', $fahrzeug); 
-			$this->load->view('fahrzeug/tiny_mce_inc');
-			$this->load->view('templates/admin/footer');
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/styles');
+			$this->load->view('backend/fahrzeug/styles_fahrzeug');
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/fahrzeug/image_upload', $fahrzeug); 
+			$this->load->view('backend/fahrzeug/tiny_mce_inc');
+			$this->load->view('backend/templates/admin/footer');
 		}
 	}
 	

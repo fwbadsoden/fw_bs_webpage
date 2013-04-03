@@ -39,9 +39,9 @@ class Feature_Admin extends CI_Controller {
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		$data['userdata'] 	= $this->cp_auth->cp_get_userdata($this->session->userdata(CPAUTH_SESSION_BACKEND));
 		
-		$this->load->view('templates/admin/header', $header);
-		$this->load->view('templates/admin/menue', $menue);
-		$this->load->view('templates/admin/submenue', $menue);
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/menue', $menue);
+		$this->load->view('backend/templates/admin/submenue', $menue);
 		$this->einsatz_graph();				
 		$this->load->view('templates/admin/footer');
 	}

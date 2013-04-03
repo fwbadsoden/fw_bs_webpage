@@ -39,10 +39,9 @@
 */
 
 // Reservierte Routen
-$route['default_controller'] 				= '';
+$route['default_controller'] 				= 'admin/admin';
 $route['404_override'] 						= 'errors/page_missing';
 
-$route['admin/devlog']						= 'admin/maintenance/dev_log';
 // Einbinden der dynamischen Routen
 include_once APPPATH . "cache/db_routes.php"; 
 

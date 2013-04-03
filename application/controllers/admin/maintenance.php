@@ -37,11 +37,11 @@ class Maintenance extends CI_Controller {
 	{
 		$header['title'] 		= 'Buttons';		
 	
-		$this->load->view('templates/admin/header', $header);
-		$this->load->view('templates/admin/styles');
-		$this->load->view('admin/styles_admin');
-		$this->load->view('maintenance/show_icons');
-		$this->load->view('templates/admin/footer');
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/styles');
+		$this->load->view('backend/admin/styles_admin');
+		$this->load->view('backend/maintenance/show_icons');
+		$this->load->view('backend/templates/admin/footer');
 	}
 	
 	public function get_einsatz_bilder()

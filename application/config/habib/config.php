@@ -14,7 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://feuerwehr.familiepleines.de/';
+//$config['base_url']	= 'http://feuerwehr.familiepleines.de/';
+$config['base_url']	= 'http://fw_bs_webpage/';
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -179,7 +180,7 @@ $config['directory_trigger']	= 'd'; // experimental not currently in use
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 1;
+$config['log_threshold'] = 2;
 
 /*
 |--------------------------------------------------------------------------
