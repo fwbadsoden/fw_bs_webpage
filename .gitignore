@@ -41,7 +41,6 @@ WS_FTP.LOG
 
 # Code Igniter ignores #
 ########################
-*/config/development
 */logs/log-*.php
 */logs/!index.html
 */cache/.htaccess
