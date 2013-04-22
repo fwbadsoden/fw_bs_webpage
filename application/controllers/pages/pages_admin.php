@@ -40,8 +40,7 @@ class Pages_Admin extends CI_Controller {
 		$this->load->view('backend/templates/admin/submenue', $menue);	
 		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
 		$this->load->view('backend/pages/pagesliste_admin', $data);
-		$this->load->view('backend/templates/admin/footer');	
-        
+		$this->load->view('backend/templates/admin/footer');	        
 	}
 }
 
