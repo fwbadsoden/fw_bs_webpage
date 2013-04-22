@@ -17,7 +17,7 @@ class Pages_Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->library('CP_auth');
 		$this->load->model('cpauth/cpauth_model', 'cpauth');
-		$this->load->model('pages/pages_model', 'content');
+		$this->load->model('pages/pages_model', 'pages');
 		$this->load->model('admin/admin_model', 'admin');
 		
 		// CP Auth Konfiguration
@@ -32,15 +32,14 @@ class Pages_Admin extends CI_Controller {
 		$header['title'] = 'Seiten';		
 		$menue['menue']	= $this->admin->get_menue();
 		$menue['submenue']	= $this->admin->get_submenue();
-		$data = '';
+		$data['page'] = $this->pages->get_pages();
 	
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/styles');
-		$this->load->view('backend/module/styles_module');
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
 		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
-//		$this->load->view('backend/module/routeliste_admin', $data);
+		$this->load->view('backend/pages/pagesliste_admin', $data);
 		$this->load->view('backend/templates/admin/footer');	
 	}
 }
