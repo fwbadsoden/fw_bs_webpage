@@ -2,17 +2,6 @@
 
 <style>
 
-#content fieldset { width: 1100px; border: 1px solid #BDB5A7; font-family: Arial, Helvetica, sans-serif;  font-weight: bold; font-size: 12px; color: #BDB5A7; padding: 4px;}
-
-.input_dropdown_einsatz {
-	width: 180px;
-	height: 20px;
-	border: 1px solid #CCCCCC;
-	background-color: #FFFFFF;
-	font: 11px Arial, Helvetica, sans-serif;
-	color: #000000;
-	padding: 2px 4px 2px 4px;	
-}
 
 /* ++++++++++++++++ Anzahl Einsatzkräfte Slider +++++++++++++++++++++++++++ */
 /* slider root */

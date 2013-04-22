@@ -76,6 +76,7 @@
 		$types[$i]['formAttr']['id']			= 't_'.$types[$i]['typeID'];
 		$types[$i]['formAttr']['class']			= '';
 		$types[$i]['formAttr']['value']			= $types[$i]['typeID'];
+        
 		if(!$this->input->post('t_'.$types[$i]['typeID']) == $types[$i]['typeID'])
 		{
 			if(isset($einsatz['type'][$types[$i]['typeID']])) $types[$i]['formAttr']['checked'] = 'checked';	

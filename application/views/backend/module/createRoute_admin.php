@@ -16,7 +16,7 @@
 	$modul_options = array();
 	if(isset($_POST['modul'])) 			$modul_selected = $_POST['modul']; 
 	else $modul_selected = 0;
-	$modul_attr 		= "class = 'input_dropdown_modul' id = 'modul'";	
+	$modul_attr 		= "class = 'input_dropdown' id = 'modul'";	
 	foreach($module as $item)
 	{
 		$modul_options[$item['moduleID']] 	= $item['moduleName'];

@@ -92,7 +92,7 @@
 	}
 	
 	$templ_options = array();
-	$templ_attr = "class = 'input_dropdown_einsatz' id = 'input_dropdown_einsatz'";
+	$templ_attr = "class = 'input_dropdown' id = 'input_dropdown'";
 	$templ_options[0] = 'Vorlage wählen...';
 	foreach($templates as $templ)
 	{
@@ -103,7 +103,7 @@
 <script type="text/javascript">
 $(function() {
 	$('#input_dropdown_einsatz').bind('change', function(e) {
-			$.getJSON('<?=base_url('einsatz/einsatz_admin/json_get_einsatz_template')?>/' + $('#input_dropdown_einsatz').val(),
+			$.getJSON('<?=base_url('einsatz/einsatz_admin/json_get_einsatz_template')?>/' + $('#input_dropdown').val(),
 				function(data) {
 					$.each(data, function(i,item) {
 						if (item.field == "einsatzname") {
