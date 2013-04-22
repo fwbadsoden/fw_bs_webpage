@@ -25,6 +25,8 @@
 	
 	#content .upload { font-family: Arial, Helvetica, sans-serif; font-size: 11px; background-color: #FFFFFF; color: #000000; width: 550px; height: 22px; padding: 2px; border: 1px solid #; }
 	#content .bild_details { width: 250px; height: 15px; background-color:#FFFFFF; border: 1px solid #BDB5A7; font: 11px Arial, Helvetica, sans-serif; color: #000000; padding: 2px 4px 2px 4px; }
+    
+    #content .box_pictogramm { height: 100px; float: left; padding: 1px;}
 	
 	.tooltip { 
 		display:none; 

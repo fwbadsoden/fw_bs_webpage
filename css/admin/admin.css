@@ -369,6 +369,12 @@ background:url('../../images/admin/buttons/control_rewind.png') no-repeat 10px 0
 text-indent:40px;
 display:block;
 }
+#content .button_add_small {
+background:url('../../images/admin/buttons/add.png') no-repeat 5px 0;
+height: 17px;
+width: 26px;
+display:block;
+}
 #content .button_up_small {
 background:url('../../images/admin/buttons/arrow_up.png') no-repeat 5px 0;
 height: 17px;

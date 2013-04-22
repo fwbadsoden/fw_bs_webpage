@@ -11,7 +11,7 @@
  **/
 
 class Pages_Admin extends CI_Controller {
-	private $pageID;
+	private $pageID, $boxID, $rowID;
     
 	public function __construct()
 	{
@@ -73,15 +73,18 @@ class Pages_Admin extends CI_Controller {
     		$this->load->view('backend/pages/createPage_admin', $data);
     		$this->load->view('backend/templates/admin/footer');
         }
+		else redirect($this->session->userdata('pageliste_redirect'), 'refresh');
     }
     
     public function edit_page($id)
     {
+        $this->pageID = $id;
+        
         if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
-			if($verify= $this->verify_create())
+			if($verify= $this->verify_edit())
 			{
-				$this->pages->update_page($id);
+				$this->pages->update_page($this->pageID);
 			}
 		}
 		else
@@ -94,15 +97,62 @@ class Pages_Admin extends CI_Controller {
             $header['title'] = 'Inhaltsseite bearbeiten';		
     		$menue['menue']	= $this->admin->get_menue();
     		$menue['submenue']	= $this->admin->get_submenue();
-            $data['page'] = $this->pages->get_page($id);
+            $data['page'] = $this->pages->get_page($this->pageID);
+            $data['templates'] = $this->pages->get_templates();
+            $data['content'] = $this->pages->get_page_content($this->pageID);
     	
     		$this->load->view('backend/templates/admin/header', $header);
     		$this->load->view('backend/templates/admin/styles');
     		$this->load->view('backend/templates/admin/menue', $menue);	
     		$this->load->view('backend/templates/admin/submenue', $menue);	
-    		$this->load->view('backend/pages/editPage_admin', $data);
+    		$this->load->view('backend/pages/editPageHeader_admin', $data);	
+            
+    		foreach($data['content']['rows'] as $r)
+            {
+                $data['row'] = $r;
+                $this->load->view('backend/pages/editPageRow_admin', $data);
+            }	
+    		$this->load->view('backend/pages/editPageFooter_admin', $data);
     		$this->load->view('backend/templates/admin/footer');
         }
+		else redirect($this->session->userdata('pageliste_redirect'), 'refresh');
+    }
+    
+    public function add_row($pageID)
+    {
+        $this->pages->add_row($pageID);
+		redirect($this->session->userdata('pageedit_redirect'), 'refresh');
+    }
+    
+    public function add_box($rowID, $boxID = 0)
+    {        
+        $this->rowID = $rowID;
+        $this->boxID = $boxID;
+        
+        if($this->uri->segment($this->uri->total_segments()) == 'save')
+		{		
+			$this->pages->add_box($this->rowID, $this->boxID);
+		}
+		else
+			$this->session->set_userdata('pageaddbox_submit', current_url());
+			
+		if($this->uri->segment($this->uri->total_segments()) != 'save')
+		{
+            //$this->session->set_userdata('pageaddbox_redirect', current_url());
+            
+            $header['title'] = 'Inhaltselement hinzuf&uumlgen';		
+    		$menue['menue']	= $this->admin->get_menue();
+    		$menue['submenue']	= $this->admin->get_submenue();
+            $data['boxes'] = $this->pages->get_allowed_boxes($this->rowID);
+    	
+    		$this->load->view('backend/templates/admin/header', $header);
+    		$this->load->view('backend/templates/admin/styles');
+    		$this->load->view('backend/templates/admin/menue', $menue);	
+    		$this->load->view('backend/templates/admin/submenue', $menue);	
+    		$this->load->view('backend/pages/addBox_admin', $data);
+    		$this->load->view('backend/templates/admin/footer');
+        }
+		else redirect($this->session->userdata('pageedit_redirect'), 'refresh');
     }
 	
 	private function verify_create()
@@ -115,7 +165,10 @@ class Pages_Admin extends CI_Controller {
     
     private function verify_edit()
     {
-                
+        $this->load->library('form_validation');		
+		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');		
+		$this->form_validation->set_rules('pagename', 'Seitenname', 'required|max_length[100]|xss_clean');	
+		return $this->form_validation->run();        
     }
 	
 	public function switch_online_state($id, $state)
