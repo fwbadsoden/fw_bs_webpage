@@ -45,3 +45,4 @@ WS_FTP.LOG
 */logs/!index.html
 */cache/.htaccess
 */cache/index.html
+index.php
