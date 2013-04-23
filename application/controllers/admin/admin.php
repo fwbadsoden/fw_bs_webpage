@@ -1,17 +1,23 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Admin Controller
- *
+ * Admin
+ * 
  * Zentraler Controller für den Backendbereich
- *
+ * 
+ * @package com.cp.feuerwehr.backend.admin 
  * @author Habib Pleines <habib@familiepleines.de>
- * @version 1.0
- * @package com.cp.feuerwehr.backend.admin
- **/
-
+ * @copyright 
+ * @version 2013
+ * @access public
+ */
 class Admin extends CI_Controller {
 
+	/**
+	 * Admin::__construct()
+	 * 
+	 * @return
+	 */
 	public function __construct()
 	{
 		parent::__construct();
@@ -26,7 +32,7 @@ class Admin extends CI_Controller {
 	}
 	
 	/**
-	 * index Funktion
+	 * Admin::index()
 	 * wird geladen, wenn keine andere Funktion geladen wird
 	 * prüft ob der User eingelogged ist, sonst wird er auf die Loginseite umgeleitet
 	 *
@@ -34,8 +40,7 @@ class Admin extends CI_Controller {
      *
      * Wird als URL admin/logout übergeben, erfolgt der Logout
 	 *
-	 * @author Habib Pleines
-	 * @version 1.0
+	 * @return
 	 *
 	 **/
 	public function index()
@@ -45,13 +50,11 @@ class Admin extends CI_Controller {
 	}
 	
 	/**
-	 * mContent Funktion
+	 *Admin::mContent()
 	 * Landingpage für den Inhaltsbereich
 	 *
-	 * @author Habib Pleines
-	 * @version 1.0
-	 *
-	 **/
+	 * @return
+	 */
 	public function mContent()
 	{
 		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
@@ -70,13 +73,11 @@ class Admin extends CI_Controller {
 	}
 	
 	/**
-	 * mFiles Funktion
+	 * Admin::mFiles()
 	 * Landingpage für den Dateibereich
 	 *
-	 * @author Habib Pleines
-	 * @version 1.0
-	 *
-	 **/
+	 * @return
+	 */
 	public function mFiles()
 	{
 		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
@@ -95,13 +96,11 @@ class Admin extends CI_Controller {
 	}
 	
 	/**
-	 * mMenue Funktion
+	 * Admin::mMenue()
 	 * Landingpage für den Menübereich
 	 *
-	 * @author Habib Pleines
-	 * @version 1.0
-	 *
-	 **/
+	 * @return
+	 */
 	public function mMenue()
 	{
 		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
@@ -120,13 +119,11 @@ class Admin extends CI_Controller {
 	}
 	
 	/**
-	 * mSettings Funktion
+	 * Admin::mSystem()
 	 * Landingpage für den Einstellungsbereich
 	 *
-	 * @author Habib Pleines
-	 * @version 1.0
-	 *
-	 **/
+	 * @return
+	 */
 	public function mSystem()
 	{
 		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
@@ -145,13 +142,11 @@ class Admin extends CI_Controller {
 	}
 	
 	/**
-	 * mUser Funktion
+	 * Admin::mUser()
 	 * Landingpage für den Benutzerverwaltungsbereich
 	 *
-	 * @author Habib Pleines
-	 * @version 1.0
-	 *
-	 **/
+	 * @return
+	 */
 	public function mUser()
 	{
 		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
@@ -170,13 +165,11 @@ class Admin extends CI_Controller {
 	}
 	
 	/**
-	 * Dashboard Funktion
+	 * Admin::dashboard()
 	 * Zeigt das Admindashboard an mit dem Admin log, den Quicklinks und der Admin-Nachricht
 	 *
-	 * @author Habib Pleines
-	 * @version 1.0
-	 *
-	 **/
+	 * @return
+	 */
 	private function dashboard()
 	{
 		$header['title'] 		= 'Dashboard';	
@@ -197,13 +190,12 @@ class Admin extends CI_Controller {
 	}
 	
 	/**
-	 * Login Funktion
+	 * Admin::login()
 	 * Zeigt die Login-Seite an
 	 *
-	 * @author Habib Pleines
-	 * @version 1.0
-	 *
-	 **/
+	 * @param string $error
+	 * @return
+	 */
 	private function login($error = '')
 	{	
 		$header['title'] = 'Backend Login';	
@@ -214,13 +206,11 @@ class Admin extends CI_Controller {
 	}
 	
 	/**
-	 * check_login Funktion
+	 * Admin::check_login()
 	 * Überprüft die Logindaten und leitet im Erfolgsfall an das Dashboard um
 	 *
-	 * @author Habib Pleines
-	 * @version 1.0
-	 *
-	 **/
+	 * @return
+	 */
 	public function check_login()
 	{ 
 		$login = $this->cpauth->login();
@@ -241,13 +231,11 @@ class Admin extends CI_Controller {
 	}
 	
 	/**
-	 * forgot_password Funktion
+	 * Admin::forgot_password()
 	 * Zeigt die Passwort vergessen Seite an
 	 *
-	 * @author Habib Pleines
-	 * @version 1.0
-	 *
-	 **/
+	 * @return
+	 */
 	public function forgot_password()
 	{ 
 		$this->session->set_flashdata('email', $this->input->post('email'));
@@ -272,13 +260,13 @@ class Admin extends CI_Controller {
 	}
 	
 	/**
-	 * Passwort ändern Funktion
+	 * Admin::change_pw_login()
 	 * Lässt das Passwort unter Angabe des alten Passworts ändern
 	 *
-	 * @author Habib Pleines
-	 * @version 1.0
-	 *
-	 **/
+	 * @param string $error
+	 * @param integer $userID
+	 * @return
+	 */
 	public function change_pw_login($error = '', $userID = '')
 	{  
 		$header['title'] = 'Backend Login - Passwort ändern';	
@@ -293,6 +281,11 @@ class Admin extends CI_Controller {
 		$this->load->view('backend/templates/admin/footer_login');
 	}
 	
+	/**
+	 * Admin::check_change_pw_login()
+	 * 
+	 * @return
+	 */
 	public function check_change_pw_login()
 	{
 		$this->load->library('form_validation');
@@ -315,28 +308,46 @@ class Admin extends CI_Controller {
 		}
 	}
 	
-	// Callback Funktion für Prüfung bei Passwortänderung
+	/**
+	 * Admin::pw_old_is_not_correct()
+     * Callback Funktion für Prüfung bei Passwortänderung
+	 * 
+	 * @param mixed $pw
+	 * @return
+	 */
 	public function pw_old_is_not_correct($pw)
 	{
 		return $this->cpauth->check_pw($pw, $this->session->userdata('check_user_id'));
 	}
+	/**
+	 * Admin::pw_is_like_old()
+     * Callback Funktion für Prüfung bei Passwortänderung
+	 * 
+	 * @param mixed $pw
+	 * @return
+	 */
 	public function pw_is_like_old($pw)
 	{
 		if($pw == $this->input->post('password_old')) return false; else return true;
 	}
+	/**
+	 * Admin::pw_1_like_2()
+     * Callback Funktion für Prüfung bei Passwortänderung
+	 * 
+	 * @param mixed $pw
+	 * @return
+	 */
 	public function pw_1_like_2($pw)
 	{
 		if($pw == $this->input->post('password_new1')) return true; else return false;	
 	}
 	
 	/**
-	 * Logout Funktion
+	 * Admin::logout()
 	 * Ruft die Logout Funktion für den Admin User
 	 *
-	 * @author Habib Pleines
-	 * @version 1.0
-	 *
-	 **/
+	 * @return
+	 */
 	public function logout()
 	{
 		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');

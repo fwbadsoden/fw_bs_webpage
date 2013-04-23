@@ -1,19 +1,24 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Einsatz Controller
- *
+ * Einsatz_Admin
  * Controller für die Verwaltung und Anzeige der Einsätze
- *
+ * 
+ * @package com.cp.feuerwehr.backend.einsatz  
  * @author Habib Pleines <habib@familiepleines.de>
- * @version 1.0
- * @package com.cp.feuerwehr.backend.einsatz
- **/
-
+ * @copyright 
+ * @version 2013
+ * @access public
+ */
 class Einsatz_Admin extends CI_Controller {
 	
 	private $upload_path;
 
+	/**
+	 * Einsatz_Admin::__construct()
+	 * 
+	 * @return
+	 */
 	public function __construct()
 	{
 		parent::__construct();
@@ -30,6 +35,12 @@ class Einsatz_Admin extends CI_Controller {
 		$this->upload_path = 'images/content/einsaetze/';
 	}
 		
+	/**
+	 * Einsatz_Admin::einsatz_liste()
+	 * 
+	 * @param integer $year
+	 * @return
+	 */
 	public function einsatz_liste($year = 'act')
 	{ 		
 		$this->session->set_userdata('einsatzliste_redirect', current_url()); 
@@ -51,6 +62,11 @@ class Einsatz_Admin extends CI_Controller {
 		$this->load->view('backend/templates/admin/footer');	
 	}
 	
+	/**
+	 * Einsatz_Admin::create_einsatz()
+	 * 
+	 * @return
+	 */
 	public function create_einsatz()
 	{		
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
@@ -85,6 +101,12 @@ class Einsatz_Admin extends CI_Controller {
 		else redirect($this->session->userdata('einsatzliste_redirect'), 'refresh');
 	}
 	
+	/**
+	 * Einsatz_Admin::edit_einsatz()
+	 * 
+	 * @param integer $id
+	 * @return
+	 */
 	public function edit_einsatz($id)
 	{				
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
@@ -119,6 +141,12 @@ class Einsatz_Admin extends CI_Controller {
 		else redirect($this->session->userdata('einsatzliste_redirect'), 'refresh');	
 	}
 	
+	/**
+	 * Einsatz_Admin::delete_einsatz()
+	 * 
+	 * @param integer $id
+	 * @return
+	 */
 	public function delete_einsatz($id)
 	{		
 		$einsatzdata = $this->einsatz->get_einsatz($id);
@@ -129,6 +157,11 @@ class Einsatz_Admin extends CI_Controller {
 		redirect($this->session->userdata('einsatzliste_redirect'), 'refresh');
 	}
 	
+	/**
+	 * Einsatz_Admin::verify()
+	 * 
+	 * @return
+	 */
 	private function verify()
 	{		
 		$this->load->library('form_validation');
@@ -147,6 +180,14 @@ class Einsatz_Admin extends CI_Controller {
 		return $this->form_validation->run();	
 	}
 	
+	/**
+	 * Einsatz_Admin::image_uploader()
+	 * 
+	 * @param integer $id
+	 * @param integer $recursive
+	 * @param string $error
+	 * @return
+	 */
 	public function image_uploader($id, $recursive = 0, $error = null)
 	{		
 		if($this->uri->segment($this->uri->total_segments()) == 'save' && $recursive == 0)
@@ -228,6 +269,11 @@ class Einsatz_Admin extends CI_Controller {
 		}
 	}
 	
+	/**
+	 * Einsatz_Admin::image_delete()
+	 * 
+	 * @return
+	 */
 	private function image_delete()
 	{
 		$this->load->helper('file');
@@ -235,11 +281,24 @@ class Einsatz_Admin extends CI_Controller {
 		$this->einsatz->delete_image($this->input->post('img_id'));
 	}
 	
+	/**
+	 * Einsatz_Admin::update_image_details()
+	 * 
+	 * @return
+	 */
 	private function update_image_details()
 	{
 		$this->einsatz->update_image($this->input->post('img_id'), $this->input->post('img_alt'));
 	}
 	
+	/**
+	 * Einsatz_Admin::switch_online_state()
+	 * 
+	 * @param integer $id
+	 * @param integer $state
+	 * @param integer $year
+	 * @return
+	 */
 	public function switch_online_state($id, $state, $year)
 	{ 		
 		if($state == 1) $online = 0; else $online = 1;
@@ -248,7 +307,13 @@ class Einsatz_Admin extends CI_Controller {
 		redirect($this->session->userdata('einsatzliste_redirect'), 'refresh');
 	}
 	
-	// JSON call get_template für Einsatzerstellung
+	/**
+	 * Einsatz_Admin::json_get_einsatz_template()
+     * JSON call get_template für Einsatzerstellung
+	 * 
+	 * @param integer $id
+	 * @return
+	 */
 	public function json_get_einsatz_template($id)
 	{
 		$template = $this->einsatz->get_einsatz_templates($id);
@@ -267,21 +332,39 @@ class Einsatz_Admin extends CI_Controller {
 		echo json_encode($json );
 	}
 	
-	// callback für Einsatzdatum
+	/**
+	 * Einsatz_Admin::einsatzdatum()
+     * callback für Einsatzdatum
+	 * 
+	 * @param string $datum
+	 * @return
+	 */
 	public function einsatzdatum($datum)
 	{
 		$this->form_validation->set_message('einsatzdatum', 'Bitte ein gültiges %s angeben.');
 		return cp_is_valid_date($datum);		
 	}
 	
-	// callback für Einsatzbeginn
+	/**
+	 * Einsatz_Admin::einsatzbeginn()
+     * callback für Einsatzbeginn
+	 * 
+	 * @param string $zeit
+	 * @return
+	 */
 	public function einsatzbeginn($zeit)
 	{
 		$this->form_validation->set_message('einsatzbeginn', 'Bitte einen gültigen %s angeben.');
 		return cp_is_valid_time($zeit);	
 	}
 	
-	// callback für Einsatzende
+	/**
+	 * Einsatz_Admin::einsatzende()
+     * callback für Einsatzende
+	 * 
+	 * @param string $zeit
+	 * @return
+	 */
 	public function einsatzende($zeit)
 	{
 		$this->form_validation->set_message('einsatzende', 'Bitte ein gültiges %s angeben.');

@@ -1,19 +1,24 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Fahrzeug Controller
- *
+ * Fahrzeug_Admin
  * Controller für die Verwaltung und Anzeige der Fahrzeuge
- *
+ * 
+ * @package com.cp.feuerwehr.backend.fahrzeug  
  * @author Habib Pleines <habib@familiepleines.de>
- * @version 1.0
- * @package com.cp.feuerwehr.backend.fahrzeug
- **/
-
+ * @copyright 
+ * @version 2013
+ * @access public
+ */
 class Fahrzeug_Admin extends CI_Controller {
 	
 	private $upload_path;
 
+	/**
+	 * Fahrzeug_Admin::__construct()
+	 * 
+	 * @return
+	 */
 	public function __construct()
 	{
 		parent::__construct();
@@ -29,6 +34,11 @@ class Fahrzeug_Admin extends CI_Controller {
 		$this->upload_path = 'images/content/fahrzeuge/';
 	}
 	
+	/**
+	 * Fahrzeug_Admin::fahrzeug_liste()
+	 * 
+	 * @return
+	 */
 	public function fahrzeug_liste()
 	{
 		$this->session->set_userdata('fahrzeugliste_redirect', current_url()); 
@@ -48,6 +58,11 @@ class Fahrzeug_Admin extends CI_Controller {
 		$this->load->view('backend/templates/admin/footer');
 	}
 	
+	/**
+	 * Fahrzeug_Admin::create_fahrzeug()
+	 * 
+	 * @return
+	 */
 	public function create_fahrzeug()
 	{
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
@@ -79,6 +94,12 @@ class Fahrzeug_Admin extends CI_Controller {
 		else redirect($this->session->userdata('fahrzeugliste_redirect'), 'refresh');
 	}
 	
+	/**
+	 * Fahrzeug_Admin::edit_fahrzeug()
+	 * 
+	 * @param integer $id
+	 * @return
+	 */
 	public function edit_fahrzeug($id)
 	{
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
@@ -111,6 +132,12 @@ class Fahrzeug_Admin extends CI_Controller {
 		else redirect($this->session->userdata('fahrzeugliste_redirect'), 'refresh');		
 	}
 	
+	/**
+	 * Fahrzeug_Admin::delete_fahrzeug()
+	 * 
+	 * @param integer $id
+	 * @return
+	 */
 	public function delete_fahrzeug($id)
 	{
 		$fahrzeugdata = $this->fahrzeug->get_fahrzeug($id);
@@ -121,6 +148,11 @@ class Fahrzeug_Admin extends CI_Controller {
 		redirect($this->session->userdata('fahrzeugliste_redirect'), 'refresh');
 	}
 	
+	/**
+	 * Fahrzeug_Admin::verify()
+	 * 
+	 * @return
+	 */
 	private function verify()
 	{		
 		$this->load->library('form_validation');
@@ -145,6 +177,14 @@ class Fahrzeug_Admin extends CI_Controller {
 		return $this->form_validation->run();	
 	}
 	
+	/**
+	 * Fahrzeug_Admin::image_uploader()
+	 * 
+	 * @param integer $id
+	 * @param integer $recursive
+	 * @param string $error
+	 * @return
+	 */
 	public function image_uploader($id, $recursive = 0, $error = null)
 	{		
 		if($this->uri->segment($this->uri->total_segments()) == 'save' && $recursive == 0)
@@ -229,6 +269,11 @@ class Fahrzeug_Admin extends CI_Controller {
 		}
 	}
 	
+	/**
+	 * Fahrzeug_Admin::image_delete()
+	 * 
+	 * @return
+	 */
 	private function image_delete()
 	{
 		$this->load->helper('file');
@@ -240,11 +285,23 @@ class Fahrzeug_Admin extends CI_Controller {
 		$this->fahrzeug->delete_image($this->input->post('img_id'));
 	}
 	
+	/**
+	 * Fahrzeug_Admin::update_image_details()
+	 * 
+	 * @return
+	 */
 	private function update_image_details()
 	{
 		$this->fahrzeug->update_image($this->input->post('img_id'), $this->input->post('img_alt'));
 	}
 	
+	/**
+	 * Fahrzeug_Admin::switch_online_state()
+	 * 
+	 * @param integer $id
+	 * @param integer $state
+	 * @return
+	 */
 	public function switch_online_state($id, $state)
 	{ 		
 		if($state == 1) $online = 0; else $online = 1;
@@ -253,7 +310,13 @@ class Fahrzeug_Admin extends CI_Controller {
 		redirect($this->session->userdata('fahrzeugliste_redirect'), 'refresh');
 	}
 	
-	// callback für Fahrzeugbesatzung
+	/**
+	 * Fahrzeug_Admin::besatzung()
+     * callback für Fahrzeugbesatzung
+	 * 
+	 * @param string $str
+	 * @return
+	 */
 	public function besatzung($str)
 	{
 		return ( ! preg_match("1\/[1-8]{1}", $str)) ? FALSE : TRUE;

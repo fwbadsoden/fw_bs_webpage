@@ -129,28 +129,12 @@ class Pages_model extends CI_Model {
     
     public function get_allowed_boxes($id)
     {
-        // aktuelle Anzahl der "vollen" Spalten in der Zeile ermitteln
-        $this->db->join('page_box', 'page_box.boxID = page_row_content.boxID');
-        $query = $this->db->get_where('page_row_content', array('rowID' => $id));
-        $fullColumns = 0;
-        foreach($query->result() as $row)
-        {
-            $fullColumns += $row->columnCount;
-        }
-        
-        $this->db->join('page', 'page.pageID = page_row.pageID');
-        $query = $this->db->get_where('page_row', array('rowID' => $id));
-        $row = $query->row();
-        
-        $templateID = $row->templateID;
-        $pageID = $row->pageID;
-        
-        $query = $this->db->get_where('page_template', array('templateID' => $templateID));
-        $row = $query->row();
-        $columnCount = $row->columnCount;
+        // aktuelle Anzahl der "vollen" Spalten in der Zeile und noch freie Spalten ermitteln
+        $columns = $this->get_row_columns($id);
+        $ids = $this->get_superIDs_from_rowID($id);
         
         $this->db->join('page_box_allowed_templates_mapping batm', 'batm.boxID = page_box.boxID', 'inner');
-        $this->db->where('batm.templateID', $templateID);
+        $this->db->where('batm.templateID', $ids['templateID']);
         $this->db->where('page_box.online', 1);
         $query = $this->db->get('page_box');
         $i=0;
@@ -158,10 +142,10 @@ class Pages_model extends CI_Model {
         
         foreach($query->result() as $row)
         {
-            if(($fullColumns + $row->columnCount) <= $columnCount) 
+            if($columns['empty'] >= $row->columnCount) 
             {
                 $boxes[$i]['boxID'] = $row->boxID;
-                $boxes[$i]['pageID'] = $pageID;
+                $boxes[$i]['pageID'] = $ids['pageID'];
                 $boxes[$i]['boxName'] = $row->boxName;
                 $boxes[$i]['columnCount'] = $row->columnCount;
                 $boxes[$i]['boxImg'] = $row->boxImg;
@@ -171,6 +155,39 @@ class Pages_model extends CI_Model {
         }
         
         return $boxes;
+    }
+    
+    private function get_superIDs_from_rowID($rowID)
+    {
+        $this->db->join('page', 'page.pageID = page_row.pageID');
+        $query = $this->db->get_where('page_row', array('rowID' => $rowID));
+        $row = $query->row();
+        
+        $ids['templateID'] = $row->templateID;
+        $ids['pageID'] = $row->pageID;
+        return $ids;
+    }
+    
+    public function get_row_columns($rowID)
+    {
+        // aktuelle Anzahl der "vollen" Spalten in der Zeile ermitteln
+        $this->db->join('page_box', 'page_box.boxID = page_row_content.boxID');
+        $query = $this->db->get_where('page_row_content', array('rowID' => $rowID));
+        $fullColumns = 0;
+        foreach($query->result() as $row)
+        {
+            $fullColumns += $row->columnCount;
+        }
+        
+        $ids = $this->get_superIDs_from_rowID($rowID);
+        
+        $query = $this->db->get_where('page_template', array('templateID' => $ids['templateID']));
+        $row = $query->row();
+        $columnCount = $row->columnCount;
+        
+        $columns['full'] = $fullColumns;
+        $columns['empty'] = $columnCount - $fullColumns;
+        return $columns;  
     }
     
     public function add_row($pageID)

@@ -1,18 +1,23 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Pages Controller
- *
+ * Pages_Admin
  * Controller für die Verwaltung und Anzeige der Inhaltsseiten
- *
+ * 
+ * @package com.cp.feuerwehr.backend.pages  
  * @author Habib Pleines <habib@familiepleines.de>
- * @version 1.0
- * @package com.cp.feuerwehr.backend.content
- **/
-
+ * @copyright 
+ * @version 2013
+ * @access public
+ */
 class Pages_Admin extends CI_Controller {
 	private $pageID, $boxID, $rowID;
     
+	/**
+	 * Pages_Admin::__construct()
+	 * 
+	 * @return
+	 */
 	public function __construct()
 	{
 		parent::__construct();
@@ -26,6 +31,11 @@ class Pages_Admin extends CI_Controller {
 		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
 	}
 	
+	/**
+	 * Pages_Admin::pages_liste()
+	 * 
+	 * @return
+	 */
 	public function pages_liste()
 	{
 		$this->session->set_userdata('pageliste_redirect', current_url()); 		
@@ -44,6 +54,11 @@ class Pages_Admin extends CI_Controller {
 		$this->load->view('backend/templates/admin/footer');	        
 	}
     
+    /**
+     * Pages_Admin::create_page()
+     * 
+     * @return
+     */
     public function create_page()
     {
        	if($this->uri->segment($this->uri->total_segments()) == 'save')
@@ -76,6 +91,12 @@ class Pages_Admin extends CI_Controller {
 		else redirect($this->session->userdata('pageliste_redirect'), 'refresh');
     }
     
+    /**
+     * Pages_Admin::edit_page()
+     * 
+     * @param integer $id
+     * @return
+     */
     public function edit_page($id)
     {
         $this->pageID = $id;
@@ -109,6 +130,7 @@ class Pages_Admin extends CI_Controller {
             
     		foreach($data['content']['rows'] as $r)
             {
+                $data['columns'] = $this->pages->get_row_columns($r['rowID']);
                 $data['row'] = $r;
                 $this->load->view('backend/pages/editPageRow_admin', $data);
             }	
@@ -118,12 +140,25 @@ class Pages_Admin extends CI_Controller {
 		else redirect($this->session->userdata('pageliste_redirect'), 'refresh');
     }
     
+    /**
+     * Pages_Admin::add_row()
+     * 
+     * @param integer $pageID
+     * @return
+     */
     public function add_row($pageID)
     {
         $this->pages->add_row($pageID);
 		redirect($this->session->userdata('pageedit_redirect'), 'refresh');
     }
     
+    /**
+     * Pages_Admin::add_box()
+     * 
+     * @param integer $rowID
+     * @param integer $boxID
+     * @return
+     */
     public function add_box($rowID, $boxID = 0)
     {        
         $this->rowID = $rowID;
@@ -137,9 +172,7 @@ class Pages_Admin extends CI_Controller {
 			$this->session->set_userdata('pageaddbox_submit', current_url());
 			
 		if($this->uri->segment($this->uri->total_segments()) != 'save')
-		{
-            //$this->session->set_userdata('pageaddbox_redirect', current_url());
-            
+		{            
             $header['title'] = 'Inhaltselement hinzuf&uumlgen';		
     		$menue['menue']	= $this->admin->get_menue();
     		$menue['submenue']	= $this->admin->get_submenue();
@@ -155,6 +188,11 @@ class Pages_Admin extends CI_Controller {
 		else redirect($this->session->userdata('pageedit_redirect'), 'refresh');
     }
 	
+	/**
+	 * Pages_Admin::verify_create()
+	 * 
+	 * @return
+	 */
 	private function verify_create()
 	{		
 		$this->load->library('form_validation');		
@@ -163,6 +201,11 @@ class Pages_Admin extends CI_Controller {
 		return $this->form_validation->run();	
 	}
     
+    /**
+     * Pages_Admin::verify_edit()
+     * 
+     * @return
+     */
     private function verify_edit()
     {
         $this->load->library('form_validation');		
@@ -171,6 +214,13 @@ class Pages_Admin extends CI_Controller {
 		return $this->form_validation->run();        
     }
 	
+	/**
+	 * Pages_Admin::switch_online_state()
+	 * 
+	 * @param integer $id
+	 * @param integer $state
+	 * @return
+	 */
 	public function switch_online_state($id, $state)
 	{ 		
 		if($state == 1) $online = 0; else $online = 1;
