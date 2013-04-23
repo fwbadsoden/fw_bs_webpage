@@ -74,6 +74,7 @@ class Pages_model extends CI_Model {
         
         $page['pageID'] = $id;
         $page['pageName'] = $row->pageName;
+        $page['templateID'] = $row->templateID;
         
         return $page;      
     }
@@ -196,7 +197,8 @@ class Pages_model extends CI_Model {
         $query = $this->db->get_where('page_row', array('pageID' => $pageID));
         $row = $query->row();
         
-        $newOrderID = $row->orderID + 1;
+        if($query->num_rows() == 0) $newOrderID = 1;
+        else $newOrderID = $row->orderID + 1;
         
         $row = array(
             'pageID' => $pageID,

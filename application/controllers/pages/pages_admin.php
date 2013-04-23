@@ -128,12 +128,15 @@ class Pages_Admin extends CI_Controller {
     		$this->load->view('backend/templates/admin/submenue', $menue);	
     		$this->load->view('backend/pages/editPageHeader_admin', $data);	
             
-    		foreach($data['content']['rows'] as $r)
+            if(isset($data['content']['rows']))
             {
-                $data['columns'] = $this->pages->get_row_columns($r['rowID']);
-                $data['row'] = $r;
-                $this->load->view('backend/pages/editPageRow_admin', $data);
-            }	
+        		foreach($data['content']['rows'] as $r)
+                {
+                    $data['columns'] = $this->pages->get_row_columns($r['rowID']);
+                    $data['row'] = $r;
+                    $this->load->view('backend/pages/editPageRow_admin', $data);
+                }	
+            }
     		$this->load->view('backend/pages/editPageFooter_admin', $data);
     		$this->load->view('backend/templates/admin/footer');
         }
