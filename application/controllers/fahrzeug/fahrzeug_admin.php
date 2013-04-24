@@ -49,8 +49,6 @@ class Fahrzeug_Admin extends CI_Controller {
 		$data['fahrzeug'] = $this->fahrzeug->get_fahrzeug_list();
 	
 		$this->load->view('backend/templates/admin/header', $header);
-		$this->load->view('backend/templates/admin/styles');
-		$this->load->view('backend/fahrzeug/styles_fahrzeug');
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
 		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
@@ -83,8 +81,6 @@ class Fahrzeug_Admin extends CI_Controller {
 			$menue['submenue']		= $this->admin->get_submenue();
 		
 			$this->load->view('backend/templates/admin/header', $header);
-			$this->load->view('backend/templates/admin/styles');
-			$this->load->view('backend/fahrzeug/styles_fahrzeug');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);
 			$this->load->view('backend/fahrzeug/createFahrzeug_admin');
@@ -121,8 +117,6 @@ class Fahrzeug_Admin extends CI_Controller {
 			$fahrzeug['fahrzeug'] 	= $this->fahrzeug->get_fahrzeug($id);
 		
 			$this->load->view('backend/templates/admin/header', $header);
-			$this->load->view('backend/templates/admin/styles');
-			$this->load->view('backend/fahrzeug/styles_fahrzeug');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);
 			$this->load->view('backend/fahrzeug/editFahrzeug_admin', $fahrzeug);
@@ -259,8 +253,6 @@ class Fahrzeug_Admin extends CI_Controller {
 			$fahrzeug['error']		= $error;
 		
 			$this->load->view('backend/templates/admin/header', $header);
-			$this->load->view('backend/templates/admin/styles');
-			$this->load->view('backend/fahrzeug/styles_fahrzeug');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);
 			$this->load->view('backend/fahrzeug/image_upload', $fahrzeug); 

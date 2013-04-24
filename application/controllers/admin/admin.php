@@ -64,8 +64,6 @@ class Admin extends CI_Controller {
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
 		$this->load->view('backend/templates/admin/header', $header);
-	//	$this->load->view('backend/templates/admin/styles');
-	//	$this->load->view('backend/admin/styles_admin');
 		$this->load->view('backend/templates/admin/menue', $menue);
 		$this->load->view('backend/templates/admin/submenue', $menue);
 		$this->load->view('backend/admin/landingpages/content');
@@ -87,8 +85,6 @@ class Admin extends CI_Controller {
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
 		$this->load->view('backend/templates/admin/header', $header);
-	//	$this->load->view('backend/templates/admin/styles');
-	//	$this->load->view('backend/admin/styles_admin');
 		$this->load->view('backend/templates/admin/menue', $menue);
 		$this->load->view('backend/templates/admin/submenue', $menue);
 		$this->load->view('backend/admin/landingpages/files');
@@ -110,8 +106,6 @@ class Admin extends CI_Controller {
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
 		$this->load->view('backend/templates/admin/header', $header);
-	//	$this->load->view('backend/templates/admin/styles');
-	//	$this->load->view('backend/admin/styles_admin');
 		$this->load->view('backend/templates/admin/menue', $menue);
 		$this->load->view('backend/templates/admin/submenue', $menue);
 		$this->load->view('backend/admin/landingpages/menue');
@@ -133,8 +127,6 @@ class Admin extends CI_Controller {
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
 		$this->load->view('backend/templates/admin/header', $header);
-	//	$this->load->view('backend/templates/admin/styles');
-	//	$this->load->view('backend/admin/styles_admin');
 		$this->load->view('backend/templates/admin/menue', $menue);
 		$this->load->view('backend/templates/admin/submenue', $menue);
 		$this->load->view('backend/admin/landingpages/system');
@@ -156,8 +148,6 @@ class Admin extends CI_Controller {
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
 		$this->load->view('backend/templates/admin/header', $header);
-	//	$this->load->view('backend/templates/admin/styles');
-	//	$this->load->view('backend/admin/styles_admin');
 		$this->load->view('backend/templates/admin/menue', $menue);
 		$this->load->view('backend/templates/admin/submenue', $menue);
 		$this->load->view('backend/admin/landingpages/user');
@@ -181,8 +171,6 @@ class Admin extends CI_Controller {
 		$data['message']	= $this->admin->get_adminmessage();
 		
 		$this->load->view('backend/templates/admin/header', $header);
-		$this->load->view('backend/templates/admin/styles');
-		$this->load->view('backend/admin/styles_admin');
 		$this->load->view('backend/templates/admin/menue', $menue);
 		$this->load->view('backend/templates/admin/submenue', $menue);
 		$this->load->view('backend/admin/dashboard', $data);

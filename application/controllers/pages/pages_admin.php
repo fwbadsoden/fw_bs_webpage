@@ -46,7 +46,6 @@ class Pages_Admin extends CI_Controller {
 		$data['page'] = $this->pages->get_pages();
 	
 		$this->load->view('backend/templates/admin/header', $header);
-		$this->load->view('backend/templates/admin/styles');
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
 		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
@@ -82,7 +81,6 @@ class Pages_Admin extends CI_Controller {
             $data['templates'] = $this->pages->get_templates();
     	
     		$this->load->view('backend/templates/admin/header', $header);
-    		$this->load->view('backend/templates/admin/styles');
     		$this->load->view('backend/templates/admin/menue', $menue);	
     		$this->load->view('backend/templates/admin/submenue', $menue);	
     		$this->load->view('backend/pages/createPage_admin', $data);
@@ -123,7 +121,6 @@ class Pages_Admin extends CI_Controller {
             $data['content'] = $this->pages->get_page_content($this->pageID);
     	
     		$this->load->view('backend/templates/admin/header', $header);
-    		$this->load->view('backend/templates/admin/styles');
     		$this->load->view('backend/templates/admin/menue', $menue);	
     		$this->load->view('backend/templates/admin/submenue', $menue);	
     		$this->load->view('backend/pages/editPageHeader_admin', $data);	
@@ -182,7 +179,6 @@ class Pages_Admin extends CI_Controller {
             $data['boxes'] = $this->pages->get_allowed_boxes($this->rowID);
     	
     		$this->load->view('backend/templates/admin/header', $header);
-    		$this->load->view('backend/templates/admin/styles');
     		$this->load->view('backend/templates/admin/menue', $menue);	
     		$this->load->view('backend/templates/admin/submenue', $menue);	
     		$this->load->view('backend/pages/addBox_admin', $data);

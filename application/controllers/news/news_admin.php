@@ -54,7 +54,6 @@ class News_Admin extends CI_Controller {
 		$this->config->set_item('base_url', $base_url);		
 	
 		$this->load->view('backend/templates/admin/header', $header);
-		$this->load->view('backend/templates/admin/styles');
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
 		$this->load->view('backend/news/newsliste_admin', $data);

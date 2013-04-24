@@ -45,8 +45,6 @@ class Menue_Admin extends CI_Controller {
 		$data['menue_arr'] = $this->menue->get_menue_list();
 	
 		$this->load->view('backend/templates/admin/header', $header);
-		$this->load->view('backend/templates/admin/styles');
-		$this->load->view('backend/menue/styles_menue');
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
 		$this->load->view('backend/menue/menueliste_admin', $data);
@@ -74,8 +72,6 @@ class Menue_Admin extends CI_Controller {
 			$data['mode'] = 'create';
 		
 			$this->load->view('backend/templates/admin/header', $header);
-			$this->load->view('backend/templates/admin/styles');
-			$this->load->view('backend/menue/styles_menue');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);	
 			$this->load->view('backend/menue/createEditMenue_admin', $data);
@@ -105,8 +101,6 @@ class Menue_Admin extends CI_Controller {
 			$data['mode'] = 'edit';
 		
 			$this->load->view('backend/templates/admin/header', $header);
-			$this->load->view('backend/templates/admin/styles');
-			$this->load->view('backend/menue/styles_menue');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);	
 			$this->load->view('backend/menue/createEditMenue_admin', $data);

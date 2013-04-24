@@ -56,8 +56,6 @@ class User_Admin extends CI_Controller {
 		$data['area'] = $this->area;
 	
 		$this->load->view('backend/templates/admin/header', $header);
-		$this->load->view('backend/templates/admin/styles');
-		$this->load->view('backend/user/styles_user');
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
 		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
@@ -90,8 +88,6 @@ class User_Admin extends CI_Controller {
 			$menue['submenue'] 		= $this->admin->get_submenue();
 			
 			$this->load->view('backend/templates/admin/header', $header);
-			$this->load->view('backend/templates/admin/styles');
-			$this->load->view('backend/user/styles_user');
 			$this->load->view('backend/templates/admin/menue', $menue);
 			$this->load->view('backend/templates/admin/submenue', $menue);
 			$this->load->view('backend/user/createUser_admin');
@@ -122,8 +118,6 @@ class User_Admin extends CI_Controller {
 			$user['id']				= $id;
 			
 			$this->load->view('backend/templates/admin/header', $header);
-			$this->load->view('backend/templates/admin/styles');
-			$this->load->view('backend/user/styles_user');
 			$this->load->view('backend/templates/admin/menue', $menue);
 			$this->load->view('backend/templates/admin/submenue', $menue);
 			$this->load->view('backend/user/editUser_admin', $user);

@@ -11,11 +11,11 @@
     </table>
     <h1>Inhaltselement auswählen</h1>
     <table>
-        <tr>
 <? foreach($boxes as $box) { ?>
-            <td><?=$box['boxName']?></td><td><a href='<?=$this->session->userdata('pageaddbox_submit')?>/<?=$box['boxID']?>/save'><img src='<?=base_url('/images/admin/pages/'.$box['boxImg'])?>'></a></td>
-<? } ?>            
+        <tr>
+            <td><?=$box['boxName']?></td><td><a href='<?=$this->session->userdata('pageaddbox_submit')?>/<?=$box['boxID']?>/save'><img src='<?=base_url('/images/admin/pages/'.$box['boxImg'])?>'></a></td>     
         </tr>
+<? } ?>       
     </table>
 </div>
 

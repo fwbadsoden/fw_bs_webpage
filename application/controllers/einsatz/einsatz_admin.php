@@ -53,8 +53,6 @@ class Einsatz_Admin extends CI_Controller {
 		$data['years']	 = $this->einsatz->get_einsatz_years();	
 	
 		$this->load->view('backend/templates/admin/header', $header);
-		$this->load->view('backend/templates/admin/styles');
-		$this->load->view('backend/einsatz/styles_einsatz');
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
 		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
@@ -90,8 +88,6 @@ class Einsatz_Admin extends CI_Controller {
 			$einsatz['templates']	= $this->einsatz->get_einsatz_templates();
 		
 			$this->load->view('backend/templates/admin/header', $header);
-			$this->load->view('backend/templates/admin/styles');
-			$this->load->view('backend/einsatz/styles_einsatz');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);
 			$this->load->view('backend/einsatz/createEinsatz_admin', $einsatz);
@@ -130,8 +126,6 @@ class Einsatz_Admin extends CI_Controller {
 			$einsatz['einsatz']		= $this->einsatz->get_einsatz($id);
 		
 			$this->load->view('backend/templates/admin/header', $header);
-			$this->load->view('backend/templates/admin/styles');
-			$this->load->view('backend/einsatz/styles_einsatz');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);
 			$this->load->view('backend/einsatz/editEinsatz_admin', $einsatz); 
@@ -259,8 +253,6 @@ class Einsatz_Admin extends CI_Controller {
 			$einsatz['error']		= $error;
 		
 			$this->load->view('backend/templates/admin/header', $header);
-			$this->load->view('backend/templates/admin/styles');
-			$this->load->view('backend/einsatz/styles_einsatz');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);
 			$this->load->view('backend/einsatz/image_upload', $einsatz); 

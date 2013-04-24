@@ -26,7 +26,7 @@
 	if(isset($_POST['fahrzeugprefix'])) 				$prefix_selected = $_POST['fahrzeugprefix']; 
 	else if(isset($fahrzeug['fahrzeugRufnamePrefix'])) 	$prefix_selected = $fahrzeug['fahrzeugRufnamePrefix'];	
 	else 												$prefix_selected = 'Florian Bad Soden';
-	$prefix_attr 		= "class = 'input_dropdown_fahrzeug' id = 'fahrzeugprefix'";
+	$prefix_attr 		= "class = 'input_dropdown' id = 'fahrzeugprefix'";
 	$prefix_options['Florian Bad Soden'] 	= 'Florian Bad Soden';
 	$prefix_options['Florian Main-Taunus'] 	= 'Florian Main-Taunus';	
 	
@@ -51,7 +51,7 @@
 	if(isset($_POST['fahrzeughersteller'])) 			$hersteller_selected = $_POST['fahrzeughersteller'];
 	else if(isset($fahrzeug['fahrzeugHersteller']))		$hersteller_selected = $fahrzeug['fahrzeugHersteller'];
 	else												$hersteller_selected = 0;	
-	$hersteller_attr	= "class = 'input_dropdown_fahrzeug' id = 'fahrzeughersteller'";
+	$hersteller_attr	= "class = 'input_dropdown' id = 'fahrzeughersteller'";
 	$hersteller_options[0] 					= '';
 	$hersteller_options['Mercedes-Benz'] 	= 'Mercedes-Benz';
 	$hersteller_options['Volkswagen'] 		= 'Volkswagen';

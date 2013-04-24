@@ -56,7 +56,6 @@ class Module_Admin extends CI_Controller {
 			$data['setting'] = $this->module->get_settings();
 		
 			$this->load->view('backend/templates/admin/header', $header);
-			$this->load->view('backend/templates/admin/styles');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);
 			$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
@@ -119,7 +118,6 @@ class Module_Admin extends CI_Controller {
 		$data['module'] = $this->module->get_modules();
 	
 		$this->load->view('backend/templates/admin/header', $header);
-		$this->load->view('backend/templates/admin/styles');
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
 		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
@@ -148,7 +146,6 @@ class Module_Admin extends CI_Controller {
 		$data['module'] = $this->module->get_modules();
 	
 		$this->load->view('backend/templates/admin/header', $header);
-		$this->load->view('backend/templates/admin/styles');
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
 		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
@@ -177,7 +174,6 @@ class Module_Admin extends CI_Controller {
 			$data['module'] = $this->module->get_modules();
 		
 			$this->load->view('backend/templates/admin/header', $header);
-			$this->load->view('backend/templates/admin/styles');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);
 			$this->load->view('backend/module/createRoute_admin', $data);
@@ -208,7 +204,6 @@ class Module_Admin extends CI_Controller {
 			$data['route'] = $this->module->get_route($id);
 		
 			$this->load->view('backend/templates/admin/header', $header);
-			$this->load->view('backend/templates/admin/styles');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);
 			$this->load->view('backend/module/editRoute_admin', $data);
