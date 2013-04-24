@@ -40,10 +40,10 @@ class Pages_Admin extends CI_Controller {
 	{
 		$this->session->set_userdata('pageliste_redirect', current_url()); 		
 		
-		$header['title'] = 'Seiten';		
-		$menue['menue']	= $this->admin->get_menue();
-		$menue['submenue']	= $this->admin->get_submenue();
-		$data['page'] = $this->pages->get_pages();
+		$header['title']      = 'Seiten';		
+		$menue['menue']	      = $this->admin->get_menue();
+		$menue['submenue']	  = $this->admin->get_submenue();
+		$data['page']         = $this->pages->get_pages();
 	
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -75,10 +75,10 @@ class Pages_Admin extends CI_Controller {
 		{
             $this->session->set_userdata('pagecreate_redirect', current_url());
             
-            $header['title'] = 'Inhaltsseite anlegen';		
-    		$menue['menue']	= $this->admin->get_menue();
+            $header['title']    = 'Inhaltsseite anlegen';		
+    		$menue['menue']	    = $this->admin->get_menue();
     		$menue['submenue']	= $this->admin->get_submenue();
-            $data['templates'] = $this->pages->get_templates();
+            $data['templates']  = $this->pages->get_templates();
     	
     		$this->load->view('backend/templates/admin/header', $header);
     		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -113,12 +113,12 @@ class Pages_Admin extends CI_Controller {
 		{
             $this->session->set_userdata('pageedit_redirect', current_url());
             
-            $header['title'] = 'Inhaltsseite bearbeiten';		
-    		$menue['menue']	= $this->admin->get_menue();
+            $header['title']    = 'Inhaltsseite bearbeiten';		
+    		$menue['menue']	    = $this->admin->get_menue();
     		$menue['submenue']	= $this->admin->get_submenue();
-            $data['page'] = $this->pages->get_page($this->pageID);
-            $data['templates'] = $this->pages->get_templates();
-            $data['content'] = $this->pages->get_page_content($this->pageID);
+            $data['page']       = $this->pages->get_page($this->pageID);
+            $data['templates']  = $this->pages->get_templates();
+            $data['content']    = $this->pages->get_page_content($this->pageID);
     	
     		$this->load->view('backend/templates/admin/header', $header);
     		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -173,10 +173,10 @@ class Pages_Admin extends CI_Controller {
 			
 		if($this->uri->segment($this->uri->total_segments()) != 'save')
 		{            
-            $header['title'] = 'Inhaltselement hinzuf&uumlgen';		
-    		$menue['menue']	= $this->admin->get_menue();
+            $header['title']    = 'Inhaltselement hinzuf&uumlgen';		
+    		$menue['menue']	    = $this->admin->get_menue();
     		$menue['submenue']	= $this->admin->get_submenue();
-            $data['boxes'] = $this->pages->get_allowed_boxes($this->rowID);
+            $data['boxes']      = $this->pages->get_allowed_boxes($this->rowID);
     	
     		$this->load->view('backend/templates/admin/header', $header);
     		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -185,6 +185,150 @@ class Pages_Admin extends CI_Controller {
     		$this->load->view('backend/templates/admin/footer');
         }
 		else redirect($this->session->userdata('pageedit_redirect'), 'refresh');
+    }
+    
+    /**
+     * Pages_Admin::delete_page_verify()
+     * 
+     * @param integer $pageID
+     * @return 
+     */
+    public function delete_page_verify($pageID)
+    {
+        $header['title']    = 'Seite l&ouml;schen';		
+    	$menue['menue']	    = $this->admin->get_menue();
+    	$menue['submenue']	= $this->admin->get_submenue();
+        $data['type']       = 'page';
+        $data['id']         = $pageID;
+        $data['superID']    = 0;
+    	
+    	$this->load->view('backend/templates/admin/header', $header);
+    	$this->load->view('backend/templates/admin/menue', $menue);	
+    	$this->load->view('backend/templates/admin/submenue', $menue);	
+    	$this->load->view('backend/pages/verifyDelete_admin', $data);
+    	$this->load->view('backend/templates/admin/footer');
+    }    
+    
+    /**
+     * Pages_Admin::delete_page()
+     * 
+     * @param integer $pageID
+     * @return 
+     */
+    public function delete_page($pageID)
+    {
+        $this->pages->delete_page($pageID);
+		
+		redirect($this->session->userdata('pageliste_redirect'), 'refresh');    
+    }
+    
+    /**
+     * Pages_Admin::delete_row_verify()
+     * 
+     * @param integer $rowID
+     * @param integer $pageID
+     * @return 
+     */
+    public function delete_row_verify($rowID, $pageID)
+    {
+        $header['title']    = 'Zeile l&ouml;schen';		
+    	$menue['menue']	    = $this->admin->get_menue();
+    	$menue['submenue']	= $this->admin->get_submenue();
+        $data['type']       = 'row';
+        $data['id']         = $rowID;
+        $data['superID']    = $pageID;
+    	
+    	$this->load->view('backend/templates/admin/header', $header);
+    	$this->load->view('backend/templates/admin/menue', $menue);	
+    	$this->load->view('backend/templates/admin/submenue', $menue);	
+    	$this->load->view('backend/pages/verifyDelete_admin', $data);
+    	$this->load->view('backend/templates/admin/footer');
+    }   
+    
+    /**
+     * Pages_Admin::delete_row()
+     * 
+     * @param integer $rowID
+     * @param integer $pageID
+     * @return 
+     */
+    public function delete_row($rowID, $pageID)
+    {
+        $this->pages->delete_row($rowID, $pageID);
+		
+		redirect($this->session->userdata('pageedit_redirect'), 'refresh');    
+    }
+    
+    /**
+     * Pages_Admin::delete_box_verify()
+     * 
+     * @param integer $rowContentID
+     * @return 
+     */
+    public function delete_box_verify($rowContentID)
+    {
+        $header['title']    = 'Box l&ouml;schen';		
+    	$menue['menue']	    = $this->admin->get_menue();
+    	$menue['submenue']	= $this->admin->get_submenue();
+        $data['type']       = 'box';
+        $data['id']         = $rowContentID;
+        $data['superID']    = 0;
+    	
+    	$this->load->view('backend/templates/admin/header', $header);
+    	$this->load->view('backend/templates/admin/menue', $menue);	
+    	$this->load->view('backend/templates/admin/submenue', $menue);	
+    	$this->load->view('backend/pages/verifyDelete_admin', $data);
+    	$this->load->view('backend/templates/admin/footer');
+    } 
+    
+    /**
+     * Pages_Admin::delete_box()
+     * 
+     * @param integer $rowContentID
+     * @return 
+     */
+    public function delete_box($rowContentID)
+    {
+        $this->pages->delete_box($rowContentID);
+		
+		redirect($this->session->userdata('pageedit_redirect'), 'refresh');    
+    }
+    
+    /**
+     * Pages_Admin::delete_box_content_verify()
+     * 
+     * @param integer $boxContentID
+     * @param integer $rowContentID
+     * @return 
+     */
+    public function delete_box_content_verify($boxContentID, $rowContentID)
+    {
+        $header['title']    = 'Box l&ouml;schen';		
+    	$menue['menue']	    = $this->admin->get_menue();
+    	$menue['submenue']	= $this->admin->get_submenue();
+        $data['type']       = 'box_content';
+        $data['id']         = $boxContentID;
+        $data['superID']    = $rowContentID;
+    	
+    	$this->load->view('backend/templates/admin/header', $header);
+    	$this->load->view('backend/templates/admin/menue', $menue);	
+    	$this->load->view('backend/templates/admin/submenue', $menue);	
+    	$this->load->view('backend/pages/verifyDelete_admin', $data);
+    	$this->load->view('backend/templates/admin/footer');
+    } 
+    
+    /**
+     * Pages_Admin::delete_box_content()
+     * 
+     * @param integer $boxContentID
+     * @param integer $rowContentID
+     * @return 
+     */
+    public function delete_box_content($boxContentID, $rowContentID)
+    {
+        $this->pages->delete_content($boxContentID, $rowContentID);
+		
+		redirect($this->session->userdata('pageedit_redirect'), 'refresh');    
     }
 	
 	/**

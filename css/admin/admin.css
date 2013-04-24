@@ -108,6 +108,7 @@ img{border:0}
 
 #content .button_add{background:url('../../images/admin/buttons/add.png') no-repeat 10px 0; text-indent:40px; display:block}
 #content .button_save{background:url('../../images/admin/buttons/disk.png') no-repeat 10px 0; text-indent:40px; display:block}
+#content .button_delete{background:url('../../images/admin/buttons/bin.png') no-repeat 10px 0; text-indent:40px; display:block}
 #content .button_cancel{background:url('../../images/admin/buttons/cancel.png') no-repeat 10px 0; text-indent:40px; display:block}
 #content .button_image_edit{background:url('../../images/admin/buttons/picture.png') no-repeat 10px 0; text-indent:40px; display:block}
 #content .button_reset{background:url('../../images/admin/buttons/control_rewind.png') no-repeat 10px 0; text-indent:40px; display:block}
@@ -120,7 +121,7 @@ img{border:0}
 #content .button_link_edit_small{background:url('../../images/admin/buttons/link_edit.png') no-repeat 5px 0; height:17px; width:26px; display:block}
 #content .button_link_delete_small{background:url('../../images/admin/buttons/link_delete.png') no-repeat 5px 0; height:17px; width:26px; display:block}
 #content .button_image_edit_small{background:url('../../images/admin/buttons/picture.png') no-repeat 5px 0; height:17px; width:26px; display:block}
-#content .button_delete_small{background:url('../../images/admin/buttons/cross.png') no-repeat 5px 0; height:17px; width:26px; display:block}
+#content .button_delete_small{background:url('../../images/admin/buttons/bin.png') no-repeat 5px 0; height:17px; width:26px; display:block}
 #content .button_online_small{background:url('../../images/admin/buttons/status_online.png') no-repeat 5px 0; height:17px; width:26px; display:block}
 #content .button_offline_small{background:url('../../images/admin/buttons/status_offline.png') no-repeat 5px 0; height:17px; width:26px; display:block}
 #content .button_lock_small{background:url('../../images/admin/buttons/lock.png') no-repeat 5px 0; height:17px; width:26px; display:block}

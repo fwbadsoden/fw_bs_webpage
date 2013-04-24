@@ -13,6 +13,14 @@
 		'value' 	=> set_value('route')
 	);
 	
+	$bereich_options = array();
+	if(isset($_POST['bereich'])) 			$bereich_selected = $_POST['bereich']; 
+	else $bereich_selected = 0;
+	$bereich_attr 		= "class = 'input_dropdown' id = 'bereich'";	
+	$bereich_options['Backend'] 	= 'Backend';
+	$bereich_options['Frontend'] 	= 'Frontend';
+    $bereich_selected = 'Backend';
+	
 	$modul_options = array();
 	if(isset($_POST['modul'])) 			$modul_selected = $_POST['modul']; 
 	else $modul_selected = 0;
@@ -62,6 +70,10 @@
         <tr>
             <td>
                 <table>
+                    <tr>
+                        <td class='form_label'><?=form_label('Bereich:', 'bereich'); ?></td>
+                        <td><?=form_dropdown('bereich', $bereich_options, $bereich_selected, $bereich_attr)?></td>
+                    </tr>
                     <tr>
                         <td class='form_label'><?=form_label('Modul:', 'modul'); ?></td>
                         <td><?=form_dropdown('modul', $modul_options, $modul_selected, $modul_attr)?></td>

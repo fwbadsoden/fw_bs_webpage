@@ -31,15 +31,16 @@
 <div id='page_edit'>
 <?=form_open($this->session->userdata('pageedit_submit').'/save', $form);?>
 
-    <table>
-        <tr>
-            <td><button type='submit' name='page_submit' id='page_submit' class='button_gross'><span class='button_save'>Seite speichern</span></button></td>
-            <td><a href='<?=$this->session->userdata('pageliste_redirect')?>' target='_top' class="button_gross"><span class="button_cancel">Zur&uuml;ck</span></a></td>
-        </tr>
-    </table>
-    <br/>
-    <?=form_fieldset('&nbsp;&nbsp;&nbsp;Grunddaten:&nbsp;&nbsp;&nbsp;');?>
-   	<p>
+<table>
+    <tr>
+        <td><button type='submit' name='page_submit' id='page_submit' class='button_gross'><span class='button_save'>Seite speichern</span></button></td>
+        <td><a href='<?=base_url('admin/content/page/checkdelete/'.$page['pageID'])?>' target='_top' class="button_gross"><span class="button_delete">L&ouml;schen</span></a></td>
+        <td><a href='<?=$this->session->userdata('pageliste_redirect')?>' target='_top' class="button_gross"><span class="button_cancel">Zur&uuml;ck</span></a></td>
+    </tr>
+</table>
+<br/>
+<?=form_fieldset('&nbsp;&nbsp;&nbsp;Grunddaten:&nbsp;&nbsp;&nbsp;');?>
+<p>
     <table>
         <tr><td colspan="2"><?=validation_errors();?></td></tr>
         <tr>
@@ -57,16 +58,17 @@
             </td>
         </tr>
     </table>
-    </p>
-    <?=form_fieldset_close();?>
-    <br/>
-    <?=form_fieldset('&nbsp;&nbsp;&nbsp;Inhaltselemente:&nbsp;&nbsp;&nbsp;');?>
-    <p>
-        <table>
-            <tr>
-                <td>
-                    <table>
-                        <tr>
-                            <td><a href="<?=base_url('admin/content/page/addrow/'.$page['pageID'])?>" class="button_mini" title="Zeile hinzuf&uuml;gen"><span class='button_add_small'></span></a></td><td>Zeile hinzuf&uuml;gen</td>
-                        </tr>
-                        <br />
+</p>
+<?=form_fieldset_close();?>
+<br/>
+<?=form_fieldset('&nbsp;&nbsp;&nbsp;Inhaltselemente:&nbsp;&nbsp;&nbsp;');?>
+<p>
+    <table>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td><a href="<?=base_url('admin/content/page/addrow/'.$page['pageID'])?>" class="button_mini" title="Zeile hinzuf&uuml;gen"><span class='button_add_small'></span></a></td><td>Zeile hinzuf&uuml;gen</td>
+                    </tr>
+                </table>
+                <br />

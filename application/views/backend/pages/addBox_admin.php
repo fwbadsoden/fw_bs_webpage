@@ -13,7 +13,7 @@
     <table>
 <? foreach($boxes as $box) { ?>
         <tr>
-            <td><?=$box['boxName']?></td><td><a href='<?=$this->session->userdata('pageaddbox_submit')?>/<?=$box['boxID']?>/save'><img src='<?=base_url('/images/admin/pages/'.$box['boxImg'])?>'></a></td>     
+            <td><?=$box['boxName']?>:</td><td><a href='<?=$this->session->userdata('pageaddbox_submit')?>/<?=$box['boxID']?>/save'><img src='<?=base_url('/images/admin/pages/'.$box['boxImg'])?>'></a></td>     
         </tr>
 <? } ?>       
     </table>

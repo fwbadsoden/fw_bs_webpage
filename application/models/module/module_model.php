@@ -129,10 +129,11 @@ class Module_model extends CI_Model {
 		if($this->input->post('protectedFlag')) $protectedFlag = 1; else $protectedFlag = 0;
 		$route = array(
 			'moduleID'		=> $this->input->post('modul'),
-			'internalLink'	 => $this->input->post('link'),
-			'route'				  => $this->input->post('route'),
-			'active'			  => 1,
-			'isprotected'		  => $protectedFlag
+            'bereich'       => $this->input->post('bereich'),
+			'internalLink'	=> $this->input->post('link'),
+			'route'		    => $this->input->post('route'),
+			'active'		=> 1,
+			'isprotected'	=> $protectedFlag
 		);
 		
 		$this->db->insert('sys_routes', $route);
@@ -142,7 +143,8 @@ class Module_model extends CI_Model {
 	{ 
 		if($this->input->post('protectedFlag')) $protectedFlag = 1; else $protectedFlag = 0;
 		$route = array(
-			'moduleID'    => $this->input->post('modul'),
+			'moduleID'       => $this->input->post('modul'),
+            'bereich'        => $this->input->post('bereich'), 
 			'internalLink'	 => $this->input->post('link'),
 			'route'				  => $this->input->post('route'),
 			'isprotected'		  => $protectedFlag
@@ -160,6 +162,7 @@ class Module_model extends CI_Model {
 	public function get_routes($restrict = 'none')
 	{
 		if($restrict == 'active')	$this->db->where('active', 1);
+        $this->db->order_by('bereich', 'asc');
 		$this->db->order_by('moduleID', 'asc');
 		$this->db->order_by('route', 'asc');
 		$query = $this->db->get('sys_routes');
@@ -172,10 +175,11 @@ class Module_model extends CI_Model {
 			
 			$routes[$i]['routeID']			= $row->routeID;
 			$routes[$i]['moduleID']			= $row->moduleID;
-			$routes[$i]['internalLink'] 		= $row->internalLink;
-			$routes[$i]['route'] 				= $row->route;
-			$routes[$i]['active'] 				= $row->active;
-			$routes[$i]['protectedFlag'] 				= $row->isprotected;
+            $routes[$i]['bereich']          = $row->bereich;
+			$routes[$i]['internalLink'] 	= $row->internalLink;
+			$routes[$i]['route'] 			= $row->route;
+			$routes[$i]['active'] 			= $row->active;
+			$routes[$i]['protectedFlag'] 	= $row->isprotected;
 			$routes[$i]['row_color']		= $this->color;
 			$i++;
 		}
@@ -190,6 +194,7 @@ class Module_model extends CI_Model {
 		
 		$route['routeID'] = $id;
 		$route['route']	    = $row->route;
+        $route['bereich']   = $row->bereich;
 		$route['internalLink']        = $row->internalLink;
 		$route['protectedFlag'] = $row->isprotected;
 		$route['moduleID'] = $row->moduleID;

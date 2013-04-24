@@ -1,6 +1,4 @@
-		</div>
-		<div id="footer"></div>
-			
-	</body>
-			
+</div>
+<div id="footer"></div>		
+</body>			
 </html>

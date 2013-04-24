@@ -11,7 +11,7 @@ $(document).ready(function() {
  $("#route_table").tablesorter({
  	// pass the headers argument and assing a object 
     headers: { 
-        4:  { 
+        5:  { 
             // disable it by setting the property sorter to false 
             sorter: false 
             } 
@@ -70,6 +70,7 @@ switch(ID) {
 <table cellpadding="0" cellspacing="1" id="route_table" class="tablesorter">
 <thead>
 	<tr>
+		<th class="headline_cat">Bereich</th>
 		<th class="headline_name">Modulname</th>
 		<th class="headline_titel">Route</th>
 		<th class="headline_titel">Link</th>
@@ -80,6 +81,7 @@ switch(ID) {
 <tbody>
 <? foreach($route as $item) { ?>		
 <tr bgcolor="<?=$item['row_color']?>">
+	<td><?=$item['bereich']?></td>
 	<td><?=$module[$item['moduleID']]['moduleName']?></td>
 	<td><?=$item['route']?></td>
 	<td><?=$item['internalLink']?></td>

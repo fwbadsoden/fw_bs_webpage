@@ -103,15 +103,15 @@ class Pages_model extends CI_Model {
             $content['rows'][$i]['rowID'] = $row->rowID;
             $content['rows'][$i]['rowName'] = $row->orderID;
             
-            $this->db->order_by('contentID', 'asc');
+            $this->db->order_by('rowContentID', 'asc');
             $query2 = $this->db->get_where('page_row_content', array('rowID' => $row->rowID));
             $j = 0;
             
             foreach($query2->result() as $row)
             {
-                $content['rows'][$i]['boxes'][$j]['contentID'] = $row->contentID;
+                $content['rows'][$i]['boxes'][$j]['rowContentID'] = $row->rowContentID;
                                 
-                $query3 = $this->db->get_where('page_box', array('boxID' => $row->boxID));
+                $query3 = $this->db->get_where('page_box', array('boxID' => $row->boxContentID));
                 $row_box = $query3->row();
                 
                 $content['rows'][$i]['boxes'][$j]['boxID'] = $row_box->boxID;
@@ -173,7 +173,7 @@ class Pages_model extends CI_Model {
     public function get_row_columns($rowID)
     {
         // aktuelle Anzahl der "vollen" Spalten in der Zeile ermitteln
-        $this->db->join('page_box', 'page_box.boxID = page_row_content.boxID');
+        $this->db->join('page_box', 'page_box.boxID = page_row_content.boxContentID');
         $query = $this->db->get_where('page_row_content', array('rowID' => $rowID));
         $fullColumns = 0;
         foreach($query->result() as $row)
@@ -211,7 +211,7 @@ class Pages_model extends CI_Model {
     public function add_box($rowID, $boxID)
     {
         $box = array(
-            'boxID' => $boxID,
+            'boxContentID' => $boxID,
             'rowID' => $rowID
         );
         $this->db->insert('page_row_content', $box);
@@ -239,6 +239,74 @@ class Pages_model extends CI_Model {
         
         $this->db->where('pageID', $id);
 		$this->db->update('page', $page);
+    }
+    
+    public function delete_page($pageID)
+    {
+        $query = $this->db->get_where('page_row', array('pageID' => $pageID));
+        if($query->num_rows() > 0)
+        {
+            foreach($query->result() as $row)
+            {
+                $this->delete_row($row->rowID, $pageID);
+            }
+        }
+        $this->db->delete('page', array('pageID' => $pageID));
+    }
+    
+    public function delete_row($rowID, $pageID)
+    {
+        $query = $this->db->get_where('page_row_content', array('rowID' => $rowID));
+        if($query->num_rows() > 0)
+        {
+            foreach($query->result() as $row)
+            {
+                $this->delete_box($row->rowContentID);
+            }
+        }        
+        $this->db->delete('page_row', array('rowID' => $rowID));
+        
+        /* neu sortieren */
+        $query = $this->db->get_where('page_row', array('pageID' => $pageID));
+        if($query->num_rows() > 0)
+        {
+            $i = 1;
+            foreach($query->result() as $row)
+            {
+                $this->db->update('page_row', array('orderID' => $i), array('rowID' => $row->rowID));
+                $i++;
+            }
+        }
+    }
+    
+    public function delete_box($rowContentID)
+    {
+        $query = $this->db->get_where('page_box_content', array('rowContentID' => $rowContentID));        
+        if($query->num_rows() > 0)
+        {
+            foreach($query->result() as $row)
+            {
+                $this->delete_box_content($row->boxContentID, $rowContentID);
+            }
+        }   
+        $this->db->delete('page_row_content', array('rowContentID' => $rowContentID));         
+    }
+    
+    private function delete_box_content($boxContentID, $rowContentID)
+    {
+        $this->db->delete('page_box_content', array('boxContentID' => $boxContentID)); 
+        
+        /* neu sortieren */
+        $query = $this->db->get_where('page_box_content', array('rowContentID' => $rowContentID));
+        if($query->num_rows() > 0)
+        {
+            $i = 1;
+            foreach($query->result() as $row)
+            {
+                $this->db->update('page_box_content', array('orderID' => $i), array('boxContentID' => $row->boxContentID));
+                $i++;
+            }
+        }
     }
 	
 	public function switch_online_state($id, $online)

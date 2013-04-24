@@ -44,7 +44,7 @@
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/page/status/'.$item['pageID'].'/0')?>" class="button_mini" title="Seite online schalten"><span class='button_offline_small'></span></a></span></td>
 <?	} ?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/page/edit/'.$item['pageID'])?>" class="button_mini" title="Seite bearbeiten"><span class='button_edit_small'></span></a></span></td>
-	<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item['pageID']?>" href="<?=base_url('admin/content/page/delete/'.$item['pageID'])?>" class="button_mini" title="Seite l&ouml;schen"><span class='button_delete_small'></span></a></span></td>
+	<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item['pageID']?>" href="<?=base_url('admin/content/page/checkdelete/'.$item['pageID'])?>" class="button_mini" title="Seite l&ouml;schen"><span class='button_delete_small'></span></a></span></td>
 </tr>
 <?
     $i++; 
