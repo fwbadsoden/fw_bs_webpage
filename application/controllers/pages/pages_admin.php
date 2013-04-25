@@ -117,7 +117,6 @@ class Pages_Admin extends CI_Controller {
     		$menue['menue']	    = $this->admin->get_menue();
     		$menue['submenue']	= $this->admin->get_submenue();
             $data['page']       = $this->pages->get_page($this->pageID);
-            $data['templates']  = $this->pages->get_templates();
             $data['content']    = $this->pages->get_page_content($this->pageID);
     	
     		$this->load->view('backend/templates/admin/header', $header);
@@ -151,6 +150,19 @@ class Pages_Admin extends CI_Controller {
         $this->pages->add_row($pageID);
 		redirect($this->session->userdata('pageedit_redirect'), 'refresh');
     }
+    
+    /**
+     * Pages_Admin::change_row_order()
+     * 
+     * @param string $dir
+     * @param integer $id
+     * @return 
+     */
+    public function change_row_order($dir, $id)
+	{
+		$this->pages->change_row_order($dir, $id);		
+		redirect($this->session->userdata('pageedit_redirect'), 'refresh');	
+	}
     
     /**
      * Pages_Admin::add_box()
@@ -200,6 +212,7 @@ class Pages_Admin extends CI_Controller {
     	$menue['submenue']	= $this->admin->get_submenue();
         $data['type']       = 'page';
         $data['id']         = $pageID;
+        $data['page_title'] = $this->pages->get_pagetitle($pageID);
         $data['superID']    = 0;
     	
     	$this->load->view('backend/templates/admin/header', $header);
@@ -294,42 +307,42 @@ class Pages_Admin extends CI_Controller {
 		redirect($this->session->userdata('pageedit_redirect'), 'refresh');    
     }
     
-    /**
-     * Pages_Admin::delete_box_content_verify()
-     * 
-     * @param integer $boxContentID
-     * @param integer $rowContentID
-     * @return 
-     */
-    public function delete_box_content_verify($boxContentID, $rowContentID)
-    {
-        $header['title']    = 'Box l&ouml;schen';		
-    	$menue['menue']	    = $this->admin->get_menue();
-    	$menue['submenue']	= $this->admin->get_submenue();
-        $data['type']       = 'box_content';
-        $data['id']         = $boxContentID;
-        $data['superID']    = $rowContentID;
-    	
-    	$this->load->view('backend/templates/admin/header', $header);
-    	$this->load->view('backend/templates/admin/menue', $menue);	
-    	$this->load->view('backend/templates/admin/submenue', $menue);	
-    	$this->load->view('backend/pages/verifyDelete_admin', $data);
-    	$this->load->view('backend/templates/admin/footer');
-    } 
-    
-    /**
-     * Pages_Admin::delete_box_content()
-     * 
-     * @param integer $boxContentID
-     * @param integer $rowContentID
-     * @return 
-     */
-    public function delete_box_content($boxContentID, $rowContentID)
-    {
-        $this->pages->delete_content($boxContentID, $rowContentID);
-		
-		redirect($this->session->userdata('pageedit_redirect'), 'refresh');    
-    }
+    ///**
+//     * Pages_Admin::delete_box_content_verify()
+//     * 
+//     * @param integer $boxContentID
+//     * @param integer $rowContentID
+//     * @return 
+//     */
+//    public function delete_box_content_verify($boxContentID, $rowContentID)
+//    {
+//        $header['title']    = 'Box l&ouml;schen';		
+//    	$menue['menue']	    = $this->admin->get_menue();
+//    	$menue['submenue']	= $this->admin->get_submenue();
+//        $data['type']       = 'box_content';
+//        $data['id']         = $boxContentID;
+//        $data['superID']    = $rowContentID;
+//    	
+//    	$this->load->view('backend/templates/admin/header', $header);
+//    	$this->load->view('backend/templates/admin/menue', $menue);	
+//    	$this->load->view('backend/templates/admin/submenue', $menue);	
+//    	$this->load->view('backend/pages/verifyDelete_admin', $data);
+//    	$this->load->view('backend/templates/admin/footer');
+//    } 
+//    
+//    /**
+//     * Pages_Admin::delete_box_content()
+//     * 
+//     * @param integer $boxContentID
+//     * @param integer $rowContentID
+//     * @return 
+//     */
+//    public function delete_box_content($boxContentID, $rowContentID)
+//    {
+//        $this->pages->delete_content($boxContentID, $rowContentID);
+//		
+//		redirect($this->session->userdata('pageedit_redirect'), 'refresh');    
+//    }
 	
 	/**
 	 * Pages_Admin::verify_create()

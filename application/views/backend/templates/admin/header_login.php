@@ -17,10 +17,9 @@
         array('name' => 'Content-type', 'content' => 'text/html; charset=utf-8', 'type' => 'equiv'),
         array('name' => 'imagetoolbar', 'content' => 'no', 'type' => 'equiv')
     );
-    
+
     echo doctype('html5');
 ?>
-
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de-de" lang="de-de">
 <head>
 <title>Feuerwehr Bad Soden am Taunus - <?=$title?></title>	

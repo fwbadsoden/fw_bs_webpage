@@ -61,6 +61,7 @@ class Pages_model extends CI_Model {
             $pages[$i]['pageName'] = $row->pageName;
             $pages[$i]['online'] = $row->online;
             $pages[$i]['row_color'] = $this->color;
+            $pages[$i]['is_deletable'] = $this->is_page_deletable($row->pageID);
             $i++;
         }
         
@@ -75,8 +76,25 @@ class Pages_model extends CI_Model {
         $page['pageID'] = $id;
         $page['pageName'] = $row->pageName;
         $page['templateID'] = $row->templateID;
+        $page['is_deletable'] = $this->is_page_deletable($id);
         
         return $page;      
+    }
+    
+    public function get_pagetitle($id)
+    {
+        $this->db->select('pageName');
+        $query = $this->db->get_where('page', array('pageID' => $id));
+        $row = $query->row();
+        return $row->pageName;
+    }
+    
+    public function is_page_deletable($id)
+    {
+        $query = $this->db->get_where('menue', array('frontendPageID' => $id));
+        $num_rows = $query->num_rows();
+        
+        if($num_rows == 0) return true; else return false;
     }
     
     public function get_page_content($id)
@@ -93,15 +111,17 @@ class Pages_model extends CI_Model {
         $row = $query->row();
         
         $content['columnCount'] = $row->columnCount;
+        $content['templateName'] = $row->templateName;
         
         // eventuell durch JOIN ersetzen
         $this->db->order_by('orderID', 'asc');
         $query = $this->db->get_where('page_row', array('pageID' => $id));
+        $content['rowCount'] = $query->num_rows();
         $i=0;
         foreach($query->result() as $row)
         {
             $content['rows'][$i]['rowID'] = $row->rowID;
-            $content['rows'][$i]['rowName'] = $row->orderID;
+            $content['rows'][$i]['orderID'] = $row->orderID;
             
             $this->db->order_by('rowContentID', 'asc');
             $query2 = $this->db->get_where('page_row_content', array('rowID' => $row->rowID));
@@ -208,6 +228,27 @@ class Pages_model extends CI_Model {
         $this->db->insert('page_row', $row);
     }
     
+    public function change_row_order($dir, $rowID)
+    {
+        $query = $this->db->get_where('page_row', array('rowID' => $rowID));
+		$row = $query->row();	
+		
+		$orderID  = $row->orderID;
+		$pageID  = $row->pageID;
+		
+		if($dir == 'up') $newOrderID = $orderID-1;
+		else $newOrderID = $orderID+1;
+		
+		$query2 = $this->db->get_where('page_row', array('orderID' => $newOrderID, 
+  													     'pageID' => $pageID));	
+		$row2 = $query2->row();
+		
+		$this->db->trans_start();
+		$this->db->update('page_row', array('orderID' => $orderID), 'rowID = '.$row2->rowID);
+		$this->db->update('page_row', array('orderID' => $newOrderID), 'rowID = '.$rowID);
+		$this->db->trans_complete();
+    }
+    
     public function add_box($rowID, $boxID)
     {
         $box = array(
@@ -233,10 +274,8 @@ class Pages_model extends CI_Model {
     public function update_page($id)
     {
         $page = array(
-            'pageName' => $this->input->post('pagename'),
-            'templateID' => $this->input->post('templateid')
+            'pageName' => $this->input->post('pagename')
         );
-        
         $this->db->where('pageID', $id);
 		$this->db->update('page', $page);
     }
