@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.3
--- Erstellungszeit: 24. April 2013 um 15:45
+-- Erstellungszeit: 25. April 2013 um 13:47
 -- Server Version: 5.5.28
 -- PHP-Version: 4.4.9
 
@@ -79,7 +79,7 @@ CREATE TABLE `fw_admin_auth` (
 --
 
 INSERT INTO `fw_admin_auth` (`userID`, `password`, `is_initial`, `salt`, `reset_code`, `cookie_hash`, `last_login`) VALUES
-(1, 'Yjc1MzVhNjJiMmQyODk4NWIzNzhlZmE5YTk5MzBkOTM2MGI0YzM5NjMwZDU2NDc1MTgxNmFlZWVkMzM2OTUxOTQ2OWQ1MTM1NjM5YTcxY2Q3ZDRhOWRiNzk5MWEwOGZlNTU3MzQzZTYxMThiMWE3OTQ5YjRmMWVjNmJiNjMxYTc=NGEyZTMwOWZhYWM', 0, 'NGEyZTMwOWZhYWM', '', 'd9eb9eb3bd5a2c431a7ada1822c3773d', '2013-04-24 10:13:58'),
+(1, 'Yjc1MzVhNjJiMmQyODk4NWIzNzhlZmE5YTk5MzBkOTM2MGI0YzM5NjMwZDU2NDc1MTgxNmFlZWVkMzM2OTUxOTQ2OWQ1MTM1NjM5YTcxY2Q3ZDRhOWRiNzk5MWEwOGZlNTU3MzQzZTYxMThiMWE3OTQ5YjRmMWVjNmJiNjMxYTc=NGEyZTMwOWZhYWM', 0, 'NGEyZTMwOWZhYWM', '', 'd9eb9eb3bd5a2c431a7ada1822c3773d', '2013-04-25 08:57:20'),
 (2, 'YWNkZDU3ODdhMWMyMTgxZWFhMDMxMjFhNDZjYTFhZjM5M2NhOTczZGMyNmEzZmY1N2U0MjU3MDkxZmYzZGYxZDdjNjJmY2E2NTg2MDA1NzZiMmM2MTdmNzUyYmE1OWQ5MGRmOGIyNTA0Mjc4NDFkMDU4ZDM4MWU0ODQzM2NlNWI=YzgxZTM0ZjBkYTN', 0, 'YzgxZTM0ZjBkYTN', '', '', '2013-03-23 12:13:46'),
 (31, 'NTk2OTY5YzYyNTc2ZjdiYzg0YmY4OTVkM2JiNjBiYjIxMzczNDlhMjM5NThlZmZlZTFjOTE1Y2QwNzFjNmQ1MmRjNDA4ZDI5Zjk0MDgwMTU4NGEyMjlhZWE3MGM1MTcwN2UwZWU0ZWNlZDZjNWJlNWNhMWQ4MjE2ZjBmZDc4Y2M=NGU5ZGE0OTg5Y2V', 0, 'NGU5ZGE0OTg5Y2V', '', '', '2013-04-02 22:56:26');
 
@@ -95,7 +95,7 @@ CREATE TABLE `fw_admin_log` (
   `datetime` datetime NOT NULL,
   `message` text NOT NULL,
   PRIMARY KEY (`logID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
 
 --
 -- Daten für Tabelle `fw_admin_log`
@@ -137,7 +137,9 @@ INSERT INTO `fw_admin_log` (`logID`, `userID`, `datetime`, `message`) VALUES
 (33, 1, '2013-04-22 12:34:55', 'Admin hat sich angemeldet.'),
 (34, 1, '2013-04-22 22:13:20', 'Admin hat sich angemeldet.'),
 (35, 1, '2013-04-23 15:54:31', 'Admin hat sich angemeldet.'),
-(36, 1, '2013-04-24 10:13:58', 'Admin hat sich angemeldet.');
+(36, 1, '2013-04-24 10:13:58', 'Admin hat sich angemeldet.'),
+(37, 1, '2013-04-25 08:31:51', 'Admin hat sich angemeldet.'),
+(38, 1, '2013-04-25 08:57:20', 'Admin hat sich angemeldet.');
 
 -- --------------------------------------------------------
 
@@ -12249,6 +12251,7 @@ CREATE TABLE `fw_menue` (
   `link` varchar(255) NOT NULL,
   `target` varchar(20) NOT NULL DEFAULT '_top',
   `slug` varchar(255) NOT NULL,
+  `frontendPageID` int(11) NOT NULL,
   `frontend` tinyint(1) NOT NULL DEFAULT '0',
   `backend` tinyint(1) NOT NULL DEFAULT '0',
   `online` tinyint(1) NOT NULL DEFAULT '0',
@@ -12263,62 +12266,62 @@ CREATE TABLE `fw_menue` (
 -- Daten für Tabelle `fw_menue`
 --
 
-INSERT INTO `fw_menue` (`menueID`, `superID`, `name`, `link`, `target`, `slug`, `frontend`, `backend`, `online`, `main`, `sub`, `meta`, `orderID`) VALUES
-(1, 0, 'Inhalte verwalten', 'admin/content', '_top', 'content', 0, 1, 1, 1, 0, 0, 1),
-(2, 0, 'Dateien verwalten', 'admin/files', '_top', 'files', 0, 1, 1, 1, 0, 0, 1),
-(3, 0, 'Menü verwalten', 'admin/menue', '_top', 'menue', 0, 1, 1, 1, 0, 0, 3),
-(4, 0, 'Systemeinstellungen', 'admin/system', '_top', 'system', 0, 1, 1, 1, 0, 0, 4),
-(6, 0, 'zum Portal', '', '_blank', '', 0, 1, 1, 1, 0, 0, 9),
-(7, 0, 'Benutzerverwaltung', 'admin/user', '_top', 'user', 0, 1, 1, 1, 0, 0, 5),
-(8, 1, 'Seiten', 'admin/content/page', '_top', 'content', 0, 1, 1, 0, 1, 0, 1),
-(9, 1, 'News', 'admin/content/news', '_top', 'content', 0, 1, 1, 0, 1, 0, 2),
-(10, 1, 'Einsätze', 'admin/content/einsatz', '_top', 'content', 0, 1, 1, 0, 1, 0, 3),
-(11, 1, 'Fahrzeuge', 'admin/content/fahrzeug', '_top', 'content', 0, 1, 1, 0, 1, 0, 4),
-(12, 3, 'Frontend-Menü', 'admin/menue/frontend', '_top', 'menue', 0, 1, 1, 0, 1, 0, 1),
-(13, 3, 'Backend-Menü', 'admin/menue/backend', '_top', 'menue', 0, 1, 1, 0, 1, 0, 2),
-(14, 4, 'Module', 'admin/system/module', '_top', 'system', 0, 1, 1, 0, 1, 0, 1),
-(15, 4, 'Texte', 'admin/system/language', '_top', 'system', 0, 1, 1, 0, 1, 0, 2),
-(16, 4, 'Routen', 'admin/system/route', '_top', 'system', 0, 1, 1, 0, 1, 0, 3),
-(17, 4, 'Einstellungen', 'admin/system/settings', '_top', 'system', 0, 1, 1, 0, 1, 0, 4),
-(18, 7, 'Backend-Benutzer', 'admin/user/backend', '_top', 'user', 0, 1, 1, 0, 1, 0, 2),
-(19, 7, 'Frontend-Benutzer', 'admin/user/frontend', '_top', 'user', 0, 1, 1, 0, 1, 0, 1),
-(20, 0, 'News', 'news', '_top', 'news', 1, 0, 1, 1, 0, 0, 1),
-(21, 0, 'Menschen', 'menschen', '_top', 'menschen', 1, 0, 1, 1, 0, 0, 2),
-(22, 0, 'Technik', 'technik', '_top', 'technik', 1, 0, 1, 1, 0, 0, 3),
-(23, 0, 'Information', 'information', '_top', 'information', 1, 0, 1, 1, 0, 0, 4),
-(24, 0, 'Jugend', 'jugend', '_top', 'jugend', 1, 0, 1, 1, 0, 0, 5),
-(25, 20, 'Einsätze', 'neuigkeiten/einsatz', '_top', 'neuigkeiten', 1, 0, 1, 0, 1, 0, 1),
-(26, 20, 'Termine', 'neuigkeiten/termin', '_top', 'neuigkeiten', 1, 0, 1, 0, 1, 0, 2),
-(27, 20, 'Presse', 'neuigkeiten/presse', '_top', 'neuigkeiten', 1, 0, 1, 0, 1, 0, 3),
-(28, 21, 'Einsatzabteilung', 'menschen/einsatzabteilung', '_top', 'menschen', 1, 0, 1, 0, 1, 0, 1),
-(29, 21, 'Leistungsgruppe', 'menschen/leistungsgruppe', '_top', 'menschen', 1, 0, 1, 0, 1, 0, 2),
-(30, 21, 'Alters- und Ehrenabteilung', 'menschen/alters-und-ehren-abteilung', '_top', 'menschen', 1, 0, 1, 0, 1, 0, 3),
-(31, 21, 'Galerie', 'menschen/gallerie', '_top', 'menschen', 1, 0, 1, 0, 1, 0, 4),
-(32, 21, 'Verein und Geschichte', 'menschen/verein', '_top', 'menschen', 1, 0, 1, 0, 1, 0, 5),
-(33, 22, 'Fahrzeuge', 'technik/fahrzeuge', '_top', 'technik', 1, 0, 1, 0, 1, 0, 1),
-(34, 22, 'Geräte', 'technik/geraete', '_top', 'technik', 1, 0, 1, 0, 1, 0, 2),
-(35, 22, 'Kleidung', 'technik/kleidung', '_top', 'technik', 1, 0, 1, 0, 1, 0, 3),
-(36, 22, 'Ausbildung', 'technik/ausbildung', '_top', 'technik', 1, 0, 1, 0, 1, 0, 4),
-(37, 23, 'Tipps', 'information/tipps', '_top', 'information', 1, 0, 1, 0, 1, 0, 1),
-(38, 23, 'Einsatzgebiet', 'information/einsatzgebiet', '_top', 'information', 1, 0, 1, 0, 1, 0, 2),
-(39, 23, 'Gesetze und Richtlinien', 'information/gesetze-und-richtlinien', '_top', 'information', 1, 0, 1, 0, 1, 0, 3),
-(40, 23, 'Downloads', 'information/downloads', '_top', 'information', 1, 0, 1, 0, 1, 0, 4),
-(41, 24, 'Mannschaft', 'jugend/mannschaft', '_top', 'jugend', 1, 0, 1, 0, 1, 0, 1),
-(42, 24, 'Aktivitäten', 'jugend/aktivitaeten', '_top', 'jugend', 1, 0, 1, 0, 1, 0, 2),
-(43, 24, 'Ausbildung', 'jugend/Ausbildung', '_top', 'jugend', 1, 0, 1, 0, 1, 0, 3),
-(44, 24, 'Leistungsgruppe', 'jugend/leistungsgruppe', '_top', 'jugend', 1, 0, 1, 0, 1, 0, 4),
-(45, 24, 'Galerie', 'jugend/galerie', '_top', 'jugend', 1, 0, 1, 0, 1, 0, 5),
-(46, 0, 'Kontakt', 'kontakt', '_top', 'kontakt', 1, 0, 1, 0, 0, 1, 1),
-(47, 0, 'Links', 'links', '_top', 'links', 1, 0, 1, 0, 0, 1, 2),
-(48, 0, 'Gästebuch', 'gaestebuch', '_top', 'gaestebuch', 1, 0, 1, 0, 0, 1, 3),
-(49, 0, 'Impressum', 'impressum', '_top', 'impressum', 1, 0, 1, 0, 0, 1, 4),
-(50, 0, 'Notruf', 'notruf', '_top', 'notruf', 1, 0, 1, 0, 0, 1, 5),
-(51, 0, 'Mitmachen', 'mitmachen', '_top', 'mitmachen', 1, 0, 1, 0, 0, 1, 6),
-(52, 0, 'Feature Lab', 'development/feature_admin/lab', '_top', 'dev_feature', 0, 1, 1, 1, 0, 0, 7),
-(53, 0, 'Icons anzeigen', 'admin/maintenance/show_buttons', '_blank', 'dev_feature', 0, 1, 1, 1, 0, 0, 8),
-(54, 0, 'Hilfe', 'admin/help', '_top', 'help', 0, 1, 0, 1, 0, 0, 6),
-(61, 0, 'test', 'test', '_top', 'test', 1, 0, 1, 1, 0, 0, 15),
-(62, 0, 'test', 'test', '_top', 'test', 1, 0, 1, 1, 0, 0, 16);
+INSERT INTO `fw_menue` (`menueID`, `superID`, `name`, `link`, `target`, `slug`, `frontendPageID`, `frontend`, `backend`, `online`, `main`, `sub`, `meta`, `orderID`) VALUES
+(1, 0, 'Inhalte verwalten', 'admin/content', '_top', 'content', 0, 0, 1, 1, 1, 0, 0, 1),
+(2, 0, 'Dateien verwalten', 'admin/files', '_top', 'files', 0, 0, 1, 1, 1, 0, 0, 1),
+(3, 0, 'Menü verwalten', 'admin/menue', '_top', 'menue', 0, 0, 1, 1, 1, 0, 0, 3),
+(4, 0, 'Systemeinstellungen', 'admin/system', '_top', 'system', 0, 0, 1, 1, 1, 0, 0, 4),
+(6, 0, 'zum Portal', '', '_blank', '', 0, 0, 1, 1, 1, 0, 0, 9),
+(7, 0, 'Benutzerverwaltung', 'admin/user', '_top', 'user', 0, 0, 1, 1, 1, 0, 0, 5),
+(8, 1, 'Seiten', 'admin/content/page', '_top', 'content', 0, 0, 1, 1, 0, 1, 0, 1),
+(9, 1, 'News', 'admin/content/news', '_top', 'content', 0, 0, 1, 1, 0, 1, 0, 2),
+(10, 1, 'Einsätze', 'admin/content/einsatz', '_top', 'content', 0, 0, 1, 1, 0, 1, 0, 3),
+(11, 1, 'Fahrzeuge', 'admin/content/fahrzeug', '_top', 'content', 0, 0, 1, 1, 0, 1, 0, 4),
+(12, 3, 'Frontend-Menü', 'admin/menue/frontend', '_top', 'menue', 0, 0, 1, 1, 0, 1, 0, 1),
+(13, 3, 'Backend-Menü', 'admin/menue/backend', '_top', 'menue', 0, 0, 1, 1, 0, 1, 0, 2),
+(14, 4, 'Module', 'admin/system/module', '_top', 'system', 0, 0, 1, 1, 0, 1, 0, 1),
+(15, 4, 'Texte', 'admin/system/language', '_top', 'system', 0, 0, 1, 1, 0, 1, 0, 2),
+(16, 4, 'Routen', 'admin/system/route', '_top', 'system', 0, 0, 1, 1, 0, 1, 0, 3),
+(17, 4, 'Einstellungen', 'admin/system/settings', '_top', 'system', 0, 0, 1, 1, 0, 1, 0, 4),
+(18, 7, 'Backend-Benutzer', 'admin/user/backend', '_top', 'user', 0, 0, 1, 1, 0, 1, 0, 2),
+(19, 7, 'Frontend-Benutzer', 'admin/user/frontend', '_top', 'user', 0, 0, 1, 1, 0, 1, 0, 1),
+(20, 0, 'News', 'news', '_top', 'news', 0, 1, 0, 1, 1, 0, 0, 1),
+(21, 0, 'Menschen', 'menschen', '_top', 'menschen', 0, 1, 0, 1, 1, 0, 0, 2),
+(22, 0, 'Technik', 'technik', '_top', 'technik', 0, 1, 0, 1, 1, 0, 0, 3),
+(23, 0, 'Information', 'information', '_top', 'information', 0, 1, 0, 1, 1, 0, 0, 4),
+(24, 0, 'Jugend', 'jugend', '_top', 'jugend', 0, 1, 0, 1, 1, 0, 0, 5),
+(25, 20, 'Einsätze', 'neuigkeiten/einsatz', '_top', 'neuigkeiten', 0, 1, 0, 1, 0, 1, 0, 1),
+(26, 20, 'Termine', 'neuigkeiten/termin', '_top', 'neuigkeiten', 0, 1, 0, 1, 0, 1, 0, 2),
+(27, 20, 'Presse', 'neuigkeiten/presse', '_top', 'neuigkeiten', 0, 1, 0, 1, 0, 1, 0, 3),
+(28, 21, 'Einsatzabteilung', 'menschen/einsatzabteilung', '_top', 'menschen', 0, 1, 0, 1, 0, 1, 0, 1),
+(29, 21, 'Leistungsgruppe', 'menschen/leistungsgruppe', '_top', 'menschen', 0, 1, 0, 1, 0, 1, 0, 2),
+(30, 21, 'Alters- und Ehrenabteilung', 'menschen/alters-und-ehren-abteilung', '_top', 'menschen', 0, 1, 0, 1, 0, 1, 0, 3),
+(31, 21, 'Galerie', 'menschen/gallerie', '_top', 'menschen', 0, 1, 0, 1, 0, 1, 0, 4),
+(32, 21, 'Verein und Geschichte', 'menschen/verein', '_top', 'menschen', 0, 1, 0, 1, 0, 1, 0, 5),
+(33, 22, 'Fahrzeuge', 'technik/fahrzeuge', '_top', 'technik', 0, 1, 0, 1, 0, 1, 0, 1),
+(34, 22, 'Geräte', 'technik/geraete', '_top', 'technik', 0, 1, 0, 1, 0, 1, 0, 2),
+(35, 22, 'Kleidung', 'technik/kleidung', '_top', 'technik', 0, 1, 0, 1, 0, 1, 0, 3),
+(36, 22, 'Ausbildung', 'technik/ausbildung', '_top', 'technik', 0, 1, 0, 1, 0, 1, 0, 4),
+(37, 23, 'Tipps', 'information/tipps', '_top', 'information', 0, 1, 0, 1, 0, 1, 0, 1),
+(38, 23, 'Einsatzgebiet', 'information/einsatzgebiet', '_top', 'information', 0, 1, 0, 1, 0, 1, 0, 2),
+(39, 23, 'Gesetze und Richtlinien', 'information/gesetze-und-richtlinien', '_top', 'information', 0, 1, 0, 1, 0, 1, 0, 3),
+(40, 23, 'Downloads', 'information/downloads', '_top', 'information', 0, 1, 0, 1, 0, 1, 0, 4),
+(41, 24, 'Mannschaft', 'jugend/mannschaft', '_top', 'jugend', 0, 1, 0, 1, 0, 1, 0, 1),
+(42, 24, 'Aktivitäten', 'jugend/aktivitaeten', '_top', 'jugend', 0, 1, 0, 1, 0, 1, 0, 2),
+(43, 24, 'Ausbildung', 'jugend/Ausbildung', '_top', 'jugend', 0, 1, 0, 1, 0, 1, 0, 3),
+(44, 24, 'Leistungsgruppe', 'jugend/leistungsgruppe', '_top', 'jugend', 0, 1, 0, 1, 0, 1, 0, 4),
+(45, 24, 'Galerie', 'jugend/galerie', '_top', 'jugend', 0, 1, 0, 1, 0, 1, 0, 5),
+(46, 0, 'Kontakt', 'kontakt', '_top', 'kontakt', 0, 1, 0, 1, 0, 0, 1, 1),
+(47, 0, 'Links', 'links', '_top', 'links', 0, 1, 0, 1, 0, 0, 1, 2),
+(48, 0, 'Gästebuch', 'gaestebuch', '_top', 'gaestebuch', 0, 1, 0, 1, 0, 0, 1, 3),
+(49, 0, 'Impressum', 'impressum', '_top', 'impressum', 0, 1, 0, 1, 0, 0, 1, 4),
+(50, 0, 'Notruf', 'notruf', '_top', 'notruf', 0, 1, 0, 1, 0, 0, 1, 5),
+(51, 0, 'Mitmachen', 'mitmachen', '_top', 'mitmachen', 0, 1, 0, 1, 0, 0, 1, 6),
+(52, 0, 'Feature Lab', 'development/feature_admin/lab', '_top', 'dev_feature', 0, 0, 1, 1, 1, 0, 0, 7),
+(53, 0, 'Icons anzeigen', 'admin/maintenance/show_buttons', '_blank', 'dev_feature', 0, 0, 1, 1, 1, 0, 0, 8),
+(54, 0, 'Hilfe', 'admin/help', '_top', 'help', 0, 0, 1, 0, 1, 0, 0, 6),
+(61, 0, 'test', 'test', '_top', 'test', 0, 1, 0, 1, 1, 0, 0, 15),
+(62, 0, 'test', 'test', '_top', 'test', 0, 1, 0, 1, 1, 0, 0, 16);
 
 -- --------------------------------------------------------
 
@@ -12458,14 +12461,15 @@ CREATE TABLE `fw_page` (
   `pageName` varchar(100) NOT NULL,
   `online` tinyint(1) NOT NULL,
   PRIMARY KEY (`pageID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Daten für Tabelle `fw_page`
 --
 
 INSERT INTO `fw_page` (`pageID`, `templateID`, `pageName`, `online`) VALUES
-(1, 2, 'Testseite 3 Spalten', 0);
+(1, 2, 'Testseite 3 Spalten', 1),
+(2, 3, 'abc', 0);
 
 -- --------------------------------------------------------
 
@@ -12586,7 +12590,6 @@ INSERT INTO `fw_page_row` (`rowID`, `pageID`, `orderID`) VALUES
 --
 -- Tabellenstruktur für Tabelle `fw_page_row_content`
 --
---
 
 CREATE TABLE `fw_page_row_content` (
   `rowContentID` int(11) NOT NULL AUTO_INCREMENT,
@@ -12646,66 +12649,34 @@ CREATE TABLE `fw_sessions` (
 --
 
 INSERT INTO `fw_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('0126dd87be1d05d46f1f08b07ead094a', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366808850, ''),
-('0c080d47cde2a2b1d283468b4b913c2b', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366809873, ''),
-('160ac4f228bed758012bbb2242e53937', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366805743, 0x613a323a7b733a393a22757365725f64617461223b733a303a22223b733a31383a22666c6173683a6e65773a7265646972656374223b733a34373a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f73797374656d223b7d),
-('237ce67a3cdb920dee7e897367a84d5e', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366802850, ''),
-('249bc3b7894b93a3ca276bbf348c8a78', '150.70.64.213', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366808900, ''),
-('2872dfac25a3b79e9c20c792182bcaa5', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366808982, ''),
-('2a0636f701c658d39fd0104f06648dfb', '150.70.75.32', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366805852, 0x613a323a7b733a393a22757365725f64617461223b733a303a22223b733a31383a22666c6173683a6e65773a7265646972656374223b733a34373a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f73797374656d223b7d),
-('2d853d4d49cbb74cbc3d60b996e660ef', '150.70.75.33', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366811087, ''),
-('2de80f47d3664f9a957c1c266b19d060', '150.70.172.205', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366809945, ''),
-('3252cbff92dc2902d3de7b67201978be', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366809264, ''),
-('34fb3c465a30830768fc83521a13e852', '150.70.172.205', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366808878, ''),
-('3a4eb5a3147eda2e7cadda0119a4ad87', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366809460, ''),
-('3a97f7f694082bc503141203e5c3fd42', '150.70.172.205', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366808848, ''),
-('3acbbcd7eb1b0f9ed273cd4cdee62d7d', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366809694, ''),
-('3dee67a9f6339874bdd3d31517209c50', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366807043, ''),
-('42e8e76d24a9b412b055ccc0d2696d4c', '150.70.64.194', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366806680, ''),
-('43851c72c0002da2184195a508ec1e03', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366810940, ''),
-('541856807c596d13ba6aa96c7047fae0', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366809307, ''),
-('56c282bc8dc5dcb539a4428b0a807af3', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366805807, ''),
-('573ab496dac9b78daab9cabdd78abc78', '150.70.64.213', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366804396, ''),
-('5d85e132ffbfb32cfc4b02b05616953f', '150.70.172.106', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366810701, ''),
-('5f2b420b33155e51901cdfb685ead7ae', '150.70.75.33', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366802947, ''),
-('6255d898069f322511cc9b9ad4f0528b', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366807299, ''),
-('665e67bf7301d76d985aa6e31adf1608', '150.70.75.32', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366809087, ''),
-('67bf26e8ae311cc95e7b290ba9fe5518', '150.70.172.125', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366808856, ''),
-('6bae9092876b9969ce9815c8efa8ffb9', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366806060, ''),
-('6c4e27b00712851a37b140175793f28d', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366810915, ''),
-('6ca1e42b0abab81998594149a7240670', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366805861, ''),
-('6d13d158c9cba774a5cc19d3fdfda8b0', '150.70.172.125', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366809997, ''),
-('7808d5b844a67927eb16b8bc6f59c7e4', '150.70.172.205', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366807306, ''),
-('7ccc0e54b52a8ea555730f917feacc90', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366809024, ''),
-('839674fc690a6a9d96cd1330f8e5e7c3', '150.70.75.33', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366811052, ''),
-('8da0589929b6fcb3e90f8af7e816e41b', '150.70.172.205', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366807225, ''),
-('8e683b41e5152390feaeb218e4851a0b', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366808910, ''),
-('9114774750a4145bf4bd858a60c7ddc9', '150.70.172.125', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366806340, ''),
-('9321c0aabd5f07bd623b2e51aa7917ca', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366809906, 0x613a323a7b733a393a22757365725f64617461223b733a303a22223b733a31383a22666c6173683a6e65773a7265646972656374223b733a34373a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f73797374656d223b7d),
-('93e532f9b8083b85e8c8ce5df0866b06', '150.70.172.205', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366809700, ''),
-('9449bd8c6b2d8165573fe1a356261d79', '150.70.196.105', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366803161, ''),
-('9c8155c853217d0b40dd660eafb62795', '150.70.196.173', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366803737, ''),
-('9ff2b436785936ba7f32e1ced8778a90', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366808982, ''),
-('a47c70626a6c8bcab748cb947067b30a', '150.70.64.194', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366810231, ''),
-('b0563a6ee4a2e1244f1c5a31f54747f0', '150.70.75.33', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366809118, ''),
-('b96c2d0c8a74a69cace189db2514e279', '150.70.172.205', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366807251, ''),
-('c307d1c8e3769af449640face590571d', '150.70.64.213', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366811052, ''),
-('c412786dc53e1185488a14b61eec710a', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366810940, ''),
-('c8d4c1166cad546937933bf31b428230', '150.70.64.194', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366810751, ''),
-('cac9029f42b5e12fa0debd1e637dddac', '150.70.172.125', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366809133, ''),
-('d00453d7f83dd8f36d396f89e81d0a96', '150.70.172.106', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366807441, 0x613a323a7b733a393a22757365725f64617461223b733a303a22223b733a31383a22666c6173683a6e65773a7265646972656374223b733a34383a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e74223b7d),
-('d0088da1d71bb3026e8b20e69a111579', '150.70.75.32', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366805973, ''),
-('d1e48da1faaebb18d8a3a2102020d9a2', '150.70.172.106', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366809078, ''),
-('d589a6221a95117264dd50213dc68935', '150.70.75.33', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366807554, ''),
-('d5dcd5e2b0d9e36a46b0e18f81110801', '150.70.75.32', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366809970, ''),
-('d702f4048bc1e070f0bbe04d3e64027b', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366809873, ''),
-('e5f7ed73f4d331ffd72c735981611f09', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366810948, ''),
-('eb44b8a52a11f391eddd4ca3f025350b', '150.70.172.205', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366808823, ''),
-('eed04abe40f7b7657ab13fac19678215', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366809437, ''),
-('f589242ef452c1ac155641105e9d200b', '150.70.75.33', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366805899, ''),
-('f6b335b60772337304c2f83f6239da8d', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366810825, ''),
-('f70ce24426c0ddf4b3efb988dbe3df75', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366805738, ''),
-('fc36ba80abfb39a5d48f6ffb992ba083', '93.90.138.160', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31', 1366810732, 0x613a31343a7b733a393a22757365725f64617461223b733a303a22223b733a31333a2266775f61646d696e5f75736572223b4f3a383a22737464436c617373223a393a7b733a363a22757365724944223b733a313a2231223b733a383a22757365726e616d65223b733a393a226b696e676d616f616d223b733a353a22656d61696c223b733a32333a2268616269624066616d696c6965706c65696e65732e6465223b733a373a22766f726e616d65223b733a353a224861626962223b733a383a226e6163686e616d65223b733a373a22506c65696e6573223b733a31313a22656469746f725f7369676e223b733a323a226870223b733a31333a226372656174696f6e5f64617465223b733a31393a22323031322d30382d30362031343a32353a3234223b733a363a22616374697665223b733a313a2231223b733a31303a2269735f696e697469616c223b733a313a2230223b7d733a31383a22706167656c697374655f7265646972656374223b733a35333a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f70616765223b733a31353a2270616765656469745f7375626d6974223b733a36303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f706167652f656469742f31223b733a31373a2270616765656469745f7265646972656374223b733a36303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f706167652f656469742f31223b733a31373a2270616765616464626f785f7375626d6974223b733a36323a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f706167652f616464626f782f32223b733a32313a2265696e7361747a6c697374655f7265646972656374223b733a36313a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f65696e7361747a2f32303130223b733a32303a2265696e7361747a6372656174655f7375626d6974223b733a36333a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f65696e7361747a2f637265617465223b733a31393a22726f7574656c697374655f7265646972656374223b733a35333a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f73797374656d2f726f757465223b733a31383a22726f7574656372656174655f7375626d6974223b733a36303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f73797374656d2f726f7574652f637265617465223b733a31363a22726f757465656469745f7375626d6974223b733a36313a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f73797374656d2f726f7574652f656469742f3837223b733a31373a22706167656372656174655f7375626d6974223b733a36303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f706167652f637265617465223b733a31393a22706167656372656174655f7265646972656374223b733a36303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f706167652f637265617465223b733a32323a22666168727a6575676c697374655f7265646972656374223b733a35373a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f666168727a657567223b7d);
+('0a5e3f2343ae2073dc130740c842ab64', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366881677, ''),
+('10fdcc96de4ea36b0d96a717014f279b', '150.70.75.32', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366883002, ''),
+('24e9c6594b17d140d6e5b0bbb56786f7', '150.70.64.194', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366884401, ''),
+('25adbdc8f2b6d8cd3b831c36d2ef48c9', '93.90.138.160', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31', 1366884726, 0x613a31313a7b733a393a22757365725f64617461223b733a303a22223b733a31333a2266775f61646d696e5f75736572223b4f3a383a22737464436c617373223a393a7b733a363a22757365724944223b733a313a2231223b733a383a22757365726e616d65223b733a393a226b696e676d616f616d223b733a353a22656d61696c223b733a32333a2268616269624066616d696c6965706c65696e65732e6465223b733a373a22766f726e616d65223b733a353a224861626962223b733a383a226e6163686e616d65223b733a373a22506c65696e6573223b733a31313a22656469746f725f7369676e223b733a323a226870223b733a31333a226372656174696f6e5f64617465223b733a31393a22323031322d30382d30362031343a32353a3234223b733a363a22616374697665223b733a313a2231223b733a31303a2269735f696e697469616c223b733a313a2230223b7d733a31383a22706167656c697374655f7265646972656374223b733a35333a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f70616765223b733a31353a2270616765656469745f7375626d6974223b733a36303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f706167652f656469742f31223b733a31373a2270616765656469745f7265646972656374223b733a36303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f706167652f656469742f31223b733a32313a2265696e7361747a6c697374655f7265646972656374223b733a35363a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f65696e7361747a223b733a32323a22666168727a6575676c697374655f7265646972656374223b733a35373a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f666168727a657567223b733a31393a226d656e75656c697374655f7265646972656374223b733a35353a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f6d656e75652f66726f6e74656e64223b733a31393a22726f7574656c697374655f7265646972656374223b733a35333a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f73797374656d2f726f757465223b733a31383a22726f7574656372656174655f7375626d6974223b733a36303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f73797374656d2f726f7574652f637265617465223b733a31363a22726f757465656469745f7375626d6974223b733a36313a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f73797374656d2f726f7574652f656469742f3933223b7d),
+('2e836aad7884a1ef3272ced58cdd1b39', '150.70.172.106', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366883024, ''),
+('38b7ce504e41ac9f4e21367b1ba3ff1f', '150.70.64.194', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366884086, ''),
+('39b9ed0c349d97b47b5a539496a3f823', '150.70.172.106', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366883017, ''),
+('405c90fde877155cf523a00d67670a7e', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366882590, ''),
+('437d948767e75c68ed039a243cb71352', '150.70.172.205', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366883186, ''),
+('4eac5fb25f7f030509f1431082bd808f', '150.70.172.205', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366882592, ''),
+('55b256711c688daeb3514a472c3e485b', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366883610, ''),
+('55b9b31197b3fcfb6a7f23997995cc24', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366886956, ''),
+('62170c4761a4a86870c6e522288fbbc7', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366883490, ''),
+('69d9a0743967df21b026148585b39d61', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366882938, ''),
+('797f087bb78391b8a5e94c9949451598', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366886257, 0x613a323a7b733a393a22757365725f64617461223b733a303a22223b733a31383a22666c6173683a6e65773a7265646972656374223b733a34303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e223b7d),
+('83d6f534836e43c5389ff49bb4a05b70', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366889273, ''),
+('8aed29fca094d36950f2e2a3780f6233', '150.70.97.43', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366884149, ''),
+('9bd7e11309a0053f355afffaaadc25b1', '150.70.64.213', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366882993, ''),
+('ab33c59b03217bad63e56c2adb18ed85', '150.70.64.213', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366881733, ''),
+('cf0d00b759836df68611f07bbf338590', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366885055, ''),
+('d3751c9071e038fe4cf75d74dc6121ac', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366883058, ''),
+('d7198e7d9ce0bbd1b7a09fc09be45780', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366882899, ''),
+('d8757199ccfdf6c9477462aad5c88cf4', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366881689, ''),
+('eee6dfef70865688372ad3e667105df4', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366888201, ''),
+('f273db9141aebfecf2bbf5ed43f3b4c7', '150.70.196.173', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366883145, ''),
+('f5a3f722ee863275e5ea94596f85d7cf', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366883005, ''),
+('f846306b7461007b0ac259db711e5fb0', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366885054, ''),
+('f9ba342b0528bc3aac8b462d99672a14', '150.70.75.33', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366882635, '');
 
 -- --------------------------------------------------------
 
@@ -12822,7 +12793,7 @@ CREATE TABLE `fw_sys_routes` (
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `isprotected` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`routeID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=93 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=94 ;
 
 --
 -- Daten für Tabelle `fw_sys_routes`
@@ -12904,7 +12875,8 @@ INSERT INTO `fw_sys_routes` (`routeID`, `moduleID`, `bereich`, `internalLink`, `
 (88, 7, 'Backend', 'pages/pages_admin/delete_row_verify/$1/$2', 'admin/content/page/checkdelrow/(:num)/(:num)', 1, 1),
 (89, 7, 'Backend', 'pages/pages_admin/delete_box_verify/$1', 'admin/content/page/checkdelbox/(:num)', 1, 1),
 (91, 7, 'Backend', 'pages/pages_admin/delete_box_content_verify/$1/$2', 'admin/content/page/checkdelcontent/(:num)/(:num)', 1, 1),
-(92, 7, 'Backend', 'pages/pages_admin/delete_page_verify/$1', 'admin/content/page/checkdelete/(:num)', 1, 1);
+(92, 7, 'Backend', 'pages/pages_admin/delete_page_verify/$1', 'admin/content/page/checkdelete/(:num)', 1, 1),
+(93, 7, 'Backend', 'pages/pages_admin/change_row_order/$1/$2', 'admin/content/page/row/order/(:any)/(:num)', 1, 1);
 
 -- --------------------------------------------------------
 
