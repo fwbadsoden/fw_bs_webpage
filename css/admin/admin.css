@@ -65,8 +65,6 @@ img{border:0}
 #content table{padding:0; font:normal normal 12px Arial,Helvetica,sans-serif; color:#000}
 #content table.taskHead{margin:0; padding:0; height:20px}
 
-#content #tabs li a.tab_head_link{border-bottom:1px solid #FFF; height:25px; line-height:22px; display:block; width:180px; text-decoration:none; text-align:left; padding:3px 0 0 20px; color:#FFF; font-weight:bold}
-
 #content #task{margin-bottom:1px; margin-top:1px; padding:5px}
 #content #task h2{color:#000; width:350px; font:14px Arial,Helvetica,sans-serif; font-weight:bold; margin-top:0px; padding-top:0px}
 #content #task h2 a{color:#000; width:350px; font:14px Arial,Helvetica,sans-serif; font-weight:bold; margin-top:0px; padding-top:0px}
@@ -384,29 +382,114 @@ input.ui-button::-moz-focus-inner, button.ui-button::-moz-focus-inner{border:0; 
 .ui-spinner-up{top:0}
 .ui-spinner-down{bottom:0}
 .ui-spinner .ui-icon-triangle-1-s{background-position:-65px -16px}
-.ui-tabs{position:relative; padding:.2em}
-.ui-tabs .ui-tabs-nav{margin:0; padding:.2em .2em 0}
-.ui-tabs .ui-tabs-nav li{list-style:none; float:left; position:relative; top:0; margin:1px .2em 0 0; border-bottom-width:0; padding:0; white-space:nowrap}
-.ui-tabs .ui-tabs-nav li a{float:left; padding:.5em 1em; text-decoration:none}
-.ui-tabs .ui-tabs-nav li.ui-tabs-active{margin-bottom:-1px; padding-bottom:1px}
-.ui-tabs .ui-tabs-nav li.ui-tabs-active a, .ui-tabs .ui-tabs-nav li.ui-state-disabled a, .ui-tabs .ui-tabs-nav li.ui-tabs-loading a{cursor:text}
-.ui-tabs .ui-tabs-nav li a, .ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active a{cursor:pointer}
-.ui-tabs .ui-tabs-panel{display:block; border-width:0; padding:1em 1.4em; background:0}
+.ui-tabs {
+	position: relative;/* position: relative prevents IE scroll bug (element with position: relative inside container with overflow: auto appear as "fixed") */
+	padding: .2em;
+}
+.ui-tabs .ui-tabs-nav {
+	margin: 0;
+	padding: .2em .2em 0;
+}
+.ui-tabs .ui-tabs-nav li {
+	list-style: none;
+	float: left;
+	position: relative;
+	top: 0;
+	margin: 1px .2em 0 0;
+	border-bottom-width: 0;
+	padding: 0;
+	white-space: nowrap;
+}
+.ui-tabs .ui-tabs-nav li a {
+	float: left;
+	padding: .5em 1em;
+	text-decoration: none;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active {
+	margin-bottom: -1px;
+	padding-bottom: 1px;
+}
+.ui-tabs .ui-tabs-nav li.ui-tabs-active a,
+.ui-tabs .ui-tabs-nav li.ui-state-disabled a,
+.ui-tabs .ui-tabs-nav li.ui-tabs-loading a {
+	cursor: text;
+}
+.ui-tabs .ui-tabs-nav li a, /* first selector in group seems obsolete, but required to overcome bug in Opera applying cursor: text overall if defined elsewhere... */
+.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-active a {
+	cursor: pointer;
+}
+.ui-tabs .ui-tabs-panel {
+	display: block;
+	border-width: 0;
+	padding: 1em 1.4em;
+	background: none;
+}
 .ui-tooltip{padding:8px; position:absolute; z-index:9999; max-width:300px; -webkit-box-shadow:0 0 5px #aaa; box-shadow:0 0 5px #aaa}
 body .ui-tooltip{border-width:2px}
-.ui-widget{font-family:Arial,sans-serif; font-size:0.9em}
-.ui-widget .ui-widget{font-size:0.9em}
-.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button{font-family:Arial,sans-serif; font-size:0.8em}
-.ui-widget-content{border:1px solid #ddd; background:#eee url(../../images/admin/jquery-ui/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x; color:#333}
-.ui-widget-content a{color:#333}
-.ui-widget-header{border:1px solid #9A0000; background:#9A0000 url(../../images/admin/jquery-ui/ui-bg_gloss-wave_35_9A0000_500x100.png) 50% 50% repeat-x; color:#fff; font-weight:bold}
-.ui-widget-header a{color:#fff}
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default{border:1px solid #ccc; background:#f6f6f6 url(../../images/admin/jquery-ui/ui-bg_glass_100_f6f6f6_1x400.png) 50% 50% repeat-x; font-weight:bold; color:#9A0000}
-.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited{color:#9A0000; text-decoration:none}
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus{border:1px solid #9A0000; background:#fff url(../../images/admin/jquery-ui/ui-bg_glass_100_ffffff_1x400.png) 50% 50% repeat-x; font-weight:bold; color:#9A0000}
-.ui-state-hover a, .ui-state-hover a:hover, .ui-state-hover a:link, .ui-state-hover a:visited{color:#9A0000; text-decoration:none}
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active{border:1px solid #9A0000; background:#fff url(../../images/admin/jquery-ui/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x; font-weight:bold; color:#9A0000}
-.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited{color:#9A0000; text-decoration:none}
+.ui-widget {
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+	font-size: 1.1em;
+}
+.ui-widget .ui-widget {
+	font-size: 1em;
+}
+.ui-widget input,
+.ui-widget select,
+.ui-widget textarea,
+.ui-widget button {
+	font-family: Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;
+	font-size: 1em;
+}
+.ui-widget-content {
+	border: 1px solid #dddddd;
+	background: #eeeeee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x;
+	color: #333333;
+}
+.ui-widget-content a {
+	color: #333333;
+}
+.ui-widget-header {
+	border: 1px solid #474747;
+	background: #9A0000 url(images/ui-bg_gloss-wave_0_9A0000_500x100.png) 50% 50% repeat-x;
+	color: #000000;
+	font-weight: bold;
+}
+.ui-widget-header a {
+	color: #000000;
+}
+
+/* Interaction states
+----------------------------------*/
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border: 1px solid #474747;
+	background: #f6f6f6 url(../../images/ui-bg_glass_100_f6f6f6_1x400.png) 50% 50% repeat-x;
+	font-weight: bold;
+	color: #000000;
+}
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
+	border: 1px solid #474747;
+	background: #b1b1b1 url(../../images/ui-bg_glass_20_b1b1b1_1x400.png) 50% 50% repeat-x;
+	font-weight: bold;
+	color: #9A0000;
+}
+.ui-state-hover a, .ui-state-hover a:hover, .ui-state-hover a:link, .ui-state-hover a:visited {
+	color: #9A0000;
+	text-decoration: none;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { 
+	border: 1px solid #474747;
+	background: #ffffff url(../../images/ui-bg_glass_0_ffffff_1x400.png) 50% 50% repeat-x;
+	font-weight: bold;
+	color: #9A0000;
+}
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+	color: #9A0000;
+	text-decoration: none;
+}
 .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight{border:1px solid #9A0000; background:#9A0000 url(../../images/admin/jquery-ui/ui-bg_highlight-soft_75_9A0000_1x100.png) 50% top repeat-x; color:#363636}
 .ui-state-highlight a, .ui-widget-content .ui-state-highlight a, .ui-widget-header .ui-state-highlight a{color:#363636}
 .ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error{border:1px solid #9A0000; background:#9A0000 url(../../images/admin/jquery-ui/ui-bg_diagonals-thick_18_9A0000_40x40.png) 50% 50% repeat; color:#fff}

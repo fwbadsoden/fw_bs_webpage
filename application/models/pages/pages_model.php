@@ -131,7 +131,7 @@ class Pages_model extends CI_Model {
             {
                 $content['rows'][$i]['boxes'][$j]['rowContentID'] = $row->rowContentID;
                                 
-                $query3 = $this->db->get_where('page_box', array('boxID' => $row->boxContentID));
+                $query3 = $this->db->get_where('page_box', array('boxID' => $row->boxID));
                 $row_box = $query3->row();
                 
                 $content['rows'][$i]['boxes'][$j]['boxID'] = $row_box->boxID;
@@ -190,10 +190,30 @@ class Pages_model extends CI_Model {
         return $ids;
     }
     
+    public function get_box_meta($rowContentID)
+    {
+        $this->db->join('page_box', 'page_box.boxID = page_row_content.boxID');
+        $this->db->where('page_row_content.rowContentID', $rowContentID);
+        $query = $this->db->get('page_row_content');
+        $row = $query->row();
+        
+        $box_meta = array(
+            'boxID'         => $row->boxID,
+            'boxName'       => $row->boxName,
+            'columnCount'   => $row->columnCount,
+            'specialBox'    => $row->specialBox,
+            'boxTags'       => $row->boxTags,
+            'boxTagsNames'  => $row->boxTagsNames,
+            'boxImg'        => $row->boxImg
+        );
+        
+        return $box_meta;        
+    }
+    
     public function get_row_columns($rowID)
     {
         // aktuelle Anzahl der "vollen" Spalten in der Zeile ermitteln
-        $this->db->join('page_box', 'page_box.boxID = page_row_content.boxContentID');
+        $this->db->join('page_box', 'page_box.boxID = page_row_content.boxID');
         $query = $this->db->get_where('page_row_content', array('rowID' => $rowID));
         $fullColumns = 0;
         foreach($query->result() as $row)
@@ -252,7 +272,7 @@ class Pages_model extends CI_Model {
     public function add_box($rowID, $boxID)
     {
         $box = array(
-            'boxContentID' => $boxID,
+            'boxID' => $boxID,
             'rowID' => $rowID
         );
         $this->db->insert('page_row_content', $box);
@@ -325,27 +345,15 @@ class Pages_model extends CI_Model {
         {
             foreach($query->result() as $row)
             {
-                $this->delete_box_content($row->boxContentID, $rowContentID);
+                $this->delete_box_content($rowContentID);
             }
         }   
         $this->db->delete('page_row_content', array('rowContentID' => $rowContentID));         
     }
     
-    private function delete_box_content($boxContentID, $rowContentID)
+    private function delete_box_content($rowContentID)
     {
-        $this->db->delete('page_box_content', array('boxContentID' => $boxContentID)); 
-        
-        /* neu sortieren */
-        $query = $this->db->get_where('page_box_content', array('rowContentID' => $rowContentID));
-        if($query->num_rows() > 0)
-        {
-            $i = 1;
-            foreach($query->result() as $row)
-            {
-                $this->db->update('page_box_content', array('orderID' => $i), array('boxContentID' => $row->boxContentID));
-                $i++;
-            }
-        }
+        $this->db->delete('page_box_content', array('rowContentID' => $rowContentID)); 
     }
 	
 	public function switch_online_state($id, $online)

@@ -41,7 +41,7 @@
                         <td><?=form_input($pageName);?></td>
                     </tr>
                     <tr>
-                        <td class='form_label'>Vorlage w&auml;hlen:</td>
+                        <td class='form_label'>Vorlage:</td>
                         <td><?=$content['templateName']?></td>
                     </tr>
                 </table>
@@ -55,7 +55,7 @@
 <p>
 <table>
     <tr>
-        <td class="button"><a href="<?=base_url('admin/content/page/addrow/'.$page['pageID'])?>" class="button_gross" title="Zeile hinzuf&uuml;gen"><span class='button_add'>Zeile hinzuf&uuml;gen</span></a></td>
+        <td><a href="<?=base_url('admin/content/page/row/add/'.$page['pageID'])?>" class="button_gross" title="Zeile hinzuf&uuml;gen"><span class='button_add'>Zeile hinzuf&uuml;gen</span></a></td>
     </tr>
     
                 

@@ -11,7 +11,7 @@
  * @access public
  */
 class Pages_Admin extends CI_Controller {
-	private $pageID, $boxID, $rowID;
+	private $pageID, $boxID, $rowID, $rowContentID;
     
 	/**
 	 * Pages_Admin::__construct()
@@ -200,6 +200,33 @@ class Pages_Admin extends CI_Controller {
     }
     
     /**
+     * Pages_Admin::add_box_content()
+     * 
+     * @param integer $rowContentID
+     * @return 
+     */
+    public function add_box_content($rowContentID)
+    {
+        $this->rowContentID = $rowContentID;
+        
+        if($this->uri->segment($this->uri->total_segments()) != 'save')
+		{            
+            $header['title']    = 'Inhalt erstellen';		
+    		$menue['menue']	    = $this->admin->get_menue();
+    		$menue['submenue']	= $this->admin->get_submenue();            
+            $data['box_meta']   = $this->pages->get_box_meta($rowContentID);
+    	
+    		$this->load->view('backend/templates/admin/header', $header);
+    		$this->load->view('backend/templates/admin/menue', $menue);	
+    		$this->load->view('backend/templates/admin/submenue', $menue);
+            $this->load->view('backend/pages/addBoxContent_admin', $data);          
+			$this->load->view('backend/pages/tiny_mce_inc');
+    		$this->load->view('backend/templates/admin/footer');
+        }
+		else redirect($this->session->userdata('pageedit_redirect'), 'refresh');       
+    }
+    
+    /**
      * Pages_Admin::delete_page_verify()
      * 
      * @param integer $pageID
@@ -306,43 +333,6 @@ class Pages_Admin extends CI_Controller {
 		
 		redirect($this->session->userdata('pageedit_redirect'), 'refresh');    
     }
-    
-    ///**
-//     * Pages_Admin::delete_box_content_verify()
-//     * 
-//     * @param integer $boxContentID
-//     * @param integer $rowContentID
-//     * @return 
-//     */
-//    public function delete_box_content_verify($boxContentID, $rowContentID)
-//    {
-//        $header['title']    = 'Box l&ouml;schen';		
-//    	$menue['menue']	    = $this->admin->get_menue();
-//    	$menue['submenue']	= $this->admin->get_submenue();
-//        $data['type']       = 'box_content';
-//        $data['id']         = $boxContentID;
-//        $data['superID']    = $rowContentID;
-//    	
-//    	$this->load->view('backend/templates/admin/header', $header);
-//    	$this->load->view('backend/templates/admin/menue', $menue);	
-//    	$this->load->view('backend/templates/admin/submenue', $menue);	
-//    	$this->load->view('backend/pages/verifyDelete_admin', $data);
-//    	$this->load->view('backend/templates/admin/footer');
-//    } 
-//    
-//    /**
-//     * Pages_Admin::delete_box_content()
-//     * 
-//     * @param integer $boxContentID
-//     * @param integer $rowContentID
-//     * @return 
-//     */
-//    public function delete_box_content($boxContentID, $rowContentID)
-//    {
-//        $this->pages->delete_content($boxContentID, $rowContentID);
-//		
-//		redirect($this->session->userdata('pageedit_redirect'), 'refresh');    
-//    }
 	
 	/**
 	 * Pages_Admin::verify_create()
