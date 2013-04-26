@@ -57,11 +57,8 @@
 	$einsatzAnzahl = array(
 		'name'	=> 'anzahl',
 		'id'	=> 'anzahl',
-		'value' => 0,
-		'type'	=> 'range',
-		'max'	=> '40',
-		'step'	=> '1',
-		'keyboard' => 'true',
+		'class' => 'input_small',
+		'value' => set_value('anzahl')
 	);
 	if($this->input->post('anzahl') > 0) $einsatzAnzahl['value'] = set_value('anzahl');
 	
@@ -106,16 +103,10 @@ $(function() {
 			$.getJSON('<?=base_url('einsatz/einsatz_admin/json_get_einsatz_template')?>/' + $('#input_dropdown').val(),
 				function(data) {
 					$.each(data, function(i,item) {
-						if (item.field == "einsatzname") {
-							$('#einsatzname').val(item.value);
-						}
-						else if (item.field == "einsatzlage") {
-							$('#einsatzlage').val(item.value);
-						}
-						else if (item.field == "einsatzgeschehen") {
-							$('#einsatzgeschehen').val(item.value);
-						}
-						else if (item.field == "einsatzart") {
+						if (item.field == "einsatzname") { $('#einsatzname').val(item.value); }
+						else if (item.field == "einsatzlage") { $('#einsatzlage').val(item.value); }
+						else if (item.field == "einsatzgeschehen") { $('#einsatzgeschehen').val(item.value); }
+						else if (item.field == "einsatzart") { 
 							var arten = item.value.split('|');
 							$.each(arten, function(index, value) {
 								$('#t_' + value).attr('checked', true);
@@ -123,19 +114,16 @@ $(function() {
 						}
 						else if (item.field == "einsatzfahrzeug") {
 							var fahrzeuge = item.value.split('|');	
-							$.each(fahrzeuge, function(index, value) {
-								$('#f_' + value).attr('checked', true);
-							});					
+							$.each(fahrzeuge, function(index, value) { $('#f_' + value).attr('checked', true); });					
 						}
 					});
 				}
 			);
 	});
-
-	$(":range").rangeinput();
-	$(":date").dateinput({
-		format: 'dd.mm.yyyy',	
-	});
+    
+    $( "#slider_anzahl" ).slider({ value:5, min: 0, max: 50, step: 1 });
+    $( "#anzahl" ).val( "$" + $( "#slider_anzahl" ).slider( "value" ) );    
+	$(":date").dateinput({ format: 'dd.mm.yyyy'	});
 });
 
         
@@ -181,7 +169,7 @@ $(function() {
                     <tr><td></td></tr>
                     <tr>
                         <td><?=form_label('Anzahl Einsatzkräfte:', $einsatzAnzahl['id']); ?></td>
-                        <td><?=form_input($einsatzAnzahl); ?></td>
+                        <td><?=form_input($einsatzAnzahl); ?><div id='slider'></div></td>
                     </tr>
                     <tr>
                         <td><?=form_label('Einsatzlage:', $einsatzLage['id']); ?></td>

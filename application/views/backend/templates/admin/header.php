@@ -26,11 +26,11 @@
 <?=meta($meta)?>	
 <link rel="shortcut icon" href="<?=base_url('images/favicon.ico')?>" type="image/x-icon" />
 <link rel="stylesheet" href="<?=base_url('css/admin/admin.css')?>" type="text/css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script src="http://cdn.jquerytools.org/1.2.7/all/jquery.tools.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
-<script language="javascript" type="text/javascript" src="<?=base_url('js/tiny_mce/tiny_mce.js')?>"></script>
-<script language="javascript" type="text/javascript" src="<?=base_url('js/tiny_mce/jquery.tinymce.js')?>"></script>
+<script language="javascript" type="text/javascript" src="<?=base_url('js/tinymce/tinymce.min.js')?>"></script>
+<script language="javascript" type="text/javascript" src="<?=base_url('js/tinymce/jquery.tinymce.min.js')?>"></script>
 </head>
 <body>
 <div id="header">

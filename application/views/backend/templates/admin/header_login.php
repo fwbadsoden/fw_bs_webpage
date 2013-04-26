@@ -26,6 +26,6 @@
 <?=meta($meta)?>	
 <link rel="shortcut icon" href="<?=base_url('images/favicon.ico')?>" type="image/x-icon" />
 <link rel="stylesheet" href="<?=base_url('css/admin/login.css')?>" type="text/css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 </head>
 <body>

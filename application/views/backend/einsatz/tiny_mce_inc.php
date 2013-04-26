@@ -2,7 +2,7 @@
         $(function() {
                 $('textarea.tinymce').tinymce({
                         // Location of TinyMCE script
-                        script_url : '/js/tiny_mce/tiny_mce.js',
+                        script_url : '/js/tinymce/tinymce.min.js',
 
                         // General options
                         theme : "advanced",
@@ -17,7 +17,7 @@
                         theme_advanced_resizing : true,
 
                         // Example content CSS (should be your site CSS)
-                        content_css : "../../css/layout.css",
+                        //content_css : "../../css/layout.css",
 
                 });
         });
