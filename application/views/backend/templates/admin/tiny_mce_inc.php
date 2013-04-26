@@ -7,7 +7,8 @@
                         script_url : '/js/tinymce/tinymce.min.js',
                         theme : "modern",
                         skin : 'crazypixls',
-                        width: 500,
+                        language : 'de',
+                        width: 700,
                         height: 400,
                         plugins : [ 
                             "advlist autolink autoresize autosave",
@@ -27,6 +28,8 @@
                             "tabfocus table template textcolor",
                             "visualblocks visualchars wordcount" 
                         ],
+                        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",    
+                        menubar: "newdocument",
                         
 
                         // Example content CSS (should be your site CSS) -- geht mit aktuellem CSS nicht... prüfen!!!
