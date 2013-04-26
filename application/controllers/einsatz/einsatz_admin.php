@@ -88,10 +88,10 @@ class Einsatz_Admin extends CI_Controller {
 			$einsatz['templates']	= $this->einsatz->get_einsatz_templates();
 		
 			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/tiny_mce_inc');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);
 			$this->load->view('backend/einsatz/createEinsatz_admin', $einsatz);
-			$this->load->view('backend/einsatz/tiny_mce_inc');
 			$this->load->view('backend/templates/admin/footer');
 		}
 		else redirect($this->session->userdata('einsatzliste_redirect'), 'refresh');
@@ -126,10 +126,10 @@ class Einsatz_Admin extends CI_Controller {
 			$einsatz['einsatz']		= $this->einsatz->get_einsatz($id);
 		
 			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/tiny_mce_inc');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);
 			$this->load->view('backend/einsatz/editEinsatz_admin', $einsatz); 
-			$this->load->view('backend/einsatz/tiny_mce_inc');
 			$this->load->view('backend/templates/admin/footer');
 		}
 		else redirect($this->session->userdata('einsatzliste_redirect'), 'refresh');	
@@ -253,10 +253,10 @@ class Einsatz_Admin extends CI_Controller {
 			$einsatz['error']		= $error;
 		
 			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/tiny_mce_inc');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);
 			$this->load->view('backend/einsatz/image_upload', $einsatz); 
-			$this->load->view('backend/einsatz/tiny_mce_inc');
 			$this->load->view('backend/templates/admin/footer');
 		}
 	}

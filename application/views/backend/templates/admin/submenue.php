@@ -1,3 +1,4 @@
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <div id="submenue">
 	<ul>
 <? foreach($submenue as $menue) { ?>

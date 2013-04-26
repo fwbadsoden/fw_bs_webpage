@@ -121,9 +121,9 @@ $(function() {
 			);
 	});
     
-    $( "#slider_anzahl" ).slider({ value:5, min: 0, max: 50, step: 1 });
-    $( "#anzahl" ).val( "$" + $( "#slider_anzahl" ).slider( "value" ) );    
-	$(":date").dateinput({ format: 'dd.mm.yyyy'	});
+    //$( "#slider_anzahl" ).slider({ value:5, min: 0, max: 50, step: 1 });
+    //$( "#anzahl" ).val( "$" + $( "#slider_anzahl" ).slider( "value" ) );    
+	//$( "#einsatzdatum" ).datepicker();
 });
 
         

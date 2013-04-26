@@ -101,9 +101,7 @@
 
 <script type="text/javascript">
 $(function() { 
-	$(":date").dateinput({
-		format: 'dd.mm.yyyy',	
-	});
+	//$( "#einsatzdatum" ).datepicker();
 });          
 </script>
 

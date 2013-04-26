@@ -155,41 +155,10 @@ img{border:0}
 #pagination-flickr a:link,#pagination-flickr a:visited{color:#9A0000;display:block;float:left;padding:3px 6px;text-decoration:none;}
 #pagination-flickr a:hover{border:solid 1px #666666;}
 
-/*++++++++++++++++Datumsselektor++++++++++++++++++++++*/
-/* For the details, see: http://flowplayer.org/tools/dateinput/index.html#skinning */
-.date{width:100px;height:15px;border:1px solid #CCC;background-color:#FFF;font:11px Arial,Helvetica,sans-serif;color:#000;padding:2px 4px 2px 4px}
-#calroot{z-index:10000;margin-top:3px;width:198px;padding:2px;background-color:#fff;font:11px Arial,Helvetica,sans-serif;border:1px solid #ccc;-moz-border-radius:5px;-webkit-border-radius:5px;-moz-box-shadow:0 0 15px #666;-webkit-box-shadow:0 0 15px #666}
-#calhead{padding:2px 0;height:22px}
-#caltitle{font-size:14px;color:#9A0000;float:left;text-align:center;width:155px;line-height:20px;text-shadow:0 1px 0 #ddd}
-#calnext,#calprev{display:block;width:20px;height:20px;width:16px;height:16px;background-image:url(../../../images/admin/jquery-ui/ui-icons_9A0000_256x240.png);background-position:-80px -192px;float:left;cursor:pointer}
-#calnext{background-position:-48px -192px;float:right}
-#calprev.caldisabled,#calnext.caldisabled{visibility:hidden}
-#caltitle select{font-size:10px}
-#caldays{height:14px;border-bottom:1px solid #ddd}
-#caldays span{display:block;float:left;width:28px;text-align:center}
-#calweeks{background-color:#fff;margin-top:4px}
-.calweek{clear:left;height:22px}
-.calweek a{display:block;float:left;width:27px;height:20px;text-decoration:none;font-size:11px;margin-left:1px;text-align:center;line-height:20px;color:#666;-moz-border-radius:3px;-webkit-border-radius:3px}
-.calweek a:hover,.calfocus{background-color:#ddd}
-a.calsun{color:red}
-a.caloff{color:#ccc}
-a.caloff:hover{background-color:rgb(245,245,250)}
-a.caldisabled{background-color:#efefef !important;color:#ccc!important;cursor:default}
-#calcurrent{background-color:#9A0000;color:#fff}
-#caltoday{background-color:#333;color:#fff}
-
 /* Tablesorter */
 table.tablesorter thead tr .header{background-image:url(../../../images/admin/buttons/tablesort_both.gif);background-repeat:no-repeat;background-position:center right;cursor:pointer}
 table.tablesorter thead tr .headerSortUp{background-image:url(../../../images/admin/buttons/tablesort_asc.gif)}
 table.tablesorter thead tr .headerSortDown{background-image:url(../../../images/admin/buttons/tablesort_desc.gif)}
-
-/* Timepicker jquery */
-.ui-timepicker-div .ui-widget-header{margin-bottom:8px}
-.ui-timepicker-div dl{text-align:left}
-.ui-timepicker-div dl dt{height:25px;margin-bottom:-25px}
-.ui-timepicker-div dl dd{margin:0 10px 10px 65px}
-.ui-timepicker-div td{font-size:90%}
-.ui-tpicker-grid-label{background:none;border:none;margin:0;padding:0}
 
 /*! jQuery UI - v1.10.2 - 2013-04-26 * http://jqueryui.com * Includes: jquery.ui.core.css, jquery.ui.resizable.css, jquery.ui.selectable.css, jquery.ui.accordion.css, jquery.ui.autocomplete.css, jquery.ui.button.css, jquery.ui.datepicker.css, jquery.ui.dialog.css, jquery.ui.menu.css, jquery.ui.progressbar.css, jquery.ui.slider.css, jquery.ui.spinner.css, jquery.ui.tabs.css, jquery.ui.tooltip.css * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Trebuchet%20MS%2CTahoma%2CVerdana%2CArial%2Csans-serif&fwDefault=bold&fsDefault=1.1em&cornerRadius=2px&bgColorHeader=%239A0000&bgTextureHeader=flat&bgImgOpacityHeader=35&borderColorHeader=%23474747&fcHeader=%23ffffff&iconColorHeader=%23ffffff&bgColorContent=%23eeeeee&bgTextureContent=highlight_soft&bgImgOpacityContent=100&borderColorContent=%23dddddd&fcContent=%23333333&iconColorContent=%23222222&bgColorDefault=%23f6f6f6&bgTextureDefault=glass&bgImgOpacityDefault=100&borderColorDefault=%23b1b1b1&fcDefault=%239A0000&iconColorDefault=%239A0000&bgColorHover=%23b1b1b1&bgTextureHover=flat&bgImgOpacityHover=100&borderColorHover=%23474747&fcHover=%239A0000&iconColorHover=%239A0000&bgColorActive=%23474747&bgTextureActive=flat&bgImgOpacityActive=65&borderColorActive=%23474747&fcActive=%23ffffff&iconColorActive=%239A0000&bgColorHighlight=%23b1b1b1&bgTextureHighlight=diagonals_small&bgImgOpacityHighlight=40&borderColorHighlight=%23474747&fcHighlight=%23000000&iconColorHighlight=%230f1df5&bgColorError=%23fe3e3e&bgTextureError=diagonals_thick&bgImgOpacityError=50&borderColorError=%23474747&fcError=%23ffffff&iconColorError=%239A0000&bgColorOverlay=%23666666&bgTextureOverlay=highlight_soft&bgImgOpacityOverlay=20&opacityOverlay=50&bgColorShadow=%23000000&bgTextureShadow=flat&bgImgOpacityShadow=10&opacityShadow=20&thicknessShadow=5px&offsetTopShadow=-5px&offsetLeftShadow=-5px&cornerRadiusShadow=5px * Copyright 2013 jQuery Foundation and other contributors Licensed MIT */
 /* Layout helpers ----------------------------------*/
@@ -367,21 +336,21 @@ body .ui-tooltip{border-width:2px;}
 .ui-widget{font-family:Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;font-size:1.1em;}
 .ui-widget .ui-widget{font-size:1em;}
 .ui-widget input,.ui-widget select,.ui-widget textarea,.ui-widget button{font-family:Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;font-size:1em;}
-.ui-widget-content{border:1px solid #dddddd;background:#eeeeee url(../../images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x;color:#333333;}
+.ui-widget-content{border:1px solid #dddddd;background:#eeeeee url(../../images/admin/jquery-ui/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x;color:#333333;}
 .ui-widget-content a{color:#333333;}
-.ui-widget-header{border:1px solid #474747;background:#9A0000 url(../../images/ui-bg_flat_35_9A0000_40x100.png) 50% 50% repeat-x;color:#ffffff;font-weight:bold;}
+.ui-widget-header{border:1px solid #474747;background:#9A0000 url(../../images/admin/jquery-ui/ui-bg_flat_35_9A0000_40x100.png) 50% 50% repeat-x;color:#ffffff;font-weight:bold;}
 .ui-widget-header a{color:#ffffff;}
 /* Interaction states ----------------------------------*/
-.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default{border:1px solid #b1b1b1;background:#f6f6f6 url(../../images/ui-bg_glass_100_f6f6f6_1x400.png) 50% 50% repeat-x;font-weight:bold;color:#9A0000;}
+.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default{border:1px solid #b1b1b1;background:#f6f6f6 url(../../images/admin/jquery-ui/ui-bg_glass_100_f6f6f6_1x400.png) 50% 50% repeat-x;font-weight:bold;color:#9A0000;}
 .ui-state-default a,.ui-state-default a:link,.ui-state-default a:visited{color:#9A0000;text-decoration:none;}
-.ui-state-hover,.ui-widget-content .ui-state-hover,.ui-widget-header .ui-state-hover,.ui-state-focus,.ui-widget-content .ui-state-focus,.ui-widget-header .ui-state-focus{border:1px solid #474747;background:#b1b1b1 url(../../images/ui-bg_flat_100_b1b1b1_40x100.png) 50% 50% repeat-x;font-weight:bold;color:#9A0000;}
+.ui-state-hover,.ui-widget-content .ui-state-hover,.ui-widget-header .ui-state-hover,.ui-state-focus,.ui-widget-content .ui-state-focus,.ui-widget-header .ui-state-focus{border:1px solid #474747;background:#b1b1b1 url(../../images/admin/jquery-ui/ui-bg_flat_100_b1b1b1_40x100.png) 50% 50% repeat-x;font-weight:bold;color:#9A0000;}
 .ui-state-hover a,.ui-state-hover a:hover,.ui-state-hover a:link,.ui-state-hover a:visited{color:#9A0000;text-decoration:none;}
-.ui-state-active,.ui-widget-content .ui-state-active,.ui-widget-header .ui-state-active{border:1px solid #474747;background:#474747 url(../../images/ui-bg_flat_65_474747_40x100.png) 50% 50% repeat-x;font-weight:bold;color:#ffffff;}
+.ui-state-active,.ui-widget-content .ui-state-active,.ui-widget-header .ui-state-active{border:1px solid #474747;background:#474747 url(../../images/admin/jquery-ui/ui-bg_flat_65_474747_40x100.png) 50% 50% repeat-x;font-weight:bold;color:#ffffff;}
 .ui-state-active a,.ui-state-active a:link,.ui-state-active a:visited{color:#ffffff;text-decoration:none;}
 /* Interaction Cues ----------------------------------*/
-.ui-state-highlight,.ui-widget-content .ui-state-highlight,.ui-widget-header .ui-state-highlight{border:1px solid #474747;background:#b1b1b1 url(../../images/ui-bg_diagonals-small_40_b1b1b1_40x40.png) 50% 50% repeat;color:#000000;}
+.ui-state-highlight,.ui-widget-content .ui-state-highlight,.ui-widget-header .ui-state-highlight{border:1px solid #474747;background:#b1b1b1 url(../../images/admin/jquery-ui/ui-bg_diagonals-small_40_b1b1b1_40x40.png) 50% 50% repeat;color:#000000;}
 .ui-state-highlight a,.ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a{color:#000000;}
-.ui-state-error,.ui-widget-content .ui-state-error,.ui-widget-header .ui-state-error{border:1px solid #474747;background:#fe3e3e url(../../images/ui-bg_diagonals-thick_50_fe3e3e_40x40.png) 50% 50% repeat;color:#ffffff;}
+.ui-state-error,.ui-widget-content .ui-state-error,.ui-widget-header .ui-state-error{border:1px solid #474747;background:#fe3e3e url(../../images/admin/jquery-ui/ui-bg_diagonals-thick_50_fe3e3e_40x40.png) 50% 50% repeat;color:#ffffff;}
 .ui-state-error a,.ui-widget-content .ui-state-error a,.ui-widget-header .ui-state-error a{color:#ffffff;}
 .ui-state-error-text,.ui-widget-content .ui-state-error-text,.ui-widget-header .ui-state-error-text{color:#ffffff;}
 .ui-priority-primary,.ui-widget-content .ui-priority-primary,.ui-widget-header .ui-priority-primary{font-weight:bold;}
@@ -391,13 +360,13 @@ body .ui-tooltip{border-width:2px;}
 /* Icons ----------------------------------*/
 /* states and images */
 .ui-icon{width:16px;height:16px;}
-.ui-icon,.ui-widget-content .ui-icon{background-image:url(../../images/ui-icons_222222_256x240.png);}
-.ui-widget-header .ui-icon{background-image:url(../../images/ui-icons_ffffff_256x240.png);}
-.ui-state-default .ui-icon{background-image:url(../../images/ui-icons_9A0000_256x240.png);}
-.ui-state-hover .ui-icon,.ui-state-focus .ui-icon{background-image:url(../../images/ui-icons_9A0000_256x240.png);}
-.ui-state-active .ui-icon{background-image:url(../../images/ui-icons_9A0000_256x240.png);}
-.ui-state-highlight .ui-icon{background-image:url(../../images/ui-icons_0f1df5_256x240.png);}
-.ui-state-error .ui-icon,.ui-state-error-text .ui-icon{background-image:url(../../images/ui-icons_9A0000_256x240.png);}
+.ui-icon,.ui-widget-content .ui-icon{background-image:url(../../images/admin/jquery-ui/ui-icons_222222_256x240.png);}
+.ui-widget-header .ui-icon{background-image:url(../../images/admin/jquery-ui/ui-icons_ffffff_256x240.png);}
+.ui-state-default .ui-icon{background-image:url(../../images/admin/jquery-ui/ui-icons_9A0000_256x240.png);}
+.ui-state-hover .ui-icon,.ui-state-focus .ui-icon{background-image:url(../../images/admin/jquery-ui/ui-icons_9A0000_256x240.png);}
+.ui-state-active .ui-icon{background-image:url(../../images/admin/jquery-ui/ui-icons_9A0000_256x240.png);}
+.ui-state-highlight .ui-icon{background-image:url(../../images/admin/jquery-ui/ui-icons_0f1df5_256x240.png);}
+.ui-state-error .ui-icon,.ui-state-error-text .ui-icon{background-image:url(../../images/admin/jquery-ui/ui-icons_9A0000_256x240.png);}
 /* positioning */
 .ui-icon-blank{background-position:16px 16px;}
 .ui-icon-carat-1-n{background-position:0 0;}
@@ -582,5 +551,5 @@ body .ui-tooltip{border-width:2px;}
 .ui-corner-all,.ui-corner-bottom,.ui-corner-left,.ui-corner-bl{border-bottom-left-radius:2px;}
 .ui-corner-all,.ui-corner-bottom,.ui-corner-right,.ui-corner-br{border-bottom-right-radius:2px;}
 /* Overlays */
-.ui-widget-overlay{background:#666666 url(../../images/ui-bg_highlight-soft_20_666666_1x100.png) 50% top repeat-x;opacity:.5;filter:Alpha(Opacity=50);}
-.ui-widget-shadow{margin:-5px 0 0 -5px;padding:5px;background:#000000 url(../../images/ui-bg_flat_10_000000_40x100.png) 50% 50% repeat-x;opacity:.2;filter:Alpha(Opacity=20);border-radius:5px;}
+.ui-widget-overlay{background:#666666 url(../../images/admin/jquery-ui/ui-bg_highlight-soft_20_666666_1x100.png) 50% top repeat-x;opacity:.5;filter:Alpha(Opacity=50);}
+.ui-widget-shadow{margin:-5px 0 0 -5px;padding:5px;background:#000000 url(../../images/admin/jquery-ui/ui-bg_flat_10_000000_40x100.png) 50% 50% repeat-x;opacity:.2;filter:Alpha(Opacity=20);border-radius:5px;}
