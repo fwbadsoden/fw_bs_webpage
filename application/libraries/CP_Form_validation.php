@@ -1,11 +1,15 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/*
- * Custom form validation function v 0.1
+/**
+ * CP Auth
  *
- * Add functionality : edit_unique (takes care of the currently edited database record)
+ * Library mit Formvalidierungsfunktionen.
  *
- */
+ * @package		com.cp.feuerwehr.libraries.form_validation
+ * @subpackage	Library
+ * @category	Library
+ * @author		Habib Pleines
+ */	
 
 Class CP_Form_validation extends CI_Form_validation
 {

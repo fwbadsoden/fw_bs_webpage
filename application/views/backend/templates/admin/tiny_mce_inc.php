@@ -10,6 +10,7 @@
                         language : 'de',
                         width: 700,
                         height: 400,
+                        doctype: '',
                         plugins : [ 
                             "advlist autolink autoresize autosave",
                             "bbcode",
