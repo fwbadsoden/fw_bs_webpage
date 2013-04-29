@@ -60,7 +60,6 @@
 		'class' => 'input_small',
 		'value' => set_value('anzahl')
 	);
-	if($this->input->post('anzahl') > 0) $einsatzAnzahl['value'] = set_value('anzahl');
 	
 	for($i = 0; $i < count($types); $i++)
 	{
@@ -166,23 +165,17 @@ $(function() {
             <td>
                 <table>
                     <tr>
+                        <td><?=form_label('Einsatz-Nr. der Leitstelle:', $einsatzNr['id']); ?></td>
+                        <td><?=form_input($einsatzNr); ?></div></td>
+                    </tr>
+                    <tr>
                         <td class='form_label'><?=form_label('Einsatzname:', $einsatzName['id']); ?></td>
                         <td><?=form_input($einsatzName); ?></td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td>
-                            <table>
-                                <tr>
-                                    <td><?=form_label('Einsatz-Nr.:', $einsatzNr['id']); ?><br><?=form_input($einsatzNr); ?></td>
-                                    <td><?=form_label('Datum:', $einsatzDatum['id']); ?><br><?=form_input($einsatzDatum); ?></td>
-                                    <td><?=form_label('Beginn:', $einsatzBeginn['id']); ?><br><?=form_input($einsatzBeginn); ?></td>
-                                    <td><?=form_label('Ende:', $einsatzEnde['id']); ?><br><?=form_input($einsatzEnde); ?></td>
-                                </tr>
-                            </table>
-                        </td>
+                        <td><?=form_label('Datum, Beginn, Ende:', $einsatzDatum['id']); ?></td>
+                        <td><?=form_input($einsatzDatum); ?>&nbsp;<?=form_input($einsatzBeginn); ?>&nbsp;<?=form_input($einsatzEnde); ?></td>
                     </tr>
-                    <tr><td></td></tr>
                     <tr>
                         <td><?=form_label('Anzahl Einsatzkräfte:', $einsatzAnzahl['id']); ?></td>
                         <td><?=form_input($einsatzAnzahl); ?><div id='slider'></div></td>

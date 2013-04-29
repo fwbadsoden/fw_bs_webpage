@@ -162,14 +162,15 @@ class Einsatz_Admin extends CI_Controller {
 		
 		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
 		
+		$this->form_validation->set_rules('einsatznr', 'Einsatz-Nr. der Leitstelle', 'required|is_natural_no_zero|xss_clean');
 		$this->form_validation->set_rules('einsatzname', 'Einsatzname', 'required|max_length[255]|xss_clean');	
 		$this->form_validation->set_rules('einsatzdatum', 'Einsatzdatum', 'required|callback_einsatzdatum'); 
 		$this->form_validation->set_rules('einsatzbeginn', 'Einsatzbeginn', 'required|callback_einsatzbeginn'); 
 		$this->form_validation->set_rules('einsatzende', 'Einsatzende', 'required|callback_einsatzende'); 
+		$this->form_validation->set_rules('anzahl', 'Anzahl Einsatzkräfte', 'required|is_natural_no_zero|xss_clean');
 		$this->form_validation->set_rules('einsatzlage', 'Einsatzlage', 'required|xss_clean');
 		$this->form_validation->set_rules('einsatzgeschehen', 'Einsatzgeschehen', 'required|xss_clean');
-		$this->form_validation->set_rules('weitereeinsatzkraefte', 'Weitere Kräfte', 'xss_clean'); 
-		$this->form_validation->set_rules('anzahl', 'Anzahl Einsatzkräfte', 'required|is_natural_no_zero|xss_clean');
+		$this->form_validation->set_rules('weitereeinsatzkraefte', 'Weitere Einsatzkräfte', 'xss_clean'); 
 
 		return $this->form_validation->run();	
 	}
