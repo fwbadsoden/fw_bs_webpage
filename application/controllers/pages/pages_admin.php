@@ -216,11 +216,11 @@ class Pages_Admin extends CI_Controller {
     		$menue['submenue']	= $this->admin->get_submenue();            
             $data['box_meta']   = $this->pages->get_box_meta($rowContentID);
     	
-    		$this->load->view('backend/templates/admin/header', $header);
+    		$this->load->view('backend/templates/admin/header', $header);     
+			$this->load->view('backend/templates/admin/tiny_mce_inc');
     		$this->load->view('backend/templates/admin/menue', $menue);	
     		$this->load->view('backend/templates/admin/submenue', $menue);
-            $this->load->view('backend/pages/addBoxContent_admin', $data);          
-			$this->load->view('backend/pages/tiny_mce_inc');
+            $this->load->view('backend/pages/addBoxContent_admin', $data);     
     		$this->load->view('backend/templates/admin/footer');
         }
 		else redirect($this->session->userdata('pageedit_redirect'), 'refresh');       

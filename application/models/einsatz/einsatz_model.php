@@ -62,6 +62,9 @@ class Einsatz_Model extends CI_Model {
 		
 		foreach($query->result() as $row)
 		{
+            $this->db->select('imgID');
+            $query2 = $this->db->get_where('einsatz_img', array('einsatzID' => $row->einsatzID));
+          
 			$this->color = cp_get_color($this->color);
 			
 			$arr_einsatz_list[$i]['lfdNr'] 			= $row->lfdNr;
@@ -74,6 +77,7 @@ class Einsatz_Model extends CI_Model {
 			$arr_einsatz_list[$i]['online'] 		= $row->online;
 			$arr_einsatz_list[$i]['row_color']		= $this->color;
 			$arr_einsatz_list[$i]['year']			= $year;
+            $arr_einsatz_list[$i]['imgCount']       = $query2->num_rows();
 			
 			$i++;
 		}

@@ -25,8 +25,8 @@
 <title>Feuerwehr Bad Soden am Taunus - <?=$title?></title>
 <?=meta($meta)?>	
 <link rel="shortcut icon" href="<?=base_url('images/favicon.ico')?>" type="image/x-icon" />
-<link rel="stylesheet" href="<?=base_url('css/admin/admin.css')?>" type="text/css" />
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<link rel="stylesheet" href="<?=base_url('css/backend/admin.css')?>" type="text/css" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 <script language="javascript" type="text/javascript" src="<?=base_url('js/tinymce/tinymce.min.js')?>"></script>
 <script language="javascript" type="text/javascript" src="<?=base_url('js/tinymce/jquery.tinymce.min.js')?>"></script>

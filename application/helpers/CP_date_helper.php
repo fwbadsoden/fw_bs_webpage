@@ -12,8 +12,8 @@
 // ------------------------------------------------------------------------
 
 /**
- * Validate english date
- * Input must be in enghlish date format to work
+ * Validate german date
+ * Input must be in german date format to work
  *
  * Input Y-m-d
  * Returns Boolean
@@ -22,35 +22,36 @@
  * @return	boolean
  */	
 
-if ( ! function_exists('cp_is_valid_date'))
+if ( ! function_exists('cp_is_valid_ger_date'))
 {
-	function cp_is_valid_date($date, $format = 'DD.MM.YYYY')
+	function cp_is_valid_ger_date($date)
 	{
-		if(strlen($date) >= 8 && strlen($date) <= 10)
-		{
-	        $separator_only = str_replace(array('M','D','Y'),'', $format);
-	        $separator = $separator_only[0];
-	        if($separator)
-	        {
-	            $regexp = str_replace($separator, "\\" . $separator, $format);
-	            $regexp = str_replace('MM', '(0[1-9]|1[0-2])', $regexp);
-	            $regexp = str_replace('M', '(0?[1-9]|1[0-2])', $regexp);
-	            $regexp = str_replace('DD', '(0[1-9]|[1-2][0-9]|3[0-1])', $regexp);
-	            $regexp = str_replace('D', '(0?[1-9]|[1-2][0-9]|3[0-1])', $regexp);
-	            $regexp = str_replace('YYYY', '\d{4}', $regexp);
-	            $regexp = str_replace('YY', '\d{2}', $regexp);
-	            if($regexp != $date && preg_match('/'.$regexp.'$/', $date)){
-	                foreach (array_combine(explode($separator,$format), explode($separator,$date)) as $key=>$value) {
-	                    if ($key == 'YY') $year = '20'.$value;
-	                    if ($key == 'YYYY') $year = $value;
-	                    if ($key[0] == 'M') $month = $value;
-	                    if ($key[0] == 'D') $day = $value;
-	                }
-	                if (checkdate($month,$day,$year)) return true;
-	            }
-	        }
-	    }
-    	return false;        	
+        $day = (int) substr($date, 0, 2);
+        $month = (int) substr($date, 3, 2);
+        $year = (int) substr($date, 6, 4);
+        return checkdate($month, $day, $year);  
+	}
+}
+
+/**
+ * Validate english date
+ * Input must be in english date format to work
+ *
+ * Input Y-m-d
+ * Returns Boolean
+ *
+ * @access	public
+ * @return	boolean
+ */	
+
+if ( ! function_exists('cp_is_valid_eng_date'))
+{
+	function cp_is_valid_eng_date($date)
+	{
+        $day = (int) substr($date, 8, 2);
+        $month = (int) substr($date, 5, 2);
+        $year = (int) substr($date, 0, 4);
+        return checkdate($month, $day, $year);        	
 	}
 }
 

@@ -97,9 +97,11 @@
 	}
 ?>
 
+<!-- Timepicker URL http://fgelinas.com/code/timepicker/ -->
+<script src="<?=base_url('js/jquery.ui.timepicker.js')?>"></script>
 <script type="text/javascript">
 $(function() {
-	$('#input_dropdown_einsatz').bind('change', function(e) {
+	$('#input_dropdown').bind('change', function(e) {
 			$.getJSON('<?=base_url('einsatz/einsatz_admin/json_get_einsatz_template')?>/' + $('#input_dropdown').val(),
 				function(data) {
 					$.each(data, function(i,item) {
@@ -124,6 +126,20 @@ $(function() {
     //$( "#slider_anzahl" ).slider({ value:5, min: 0, max: 50, step: 1 });
     //$( "#anzahl" ).val( "$" + $( "#slider_anzahl" ).slider( "value" ) );    
 	//$( "#einsatzdatum" ).datepicker();
+    $.timepicker.regional['de'] = {
+                hourText: 'Stunde',
+                minuteText: 'Minuten',
+                amPmText: ['AM', 'PM'] ,
+                closeButtonText: 'Beenden',
+                nowButtonText: 'Jetzt',                
+                deselectButtonText: 'Zur&uuml;cksetzen' }
+    $.timepicker.setDefaults($.timepicker.regional['de']);
+    $('.input_time').timepicker({
+        showNowButton: true,
+        showDeselectButton: true,
+        defaultTime: '',  // removes the highlighted time for when the input is empty.
+        showCloseButton: true
+    });
 });
 
         

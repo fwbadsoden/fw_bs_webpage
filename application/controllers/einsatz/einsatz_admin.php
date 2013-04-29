@@ -32,7 +32,7 @@ class Einsatz_Admin extends CI_Controller {
 		$this->cpauth->init('BACKEND');
 		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
 		
-		$this->upload_path = 'images/content/einsaetze/';
+		$this->upload_path = CONTENT_IMG_UPLOAD_PATH;
 	}
 		
 	/**
@@ -187,11 +187,15 @@ class Einsatz_Admin extends CI_Controller {
 		if($this->uri->segment($this->uri->total_segments()) == 'save' && $recursive == 0)
 		{	
 			if($this->input->post('img_manager') == 'img_upload')
-			{ 
+			{ 	
+                $this->load->library('image_lib');	
+				$this->load->library('image_moo');
+                
 				$config['upload_path'] = $this->upload_path;
 				$config['allowed_types'] = 'jpg|png';
-				$config['encrypt_name'] = TRUE;
-				$this->load->library('upload', $config);		
+				$config['file_name'] = 'E_'.$this->image_lib->generate_img_name($id.$this->cp_auth->cp_generate_salt());;
+                
+				$this->load->library('upload', $config);
 				
 				if(!$this->upload->do_upload('upload_image'))
 				{
@@ -217,8 +221,7 @@ class Einsatz_Admin extends CI_Controller {
 						$width = 768; 
 						$height = 1024; 		
 					}
-					$thumb = $this->cp_auth->cp_generate_hash($id.$this->cp_auth->cp_generate_salt());
-					$this->load->library('image_moo');
+					$thumb = 'E_'.$this->image_lib->generate_img_name($id.$this->cp_auth->cp_generate_salt());
 					$this->image_moo->set_jpeg_quality(90);
 					// Bild verkleinern 
 					$this->image_moo->load($this->upload_path.$filename)->resize($width, $height)->save($this->upload_path.$filename, true);
@@ -334,7 +337,7 @@ class Einsatz_Admin extends CI_Controller {
 	public function einsatzdatum($datum)
 	{
 		$this->form_validation->set_message('einsatzdatum', 'Bitte ein gültiges %s angeben.');
-		return cp_is_valid_date($datum);		
+		return cp_is_valid_ger_date($datum);		
 	}
 	
 	/**

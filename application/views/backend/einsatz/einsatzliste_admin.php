@@ -25,7 +25,11 @@ $(document).ready(function() {
             // disable it by setting the property sorter to false 
             sorter: false 
             },
-        7:  { 
+        6:  { 
+            // disable it by setting the property sorter to false 
+            sorter: false 
+            },  
+        8:  { 
             // disable it by setting the property sorter to false 
             sorter: false 
             }  
@@ -94,6 +98,7 @@ switch(ID) {
 		<th class="headline_date">Beginn</th>
 		<th class="headline_date">Ende</th>
 		<th class="headline_titel">Referenz</th>
+		<th class="headline_id">Bilder</th>
 		<th class="headline_status">Status</th>
 		<th colspan="4" class="headline_edit">Edit</th>
 	</tr>
@@ -107,6 +112,7 @@ switch(ID) {
 	<td><?=$item['beginn']?></td>
 	<td><?=$item['ende']?></td>
 	<td><?=$item['einsatzName']?></td>
+	<td><?=str_pad($item['imgCount'], 5 ,'0', STR_PAD_LEFT);?></td>
 	<td style='text-align:center'>
 	<?  if($item['online']==1) { ?>
 		<span style='color: green;'>online</span>

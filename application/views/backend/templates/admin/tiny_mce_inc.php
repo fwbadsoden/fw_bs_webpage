@@ -16,24 +16,29 @@
                             "charmap code contextmenu",
                             "directionality",
                             "emoticons",
-                            "fullpage fullscreen",
+                            "fullscreen",
                             "hr",
                             "image insertdatetime",
                             "layer legacyoutput",
                             "link lists",
-                            "media",
                             "nonbreaking noneditable",
-                            "pagebreak paste preview print",
+                            "pagebreak paste preview",
                             "save searchreplace spellchecker",
                             "tabfocus table template textcolor",
                             "visualblocks visualchars wordcount" 
                         ],
-                        toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",    
-                        menubar: "newdocument",
+//                        style_formats: [
+//                                {title: 'Image Left', selector: 'img', styles: {
+//                                        'float' : 'left', 
+//                                        'margin': '0 10px 0 10px'
+//                                }},
+//                                {title: 'Image Right', selector: 'img', styles: {
+//                                        'float' : 'right', 
+//                                        'margin': '0 10px 0 10px'
+//                                }},
+//                        ],
+                        toolbar: "undo redo cut copy paste | styleselect | bold italic underline strikethrough subscript superscript | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | preview fullscreen | forecolor backcolor emoticons",    
                         
-// test kommentar
-                        // Example content CSS (should be your site CSS) -- geht mit aktuellem CSS nicht... prüfen!!!
-                        //content_css : "/css/admin/admin.css",
                 });
         });
 </script>

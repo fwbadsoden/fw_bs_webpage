@@ -275,7 +275,19 @@ class Pages_model extends CI_Model {
             'boxID' => $boxID,
             'rowID' => $rowID
         );
+        
         $this->db->insert('page_row_content', $box);
+        $insertID = $this->db->insert_id();
+        $box_meta = $this->get_box_meta($insertID);            
+        
+        if($box_meta['specialBox'] != 1)
+        {        
+            $boxTags = explode(PAGES_BOX_TAGS_SEPARATOR, $box_meta['boxTags']);  
+            foreach($boxTags as $b)
+            {
+                
+            }
+        }
     }
     
     public function create_page()

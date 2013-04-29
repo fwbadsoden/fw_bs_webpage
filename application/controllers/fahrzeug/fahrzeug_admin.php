@@ -31,7 +31,7 @@ class Fahrzeug_Admin extends CI_Controller {
 		$this->cpauth->init('BACKEND');
 		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
 		
-		$this->upload_path = 'images/content/fahrzeuge/';
+		$this->upload_path = CONTENT_IMG_UPLOAD_PATH;
 	}
 	
 	/**
@@ -185,10 +185,13 @@ class Fahrzeug_Admin extends CI_Controller {
 		{	
 			if($this->input->post('img_manager') == 'img_upload')
 			{ 
-				echo "Schritt 1 - ";
+				$this->load->library('image_lib');	
+				$this->load->library('image_moo');
+                
 				$config['upload_path'] = $this->upload_path;
 				$config['allowed_types'] = 'jpg|png';
-				$config['encrypt_name'] = TRUE;
+				$config['file_name'] = 'F_'.$this->image_lib->generate_img_name($id.$this->cp_auth->cp_generate_salt());;
+                
 				$this->load->library('upload', $config);		
 				
 				if(!$this->upload->do_upload('upload_image'))
@@ -197,7 +200,7 @@ class Fahrzeug_Admin extends CI_Controller {
 				}
 				else
 				{
-					$upload_data = $this->upload->data();			
+					$upload_data = $this->upload->data();                         			
 					$filename = $upload_data['file_name'];
 					$raw_name = $upload_data['raw_name'];
 					$ext = $upload_data['file_ext'];
@@ -215,7 +218,7 @@ class Fahrzeug_Admin extends CI_Controller {
 						$width = 768; 
 						$height = 1024; 		
 					}
-					$thumb = $this->cp_auth->cp_generate_hash($id.$this->cp_auth->cp_generate_salt());
+					$thumb = 'F_'.$this->cp_auth->cp_generate_hash($id.$this->cp_auth->cp_generate_salt());
 					$this->load->library('image_moo');
 					$this->image_moo->set_jpeg_quality(90);
 					// Bild verkleinern 
@@ -230,7 +233,6 @@ class Fahrzeug_Admin extends CI_Controller {
 			}
 			else if($this->input->post('img_manager') == 'img_edit')
 			{
-				echo "Schritt 2 - ";
 				if($this->input->post('image_submit') == 'img_save')
 					$this->update_image_details();
 				else if($this->input->post('image_submit') == 'img_delete')
@@ -242,7 +244,6 @@ class Fahrzeug_Admin extends CI_Controller {
 		}
 		else
 		{			
-				echo "Schritt 3 - ";
 			if($this->uri->segment($this->uri->total_segments()) != 'save') $this->session->set_userdata('fahrzeugimage_submit', current_url());
 			
 			$header['title'] 		= 'Fahrzeug - Image Uploader';		
