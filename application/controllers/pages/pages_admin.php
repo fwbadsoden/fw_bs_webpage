@@ -171,7 +171,7 @@ class Pages_Admin extends CI_Controller {
      * @param integer $boxID
      * @return
      */
-    public function add_box($rowID, $boxID = 0)
+    public function add_box($rowID, $boxID)
     {        
         $this->rowID = $rowID;
         $this->boxID = $boxID;
@@ -200,27 +200,28 @@ class Pages_Admin extends CI_Controller {
     }
     
     /**
-     * Pages_Admin::add_box_content()
+     * Pages_Admin::_box_content()
      * 
      * @param integer $rowContentID
      * @return 
      */
-    public function add_box_content($rowContentID)
+    public function edit_box_content($rowContentID)
     {
         $this->rowContentID = $rowContentID;
         
         if($this->uri->segment($this->uri->total_segments()) != 'save')
 		{            
-            $header['title']    = 'Inhalt erstellen';		
-    		$menue['menue']	    = $this->admin->get_menue();
-    		$menue['submenue']	= $this->admin->get_submenue();            
-            $data['box_meta']   = $this->pages->get_box_meta($rowContentID);
+            $header['title']     = 'Inhalt erstellen';		
+    		$menue['menue']	     = $this->admin->get_menue();
+    		$menue['submenue']	 = $this->admin->get_submenue();            
+            $data['box_meta']    = $this->pages->get_box_meta($rowContentID);
+            $data['box_content'] = $this->pages->get_box_content($rowContentID);
     	
     		$this->load->view('backend/templates/admin/header', $header);     
 			$this->load->view('backend/templates/admin/tiny_mce_inc');
     		$this->load->view('backend/templates/admin/menue', $menue);	
     		$this->load->view('backend/templates/admin/submenue', $menue);
-            $this->load->view('backend/pages/addBoxContent_admin', $data);     
+            $this->load->view('backend/pages/editBoxContent_admin', $data);     
     		$this->load->view('backend/templates/admin/footer');
         }
 		else redirect($this->session->userdata('pageedit_redirect'), 'refresh');       

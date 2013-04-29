@@ -210,6 +210,28 @@ class Pages_model extends CI_Model {
         return $box_meta;        
     }
     
+    public function get_box_content($rowContentID)
+    {
+        $query = $this->db->get_where('page_box_content', array('rowContentID' => $rowContentID));
+        $content = array();
+        $i = 0;
+        
+        foreach($query->result() as $row)
+        {
+            $content[$i]['boxContentID']    = $row->boxContentID;
+            $content[$i]['contentType']     = $row->contentType;
+            $content[$i]['createdBy']       = $row->createdBy;
+            $content[$i]['created']         = $row->created;
+            $content[$i]['modifiedBy']      = $row->modifiedBy;
+            $content[$i]['modified']        = $row->modified;
+            $content[$i]['image']           = $row->image;
+            $content[$i]['content']         = $row->content;
+            $i++;
+        }
+        
+        return $content;
+    }
+    
     public function get_row_columns($rowID)
     {
         // aktuelle Anzahl der "vollen" Spalten in der Zeile ermitteln
@@ -278,14 +300,20 @@ class Pages_model extends CI_Model {
         
         $this->db->insert('page_row_content', $box);
         $insertID = $this->db->insert_id();
-        $box_meta = $this->get_box_meta($insertID);            
+        $box_meta = $this->get_box_meta($insertID);                    
         
         if($box_meta['specialBox'] != 1)
         {        
             $boxTags = explode(PAGES_BOX_TAGS_SEPARATOR, $box_meta['boxTags']);  
             foreach($boxTags as $b)
             {
-                
+                $boxContent = array(
+                    'rowContentID'  => $insertID,
+                    'contentType'   => $b,
+                    'createdBy'     => $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND)),  
+                    'created'       => date("Y-m-d H:i:s")
+                );       
+                $this->db->insert('page_box_content', $boxContent);
             }
         }
     }
