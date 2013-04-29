@@ -31,7 +31,7 @@
                         toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",    
                         menubar: "newdocument",
                         
-
+// test kommentar
                         // Example content CSS (should be your site CSS) -- geht mit aktuellem CSS nicht... prüfen!!!
                         //content_css : "/css/admin/admin.css",
                 });
