@@ -218,6 +218,7 @@ class Pages_Admin extends CI_Controller {
             $data['box_content'] = $this->pages->get_box_content($rowContentID);
     	
     		$this->load->view('backend/templates/admin/header', $header);     
+            $this->load->view('backend/templates/admin/jquery-fileupload');
 			$this->load->view('backend/templates/admin/tiny_mce_inc');
     		$this->load->view('backend/templates/admin/menue', $menue);	
     		$this->load->view('backend/templates/admin/submenue', $menue);
