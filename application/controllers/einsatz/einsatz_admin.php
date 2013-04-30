@@ -32,7 +32,7 @@ class Einsatz_Admin extends CI_Controller {
 		$this->cpauth->init('BACKEND');
 		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
 		
-		$this->upload_path = CONTENT_IMG_UPLOAD_PATH;
+		$this->upload_path = CONTENT_IMG_EINSATZ_UPLOAD_PATH;
 	}
 		
 	/**
@@ -194,7 +194,7 @@ class Einsatz_Admin extends CI_Controller {
                 
 				$config['upload_path'] = $this->upload_path;
 				$config['allowed_types'] = 'jpg|png';
-				$config['file_name'] = 'E_'.$this->image_lib->generate_img_name($id.$this->cp_auth->cp_generate_salt());;
+				$config['file_name'] = $this->image_lib->generate_img_name($id.$this->cp_auth->cp_generate_salt());;
                 
 				$this->load->library('upload', $config);
 				
@@ -222,7 +222,7 @@ class Einsatz_Admin extends CI_Controller {
 						$width = 768; 
 						$height = 1024; 		
 					}
-					$thumb = 'E_'.$this->image_lib->generate_img_name($id.$this->cp_auth->cp_generate_salt());
+					$thumb = $this->image_lib->generate_img_name($id.$this->cp_auth->cp_generate_salt());
 					$this->image_moo->set_jpeg_quality(90);
 					// Bild verkleinern 
 					$this->image_moo->load($this->upload_path.$filename)->resize($width, $height)->save($this->upload_path.$filename, true);

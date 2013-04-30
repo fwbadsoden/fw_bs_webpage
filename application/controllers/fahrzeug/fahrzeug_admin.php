@@ -31,7 +31,7 @@ class Fahrzeug_Admin extends CI_Controller {
 		$this->cpauth->init('BACKEND');
 		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
 		
-		$this->upload_path = CONTENT_IMG_UPLOAD_PATH;
+		$this->upload_path = CONTENT_IMG_FAHRZEUG_UPLOAD_PATH;
 	}
 	
 	/**
@@ -190,7 +190,7 @@ class Fahrzeug_Admin extends CI_Controller {
                 
 				$config['upload_path'] = $this->upload_path;
 				$config['allowed_types'] = 'jpg|png';
-				$config['file_name'] = 'F_'.$this->image_lib->generate_img_name($id.$this->cp_auth->cp_generate_salt());;
+				$config['file_name'] = $this->image_lib->generate_img_name($id.$this->cp_auth->cp_generate_salt());;
                 
 				$this->load->library('upload', $config);		
 				
@@ -218,7 +218,7 @@ class Fahrzeug_Admin extends CI_Controller {
 						$width = 768; 
 						$height = 1024; 		
 					}
-					$thumb = 'F_'.$this->cp_auth->cp_generate_hash($id.$this->cp_auth->cp_generate_salt());
+					$thumb = $this->cp_auth->cp_generate_hash($id.$this->cp_auth->cp_generate_salt());
 					$this->load->library('image_moo');
 					$this->image_moo->set_jpeg_quality(90);
 					// Bild verkleinern 
