@@ -128,18 +128,26 @@ class Pages_model extends CI_Model {
             $j = 0;
             
             foreach($query2->result() as $row)
-            {
-                $content['rows'][$i]['boxes'][$j]['rowContentID'] = $row->rowContentID;
-                                
+            {                                
                 $query3 = $this->db->get_where('page_box', array('boxID' => $row->boxID));
-                $row_box = $query3->row();
-                
+                $row_box = $query3->row();          
+                $query4 = $this->db->get_where('page_box_content', array('rowContentID' => $row->rowContentID));   
+             
+                $content['rows'][$i]['boxes'][$j]['rowContentID'] = $row->rowContentID;                 
                 $content['rows'][$i]['boxes'][$j]['boxID'] = $row_box->boxID;
                 $content['rows'][$i]['boxes'][$j]['boxName'] = $row_box->boxName;
                 $content['rows'][$i]['boxes'][$j]['columnCount'] = $row_box->columnCount;
                 $content['rows'][$i]['boxes'][$j]['specialBox'] = $row_box->specialBox;
                 $content['rows'][$i]['boxes'][$j]['boxImg'] = $row_box->boxImg;
-                $content['rows'][$i]['boxes'][$j]['boxTags'] = $row_box->boxTags;
+                $content['rows'][$i]['boxes'][$j]['boxTags'] = $row_box->boxTags; 
+                $content['rows'][$i]['boxes'][$j]['boxTagsNames'] = $row_box->boxTagsNames;  
+                $k = 0;
+                foreach($query4->result() as $row_content)
+                { 
+                    $content['rows'][$i]['boxes'][$j]['content'][$k]['boxContentID'] = $row_content->boxContentID;
+                    $content['rows'][$i]['boxes'][$j]['content'][$k]['contentType'] = $row_content->contentType;
+                    $k++;              
+                }                
                 $j++;
             }
             $i++;
@@ -210,24 +218,20 @@ class Pages_model extends CI_Model {
         return $box_meta;        
     }
     
-    public function get_box_content($rowContentID)
+    public function get_box_content($boxContentID)
     {
-        $query = $this->db->get_where('page_box_content', array('rowContentID' => $rowContentID));
+        $query = $this->db->get_where('page_box_content', array('boxContentID' => $boxContentID));
+        $row = $query->row();
         $content = array();
-        $i = 0;
-        
-        foreach($query->result() as $row)
-        {
-            $content[$i]['boxContentID']    = $row->boxContentID;
-            $content[$i]['contentType']     = $row->contentType;
-            $content[$i]['createdBy']       = $row->createdBy;
-            $content[$i]['created']         = $row->created;
-            $content[$i]['modifiedBy']      = $row->modifiedBy;
-            $content[$i]['modified']        = $row->modified;
-            $content[$i]['image']           = $row->image;
-            $content[$i]['content']         = $row->content;
-            $i++;
-        }
+
+        $content['boxContentID']    = $boxContentID;
+        $content['contentType']     = $row->contentType;
+        $content['createdBy']       = $row->createdBy;
+        $content['created']         = $row->created;
+        $content['modifiedBy']      = $row->modifiedBy;
+        $content['modified']        = $row->modified;
+        $content['image']           = $row->image;
+        $content['content']         = $row->content;
         
         return $content;
     }
@@ -316,6 +320,16 @@ class Pages_model extends CI_Model {
                 $this->db->insert('page_box_content', $boxContent);
             }
         }
+    } 
+    
+    public function update_box_content($boxContentID)
+    {
+        $boxContent['modifiedBy'] = $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND));  
+        $boxContent['modified']   = date("Y-m-d H:i:s");  
+          
+        $boxContent['content']    = $this->input->post('data');
+        
+        $this->db->update('page_box_content', $boxContent, array('boxContentID' => $boxContentID));
     }
     
     public function create_page()

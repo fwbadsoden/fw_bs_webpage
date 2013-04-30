@@ -16,7 +16,6 @@
                             "bbcode",
                             "charmap code contextmenu",
                             "directionality",
-                            "emoticons",
                             "fullscreen",
                             "hr",
                             "image insertdatetime",
@@ -28,6 +27,8 @@
                             "tabfocus table template textcolor",
                             "visualblocks visualchars wordcount" 
                         ],
+                        menu: " ",
+                        save_onsavecallback : "ajaxSave",
 //                        style_formats: [
 //                                {title: 'Image Left', selector: 'img', styles: {
 //                                        'float' : 'left', 
@@ -38,7 +39,7 @@
 //                                        'margin': '0 10px 0 10px'
 //                                }},
 //                        ],
-                        toolbar: "undo redo cut copy paste | styleselect | bold italic underline strikethrough subscript superscript | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | preview fullscreen | forecolor backcolor emoticons",    
+                        toolbar: "undo redo cut copy paste | styleselect | bold italic underline strikethrough subscript superscript | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | preview fullscreen | forecolor backcolor",    
                         
                 });
         });

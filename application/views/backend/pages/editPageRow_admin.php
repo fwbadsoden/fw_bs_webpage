@@ -60,7 +60,7 @@
 
 <?          foreach($b['content'] as $c) { ?>                                           
                                             
-                                                    <tr><td><a href='<?=site_url('admin/content/page/box/content/edit/'.$c['boxContentID'])?>' title="Inhalt bearbeiten"><?=$boxTagNames[$i]?> bearbeiten</a></td></tr>
+                                                    <tr><td><a href='<?=site_url('admin/content/page/box/content/edit/'.$b['rowContentID'].'/'.$c['boxContentID'])?>' title="Inhalt bearbeiten"><?=$boxTagNames[$i]?> bearbeiten</a></td></tr>
                                             
                                             
 <?          
