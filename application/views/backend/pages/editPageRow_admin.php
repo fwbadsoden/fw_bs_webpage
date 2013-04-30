@@ -46,11 +46,11 @@
 <?      foreach($row['boxes'] as $b) { ?>
                                             <td width='30'>
                                                 <table>
-                                                    <tr><td><a href="<?=base_url('admin/content/page/box/content/add/'.$b['rowContentID'])?>" class="button_mini" title="Inhalt hinzuf&uuml;gen"><span class='button_edit_small'></span></a></td></tr>
+                                                    <tr><td><a href="<?=base_url('admin/content/page/box/content/edit/'.$b['rowContentID'])?>" class="button_mini" title="Inhalt hinzuf&uuml;gen"><span class='button_edit_small'></span></a></td></tr>
                                                     <tr><td><a href="<?=base_url('admin/content/page/box/checkdel/'.$b['rowContentID'])?>" class="button_mini" title="Inhaltselement l&ouml;schen"><span class='button_delete_small'></span></a></td></tr>
                                                 </table>
                                             </td>
-                                            <td colspan='<?=$b['columnCount']?>'><a href='<?=site_url('admin/content/page/box/content/add/'.$b['rowContentID'])?>' title="Inhalt hinzuf&uuml;gen"><img src='<?=base_url('/images/admin/pages/'.$b['boxImg'])?>' title="Inhalt hinzuf&uuml;gen" alt="Inhalt hinzuf&uuml;gen"></a></td>        
+                                            <td colspan='<?=$b['columnCount']?>'><a href='<?=site_url('admin/content/page/box/content/edit/'.$b['rowContentID'])?>' title="Inhalt hinzuf&uuml;gen"><img src='<?=base_url('/images/admin/pages/'.$b['boxImg'])?>' title="Inhalt hinzuf&uuml;gen" alt="Inhalt hinzuf&uuml;gen"></a></td>        
         
 <?         
         }            

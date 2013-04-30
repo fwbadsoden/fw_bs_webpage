@@ -101,7 +101,21 @@
 
 <script type="text/javascript">
 $(function() { 
-	//$( "#einsatzdatum" ).datepicker();
+	$.timepicker.regional['de'] = {
+                hourText: 'Stunde',
+                minuteText: 'Minuten',
+                amPmText: ['AM', 'PM'] ,
+                closeButtonText: 'Beenden',
+                nowButtonText: 'Jetzt',                
+                deselectButtonText: 'Zur&uuml;cksetzen' }
+    $.timepicker.setDefaults($.timepicker.regional['de']);
+    $('.input_time').timepicker({
+        showNowButton: true,
+        showDeselectButton: true,
+        showPeriodLabels: false,
+        defaultTime: '',  // removes the highlighted time for when the input is empty.
+        showCloseButton: true
+    });
 });          
 </script>
 

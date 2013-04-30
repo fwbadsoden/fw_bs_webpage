@@ -160,6 +160,24 @@ table.tablesorter thead tr .header{background-image:url(../../../images/admin/bu
 table.tablesorter thead tr .headerSortUp{background-image:url(../../../images/admin/buttons/tablesort_asc.gif)}
 table.tablesorter thead tr .headerSortDown{background-image:url(../../../images/admin/buttons/tablesort_desc.gif)}
 
+/* jQuery Timepicker CSS */
+.ui-timepicker-inline{display:inline}
+#ui-timepicker-div{padding:0.2em}
+.ui-timepicker-table{display:inline-table; width:0}
+.ui-timepicker-table table{margin:0.15em 0 0 0; border-collapse:collapse}
+.ui-timepicker-hours, .ui-timepicker-minutes{padding:0.2em}
+.ui-timepicker-table .ui-timepicker-title{line-height:1.2em; text-align:center}
+.ui-timepicker-table td{padding:0.1em; width:2.2em}
+.ui-timepicker-table th.periods{padding:0.1em; width:2.2em}
+.ui-timepicker-table td span{display:block;  padding:0.2em 0.3em 0.2em 0.5em;  width:1.2em;  text-align:right;  text-decoration:none}
+.ui-timepicker-table td a{ display:block;  padding:0.2em 0.3em 0.2em 0.5em;  width:1.2em;  cursor:pointer;  text-align:right;  text-decoration:none}
+.ui-timepicker .ui-timepicker-buttonpane{ background-image:none; margin:.7em 0 0 0; padding:0 .2em; border-left:0; border-right:0; border-bottom:0}
+.ui-timepicker .ui-timepicker-buttonpane button{margin:.5em .2em .4em; cursor:pointer; padding:.2em .6em .3em .6em; width:auto; overflow:visible}
+.ui-timepicker .ui-timepicker-close{float:right}
+.ui-timepicker .ui-timepicker-now{float:left}
+.ui-timepicker .ui-timepicker-deselect{float:left}
+
+
 /*! jQuery UI - v1.10.2 - 2013-04-26 * http://jqueryui.com * Includes: jquery.ui.core.css, jquery.ui.resizable.css, jquery.ui.selectable.css, jquery.ui.accordion.css, jquery.ui.autocomplete.css, jquery.ui.button.css, jquery.ui.datepicker.css, jquery.ui.dialog.css, jquery.ui.menu.css, jquery.ui.progressbar.css, jquery.ui.slider.css, jquery.ui.spinner.css, jquery.ui.tabs.css, jquery.ui.tooltip.css * To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Trebuchet%20MS%2CTahoma%2CVerdana%2CArial%2Csans-serif&fwDefault=bold&fsDefault=1.1em&cornerRadius=2px&bgColorHeader=%239A0000&bgTextureHeader=flat&bgImgOpacityHeader=35&borderColorHeader=%23474747&fcHeader=%23ffffff&iconColorHeader=%23ffffff&bgColorContent=%23eeeeee&bgTextureContent=highlight_soft&bgImgOpacityContent=100&borderColorContent=%23dddddd&fcContent=%23333333&iconColorContent=%23222222&bgColorDefault=%23f6f6f6&bgTextureDefault=glass&bgImgOpacityDefault=100&borderColorDefault=%23b1b1b1&fcDefault=%239A0000&iconColorDefault=%239A0000&bgColorHover=%23b1b1b1&bgTextureHover=flat&bgImgOpacityHover=100&borderColorHover=%23474747&fcHover=%239A0000&iconColorHover=%239A0000&bgColorActive=%23474747&bgTextureActive=flat&bgImgOpacityActive=65&borderColorActive=%23474747&fcActive=%23ffffff&iconColorActive=%239A0000&bgColorHighlight=%23b1b1b1&bgTextureHighlight=diagonals_small&bgImgOpacityHighlight=40&borderColorHighlight=%23474747&fcHighlight=%23000000&iconColorHighlight=%230f1df5&bgColorError=%23fe3e3e&bgTextureError=diagonals_thick&bgImgOpacityError=50&borderColorError=%23474747&fcError=%23ffffff&iconColorError=%239A0000&bgColorOverlay=%23666666&bgTextureOverlay=highlight_soft&bgImgOpacityOverlay=20&opacityOverlay=50&bgColorShadow=%23000000&bgTextureShadow=flat&bgImgOpacityShadow=10&opacityShadow=20&thicknessShadow=5px&offsetTopShadow=-5px&offsetLeftShadow=-5px&cornerRadiusShadow=5px * Copyright 2013 jQuery Foundation and other contributors Licensed MIT */
 /* Layout helpers ----------------------------------*/
 .ui-helper-hidden{display:none;}
@@ -333,7 +351,7 @@ background-position:-65px -16px;}
 .ui-tooltip{padding:8px;position:absolute;z-index:9999;max-width:300px;-webkit-box-shadow:0 0 5px #aaa;box-shadow:0 0 5px #aaa;}
 body .ui-tooltip{border-width:2px;}
 /* Component containers ----------------------------------*/
-.ui-widget{font-family:Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;font-size:1.1em;}
+.ui-widget{font-family:Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;font-size:0.9em;}
 .ui-widget .ui-widget{font-size:1em;}
 .ui-widget input,.ui-widget select,.ui-widget textarea,.ui-widget button{font-family:Trebuchet MS,Tahoma,Verdana,Arial,sans-serif;font-size:1em;}
 .ui-widget-content{border:1px solid #dddddd;background:#eeeeee url(../../images/admin/jquery-ui/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x;color:#333333;}

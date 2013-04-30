@@ -136,6 +136,7 @@ $(function() {
     $('.input_time').timepicker({
         showNowButton: true,
         showDeselectButton: true,
+        showPeriodLabels: false,
         defaultTime: '',  // removes the highlighted time for when the input is empty.
         showCloseButton: true
     });
