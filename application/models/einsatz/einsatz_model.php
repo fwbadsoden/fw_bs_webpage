@@ -50,7 +50,7 @@ class Einsatz_Model extends CI_Model {
 		
 		if(is_numeric($year))
 		{
-			$this->db->order_by('lfdNr', 'desc');
+			$this->db->order_by('lfd_nr', 'desc');
 			$query = $this->db->get_where('einsatz', array('substring(datum,1,4)' => $year));
 		}
 		else
@@ -67,10 +67,10 @@ class Einsatz_Model extends CI_Model {
           
 			$this->color = cp_get_color($this->color);
 			
-			$arr_einsatz_list[$i]['lfdNr'] 			= $row->lfdNr;
-			$arr_einsatz_list[$i]['einsatzNr'] 		= $row->einsatzNr;
+			$arr_einsatz_list[$i]['lfdNr'] 			= $row->lfd_nr;
+			$arr_einsatz_list[$i]['einsatzNr'] 		= $row->einsatz_nr;
 			$arr_einsatz_list[$i]['einsatzID'] 		= $row->einsatzID;
-			$arr_einsatz_list[$i]['einsatzName'] 	= $row->einsatzName;
+			$arr_einsatz_list[$i]['einsatzName'] 	= $row->name;
 			$arr_einsatz_list[$i]['datum']	 		= cp_get_ger_date($row->datum);
 			$arr_einsatz_list[$i]['beginn'] 		= $row->beginn;
 			$arr_einsatz_list[$i]['ende']	 		= $row->ende;
@@ -86,22 +86,21 @@ class Einsatz_Model extends CI_Model {
 	
 	public function get_einsatz($id)
 	{
-		$this->db->select('*');
 		$this->db->join('einsatz_content', 'einsatz.einsatzID = einsatz_content.einsatzID');
 		$this->db->where('einsatz.einsatzID', $id);
 		$query = $this->db->get('einsatz');
 		
 		$row = $query->row();
 		$einsatz['einsatzID'] 				= $id;
-		$einsatz['einsatzNr'] 				= $row->einsatzNr;
-		$einsatz['einsatzName'] 			= $row->einsatzName;
+		$einsatz['einsatzNr'] 				= $row->einsatz_nr;
+		$einsatz['einsatzName'] 			= $row->name;
 		$einsatz['datum'] 					= $row->datum;
 		$einsatz['beginn'] 					= $row->beginn;
 		$einsatz['ende'] 					= $row->ende;
-		$einsatz['einsatzlage'] 			= $row->einsatzlage;
-		$einsatz['einsatzgeschehen'] 		= $row->einsatzgeschehen;
-		$einsatz['einsatzkraefteFreitext']	= $row->einsatzkraefteFreitext;
-		$einsatz['anzahlEinsatzkraefte']	= $row->anzahlEinsatzkraefte;
+		$einsatz['einsatzlage'] 			= $row->lage;
+		$einsatz['einsatzgeschehen'] 		= $row->geschehen;
+		$einsatz['einsatzkraefteFreitext']	= $row->weitere_kraefte;
+		$einsatz['anzahlEinsatzkraefte']	= $row->anzahl_kraefte;
 		
 		$this->db->where('einsatzID', $id);
 		$query = $this->db->get('einsatz_type_mapping');
@@ -132,8 +131,8 @@ class Einsatz_Model extends CI_Model {
 		foreach($query->result() as $row)
 		{
 			$arr_type[$i]['typeID'] = $row->typeID;
-			$arr_type[$i]['typeName'] = $row->typeName;
-			$arr_type[$i]['typeShortname'] = $row->typeShortname;	
+			$arr_type[$i]['typeName'] = $row->name;
+			$arr_type[$i]['typeShortname'] = $row->short_name;	
 			$i++;
 		}
 		
@@ -152,10 +151,10 @@ class Einsatz_Model extends CI_Model {
 			
 			$images[$i]['imageID']		= $row->imgID;
 			$images[$i]['einsatzID']	= $row->einsatzID;
-			$images[$i]['img_desc']		= $row->imgDesc;
-			$images[$i]['img_file']		= $row->imgFile;
-			$images[$i]['img_thumb']	= $row->imgFileThumbnail;
-			$images[$i]['img_type']		= $row->fileType;
+			$images[$i]['img_desc']		= $row->description;
+			$images[$i]['img_file']		= $row->img_file;
+			$images[$i]['img_thumb']	= $row->thumb_file;
+			$images[$i]['img_type']		= $row->filetype;
 			$images[$i]['row_color']	= $this->color;
 			
 			$i++;
@@ -166,33 +165,33 @@ class Einsatz_Model extends CI_Model {
 	public function create_einsatz()
 	{ 
 		$einsatz = array(
-			'einsatzName' 	=> $this->input->post('einsatzname'),
+			'name' 	=> $this->input->post('einsatzname'),
 			'datum'			=> cp_get_eng_date($this->input->post('einsatzdatum')),
 			'beginn'		=> $this->input->post('einsatzbeginn'),
 			'ende'			=> $this->input->post('einsatzende'),
-			'einsatzNr'     => $this->input->post('einsatznr'),
-			'lfdNr'			=> 0,
+			'einsatz_nr'    => $this->input->post('einsatznr'),
+			'lfd_nr'		=> 0,
 			'online'		=> 0
 		);
 		
-		$this->db->select_max('lfdNr');
+		$this->db->select_max('lfd_nr');
 		$query = $this->db->get_where('einsatz', array('substr(datum,1,4)' => substr($einsatz['datum'],0,4)));
 		$row = $query->row();	
 		
 		// ++++ TRANSAKTION START ++++ //
 		$this->db->trans_start();	
 		
-		if($row->lfdNr != null)		$einsatz['lfdNr'] 	= $row->lfdNr;
-		else								   $einsatz['lfdNr']   = 1;
+		if($row->lfd_nr != null)		$einsatz['lfdNr'] 	= $row->lfd_nr;
+		else								   $einsatz['lfd_nr']   = 1;
 		$this->db->insert('einsatz', $einsatz);
 		$einsatzID = $this->db->insert_id();		
 
 		$einsatzContent = array(
-			'einsatzID'					=> $einsatzID,
-			'einsatzlage'				=> $this->input->post('einsatzlage'),
-			'einsatzgeschehen'			=> $this->input->post('einsatzgeschehen'),
-			'einsatzkraefteFreitext'	=> $this->input->post('weitereeinsatzkraefte'),
-			'anzahlEinsatzkraefte'		=> $this->input->post('anzahl')
+			'einsatzID'			=> $einsatzID,
+			'lage'				=> $this->input->post('einsatzlage'),
+			'geschehen'			=> $this->input->post('einsatzgeschehen'),
+			'weitere_kraefte'	=> $this->input->post('weitereeinsatzkraefte'),
+			'anzahl_kraefte'	=> $this->input->post('anzahl')
 		);
 		$this->db->insert('einsatz_content', $einsatzContent);
 		
@@ -215,17 +214,17 @@ class Einsatz_Model extends CI_Model {
 	public function update_einsatz($id)
 	{
 		$einsatz = array(
-			'einsatzName' 	=> $this->input->post('einsatzname'),
-			'datum'			=> cp_get_eng_date($this->input->post('einsatzdatum')),
-			'beginn'		=> $this->input->post('einsatzbeginn'),
-			'ende'			=> $this->input->post('einsatzende'),
-			'einsatznr'     => $this->input->post('einsatznr')
+			'name' 	         => $this->input->post('einsatzname'),
+			'datum'			 => cp_get_eng_date($this->input->post('einsatzdatum')),
+			'beginn'		 => $this->input->post('einsatzbeginn'),
+			'ende'			 => $this->input->post('einsatzende'),
+			'einsatz_nr'     => $this->input->post('einsatznr')
 		);		
 		$einsatzContent = array(
-			'einsatzlage'				=> $this->input->post('einsatzlage'),
-			'einsatzgeschehen'			=> $this->input->post('einsatzgeschehen'),
-			'einsatzkraefteFreitext'	=> $this->input->post('weitereeinsatzkraefte'),
-			'anzahlEinsatzkraefte'		=> $this->input->post('anzahl')
+			'lage'				=> $this->input->post('einsatzlage'),
+			'geschehen'			=> $this->input->post('einsatzgeschehen'),
+			'weitere_kraefte'	=> $this->input->post('weitereeinsatzkraefte'),
+			'anzahl_kraefte'	=> $this->input->post('anzahl')
 		);
 		
 		// ++++ TRANSAKTION START ++++ //
@@ -269,13 +268,13 @@ class Einsatz_Model extends CI_Model {
 	
 	public function insert_image($id, $desc, $file, $thumb, $type) 
 	{
-		$this->db->insert('einsatz_img', array('einsatzID' => $id, 'imgDesc' => $desc, 'imgFile' => $file, 'imgFileThumbnail' => $thumb, 'fileType' => $type));	
+		$this->db->insert('einsatz_img', array('einsatzID' => $id, 'description' => $desc, 'img_file' => $file, 'thumb_file' => $thumb, 'filetype' => $type));	
 	}
 	
 	public function update_image($id, $desc)
 	{
 		$this->db->where('imgID', $id);
-		$this->db->update('einsatz_img', array('imgDesc' => $desc));	
+		$this->db->update('einsatz_img', array('description' => $desc));	
 	}
 	
 	public function delete_image($id)
@@ -283,8 +282,8 @@ class Einsatz_Model extends CI_Model {
 		$query = $this->db->get_where('einsatz_img', array('imgID' => $id));
 		$row = $query->row();
 			
-		unlink($this->upload_path.$row->imgFile);
-		unlink($this->upload_path.$row->imgFileThumbnail);
+		unlink($this->upload_path.$row->img_file);
+		unlink($this->upload_path.$row->thumb_file);
 		
 		$this->db->delete('einsatz_img', array('imgID' => $id));	
 	}
@@ -295,8 +294,8 @@ class Einsatz_Model extends CI_Model {
 		
 		foreach($query->result() as $row)
 		{
-			unlink($this->upload_path.$row->imgFile);
-			unlink($this->upload_path.$row->imgFileThumbnail);
+			unlink($this->upload_path.$row->img_file);
+			unlink($this->upload_path.$row->thumb_file);
 			
 			$this->db->delete('einsatz_img', array('imgID' => $row->imgID));	
 		}
@@ -305,18 +304,18 @@ class Einsatz_Model extends CI_Model {
 	public function get_einsatz_templates($id = 0)
 	{	
 		if($id !=0)	$this->db->where('templateID', $id);
-		$this->db->order_by('templateName', 'ASC');
+		$this->db->order_by('tmpl_name', 'ASC');
 		$query = $this->db->get('einsatz_template');
 		$templates = array();
 			
 		foreach($query->result() as $row)
 		{
 			$templates[$row->templateID]['template_id'] 		= $row->templateID;
-			$templates[$row->templateID]['template_name'] 		= $row->templateName;
-			$templates[$row->templateID]['einsatz_name']		= $row->einsatzName;
-			$templates[$row->templateID]['einsatz_lage']		= $row->einsatzlage;
-			$templates[$row->templateID]['einsatz_geschehen']	= $row->einsatzgeschehen;
-			$templates[$row->templateID]['einsatz_art']			= $row->einsatzart;
+			$templates[$row->templateID]['template_name'] 		= $row->tmpl_name;
+			$templates[$row->templateID]['einsatz_name']		= $row->name;
+			$templates[$row->templateID]['einsatz_lage']		= $row->lage;
+			$templates[$row->templateID]['einsatz_geschehen']	= $row->geschehen;
+			$templates[$row->templateID]['einsatz_art']			= $row->art;
 			$templates[$row->templateID]['einsatz_fahrzeug']	= $row->fahrzeug;
 		}
 		return $templates;
@@ -373,7 +372,7 @@ class Einsatz_Model extends CI_Model {
 		foreach($arr_einsatz as $einsatz)
 		{
 			$this->db->where('einsatzID', $einsatz['einsatzID']);
-			$this->db->update('einsatz', array('lfdNr' => $lfdNr));
+			$this->db->update('einsatz', array('lfd_nr' => $lfdNr));
 			$lfdNr++;	
 		}
 	}
