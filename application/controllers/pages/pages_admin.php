@@ -212,11 +212,12 @@ class Pages_Admin extends CI_Controller {
     		$menue['menue']	     = $this->admin->get_menue();
     		$menue['submenue']	 = $this->admin->get_submenue();       
             $data['box_meta']    = $this->pages->get_box_meta($rowContentID);
-            $data['box_content'] = $this->pages->get_box_content($boxContentID);   
+            $data['box_content'] = $this->pages->get_box_content($boxContentID);
+            $tinymce['config']   = 'pages';   
     	
     		$this->load->view('backend/templates/admin/header', $header);     
             $this->load->view('backend/templates/admin/jquery-fileupload');
-			$this->load->view('backend/templates/admin/tiny_mce_inc');
+			$this->load->view('backend/templates/admin/tiny_mce_inc', $tinymce);
     		$this->load->view('backend/templates/admin/menue', $menue);	
     		$this->load->view('backend/templates/admin/submenue', $menue);            
             $this->load->view('backend/pages/editBoxContent'.$data['box_content']['contentType'].'_admin', $data);                 

@@ -38,8 +38,8 @@ class Pages_model extends CI_Model {
         foreach($query->result() as $row)
         {
             $templates[$i]['templateID'] = $row->templateID;
-            $templates[$i]['templateName'] = $row->templateName;
-            $templates[$i]['columnCount'] = $row->columnCount;
+            $templates[$i]['templateName'] = $row->name;
+            $templates[$i]['columnCount'] = $row->column_count;
             $templates[$i]['columnCount'] = $row->online;
             $i++;
         }
@@ -49,7 +49,7 @@ class Pages_model extends CI_Model {
     
     public function get_pages()
     {
-        $this->db->order_by('pageName', 'asc');
+        $this->db->order_by('name', 'asc');
         $query = $this->db->get('page');
         $i = 0;
         $pages = array();
@@ -58,7 +58,7 @@ class Pages_model extends CI_Model {
         {
 			$this->color = cp_get_color($this->color);
             $pages[$i]['pageID'] = $row->pageID;
-            $pages[$i]['pageName'] = $row->pageName;
+            $pages[$i]['pageName'] = $row->name;
             $pages[$i]['online'] = $row->online;
             $pages[$i]['row_color'] = $this->color;
             $pages[$i]['is_deletable'] = $this->is_page_deletable($row->pageID);
@@ -74,7 +74,7 @@ class Pages_model extends CI_Model {
 		$row = $query->row();
         
         $page['pageID'] = $id;
-        $page['pageName'] = $row->pageName;
+        $page['pageName'] = $row->name;
         $page['templateID'] = $row->templateID;
         $page['is_deletable'] = $this->is_page_deletable($id);
         
@@ -83,7 +83,7 @@ class Pages_model extends CI_Model {
     
     public function get_pagetitle($id)
     {
-        $this->db->select('pageName');
+        $this->db->select('name');
         $query = $this->db->get_where('page', array('pageID' => $id));
         $row = $query->row();
         return $row->pageName;
@@ -110,8 +110,8 @@ class Pages_model extends CI_Model {
         $query = $this->db->get_where('page_template', array('templateID' => $row->templateID));
         $row = $query->row();
         
-        $content['columnCount'] = $row->columnCount;
-        $content['templateName'] = $row->templateName;
+        $content['columnCount'] = $row->column_count;
+        $content['templateName'] = $row->template_name;
         
         // eventuell durch JOIN ersetzen
         $this->db->order_by('orderID', 'asc');
@@ -135,17 +135,17 @@ class Pages_model extends CI_Model {
              
                 $content['rows'][$i]['boxes'][$j]['rowContentID'] = $row->rowContentID;                 
                 $content['rows'][$i]['boxes'][$j]['boxID'] = $row_box->boxID;
-                $content['rows'][$i]['boxes'][$j]['boxName'] = $row_box->boxName;
-                $content['rows'][$i]['boxes'][$j]['columnCount'] = $row_box->columnCount;
-                $content['rows'][$i]['boxes'][$j]['specialBox'] = $row_box->specialBox;
-                $content['rows'][$i]['boxes'][$j]['boxImg'] = $row_box->boxImg;
-                $content['rows'][$i]['boxes'][$j]['boxTags'] = $row_box->boxTags; 
-                $content['rows'][$i]['boxes'][$j]['boxTagsNames'] = $row_box->boxTagsNames;  
+                $content['rows'][$i]['boxes'][$j]['boxName'] = $row_box->name;
+                $content['rows'][$i]['boxes'][$j]['columnCount'] = $row_box->column_count;
+                $content['rows'][$i]['boxes'][$j]['specialBox'] = $row_box->specialbox;
+                $content['rows'][$i]['boxes'][$j]['boxImg'] = $row_box->box_img;
+                $content['rows'][$i]['boxes'][$j]['boxTags'] = $row_box->box_tags; 
+                $content['rows'][$i]['boxes'][$j]['boxTagsNames'] = $row_box->box_tag_tames;  
                 $k = 0;
                 foreach($query4->result() as $row_content)
                 { 
                     $content['rows'][$i]['boxes'][$j]['content'][$k]['boxContentID'] = $row_content->boxContentID;
-                    $content['rows'][$i]['boxes'][$j]['content'][$k]['contentType'] = $row_content->contentType;
+                    $content['rows'][$i]['boxes'][$j]['content'][$k]['contentType'] = $row_content->content_type;
                     $k++;              
                 }                
                 $j++;
@@ -176,10 +176,10 @@ class Pages_model extends CI_Model {
             {
                 $boxes[$i]['boxID'] = $row->boxID;
                 $boxes[$i]['pageID'] = $ids['pageID'];
-                $boxes[$i]['boxName'] = $row->boxName;
-                $boxes[$i]['columnCount'] = $row->columnCount;
-                $boxes[$i]['boxImg'] = $row->boxImg;
-                $boxes[$i]['specialBox'] = $row->specialBox;
+                $boxes[$i]['boxName'] = $row->name;
+                $boxes[$i]['columnCount'] = $row->column_count;
+                $boxes[$i]['boxImg'] = $row->box_img;
+                $boxes[$i]['specialBox'] = $row->specialbox;
                 $i++;
             }
         }
@@ -207,12 +207,12 @@ class Pages_model extends CI_Model {
         
         $box_meta = array(
             'boxID'         => $row->boxID,
-            'boxName'       => $row->boxName,
-            'columnCount'   => $row->columnCount,
-            'specialBox'    => $row->specialBox,
-            'boxTags'       => $row->boxTags,
-            'boxTagsNames'  => $row->boxTagsNames,
-            'boxImg'        => $row->boxImg
+            'boxName'       => $row->name,
+            'columnCount'   => $row->column_count,
+            'specialBox'    => $row->specialbox,
+            'boxTags'       => $row->box_tags,
+            'boxTagsNames'  => $row->box_tag_names,
+            'boxImg'        => $row->box_img
         );
         
         return $box_meta;        
@@ -225,12 +225,12 @@ class Pages_model extends CI_Model {
         $content = array();
 
         $content['boxContentID']    = $boxContentID;
-        $content['contentType']     = $row->contentType;
-        $content['createdBy']       = $row->createdBy;
+        $content['contentType']     = $row->content_type;
+        $content['createdBy']       = $row->created_by;
         $content['created']         = $row->created;
-        $content['modifiedBy']      = $row->modifiedBy;
+        $content['modifiedBy']      = $row->modified_by;
         $content['modified']        = $row->modified;
-        $content['image']           = $row->image;
+        $content['image']           = $row->img;
         $content['content']         = $row->content;
         
         return $content;
@@ -244,17 +244,16 @@ class Pages_model extends CI_Model {
         $fullColumns = 0;
         foreach($query->result() as $row)
         {
-            $fullColumns += $row->columnCount;
+            $fullColumns += $row->column_count;
         }
         
         $ids = $this->get_superIDs_from_rowID($rowID);
         
         $query = $this->db->get_where('page_template', array('templateID' => $ids['templateID']));
         $row = $query->row();
-        $columnCount = $row->columnCount;
         
         $columns['full'] = $fullColumns;
-        $columns['empty'] = $columnCount - $fullColumns;
+        $columns['empty'] = $row->column_count - $fullColumns;
         return $columns;  
     }
     
@@ -313,8 +312,8 @@ class Pages_model extends CI_Model {
             {
                 $boxContent = array(
                     'rowContentID'  => $insertID,
-                    'contentType'   => $b,
-                    'createdBy'     => $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND)),  
+                    'content_type'   => $b,
+                    'created_by'     => $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND)),  
                     'created'       => date("Y-m-d H:i:s")
                 );       
                 $this->db->insert('page_box_content', $boxContent);
@@ -324,7 +323,7 @@ class Pages_model extends CI_Model {
     
     public function update_box_content($boxContentID)
     {
-        $boxContent['modifiedBy'] = $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND));  
+        $boxContent['modified_by'] = $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND));  
         $boxContent['modified']   = date("Y-m-d H:i:s");  
           
         $boxContent['content']    = $this->input->post('data');
@@ -335,7 +334,7 @@ class Pages_model extends CI_Model {
     public function create_page()
     {
         $page = array(
-            'pageName' => $this->input->post('pagename'),
+            'name' => $this->input->post('pagename'),
             'online'   => 0,
             'templateID' => $this->input->post('templateid')
         );
@@ -348,7 +347,7 @@ class Pages_model extends CI_Model {
     public function update_page($id)
     {
         $page = array(
-            'pageName' => $this->input->post('pagename')
+            'name' => $this->input->post('pagename')
         );
         $this->db->where('pageID', $id);
 		$this->db->update('page', $page);

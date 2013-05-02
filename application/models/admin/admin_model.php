@@ -53,7 +53,7 @@ class Admin_model extends CI_Model {
 		{
 			case 'check_login':		// das gleiche wie bei admin
 			case 'admin':				$menueArea = 'admin';	break;
-			default:						  $menueArea = $this->uri->segment(2);
+			default:				    $menueArea = $this->uri->segment(2);
 		}
 		
 		$this->db->where(array('superID !=' => 0, 'slug' => $menueArea, 'online' => 1, 'backend' => 1))->order_by('orderID', 'asc');
@@ -129,8 +129,8 @@ class Admin_model extends CI_Model {
 			$color 				= cp_get_color($color);
 			
 			$links[$i]['linkID'] 	= $row->linkID;
-			$links[$i]['linkZiel'] 	= $row->linkZiel;
-			$links[$i]['linkName'] 	= $row->linkName;
+			$links[$i]['linkZiel'] 	= $row->target;
+			$links[$i]['linkName'] 	= $row->name;
 			
 			$i++;
 		}
@@ -155,7 +155,7 @@ class Admin_model extends CI_Model {
 		$userdata = $this->cpauth->get_userdata($row->userID);
 		$message['datetime']	= cp_get_ger_datetime($row->datetime);
 		$message['editor'] 		= $userdata['vorname'].' '.$userdata['nachname'];
-		$message['titel'] 		= $row->titel;
+		$message['titel'] 		= $row->title;
 		$message['message']		= $row->message;
 		$message['rowColor']	= $color;
 		

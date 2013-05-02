@@ -31,14 +31,14 @@ class Module_model extends CI_Model {
 	
 	public function get_modules()
 	{
-		$this->db->order_by('moduleName', 'asc');
+		$this->db->order_by('name', 'asc');
 		$query = $this->db->get('module');	
 		$modules = array();
 		
 		foreach($query->result() as $row)
 		{
 			$modules[$row->moduleID]['moduleID'] 			=	$row->moduleID;
-			$modules[$row->moduleID]['moduleName']	   =	$row->moduleName;
+			$modules[$row->moduleID]['moduleName']	   =	$row->name;
 		}
 		return $modules;
 	}
@@ -46,7 +46,7 @@ class Module_model extends CI_Model {
 	public function get_settings()
 	{
 		$this->db->order_by('moduleID', 'asc');		
-		$this->db->order_by('constantName', 'asc');
+		$this->db->order_by('name', 'asc');
 		$query = $this->db->get('sys_constants');
 		$i = 0;
 		$settings = array();
@@ -56,8 +56,8 @@ class Module_model extends CI_Model {
 			$this->color = cp_get_color($this->color);
 			$settings[$i]['constantID']			= $row->constantID;
 			$settings[$i]['moduleID'] 			= $row->moduleID;
-			$settings[$i]['constantName'] = $row->constantName;
-			$settings[$i]['constantValue'] = $row->constantValue;
+			$settings[$i]['constantName']       = $row->name;
+			$settings[$i]['constantValue']      = $row->value;
 			$settings[$i]['row_color']          = $this->color;
 			$i++;
 		}
@@ -73,7 +73,7 @@ class Module_model extends CI_Model {
 		{
 			$constant = array(
 				'constantID'					=> $this->input->post($i.'_constantID'),
-				'constantValue'				  => $this->input->post($i.'_value')
+				'value'				            => $this->input->post($i.'_value')
 			);
 			$update_batch[] = $constant;
 		}
@@ -130,7 +130,7 @@ class Module_model extends CI_Model {
 		$route = array(
 			'moduleID'		=> $this->input->post('modul'),
             'bereich'       => $this->input->post('bereich'),
-			'internalLink'	=> $this->input->post('link'),
+			'internal_link'	=> $this->input->post('link'),
 			'route'		    => $this->input->post('route'),
 			'active'		=> 1,
 			'isprotected'	=> $protectedFlag
@@ -145,7 +145,7 @@ class Module_model extends CI_Model {
 		$route = array(
 			'moduleID'       => $this->input->post('modul'),
             'bereich'        => $this->input->post('bereich'), 
-			'internalLink'	 => $this->input->post('link'),
+			'internal_link'	 => $this->input->post('link'),
 			'route'				  => $this->input->post('route'),
 			'isprotected'		  => $protectedFlag
 		);
@@ -176,7 +176,7 @@ class Module_model extends CI_Model {
 			$routes[$i]['routeID']			= $row->routeID;
 			$routes[$i]['moduleID']			= $row->moduleID;
             $routes[$i]['bereich']          = $row->bereich;
-			$routes[$i]['internalLink'] 	= $row->internalLink;
+			$routes[$i]['internalLink'] 	= $row->internal_link;
 			$routes[$i]['route'] 			= $row->route;
 			$routes[$i]['active'] 			= $row->active;
 			$routes[$i]['protectedFlag'] 	= $row->isprotected;
@@ -195,7 +195,7 @@ class Module_model extends CI_Model {
 		$route['routeID'] = $id;
 		$route['route']	    = $row->route;
         $route['bereich']   = $row->bereich;
-		$route['internalLink']        = $row->internalLink;
+		$route['internalLink']        = $row->internal_link;
 		$route['protectedFlag'] = $row->isprotected;
 		$route['moduleID'] = $row->moduleID;
 		

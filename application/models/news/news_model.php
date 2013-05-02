@@ -46,9 +46,9 @@ class News_model extends CI_Model {
 			$arr_news_list[$i]['catID'] 		= $row->catID;
 			$arr_news_list[$i]['editor']		= $row->userID;
 			$arr_news_list[$i]['datetime'] 		= cp_get_ger_datetime($row->datetime);
-			$arr_news_list[$i]['title'] 		= $row->newsTitle;
-			$arr_news_list[$i]['valid_from'] 	= cp_get_ger_datetime($row->validFrom);
-			$arr_news_list[$i]['valid_to'] 		= cp_get_ger_datetime($row->validTo);			
+			$arr_news_list[$i]['title'] 		= $row->title;
+			$arr_news_list[$i]['valid_from'] 	= cp_get_ger_datetime($row->valid_from);
+			$arr_news_list[$i]['valid_to'] 		= cp_get_ger_datetime($row->valid_to);			
 			$arr_news_list[$i]['online'] 		= $row->online;
 			$arr_news_list[$i]['row_color']		= $this->color;
 			
