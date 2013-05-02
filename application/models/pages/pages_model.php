@@ -91,7 +91,7 @@ class Pages_model extends CI_Model {
     
     public function is_page_deletable($id)
     {
-        $query = $this->db->get_where('menue', array('frontendPageID' => $id));
+        $query = $this->db->get_where('menue', array('frontend_pageID' => $id));
         $num_rows = $query->num_rows();
         
         if($num_rows == 0) return true; else return false;
@@ -111,7 +111,7 @@ class Pages_model extends CI_Model {
         $row = $query->row();
         
         $content['columnCount'] = $row->column_count;
-        $content['templateName'] = $row->template_name;
+        $content['templateName'] = $row->name;
         
         // eventuell durch JOIN ersetzen
         $this->db->order_by('orderID', 'asc');
@@ -140,7 +140,7 @@ class Pages_model extends CI_Model {
                 $content['rows'][$i]['boxes'][$j]['specialBox'] = $row_box->specialbox;
                 $content['rows'][$i]['boxes'][$j]['boxImg'] = $row_box->box_img;
                 $content['rows'][$i]['boxes'][$j]['boxTags'] = $row_box->box_tags; 
-                $content['rows'][$i]['boxes'][$j]['boxTagsNames'] = $row_box->box_tag_tames;  
+                $content['rows'][$i]['boxes'][$j]['boxTagsNames'] = $row_box->box_tag_names;  
                 $k = 0;
                 foreach($query4->result() as $row_content)
                 { 
