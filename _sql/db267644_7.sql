@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.3
--- Erstellungszeit: 25. April 2013 um 13:47
+-- Erstellungszeit: 02. Mai 2013 um 14:15
 -- Server Version: 5.5.28
 -- PHP-Version: 4.4.9
 
@@ -79,8 +79,8 @@ CREATE TABLE `fw_admin_auth` (
 --
 
 INSERT INTO `fw_admin_auth` (`userID`, `password`, `is_initial`, `salt`, `reset_code`, `cookie_hash`, `last_login`) VALUES
-(1, 'Yjc1MzVhNjJiMmQyODk4NWIzNzhlZmE5YTk5MzBkOTM2MGI0YzM5NjMwZDU2NDc1MTgxNmFlZWVkMzM2OTUxOTQ2OWQ1MTM1NjM5YTcxY2Q3ZDRhOWRiNzk5MWEwOGZlNTU3MzQzZTYxMThiMWE3OTQ5YjRmMWVjNmJiNjMxYTc=NGEyZTMwOWZhYWM', 0, 'NGEyZTMwOWZhYWM', '', 'd9eb9eb3bd5a2c431a7ada1822c3773d', '2013-04-25 08:57:20'),
-(2, 'YWNkZDU3ODdhMWMyMTgxZWFhMDMxMjFhNDZjYTFhZjM5M2NhOTczZGMyNmEzZmY1N2U0MjU3MDkxZmYzZGYxZDdjNjJmY2E2NTg2MDA1NzZiMmM2MTdmNzUyYmE1OWQ5MGRmOGIyNTA0Mjc4NDFkMDU4ZDM4MWU0ODQzM2NlNWI=YzgxZTM0ZjBkYTN', 0, 'YzgxZTM0ZjBkYTN', '', '', '2013-03-23 12:13:46'),
+(1, 'Yjc1MzVhNjJiMmQyODk4NWIzNzhlZmE5YTk5MzBkOTM2MGI0YzM5NjMwZDU2NDc1MTgxNmFlZWVkMzM2OTUxOTQ2OWQ1MTM1NjM5YTcxY2Q3ZDRhOWRiNzk5MWEwOGZlNTU3MzQzZTYxMThiMWE3OTQ5YjRmMWVjNmJiNjMxYTc=NGEyZTMwOWZhYWM', 0, 'NGEyZTMwOWZhYWM', '', 'd9eb9eb3bd5a2c431a7ada1822c3773d', '2013-05-02 13:38:42'),
+(2, 'YWNkZDU3ODdhMWMyMTgxZWFhMDMxMjFhNDZjYTFhZjM5M2NhOTczZGMyNmEzZmY1N2U0MjU3MDkxZmYzZGYxZDdjNjJmY2E2NTg2MDA1NzZiMmM2MTdmNzUyYmE1OWQ5MGRmOGIyNTA0Mjc4NDFkMDU4ZDM4MWU0ODQzM2NlNWI=YzgxZTM0ZjBkYTN', 0, 'YzgxZTM0ZjBkYTN', '', '', '2013-04-25 14:54:15'),
 (31, 'NTk2OTY5YzYyNTc2ZjdiYzg0YmY4OTVkM2JiNjBiYjIxMzczNDlhMjM5NThlZmZlZTFjOTE1Y2QwNzFjNmQ1MmRjNDA4ZDI5Zjk0MDgwMTU4NGEyMjlhZWE3MGM1MTcwN2UwZWU0ZWNlZDZjNWJlNWNhMWQ4MjE2ZjBmZDc4Y2M=NGU5ZGE0OTg5Y2V', 0, 'NGU5ZGE0OTg5Y2V', '', '', '2013-04-02 22:56:26');
 
 -- --------------------------------------------------------
@@ -95,7 +95,7 @@ CREATE TABLE `fw_admin_log` (
   `datetime` datetime NOT NULL,
   `message` text NOT NULL,
   PRIMARY KEY (`logID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=39 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=51 ;
 
 --
 -- Daten für Tabelle `fw_admin_log`
@@ -139,7 +139,19 @@ INSERT INTO `fw_admin_log` (`logID`, `userID`, `datetime`, `message`) VALUES
 (35, 1, '2013-04-23 15:54:31', 'Admin hat sich angemeldet.'),
 (36, 1, '2013-04-24 10:13:58', 'Admin hat sich angemeldet.'),
 (37, 1, '2013-04-25 08:31:51', 'Admin hat sich angemeldet.'),
-(38, 1, '2013-04-25 08:57:20', 'Admin hat sich angemeldet.');
+(38, 1, '2013-04-25 08:57:20', 'Admin hat sich angemeldet.'),
+(39, 2, '2013-04-25 14:54:15', 'Admin hat sich angemeldet.'),
+(40, 1, '2013-04-26 09:07:40', 'Admin hat sich angemeldet.'),
+(41, 1, '2013-04-29 09:15:38', 'Admin hat sich angemeldet.'),
+(42, 1, '2013-04-29 12:45:24', 'Admin hat sich angemeldet.'),
+(43, 1, '2013-04-29 19:13:15', 'Admin hat sich angemeldet.'),
+(44, 1, '2013-04-30 09:32:33', 'Admin hat sich angemeldet.'),
+(45, 1, '2013-04-30 14:08:08', 'Admin hat sich angemeldet.'),
+(46, 1, '2013-04-30 20:28:58', 'Admin hat sich angemeldet.'),
+(47, 1, '2013-04-30 20:32:20', 'Admin hat sich angemeldet.'),
+(48, 1, '2013-04-30 20:35:18', 'Admin hat sich angemeldet.'),
+(49, 1, '2013-05-02 10:06:55', 'Admin hat sich angemeldet.'),
+(50, 1, '2013-05-02 13:38:42', 'Admin hat sich angemeldet.');
 
 -- --------------------------------------------------------
 
@@ -151,7 +163,7 @@ CREATE TABLE `fw_admin_message` (
   `messageID` int(11) NOT NULL AUTO_INCREMENT,
   `userID` int(11) NOT NULL,
   `datetime` datetime NOT NULL,
-  `titel` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `message` text NOT NULL,
   PRIMARY KEY (`messageID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
@@ -160,7 +172,7 @@ CREATE TABLE `fw_admin_message` (
 -- Daten für Tabelle `fw_admin_message`
 --
 
-INSERT INTO `fw_admin_message` (`messageID`, `userID`, `datetime`, `titel`, `message`) VALUES
+INSERT INTO `fw_admin_message` (`messageID`, `userID`, `datetime`, `title`, `message`) VALUES
 (1, 1, '2013-03-01 12:00:00', 'nächste Schritte', 'Mit großem Interesse wird das Ergebnis der Vorstandssitzung erwartet');
 
 -- --------------------------------------------------------
@@ -172,8 +184,8 @@ INSERT INTO `fw_admin_message` (`messageID`, `userID`, `datetime`, `titel`, `mes
 CREATE TABLE `fw_admin_quicklink` (
   `linkID` int(11) NOT NULL AUTO_INCREMENT,
   `userID` int(11) NOT NULL,
-  `linkZiel` varchar(255) NOT NULL,
-  `linkName` varchar(255) NOT NULL,
+  `target` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   PRIMARY KEY (`linkID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
@@ -181,7 +193,7 @@ CREATE TABLE `fw_admin_quicklink` (
 -- Daten für Tabelle `fw_admin_quicklink`
 --
 
-INSERT INTO `fw_admin_quicklink` (`linkID`, `userID`, `linkZiel`, `linkName`) VALUES
+INSERT INTO `fw_admin_quicklink` (`linkID`, `userID`, `target`, `name`) VALUES
 (1, 1, 'admin/', 'Dashboard'),
 (2, 2, 'admin/', 'Dashboard'),
 (3, 2, 'admin/content/einsatz', 'Einsatzverwaltung'),
@@ -252,12 +264,12 @@ CREATE TABLE `fw_auth` (
 
 CREATE TABLE `fw_einsatz` (
   `einsatzID` int(11) NOT NULL AUTO_INCREMENT,
-  `einsatzName` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `datum` date NOT NULL,
   `beginn` time NOT NULL,
   `ende` time NOT NULL,
-  `lfdNr` int(11) NOT NULL,
-  `einsatzNr` int(11) NOT NULL,
+  `lfd_nr` int(11) NOT NULL,
+  `einsatz_nr` int(11) NOT NULL,
   `online` tinyint(4) NOT NULL,
   PRIMARY KEY (`einsatzID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2074 ;
@@ -266,7 +278,7 @@ CREATE TABLE `fw_einsatz` (
 -- Daten für Tabelle `fw_einsatz`
 --
 
-INSERT INTO `fw_einsatz` (`einsatzID`, `einsatzName`, `datum`, `beginn`, `ende`, `lfdNr`, `einsatzNr`, `online`) VALUES
+INSERT INTO `fw_einsatz` (`einsatzID`, `name`, `datum`, `beginn`, `ende`, `lfd_nr`, `einsatz_nr`, `online`) VALUES
 (1, 'Dachstuhlbrand', '2003-07-09', '17:03:00', '18:58:00', 3, 3, 1),
 (2, 'Zimmerbrand im Stadtteil Neuenhain', '2003-11-02', '00:00:14', '15:16:00', 23, 23, 1),
 (3, 'Auslösung Brandmeldeanlage durch Staub', '2003-07-10', '14:28:00', '00:00:00', 4, 4, 1),
@@ -857,7 +869,7 @@ INSERT INTO `fw_einsatz` (`einsatzID`, `einsatzName`, `datum`, `beginn`, `ende`,
 (588, 'Personen in Aufzug eingeschlossen', '2006-07-12', '19:58:00', '20:18:00', 128, 128, 1),
 (589, 'Auslösung der Brandmeldeanlage', '2006-07-13', '15:56:00', '16:19:00', 129, 129, 1),
 (590, 'Auslösung der Brandmeldeanlage', '2006-07-15', '08:10:00', '08:58:00', 130, 130, 1);
-INSERT INTO `fw_einsatz` (`einsatzID`, `einsatzName`, `datum`, `beginn`, `ende`, `lfdNr`, `einsatzNr`, `online`) VALUES
+INSERT INTO `fw_einsatz` (`einsatzID`, `name`, `datum`, `beginn`, `ende`, `lfd_nr`, `einsatz_nr`, `online`) VALUES
 (591, 'Brennt Gartenhütte', '2006-07-15', '10:15:00', '10:39:00', 131, 131, 1),
 (592, 'Ölfleck', '2006-07-15', '16:45:00', '17:27:00', 132, 132, 1),
 (593, 'Auslösung der Brandmeldeanlage', '2006-07-15', '17:34:00', '18:06:00', 133, 133, 1),
@@ -1441,7 +1453,7 @@ INSERT INTO `fw_einsatz` (`einsatzID`, `einsatzName`, `datum`, `beginn`, `ende`,
 (1171, 'Auslösung der Brandmeldeanlage', '2008-11-26', '07:50:00', '08:12:00', 236, 236, 1),
 (1172, 'Auslösung der Brandmeldeanlage', '2008-11-26', '08:55:00', '09:21:00', 237, 237, 1),
 (1173, 'Auslösung der Brandmeldeanlage', '2008-11-27', '10:37:00', '11:21:00', 238, 238, 1);
-INSERT INTO `fw_einsatz` (`einsatzID`, `einsatzName`, `datum`, `beginn`, `ende`, `lfdNr`, `einsatzNr`, `online`) VALUES
+INSERT INTO `fw_einsatz` (`einsatzID`, `name`, `datum`, `beginn`, `ende`, `lfd_nr`, `einsatz_nr`, `online`) VALUES
 (1174, 'Wasserschaden', '2008-11-29', '13:01:00', '13:31:00', 239, 239, 1),
 (1175, 'Rauchentwicklung im Gebäude', '2008-11-29', '20:00:00', '20:30:00', 240, 240, 1),
 (1176, 'Auslösung der Brandmeldeanlage', '2008-12-02', '13:58:00', '14:19:00', 241, 241, 1),
@@ -2026,7 +2038,7 @@ INSERT INTO `fw_einsatz` (`einsatzID`, `einsatzName`, `datum`, `beginn`, `ende`,
 (1755, 'Türöffnung für den Rettungsdienst', '2011-04-27', '06:31:00', '06:44:00', 79, 79, 1),
 (1756, 'Ölspur', '2011-04-27', '10:12:00', '13:35:00', 80, 80, 1),
 (1757, 'Ölspur', '2011-04-27', '14:55:00', '15:52:00', 81, 81, 1);
-INSERT INTO `fw_einsatz` (`einsatzID`, `einsatzName`, `datum`, `beginn`, `ende`, `lfdNr`, `einsatzNr`, `online`) VALUES
+INSERT INTO `fw_einsatz` (`einsatzID`, `name`, `datum`, `beginn`, `ende`, `lfd_nr`, `einsatz_nr`, `online`) VALUES
 (1758, 'Auslösung der Brandmeldeanlage', '2011-04-28', '14:47:00', '15:15:00', 82, 82, 1),
 (1759, 'VU mit auslaufenden Betriebsstoffen', '2011-04-29', '11:41:00', '13:19:00', 83, 83, 1),
 (1760, 'Wasserschaden im Gebäude', '2011-04-29', '14:05:00', '15:10:00', 84, 84, 1),
@@ -2335,10 +2347,10 @@ INSERT INTO `fw_einsatz` (`einsatzID`, `einsatzName`, `datum`, `beginn`, `ende`,
 
 CREATE TABLE `fw_einsatz_content` (
   `einsatzID` int(11) NOT NULL,
-  `einsatzlage` text NOT NULL,
-  `einsatzgeschehen` text NOT NULL,
-  `einsatzkraefteFreitext` text NOT NULL,
-  `anzahlEinsatzkraefte` int(11) NOT NULL,
+  `lage` text NOT NULL,
+  `geschehen` text NOT NULL,
+  `weitere_kraefte` text NOT NULL,
+  `anzahl_kraefte` int(11) NOT NULL,
   PRIMARY KEY (`einsatzID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -2346,7 +2358,7 @@ CREATE TABLE `fw_einsatz_content` (
 -- Daten für Tabelle `fw_einsatz_content`
 --
 
-INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`, `einsatzkraefteFreitext`, `anzahlEinsatzkraefte`) VALUES
+INSERT INTO `fw_einsatz_content` (`einsatzID`, `lage`, `geschehen`, `weitere_kraefte`, `anzahl_kraefte`) VALUES
 (1, 'Stark qualmender Dachstuhl über einer Gaststätte. Beim Eintreffen brennt Dachstuhl in voller Ausdehnung, teilweise bereits durchgebrochen. 3-geschossiges Mehrfamilienhaus mit 6 Wohneinheiten.', '1. Absperren des Gefahrenbereichs.\r\n2. Innenangriff mit zwei Trupps unter umluftunabhängigen Atemschutz. Hierbei werden zwei Personen aus dem zweiten Obergeschoss gerettet, eine davon mit einer leichten Rauchgasintoxikation an den Rettungsdienst übergeben.\r\nAuf Grund der Lage wurden um 15:35 Uhr die Stadtteilfeuerwehren Altenhain und Neuenhain sowie eine zweite Drehleiter aus Schwalbach angefordert. Daraufhin wurde neben dem Innenangriff mit einem C-Rohr ein Außenangriff über die zwei Drehleitern von der Ost- und Westseite, sowie über den Monitor des TLF 24/50 von der Südseite eingesetzt.\r\nDer Brand war um 16:40 unter Kontrolle, folgend galt es noch Glutnester abzulöschen und den Knotenpunkt des Daches zu kontrollieren.\r\nDas Löschwasser im zweiten Obergeschoss wurde mit einem Wassersauger abgetragen und anschließend das THW auf Wunsch des Besitzers zum Sichern des Daches vor Regens angefordert. Damit war der Einsatz für die Feuerwehr beendet.\r\nDer Sachschaden wird auf 150.000 Euro geschätzt. Neben der verletzten Person aus dem Gebäde wurden zwei Feuerwehrleite während des Einsatzes leicht verletzt.', 'Stadtteile Altenhain und Neuenhain, Drehleiter Feuerwehr Schwalbach, Kreisbrandinspektor, Kreisbrandmeister, drei Rettungswagen, ein Notarzteinsatzfahrzeug, Leitender Notarzt, Organisatorischer Leiter Rettungsdienst, DRK Ortsverband Bad Soden, Polizei, THW', 23),
 (2, 'Beim Eintreffen der Bad Sodener Einsatzkräfte, war die Lage durch die Feuerwehr Neuenhain bereits unter Kontrolle, so das die Atemschutzgeräteträger aus der Kernstadt lediglich in Bereitschaft standen.', 'Am 2.11.03 kam es im Stadteil Bad Soden-Neuenhain zu einem Brand in einem Mehrfamilienhaus. Die Ortsteilfeuerwehr Neuenhain, sowie ein Löschzug der Kernstadt mit Drehleiter, wurden nach Alarmplan zu diesem Objekt geschickt. Die Feuerwehr Neuenhain brachte die Lage sehr schnell unter Kontrolle und die Bewohner des Hauses mussten nicht evakuiert werden. Die Kräfte aus Bad Soden stellten für kurze Zeit einen Rettungstrupp mit Atemschutz und konnten, nachdem das Feuer gelöscht war und mit Belüftungsmaßnahmen begonnen wurde, die Einsatzstelle wieder verlassen und zur Wache zurückkehren. An dieser Stelle muß einmal wieder die hervoragende Zusammenarbeit aller Sodener Stadtteilfeuerwehren gelobt werden.\r\nDie Brandursache war zur Zeit des Abrückens der Bad Sodener Kräfte noch nicht ganz geklärt, man geht jedoch von einem Kurzschluss in einem Elektrogerät aus. Der Sachschaden war ebenfalls noch nicht bekannt. ', 'Sanitätsdienst und Polizei Eschborn', 16),
 (3, '', '', '', 0),
@@ -2473,7 +2485,7 @@ INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`
 (124, 'Auslösung der Brandmeldeanlage sowie der Sprinkleranlage', 'Insgesamt drei Trupps durchsuchten das Gebäude, um die Ursache der Brandmelder- und Sprinklerauslösung heraus zu finden. Schnell fand man heraus, dass der Brandmelder durch Zigarettenrauch ausgelöst wurde, die Verursacher waren aber leider nicht mehr aufzufinden.\r\nSchwieriger gestaltete sich die ausgelöste Sprinkleranlage: zwar wußte man, dass die Meldung aus der Tiefgarage kam, jedoch ist diese nicht gerade klein. Zunächst ging der Trupp zur Sprinkleranlage selbst, um dort nach einer möglichen Ursache zu suchen. Dies war jedoch nicht der Fall so dass in Begleitung eines Verantwortlichen des Hauses die gesamte Tiefgarage abgesucht wurde. Hier wurde man doch schnell fündig: ein Wasserrohr, dass die Sprinkler versorgt, war an einer kleinen Stelle gebrochen, so dass Wasser aus der Leitung austratt. Dadurch fiel der Wasserdruck in der Sprinkleranlage ab und diese löste einen Alarm aus. \r\nDer Verantwortliche wurde letztendlich noch darauf hingewiesen den Schaden an der Rohrleitung schnellstmöglich beheben zu lassen.  (rj)', 'Rettungsdienst (1 RTW), DRK OV Bad Soden', 12),
 (125, 'Auslösung der Brandmeldeanlage', 'Täuschungsalarm', 'Feuerwehr Sulzbach, Rettungsdienst (1 RTW)', 2),
 (126, 'Schwelbrand in Kleiderregal eines Sportgeschäftes', 'Aus bislang ungeklärter Ursache kam es am Samstag Nachmittag in einem Sportgeschäft zu einem Schwelbrand von Bekleidungsartikeln. \r\nDer Brand wurde von Einsatzkräften der Feuerwehr Sulzbach gelöscht, die Wärmebildkamera der Feuerwehr Bad Soden am Taunus war in Bereitstellung. Nach kurzer zeit konnten die Kräfte aus Bad Soden am Taunus aber wieder abrücken.\r\nÜber die Höhe des Sachschadens können keine Angaben gemacht werden, Personen wurden nicht verletzt. (rj)', 'Feuerwehren Sulzbach und Schwalbach, stellv. Kreisbrandinspektor, Kreisbrandmeister, Rettungsdienst (1 RTW), DRK OV Sulzbach und Bad Soden, Polizei', 18);
-INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`, `einsatzkraefteFreitext`, `anzahlEinsatzkraefte`) VALUES
+INSERT INTO `fw_einsatz_content` (`einsatzID`, `lage`, `geschehen`, `weitere_kraefte`, `anzahl_kraefte`) VALUES
 (127, 'Hilflose Person hinter verschlossener Wohnungstür eingeschlossen', 'Öffnen der Tür mit Türöffnungswerkzeug und "Manpower", Übergabe des Patienten an den Rettungsdienst zur Versorgung.', 'Rettungsdienst (1 RTW)', 8),
 (128, 'Person in Aufzug eingeschlossen', 'Öffnen des Aufzuges durch Aufdrücken der Türen. Die Frau war wohlauf und wurde ihrem Ehemann übergeben.', '', 12),
 (129, 'Auslösung der Brandmeldeanlage durch technischen Defekt', 'Kein Einsatz für die Feuerwehr', 'Rettungsdienst (1 RTW), DRK OV Bad Soden', 14),
@@ -2596,7 +2608,7 @@ INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`
 (246, 'Ein LKW hatte einen Sack Kalk oder Beton verloren. Da dieser auf einem Abfluss lag, musste man von einer möglichen Umweltgefährdung ausgehen.', 'Noch vor Eintreffen der Feuerwehr hatten Anwohner das Paket selbst entsorgt.\r\n', '', 4),
 (247, 'Rauch und Geruchswahrnehmung aus Umspannwerk in Bad Soden.', '<b>Kurzer Stromausfall nach Brand in Umspannwek</b>\r\nAus bislang ungeklärter Ursache kam es am Mittwoch Morgen zu einem Schmorbrand im Umspannwerk Bad Soden, woraufhin in Bad Soden, Sulzbach und Niederhofheim kurze Zeit der Strom ausfiel.<br>\r\nAls die ersten Einsatzkräfte an der Einsatzstelle eintrafen, war Rauch sichtbar und Brandgeruch vorhanden. Zusammen mit dem Notfallmanager des zuständigen Energieversorgungsunternehmen ging ein Trupp unter umluftunabhängigem Atemschutz ins Gebäude vor. Dort konnte eine deutliche Verrauchung festgestellt werden. Während der Maßnahmen mussten die Starkstromleitungen neu geschaltet werden, wodurch es zu einem kurzen Stromausfall in den umliegenden Städten kam.\r\nDas Gebäude wurde daraufhin mit Überdrucklüftern belüftet und mit einer Wärmebildkamera auf Brandstellen abgesucht. \r\nDadurch konnte ein durchgeschmortes Betriebsteil als Ursache für die Verrauchung festgestellt werden. Dieses Teil wurde noch im Laufe des Tages durch das Energieversorgungsunternehmen ersetzt. (rj)', 'Feuerwehr Hofheim, Feuerwehr Liederbach, Kreisbrandinspektor, Kreisbrandmeister,  Rettungsdienst (2 RTW), Notarzt (1 NEF), Energieversorgungsunternehmen, Tiefbauamt', 15),
 (248, 'Auslösung der Brandmeldeanlage.', 'Durch den Stromausfall nach dem Schmorbrand im Umspannwerk löste eine Brandmeldeanlage aus. Die Feuerwehr Bad Soden am Taunus rückte jedoch nicht aus.', 'Feuerwehr Sulzbach, Feuerwehr Schwalbach, Feuerwehr Eschborn, Rettungsdienst (1 RTW)', 0);
-INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`, `einsatzkraefteFreitext`, `anzahlEinsatzkraefte`) VALUES
+INSERT INTO `fw_einsatz_content` (`einsatzID`, `lage`, `geschehen`, `weitere_kraefte`, `anzahl_kraefte`) VALUES
 (249, 'Auslösung der Brandmeldeanlage durch technsichen Defekt.', 'Ein Trupp mit umluftunabhängigem Atemschutz erkundete den Bereich um den ausgelösten Melder, es konnte jedoch kein Rauch oder Feuer festgestellt werden. ', 'Stadtteilfeuerwehren Altenhain und Neuenhain, Rettungsdienst (1 RTW)', 16),
 (250, 'Auslösung der CO-Löschanlage in EDV-Raum eines Unternehmens in Sulzbach.', 'Die Feuerwehr Bad Soden wurde zur Unterstützung der Feuerwehr Sulzbach alarmiert. Nach der Auslösung der CO-Löschanlage sollten Messungen bezüglich des CO-Gehalts im Gebäude durchgeführt werden. Diese Messungen mussten im Verlauf des Einsatz aber nicht ausgeführt werden.', 'Feuerwehr Sulzbach, Rettungsdienst (1 RTW)', 16),
 (251, 'Auslösung der Brandmeldeanlage.', 'Ein Trupp durchsuchte das gesamte Gebäude, es konnte jedoch kein Rauch oder Feuer festgestellt werden.', 'Rettungsdienst (1 RTW), DRK OV Bad Soden', 18),
@@ -2760,9 +2772,9 @@ INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`
 (409, 'Auslösung der Brandmeldeanlage durch Staubaufwirbelung.', 'Kein Einsatz für die Feuerwehr.', 'Feuerwehr Sulzbach, Rettungsdienst (1 RTW)', 5),
 (410, 'Gestürzte Person hinter verschlossener Wohnungstür.', 'Die Wohnung wurde über den Balkon betreten und die Tür von innen geöffnet. Die Person wurde an den Rettungsdienst übergeben.', 'Rettungsdienst (1 RTW), Polizei', 14),
 (411, 'Katze auf Baum.', 'Die Katze wurde über die DLK gerettet und floh danach von der Einsatzstelle.', '', 2),
-(412, 'Auslösung der Brandmeldeanlage durch Wasserdampf.', 'Kein Einsatz für die Feuerwehr.', 'Feuerwehren Sulzbach und Schwalbach, Rettungsdienst (1 RTW)', 11);
-INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`, `einsatzkraefteFreitext`, `anzahlEinsatzkraefte`) VALUES
-(413, 'Es brannte die Verkleidung eines Kamin.', 'Die Verkleidung wurde entfernt.', '', 8),
+(412, 'Auslösung der Brandmeldeanlage durch Wasserdampf.', 'Kein Einsatz für die Feuerwehr.', 'Feuerwehren Sulzbach und Schwalbach, Rettungsdienst (1 RTW)', 11),
+(413, 'Es brannte die Verkleidung eines Kamin.', 'Die Verkleidung wurde entfernt.', '', 8);
+INSERT INTO `fw_einsatz_content` (`einsatzID`, `lage`, `geschehen`, `weitere_kraefte`, `anzahl_kraefte`) VALUES
 (414, 'Hilflose Person hinter verschlossener Wohnungstür.', 'Öffnen der Tür und Übergabe des Patienten an den Rettungsdienst.', 'Rettungsdienst (1 RTW), Polizei', 13),
 (415, 'Wohnungsbrand im 11. Obergschoß eines 12-stöckigen Wohnhauses in Schwalbach, Nachforderung durch die Feuerwehr Schwalbach.', '<b>Wohnungsbrand macht gesamte Etage unbewohnbar</b>\r\nAus bislang ungeklärter Ursache kam es Dienstag Abend zu einem Wohnungsbrand in Schwalbach bei dem wie durch ein Wunder keine Person verletzt wurde. Eine Etage des Hochhauses wurde jedoch unbewohnbar.<br>\r\nAls die ersten Einsatzkräfte aus Schwalbach an der Einsatzstelle eintrafen war bereits eine deutliche Rauchentwicklung aus dem 11. Obergeschoß des 12-stöckigen Wohnhauses feststellbar. Aus einem Fenster der betroffenen Wohnung schlugen die Flammen raus.<br>\r\nSofort gingen zwei Trupps unter umluftunabhängigem Atemschutz zur Menschenrettung und Brandbekämpfung vor. Die Lschwasserversorgung erfolgte hierbei über die vorhanden Steigleitung des Wohnhauses.<br>\r\nZur Sicherstellung weiterer Atemschutzgeräteträger und wegen der Größe des Objekts wurden die Feuerwehren Bad Soden am Taunus und Eschborn als zweiter, beziehungsweise dritter, Löschzug nachgefordert. Ebenso der Gerätewagen Atemschutz aus Hofheim. Die Feuerwehren Sulzbach und Niederhöchstadt wurden ebenfalls alarmiert und in Alarmbereitschaft versetzt. Der diensthabende Kreisbrandmeister sowie der stellvertretende Kreisbrandinspektor waren ebenfalls an der Einsatzstelle.\r\nWeiterhin war ein Großaufgebot an Rettungskräften an der Einsatzstelle. Neben vier Rettungswagen und einem Notarzteinsatzfahrzeug waren der Leitende Notarzt sowie der Organisatorische Leiter Rettungsdienst vor Ort.<br>\r\nVon der Feuerwehr Bad Soden am Taunus wurden zwei Trupps unter umluftunabhängigem Atemschutz zur Menschenrettung und Brandbekämpfung eingesetzt, ein dritter Trupp stand wie drei weitere Trupps aus Eschborn in Bereitstellung.<br>\r\nZur Brandbekämpfung wurde ein C-Rohr sowie ein Wenderohr über die Drehleiter aus Schwalbach eingesetzt. Betroffen war hierbei neben der eigentlichen Brandwohnung auch der gesamte Flurbereich, eine Brandausbreitung auf die beiden anderen Wohnungen der Etage konnte verhindert werden. Dennoch wurden die Wohnungen durch den Brandrauch in Mitleidenschaft gezogen.<br>\r\nWie durch ein Wunder waren alle Bewohner der betroffenen Wohnungen zum Zeitpunkt des Brandes nicht zu Hause. Eine Bewohnerin erreichte später die Einsatzstelle und musste wegen eines Kollaps vom anwesenden Rettungsdienst versorgt werden.<br>\r\nMit einer Wärmebildkamera wurden schließlich noch letzte Glutnester gesucht und abgelöscht, die Einsatzkräfte aus Bad Soden am Taunus konnten nach Rücksprache mit der Feuerwehr Schwalbach um 20:30 Uhr die Einsatzstelle verlassen.\r\nZur Höhe des Sachschadens können keine Angaben gemacht werden. Neben der einen Bewohnerin wurden zwei Feuerwehrleute verletzt, als sie die Wohungen stromlos schalten wollten. Sie wurden ambulant versorgt. (rj)', 'Feuerwehr Schwalbach, Feuerwehr Eschborn, Feuerwehr Hofheim, stellv. Kreisbrandinspektor, Kreisbrandmeister, Rettungsdienst (2 RTW), DRK OV Bad Soden (2 RTW), Notarzt (1 NEF), Leitender Notarzt, Organisatorischer Leiter Rettungsdienst, Polizei', 18),
 (416, 'Nach einem Verkehrsunfall liefen wassergefährdende Stoffe aus einem PKW aus.', 'Die Ölspur wurde gebunden und anschließend das Bindemittel wieder aufgenommen.', 'Polizei', 2),
@@ -2911,7 +2923,7 @@ INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`
 (559, 'Eine Katze wurde bei einem Verkehrsunfall angefahren.', 'Die Katze wurde zunächst zur Notversorgung in eine Bad Sodener Tierarztpraxis gefahren und anschließend in die Tierklinik nach Hofheim gebracht.', '', 1),
 (560, 'Eingeschlagene Fensterscheibe am Rathaus.', 'Sicherungsmaßnahmen bis die Scheibe durch ein Unternehmen ersetzt wurde.', 'Polizei, Bürgermeister', 1),
 (561, '2 Personen in Aufzug eingeschlossen.', 'Öffnen des Aufzug und befreien der Personen.', '', 7);
-INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`, `einsatzkraefteFreitext`, `anzahlEinsatzkraefte`) VALUES
+INSERT INTO `fw_einsatz_content` (`einsatzID`, `lage`, `geschehen`, `weitere_kraefte`, `anzahl_kraefte`) VALUES
 (562, 'Auslösung der Brandmeldeanlage in Block M und Block B. Im Verlauf Rauchentwicklung im Eingangsbereich eines Modegeschäfts.', 'Die Feuerwehren Bad Soden am Taunus, Schwalbach und Sulzbach wurden am Freitag Vormittag zunächst zu einem "gewöhnlichen" Brandmeldereinlauf in das Main-Taunus-Zentrum alarmiert. Allerdings hatten dieses Mal zwei Brandmeldeanlagen ausgelöst, so daß Sulzbach mit Schwalbach den Block M übernahm, Bad Soden am Taunus den Block B.\r\nAm Block M konnte die Ursache schnell ausgemacht werden, ein LKW hatte einen Sprinklerkopf abgefahren. Durch den hierdurch entstandenen Druckabfall löste die Brandmeldeanlage aus. Vermutlich löste hierdurch auch die Brandmeldeanlage in Block B aus. Um ein Feuer jedoch auszuschließen suchten mehrere Trupps aller drei Feuerwehren sämtliche Geschäfte des Block B ab; es konnte jedoch kein Feuer festgestellt werden.\r\nNachdem der Löschzug Schwalbach bereits abgerückt war, erreichte die Einsatzleitung eine Meldung daß es im Eingangsbereich eines Modegeschäfts eine Rauchentwicklung und deutliche Geruchsbelästigung gäbe. Sofort begaben sich Einsatzkräfte der Feuerwehren Bad Soden am Taunus und Sulzbach dorthin. Nach teilweisem Öffnen der Decke und Absuchen mit einer Wärmebildkamera war die vermutliche Ursache ein Schmorbrand eines Elektrogeräts.', 'Feuerwehren Sulzbach und Schwalbach, Kreisbrandinspektor, Vorbeugender Brandschutz, Rettungsdienst (1 RTW)', 18),
 (563, 'Auslösung der Vernebelungsanlage nach Einbruch.', 'Kein Einsatz für die Feuerwehr.', 'Feuerwehr Liederbach', 8),
 (564, 'Bienenschwarm im Dachbereich eines Wohnhauses.', 'Nach mehreren fehlgeschlagenen Versuchen über die Drehleiter oder den Dachboden an das Bienennest zu gelangen, wurde nach Rücksprache mit einem Imker sowie der Tierrettungsgruppe die Wand geöffnet. Ein Teil des Nestes wurde abgesaugt, der restliche Schwarm flog davon und sammelte sich an einem Baum wieder.\r\nDa von dort keine unmittelbare Gefahr mehr ausging war der Einsatz damit beendet.', 'Imker, Tierrettungsgruppe', 5),
@@ -3087,7 +3099,7 @@ INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`
 (734, 'Rettungsdienst bei der Versorgung eines Patientin in Sulzbach. Zum Transport in den RTW wurde die Drehleiter angefordert.', 'Der Patient wurde über die Drehleiter transportiert und in den RTW getragen.', 'Rettungsdienst (2 RTW)', 3),
 (735, 'Gestürzte Person im Keller eines Einfamilienhauses eingeschlossen. ', 'Zunächst wurden die Zugangsmöglichkeiten ins Gebäude erkundet. Dabei stellte sich heraus, dass ein schnelles Eindringen nur durch die Haustür möglich war. Diese wurde umgehend mit Türöffnungswerkzeug aufgebrochen und dem Rettungsdienst Zugang zur Person verschafft.', 'Rettungsdienst ( 1 RTW ), Polizei', 13),
 (736, 'Fehlauslösung der Brandmeldeanlage bei Schweißarbeiten.', 'Kein Einsatz für die Feuerwehr.', 'Feuerwehr Sulzbach, Rettungsdienst (1 RTW)', 7);
-INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`, `einsatzkraefteFreitext`, `anzahlEinsatzkraefte`) VALUES
+INSERT INTO `fw_einsatz_content` (`einsatzID`, `lage`, `geschehen`, `weitere_kraefte`, `anzahl_kraefte`) VALUES
 (737, 'Nach einem Wasserrohrbruch war der gesamte Keller eines Wohnhauses ca 50cm unter Wasser gesetzt. Aus dem defekten Rohr lief das Wasser ständig nach.', 'Nachdem zunächst ein Wassersauger und 2 Tauchpumpen in Stellung gebracht wurden, wurde vom Notdienst der Wasserwerke die Hauptwasserleitung abgeschiebert. Hierdurch war während der gesamten Einsatzzeit ein gesamtes Wohnviertel ohne Wasser.\r\nWährend im Verlauf ein weiterer Wassersauger eingesetzt wurde, wurde das defekte Rohr durch den Mitarbeiter der Wasserwerke und einen herbeigerufenen Installateur repariert. Nach etwas mehr als 2 Stunden konnten die Einsatzkräfte dann wieder abrücken.', 'Wasserwerk', 22),
 (738, 'Fehlauslösung der Brandmeldeanlage durch technischen Defekt.', 'Kein Einsatz für die Feuerwehr.', 'Feuerwehren Sulzbach und Schwalbach, Rettungsdienst (1 RTW)', 18),
 (739, 'Fehlauslösung der Brandmeldeanlage durch technischen Defekt.', 'Kein Einsatz für die Feuerwehr', 'Feuerwehr Sulzbach, Rettungsdienst ( 1 RTW )', 10),
@@ -3222,7 +3234,7 @@ INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`
 (868, 'Ein morscher Ast droht auf die Straße zu stürzen.', 'Mittels der Drehleiter und einer Motorkettensäge wird der Ast entfernt.', '', 3),
 (869, 'Unbekannte Flüssigkeit läuft in den Kanal', 'Bei der Flüssigkeit handelte es sich um Getriebeöl, wovon nur geringe Mengen ausgelaufen waren. Diese wurden mittels Bindemittel aufgenommen und entsorgt. (mb)', 'Polizei', 3),
 (870, 'Eine Person hatte telefonisch einen Suizidversuch angedroht und öffnet nun nicht die Wohnungstür.', 'Die Tür wurde durch die Feuerwehr geöffnet, jedoch befand sich keine Person in der Wohnung. Die Einsatzstelle wurde an die Polizei übergeben. (mb)', 'Rettungsdienst ( 1 RTW + 1 NEF ), Polizei', 14);
-INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`, `einsatzkraefteFreitext`, `anzahlEinsatzkraefte`) VALUES
+INSERT INTO `fw_einsatz_content` (`einsatzID`, `lage`, `geschehen`, `weitere_kraefte`, `anzahl_kraefte`) VALUES
 (871, 'Durch den Einsatzleiter konnte keine Explosion festgestellt werden.', 'Durch einen Notruf bei der Rettungsleitstelle wurde eine Explosion in oder an einem Gebäude im Lerchenweg gemeldet. Bei Eintreffen der Rettungskräfte konnte jedoch keine Feststellung gemacht werden. Statt dessen wurde ein Einbruch in das Objekt bemerkt. Das Geräusch einer Explosion kam vermutlich dadurch, dass an dem Haus eine Doppelglasscheibe zertrümmert wurde. Der oder die Einbrecher hatten das Objekt bereits verlassen. Die Einsatzstelle wurde für die Ermittlungen an die Polizei übergeben. Keine weitere Tätigkeit für die Feuerwehr. (mb)', 'Feuerwehren Altenhain und Neuenhain, Rettungsdienst ( 2 RTW ), Polizei', 13),
 (872, 'Der Brunnen gegenüber des Hundertwasserhauses war verstopft und lief über.', 'Die Feuerwehr benachrichtigte den Notdienst des städtischen Bauhofs, welcher das Wasser abstellte und am nächsten Tag die Reinigung des Brunnens veranlasste. Kein Einsatzf ür die Feuerwehr.', '', 2),
 (873, 'Staubaufwirbelung im gesamten Gebäude. Die Rauchabzugsanlage hatte ausgelöst.', 'Kein Feuer und kein Rauch feststellbar. In einem mehrgeschossigen Wohnhaus in der Strasse "An der Wilhelmshöhe" hatte aufgrund einer Staubaufwirbelung eine Rauchabzugsanlage ausgelöst. Nach Beruhigung der Anwohner konnte die Feuerwehr wieder abrücken. (mb)', 'Feuerwehren Altenhain und Neuenhain, Rettungsdienst ( 1 RTW )', 14),
@@ -3353,7 +3365,7 @@ INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`
 (998, 'Ein Ast hängt gefährlich über die Max-Baginski-Str.', 'Mit Hilfe der Drehleiter und einer Säge wird die Gefahr beseitigt (mb)', '', 0),
 (999, 'Brandmeldeanlage in Alarm', 'Die automatische Brandmeldeanlage der Kliniken des MTK hatte wegen eines technischen Defekts ausgelöst. Nach umfangreichen Erkundungsmassnahmen konnte der Einsatz schliesslich abgebrochen werden. (mb)', 'Feuerwehren Altenhain und Neuenhain, KBI, LNA, OLRD, Rettungsdienst (1 RTW), DRK OV (1 RTW)', 25),
 (1000, 'Brandmeldeanlage in Alarm', 'Durch angebranntes Essen in einer Microwelle und die darauf folgende Auslösung der automatischen Brandmeldeanlage wurde die Feuerwehr in die Psychiatrische Klinik in die Sebastian-Kneipp-Str. gerufen.<br.>\r\nDie Feuerwehr leitete eine natürliche Belüftung zur Beseitigung der Geruchsbelästigung ein und konnte sodann die Einsatzstelle wieder verlassen. (mb)', 'Rettungsdienst (1 RTW)', 0);
-INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`, `einsatzkraefteFreitext`, `anzahlEinsatzkraefte`) VALUES
+INSERT INTO `fw_einsatz_content` (`einsatzID`, `lage`, `geschehen`, `weitere_kraefte`, `anzahl_kraefte`) VALUES
 (1001, 'Verletzte Person hinter verschlossener Wohnungstür.', 'Durch den Rettungsdienst wurde die Wohnungstür in der Langstr. in Altenhain bereits geöffnet und somit bestand Zugang zum Patienten. Da eine weitere Behandlung in einer nahgelegene Klinik notwendig war, wurde der Rettungsdienst beim Transport des Patienten zum RTW durch die Einsatzkräfte unterstüzt. (mb)', 'Feuerwehr Altenhain, Rettungsdienst (1 RTW), Notarzt (1 NEF), Polizei', 0),
 (1002, 'Brandmeldeanlage in Alarm', 'Im neuen Bauabschnitt der Kliniken des Main-Taunus-Kreises wurde durch Staubaufwirbelung die automatische Brandmeldeanlage ausgelöst. Täuschungsalarm. (mb)', 'Feuerwehren Altenhain und Neuenhain, KBM, LNA, OLRD, Rettungsdienst (1 RTW)', 19),
 (1003, 'Brandmeldeanlage in Alarm', 'Fehlalarm im MTZ durch unbekannte Ursache. (mb)', 'Feuerwehr Sulzbach und Schwalbach, Rettungsdienst (2 RTW), DRK OV (1 RTW)', 16),
@@ -3480,7 +3492,7 @@ INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`
 (1124, 'Brandmeldeanlage in Alarm', 'Im Main-Taunus-Zentrum wurde ein Täuschungsalarm ausgelöst. Kein Einsatz für die Feuerwehr. (mb)', 'Feuerwehren Sulzbach, Schwalbach und Eschborn, Rettungsdienst (2 RTW)', 9),
 (1125, 'Brandmeldeanlage in Alarm', 'Die Brandmeldeanlage der Kliniken des MTK wurde durch Bauarbeiten ausgelöst. (mb)', 'Feuerwehren Altenhain, Neuenhain und Schwalbach, KBM, Rettungsdienst (2 RTW), OLRD, LNA', 10),
 (1126, 'Brandmeldeanlage in Alarm', 'Ein Techniker wollte in den Kliniken des MTK einen Melder der Brandmeldeanlage überprüfen und lösten eine Stunde nach dem Einsatz Nr. 189 erneut Alarm in der Klinik aus. Auch diesmal musste die Feuerwehr nicht eingreifen. (mb)', 'Feuerwehren Altenhain, Neuenhain und Schwalbach, KBM, Rettungsdienst (2 RTW), OLRD, LNA', 11);
-INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`, `einsatzkraefteFreitext`, `anzahlEinsatzkraefte`) VALUES
+INSERT INTO `fw_einsatz_content` (`einsatzID`, `lage`, `geschehen`, `weitere_kraefte`, `anzahl_kraefte`) VALUES
 (1127, 'Brandmeldeanlage in Alarm', 'Die automatische BMA der Kliniken des MTK wurde durch Bauarbeiten im Neubau ausgelöst. (mb)', 'Feuerwehren Neuenhain, Altenhain und Schwalbach, KBM, Rettungsdienst (2 RTW), LNA, OLRD', 0),
 (1128, 'Ersten Meldungen zufolge sollte eine Person in Neuenhain in der Schwalbacher Str. unter einem umgestürzten Baukran begraben sein.', 'Glücklicherweise war niemand eingeklemmt und die Feuerwehr konnte den Einsatz noch auf der Anfahrt abbrechen. (mb)', 'Feuerwehr Neuenhain, Rettungsdienst (1 RTW), Notarzt (1 NEF)', 5),
 (1129, 'Im Kreuzungsbereich Niederhofheimer Str. / Auffahrt zur B8 kam es zu einem Verkehrsunfall mit 2 beteiligten Fahrzeugen.', 'Die Feuerwehr sicherte die Unfallstelle, reinigte sie grob und beseitigte auslaufende Betriebsstoffe, welche anschliessend der fachgerechten Entsorgung zugeführt wurden. (mb)', 'Polizei, Abschleppunternehmen', 11),
@@ -3621,7 +3633,7 @@ INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`
 (1264, 'Von der Abfahrt Bad Soden der Bundesstraße 8 in Fahrtrichtung Königstein bis zum Ortseingang am Wasserturm zog sich eine längere Ölspur.', 'Die Einsatzstelle wurde zunächst großräumig abgesperrt und dann die Ölspur mit flüssigem Ölbindemittel abgesprüht. Mit Wasser wurde die Straße anschließend grob gereinigt. Teilweise wurde auch festes Ölbindemittel eingesetzt. (rj)', 'Polizei', 15),
 (1265, 'Im Waldgebiet oberhalb des Fuchshohl in Neuenhain brannte es auf einer Fläche von ca 200qm.', 'Der Brand wurde mit vier C-Strahlrohren gelöscht. Ein Übergreifen auf weitere Waldgebiete konnte somit verhindert werden.<br>\r\nEine weitere Brandstelle befand sich in der Nähe des Opel-Zoo. Diese wurde durch die Feuerwehr Kronberg abgearbeitet. (rj)', 'Feuerwehr Neuenhain, Rettungsdienst (1 RTW), DRK OV Bad Soden (1 RTW)', 20),
 (1266, 'Auslösung der Brandmeldeanlage in einem Sulzbacher Gewerbebetrieb.', 'Bei seiner ersten Erkundung stellte der Einsatzleiter aus Sulzbach fest, dass im Erdgeschoß Brandgeruch und eine leichte Verrauchung erkennbar war. Daraufhin gingen zwei Trupps unter umluftunabhängigem Atemschutz zur genaueren Erkundung vor.<br>\r\nSie konnten die Brandquelle in einem Computerserver finden und löschten den Brand mit mehreren Kohlendioxidlöschern. Zur Entrauchung wurden zwei Überdrucklüfter eingesetzt.<br> \r\nDie Einsatzkräfte aus Bad Soden standen mit der Drehleiter in Bereitstellung. Zur Höhe des Sachschadens können keine Angaben gemacht werden, Personen wurden nicht verletzt. (rj)', 'Feuerwehr Sulzbach, Rettungsdienst (1 RTW)', 12);
-INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`, `einsatzkraefteFreitext`, `anzahlEinsatzkraefte`) VALUES
+INSERT INTO `fw_einsatz_content` (`einsatzID`, `lage`, `geschehen`, `weitere_kraefte`, `anzahl_kraefte`) VALUES
 (1267, 'Mehrere Personen sind bereits durch einen in der Nachbarschaft wohnenden Feuerwehrmann aus dem Gebäude evakuiert. Im Außenbereich war eine starke Rauchentwicklung wahrnehmbar. Der Anbau des Hauses stand im Vollbrand und das Feuer drohte auf weitere Gebäude überzugreifen.', 'In der vergangenen Nacht kam es in der Taunusstr. zu einem Feuer im Anbau eines Wohnhauses, bei welchem mehrere Hasen getötet wurden.<br>\r\nAls die Feuerwehr, die von Bewohnern des Hauses um 01.43 Uhr alarmiert wurde, an der Einsatzstelle eintraf, war die gesamte Strasse und das Gebäude bereits stark verraucht. Ein Anbau, welcher als Geräteschuppen genutzt wurde, stand im Vollbrand. Mit Atemschutzgeräten ausgerüstet gelang es den eingesetzten Kräften das Feuer mit mehreren Rohren abzulöschen.  Ein Übergreifen auf das Wohnhaus, bei welchem bereits diverse Scheiben durch die Hitze geplatzt waren, und das Nachbargebäude konnte somit verhindert werden. Die Feuerwehr kontrollierte die Gebäude mit der Wärmebildkamera um evtl. Schwelbrände in Zwischendecken, Außenwänden und im Dachbereich auszuschliessen, da diese durch die starke Hitzeentwicklung in Mitleidenschaft gezogen wurden. Mit Lüftungsgeräten wurde das Haus vom Brandrauch befreit.<br>\r\nDie Polizei geht von Brandstiftung aus und hat die Ermittlungen eingeleitet. Der Sachschaden beläuft sich auf ca. 40.000,- Euro. Personen wurden nicht verletzt. (mb) ', 'Feuerwehren Neuenhain und Altenhain, Rettungsdienst (1 RTW), DRK OV (1 RTW), Polizei', 17),
 (1268, 'Eine Ölspur zog sich auf der Landstrasse von Mammolshain Richtung Krankenhaus Bad Soden und weiter Richtung Schwalbach.', 'Die Ölspur wurde beseitigt und die Strasse grob gereinigt. (mb)', 'Polizei ', 14),
 (1269, 'Auslösung der Brandmeldeanlage in einem Altenpflegeheim in Bad Soden.', 'Die Auslösung erfolgte durch angebranntes Fett in einem Backofen, kein Einsatz für die Feuerwehr.', 'Rettungsdienst (1 RTW)', 11),
@@ -3774,7 +3786,7 @@ INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`
 (1416, '2 PKW waren auf der Königsteiner Str. kollidiert. 1 verletzte Person wurde bereits vom Rettungsdienst versorgt.', 'Auf der Königsteiner Str. kam es zu einem Verkehrsunfall, bei welchem 1 Person verletzt wurde. Sie wurde vom Rettungsdienst in eine nahe liegende Klinik verbracht. Die Feuerwehr sicherte die Unfallstelle, beseitigte die auslaufenden Kraftstoffe und reinigte die Strasse von Fahrzeugteilen. (mb)', 'Rettungsdienst (1 RTW), Polizei', 13),
 (1417, 'Auslösung der Brandmeldeanlage im Main-Taunus-Zentrum.', 'Die Auslösung erfolgte durch einen technischen Defekt, somit kein Einsatz der Feuerwehr nötig. (rj)', 'Feuerwehren Sulzbach und Schwalbach, Kreisbrandmeister, Kreisbrandinspektor, Rettungsdienst (2 RTW), Notarzt (1 NEF)', 16),
 (1418, 'Leichte Rauchentwicklung feststellbar, jedoch kein Brand.', 'Auf dem Balkon eines Mehrfamilienhauses in der Johann-Sebastian-Bach-Str. wurde ein Feuer gemeldet. Bei eintreffen der ersten Kräfte stellte sich jedoch schnell heraus, dass es sich dabei nur um einen kleinen Holzkohle Grill/Ofen handelte, der bereits abgelöscht war. Die Feuerwehr musste somit nicht tätig werden. (mb)', 'Rettungsdienst (1 RTW), Polizei', 20);
-INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`, `einsatzkraefteFreitext`, `anzahlEinsatzkraefte`) VALUES
+INSERT INTO `fw_einsatz_content` (`einsatzID`, `lage`, `geschehen`, `weitere_kraefte`, `anzahl_kraefte`) VALUES
 (1419, 'Ein 1,1 m³ Mülltonne stand in Flammen.', 'Die Feuerwehr löschte das Feuer mit einem Trupp unter Atemschutz ab. (mb)', '', 14),
 (1420, 'Ein Fahrzeug war auf der Königsteiner Str. gegen einen Baum gefahren. Dieser drohte nun umzustürzen.', 'Die Feuerwehr entfernete den Baum. dazu musste die Königsteiner Str. kurzfristig gesperrt werden. (mb)', 'Polizei', 0),
 (1421, 'Im Bereich Salinenstr. waren aus einem Fahrzeug Kraftstoffe ausgetreten.', 'Diese wurden aufgenommen und die Str. grob gereinigt. (mb)', '', 0),
@@ -3913,7 +3925,7 @@ INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`
 (1554, 'In der Friedrich-Uhde-Straße wurde ein unklares Feuer gemeldet.', 'Nach der ersten Erkundung stellte sich die Feuermeldung lediglich als ein Grill heraus. Kein Einsatz für die Feuerwehr. (mb)', '', 20),
 (1555, 'In der Spessartstraße wurden heruntergefallene Äste auf der Straße gemeldet.', 'Auf Grund eines heftigen Unwetters stürzten lose Äste auf die Straße, die die Feuerwehr Bad Soden von der Fahrbahn beseitigte. Des weiteren wurden die Rechen in der Stadt kontrolliert und die Wachbereitschaft erst einmal aufrecht erhalten, da das Unwetter länger anhielt. Im weiteren Verlauf wurde diese jedoch  aufgehoben, da im Stadtgebiet keine weiteren Einsätze anfielen. (mb)', '', 29),
 (1556, 'Baum auf Wintergarten', 'Da zum Zeitpunkt der Alamierung mehrere Drehleitern im westlichen Teil des Main-Taunus-Kreises bereits bei anderen Einsätzen gebunden waren, wurde die DLK aus Bad Soden zu einer Hilfleistung nach Kelkheim angefordert. Ein auf einem Wintergarten liegender Baum wurde mittels Kettensäge von dem Objekt entfernt. (mb)', 'Feuerwehr Kelkheim', 12);
-INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`, `einsatzkraefteFreitext`, `anzahlEinsatzkraefte`) VALUES
+INSERT INTO `fw_einsatz_content` (`einsatzID`, `lage`, `geschehen`, `weitere_kraefte`, `anzahl_kraefte`) VALUES
 (1557, 'In Folge des gestrigen Sommergewitters waren am heutigen Tage noch sechs weitere Einsatzstellen abzuarbeiten.', 'Es galt absturzgefährdete Äste und Bäume im Stadtgebiet zu beseitigen. Zur weiteren Unterstützung wurde ein Radlader und ein Lkw zum Krankenhaus Bad Soden nachgefordert. Dort wurden größere Äste verladen und auf den Bauhof transportiert. (mb)', 'Bau- und Betriebshof Bad Soden am Taunus', 7),
 (1558, 'Brandmeldeanlage in Alarm.', 'In Sulzbach in der Otto-Volger-Str. löste eine Brandmeldeanlage ohne erkennbaren Grund aus. Die DLK der Feuerwehr Bad Soden stand in Bereitstellung. (mb)', 'Feuerwehr Sulzbach, Rettungsdienst (1 RTW)', 9),
 (1559, 'Brandmeldeanlage in Alarm', 'In den Kliniken des MTK löste am Montagmorgen die Brandmeldeanlage aus. Nach erster Erkundung stellte sich heraus, dass die Anlage auf Grund von Bauarbeiten und dem daraus entstandenen Staub ausgelöst wurde. Die Feuerwehr musste somit nicht tätig werden. (mb)', 'Feuerwehren Neuenhain und Altenhain, Rettungsdienst (2 RTW), KBM', 13),
@@ -4046,7 +4058,7 @@ INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`
 (1686, 'Verletzte Person in verschlossener Wohnung.', 'Die Wohnungstür wurde zerstörungsfrei durch die Feuerwehr geöffnet und dem Rettungsdienst somit der Zugang zur Versorgung der Person ermöglicht. (mb)', 'Rettungsdienst (1 RTW), Polizei', 13),
 (1687, 'Hilflose Person hinter verschlossener Wohnungstür.', 'Durch die Polizei wurde am Donnerstagnachmittag eine hilflose Person hinter einer Wohnungstür in der Carl-Maria-von-Weber-Str gemeldet. Die Feuerwehr öffnete daraufhin gewaltfrei die Tür, um dem Rettungsdienst den Zugang zu ermöglichen. (az)', 'Rettungsdienst (1 RTW), Notarzt (1 NEF), Polizei', 30),
 (1688, 'Aus der Spülmaschine einer Wohnung im Königsteiner Weg in Liederbach trat Qualm aus. Die Drehleiter wurde zur Löschzuergänzung angefordert.', 'Es handelte sich um einen Kabelbrand im inneren der Spülmaschine. Dieser wurde durch die Feuerwehr Liederbach gelöscht. Danach wurde die Maschine stromlos geschaltet und ausgebaut. Die Drehleiterbesatzung musste nicht tätig werden. (mb)', 'Feuerwehr Liederbach, Rettungsdienst (1 RTW), Polizei', 9);
-INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`, `einsatzkraefteFreitext`, `anzahlEinsatzkraefte`) VALUES
+INSERT INTO `fw_einsatz_content` (`einsatzID`, `lage`, `geschehen`, `weitere_kraefte`, `anzahl_kraefte`) VALUES
 (1689, 'Brandmeldeanlage in Alarm.', 'Die Brandmeldeanlage eines Großkinos im Main-Taunus-Zentrum wurde ausgelöst. Der Löschzug Bad Soden stand in Bereitstellung. (mb)', 'Feuerwehren Sulzbach und Schwalbach, Rettungsdienst (2 RTW), Notarzt (1 NEF), KBM', 0),
 (1690, 'Verletzte Person nach Verkehrsunfall.', 'Die Drehleiter befand sich auf der Rückfahrt zur Wache vom vorherigen Einsatz. Im Kreuzungsbereich Salinenstr. / Sulzbacherstr. wurde die DLK-Besatzung Zeuge eines Verkehrsunfalles, wobei eine Person verletzt wurde. Es wurden umgehend Erste-Hilfe-Maßnahmen eingeleitet, Rettungsdienst und Polizei wurden über die Leitstelle nachalarmiert. (mb)', 'Rettungsdienst (1 RTW), Polizei', 3),
 (1691, 'Eine ca. 20 m hohe Birke am Sportplatz Sauerborn drohte umzustürzen.', 'Der baum mußte sicherheitshalber gefällt werden. (mb)', '', 2),
@@ -4181,7 +4193,7 @@ INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`
 (1820, 'Im Waldbereich zwischen Schiller- und Parkstr. brannte ein Mülleimer. Das Feuer hatte bereits auf das umliegende Unterholz übergegriffen', 'Das Feuer wurde mit einem Rohr abgelöscht und das trockene Umfeld sicherheitshalber gewässert. (mb)', 'Polizei', 21),
 (1821, 'Verkehrsunfall im Kreuzungsbereich Hasselstr. /Niederhofheimer Str.', 'Die Feuerwehr sicherte die Einsatzstelle ab. Alle weiteren Tätigkeiten wurden durch den anwesenden Abschleppdienst erledigt. (mb)', 'Polizei, Abschleppunternehmen.', 15),
 (1822, 'Gestürzte Person in Wohnung, welche nicht selbstständig die Tür öffnen kann.', 'Die Tür wurde zerstörungsfrei durch die Feuerwehr geöffnet und dem Rettungsdienst somit der Zutritt zur Wohnung ermöglicht. (az)', 'Rettungsdienst (1 RTW), Polizei.', 9);
-INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`, `einsatzkraefteFreitext`, `anzahlEinsatzkraefte`) VALUES
+INSERT INTO `fw_einsatz_content` (`einsatzID`, `lage`, `geschehen`, `weitere_kraefte`, `anzahl_kraefte`) VALUES
 (1823, 'Beim einem Entwicklungsbetrieb für KFZ Teile brannte ein PKW auf einem Motorenprüfstand im Gebäude. Die Feuerwehr Schwalbach forderte Atemschutzgeräteträger nach. ', 'Ein Trupp aus Bad Soden unterstütze bei der Brandbekämpfung, während ein weiterer als Sicherheitstrupp in Bereitstellung stand. Nach Belüftungsmassnahmen konnten die Kräfte wieder abrücken. (mb) ', 'Feuerwehr Schwalbach, Rettungsdienst (2 RTW)', 15),
 (1824, 'Ausgelöste Brandmeldeanlage in einem Demenzwohnheim in Liederbach.', 'Die Anlage wurde aufgrund eines angebrannten Brötchens ausgelöst. Kein Einsatz für die Rettungskräfte. (az)', 'Feuerwehr Liederbach, Rettungsdienst (1 RTW).', 7),
 (1825, 'Auslösung der Brandmeldeanlage im Main-Taunus-Zentrum.', 'Die Auslösung erfolgte durch Staubaufwirbelung bei Bauarbeiten. Die Einsatzkräfte aus Bad Soden standen in Bereitstellung, wurden aber nicht eingesetzt. (rj)', 'Feuerwehren Sulzbach und Schwalbach, stellv. KBI, KBM, Rettungsdienst (2 RTW), Notarzt (1 NEF)', 14),
@@ -4329,7 +4341,7 @@ INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`
 (1967, 'Ausgelöste Brandmeldeanlage in einem Gewerbeobjekt in Liederbach.', 'Die Anlage wurde aufgrund von Dacharbeiten ausgelöst. Die Rettungskräfte mussten auch dieses Mal nicht weiter tätig werden. (az)', 'Feuerwehr Liederbach, Rettungsdienst (1 RTW)', 10),
 (1968, 'Brandmeldeanlage in Alarm.', 'In einer Seniorenwohnanlage wurde die automatische Brandmeldeanlage durch einen angebrannten Toast ausgelöst. Nach Erkundung durch den Einsatzleiter keine weitere Tätigkeit für die Feuerwehr. (mb)', 'Rettungsdienst (2 RTW), Feuerwehren Altenhain und Neuenhain', 16),
 (1969, 'Feuer auf ca. 1 ha Wiesenfläche sowie 2 Gartenhütten im Brand. Feuer droht sich in Nadelgehölz weiter auszubreiten.', 'Am Nachmittag wurde die Feuerwehr zu einem Flächenbrand in der Neuenhainer Feldgemarkung alarmiert. Was zunächst nach einem Routineeinsatz aussah, stellte sich jedoch als größere Einsatzlage heraus. An einem Abhang brannten ca. 1 ha Wiesenfläche. Zusätzlich waren dem Feuer bereits 2 Gartenhütten zum Opfer gefallen. Um die Löschwasserversorgung sicher zu stellen, wurden alle 3 Stadtteilfeuerwehren mit ihren wasserführenden Fahrzeugen alarmiert. Zur Brandbekämpfung wurden mehrere Rohre in dem teils unwegsamem Gelände eingesetzt. Nach rund 1,5 Stunden war das Feuer gelöscht, im weiteren Verlauf mussten noch Nachlöscharbeiten durchgeführt werden. Die Polizei hat die Ermittlungen zur Brandursache aufgenommen. (mb)', 'Feuerwehren Neuenhain und Altenhain, Rettungsdienst (1 RTW), Polizei', 19);
-INSERT INTO `fw_einsatz_content` (`einsatzID`, `einsatzlage`, `einsatzgeschehen`, `einsatzkraefteFreitext`, `anzahlEinsatzkraefte`) VALUES
+INSERT INTO `fw_einsatz_content` (`einsatzID`, `lage`, `geschehen`, `weitere_kraefte`, `anzahl_kraefte`) VALUES
 (1970, 'Ausgelöste Brandmeldeanlage in einem Objekt im MTZ.', 'Die Anlage wurde aufgrund von einem defekten Rauchmelder ausgelöst. Der Löschzug der Feuerwehr Bad Soden stand in Bereitstellung. (az)', 'Feuerwehren Sulzbach und Schwalbach, Rettungsdienst (2 RTW), Notarzt (1 NEF), Stellv. KBI', 16),
 (1971, 'In der Falkenstr. wurde eine Geruchsbelästigung durch Wülmausgift gemeldet.', 'Der Einsatzleiter vom Dienst führte mehrere Messungen in dem betroffenen Bereich durch, konnte allerdings keine veränderten Werte feststellen. Kein Einsatz für die Feuerwehr. (az)', '', 3),
 (1972, 'In der Feldgemarkung Am Hangelstein brannte eine Wiesenfläche von ca. 50 x 30 Metern.', 'Die Feuerwehr Neuenhain löschte das Feuer mit einem Rohr ab. Die Kräfte aus Bad Soden standen in Bereitstellung. (mb)', 'Polizei', 18),
@@ -8882,18 +8894,18 @@ INSERT INTO `fw_einsatz_fahrzeug_mapping` (`mappingID`, `einsatzID`, `fahrzeugID
 CREATE TABLE `fw_einsatz_img` (
   `imgID` int(11) NOT NULL AUTO_INCREMENT,
   `einsatzID` int(11) NOT NULL,
-  `imgDesc` varchar(255) NOT NULL,
-  `imgFile` varchar(255) NOT NULL,
-  `imgFileThumbnail` varchar(255) NOT NULL,
-  `fileType` varchar(4) NOT NULL DEFAULT 'jpg',
+  `description` varchar(255) NOT NULL,
+  `img_file` varchar(255) NOT NULL,
+  `thumb_file` varchar(255) NOT NULL,
+  `filetype` varchar(4) NOT NULL DEFAULT 'jpg',
   PRIMARY KEY (`imgID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=511 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=511 ;
 
 --
 -- Daten für Tabelle `fw_einsatz_img`
 --
 
-INSERT INTO `fw_einsatz_img` (`imgID`, `einsatzID`, `imgDesc`, `imgFile`, `imgFileThumbnail`, `fileType`) VALUES
+INSERT INTO `fw_einsatz_img` (`imgID`, `einsatzID`, `description`, `img_file`, `thumb_file`, `filetype`) VALUES
 (1, 1, 'Drittes Foto', 'e94876522f5d888ba9e48aa8b93ed30c.jpg', 'dae2edcc3239d1d18afa64932fb47e23.jpg', 'jpg'),
 (2, 30, 'Rüstwagen aus Bad Soden', '1be6be82de5b6757db1b52e637c2affd.jpg', '17e3f0eb0a342b8937e818f0fa4b43f1.jpg', 'jpg'),
 (3, 1, 'Zweites Foto', '692de7bfd134a3f0f6ad5b1c2e08a3f1.jpg', 'fdb7808679752fb21baf2882027f47d4.jpg', 'jpg'),
@@ -9078,7 +9090,6 @@ INSERT INTO `fw_einsatz_img` (`imgID`, `einsatzID`, `imgDesc`, `imgFile`, `imgFi
 (182, 867, 'Die Acetylengasflasche wird gekühlt<br><i>Foto: M. Bauer</i>', '2af4cade02aab8d5702071cf8edfa53e.jpg', '976dd255efbb8a27f6bdde5a6121b92a.jpg', 'jpg'),
 (183, 867, 'Das betroffene Fahrzeug<br><i>Foto: M. Bauer</i>', 'e0b6e22a199516ecd40c8e61e12c5edd.jpg', 'e63e55cd2ccd5dcb4b13cd8d30d5173b.jpg', 'jpg'),
 (184, 867, 'Die Einsatzstelle<br><i>Foto: M. Bauer</i>', '2f4604fcfee8181ef77e3c83f953ea93.jpg', '7dee109771dc22c6c9606c89fb988476.jpg', 'jpg'),
-(222, 1086, 'Feuer vor Eintreffen der Feuerwehr<br><i>Foto: J. Römig</i>', '5584da156929da9b93de21c3348c75e2.jpg', '450c471c2c8d9da159fa46ff43a32f8c.jpg', 'jpg'),
 (186, 867, 'Die Einsatzstelle<br><i>Foto: M. Bauer</i>', '51dd293fe204240e9030b6a2f037b79d.jpg', '25ecbbe494571c199b5f217a5608d0c3.jpg', 'jpg'),
 (187, 883, 'Das Unfallfahrzeug im Wald<br><i>Foto: M. Bauer</i>', '6c69581c548033b92962c8ec4a8fb09b.jpg', 'c61cb621ef5e71fe90212ef5109afec5.jpg', 'jpg'),
 (188, 883, 'Diese Strecke legte das Fahrzeug zurück<br><i>Foto: M. Bauer</i>', 'c804afdfae7d665376a9c836734856b3.jpg', '985f017cccdd065960cdd3ae1ce7d982.jpg', 'jpg'),
@@ -9115,6 +9126,7 @@ INSERT INTO `fw_einsatz_img` (`imgID`, `einsatzID`, `imgDesc`, `imgFile`, `imgFi
 (219, 1086, 'Vornahme des Schaumrohres<br><i>Foto: S. Halberstadt</i>', '2f97efcdb8bc0090a21d090ee4cadddf.jpg', 'da3637d4dc161e026a56a65daeac6744.jpg', 'jpg'),
 (220, 1086, 'Der LKW<br><i>Foto: S. Halberstadt</i>', '6d17b9b08cdc7af721745f932be663f1.jpg', 'f5af3042836220d5003b1eb45bfacad0.jpg', 'jpg'),
 (221, 1086, 'Feuer in der Anfangsphase<br><i>Foto: J. Römig</i>', '1ba7de5fa99ff185419c4958231f927e.jpg', 'a136e3b2c5bff70ced2ea21b7bf62705.jpg', 'jpg'),
+(222, 1086, 'Feuer vor Eintreffen der Feuerwehr<br><i>Foto: J. Römig</i>', '5584da156929da9b93de21c3348c75e2.jpg', '450c471c2c8d9da159fa46ff43a32f8c.jpg', 'jpg'),
 (223, 1177, 'Die Einsatzstelle<br><i>Foto: M. Bauer</i>', 'ea8f08469dc5f3950caa11ed1a354deb.jpg', '609c4c05566f78a8d31959743ea80bbc.jpg', 'jpg'),
 (224, 1166, 'Das betroffene Fahrzeug<br><i>Foto: FF Bad Soden</i>', '02d8ced8d17b596e98000d4bd3a9699c.jpg', 'd8fcf8f010c01551b8607e78b71f1414.jpg', 'jpg'),
 (225, 1166, 'Die Einsatzstelle<br><i>Foto: FF Bad Soden</i>', '0ae19d6e48897945276daae46a9d29e9.jpg', '1c719e54d99dfe7ba9982acba58bb471.jpg', 'jpg'),
@@ -9231,7 +9243,7 @@ INSERT INTO `fw_einsatz_img` (`imgID`, `einsatzID`, `imgDesc`, `imgFile`, `imgFi
 (336, 1476, 'Gesamtes Gebäude verraucht<br><i>Foto: R. Junker</i>', '7ec37b83b06a6d0a5d67d5b6a0c4802d.jpg', '6bac0e5c2f717c653e47e8e52c85bfef.jpg', 'jpg'),
 (337, 1476, 'Rettung zweier Hasen<br><i>Foto: R. Junker</i>', '6acba12c0e8975b9c9a59b44569b024b.jpg', 'ca397fbf0c7f036f05da9e7957f19652.jpg', 'jpg'),
 (338, 1476, 'Eingangsbereich<br><i>Foto: R. Junker</i>', '8d73489a8ad54025318cc0d011b50da1.jpg', 'e98f2d9e0833579c7e75e17f679349bc.jpg', 'jpg');
-INSERT INTO `fw_einsatz_img` (`imgID`, `einsatzID`, `imgDesc`, `imgFile`, `imgFileThumbnail`, `fileType`) VALUES
+INSERT INTO `fw_einsatz_img` (`imgID`, `einsatzID`, `description`, `img_file`, `thumb_file`, `filetype`) VALUES
 (339, 1476, 'Der Brandraum<br><i>Foto: R. Junker</i>', '6c4c712308064cc1dd51a23436babe2b.jpg', 'f2c4bf7967654515e9f81f3f59e58dbe.jpg', 'jpg'),
 (340, 1480, '<i>Foto: R. Junker</i>', 'c13333a594f931bbae161cae858b0e11.jpg', 'd3c0a2952e930f9b7227870ab6f213d3.jpg', 'jpg'),
 (341, 1480, '<i>Foto: R. Junker</i>', 'd8a4c073dd75bd50ef85d4cd3a893d0b.jpg', 'e0b6d929fba9dda7936af12cac15d376.jpg', 'jpg'),
@@ -9409,11 +9421,11 @@ INSERT INTO `fw_einsatz_img` (`imgID`, `einsatzID`, `imgDesc`, `imgFile`, `imgFi
 
 CREATE TABLE `fw_einsatz_template` (
   `templateID` int(11) NOT NULL AUTO_INCREMENT,
-  `templateName` varchar(255) NOT NULL,
-  `einsatzName` varchar(255) NOT NULL,
-  `einsatzlage` text NOT NULL,
-  `einsatzgeschehen` text NOT NULL,
-  `einsatzart` varchar(255) NOT NULL,
+  `tmpl_name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `lage` text NOT NULL,
+  `geschehen` text NOT NULL,
+  `art` varchar(255) NOT NULL,
   `fahrzeug` varchar(255) NOT NULL,
   PRIMARY KEY (`templateID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
@@ -9422,7 +9434,7 @@ CREATE TABLE `fw_einsatz_template` (
 -- Daten für Tabelle `fw_einsatz_template`
 --
 
-INSERT INTO `fw_einsatz_template` (`templateID`, `templateName`, `einsatzName`, `einsatzlage`, `einsatzgeschehen`, `einsatzart`, `fahrzeug`) VALUES
+INSERT INTO `fw_einsatz_template` (`templateID`, `tmpl_name`, `name`, `lage`, `geschehen`, `art`, `fahrzeug`) VALUES
 (1, 'BMA normal', 'Auslösung der Brandmeldeanlage', 'Brandmeldeanlage in Alarm.', '', '5', '2|4'),
 (2, 'BMA Krankenhaus', 'Auslösung der Brandmeldeanlage', 'Ausgelöste Brandmeldeanlage in den Kliniken des Main-Taunus-Kreises in Bad Soden.', '', '5', '1|2|4');
 
@@ -9434,8 +9446,8 @@ INSERT INTO `fw_einsatz_template` (`templateID`, `templateName`, `einsatzName`, 
 
 CREATE TABLE `fw_einsatz_type` (
   `typeID` int(11) NOT NULL AUTO_INCREMENT,
-  `typeName` varchar(255) NOT NULL,
-  `typeShortname` varchar(4) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `short_name` varchar(4) NOT NULL,
   PRIMARY KEY (`typeID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
@@ -9443,7 +9455,7 @@ CREATE TABLE `fw_einsatz_type` (
 -- Daten für Tabelle `fw_einsatz_type`
 --
 
-INSERT INTO `fw_einsatz_type` (`typeID`, `typeName`, `typeShortname`) VALUES
+INSERT INTO `fw_einsatz_type` (`typeID`, `name`, `short_name`) VALUES
 (1, 'Hilfeleistungseinsatz', 'H'),
 (2, 'Überörtlicher Einsatz', 'Ü'),
 (3, 'Brandeinsatz', 'B'),
@@ -12131,9 +12143,9 @@ INSERT INTO `fw_einsatz_type_mapping` (`mappingID`, `einsatzID`, `typeID`) VALUE
 
 CREATE TABLE `fw_fahrzeug` (
   `fahrzeugID` int(11) NOT NULL AUTO_INCREMENT,
-  `fahrzeugName` varchar(255) NOT NULL,
-  `fahrzeugRufnamePrefix` varchar(100) NOT NULL DEFAULT 'Florian Bad Soden',
-  `fahrzeugRufname` varchar(10) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `prefix_rufname` varchar(100) NOT NULL DEFAULT 'Florian Bad Soden',
+  `rufname` varchar(10) NOT NULL,
   `online` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`fahrzeugID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
@@ -12142,7 +12154,7 @@ CREATE TABLE `fw_fahrzeug` (
 -- Daten für Tabelle `fw_fahrzeug`
 --
 
-INSERT INTO `fw_fahrzeug` (`fahrzeugID`, `fahrzeugName`, `fahrzeugRufnamePrefix`, `fahrzeugRufname`, `online`) VALUES
+INSERT INTO `fw_fahrzeug` (`fahrzeugID`, `name`, `prefix_rufname`, `rufname`, `online`) VALUES
 (1, 'ELW 1', 'Florian Bad Soden', '1-11', 1),
 (2, 'LF 16/2', 'Florian Bad Soden', '1-43', 1),
 (3, 'LF 16/1', 'Florian Bad Soden', '1-44', 1),
@@ -12173,25 +12185,26 @@ INSERT INTO `fw_fahrzeug` (`fahrzeugID`, `fahrzeugName`, `fahrzeugRufnamePrefix`
 
 CREATE TABLE `fw_fahrzeug_content` (
   `fahrzeugID` int(11) NOT NULL,
-  `fahrzeugText` text NOT NULL,
-  `fahrzeugBesatzung` varchar(4) NOT NULL,
-  `fahrzeugHersteller` varchar(50) NOT NULL,
-  `fahrzeugAufbau` varchar(50) NOT NULL,
-  `fahrzeugLeistungKW` int(4) NOT NULL,
-  `fahrzeugLeistungPS` int(4) NOT NULL,
-  `fahrzeugLaenge` varchar(5) NOT NULL,
-  `fahrzeugBreite` varchar(5) NOT NULL,
-  `fahrzeugHoehe` varchar(5) NOT NULL,
-  `fahrzeugLeermasse` varchar(5) NOT NULL,
-  `fahrzeugGesamtmasse` varchar(5) NOT NULL,
+  `text` text NOT NULL,
+  `besatzung` varchar(4) NOT NULL,
+  `hersteller` varchar(50) NOT NULL,
+  `aufbau` varchar(50) NOT NULL,
+  `kw` int(4) NOT NULL,
+  `ps` int(4) NOT NULL,
+  `laenge` varchar(5) NOT NULL,
+  `breite` varchar(5) NOT NULL,
+  `hoehe` varchar(5) NOT NULL,
+  `leermasse` varchar(5) NOT NULL,
+  `gesamtmasse` varchar(5) NOT NULL,
   PRIMARY KEY (`fahrzeugID`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `fw_fahrzeug_content`
 --
 
-INSERT INTO `fw_fahrzeug_content` (`fahrzeugID`, `fahrzeugText`, `fahrzeugBesatzung`, `fahrzeugHersteller`, `fahrzeugAufbau`, `fahrzeugLeistungKW`, `fahrzeugLeistungPS`, `fahrzeugLaenge`, `fahrzeugBreite`, `fahrzeugHoehe`, `fahrzeugLeermasse`, `fahrzeugGesamtmasse`) VALUES
+INSERT INTO `fw_fahrzeug_content` (`fahrzeugID`, `text`, `besatzung`, `hersteller`, `aufbau`, `kw`, `ps`, `laenge`, `breite`, `hoehe`, `leermasse`, `gesamtmasse`) VALUES
+(0, '<p>Der Abrollbeh&auml;lter Gefahrgut wurde im Jahr 2012 neubeschafft und l&ouml;st somit den GW-G (Ger&auml;tewagen Gefahrgut) ab.</p>', '', '0', 'GSF', 0, 0, '', '', '', '', ''),
 (1, '<p>Der Einsatzleitwagen 1 (ELW 1) ist konzipiert, um bei gr&ouml;&szlig;eren oder besonderen Eins&auml;tzen den Einsatz zu leiten und die Einsatzkr&auml;fte zu koordinieren. Daf&uuml;r verf&uuml;gt der ELW 1 &uuml;ber Kommunikationsmittel f&uuml;r den 2m- und 4m-Funk sowie ein Mobiltelefon und Faxger&auml;t.</p>\n<p>Im Inneren des Fahrzeuges befindet sich neben dem Funktisch ein kleiner Besprechungstisch, an dem bis zu 3 Leute sitzen k&ouml;nnen; durch die<br />angenehme H&ouml;he ist es auch m&ouml;glich in dem Fahrzeug zu stehen.<br />Dem Personal im ELW 1 steht neben Einsatzpl&auml;nen f&uuml;r Objekte im Stadtgebiet und Gefahrgutunterlagen auch ein Laptop zur Dokumentation und Nachschlagen einer digitalten Gefahrgutdatenbank zur Verf&uuml;gung.</p>\n<p>Im r&uuml;ckw&auml;rtigen Ger&auml;teraum befinden sich ein Stromerzeuger, um einen unabh&auml;ngigen Betrieb zu gew&auml;hrleisten, Absperrmaterial und zwei Pressluftatmer.</p>', '1:2', 'Volkswagen', 'Weschenfelder', 80, 104, '6,5', '1,9', '2,5', '2,3', '3,5'),
 (2, '<p>Das LF 16/2 r&uuml;ckt als zweites Fahrzeug im L&ouml;schzug aus. Es verf&uuml;gt &uuml;ber eine Feuerl&ouml;schkreiselpumpe mit einer F&ouml;rderleistung von 1600 l Wasser pro Minute bei einem Ausgangsdruck von 8 bar. Weiterhin besitzt es einen Wassertank mit 1200 l Inhalt, sowie einen 200 l fassenden Schaummitteltank.&nbsp;<br />Die Schnellangriffseinrichtung mit 30 m Schlauchl&auml;nge erm&ouml;glicht in wenigen Sekunden erste L&ouml;schma&szlig;nahmen. Um die eingesetzen Kr&auml;fte im Einsatz vor Atemgiften zu sch&uuml;tzen, sind vier Atemschutzger&auml;te verladen, zwei davon im Mannschaftsraum. Auf dem Dach des Fahrzeugs befinden sich eine dreiteilige Schiebleiter, sowie eine vierteilige Steckleiter.</p>\n<p>Sollte es im Stadtgebiet zu einem Verkehrsunfall gekommen sein, r&uuml;ckt dieses Fahrzeug als drittes aus. Durch die Umfeldbeleuchtung und den Lichtmast ist man in der Lage, eine Einsatzstelle gro&szlig;r&auml;uming auszuleuchten; der eingebaute Schaummitteltank erleichtert die Bereitstellung der drei L&ouml;schmittel Wasser, Schaum und Pulver.</p>', '1:8', 'Mercedes-Benz', 'GFT', 177, 240, '7,4', '2,5', '3,1', '8,2', '12,1'),
 (3, '<p>Das LF 16/1 r&uuml;ckt als viertes Fahrzeug im L&ouml;schzug aus. Es verf&uuml;gt &uuml;ber eine Feuerl&ouml;schkreiselpumpe mit einer F&ouml;rderleistung von 1600 l Wasser pro Minute bei einem Ausgangsdruck von 8 bar. Weiterhin besitzt es einen Wassertank mit 1200 l Inhalt. Am Heck des Fahrzeuges befindet sich eine fahrbare B-Haspel, auf der 6 B-Schl&auml;uche vorhanden sind, was einer L&auml;nge von 120 m entspricht.</p>\n<p>Es steht au&szlig;erdem eine tragbare C-Haspel, auf der 5 C-Schl&auml;uche (75 m) verladen sind, eine Schnellangriffseinrichtung mit 30 m Schlauchl&auml;nge sowie eine 60 m lange Hochdruckeinrichtung zur Verf&uuml;gung. Auf dem Dach befinden sich eine dreiteilige Schiebleiter sowie eine vierteilige Steckleiter. Des Weiteren ist auf diesem Fahrzeug das Akku-Schneid-und-Spreizger&auml;t verladen.</p>', '1:8', 'Mercedes-Benz', 'Ziegler', 159, 219, '7,2', '2,5', '3,1', '8,2', '12'),
@@ -12211,8 +12224,7 @@ INSERT INTO `fw_fahrzeug_content` (`fahrzeugID`, `fahrzeugText`, `fahrzeugBesatz
 (17, '', '', '', '', 0, 0, '0.00', '0.00', '0.00', '0.00', '0.00'),
 (18, '', '', '', '', 0, 0, '0.00', '0.00', '0.00', '0.00', '0.00'),
 (19, '', '', '', '', 0, 0, '0.00', '0.00', '0.00', '0.00', '0.00'),
-(20, '', '', '', '', 0, 0, '0.00', '0.00', '0.00', '0.00', '0.00'),
-(0, '<p>Der Abrollbeh&auml;lter Gefahrgut wurde im Jahr 2012 neubeschafft und l&ouml;st somit den GW-G (Ger&auml;tewagen Gefahrgut) ab.</p>', '', '0', 'GSF', 0, 0, '', '', '', '', '');
+(20, '', '', '', '', 0, 0, '0.00', '0.00', '0.00', '0.00', '0.00');
 
 -- --------------------------------------------------------
 
@@ -12223,20 +12235,69 @@ INSERT INTO `fw_fahrzeug_content` (`fahrzeugID`, `fahrzeugText`, `fahrzeugBesatz
 CREATE TABLE `fw_fahrzeug_img` (
   `imgID` int(11) NOT NULL AUTO_INCREMENT,
   `fahrzeugID` int(11) NOT NULL,
-  `imgDesc` varchar(255) NOT NULL,
-  `imgFile` varchar(255) NOT NULL,
-  `imgFileThumbnail` varchar(255) NOT NULL,
-  `fileType` varchar(4) NOT NULL DEFAULT 'jpg',
+  `description` varchar(255) NOT NULL,
+  `img_file` varchar(255) NOT NULL,
+  `thumb_file` varchar(255) NOT NULL,
+  `filetype` varchar(4) NOT NULL DEFAULT 'jpg',
   PRIMARY KEY (`imgID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Daten für Tabelle `fw_fahrzeug_img`
 --
 
-INSERT INTO `fw_fahrzeug_img` (`imgID`, `fahrzeugID`, `imgDesc`, `imgFile`, `imgFileThumbnail`, `fileType`) VALUES
-(1, 1, 'Seitenansicht links', '231b7df212d7f86c48d959703a63704a.jpg', '90bb22c2eabfe667202348b77ffb3ab6.jpg', 'jpg'),
-(2, 2, 'WLF', 'cd386ef8ac67b52a6388f23bf50b7699.jpg', '6d27909533ec5b0ce39c4afd33c32f24.jpg', 'jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `fw_file`
+--
+
+CREATE TABLE `fw_file` (
+  `fileID` int(11) NOT NULL,
+  `typeID` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `fullpath` varchar(255) NOT NULL,
+  `filename` varchar(255) NOT NULL,
+  `extension` varchar(255) NOT NULL,
+  `mimetype` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `size` tinyint(4) NOT NULL,
+  `width` tinyint(4) NOT NULL,
+  `height` tinyint(4) NOT NULL,
+  `created` datetime NOT NULL,
+  `createdBy` int(11) NOT NULL,
+  `modified` datetime NOT NULL,
+  `modifiedBy` int(11) NOT NULL,
+  PRIMARY KEY (`fileID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Daten für Tabelle `fw_file`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Tabellenstruktur für Tabelle `fw_file_type`
+--
+
+CREATE TABLE `fw_file_type` (
+  `typeID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  PRIMARY KEY (`typeID`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Daten für Tabelle `fw_file_type`
+--
+
+INSERT INTO `fw_file_type` (`typeID`, `name`) VALUES
+(1, 'cms_image'),
+(2, 'cms_file'),
+(3, 'user_file');
 
 -- --------------------------------------------------------
 
@@ -12251,7 +12312,6 @@ CREATE TABLE `fw_menue` (
   `link` varchar(255) NOT NULL,
   `target` varchar(20) NOT NULL DEFAULT '_top',
   `slug` varchar(255) NOT NULL,
-  `frontendPageID` int(11) NOT NULL,
   `frontend` tinyint(1) NOT NULL DEFAULT '0',
   `backend` tinyint(1) NOT NULL DEFAULT '0',
   `online` tinyint(1) NOT NULL DEFAULT '0',
@@ -12260,68 +12320,70 @@ CREATE TABLE `fw_menue` (
   `meta` tinyint(1) NOT NULL DEFAULT '0',
   `orderID` tinyint(3) NOT NULL,
   PRIMARY KEY (`menueID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=63 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=65 ;
 
 --
 -- Daten für Tabelle `fw_menue`
 --
 
-INSERT INTO `fw_menue` (`menueID`, `superID`, `name`, `link`, `target`, `slug`, `frontendPageID`, `frontend`, `backend`, `online`, `main`, `sub`, `meta`, `orderID`) VALUES
-(1, 0, 'Inhalte verwalten', 'admin/content', '_top', 'content', 0, 0, 1, 1, 1, 0, 0, 1),
-(2, 0, 'Dateien verwalten', 'admin/files', '_top', 'files', 0, 0, 1, 1, 1, 0, 0, 1),
-(3, 0, 'Menü verwalten', 'admin/menue', '_top', 'menue', 0, 0, 1, 1, 1, 0, 0, 3),
-(4, 0, 'Systemeinstellungen', 'admin/system', '_top', 'system', 0, 0, 1, 1, 1, 0, 0, 4),
-(6, 0, 'zum Portal', '', '_blank', '', 0, 0, 1, 1, 1, 0, 0, 9),
-(7, 0, 'Benutzerverwaltung', 'admin/user', '_top', 'user', 0, 0, 1, 1, 1, 0, 0, 5),
-(8, 1, 'Seiten', 'admin/content/page', '_top', 'content', 0, 0, 1, 1, 0, 1, 0, 1),
-(9, 1, 'News', 'admin/content/news', '_top', 'content', 0, 0, 1, 1, 0, 1, 0, 2),
-(10, 1, 'Einsätze', 'admin/content/einsatz', '_top', 'content', 0, 0, 1, 1, 0, 1, 0, 3),
-(11, 1, 'Fahrzeuge', 'admin/content/fahrzeug', '_top', 'content', 0, 0, 1, 1, 0, 1, 0, 4),
-(12, 3, 'Frontend-Menü', 'admin/menue/frontend', '_top', 'menue', 0, 0, 1, 1, 0, 1, 0, 1),
-(13, 3, 'Backend-Menü', 'admin/menue/backend', '_top', 'menue', 0, 0, 1, 1, 0, 1, 0, 2),
-(14, 4, 'Module', 'admin/system/module', '_top', 'system', 0, 0, 1, 1, 0, 1, 0, 1),
-(15, 4, 'Texte', 'admin/system/language', '_top', 'system', 0, 0, 1, 1, 0, 1, 0, 2),
-(16, 4, 'Routen', 'admin/system/route', '_top', 'system', 0, 0, 1, 1, 0, 1, 0, 3),
-(17, 4, 'Einstellungen', 'admin/system/settings', '_top', 'system', 0, 0, 1, 1, 0, 1, 0, 4),
-(18, 7, 'Backend-Benutzer', 'admin/user/backend', '_top', 'user', 0, 0, 1, 1, 0, 1, 0, 2),
-(19, 7, 'Frontend-Benutzer', 'admin/user/frontend', '_top', 'user', 0, 0, 1, 1, 0, 1, 0, 1),
-(20, 0, 'News', 'news', '_top', 'news', 0, 1, 0, 1, 1, 0, 0, 1),
-(21, 0, 'Menschen', 'menschen', '_top', 'menschen', 0, 1, 0, 1, 1, 0, 0, 2),
-(22, 0, 'Technik', 'technik', '_top', 'technik', 0, 1, 0, 1, 1, 0, 0, 3),
-(23, 0, 'Information', 'information', '_top', 'information', 0, 1, 0, 1, 1, 0, 0, 4),
-(24, 0, 'Jugend', 'jugend', '_top', 'jugend', 0, 1, 0, 1, 1, 0, 0, 5),
-(25, 20, 'Einsätze', 'neuigkeiten/einsatz', '_top', 'neuigkeiten', 0, 1, 0, 1, 0, 1, 0, 1),
-(26, 20, 'Termine', 'neuigkeiten/termin', '_top', 'neuigkeiten', 0, 1, 0, 1, 0, 1, 0, 2),
-(27, 20, 'Presse', 'neuigkeiten/presse', '_top', 'neuigkeiten', 0, 1, 0, 1, 0, 1, 0, 3),
-(28, 21, 'Einsatzabteilung', 'menschen/einsatzabteilung', '_top', 'menschen', 0, 1, 0, 1, 0, 1, 0, 1),
-(29, 21, 'Leistungsgruppe', 'menschen/leistungsgruppe', '_top', 'menschen', 0, 1, 0, 1, 0, 1, 0, 2),
-(30, 21, 'Alters- und Ehrenabteilung', 'menschen/alters-und-ehren-abteilung', '_top', 'menschen', 0, 1, 0, 1, 0, 1, 0, 3),
-(31, 21, 'Galerie', 'menschen/gallerie', '_top', 'menschen', 0, 1, 0, 1, 0, 1, 0, 4),
-(32, 21, 'Verein und Geschichte', 'menschen/verein', '_top', 'menschen', 0, 1, 0, 1, 0, 1, 0, 5),
-(33, 22, 'Fahrzeuge', 'technik/fahrzeuge', '_top', 'technik', 0, 1, 0, 1, 0, 1, 0, 1),
-(34, 22, 'Geräte', 'technik/geraete', '_top', 'technik', 0, 1, 0, 1, 0, 1, 0, 2),
-(35, 22, 'Kleidung', 'technik/kleidung', '_top', 'technik', 0, 1, 0, 1, 0, 1, 0, 3),
-(36, 22, 'Ausbildung', 'technik/ausbildung', '_top', 'technik', 0, 1, 0, 1, 0, 1, 0, 4),
-(37, 23, 'Tipps', 'information/tipps', '_top', 'information', 0, 1, 0, 1, 0, 1, 0, 1),
-(38, 23, 'Einsatzgebiet', 'information/einsatzgebiet', '_top', 'information', 0, 1, 0, 1, 0, 1, 0, 2),
-(39, 23, 'Gesetze und Richtlinien', 'information/gesetze-und-richtlinien', '_top', 'information', 0, 1, 0, 1, 0, 1, 0, 3),
-(40, 23, 'Downloads', 'information/downloads', '_top', 'information', 0, 1, 0, 1, 0, 1, 0, 4),
-(41, 24, 'Mannschaft', 'jugend/mannschaft', '_top', 'jugend', 0, 1, 0, 1, 0, 1, 0, 1),
-(42, 24, 'Aktivitäten', 'jugend/aktivitaeten', '_top', 'jugend', 0, 1, 0, 1, 0, 1, 0, 2),
-(43, 24, 'Ausbildung', 'jugend/Ausbildung', '_top', 'jugend', 0, 1, 0, 1, 0, 1, 0, 3),
-(44, 24, 'Leistungsgruppe', 'jugend/leistungsgruppe', '_top', 'jugend', 0, 1, 0, 1, 0, 1, 0, 4),
-(45, 24, 'Galerie', 'jugend/galerie', '_top', 'jugend', 0, 1, 0, 1, 0, 1, 0, 5),
-(46, 0, 'Kontakt', 'kontakt', '_top', 'kontakt', 0, 1, 0, 1, 0, 0, 1, 1),
-(47, 0, 'Links', 'links', '_top', 'links', 0, 1, 0, 1, 0, 0, 1, 2),
-(48, 0, 'Gästebuch', 'gaestebuch', '_top', 'gaestebuch', 0, 1, 0, 1, 0, 0, 1, 3),
-(49, 0, 'Impressum', 'impressum', '_top', 'impressum', 0, 1, 0, 1, 0, 0, 1, 4),
-(50, 0, 'Notruf', 'notruf', '_top', 'notruf', 0, 1, 0, 1, 0, 0, 1, 5),
-(51, 0, 'Mitmachen', 'mitmachen', '_top', 'mitmachen', 0, 1, 0, 1, 0, 0, 1, 6),
-(52, 0, 'Feature Lab', 'development/feature_admin/lab', '_top', 'dev_feature', 0, 0, 1, 1, 1, 0, 0, 7),
-(53, 0, 'Icons anzeigen', 'admin/maintenance/show_buttons', '_blank', 'dev_feature', 0, 0, 1, 1, 1, 0, 0, 8),
-(54, 0, 'Hilfe', 'admin/help', '_top', 'help', 0, 0, 1, 0, 1, 0, 0, 6),
-(61, 0, 'test', 'test', '_top', 'test', 0, 1, 0, 1, 1, 0, 0, 15),
-(62, 0, 'test', 'test', '_top', 'test', 0, 1, 0, 1, 1, 0, 0, 16);
+INSERT INTO `fw_menue` (`menueID`, `superID`, `name`, `link`, `target`, `slug`, `frontend`, `backend`, `online`, `main`, `sub`, `meta`, `orderID`) VALUES
+(1, 0, 'Inhalte verwalten', 'admin/content', '_top', 'content', 0, 1, 1, 1, 0, 0, 1),
+(2, 0, 'Ressourcen verwalten', 'admin/files', '_top', 'files', 0, 1, 1, 1, 0, 0, 1),
+(3, 0, 'Menü verwalten', 'admin/menue', '_top', 'menue', 0, 1, 1, 1, 0, 0, 3),
+(4, 0, 'Systemeinstellungen', 'admin/system', '_top', 'system', 0, 1, 1, 1, 0, 0, 4),
+(6, 0, 'zum Portal', '', '_blank', '', 0, 1, 1, 1, 0, 0, 9),
+(7, 0, 'Benutzerverwaltung', 'admin/user', '_top', 'user', 0, 1, 1, 1, 0, 0, 5),
+(8, 1, 'Seiten', 'admin/content/page', '_top', 'content', 0, 1, 1, 0, 1, 0, 1),
+(9, 1, 'News', 'admin/content/news', '_top', 'content', 0, 1, 1, 0, 1, 0, 2),
+(10, 1, 'Einsätze', 'admin/content/einsatz', '_top', 'content', 0, 1, 1, 0, 1, 0, 3),
+(11, 1, 'Fahrzeuge', 'admin/content/fahrzeug', '_top', 'content', 0, 1, 1, 0, 1, 0, 4),
+(12, 3, 'Frontend-Menü', 'admin/menue/frontend', '_top', 'menue', 0, 1, 1, 0, 1, 0, 1),
+(13, 3, 'Backend-Menü', 'admin/menue/backend', '_top', 'menue', 0, 1, 1, 0, 1, 0, 2),
+(14, 4, 'Module', 'admin/system/module', '_top', 'system', 0, 1, 1, 0, 1, 0, 1),
+(15, 4, 'Texte', 'admin/system/language', '_top', 'system', 0, 1, 1, 0, 1, 0, 2),
+(16, 4, 'Routen', 'admin/system/route', '_top', 'system', 0, 1, 1, 0, 1, 0, 3),
+(17, 4, 'Einstellungen', 'admin/system/settings', '_top', 'system', 0, 1, 1, 0, 1, 0, 4),
+(18, 7, 'Backend-Benutzer', 'admin/user/backend', '_top', 'user', 0, 1, 1, 0, 1, 0, 2),
+(19, 7, 'Frontend-Benutzer', 'admin/user/frontend', '_top', 'user', 0, 1, 1, 0, 1, 0, 1),
+(20, 0, 'News', 'news', '_top', 'news', 1, 0, 1, 1, 0, 0, 1),
+(21, 0, 'Menschen', 'menschen', '_top', 'menschen', 1, 0, 1, 1, 0, 0, 2),
+(22, 0, 'Technik', 'technik', '_top', 'technik', 1, 0, 1, 1, 0, 0, 3),
+(23, 0, 'Information', 'information', '_top', 'information', 1, 0, 1, 1, 0, 0, 4),
+(24, 0, 'Jugend', 'jugend', '_top', 'jugend', 1, 0, 1, 1, 0, 0, 5),
+(25, 20, 'Einsätze', 'neuigkeiten/einsatz', '_top', 'neuigkeiten', 1, 0, 1, 0, 1, 0, 1),
+(26, 20, 'Termine', 'neuigkeiten/termin', '_top', 'neuigkeiten', 1, 0, 1, 0, 1, 0, 2),
+(27, 20, 'Presse', 'neuigkeiten/presse', '_top', 'neuigkeiten', 1, 0, 1, 0, 1, 0, 3),
+(28, 21, 'Einsatzabteilung', 'menschen/einsatzabteilung', '_top', 'menschen', 1, 0, 1, 0, 1, 0, 1),
+(29, 21, 'Leistungsgruppe', 'menschen/leistungsgruppe', '_top', 'menschen', 1, 0, 1, 0, 1, 0, 2),
+(30, 21, 'Alters- und Ehrenabteilung', 'menschen/alters-und-ehren-abteilung', '_top', 'menschen', 1, 0, 1, 0, 1, 0, 3),
+(31, 21, 'Galerie', 'menschen/gallerie', '_top', 'menschen', 1, 0, 1, 0, 1, 0, 4),
+(32, 21, 'Verein und Geschichte', 'menschen/verein', '_top', 'menschen', 1, 0, 1, 0, 1, 0, 5),
+(33, 22, 'Fahrzeuge', 'technik/fahrzeuge', '_top', 'technik', 1, 0, 1, 0, 1, 0, 1),
+(34, 22, 'Geräte', 'technik/geraete', '_top', 'technik', 1, 0, 1, 0, 1, 0, 2),
+(35, 22, 'Kleidung', 'technik/kleidung', '_top', 'technik', 1, 0, 1, 0, 1, 0, 3),
+(36, 22, 'Ausbildung', 'technik/ausbildung', '_top', 'technik', 1, 0, 1, 0, 1, 0, 4),
+(37, 23, 'Tipps', 'information/tipps', '_top', 'information', 1, 0, 1, 0, 1, 0, 1),
+(38, 23, 'Einsatzgebiet', 'information/einsatzgebiet', '_top', 'information', 1, 0, 1, 0, 1, 0, 2),
+(39, 23, 'Gesetze und Richtlinien', 'information/gesetze-und-richtlinien', '_top', 'information', 1, 0, 1, 0, 1, 0, 3),
+(40, 23, 'Downloads', 'information/downloads', '_top', 'information', 1, 0, 1, 0, 1, 0, 4),
+(41, 24, 'Mannschaft', 'jugend/mannschaft', '_top', 'jugend', 1, 0, 1, 0, 1, 0, 1),
+(42, 24, 'Aktivitäten', 'jugend/aktivitaeten', '_top', 'jugend', 1, 0, 1, 0, 1, 0, 2),
+(43, 24, 'Ausbildung', 'jugend/Ausbildung', '_top', 'jugend', 1, 0, 1, 0, 1, 0, 3),
+(44, 24, 'Leistungsgruppe', 'jugend/leistungsgruppe', '_top', 'jugend', 1, 0, 1, 0, 1, 0, 4),
+(45, 24, 'Galerie', 'jugend/galerie', '_top', 'jugend', 1, 0, 1, 0, 1, 0, 5),
+(46, 0, 'Kontakt', 'kontakt', '_top', 'kontakt', 1, 0, 1, 0, 0, 1, 1),
+(47, 0, 'Links', 'links', '_top', 'links', 1, 0, 1, 0, 0, 1, 2),
+(48, 0, 'Gästebuch', 'gaestebuch', '_top', 'gaestebuch', 1, 0, 1, 0, 0, 1, 3),
+(49, 0, 'Impressum', 'impressum', '_top', 'impressum', 1, 0, 1, 0, 0, 1, 4),
+(50, 0, 'Notruf', 'notruf', '_top', 'notruf', 1, 0, 1, 0, 0, 1, 5),
+(51, 0, 'Mitmachen', 'mitmachen', '_top', 'mitmachen', 1, 0, 1, 0, 0, 1, 6),
+(52, 0, 'Feature Lab', 'development/feature_admin/lab', '_top', 'dev_feature', 0, 1, 1, 1, 0, 0, 7),
+(53, 0, 'Icons anzeigen', 'admin/maintenance/show_buttons', '_blank', 'dev_feature', 0, 1, 1, 1, 0, 0, 8),
+(54, 0, 'Hilfe', 'admin/help', '_top', 'help', 0, 1, 0, 1, 0, 0, 6),
+(61, 0, 'test', 'test', '_top', 'test', 1, 0, 1, 1, 0, 0, 15),
+(62, 0, 'test', 'test', '_top', 'test', 1, 0, 1, 1, 0, 0, 16),
+(63, 2, 'Bilder', 'admin/files/image', '_top', 'files', 0, 1, 1, 0, 1, 0, 1),
+(64, 2, 'Dateien', 'admin/files/file', '_top', 'files', 0, 1, 1, 0, 1, 0, 2);
 
 -- --------------------------------------------------------
 
@@ -12331,32 +12393,32 @@ INSERT INTO `fw_menue` (`menueID`, `superID`, `name`, `link`, `target`, `slug`, 
 
 CREATE TABLE `fw_module` (
   `moduleID` int(11) NOT NULL AUTO_INCREMENT,
-  `moduleName` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `frontend` tinyint(1) NOT NULL DEFAULT '0',
   `backend` tinyint(1) NOT NULL DEFAULT '0',
-  `frontendController` varchar(255) NOT NULL,
-  `backendController` varchar(255) NOT NULL,
-  `frontendMenueSlug` varchar(255) NOT NULL,
-  `backendMenueSlug` varchar(255) NOT NULL,
+  `frontend_controller` varchar(255) NOT NULL,
+  `backend_controller` varchar(255) NOT NULL,
+  `backend_menue_slug` varchar(255) NOT NULL,
   `online` tinyint(1) NOT NULL DEFAULT '0',
   `delete` tinyint(1) NOT NULL DEFAULT '0',
   `protected` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`moduleID`),
-  UNIQUE KEY `moduleName` (`moduleName`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+  UNIQUE KEY `moduleName` (`name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Daten für Tabelle `fw_module`
 --
 
-INSERT INTO `fw_module` (`moduleID`, `moduleName`, `frontend`, `backend`, `frontendController`, `backendController`, `frontendMenueSlug`, `backendMenueSlug`, `online`, `delete`, `protected`) VALUES
-(1, 'Einsatz', 1, 1, 'einsatz/einsatz', 'einsatz/einsatz_admin', '', 'content', 1, 0, 1),
-(2, 'Admin', 0, 1, '', 'admin/admin', '', 'system', 1, 0, 1),
-(3, 'Maintenance', 0, 1, '', 'admin/maintenance', '', 'system', 1, 0, 0),
-(4, 'News', 1, 1, 'news/news', 'news/news_admin', '', 'content', 1, 0, 1),
-(5, 'Benutzer', 0, 1, '', 'user/user_admin', '', 'user', 1, 0, 1),
-(6, 'Fahrzeuge', 1, 1, 'fahrzeug/fahrzeug', 'fahrzeug/fahrzeug_admin', '', 'content', 1, 0, 1),
-(7, 'Seiten', 0, 1, '', 'pages/pages_admin', '', 'content', 1, 0, 1);
+INSERT INTO `fw_module` (`moduleID`, `name`, `frontend`, `backend`, `frontend_controller`, `backend_controller`, `backend_menue_slug`, `online`, `delete`, `protected`) VALUES
+(1, 'Einsatz', 1, 1, 'einsatz/einsatz', 'einsatz/einsatz_admin', 'content', 1, 0, 1),
+(2, 'Admin', 0, 1, '', 'admin/admin', 'system', 1, 0, 1),
+(3, 'Maintenance', 0, 1, '', 'admin/maintenance', 'system', 1, 0, 0),
+(4, 'News', 1, 1, 'news/news', 'news/news_admin', 'content', 1, 0, 1),
+(5, 'Benutzer', 0, 1, '', 'user/user_admin', 'user', 1, 0, 1),
+(6, 'Fahrzeuge', 1, 1, 'fahrzeug/fahrzeug', 'fahrzeug/fahrzeug_admin', 'content', 1, 0, 1),
+(7, 'Seiten', 0, 1, 'pages/pages', 'pages/pages_admin', 'content', 1, 0, 1),
+(8, 'Dateien', 0, 1, '', 'files/files_admin', 'files', 1, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -12368,10 +12430,10 @@ CREATE TABLE `fw_news` (
   `newsID` int(11) NOT NULL AUTO_INCREMENT,
   `userID` int(11) NOT NULL,
   `catID` int(11) NOT NULL,
-  `newsTitle` varchar(255) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `datetime` datetime NOT NULL,
-  `validFrom` datetime NOT NULL,
-  `validTo` datetime NOT NULL,
+  `valid_from` datetime NOT NULL,
+  `valid_to` datetime NOT NULL,
   `online` tinyint(1) NOT NULL,
   PRIMARY KEY (`newsID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
@@ -12380,7 +12442,7 @@ CREATE TABLE `fw_news` (
 -- Daten für Tabelle `fw_news`
 --
 
-INSERT INTO `fw_news` (`newsID`, `userID`, `catID`, `newsTitle`, `datetime`, `validFrom`, `validTo`, `online`) VALUES
+INSERT INTO `fw_news` (`newsID`, `userID`, `catID`, `title`, `datetime`, `valid_from`, `valid_to`, `online`) VALUES
 (1, 1, 1, 'Testnews', '2012-09-04 11:03:59', '2012-09-04 11:04:06', '2017-09-30 11:04:08', 1),
 (2, 1, 3, 'Testnews', '2012-09-04 11:03:59', '2012-09-04 11:04:06', '2017-09-30 11:04:08', 1),
 (3, 1, 1, 'Testnews', '2012-09-04 11:03:59', '2012-09-04 11:04:06', '2017-09-30 11:04:08', 1),
@@ -12436,17 +12498,17 @@ INSERT INTO `fw_news_category` (`categoryID`, `title`) VALUES
 
 CREATE TABLE `fw_news_content` (
   `newsID` int(11) NOT NULL,
-  `newsTeaser` text NOT NULL,
-  `newsText` text NOT NULL,
+  `teaser` text NOT NULL,
+  `text` text NOT NULL,
   UNIQUE KEY `newsID` (`newsID`),
-  FULLTEXT KEY `newsTeaser` (`newsTeaser`,`newsText`)
+  FULLTEXT KEY `newsTeaser` (`teaser`,`text`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Daten für Tabelle `fw_news_content`
 --
 
-INSERT INTO `fw_news_content` (`newsID`, `newsTeaser`, `newsText`) VALUES
+INSERT INTO `fw_news_content` (`newsID`, `teaser`, `text`) VALUES
 (1, 'Lorem Ipsum', 'Dolor Sit Amet');
 
 -- --------------------------------------------------------
@@ -12458,16 +12520,16 @@ INSERT INTO `fw_news_content` (`newsID`, `newsTeaser`, `newsText`) VALUES
 CREATE TABLE `fw_page` (
   `pageID` int(11) NOT NULL AUTO_INCREMENT,
   `templateID` int(11) NOT NULL,
-  `pageName` varchar(100) NOT NULL,
+  `name` varchar(100) NOT NULL,
   `online` tinyint(1) NOT NULL,
   PRIMARY KEY (`pageID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Daten für Tabelle `fw_page`
 --
 
-INSERT INTO `fw_page` (`pageID`, `templateID`, `pageName`, `online`) VALUES
+INSERT INTO `fw_page` (`pageID`, `templateID`, `name`, `online`) VALUES
 (1, 2, 'Testseite 3 Spalten', 1),
 (2, 3, 'abc', 0);
 
@@ -12479,12 +12541,13 @@ INSERT INTO `fw_page` (`pageID`, `templateID`, `pageName`, `online`) VALUES
 
 CREATE TABLE `fw_page_box` (
   `boxID` int(11) NOT NULL AUTO_INCREMENT,
-  `boxName` varchar(255) NOT NULL,
-  `columnCount` tinyint(1) NOT NULL,
-  `specialBox` tinyint(1) NOT NULL DEFAULT '0',
-  `boxTags` tinytext NOT NULL,
-  `boxImg` varchar(50) NOT NULL,
-  `online` tinyint(1) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `column_count` tinyint(1) NOT NULL,
+  `specialbox` tinyint(1) NOT NULL DEFAULT '0',
+  `box_tags` tinytext NOT NULL,
+  `box_tag_names` varchar(255) NOT NULL,
+  `box_img` varchar(50) NOT NULL,
+  `online` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`boxID`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
@@ -12492,18 +12555,18 @@ CREATE TABLE `fw_page_box` (
 -- Daten für Tabelle `fw_page_box`
 --
 
-INSERT INTO `fw_page_box` (`boxID`, `boxName`, `columnCount`, `specialBox`, `boxTags`, `boxImg`, `online`) VALUES
-(1, '2 Spalten (Bild, Text)', 2, 0, 'IMG|::|TXT', 'box_2-1_001.png', 1),
-(3, '1 Spalte (Bild; Text)', 1, 0, 'IMG|!!|TEXT', 'box_1-1_001.png', 1),
-(4, '1 Spalte (Text; Bild)', 1, 0, 'TEXT|!!|IMG', 'box_1-1_002.png', 1),
-(5, '1 Spalte (Text)', 1, 0, 'TEXT', 'box_1-1_003.png', 1),
-(6, '1 Spalte (Bild)', 1, 0, 'IMG', 'box_1-1_004.png', 1),
-(7, '1 Spalte (Bild; Headline; Text)', 1, 0, 'IMG|!!|HEAD|!!|TXT', 'box_1-1_005.png', 1),
-(8, '2 Spalten (Text, Bild)', 2, 0, 'TXT|::|IMG', 'box_2-1_002.png', 1),
-(9, '2 Spalten (Text, Text)', 2, 0, 'TXT|::|TXT', 'box_2-1_003.png', 1),
-(10, '2 Spalten (Bild, Bild, Text, Text)', 2, 0, 'IMG|::|IMG|!!|TXT|::|TXT', 'box_2-1_004.png', 1),
-(11, '2 Spalten (Bild, Text, Text, Bild)', 2, 0, 'IMG|::|TXT|!!|TXT|::|IMG', 'box_2-1_005.png', 1),
-(12, '2 Spalten (Bild; Text, Text)', 2, 0, 'IMG|!!|TXT|::|TXT', 'box_2-1_006.png', 1);
+INSERT INTO `fw_page_box` (`boxID`, `name`, `column_count`, `specialbox`, `box_tags`, `box_tag_names`, `box_img`, `online`) VALUES
+(1, '2 Spalten (Bild, Text)', 2, 0, 'IMG|!!|TXT', 'Bildcontainer|!!|Textcontainer', 'box_2-1_001.png', 1),
+(3, '1 Spalte (Bild; Text)', 1, 0, 'IMG|!!|TXT', 'Bildcontainer|!!|Textcontainer', 'box_1-1_001.png', 1),
+(4, '1 Spalte (Text; Bild)', 1, 0, 'TXT|!!|IMG', 'Textcontainer|!!|Bildcontainer', 'box_1-1_002.png', 1),
+(5, '1 Spalte (Text)', 1, 0, 'TXT', 'Textcontainer', 'box_1-1_003.png', 1),
+(6, '1 Spalte (Bild)', 1, 0, 'IMG', 'Bildcontainer', 'box_1-1_004.png', 1),
+(7, '1 Spalte (Bild; Headline; Text)', 1, 0, 'IMG|!!|HEAD|!!|TXT', 'Bildcontainer|!!|Überschrift|!!|Textcontainer', 'box_1-1_005.png', 1),
+(8, '2 Spalten (Text, Bild)', 2, 0, 'TXT|!!|IMG', 'Textcontainer|!!|Bildcontainer', 'box_2-1_002.png', 1),
+(9, '2 Spalten (Text, Text)', 2, 0, 'TXT|!!|TXT', 'Textcontainer 1|!!|Textcontainer 2', 'box_2-1_003.png', 1),
+(10, '2 Spalten (Bild, Bild, Text, Text)', 2, 0, 'IMG|!!|IMG|!!|TXT|!!|TXT', 'Bildcontainer 1|!!|Bildcontainer 2|!!|Textcontainer 1|!!|Textcontainer 2', 'box_2-1_004.png', 1),
+(11, '2 Spalten (Bild, Text, Text, Bild)', 2, 0, 'IMG|!!|TXT|!!|TXT|!!|IMG', 'Bildcontainer 1|!!|Textcontainer 1|!!|Textcontainer 2|!!|Bildcontainer 2', 'box_2-1_005.png', 1),
+(12, '2 Spalten (Bild; Text, Text)', 2, 0, 'IMG|!!|TXT|!!|TXT', 'Bildcontainer|!!|Textcontainer 1|!!|Textcontainer 2', 'box_2-1_006.png', 1);
 
 -- --------------------------------------------------------
 
@@ -12516,7 +12579,7 @@ CREATE TABLE `fw_page_box_allowed_templates_mapping` (
   `boxID` int(11) NOT NULL,
   `templateID` int(11) NOT NULL,
   PRIMARY KEY (`mappingID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=23 ;
 
 --
 -- Daten für Tabelle `fw_page_box_allowed_templates_mapping`
@@ -12553,16 +12616,27 @@ INSERT INTO `fw_page_box_allowed_templates_mapping` (`mappingID`, `boxID`, `temp
 --
 
 CREATE TABLE `fw_page_box_content` (
-  `boxContentID` int(11) NOT NULL,
+  `boxContentID` int(11) NOT NULL AUTO_INCREMENT,
   `rowContentID` int(11) NOT NULL,
-  `orderID` tinyint(4) NOT NULL,
+  `content_type` varchar(20) NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified_by` int(11) NOT NULL,
+  `modified` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `content` text,
+  `img` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`boxContentID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Daten für Tabelle `fw_page_box_content`
 --
 
+INSERT INTO `fw_page_box_content` (`boxContentID`, `rowContentID`, `content_type`, `created_by`, `created`, `modified_by`, `modified`, `content`, `img`) VALUES
+(1, 1, 'IMG', 1, '2013-04-29 16:43:34', 0, '0000-00-00 00:00:00', NULL, NULL),
+(2, 1, 'IMG', 1, '2013-04-29 16:43:34', 0, '0000-00-00 00:00:00', NULL, NULL),
+(3, 1, 'TXT', 1, '2013-04-29 16:43:34', 0, '0000-00-00 00:00:00', 'abc', NULL),
+(4, 1, 'TXT', 1, '2013-04-29 16:43:34', 0, '0000-00-00 00:00:00', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -12575,7 +12649,7 @@ CREATE TABLE `fw_page_row` (
   `pageID` int(11) NOT NULL,
   `orderID` int(11) NOT NULL,
   PRIMARY KEY (`rowID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 --
 -- Daten für Tabelle `fw_page_row`
@@ -12594,18 +12668,16 @@ INSERT INTO `fw_page_row` (`rowID`, `pageID`, `orderID`) VALUES
 CREATE TABLE `fw_page_row_content` (
   `rowContentID` int(11) NOT NULL AUTO_INCREMENT,
   `rowID` int(11) NOT NULL,
-  `boxContentID` int(11) NOT NULL,
+  `boxID` int(11) NOT NULL,
   PRIMARY KEY (`rowContentID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Daten für Tabelle `fw_page_row_content`
 --
 
-INSERT INTO `fw_page_row_content` (`rowContentID`, `rowID`, `boxContentID`) VALUES
-(1, 1, 3),
-(2, 1, 11),
-(6, 2, 3);
+INSERT INTO `fw_page_row_content` (`rowContentID`, `rowID`, `boxID`) VALUES
+(1, 1, 10);
 
 -- --------------------------------------------------------
 
@@ -12615,17 +12687,17 @@ INSERT INTO `fw_page_row_content` (`rowContentID`, `rowID`, `boxContentID`) VALU
 
 CREATE TABLE `fw_page_template` (
   `templateID` int(11) NOT NULL AUTO_INCREMENT,
-  `templateName` varchar(255) NOT NULL,
-  `columnCount` tinyint(1) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `column_count` tinyint(1) NOT NULL,
   `online` tinyint(1) NOT NULL,
   PRIMARY KEY (`templateID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Daten für Tabelle `fw_page_template`
 --
 
-INSERT INTO `fw_page_template` (`templateID`, `templateName`, `columnCount`, `online`) VALUES
+INSERT INTO `fw_page_template` (`templateID`, `name`, `column_count`, `online`) VALUES
 (2, '3-spaltiges Layout', 3, 1),
 (3, '2-spaltiges Layout', 2, 1);
 
@@ -12642,41 +12714,27 @@ CREATE TABLE `fw_sessions` (
   `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
   `user_data` text COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`session_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Daten für Tabelle `fw_sessions`
 --
 
 INSERT INTO `fw_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('0a5e3f2343ae2073dc130740c842ab64', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366881677, ''),
-('10fdcc96de4ea36b0d96a717014f279b', '150.70.75.32', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366883002, ''),
-('24e9c6594b17d140d6e5b0bbb56786f7', '150.70.64.194', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366884401, ''),
-('25adbdc8f2b6d8cd3b831c36d2ef48c9', '93.90.138.160', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31', 1366884726, 0x613a31313a7b733a393a22757365725f64617461223b733a303a22223b733a31333a2266775f61646d696e5f75736572223b4f3a383a22737464436c617373223a393a7b733a363a22757365724944223b733a313a2231223b733a383a22757365726e616d65223b733a393a226b696e676d616f616d223b733a353a22656d61696c223b733a32333a2268616269624066616d696c6965706c65696e65732e6465223b733a373a22766f726e616d65223b733a353a224861626962223b733a383a226e6163686e616d65223b733a373a22506c65696e6573223b733a31313a22656469746f725f7369676e223b733a323a226870223b733a31333a226372656174696f6e5f64617465223b733a31393a22323031322d30382d30362031343a32353a3234223b733a363a22616374697665223b733a313a2231223b733a31303a2269735f696e697469616c223b733a313a2230223b7d733a31383a22706167656c697374655f7265646972656374223b733a35333a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f70616765223b733a31353a2270616765656469745f7375626d6974223b733a36303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f706167652f656469742f31223b733a31373a2270616765656469745f7265646972656374223b733a36303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f706167652f656469742f31223b733a32313a2265696e7361747a6c697374655f7265646972656374223b733a35363a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f65696e7361747a223b733a32323a22666168727a6575676c697374655f7265646972656374223b733a35373a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636f6e74656e742f666168727a657567223b733a31393a226d656e75656c697374655f7265646972656374223b733a35353a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f6d656e75652f66726f6e74656e64223b733a31393a22726f7574656c697374655f7265646972656374223b733a35333a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f73797374656d2f726f757465223b733a31383a22726f7574656372656174655f7375626d6974223b733a36303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f73797374656d2f726f7574652f637265617465223b733a31363a22726f757465656469745f7375626d6974223b733a36313a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f73797374656d2f726f7574652f656469742f3933223b7d),
-('2e836aad7884a1ef3272ced58cdd1b39', '150.70.172.106', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366883024, ''),
-('38b7ce504e41ac9f4e21367b1ba3ff1f', '150.70.64.194', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366884086, ''),
-('39b9ed0c349d97b47b5a539496a3f823', '150.70.172.106', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366883017, ''),
-('405c90fde877155cf523a00d67670a7e', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366882590, ''),
-('437d948767e75c68ed039a243cb71352', '150.70.172.205', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366883186, ''),
-('4eac5fb25f7f030509f1431082bd808f', '150.70.172.205', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366882592, ''),
-('55b256711c688daeb3514a472c3e485b', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366883610, ''),
-('55b9b31197b3fcfb6a7f23997995cc24', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366886956, ''),
-('62170c4761a4a86870c6e522288fbbc7', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366883490, ''),
-('69d9a0743967df21b026148585b39d61', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366882938, ''),
-('797f087bb78391b8a5e94c9949451598', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366886257, 0x613a323a7b733a393a22757365725f64617461223b733a303a22223b733a31383a22666c6173683a6e65773a7265646972656374223b733a34303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e223b7d),
-('83d6f534836e43c5389ff49bb4a05b70', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366889273, ''),
-('8aed29fca094d36950f2e2a3780f6233', '150.70.97.43', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366884149, ''),
-('9bd7e11309a0053f355afffaaadc25b1', '150.70.64.213', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366882993, ''),
-('ab33c59b03217bad63e56c2adb18ed85', '150.70.64.213', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366881733, ''),
-('cf0d00b759836df68611f07bbf338590', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366885055, ''),
-('d3751c9071e038fe4cf75d74dc6121ac', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366883058, ''),
-('d7198e7d9ce0bbd1b7a09fc09be45780', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366882899, ''),
-('d8757199ccfdf6c9477462aad5c88cf4', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366881689, ''),
-('eee6dfef70865688372ad3e667105df4', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1366888201, ''),
-('f273db9141aebfecf2bbf5ed43f3b4c7', '150.70.196.173', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366883145, ''),
-('f5a3f722ee863275e5ea94596f85d7cf', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366883005, ''),
-('f846306b7461007b0ac259db711e5fb0', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366885054, ''),
-('f9ba342b0528bc3aac8b462d99672a14', '150.70.75.33', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1366882635, '');
+('2c4cbd38d733966f2a0f0772ce07203c', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1367494755, 0x613a323a7b733a393a22757365725f64617461223b733a303a22223b733a31383a22666c6173683a6e65773a7265646972656374223b733a35323a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636865636b5f6c6f67696e223b7d),
+('fa7e65577d50ec31985d588dd19c204d', '0.0.0.0', 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.1; Trident/4.0)', 1367494777, 0x613a323a7b733a393a22757365725f64617461223b733a303a22223b733a31383a22666c6173683a6e65773a7265646972656374223b733a34303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e223b7d),
+('31430e0c6647e79f1d6d113ff0202ece', '150.70.64.213', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1367494851, 0x613a323a7b733a393a22757365725f64617461223b733a303a22223b733a31383a22666c6173683a6e65773a7265646972656374223b733a35323a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636865636b5f6c6f67696e223b7d),
+('6b228b1bb7cd32a40117cf7a8fd9f94d', '150.70.172.205', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1367494895, ''),
+('865c2ce6acba0705eec1fe2aa9d32dbd', '150.70.64.194', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1367495795, 0x613a323a7b733a393a22757365725f64617461223b733a303a22223b733a31383a22666c6173683a6e65773a7265646972656374223b733a34303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e223b7d),
+('5a00e1a5567121b93d0b6742369a7be5', '93.90.138.160', 'Mozilla/5.0 (Windows NT 5.1) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.64 Safari/537.31', 1367494717, 0x613a343a7b733a393a22757365725f64617461223b733a303a22223b733a31383a22666c6173683a6f6c643a7265646972656374223b733a34303a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e223b733a31383a22666c6173683a6e65773a7265646972656374223b733a35323a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f636865636b5f6c6f67696e223b733a31333a2266775f61646d696e5f75736572223b4f3a383a22737464436c617373223a393a7b733a363a22757365724944223b733a313a2231223b733a383a22757365726e616d65223b733a393a226b696e676d616f616d223b733a353a22656d61696c223b733a32333a2268616269624066616d696c6965706c65696e65732e6465223b733a373a22766f726e616d65223b733a353a224861626962223b733a383a226e6163686e616d65223b733a373a22506c65696e6573223b733a31313a22656469746f725f7369676e223b733a323a226870223b733a31333a226372656174696f6e5f64617465223b733a31393a22323031322d30382d30362031343a32353a3234223b733a363a22616374697665223b733a313a2231223b733a31303a2269735f696e697469616c223b733a313a2230223b7d7d),
+('657f0208ad22d17316fd653aae3f6b30', '150.70.172.205', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1367487559, ''),
+('19cdf5ac1b088260212d4914d440bf59', '150.70.75.32', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1367487589, ''),
+('cb5ab56fd95378e47c81f7e68f611838', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1367487733, 0x613a323a7b733a393a22757365725f64617461223b733a303a22223b733a31383a22666c6173683a6e65773a7265646972656374223b733a34363a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f6d656e7565223b7d),
+('9291ef413ec6edd4d2dc585fd3b6c118', '150.70.172.200', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1367487756, ''),
+('e778c268359e1e5ceb7357d0d38501bd', '150.70.75.33', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1367487555, ''),
+('6c1435f303f85ee60443190ac1759ffa', '150.70.75.32', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1367487556, 0x613a323a7b733a393a22757365725f64617461223b733a303a22223b733a31383a22666c6173683a6e65773a7265646972656374223b733a34373a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f73797374656d223b7d),
+('b1d3890b8b20037ad430e4ad26fc7f79', '150.70.75.32', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1367487557, 0x613a323a7b733a393a22757365725f64617461223b733a303a22223b733a31383a22666c6173683a6e65773a7265646972656374223b733a34363a22687474703a2f2f6665756572776568722e66616d696c6965706c65696e65732e64652f61646d696e2f66696c6573223b7d),
+('f070e73da5705aa48581e62e76783f83', '150.70.75.32', 'Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)', 1367487554, '');
 
 -- --------------------------------------------------------
 
@@ -12686,18 +12744,18 @@ INSERT INTO `fw_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activ
 
 CREATE TABLE `fw_sys_constants` (
   `constantID` int(11) NOT NULL AUTO_INCREMENT,
-  `constantName` varchar(255) NOT NULL,
-  `constantValue` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `value` varchar(255) NOT NULL,
   `moduleID` int(11) NOT NULL,
   PRIMARY KEY (`constantID`),
-  UNIQUE KEY `constantName` (`constantName`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
+  UNIQUE KEY `constantName` (`name`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
 --
 -- Daten für Tabelle `fw_sys_constants`
 --
 
-INSERT INTO `fw_sys_constants` (`constantID`, `constantName`, `constantValue`, `moduleID`) VALUES
+INSERT INTO `fw_sys_constants` (`constantID`, `name`, `value`, `moduleID`) VALUES
 (13, 'EMAIL_FROM_ACCOUNT_ACTIVATE', 'fw-no-reply@familiepleines.de', 2),
 (3, 'CPAUTH_DB_USER_TABLE', 'fw_user', 2),
 (4, 'CPAUTH_DB_AUTH_TABLE', 'fw_auth', 2),
@@ -12713,7 +12771,11 @@ INSERT INTO `fw_sys_constants` (`constantID`, `constantName`, `constantValue`, `
 (15, 'EMAIL_HTML_HEADER', '&lt;html&gt;&lt;body>', 2),
 (16, 'EMAIL_HTML_FOOTER', '&lt;/body&gt;&lt;/html>', 2),
 (17, 'EMAIL_ADMINLINK_ACCOUNT_ACTIVATE', 'http://feuerwehr.familiepleines.de/admin', 2),
-(18, 'EMAIL_LINK_ACCOUNT_ACTIVATE', 'http://feuerwehr.familiepleines.de/login', 2);
+(18, 'EMAIL_LINK_ACCOUNT_ACTIVATE', 'http://feuerwehr.familiepleines.de/login', 2),
+(20, 'PAGES_BOX_TAGS_SEPARATOR', '|!!|', 7),
+(21, 'CONTENT_IMG_EINSATZ_UPLOAD_PATH', 'images/content/einsatz', 1),
+(22, 'CONTENT_IMG_FAHRZEUG_UPLOAD_PATH', 'images/content/fahrzeug', 6),
+(23, 'CONTENT_IMG_NEWS_UPLOAD_PATH', 'images/content/einsatz', 4);
 
 -- --------------------------------------------------------
 
@@ -12788,18 +12850,18 @@ CREATE TABLE `fw_sys_routes` (
   `routeID` int(11) NOT NULL AUTO_INCREMENT,
   `moduleID` int(11) NOT NULL,
   `bereich` varchar(8) NOT NULL,
-  `internalLink` varchar(255) NOT NULL,
+  `internal_link` varchar(255) NOT NULL,
   `route` varchar(255) NOT NULL,
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `isprotected` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`routeID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=94 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=98 ;
 
 --
 -- Daten für Tabelle `fw_sys_routes`
 --
 
-INSERT INTO `fw_sys_routes` (`routeID`, `moduleID`, `bereich`, `internalLink`, `route`, `active`, `isprotected`) VALUES
+INSERT INTO `fw_sys_routes` (`routeID`, `moduleID`, `bereich`, `internal_link`, `route`, `active`, `isprotected`) VALUES
 (1, 2, 'Backend', 'admin/admin/mContent', 'admin/content', 1, 1),
 (2, 2, 'Backend', 'admin/admin/mMenue', 'admin/menue', 1, 1),
 (3, 2, 'Backend', 'admin/admin/mSystem', 'admin/system', 1, 1),
@@ -12865,18 +12927,20 @@ INSERT INTO `fw_sys_routes` (`routeID`, `moduleID`, `bereich`, `internalLink`, `
 (75, 7, 'Backend', 'pages/pages_admin/create_page', 'admin/content/page/create', 1, 1),
 (76, 7, 'Backend', 'pages/pages_admin/edit_page/$1', 'admin/content/page/edit/(:any)', 1, 1),
 (77, 7, 'Backend', 'pages/pages_admin/create_page/$1', 'admin/content/page/create/(:any)', 1, 1),
-(78, 7, 'Backend', 'pages/pages_admin/add_row/$1', 'admin/content/page/addrow/(:num)', 1, 1),
-(80, 7, 'Backend', 'pages/pages_admin/add_box/$1', 'admin/content/page/addbox/(:num)', 1, 1),
-(81, 7, 'Backend', 'pages/pages_admin/add_box/$1/$2', 'admin/content/page/addbox/(:num)/(:any)', 1, 1),
-(82, 7, 'Backend', 'pages/pages_admin/delete_page/$1', 'admin/content/page/delete/(:num)', 1, 1),
-(84, 7, 'Backend', 'pages/pages_admin/delete_row/$1/$2', 'admin/content/page/delrow/(:num)/(:num)', 1, 1),
-(85, 7, 'Backend', 'pages/pages_admin/delete_box/$1', 'admin/content/page/delbox/(:num)', 1, 1),
-(90, 7, 'Backend', 'pages/pages_admin/delete_box_content/$1/$2', 'admin/content/page/delcontent/(:num)/(:num)', 1, 1),
-(88, 7, 'Backend', 'pages/pages_admin/delete_row_verify/$1/$2', 'admin/content/page/checkdelrow/(:num)/(:num)', 1, 1),
-(89, 7, 'Backend', 'pages/pages_admin/delete_box_verify/$1', 'admin/content/page/checkdelbox/(:num)', 1, 1),
-(91, 7, 'Backend', 'pages/pages_admin/delete_box_content_verify/$1/$2', 'admin/content/page/checkdelcontent/(:num)/(:num)', 1, 1),
+(78, 7, 'Backend', 'pages/pages_admin/add_row/$1', 'admin/content/page/row/add/(:num)', 1, 1),
+(80, 7, 'Backend', 'pages/pages_admin/add_box/$1', 'admin/content/page/box/add/(:num)', 1, 1),
+(81, 7, 'Backend', 'pages/pages_admin/add_box/$1/$2/$3', 'admin/content/page/box/add/(:num)/(:num)/(:any)', 1, 1),
+(82, 7, 'Backend', 'pages/pages_admin/page/delete/$1', 'admin/content/page/delete/(:num)', 1, 1),
+(85, 7, 'Backend', 'pages/pages_admin/delete_box/$1', 'admin/content/page/box/delete/(:num)', 1, 1),
+(84, 7, 'Backend', 'pages/pages_admin/delete_row/$1/$2', 'admin/content/page/row/delete/(:num)/(:num)', 1, 1),
+(88, 7, 'Backend', 'pages/pages_admin/delete_row_verify/$1/$2', 'admin/content/page/row/checkdel/(:num)/(:num)', 1, 1),
+(89, 7, 'Backend', 'pages/pages_admin/delete_box_verify/$1', 'admin/content/page/box/checkdel/(:num)', 1, 1),
 (92, 7, 'Backend', 'pages/pages_admin/delete_page_verify/$1', 'admin/content/page/checkdelete/(:num)', 1, 1),
-(93, 7, 'Backend', 'pages/pages_admin/change_row_order/$1/$2', 'admin/content/page/row/order/(:any)/(:num)', 1, 1);
+(93, 7, 'Backend', 'pages/pages_admin/change_row_order/$1/$2', 'admin/content/page/row/order/(:any)/(:num)', 1, 1),
+(94, 7, 'Backend', 'pages/pages_admin/edit_box_content/$1/$2', 'admin/content/page/box/content/edit/(:num)/(:num)', 1, 1),
+(95, 7, 'Backend', 'pages/pages_admin/update_box_content/$1', 'admin/content/page/box/content/save/(:num)', 1, 1),
+(96, 7, 'Backend', 'files/files_admin/image_liste', 'admin/files/image', 1, 1),
+(97, 7, 'Backend', 'files/files_admin/file_liste', 'admin/files/file', 1, 1);
 
 -- --------------------------------------------------------
 
