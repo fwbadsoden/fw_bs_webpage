@@ -62,8 +62,7 @@ class User_Model extends CI_Model {
 		foreach($query->result() as $row)
 		{
 			$counter = $i + 1;
-			$this->color 					= cp_get_color($this->color);
-			$this->user[$i]['row_color']	= $this->color;
+			$this->user[$i]['row_color']	= $this->color = cp_get_color($this->color);
 			$this->user[$i]['id']			= $counter;
 			$this->user[$i]['userID'] 		= $row->userID;	
 			$this->user[$i]['username'] 	= $row->username;	

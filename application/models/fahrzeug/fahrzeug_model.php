@@ -62,7 +62,6 @@ class Fahrzeug_Model extends CI_Model {
 		
 		foreach($query->result() as $row)
 		{
-			$this->color = cp_get_color($this->color);
 			$arr_fahrzeug[$i]['fahrzeugID'] 	= $row->fahrzeugID;
 			$arr_fahrzeug[$i]['fahrzeugName'] 	= $row->name;
 			$arr_fahrzeug[$i]['fahrzeugRufnamePrefix'] = $row->prefix_rufname;
@@ -74,7 +73,7 @@ class Fahrzeug_Model extends CI_Model {
 				$arr_fahrzeug[$i]['fahrzeugRufname'] = 'n/a';
 			$arr_fahrzeug[$i]['online'] 		= $row->online;
 			$arr_fahrzeug[$i]['delete'] 		= $this->is_deletable($row->fahrzeugID);
-			$arr_fahrzeug[$i]['row_color']		= $this->color;
+			$arr_fahrzeug[$i]['row_color']		= $this->color = cp_get_color($this->color);
 			$i++;
 		}
 		

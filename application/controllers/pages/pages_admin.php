@@ -40,7 +40,7 @@ class Pages_Admin extends CI_Controller {
 	{
 		$this->session->set_userdata('pageliste_redirect', current_url()); 		
 		
-		$header['title']      = 'Seiten';		
+		$header['title']      = 'Seiten verwalten';		
 		$menue['menue']	      = $this->admin->get_menue();
 		$menue['submenue']	  = $this->admin->get_submenue();
 		$data['page']         = $this->pages->get_pages();

@@ -56,11 +56,10 @@ class Pages_model extends CI_Model {
         
         foreach($query->result() as $row)
         {
-			$this->color = cp_get_color($this->color);
             $pages[$i]['pageID'] = $row->pageID;
             $pages[$i]['pageName'] = $row->name;
             $pages[$i]['online'] = $row->online;
-            $pages[$i]['row_color'] = $this->color;
+            $pages[$i]['row_color'] = $this->color = cp_get_color($this->color);
             $pages[$i]['is_deletable'] = $this->is_page_deletable($row->pageID);
             $i++;
         }
@@ -91,7 +90,7 @@ class Pages_model extends CI_Model {
     
     public function is_page_deletable($id)
     {
-        $query = $this->db->get_where('menue', array('frontendPageID' => $id));
+        $query = $this->db->get_where('menue', array('frontend_pageID' => $id));
         $num_rows = $query->num_rows();
         
         if($num_rows == 0) return true; else return false;

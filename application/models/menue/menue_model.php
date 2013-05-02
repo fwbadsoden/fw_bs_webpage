@@ -44,7 +44,6 @@ class Menue_Model extends CI_Model {
 		$i = 0;
 		foreach($query->result() as $row)
 		{
-			$this->color = cp_get_color($this->color);
 			$menue[$i]['menueID'] = $row->menueID;
 			$menue[$i]['name'] = $row->name;
 			$menue[$i]['link'] = $row->link;
@@ -52,7 +51,7 @@ class Menue_Model extends CI_Model {
 			$menue[$i]['slug'] = $row->slug;
 			$menue[$i]['online'] = $row->online;
 			$menue[$i]['orderID'] = $row->orderID;
-			$menue[$i]['row_color']	= $this->color;
+			$menue[$i]['row_color']	= $this->color = cp_get_color($this->color);
 			
 			$this->db->order_by('orderID', 'asc');
 			$query2 = $this->db->get_where('menue', array('superID' => $row->menueID));
@@ -65,7 +64,6 @@ class Menue_Model extends CI_Model {
 				
 				foreach($query2->result() as $row2)
 				{
-					$this->color = cp_get_color($this->color);
 					$menue[$i]['submenue'][$j]['menueID'] = $row2->menueID;
 					$menue[$i]['submenue'][$j]['name'] = $row2->name;
 					$menue[$i]['submenue'][$j]['link'] = $row2->link;
@@ -73,7 +71,7 @@ class Menue_Model extends CI_Model {
 					$menue[$i]['submenue'][$j]['slug'] = $row2->slug;
 					$menue[$i]['submenue'][$j]['online'] = $row2->online;
 					$menue[$i]['submenue'][$j]['orderID'] = $row2->orderID;
-					$menue[$i]['submenue'][$j]['row_color']		= $this->color;
+					$menue[$i]['submenue'][$j]['row_color']		= $this->color = cp_get_color($this->color);
 					$j++;	
 				}	
 			}				
@@ -88,7 +86,6 @@ class Menue_Model extends CI_Model {
 		
 		foreach($query->result() as $row)
 		{
-			$this->color = cp_get_color($this->color);
 			$menue_meta[$i]['menueID'] = $row->menueID;
 			$menue_meta[$i]['name'] = $row->name;
 			$menue_meta[$i]['link'] = $row->link;
@@ -96,7 +93,7 @@ class Menue_Model extends CI_Model {
 			$menue_meta[$i]['slug'] = $row->slug;
 			$menue_meta[$i]['online'] = $row->online;
 			$menue_meta[$i]['orderID'] = $row->orderID;
-			$menue_meta[$i]['row_color']	= $this->color;			
+			$menue_meta[$i]['row_color']	= $this->color = cp_get_color($this->color);			
 			$i++;
 		}			
 			

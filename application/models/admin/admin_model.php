@@ -12,6 +12,8 @@
  **/
 
 class Admin_model extends CI_Model {
+    
+    private $color = '';
 	
 	/**
 	 * Konstruktor
@@ -84,7 +86,7 @@ class Admin_model extends CI_Model {
 		$this->load->helper('html');
 		
 		$log = array();
-		$color = '';
+		$this->color = '';
 		$i = 0;
 		
 		$this->db->order_by('datetime', 'desc');
@@ -92,7 +94,6 @@ class Admin_model extends CI_Model {
 		foreach($query->result() as $row)
 		{
 			$userdata 			= $this->cpauth->get_userdata($row->userID);
-			$color 				= cp_get_color($color);
 			
 			$log[$i]['logID'] 		= $row->logID;
 			$log[$i]['userID'] 		= $row->userID;
@@ -101,7 +102,7 @@ class Admin_model extends CI_Model {
 			$log[$i]['email'] 		= $userdata['email'];
 			$log[$i]['datetime'] 	= cp_get_ger_datetime($row->datetime);
 			$log[$i]['message'] 	= $row->message;	
-			$log[$i]['rowColor']	= $color;
+			$log[$i]['rowColor']	= $this->color = cp_get_color($this->color);
 			
 			$i++;
 		}		
@@ -119,14 +120,14 @@ class Admin_model extends CI_Model {
 		$userdata = $this->cp_auth->cp_get_userdata($this->session->userdata(CPAUTH_SESSION_BACKEND));
 		
 		$links = array();
-		$color = '';
+		$this->color = '';
 		$i = 0;
 		
-		$this->db->order_by('linkName', 'asc');
+		$this->db->order_by('name', 'asc');
 		$query = $this->db->get_where('admin_quicklink', array('userID' => $userdata['userID']));
 		foreach($query->result() as $row)
 		{
-			$color 				= cp_get_color($color);
+			$this->color 			= cp_get_color($this->color);
 			
 			$links[$i]['linkID'] 	= $row->linkID;
 			$links[$i]['linkZiel'] 	= $row->target;
@@ -147,8 +148,7 @@ class Admin_model extends CI_Model {
 		$this->load->helper('html');
 		
 		$message = array();
-		$color = '';
-		$color = cp_get_color($color);
+		$this->color = cp_get_color($this->color);
 		
 		$query = $this->db->get('admin_message');
 		$row = $query->row();
@@ -157,7 +157,7 @@ class Admin_model extends CI_Model {
 		$message['editor'] 		= $userdata['vorname'].' '.$userdata['nachname'];
 		$message['titel'] 		= $row->title;
 		$message['message']		= $row->message;
-		$message['rowColor']	= $color;
+		$message['rowColor']	= $this->color;
 		
 		return $message;
 	}

@@ -82,7 +82,7 @@ switch(ID) {
 
 <? foreach($language as $item) { ?>		
 <tr bgcolor="<?=$item['row_color']?>">
-	<td><?=$module[$item['moduleID']]['moduleName']?></td>
+	<td><?=$item['moduleName']?></td>
 	<td><?=$item['key']?></td>
 	<td><?=$item['text']?></td>
 	<td><?=$item['desc']?></td>

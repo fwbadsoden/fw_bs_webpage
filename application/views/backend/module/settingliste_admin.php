@@ -62,7 +62,7 @@ $(document).ready(function() {
 		$i++;
 ?>		
 <tr bgcolor="<?=$item['row_color']?>">
-	<td><?=$module[$item['moduleID']]['moduleName']?></td>
+	<td><?=$item['moduleName']?></td>
 	<td><?=$item['constantName']?></td>
 	<td><?=form_input($constantValue); ?></td>
 </tr>

@@ -39,9 +39,7 @@ class News_model extends CI_Model {
 		$i = 0;
 		
 		foreach($query->result() as $row)
-		{
-			$this->color = cp_get_color($this->color);
-			
+		{	  			
 			$arr_news_list[$i]['newsID'] 		= $row->newsID;
 			$arr_news_list[$i]['catID'] 		= $row->catID;
 			$arr_news_list[$i]['editor']		= $row->userID;
@@ -50,7 +48,7 @@ class News_model extends CI_Model {
 			$arr_news_list[$i]['valid_from'] 	= cp_get_ger_datetime($row->valid_from);
 			$arr_news_list[$i]['valid_to'] 		= cp_get_ger_datetime($row->valid_to);			
 			$arr_news_list[$i]['online'] 		= $row->online;
-			$arr_news_list[$i]['row_color']		= $this->color;
+			$arr_news_list[$i]['row_color']		= $this->color = cp_get_color($this->color);
 			
 			$i++;
 		}

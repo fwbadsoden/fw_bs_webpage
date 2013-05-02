@@ -52,7 +52,6 @@ class Module_Admin extends CI_Controller {
 			$header['title'] 		= 'Einstellungen';		
 			$menue['menue']			= $this->admin->get_menue();
 			$menue['submenue']		= $this->admin->get_submenue();
-			$data['module'] = $this->module->get_modules();
 			$data['setting'] = $this->module->get_settings();
 		
 			$this->load->view('backend/templates/admin/header', $header);
@@ -115,8 +114,7 @@ class Module_Admin extends CI_Controller {
 		$menue['menue']	= $this->admin->get_menue();
 		$menue['submenue']	= $this->admin->get_submenue();
 		$data['language'] = $this->module->get_languages();
-		$data['module'] = $this->module->get_modules();
-	
+        
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
@@ -143,7 +141,6 @@ class Module_Admin extends CI_Controller {
 		$menue['menue']	= $this->admin->get_menue();
 		$menue['submenue']	= $this->admin->get_submenue();
 		$data['route'] = $this->module->get_routes();
-		$data['module'] = $this->module->get_modules();
 	
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	

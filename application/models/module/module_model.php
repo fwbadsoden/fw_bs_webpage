@@ -45,20 +45,21 @@ class Module_model extends CI_Model {
 	
 	public function get_settings()
 	{
-		$this->db->order_by('moduleID', 'asc');		
-		$this->db->order_by('name', 'asc');
+        $this->db->select('sys_constants.constantID as constantID, sys_constants.moduleID as moduleID, module.name as moduleName, sys_constants.name as name, sys_constants.value as value');
+		$this->db->order_by('module.name', 'asc');		
+		$this->db->order_by('sys_constants.name', 'asc');
+        $this->db->join('module', 'module.moduleID = sys_constants.moduleID');
 		$query = $this->db->get('sys_constants');
 		$i = 0;
 		$settings = array();
 		
 		foreach($query->result() as $row)
 		{
-			$this->color = cp_get_color($this->color);
 			$settings[$i]['constantID']			= $row->constantID;
-			$settings[$i]['moduleID'] 			= $row->moduleID;
+			$settings[$i]['moduleName']			= $row->moduleName;
 			$settings[$i]['constantName']       = $row->name;
 			$settings[$i]['constantValue']      = $row->value;
-			$settings[$i]['row_color']          = $this->color;
+			$settings[$i]['row_color']          = $this->color = cp_get_color($this->color);
 			$i++;
 		}
 		
@@ -99,26 +100,26 @@ class Module_model extends CI_Model {
 	
 	public function get_languages()
 	{
-		$this->db->order_by('moduleID', 'asc');		
-		$this->db->order_by('key', 'asc');
+        $this->db->select('module.name as moduleName, sys_lang.langID, sys_lang.key, sys_lang.text, sys_lang.desc');
+		$this->db->order_by('module.name', 'asc');		
+		$this->db->order_by('sys_lang.key', 'asc');
+        $this->db->join('module', 'module.moduleID = sys_lang.moduleID');
 		$query = $this->db->get_where('sys_lang', array('lang' => 'de'));	
 		$langs = array();
 		$i = 0;
 		
 		foreach($query->result() as $row)
-		{
-			$this->color = cp_get_color($this->color);
-			
+		{			
 			$langs[$i]['langID']			= $row->langID;
-			$langs[$i]['moduleID']			= $row->moduleID;
-			$langs[$i]['key'] 					= $row->key;
+			$langs[$i]['key'] 				= $row->key;
+            $langs[$i]['moduleName']        = $row->moduleName;
 			$text = substr($row->text, 0, $this->txt_length);
 			if(strlen($row->text) > $this->txt_length) $text .= ' [...]';
 			$langs[$i]['text'] 				= $text;
 			$desc = substr($row->desc, 0, $this->txt_length);
 			if(strlen($row->desc) > $this->txt_length) $desc .= ' [...]';
 			$langs[$i]['desc'] 				= $desc;
-			$langs[$i]['row_color']		= $this->color;
+			$langs[$i]['row_color']		    = $this->color = cp_get_color($this->color);
 			$i++;
 		}		
 		return $langs;
@@ -161,26 +162,25 @@ class Module_model extends CI_Model {
 	
 	public function get_routes($restrict = 'none')
 	{
-		if($restrict == 'active')	$this->db->where('active', 1);
+		if($restrict == 'active')	$this->db->where('sys_routes.active', 1);
         $this->db->order_by('bereich', 'asc');
-		$this->db->order_by('moduleID', 'asc');
+		$this->db->order_by('name', 'asc');
 		$this->db->order_by('route', 'asc');
+        $this->db->join('module', 'module.moduleID = sys_routes.moduleID');
 		$query = $this->db->get('sys_routes');
 		$routes = array();
 		$i = 0;
 		
 		foreach($query->result() as $row)
 		{
-			$this->color = cp_get_color($this->color);
-			
 			$routes[$i]['routeID']			= $row->routeID;
-			$routes[$i]['moduleID']			= $row->moduleID;
+			$routes[$i]['moduleName']		= $row->name;
             $routes[$i]['bereich']          = $row->bereich;
 			$routes[$i]['internalLink'] 	= $row->internal_link;
 			$routes[$i]['route'] 			= $row->route;
 			$routes[$i]['active'] 			= $row->active;
 			$routes[$i]['protectedFlag'] 	= $row->isprotected;
-			$routes[$i]['row_color']		= $this->color;
+			$routes[$i]['row_color']		= $this->color = cp_get_color($this->color);
 			$i++;
 		}
 		return $routes;

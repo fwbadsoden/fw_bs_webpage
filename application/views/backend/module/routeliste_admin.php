@@ -82,7 +82,7 @@ switch(ID) {
 <? foreach($route as $item) { ?>		
 <tr bgcolor="<?=$item['row_color']?>">
 	<td><?=$item['bereich']?></td>
-	<td><?=$module[$item['moduleID']]['moduleName']?></td>
+	<td><?=$item['moduleName']?></td>
 	<td><?=$item['route']?></td>
 	<td><?=$item['internalLink']?></td>
 	<td style='text-align:center'>
