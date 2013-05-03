@@ -161,7 +161,7 @@ class Pages_model extends CI_Model {
         $columns = $this->get_row_columns($id);
         $ids = $this->get_superIDs_from_rowID($id);
         
-        $this->db->order_by('page_box.columnCount', 'desc');
+        $this->db->order_by('page_box.column_count', 'desc');
         $this->db->join('page_box_allowed_templates_mapping batm', 'batm.boxID = page_box.boxID', 'inner');
         $this->db->where('batm.templateID', $ids['templateID']);
         $this->db->where('page_box.online', 1);
@@ -171,7 +171,7 @@ class Pages_model extends CI_Model {
         
         foreach($query->result() as $row)
         {
-            if($columns['empty'] >= $row->columnCount) 
+            if($columns['empty'] >= $row->column_count) 
             {
                 $boxes[$i]['boxID'] = $row->boxID;
                 $boxes[$i]['pageID'] = $ids['pageID'];

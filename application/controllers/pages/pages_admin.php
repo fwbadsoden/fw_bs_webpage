@@ -171,7 +171,7 @@ class Pages_Admin extends CI_Controller {
      * @param integer $boxID
      * @return
      */
-    public function add_box($rowID, $boxID)
+    public function add_box($rowID, $boxID = NULL)
     {        
         $this->rowID = $rowID;
         $this->boxID = $boxID;
@@ -216,7 +216,7 @@ class Pages_Admin extends CI_Controller {
             $tinymce['config']   = 'pages';   
     	
     		$this->load->view('backend/templates/admin/header', $header);     
-            $this->load->view('backend/templates/admin/jquery-fileupload');
+            $this->load->view('backend/templates/admin/jquery-fileupload-cp');
 			$this->load->view('backend/templates/admin/tiny_mce_inc', $tinymce);
     		$this->load->view('backend/templates/admin/menue', $menue);	
     		$this->load->view('backend/templates/admin/submenue', $menue);            
