@@ -14,7 +14,7 @@
     </table>
 </p>
 
-<h1><?=headline?></h1>
+<h1><?=$headline?></h1>
 
 <table cellpadding="0" cellspacing="1" id="file_table" class="tablesorter">
 <thead>
