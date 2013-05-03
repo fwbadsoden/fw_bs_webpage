@@ -51,6 +51,12 @@
 </p>
 <?=form_fieldset_close();?>
 <br/>
+<?=form_fieldset('&nbsp;&nbsp;&nbsp;Bildb&uuml;hne:&nbsp;&nbsp;&nbsp;');?>
+<p>
+
+</p>
+<?=form_fieldset_close();?>
+<br/>
 <?=form_fieldset('&nbsp;&nbsp;&nbsp;Inhaltselemente:&nbsp;&nbsp;&nbsp;');?>
 <p>
 <table>
