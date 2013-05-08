@@ -25,26 +25,30 @@ class File_Admin extends CI_Controller {
 		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
 	}
     
-    public function file_liste($type)
-    {
+    public function file_liste($type) // Später durch jquery File Upload und Schnickschnack zu ersetzen
+    {       
+        $this->session->set_userdata($type.'liste_redirect', current_url());  
         switch($type)
         {
-            case 'image':   
-                $this->session->set_userdata('imageliste_redirect', current_url()); 		
-		
+            case 'image':   			
         		$header['title']      = 'Bilder verwalten';		
         		$menue['menue']	      = $this->admin->get_menue();
         		$menue['submenue']	  = $this->admin->get_submenue();   
-                $data['btn_create']   = 'Hochladen';     
+                $data['btn_create']   = 'Neues Bild hochladen';     
                 $data['headline']     = $header['title'];
                 $data['typeID']       = FILE_TYPE_ID_CMSIMAGE;
                 $data['files']        = $this->file->get_files(FILE_TYPE_ID_CMSIMAGE);  
                 $data['categories']   = $this->file->get_categories(FILE_TYPE_ID_CMSIMAGE);     
+        
+                $this->load->view('backend/templates/admin/header', $header);
+        		$this->load->view('backend/templates/admin/menue', $menue);	
+        		$this->load->view('backend/templates/admin/submenue', $menue);	
+        		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
+        		$this->load->view('backend/file/temp_imageupload_admin', $data);
+        		$this->load->view('backend/templates/admin/footer');  
                 break;
                 
-            case 'file': 
-                $this->session->set_userdata('fileliste_redirect', current_url()); 		
-		
+            case 'file': 	
         		$header['title']      = 'Dateien verwalten';		
         		$menue['menue']	      = $this->admin->get_menue();
         		$menue['submenue']	  = $this->admin->get_submenue();     
@@ -53,50 +57,25 @@ class File_Admin extends CI_Controller {
                 $data['typeID']       = FILE_TYPE_ID_CMSFILE;
                 $data['files']        = $this->file->get_files(FILE_TYPE_ID_CMSFILE);
                 $data['categories']   = $this->file->get_categories(FILE_TYPE_ID_CMSFILE);      
+        
+                $this->load->view('backend/templates/admin/header', $header);
+        		$this->load->view('backend/templates/admin/menue', $menue);	
+        		$this->load->view('backend/templates/admin/submenue', $menue);	
+        		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
+        		$this->load->view('backend/file/temp_fileupload_admin', $data);
+        		$this->load->view('backend/templates/admin/footer');  
                 break;
         }
-        
-        $this->load->view('backend/templates/admin/header', $header);
-		$this->load->view('backend/templates/admin/menue', $menue);	
-		$this->load->view('backend/templates/admin/submenue', $menue);	
-		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
-		$this->load->view('backend/file/temp_fileupload_admin', $data);
-		$this->load->view('backend/templates/admin/footer');  
     }
     
-    public function upload_image()
+    public function create_file($type)
     {
-        $this->session->set_userdata('fileupload_redirect', current_url()); 
-        	
-        $header['title']      = 'Bild(er) hochladen';		
-		$menue['menue']	      = $this->admin->get_menue();
-		$menue['submenue']	  = $this->admin->get_submenue(); 
-        $data['typeID']       = FILE_TYPE_ID_CMSIMAGE;  
-        $data['categories']   = $this->file->get_categories(FILE_TYPE_ID_CMSIMAGE); 
-	
-		$this->load->view('backend/templates/admin/header', $header);
-		$this->load->view('backend/templates/admin/menue', $menue);	
-		$this->load->view('backend/templates/admin/submenue', $menue);	
-		$this->load->view('backend/templates/admin/jquery-fileupload-cp');
-		$this->load->view('backend/file/fileupload_admin', $data);
-		$this->load->view('backend/templates/admin/footer');
+        
     }
     
-    public function upload_file()
+    public function edit_file($type)
     {
-        $this->session->set_userdata('fileupload_redirect', current_url()); 	
-        
-        $header['title']      = 'Datei(en) hochladen';		
-		$menue['menue']	      = $this->admin->get_menue();
-		$menue['submenue']	  = $this->admin->get_submenue();    
-        $data['typeID']       = FILE_TYPE_ID_CMSFILE;
-        $data['categories']   = $this->file->get_categories(FILE_TYPE_ID_CMSFILE); 
-	
-		$this->load->view('backend/templates/admin/header', $header);
-		$this->load->view('backend/templates/admin/menue', $menue);	
-		$this->load->view('backend/templates/admin/submenue', $menue);	
-		$this->load->view('backend/templates/admin/jquery-fileupload-cp');
-		$this->load->view('backend/file/fileupload_admin', $data);
-		$this->load->view('backend/templates/admin/footer');
+        $this->file->update_file();
+        redirect($this->session->userdata($type.'liste_redirect'), 'refresh');
     }
 }

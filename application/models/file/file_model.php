@@ -15,11 +15,6 @@ class File_model extends CI_Model {
 	
 	private $color = '';
 	
-	/**
-	 * File_model::__construct()
-	 * 
-	 * @return void
-	 */
 	public function __construct()
 	{
 		parent::__construct();
@@ -27,11 +22,6 @@ class File_model extends CI_Model {
 		$this->load->helper('html');
 	}
     
-    /**
-     * File_model::get_types()
-     * 
-     * @return
-     */
     public function get_types()
     {
         $query = $this->db->get('file_type');
@@ -42,6 +32,17 @@ class File_model extends CI_Model {
             $types[$i]['name'] = $row->name;
         }
         return $types;
+    }
+    
+    public function get_type($typeID)
+    {
+        $query = $this->db->get_where('file_type', array('typeID' => $typeID));
+        $row = $query->row();
+        $type = array(
+            'typeID' => $id,
+            'name'  => $row->name()
+        );
+        return $type;
     }
     
     public function get_files($typeID)
@@ -90,5 +91,16 @@ class File_model extends CI_Model {
         }
         
         return $categories;
+    }
+    
+    public function update_file()
+    {
+        $file = array();
+        $file['description'] = $this->input->post('description');
+        $file['title'] = $this->input->post('title');
+        $file['modified'] = date("Y-m-d H:i:s");
+        $file['modified_by'] = $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND));
+        
+        $this->db->update('file', $file, array('fileID' => $this->input->post('file_id')));
     }
  }
