@@ -54,6 +54,8 @@ class File_model extends CI_Model {
         foreach($query->result() as $row)
         {			
             $files[$i]['fileID']        = $row->fileID;
+            $files[$i]['typeID']        = $row->typeID;
+            $files[$i]['categoryID']    = $row->categoryID;
             $files[$i]['name']          = $row->name;
             $files[$i]['description']   = $row->description;
             $files[$i]['fullpath']      = $row->fullpath;
@@ -80,13 +82,11 @@ class File_model extends CI_Model {
         $this->db->order_by('name', 'asc');
         $query = $this->db->get_where('file_category', array('typeID' => $typeID));
         $categories = array();
-        $i=0;
         
         foreach($query->result() as $row)
         {
-            $categories[$i]['categoryID'] = $row->categoryID;
-            $categories[$i]['name'] = $row->name;
-            $i++;
+            $categories[$row->categoryID]['categoryID'] = $row->categoryID;
+            $categories[$row->categoryID]['name'] = $row->name;
         }
         
         return $categories;

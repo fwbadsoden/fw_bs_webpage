@@ -26,7 +26,7 @@
 	</tr>
 </thead>
 <tbody> 
-<? foreach($page as $item) { ?>		
+<? foreach($files as $item) { ?>		
 <tr bgcolor="<?=$item['row_color']?>">
 	<td><?=str_pad($i, 5 ,'0', STR_PAD_LEFT);?></td>
 	<td><?=$item['pageName']?></td>
