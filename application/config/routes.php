@@ -39,7 +39,7 @@
 */
 
 // Reservierte Routen
-$route['default_controller'] 				= 'admin/admin';
+$route['default_controller'] 				= '';
 $route['404_override'] 						= 'errors/page_missing';
 
 // Einbinden der dynamischen Routen
