@@ -2,12 +2,7 @@
     $this->load->helper('html'); 	
 
     $cat_options = '';
-    foreach($categories as $cat)
-    {
-        $cat_options[$i]['categoryID'] = $cat['categoryID'];
-        $cat_options[$i]['name'] = $cat['name'];
-        $cat_options += '<option value="'.$cat['categoryID'].'">'.$cat["name"].'</option>';
-    }
+    foreach($categories as $cat) { $cat_options += '<option value="'.$cat['categoryID'].'">'.$cat["name"].'</option>'; }
 
     $meta = array(
         array('name' => 'keywords', 'content' => 'feuerwehr-bs.de, Feuerwehr, Freiwillige Feuerwehr, Bad Soden'),
