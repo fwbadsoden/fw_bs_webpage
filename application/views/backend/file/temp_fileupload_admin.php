@@ -44,9 +44,7 @@
             document.view_files.alt = $alt;
 			document.view_files.title = $alt;
             var $src = '<?=base_url('images/icons/EXT_gr.gif')?>';
-            $src = $src.replace('EXT', $ext);
-			document.view_files.src = $src;
-    
+			document.view_files.src = $src.replace('EXT', $ext);
     		document.<?=$form_edit['name']?>.file_id.value = $id;
     		document.<?=$form_edit['name']?>.name.value = $name;
     		document.<?=$form_edit['name']?>.description.value = $desc;
@@ -120,7 +118,7 @@
 <tr bgcolor="<?=$item['row_color']?>">
 	<td><?=str_pad($i, 5 ,'0', STR_PAD_LEFT);?></td>
 	<td><?=$categories[$item['categoryID']]['name']?></td>
-	<td><a href="javascript:;" onClick="imgPreview('<?=$item["fullpath"]?>', '<?=$item["extension"]?>', '<?=$item["title"]?>', '<?=$item["description"]?>', '<?=$item["name"]?>', '<?=$item["mimetype"]?>, '<?=$item["fileID"]?>');"><?=$item['name']?></a></td> 
+	<td><a href="javascript:;" onClick="imgPreview('<?=$item["fullpath"]?>', '<?=$item["extension"]?>', '<?=$item["title"]?>', '<?=$item["description"]?>', '<?=$item["name"]?>', '<?=$item["mimetype"]?>', '<?=$item["fileID"]?>');"><?=$item['name']?></a></td>
 </tr>
 <?
     $i++; 
