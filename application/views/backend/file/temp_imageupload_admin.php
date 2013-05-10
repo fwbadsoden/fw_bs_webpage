@@ -12,6 +12,7 @@
 		'name'	=> 'name',
 		'id'	=> 'name',
 		'class' => 'bild_details',
+        'readonly' => 'readonly'
 	);
 	$form_description = array(
 		'name'	=> 'description',
@@ -27,39 +28,41 @@
 		'name'	=> 'width',
 		'id'	=> 'width',
 		'class' => 'bild_details',
+        'readonly' => 'readonly'
 	);
 	$form_height = array(
 		'name'	=> 'height',
 		'id'	=> 'height',
 		'class' => 'bild_details',
+        'readonly' => 'readonly'
 	);
 ?>
 
 <script>     
-    function imgPreview($fullpath, $width, $height, $alt, $desc, $name, $id) {
+    function imgPreview(fullpath, width, height, alt, desc, name, id) {
     	document.getElementById("imgDetailBtn").style.display = "";
-    	var $fileName = $fullpath;
+    	var fileName = fullpath;
     
-    	if ($fileName.length == 0) {
+    	if (fileName.length == 0) {
     		document.view_imagefiles.src = '<?=base_url('images/content/__nopreview.gif')?>';
     	} else {
-    		if (parseInt($width) <= 200) {
-    			document.view_imagefiles.width = parseInt($width);
+    		if (parseInt(width) <= 200) {
+    			document.view_imagefiles.width = parseInt(width);
     		} else {
     			document.view_imagefiles.width = 200;
     		}
-    		document.view_imagefiles.alt = $alt;
-    		document.view_imagefiles.title = $alt;
-    		$myimage = new Image();
-    		$myimage.src = $fileName;
-    		document.view_imagefiles.src = $myimage.src;
+    		document.view_imagefiles.alt = alt;
+    		document.view_imagefiles.title = alt;
+    		myimage = new Image();
+    		myimage.src = fileName;
+    		document.view_imagefiles.src = myimage.src;
     
-    		document.<?=$form_edit['name']?>.file_id.value = $id;
-    		document.<?=$form_edit['name']?>.name.value = $name;
-    		document.<?=$form_edit['name']?>.description.value = $desc;
-    		document.<?=$form_edit['name']?>.title.value = $alt;
-    		document.<?=$form_edit['name']?>.breite.value = $width;
-    		document.<?=$form_edit['name']?>.hoehe.value = $height;
+    		document.<?=$form_edit['name']?>.file_id.value = id;
+    		document.<?=$form_edit['name']?>.name.value = name;
+    		document.<?=$form_edit['name']?>.description.value = desc;
+    		document.<?=$form_edit['name']?>.title.value = alt;
+    		document.<?=$form_edit['name']?>.breite.value = width;
+    		document.<?=$form_edit['name']?>.hoehe.value = height;
     	}
     }
     
@@ -95,12 +98,12 @@
 						<tr>
 							<td style="vertical-align:top; width: 250px;">
 								<table>
-									<tr><td><?=form_label('Bildname:', $form_name['id']); ?></td><td><?=form_input($form_name, 'readonly'); ?></td></tr>
+									<tr><td><?=form_label('Bildname:', $form_name['id']); ?></td><td><?=form_input($form_name); ?></td></tr>
 									<tr><td><?=form_label('Beschreibung:', $form_description['id']); ?></td><td><?=form_input($form_description); ?></td></tr>
 									<tr><td><?=form_label('Alt-Text:', $form_title['id']); ?></td><td><?=form_input($form_title); ?></td></tr>
 									<tr><td colspan="2">&nbsp;</td></tr>
-									<tr><td><?=form_label('Breite:', $form_width['id']); ?></td><td><?=form_input($form_width, 'readonly'); ?></td></tr>
-									<tr><td><?=form_label('H&ouml;he:', $form_height['id']); ?></td><td><?=form_input($form_height, 'readonly'); ?></td></tr>
+									<tr><td><?=form_label('Breite:', $form_width['id']); ?></td><td><?=form_input($form_width); ?></td></tr>
+									<tr><td><?=form_label('H&ouml;he:', $form_height['id']); ?></td><td><?=form_input($form_height); ?></td></tr>
 								</table>	
 							</td>
 							<td style="vertical-align:top; width: 210px;"><img src="" name="view_imagefiles" width="" alt="Vorschau" title="Vorschau" /></td>

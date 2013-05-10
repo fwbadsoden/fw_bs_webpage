@@ -12,6 +12,7 @@
 		'name'	=> 'name',
 		'id'	=> 'name',
 		'class' => 'bild_details',
+        'readonly' => 'readonly'
 	);
 	$form_description = array(
 		'name'	=> 'description',
@@ -27,47 +28,9 @@
 		'name'	=> 'mime',
 		'id'	=> 'mime',
 		'class' => 'bild_details',
+        'readonly' => 'readonly'
 	);
 ?>
-
-<script>
-				function imgPreview($document, $alt, $name, $mime, $id) {
-					document.getElementById("imgDetailBtn").style.display = "";
-					if ($name.length == 0) {
-						document.view_imagefiles.src = '../images/userImages/noView.gif';
-					} else {
-						document.view_imagefiles.width = 32;
-						document.view_imagefiles.alt = $alt;
-						document.view_imagefiles.title = $alt;
-						document.view_imagefiles.src = "images/icons/gross/" + $document +"_gr.gif";
-						
-						// -- Link werden gesetzt
-						document.getElementById("deleteLink").href = "index.php?op=delete_verify&op2=file_delete&wich=diese_Datei&id="+$id;
-						
-						document.ImgDetails.id.value = $id;
-						document.ImgDetails.fileName.value = $name;
-						document.ImgDetails.altText.value = $alt;
-						document.ImgDetails.doc.value = $document;
-						document.ImgDetails.mime.value = $mime;
-					}
-				}
-				function showPicList($var) {
-					document.ImgList.katList.value = $var;
-					document.ImgList.submit();
-				}
-				function openFileManager($var) {
-					if($var=="upload") {	
-						window.open('popup/popup_fileManager_upload.php', 'Upload', 'width=425,height=300,scrollbars=yes');
-					}
-					if($var=="newKat") {
-						window.open('popup/popup_fileManager_newKat.php', 'Neue Kategorie', 'width=425,height=270,scrollbars=yes');
-					}
-					if($var=="delKat") {
-						window.open('popup/popup_fileManager_delKat.php', 'Katgorie Löschen', 'width=300,height=200,scrollbars=yes');
-					}
-				}
-			</script>
-
 
 <script>     
     function imgPreview(fullpath, ext, alt, desc, name, mime, id) {
@@ -75,14 +38,14 @@
     	var fileName = fullpath;
     
     	if (fileName.length == 0) {
-    		document.view_imagefiles.src = '<?=base_url('images/content/__nopreview.gif')?>';
+    		document.view_files.src = '<?=base_url('images/content/__nopreview.gif')?>';
     	} else {
-    		document.view_imagefiles.width = 32;
-            document.view_imagefiles.alt = alt;
-			document.view_imagefiles.title = alt;
+    		document.view_files.width = 32;
+            document.view_files.alt = alt;
+			document.view_files.title = alt;
             var src = '<?=base_url('images/icons/EXT_gr.gif')?>';
             src = src.replace('EXT', ext);
-			document.view_imagefiles.src = src;
+			document.view_files.src = src;
     
     		document.<?=$form_edit['name']?>.file_id.value = id;
     		document.<?=$form_edit['name']?>.name.value = name;
@@ -117,21 +80,21 @@
 <h1><?=$headline?></h1>
 
 <?=form_open(base_url('admin/files/'.$type.'/edit'), $form_edit);?>
-<?=form_fieldset('&nbsp;&nbsp;&nbsp;Bildervorschau:&nbsp;&nbsp;&nbsp;');?>
+<?=form_fieldset('&nbsp;&nbsp;&nbsp;Dateivorschau:&nbsp;&nbsp;&nbsp;');?>
 <input type='hidden' name='file_id' value=''/>
 			<p>
 					<table>
 						<tr>
 							<td style="vertical-align:top; width: 250px;">
 								<table>
-									<tr><td><?=form_label('Dateiname:', $form_name['id']); ?></td><td><?=form_input($form_name, 'readonly'); ?></td></tr>
+									<tr><td><?=form_label('Dateiname:', $form_name['id']); ?></td><td><?=form_input($form_name); ?></td></tr>
 									<tr><td><?=form_label('Beschreibung:', $form_description['id']); ?></td><td><?=form_input($form_description); ?></td></tr>
 									<tr><td><?=form_label('Alt-Text:', $form_title['id']); ?></td><td><?=form_input($form_title); ?></td></tr>
 									<tr><td colspan="2">&nbsp;</td></tr>
-									<tr><td><?=form_label('Typ:', $form_mime['id']); ?></td><td><?=form_input($form_mime, 'readonly'); ?></td></tr>
+									<tr><td><?=form_label('Typ:', $form_mime['id']); ?></td><td><?=form_input($form_mime); ?></td></tr>
 								</table>	
 							</td>
-							<td style="vertical-align:top; width: 210px;"><img src="" name="view_imagefiles" width="" alt="Vorschau" title="Vorschau" /></td>
+							<td style="vertical-align:top; width: 210px;"><img src="" name="view_files" width="" alt="Vorschau" title="Vorschau" /></td>
 						</tr>
 					</table>	
 					<br><br>
@@ -157,7 +120,7 @@
 <tr bgcolor="<?=$item['row_color']?>">
 	<td><?=str_pad($i, 5 ,'0', STR_PAD_LEFT);?></td>
 	<td><?=$categories[$item['categoryID']]['name']?></td>
-	<td><a href="javascript:;" onClick="imgPreview('<?=$item["fullpath"]?>', '<?=$item["width"]?>', '<?=$item["height"]?>', '<?=$item["title"]?>', '<?=$item["description"]?>', '<?=$item["name"]?>', '<?=$item["fileID"]?>');"><?=$item['name']?></a></td> 
+	<td><a href="javascript:;" onClick="imgPreview('<?=$item["fullpath"]?>', '<?=$item["extension"]?>', '<?=$item["title"]?>', '<?=$item["description"]?>', '<?=$item["name"]?>', '<?=$item["mimetype"]?>, '<?=$item["fileID"]?>');"><?=$item['name']?></a></td> 
 </tr>
 <?
     $i++; 
