@@ -33,25 +33,25 @@
 ?>
 
 <script>     
-    function imgPreview(fullpath, ext, alt, desc, name, mime, id) {
+    function imgPreview($fullpath, $ext, $alt, $desc, $name, $mime, $id) {
     	document.getElementById("imgDetailBtn").style.display = "";
-    	var fileName = fullpath;
+    	var $fileName = $fullpath;
     
-    	if (fileName.length == 0) {
+    	if ($fileName.length == 0) {
     		document.view_files.src = '<?=base_url('images/content/__nopreview.gif')?>';
     	} else {
     		document.view_files.width = 32;
-            document.view_files.alt = alt;
-			document.view_files.title = alt;
-            var src = '<?=base_url('images/icons/EXT_gr.gif')?>';
-            src = src.replace('EXT', ext);
-			document.view_files.src = src;
+            document.view_files.alt = $alt;
+			document.view_files.title = $alt;
+            var $src = '<?=base_url('images/icons/EXT_gr.gif')?>';
+            $src = $src.replace('EXT', $ext);
+			document.view_files.src = $src;
     
-    		document.<?=$form_edit['name']?>.file_id.value = id;
-    		document.<?=$form_edit['name']?>.name.value = name;
-    		document.<?=$form_edit['name']?>.description.value = desc;
-    		document.<?=$form_edit['name']?>.title.value = alt;
-    		document.<?=$form_edit['name']?>.mime.value = mime;
+    		document.<?=$form_edit['name']?>.file_id.value = $id;
+    		document.<?=$form_edit['name']?>.name.value = $name;
+    		document.<?=$form_edit['name']?>.description.value = $desc;
+    		document.<?=$form_edit['name']?>.title.value = $alt;
+    		document.<?=$form_edit['name']?>.mime.value = $mime;
     	}
     }
     

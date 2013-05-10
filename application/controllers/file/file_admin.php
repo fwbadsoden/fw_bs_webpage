@@ -53,7 +53,7 @@ class File_Admin extends CI_Controller {
         		$header['title']      = 'Dateien verwalten';		
         		$menue['menue']	      = $this->admin->get_menue();
         		$menue['submenue']	  = $this->admin->get_submenue();     
-                $data['btn_create']   = 'Hochladen';       
+                $data['btn_create']   = 'Neue Datei hochladen';       
                 $data['headline']     = $header['title'];
                 $data['typeID']       = FILE_TYPE_ID_CMSFILE;
                 $data['type']         = $type;
@@ -77,25 +77,35 @@ class File_Admin extends CI_Controller {
         
         if($this->uri->segment($this->uri->total_segments()) == 'save')
   		{		
-  		    $this->load->library('image_lib');	
-            $this->load->library('image_moo');
-            
-            $config['upload_path'] = CONTENT_IMG_UPLOAD_PATH;
-    	    $config['allowed_types'] = 'jpg|png|gif';
-    	    $config['file_name'] = $this->image_lib->generate_img_name($_FILES['upload_image']['tmp_name'].$this->cp_auth->cp_generate_salt());;
-            $sha1 = sha1_file($_FILES["upload_image"]["tmp_name"]);
-                            
-            $this->load->library('upload', $config);
-       
-    		if(!$this->upload->do_upload('upload_image'))
-    		{
-                $data['error'] = $this->upload->display_errors();
-    		}
-    		else
-    		{
-    		    $upload_data = $this->upload->data();	
-                $upload_data['sha1'] = $sha1;
- 			    $this->file->insert_file($data['typeID'], $upload_data);
+  		    switch($type)
+            {
+                case 'image':
+          		    $this->load->library('image_lib');	
+                    $this->load->library('image_moo');
+                    
+                    $config['upload_path'] = CONTENT_IMG_UPLOAD_PATH;
+            	    $config['allowed_types'] = 'jpg|png|gif';
+            	    $config['file_name'] = $this->image_lib->generate_img_name($_FILES['upload_image']['tmp_name'].$this->cp_auth->cp_generate_salt());;
+                    $sha1 = sha1_file($_FILES["upload_image"]["tmp_name"]);
+                                    
+                    $this->load->library('upload', $config);
+               
+            		if(!$this->upload->do_upload('upload_image'))
+            		{
+                        $data['error'] = $this->upload->display_errors();
+            		}
+            		else
+            		{
+            		    $upload_data = $this->upload->data();	
+                        $upload_data['sha1'] = $sha1;
+                        $upload_data['upload_path'] = CONTENT_IMG_UPLOAD_PATH;
+         			    $this->file->insert_file($data['typeID'], $upload_data);
+                    }
+                    
+                    break;
+                case 'file':
+                
+                    break;
             }
   		}
 

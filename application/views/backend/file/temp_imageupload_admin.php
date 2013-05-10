@@ -39,30 +39,30 @@
 ?>
 
 <script>     
-    function imgPreview(fullpath, width, height, alt, desc, name, id) {
+    function imgPreview($fullpath, $width, $height, $alt, $desc, $name, $id) {
     	document.getElementById("imgDetailBtn").style.display = "";
-    	var fileName = fullpath;
+    	var $fileName = $fullpath;
     
-    	if (fileName.length == 0) {
+    	if ($fileName.length == 0) {
     		document.view_imagefiles.src = '<?=base_url('images/content/__nopreview.gif')?>';
     	} else {
-    		if (parseInt(width) <= 200) {
-    			document.view_imagefiles.width = parseInt(width);
+    		if (parseInt($width) <= 200) {
+    			document.view_imagefiles.width = parseInt($width);
     		} else {
     			document.view_imagefiles.width = 200;
     		}
-    		document.view_imagefiles.alt = alt;
-    		document.view_imagefiles.title = alt;
-    		myimage = new Image();
-    		myimage.src = fileName;
-    		document.view_imagefiles.src = myimage.src;
+    		document.view_imagefiles.alt = $alt;
+    		document.view_imagefiles.title = $alt;
+    		$myimage = new Image();
+    		$myimage.src = $fileName;
+    		document.view_imagefiles.src = $myimage.src;
     
-    		document.<?=$form_edit['name']?>.file_id.value = id;
-    		document.<?=$form_edit['name']?>.name.value = name;
-    		document.<?=$form_edit['name']?>.description.value = desc;
-    		document.<?=$form_edit['name']?>.title.value = alt;
-    		document.<?=$form_edit['name']?>.breite.value = width;
-    		document.<?=$form_edit['name']?>.hoehe.value = height;
+    		document.<?=$form_edit['name']?>.file_id.value = $id;
+    		document.<?=$form_edit['name']?>.name.value = $name;
+    		document.<?=$form_edit['name']?>.description.value = $desc;
+    		document.<?=$form_edit['name']?>.title.value = $alt;
+    		document.<?=$form_edit['name']?>.width.value = $width;
+    		document.<?=$form_edit['name']?>.height.value = $height;
     	}
     }
     

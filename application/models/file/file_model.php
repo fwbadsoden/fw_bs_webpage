@@ -113,7 +113,7 @@ class File_model extends CI_Model {
             'categoryID' => $this->input->post('category'),                
             'name' => strtolower(underscore($upload_data['client_name'])),           
             'description' => $this->input->post('description'),              
-            'fullpath' => $upload_data['full_path'],                  
+            'fullpath' => base_url($upload_data['upload_path'].'/'.$upload_data['file_name']),                  
             'filename' => $upload_data['file_name'],                  
             'extension' => $upload_data['file_ext'],                  
             'mimetype' => $upload_data['file_type'],                 
