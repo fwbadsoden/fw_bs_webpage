@@ -37,6 +37,7 @@ class File_Admin extends CI_Controller {
                 $data['btn_create']   = 'Neues Bild hochladen';     
                 $data['headline']     = $header['title'];
                 $data['typeID']       = FILE_TYPE_ID_CMSIMAGE;
+                $data['type']         = $type;
                 $data['files']        = $this->file->get_files(FILE_TYPE_ID_CMSIMAGE);  
                 $data['categories']   = $this->file->get_categories(FILE_TYPE_ID_CMSIMAGE);     
         
@@ -55,6 +56,7 @@ class File_Admin extends CI_Controller {
                 $data['btn_create']   = 'Hochladen';       
                 $data['headline']     = $header['title'];
                 $data['typeID']       = FILE_TYPE_ID_CMSFILE;
+                $data['type']         = $type;
                 $data['files']        = $this->file->get_files(FILE_TYPE_ID_CMSFILE);
                 $data['categories']   = $this->file->get_categories(FILE_TYPE_ID_CMSFILE);      
         
@@ -69,8 +71,45 @@ class File_Admin extends CI_Controller {
     }
     
     public function create_file($type)
-    {
-        
+    {        
+        if($this->uri->segment($this->uri->total_segments()) == 'save')
+  		{		
+  		    $this->load->library('image_lib');	
+            $this->load->library('image_moo');
+            
+            $config['upload_path'] = base_url(CONTENT_IMG_UPLOAD_PATH);
+    	    $config['allowed_types'] = 'jpg|png|gif';
+    	    $config['file_name'] = $this->image_lib->generate_img_name($_FILES['upload_image']['tmp_name'].$this->cp_auth->cp_generate_salt());;
+            $sha1 = sha1_file($_FILES["upload"]["tmp_name"]);
+                            
+            $this->load->library('upload', $config);
+       
+    		if(!$this->upload->do_upload('upload_image'))
+    		{
+                $data['error'] = $this->upload->display_errors();
+    		}
+    		else
+    		{
+    		    $upload_data = $this->upload->data();	
+                $upload_data['sha1'] = $sha1;
+ 			    $this->file->insert_file($this->get_type_id($type), $upload_data);
+            }
+  		}
+
+        switch($type)
+        {
+            case 'image':            
+                $data['title']        = 'Neues Bild hochladen';	  
+                $data['headline']     = $data['title'];
+                $data['typeID']       = FILE_TYPE_ID_CMSIMAGE; 
+                $data['categories']   = $this->file->get_categories(FILE_TYPE_ID_CMSIMAGE);     
+                
+        		$this->load->view('backend/file/popup_img_upload', $data);
+                break;
+            case 'file':
+            
+                break;
+        }    
     }
     
     public function edit_file($type)

@@ -37,13 +37,25 @@
     		document.<?=$form_edit['name']?>.hoehe.value = $height;
     	}
     }
+    
+	function openIMGManager($var) {
+	if($var=="upload") {	
+	   window.open('<?=base_url('admin/files/upload/'.$type)?>', 'Upload', 'width=425,height=300,scrollbars=yes');
+	}
+	if($var=="newKat") {
+	   window.open('popup/popup_imgManager_newKat.php', 'Neue Kategorie', 'width=325,height=300,scrollbars=yes');
+	}
+	if($var=="delKat") {
+	   window.open('popup/popup_imgManager_delKat.php', 'Katgorie Löschen', 'width=270,height=200,scrollbars=yes');
+	}
+				}
 </script>
 
 <div id="content">
 <p class="thirdMenue">
     <table>
         <tr>
-            <td><a href="<?=base_url('admin/files/upload/'.$type)?>" class="button_gross"><span class="button_add"><?=$btn_create?></span></a></td>
+            <td><a href="javascript:;" onClick="openIMGManager('upload');" class="button_gross"><span class="button_picture_add"><?=$btn_create?></span></a></td>
         </tr>
     </table>
 </p>

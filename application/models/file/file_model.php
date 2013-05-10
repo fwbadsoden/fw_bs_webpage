@@ -45,6 +45,13 @@ class File_model extends CI_Model {
         return $type;
     }
     
+    public function get_type_id($type)
+    {
+        $query = $this->db->get_where('file_type', array('name' => $type));
+        $row = $query->row();
+        return $row->typeID;
+    }
+    
     public function get_files($typeID)
     {
         $this->db->order_by('name', 'asc');
@@ -102,5 +109,32 @@ class File_model extends CI_Model {
         $file['modified_by'] = $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND));
         
         $this->db->update('file', $file, array('fileID' => $this->input->post('file_id')));
+    }
+    
+    public function insert_file($typeID, $upload_data)
+    {
+        $this->load->helper('inflector');
+        
+        $file = array(
+            'typeID' => $typeID,       
+            'categoryID' => $this->input->post('category'),                
+            'name' => strtolower(underscore($upload_data['client_name'])),           
+            'description' => $this->input->post('description'),              
+            'fullpath' => $upload_data['full_path'],                  
+            'filename' => $upload_data['file_name'],                  
+            'extension' => $upload_data['file_ext'],                  
+            'mimetype' => $upload_data['file_type'],                 
+            'title' => $this->input->post('title'),                 
+            'size' => $upload_data['file_size'],               
+            'sha1' => $upload_data['sha1'],          
+            'created' => date("Y-m-d H:i:s"),              
+            'created_by' => $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND)) 
+        );
+        if($upload_data['is_image'] == 1)
+        {                        
+            $file['width']  = $upload_data['image_width'];             
+            $file['height'] = $upload_data['image_height'];
+        }
+        $this->db->insert('file', $file);        
     }
  }

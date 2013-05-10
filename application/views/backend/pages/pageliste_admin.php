@@ -9,8 +9,8 @@
 <p class="thirdMenue">
     <table>
         <tr>
-            <td><a href="<?=base_url('admin/content/page/create')?>" class="button_gross"><span class="button_add">Neue Inhaltsseite anlegen</span></a></td>
-            <td><a href="<?=base_url('admin/content/page/create_module')?>" class="button_gross"><span class="button_add">Neue Modulseite anlegen (tbd)</span></a></td>
+            <td><a href="<?=base_url('admin/content/page/create')?>" class="button_gross"><span class="button_layout_add">Neue Inhaltsseite anlegen</span></a></td>
+            <td><a href="<?=base_url('admin/content/page/create_module')?>" class="button_gross"><span class="button_layout_add">Neue Modulseite anlegen (tbd)</span></a></td>
         </tr>
     </table>
 </p>

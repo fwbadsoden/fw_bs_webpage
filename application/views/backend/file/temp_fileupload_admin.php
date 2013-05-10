@@ -9,28 +9,7 @@
     );
 ?>
 
-<!-- Ajax Formularübermittlung File_edit -->
-<script> 
-    $(function() {
-    	$("#<?=$form_edit['id']?>").submit(function() {
-    		dataString = $("#<?=$form_edit['id']?>").serialize();
-    
-    		$.ajax({
-    			type: "POST",
-    			url: "<?=$this->session->userdata('imageliste_redirect').'/save'?>",
-    			data: dataString,
-    
-    			success: function(data) {
-    				//    alert('Successful!);
-    			}
-    
-    		});
-    
-    		return false; //stop the actual form post !important!
-    
-    	});
-    });
-    
+<script>     
     function imgPreview($path, $width, $height, $alt, $name, $id) {
     	document.getElementById("imgDetailBtn").style.display = "";
     	var $fileName = $path;
