@@ -57,7 +57,7 @@ $(document).ready(function() {
 
 <div id="content">
 <p class="thirdMenue">
-	<a href="<?=base_url('admin/user/backend/create')?>" class="button_gross"><span class="button_add">Neuen <?=ucfirst($area)?>-Benutzer anlegen</span></a>
+	<a href="<?=base_url('admin/user/backend/create')?>" class="button_gross"><span class="button_user_add">Neuen <?=ucfirst($area)?>-Benutzer anlegen</span></a>
 </p>
 <p>&nbsp;</p>
 
