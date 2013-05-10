@@ -98,13 +98,31 @@ class File_Admin extends CI_Controller {
             		{
             		    $upload_data = $this->upload->data();	
                         $upload_data['sha1'] = $sha1;
-                        $upload_data['upload_path'] = CONTENT_IMG_UPLOAD_PATH;
+                        $upload_data['upload_path'] = $config['upload_path'];
          			    $this->file->insert_file($data['typeID'], $upload_data);
                     }
                     
                     break;
                 case 'file':
-                
+                    $config['upload_path'] = CONTENT_FILE_UPLOAD_PATH;
+            	    $config['allowed_types'] = 'pdf|doc|ppt';
+            	    //$config['file_name'] = $this->image_lib->generate_img_name($_FILES['upload_image']['tmp_name'].$this->cp_auth->cp_generate_salt());;
+                    $sha1 = sha1_file($_FILES["upload_file"]["tmp_name"]);
+                                    
+                    $this->load->library('upload', $config);
+               
+            		if(!$this->upload->do_upload('upload_file'))
+            		{
+                        $data['error'] = $this->upload->display_errors();
+            		}
+            		else
+            		{
+            		    $upload_data = $this->upload->data();	
+                        $upload_data['sha1'] = $sha1;
+                        $upload_data['upload_path'] = $config['upload_path'];
+         			    $this->file->insert_file($data['typeID'], $upload_data);
+                    }
+                    
                     break;
             }
   		}
@@ -119,7 +137,11 @@ class File_Admin extends CI_Controller {
         		$this->load->view('backend/file/popup_img_upload', $data);
                 break;
             case 'file':
-            
+                $data['title']        = 'Neue Datei hochladen';	  
+                $data['headline']     = $data['title'];
+                $data['categories']   = $this->file->get_categories(FILE_TYPE_ID_CMSFILE);     
+                
+        		$this->load->view('backend/file/popup_file_upload', $data);
                 break;
         }    
     }
