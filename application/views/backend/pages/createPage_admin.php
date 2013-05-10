@@ -13,6 +13,12 @@
         'value' => set_value('pagename')
     );
     
+    $pageStage = array(
+        'name'  => 'stage',
+        'id'    => 'stage',
+        'class' => 'input_checkbox'
+    );
+    
     $templ_options = array();
 	$templ_attr = "class = 'input_dropdown' id = 'input_dropdown'";
 	foreach($templates as $templ)
@@ -49,6 +55,10 @@
                     <tr>
                         <td class='form_label'>Vorlage w&auml;hlen:</td>
                         <td><?=form_dropdown('templateid', $templ_options, 0, $templ_params); ?></td>
+                    </tr>
+                    <tr>
+                        <td class='form_label'><?=form_label('Bildbühne hinzufügen?:', $pageStage['id']); ?></td>
+                        <td><?=form_checkbox($pageStage); ?></td>
                     </tr>
                 </table>
             </td>
