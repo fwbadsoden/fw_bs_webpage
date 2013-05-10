@@ -1,8 +1,38 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); 
     $this->load->helper('html'); 	
-
-    $cat_options = '';
-    foreach($categories as $cat) { $cat_options += '<option value="'.$cat['categoryID'].'">'.$cat["name"].'</option>'; }
+	$this->load->helper('form'); 
+	$this->load->library('form_validation');
+    
+    $form_upload = array(
+        'id'    => 'image_uploader',
+        'name'    => 'image_uploader'
+    );
+	$form_file = array(
+		'name'	=> 'upload_image',
+		'id'	=> 'upload_image',
+	);
+	$form_name = array(
+		'name'	=> 'name',
+		'id'	=> 'name',
+		'class' => 'bild_details',
+	);
+	$form_description = array(
+		'name'	=> 'description',
+		'id'	=> 'description',
+		'class' => 'bild_details',
+	);
+	$form_title = array(
+		'name'	=> 'title',
+		'id'	=> 'title',
+		'class' => 'bild_details',
+	);
+    
+    $cat_options = array();
+	$cat_attr = "class = 'input_dropdown' id = 'input_dropdown'";
+	foreach($categories as $cat)
+	{
+		$cat_options[$cat['categoryID']] = $cat['name'];	
+	}
 
     $meta = array(
         array('name' => 'keywords', 'content' => 'feuerwehr-bs.de, Feuerwehr, Freiwillige Feuerwehr, Bad Soden'),
@@ -40,13 +70,13 @@
 <body>
 
     <div id="content">
-		<? if($error!="") { echo '<p style="color: #FF0000;">'.$error.'</p>'; } ?>
+		<? if(isset($error)) { echo '<p style="color: #FF0000;">'.$error.'</p>'; } ?>
 		<h1>ImgManager Upload</h1>
-		<form action="<?=base_url('admin/files/upload/image/save')?>" method="post" enctype="multipart/form-data">
-		<p>Bild:<br/><input type="file" name="upload_image" maxlength="4000"/></p>		
-		<p>Kategorie:<br/><select name="category"><?=$cat_options?></select></p>
-		<p>Alt-Text:<br/><input type="text" name="title" class="bild_details"/></p>	
-		<p>Beschreibung:<br/><input type="text" name="description" class="bild_details"/></p>		
+        <?=form_open_multipart(base_url('admin/files/upload/image/save'), $form_upload)?>
+		<p><?=form_label('Bild:', $form_file['id']); ?><br/><?=form_upload($form_file)?></p>		
+		<p>Kategorie:<br/><?=form_dropdown('category', $cat_options, 0, $cat_attr)?></p>
+		<p><?=form_label('Alt-Text:', $form_title['id']); ?><br/><?=form_input($form_title); ?></p>	
+		<p><?=form_label('Beschreibung:', $form_description['id']); ?><br/><?=form_input($form_description); ?></p>	
 		<p><button type='submit' name='image_submit' id='image_submit' class='button_gross'><span class='button_picture_add'>Hochladen</span></button></p>		
 		</form>
 	</div>

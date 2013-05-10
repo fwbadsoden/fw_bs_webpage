@@ -45,13 +45,6 @@ class File_model extends CI_Model {
         return $type;
     }
     
-    public function get_type_id($type)
-    {
-        $query = $this->db->get_where('file_type', array('name' => $type));
-        $row = $query->row();
-        return $row->typeID;
-    }
-    
     public function get_files($typeID)
     {
         $this->db->order_by('name', 'asc');

@@ -72,15 +72,18 @@ class File_Admin extends CI_Controller {
     
     public function create_file($type)
     {        
+        if($type == 'image') $data['typeID']       = FILE_TYPE_ID_CMSIMAGE; 
+        if($type == 'file')  $data['typeID']       = FILE_TYPE_ID_CMSFILE; 
+        
         if($this->uri->segment($this->uri->total_segments()) == 'save')
   		{		
   		    $this->load->library('image_lib');	
             $this->load->library('image_moo');
             
-            $config['upload_path'] = base_url(CONTENT_IMG_UPLOAD_PATH);
+            $config['upload_path'] = CONTENT_IMG_UPLOAD_PATH;
     	    $config['allowed_types'] = 'jpg|png|gif';
     	    $config['file_name'] = $this->image_lib->generate_img_name($_FILES['upload_image']['tmp_name'].$this->cp_auth->cp_generate_salt());;
-            $sha1 = sha1_file($_FILES["upload"]["tmp_name"]);
+            $sha1 = sha1_file($_FILES["upload_image"]["tmp_name"]);
                             
             $this->load->library('upload', $config);
        
@@ -92,7 +95,7 @@ class File_Admin extends CI_Controller {
     		{
     		    $upload_data = $this->upload->data();	
                 $upload_data['sha1'] = $sha1;
- 			    $this->file->insert_file($this->get_type_id($type), $upload_data);
+ 			    $this->file->insert_file($data['typeID'], $upload_data);
             }
   		}
 
@@ -101,7 +104,6 @@ class File_Admin extends CI_Controller {
             case 'image':            
                 $data['title']        = 'Neues Bild hochladen';	  
                 $data['headline']     = $data['title'];
-                $data['typeID']       = FILE_TYPE_ID_CMSIMAGE; 
                 $data['categories']   = $this->file->get_categories(FILE_TYPE_ID_CMSIMAGE);     
                 
         		$this->load->view('backend/file/popup_img_upload', $data);
