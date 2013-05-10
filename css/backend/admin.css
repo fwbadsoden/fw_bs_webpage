@@ -87,6 +87,9 @@ img{border:0}
 #content a.button_mini{z-index:1;height:17px;width:26px;color:white;padding:0;margin:0;display:block;border:#000 solid 1px;background-image:-moz-linear-gradient(top,#E4E4E4,#E4E4E4);background-image:-webkit-gradient(linear,left top,left bottom,color-stop(0,#E4E4E4),color-stop(1,#E4E4E4) );background-image:linear-gradient(top,#E4E4E4,#E4E4E4);filter:progid:DXImageTransform.Microsoft.gradient(startColorStr=#E4E4E4,endColorStr=#E4E4E4);-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorStr=#E4E4E4,endColorStr=#E4E4E4)}
 #content .button_add{background:url('../../images/admin/buttons/add.png') no-repeat 10px 0;text-indent:40px;display:block}
 #content .button_layout_add{background:url('../../images/admin/buttons/layout_add.png') no-repeat 10px 0;text-indent:40px;display:block}
+#content .button_page_add{background:url('../../images/admin/buttons/page_add.png') no-repeat 10px 0;text-indent:40px;display:block}
+#content .button_car_add{background:url('../../images/admin/buttons/car_add.png') no-repeat 10px 0;text-indent:40px;display:block}
+#content .button_user_add{background:url('../../images/admin/buttons/user_add.png') no-repeat 10px 0;text-indent:40px;display:block}
 #content .button_picture_add{background:url('../../images/admin/buttons/picture_add.png') no-repeat 10px 0;text-indent:40px;display:block}
 #content .button_save{background:url('../../images/admin/buttons/disk.png') no-repeat 10px 0;text-indent:40px;display:block}
 #content .button_delete{background:url('../../images/admin/buttons/bin.png') no-repeat 10px 0;text-indent:40px;display:block}
