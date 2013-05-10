@@ -57,7 +57,7 @@ switch(ID) {
 
 <div id="content">
 <p class="thirdMenue">
-	<a href="<?=base_url('admin/content/fahrzeug/create')?>" class="button_gross"><span class="button_add">Neues Fahrzeug anlegen</span></a>
+	<a href="<?=base_url('admin/content/fahrzeug/create')?>" class="button_gross"><span class="button_car_add">Neues Fahrzeug anlegen</span></a>
 </p>
 <p>&nbsp;</p>
 
