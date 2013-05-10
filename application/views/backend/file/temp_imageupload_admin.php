@@ -8,6 +8,31 @@
         'id'    => 'image_edit',
         'name'    => 'image_edit'
     );
+	$form_name = array(
+		'name'	=> 'name',
+		'id'	=> 'name',
+		'class' => 'bild_details',
+	);
+	$form_description = array(
+		'name'	=> 'description',
+		'id'	=> 'description',
+		'class' => 'bild_details',
+	);
+	$form_title = array(
+		'name'	=> 'title',
+		'id'	=> 'title',
+		'class' => 'bild_details',
+	);
+	$form_width = array(
+		'name'	=> 'width',
+		'id'	=> 'width',
+		'class' => 'bild_details',
+	);
+	$form_height = array(
+		'name'	=> 'height',
+		'id'	=> 'height',
+		'class' => 'bild_details',
+	);
 ?>
 
 <script>     
@@ -39,16 +64,16 @@
     }
     
 	function openIMGManager($var) {
-	if($var=="upload") {	
-	   window.open('<?=base_url('admin/files/upload/'.$type)?>', 'Upload', 'width=425,height=300,scrollbars=yes');
+    	if($var=="upload") {	
+    	   window.open('<?=base_url('admin/files/upload/'.$type)?>', 'Upload', 'width=425,height=300,scrollbars=yes');
+    	}
+//    	if($var=="newKat") {
+//    	   window.open('popup/popup_imgManager_newKat.php', 'Neue Kategorie', 'width=325,height=300,scrollbars=yes');
+//    	}
+//    	if($var=="delKat") {
+//    	   window.open('popup/popup_imgManager_delKat.php', 'Katgorie Löschen', 'width=270,height=200,scrollbars=yes');
+//    	}
 	}
-	if($var=="newKat") {
-	   window.open('popup/popup_imgManager_newKat.php', 'Neue Kategorie', 'width=325,height=300,scrollbars=yes');
-	}
-	if($var=="delKat") {
-	   window.open('popup/popup_imgManager_delKat.php', 'Katgorie Löschen', 'width=270,height=200,scrollbars=yes');
-	}
-				}
 </script>
 
 <div id="content">
@@ -70,12 +95,12 @@
 						<tr>
 							<td style="vertical-align:top; width: 250px;">
 								<table>
-									<tr><td>Bildname:</td><td><input type="text" name="name" class="bild_details" readonly /></td></tr>
-									<tr><td>Beschreibung:</td><td><input type="text" name="description" class="bild_details" /></td></tr>
-									<tr><td>ALT-Text:</td><td><input type="text" name="title" class="bild_details" /></td></tr>
+									<tr><td><?=form_label('Bildname:', $form_name['id']); ?></td><td><?=form_input($form_name, 'readonly'); ?></td></tr>
+									<tr><td><?=form_label('Beschreibung:', $form_description['id']); ?></td><td><?=form_input($form_description); ?></td></tr>
+									<tr><td><?=form_label('Alt-Text:', $form_title['id']); ?></td><td><?=form_input($form_title); ?></td></tr>
 									<tr><td colspan="2">&nbsp;</td></tr>
-									<tr><td>Breite:</td><td><input type="text" name="breite" class="bild_details" readonly /></td></tr>
-									<tr><td>H&ouml;he:</td><td><input type="text" name="hoehe" class="bild_details" readonly /></td></tr>
+									<tr><td><?=form_label('Breite:', $form_width['id']); ?></td><td><?=form_input($form_width, 'readonly'); ?></td></tr>
+									<tr><td><?=form_label('H&ouml;he:', $form_height['id']); ?></td><td><?=form_input($form_height, 'readonly'); ?></td></tr>
 								</table>	
 							</td>
 							<td style="vertical-align:top; width: 210px;"><img src="" name="view_imagefiles" width="" alt="Vorschau" title="Vorschau" /></td>

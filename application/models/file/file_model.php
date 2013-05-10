@@ -61,7 +61,7 @@ class File_model extends CI_Model {
             $files[$i]['description']   = $row->description;
             $files[$i]['fullpath']      = $row->fullpath;
             $files[$i]['filename']      = $row->filename; 
-            $files[$i]['extension']     = $row->extension;
+            $files[$i]['extension']     = str_replace('.', '', $row->extension);
             $files[$i]['mimetype']      = $row->mimetype;
             $files[$i]['title']         = $row->title;
             $files[$i]['size']          = $row->size;
