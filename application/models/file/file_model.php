@@ -89,8 +89,24 @@ class File_model extends CI_Model {
             $categories[$row->categoryID]['categoryID'] = $row->categoryID;
             $categories[$row->categoryID]['name'] = $row->name;
         }
-        
+   
         return $categories;
+    }
+    
+    public function get_stage_images()
+    {
+        $query = $this->db->get_where('file', array('categoryID' => PAGES_IMG_STAGE_CATEGORY_ID));
+        $i = 0;
+        $images = array();
+        foreach($query->result() as $row)
+        {
+            $images[$i]['fileID'] = $row->fileID;
+            $images[$i]['name'] = $row->name;
+            $images[$i]['fullpath'] = $row->fullpath;
+            $images[$i]['title'] = $row->title;
+            $i++;
+        }
+        return $images;
     }
     
     public function update_file()

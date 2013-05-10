@@ -12,7 +12,27 @@
         'id'    => 'pagename',
         'class' => 'input_text',
         'value' => $value
+    );    
+    
+    $pageStage = array(
+        'name'  => 'stage',
+        'id'    => 'stage',
+        'class' => 'input_checkbox',
+        'checked' => set_checkbox('stage'),
+        'value' => 1
     );
+    if($page['stage'] == 1) $pageStage['checked'] = 'checked';
+    
+    if($page['stage'] == 1)
+    {
+        $stage_options = array();
+    	$stage_attr = "class = 'input_dropdown' id = 'input_dropdown'";
+        $stage_options[0] = 'Bildb&uuml;hne w&auml;hlen...';
+    	foreach($stages as $stage)
+    	{
+    		$stage_options[$stage['fileID']] = $stage['name'];	
+    	}
+    }
 ?>
    
 <div id='content'>
@@ -51,9 +71,26 @@
 </p>
 <?=form_fieldset_close();?>
 <br/>
-<?=form_fieldset('&nbsp;&nbsp;&nbsp;Bildb&uuml;hne:&nbsp;&nbsp;&nbsp;');?>
+<?=form_fieldset('&nbsp;&nbsp;&nbsp;Layout Elemente:&nbsp;&nbsp;&nbsp;');?>
 <p>
-
+    <table>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td class='form_label'><?=form_label('Bildb&uuml;hne:', $pageStage['id']); ?></td>
+                        <td><?=form_checkbox($pageStage); ?></td>
+                    </tr>
+<? if($page['stage'] == 1) { ?>
+                    <tr>
+                        <td class='form_label'></td>
+                        <td><?=form_dropdown('stage_image', $stage_options, set_value('stage_image', $page['stage_imageID']), $stage_attr)?></td>
+                    </tr>
+<? } ?>
+                </table>
+            </td>
+        </tr>
+    </table>
 </p>
 <?=form_fieldset_close();?>
 <br/>

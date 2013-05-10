@@ -58,6 +58,8 @@ class Pages_model extends CI_Model {
         {
             $pages[$i]['pageID'] = $row->pageID;
             $pages[$i]['pageName'] = $row->name;
+            $page['stage'] = $row->stage;
+            $page['stage_imageID'] = $row->stage_imageID;
             $pages[$i]['online'] = $row->online;
             $pages[$i]['row_color'] = $this->color = cp_get_color($this->color);
             $pages[$i]['is_deletable'] = $this->is_page_deletable($row->pageID);
@@ -75,6 +77,8 @@ class Pages_model extends CI_Model {
         $page['pageID'] = $id;
         $page['pageName'] = $row->name;
         $page['templateID'] = $row->templateID;
+        $page['stage'] = $row->stage;
+        $page['stage_imageID'] = $row->stage_imageID;
         $page['is_deletable'] = $this->is_page_deletable($id);
         
         return $page;      
@@ -321,11 +325,11 @@ class Pages_model extends CI_Model {
     } 
     
     public function update_box_content($boxContentID)
-    {
+    { 
         $boxContent['modified_by'] = $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND));  
         $boxContent['modified']   = date("Y-m-d H:i:s");  
           
-        $boxContent['content']    = $this->input->post('data');
+        $boxContent['content']    = $this->input->post('content_txt');
         
         $this->db->update('page_box_content', $boxContent, array('boxContentID' => $boxContentID));
     }
@@ -334,6 +338,7 @@ class Pages_model extends CI_Model {
     {
         $page = array(
             'name' => $this->input->post('pagename'),
+            'stage' => $this->input->post('stage'),
             'online'   => 0,
             'templateID' => $this->input->post('templateid')
         );
@@ -344,10 +349,13 @@ class Pages_model extends CI_Model {
     }
     
     public function update_page($id)
-    {
+    { 
         $page = array(
-            'name' => $this->input->post('pagename')
+            'name' => $this->input->post('pagename'),
+            'stage' => $this->input->post('stage'),
+            'stage_imageID' => $this->input->post('stage_image')
         );
+        if($page['stage'] != 1) $page['stage_imageID'] = 0;
         $this->db->where('pageID', $id);
 		$this->db->update('page', $page);
     }

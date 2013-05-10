@@ -16,7 +16,8 @@
     $pageStage = array(
         'name'  => 'stage',
         'id'    => 'stage',
-        'class' => 'input_checkbox'
+        'class' => 'input_checkbox',
+        'value' => 1
     );
     
     $templ_options = array();
@@ -56,8 +57,21 @@
                         <td class='form_label'>Vorlage w&auml;hlen:</td>
                         <td><?=form_dropdown('templateid', $templ_options, 0, $templ_params); ?></td>
                     </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    </p>
+    <?=form_fieldset_close();?>
+    <br />
+    <?=form_fieldset('&nbsp;&nbsp;&nbsp;Layout-Elemente:&nbsp;&nbsp;&nbsp;');?>
+   	<p>
+    <table>
+        <tr>
+            <td>
+                <table>
                     <tr>
-                        <td class='form_label'><?=form_label('Bildbühne hinzufügen?:', $pageStage['id']); ?></td>
+                        <td class='form_label'><?=form_label('Bildb&uuml;hne:', $pageStage['id']); ?></td>
                         <td><?=form_checkbox($pageStage); ?></td>
                     </tr>
                 </table>

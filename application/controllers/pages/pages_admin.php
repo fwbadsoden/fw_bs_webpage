@@ -24,6 +24,7 @@ class Pages_Admin extends CI_Controller {
 		$this->load->library('CP_auth');
 		$this->load->model('cpauth/cpauth_model', 'cpauth');
 		$this->load->model('pages/pages_model', 'pages');
+		$this->load->model('file/file_model', 'file');
 		$this->load->model('admin/admin_model', 'admin');
 		
 		// CP Auth Konfiguration
@@ -118,6 +119,7 @@ class Pages_Admin extends CI_Controller {
     		$menue['submenue']	= $this->admin->get_submenue();
             $data['page']       = $this->pages->get_page($this->pageID);
             $data['content']    = $this->pages->get_page_content($this->pageID);
+            if($data['page']['stage'] == 1) $data['stages'] = $this->file->get_stage_images();
     	
     		$this->load->view('backend/templates/admin/header', $header);
     		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -208,6 +210,8 @@ class Pages_Admin extends CI_Controller {
      */
     public function edit_box_content($rowContentID, $boxContentID)
     {           
+            $this->session->set_userdata('editboxcontent_submit', current_url());
+        
             $header['title']     = 'Inhalt bearbeiten';		
     		$menue['menue']	     = $this->admin->get_menue();
     		$menue['submenue']	 = $this->admin->get_submenue();       
@@ -229,9 +233,10 @@ class Pages_Admin extends CI_Controller {
      * @param string $boxContent
      * @return
      */
-    public function update_box_content($boxContent)
+    public function update_box_content($boxContentID)
     {
-        $this->pages->update_box_content($boxContentID); 
+        $this->pages->update_box_content($boxContentID);
+        redirect($this->session->userdata('editboxcontent_submit'), 'refresh'); 
     }
     
     /**
@@ -352,6 +357,7 @@ class Pages_Admin extends CI_Controller {
 		$this->load->library('form_validation');		
 		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');		
 		$this->form_validation->set_rules('pagename', 'Seitenname', 'required|max_length[100]|xss_clean');	
+        $this->form_validation->set_rules('stage', 'Bildb&uuml;hne', 'xss_clean');	
 		return $this->form_validation->run();	
 	}
     
@@ -364,7 +370,9 @@ class Pages_Admin extends CI_Controller {
     {
         $this->load->library('form_validation');		
 		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');		
-		$this->form_validation->set_rules('pagename', 'Seitenname', 'required|max_length[100]|xss_clean');	
+		$this->form_validation->set_rules('pagename', 'Seitenname', 'required|max_length[100]|xss_clean');
+        $this->form_validation->set_rules('stage', 'Bildb&uuml;hne', 'xss_clean');	
+        $this->form_validation->set_rules('stage_image', 'Bildb&uuml;hne', 'xss_clean');	
 		return $this->form_validation->run();        
     }
 	
