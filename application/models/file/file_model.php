@@ -93,9 +93,9 @@ class File_model extends CI_Model {
         return $categories;
     }
     
-    public function get_stage_images()
+    public function get_images($catID)
     {
-        $query = $this->db->get_where('file', array('categoryID' => PAGES_IMG_STAGE_CATEGORY_ID));
+        $query = $this->db->get_where('file', array('categoryID' => $catID));
         $i = 0;
         $images = array();
         foreach($query->result() as $row)

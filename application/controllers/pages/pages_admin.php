@@ -119,7 +119,7 @@ class Pages_Admin extends CI_Controller {
     		$menue['submenue']	= $this->admin->get_submenue();
             $data['page']       = $this->pages->get_page($this->pageID);
             $data['content']    = $this->pages->get_page_content($this->pageID);
-            if($data['page']['stage'] == 1) $data['stages'] = $this->file->get_stage_images();
+            if($data['page']['stage'] == 1) $data['stages'] = $this->file->get_images(PAGES_IMG_STAGE_CATEGORY_ID);
     	
     		$this->load->view('backend/templates/admin/header', $header);
     		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -217,6 +217,7 @@ class Pages_Admin extends CI_Controller {
     		$menue['submenue']	 = $this->admin->get_submenue();       
             $data['box_meta']    = $this->pages->get_box_meta($rowContentID);
             $data['box_content'] = $this->pages->get_box_content($boxContentID);
+            if($data['box_content']['contentType'] == 'IMG') $data['images'] = $this->file->get_images(PAGES_IMG_CONTENT_CATEGORY_ID);
             $tinymce['config']   = 'pages';   
     	
     		$this->load->view('backend/templates/admin/header', $header);     
@@ -236,7 +237,7 @@ class Pages_Admin extends CI_Controller {
     public function update_box_content($boxContentID)
     {
         $this->pages->update_box_content($boxContentID);
-        redirect($this->session->userdata('editboxcontent_submit'), 'refresh'); 
+        redirect($this->session->userdata('pageedit_redirect'), 'refresh'); 
     }
     
     /**

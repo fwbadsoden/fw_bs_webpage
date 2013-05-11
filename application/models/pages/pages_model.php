@@ -328,8 +328,12 @@ class Pages_model extends CI_Model {
     { 
         $boxContent['modified_by'] = $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND));  
         $boxContent['modified']   = date("Y-m-d H:i:s");  
-          
-        $boxContent['content']    = $this->input->post('content_txt');
+        
+        if(!$this->input->post('content_txt')) $boxContent['content'] = NULL;
+        else $boxContent['content']    = $this->input->post('content_txt');
+        
+        if(!$this->input->post('content_img')) $boxContent['img'] = NULL;
+        else $boxContent['img']        = $this->input->post('content_img');
         
         $this->db->update('page_box_content', $boxContent, array('boxContentID' => $boxContentID));
     }

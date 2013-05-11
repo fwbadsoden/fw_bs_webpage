@@ -9,7 +9,7 @@
     $content = array(
         'name' 	=> 'content_txt',
         'id'	=> 'content_txt',
-        'class' => 'tinymce',
+        'class' => 'input_text',
         'value' => set_value('content_txt', $box_content['content'])
     );
  ?> 
@@ -38,10 +38,10 @@
 </table>
 <br/>
 
-<h1>Text pflegen</h1>
+<h1>Headline pflegen</h1>
 <p>       
                                 
-<?=form_textarea($content);?>              
+<?=form_input($content);?>              
 
 </p>
 </div>
