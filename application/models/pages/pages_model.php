@@ -260,6 +260,24 @@ class Pages_model extends CI_Model {
         return $columns;  
     }
     
+    public function get_stage_templates($online = 1)
+    {
+        if(is_int($online)) $this->db->where('online', $online);
+        $this->db->order_by('name', 'asc');
+        $query = $this->db->get('page_stage_template');
+        $templates = array();
+        $i=0;
+        foreach($query->result() as $row)
+        {
+            $templates[$i]['templateID'] = $row->templateID;
+            $templates[$i]['name'] = $row->name;
+            $templates[$i]['text'] = $row->text;
+            $templates[$i]['multiple_images'] = $row->multiple_images;
+            $templates[$i]['view'] = $row->view;
+            $templates[$i]['online'] = $row->online;
+        }
+    }
+    
     public function get_stages()
     {
         $query = $this->db->get('page_stage');
