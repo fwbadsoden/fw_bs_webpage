@@ -89,7 +89,7 @@ class Pages_model extends CI_Model {
         $this->db->select('name');
         $query = $this->db->get_where('page', array('pageID' => $id));
         $row = $query->row();
-        return $row->pageName;
+        return $row->name;
     }
     
     public function is_page_deletable($id)
@@ -258,6 +258,24 @@ class Pages_model extends CI_Model {
         $columns['full'] = $fullColumns;
         $columns['empty'] = $row->column_count - $fullColumns;
         return $columns;  
+    }
+    
+    public function get_stages()
+    {
+        $query = $this->db->get('page_stage');
+        $stages = array();
+        $i=0;
+        
+        foreach($query->result() as $row)
+        {
+            $stages[$i]['stageID'] = $row->stageID;
+            $stages[$i]['name']    = $row->name;
+            $stages[$i]['online']  = $row->online;
+            
+            $i++;
+        }
+        
+        return $stages;
     }
     
     public function add_row($pageID)

@@ -45,32 +45,41 @@
 
 <?      
         foreach($row['boxes'] as $b) 
-        {            
-            $boxTagNames = explode(PAGES_BOX_TAGS_SEPARATOR, $b['boxTagsNames']);
-            $i = 0;   
+        {           
+            if($b['specialBox'] == 0) 
+            {
+                $boxTagNames = explode(PAGES_BOX_TAGS_SEPARATOR, $b['boxTagsNames']);
+                $i = 0;   
 ?>
                                             <td width='30'>
                                                 <table>
-                                                    <!--<tr><td><a href="<?=base_url('admin/content/page/box/content/edit/'.$b['rowContentID'])?>" class="button_mini" title="Inhalt hinzuf&uuml;gen"><span class='button_edit_small'></span></a></td></tr>-->
                                                     <tr><td><a href="<?=base_url('admin/content/page/box/checkdel/'.$b['rowContentID'])?>" class="button_mini" title="Inhaltselement l&ouml;schen"><span class='button_delete_small'></span></a></td></tr>
                                                 </table>
                                             </td>
                                             <td colspan='<?=$b['columnCount']?>'>
                                                 <table>
 
-<?          foreach($b['content'] as $c) { ?>                                           
+<?              foreach($b['content'] as $c) { ?>                                           
                                             
                                                     <tr><td><a href='<?=site_url('admin/content/page/box/content/edit/'.$b['rowContentID'].'/'.$c['boxContentID'])?>' title="Inhalt bearbeiten"><?=$boxTagNames[$i]?> bearbeiten</a></td></tr>
                                             
                                             
 <?          
-                $i++;
-            } 
+                    $i++;
+                } 
 ?>                                            
                                                 </table>
-                                            </td>        
+                                            </td>
+<?          } else { ?>
+                                            <td width='30'>
+                                                <table>
+                                                    <tr><td><a href="<?=base_url('admin/content/page/box/checkdel/'.$b['rowContentID'])?>" class="button_mini" title="Inhaltselement l&ouml;schen"><span class='button_delete_small'></span></a></td></tr>
+                                                </table>
+                                            </td>
+                                            <td colspan='<?=$b['columnCount']?>'><?=$b['boxName']?></td>
+<?          } ?>        
         
-<?          } ?>   
+<?      } ?>   
                                             <td colspan='<?=$columns['empty']?>'></td>
                                         </tr>
 <?  } ?>                                                                                                  

@@ -75,7 +75,7 @@ switch(ID) {
 		<th class="headline_titel">Route</th>
 		<th class="headline_titel">Link</th>
 		<th class="headline_status">Status</th>
-		<th colspan="3" class="headline_edit">Edit</th>
+		<th colspan="2" class="headline_edit">Edit</th>
 	</tr>
 </thead>
 <tbody>
@@ -98,13 +98,13 @@ switch(ID) {
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/system/route/status/'.$item['routeID'].'/0')?>" class="button_mini" title="Route online schalten"><span class='button_offline_small'></span></a></span></td>
 <?	} ?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/system/route/edit/'.$item['routeID'])?>" class="button_mini" title="Route bearbeiten"><span class='button_edit_small'></span></a></span></td>
-	<td class="button"><span id='jquery-tools-tooltip'>
+<!--	<td class="button"><span id='jquery-tools-tooltip'>
 <? if($item['protectedFlag'] != 1) { ?>
 	<a id="confirm_link_<?=$item['routeID']?>" href="<?=base_url('admin/system/route/delete/'.$item['routeID'])?>" class="button_mini" title="Route löschen"><span class='button_delete_small'></span></a></span></td>
 <?  } else { ?>
 		<a class="button_mini" title="Route kann nicht gelöscht werden."><span class='button_lock_small'></span></a>
 <? } ?>
-	</span></td>
+	</span></td>-->
 </tr>
 <? } ?>
 </tbody>

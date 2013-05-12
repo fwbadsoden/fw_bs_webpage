@@ -134,7 +134,7 @@ class Module_model extends CI_Model {
 			'internal_link'	=> $this->input->post('link'),
 			'route'		    => $this->input->post('route'),
 			'active'		=> 1,
-			'isprotected'	=> $protectedFlag
+			'isprotected'	=> 1
 		);
 		
 		$this->db->insert('sys_routes', $route);
@@ -148,7 +148,7 @@ class Module_model extends CI_Model {
             'bereich'        => $this->input->post('bereich'), 
 			'internal_link'	 => $this->input->post('link'),
 			'route'				  => $this->input->post('route'),
-			'isprotected'		  => $protectedFlag
+			'isprotected'		  => 1
 		);
 		$this->db->where('routeID', $id);
 		$this->db->update('sys_routes', $route);

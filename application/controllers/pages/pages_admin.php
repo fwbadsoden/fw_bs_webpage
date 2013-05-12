@@ -119,7 +119,7 @@ class Pages_Admin extends CI_Controller {
     		$menue['submenue']	= $this->admin->get_submenue();
             $data['page']       = $this->pages->get_page($this->pageID);
             $data['content']    = $this->pages->get_page_content($this->pageID);
-            if($data['page']['stage'] == 1) $data['stages'] = $this->file->get_images(PAGES_IMG_STAGE_CATEGORY_ID);
+            if($data['page']['stage'] == 1) $data['stages'] = $this->file->get_images(PAGES_IMG_STAGE_CATEGORY);
     	
     		$this->load->view('backend/templates/admin/header', $header);
     		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -138,7 +138,7 @@ class Pages_Admin extends CI_Controller {
     		$this->load->view('backend/pages/editPageFooter_admin', $data);
     		$this->load->view('backend/templates/admin/footer');
         }
-		else redirect($this->session->userdata('pageliste_redirect'), 'refresh');
+		else redirect($this->session->userdata('pageedit_redirect'), 'refresh');
     }
     
     /**
@@ -217,7 +217,7 @@ class Pages_Admin extends CI_Controller {
     		$menue['submenue']	 = $this->admin->get_submenue();       
             $data['box_meta']    = $this->pages->get_box_meta($rowContentID);
             $data['box_content'] = $this->pages->get_box_content($boxContentID);
-            if($data['box_content']['contentType'] == 'IMG') $data['images'] = $this->file->get_images(PAGES_IMG_CONTENT_CATEGORY_ID);
+            if($data['box_content']['contentType'] == 'IMG') $data['images'] = $this->file->get_images(PAGES_IMG_CONTENT_CATEGORY);
             $tinymce['config']   = 'pages';   
     	
     		$this->load->view('backend/templates/admin/header', $header);     
@@ -375,6 +375,28 @@ class Pages_Admin extends CI_Controller {
         $this->form_validation->set_rules('stage', 'Bildb&uuml;hne', 'xss_clean');	
         $this->form_validation->set_rules('stage_image', 'Bildb&uuml;hne', 'xss_clean');	
 		return $this->form_validation->run();        
+    }
+    
+    /**
+     * Pages_Admin::stage_liste()
+     * 
+     * @return 
+     */
+    public function stage_liste()
+    {
+        $this->session->set_userdata('stageliste_redirect', current_url()); 		
+		
+		$header['title']      = 'Bildb&uuml;hnen verwalten';		
+		$menue['menue']	      = $this->admin->get_menue();
+		$menue['submenue']	  = $this->admin->get_submenue();
+		$data['stage']         = $this->pages->get_stages();
+	
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/menue', $menue);	
+		$this->load->view('backend/templates/admin/submenue', $menue);	
+		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
+		$this->load->view('backend/pages/stageliste_admin', $data);
+		$this->load->view('backend/templates/admin/footer');
     }
 	
 	/**

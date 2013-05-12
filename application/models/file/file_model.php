@@ -87,15 +87,17 @@ class File_model extends CI_Model {
         foreach($query->result() as $row)
         {
             $categories[$row->categoryID]['categoryID'] = $row->categoryID;
+            $categories[$row->categoryID]['slug'] = $row->slug;
             $categories[$row->categoryID]['name'] = $row->name;
         }
    
         return $categories;
     }
     
-    public function get_images($catID)
+    public function get_images($cat)
     {
-        $query = $this->db->get_where('file', array('categoryID' => $catID));
+        $this->db->join('file_category', 'file_category.categoryID = file.categoryID');
+        $query = $this->db->get_where('file', array('file_category.slug' => $cat));
         $i = 0;
         $images = array();
         foreach($query->result() as $row)
