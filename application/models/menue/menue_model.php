@@ -34,24 +34,29 @@ class Menue_Model extends CI_Model {
 	
 	public function get_menue_list()
 	{
-		$menue = array();
-		$menue_meta = array();
+		$menue            = array();
+		$menue_meta       = array();
+        $menue_shortlink  = array();
+        $count            = 0;
+		$count_meta       = 0;
+        $count_shortlink  = 0;
 		
 		$this->db->order_by('orderID', 'asc');
-		$query = $this->db->get_where('menue', array($this->area => 1, 'superID' => 0, 'meta' => 0));
+		$query = $this->db->get_where('menue', array($this->area => 1, 'superID' => 0, 'section' => 'main'));
 		$count = $query->num_rows();
 		
 		$i = 0;
 		foreach($query->result() as $row)
 		{
-			$menue[$i]['menueID'] = $row->menueID;
-			$menue[$i]['name'] = $row->name;
-			$menue[$i]['link'] = $row->link;
-			$menue[$i]['target'] = $row->target;
-			$menue[$i]['slug'] = $row->slug;
-			$menue[$i]['online'] = $row->online;
-			$menue[$i]['orderID'] = $row->orderID;
-			$menue[$i]['row_color']	= $this->color = cp_get_color($this->color);
+			$menue[$i]['menueID']            = $row->menueID;
+			$menue[$i]['name']               = $row->name;
+			$menue[$i]['link']               = $row->link;
+			$menue[$i]['target']             = $row->target;
+			$menue[$i]['slug']               = $row->slug;
+			$menue[$i]['special_function']   = $row->special_function;
+			$menue[$i]['online']             = $row->online;
+			$menue[$i]['orderID']            = $row->orderID;
+			$menue[$i]['row_color']	         = $this->color = cp_get_color($this->color);
 			
 			$this->db->order_by('orderID', 'asc');
 			$query2 = $this->db->get_where('menue', array('superID' => $row->menueID));
@@ -64,14 +69,15 @@ class Menue_Model extends CI_Model {
 				
 				foreach($query2->result() as $row2)
 				{
-					$menue[$i]['submenue'][$j]['menueID'] = $row2->menueID;
-					$menue[$i]['submenue'][$j]['name'] = $row2->name;
-					$menue[$i]['submenue'][$j]['link'] = $row2->link;
-					$menue[$i]['submenue'][$j]['target'] = $row2->target;
-					$menue[$i]['submenue'][$j]['slug'] = $row2->slug;
-					$menue[$i]['submenue'][$j]['online'] = $row2->online;
-					$menue[$i]['submenue'][$j]['orderID'] = $row2->orderID;
-					$menue[$i]['submenue'][$j]['row_color']		= $this->color = cp_get_color($this->color);
+					$menue[$i]['submenue'][$j]['menueID']          = $row2->menueID;
+					$menue[$i]['submenue'][$j]['name']             = $row2->name;
+					$menue[$i]['submenue'][$j]['link']             = $row2->link;
+					$menue[$i]['submenue'][$j]['target']           = $row2->target;
+					$menue[$i]['submenue'][$j]['slug']             = $row2->slug;
+                    $menue[$i]['submenue'][$j]['special_function'] = $row->special_function;
+					$menue[$i]['submenue'][$j]['online']           = $row2->online;
+					$menue[$i]['submenue'][$j]['orderID']          = $row2->orderID;
+					$menue[$i]['submenue'][$j]['row_color']		   = $this->color = cp_get_color($this->color);
 					$j++;	
 				}	
 			}				
@@ -79,7 +85,7 @@ class Menue_Model extends CI_Model {
 		}
 		
 		$this->db->order_by('orderID', 'asc');
-		$query = $this->db->get_where('menue', array($this->area => 1, 'meta' => 1));
+		$query = $this->db->get_where('menue', array($this->area => 1, 'section' => 'meta'));
 		
 		$i = 0;
 		$count_meta = $query->num_rows();
@@ -95,12 +101,33 @@ class Menue_Model extends CI_Model {
 			$menue_meta[$i]['orderID'] = $row->orderID;
 			$menue_meta[$i]['row_color']	= $this->color = cp_get_color($this->color);			
 			$i++;
-		}			
+		}		
+		
+		$this->db->order_by('orderID', 'asc');
+		$query = $this->db->get_where('menue', array($this->area => 1, 'section' => 'shortlink'));
+		
+		$i = 0;
+		$count_shortlink = $query->num_rows();
+		
+		foreach($query->result() as $row)
+		{
+			$menue_shortlink[$i]['menueID'] = $row->menueID;
+			$menue_shortlink[$i]['name'] = $row->name;
+			$menue_shortlink[$i]['link'] = $row->link;
+			$menue_shortlink[$i]['target'] = $row->target;
+			$menue_shortlink[$i]['slug'] = $row->slug;
+			$menue_shortlink[$i]['online'] = $row->online;
+			$menue_shortlink[$i]['orderID'] = $row->orderID;
+			$menue_shortlink[$i]['row_color']	= $this->color = cp_get_color($this->color);			
+			$i++;
+		}	
 			
-		$menue_ret['menue'] 		= $menue;
-		$menue_ret['menue_meta'] 	= $menue_meta;
-		$menue_ret['count'] 		= $count;
-		$menue_ret['count_meta'] 	= $count_meta;
+		$menue_ret['menue'] 		  = $menue;
+		$menue_ret['menue_meta'] 	  = $menue_meta;
+		$menue_ret['menue_shortlink'] = $menue_shortlink;
+		$menue_ret['count'] 		  = $count;
+		$menue_ret['count_meta'] 	  = $count_meta;
+        $menue_ret['count_shortlink'] = $count_shortlink;
 		
 		return $menue_ret;
 	}
@@ -134,16 +161,16 @@ class Menue_Model extends CI_Model {
 		$superID  = $row->superID;
 		$backend  = $row->backend;
 		$frontend = $row->frontend;
-		$meta 	  = $row->meta;
+		$section  = $row->section;
 		
 		if($dir == 'up') $newOrderID = $orderID-1;
 		else $newOrderID = $orderID+1;
 		
-		$query2 = $this->db->get_where('menue', array('superID' => $superID, 
-													  'orderID' => $newOrderID, 
+		$query2 = $this->db->get_where('menue', array('superID'  => $superID, 
+													  'orderID'  => $newOrderID, 
 													  'frontend' => $frontend, 
-													  'backend' => $backend, 
-													  'meta' => $meta));	
+													  'backend'  => $backend, 
+													  'section'  => $section));	
 		$row2 = $query2->row();
 		
 		$this->db->trans_start();

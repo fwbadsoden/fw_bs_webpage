@@ -1,0 +1,11 @@
+@charset "utf-8";
+/* CSS Document */
+
+	#top nav ul {
+		width: 500px;
+		padding: 0;
+		margin: 15px 0 0 0;
+		float: right;
+		list-style: none;	
+	}
+

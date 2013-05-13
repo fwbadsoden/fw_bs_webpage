@@ -1,0 +1,965 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	top: 0;
+	left: 0;
+	background-color: #f4f4f4;
+	font-family:Arial, Helvetica, sans-serif;
+	width: 100%;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+figure {
+	margin: 0 0 0 0;
+	max-width: 100%;
+}
+img {
+	margin: 0 0 0 0;
+	max-width: 100%;
+	height: auto;
+	width: auto;
+	border: 0;
+}
+::selection {
+	background: #bc1a1f;
+	color: white;
+	text-shadow: none;
+}
+
+
+
+hr.clear {
+	clear: both;
+	visibility: hidden;
+	height: 0;
+	overflow: hidden;
+	border: 0;
+	line-height: 0;
+	font-size: 0;	
+}
+
+/* ------- ------- ------- ------- ------- -------- */
+
+
+a.button_black {
+	width: 90px;
+	height: 24px;
+	background-color: #121212;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 5px 10px;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 12px;
+	color: #FFF;
+}
+a.button_black:hover {
+	background-color: #f2b600;
+	color: #FFF;
+}
+a.button_white {
+	width: 90px;
+	height: 24px;
+	background-color: #FFFFFF;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 5px 10px;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 12px;
+	color: #121212;
+}
+a.button_white:hover {
+	background-color: #f2b600;
+	color: #FFF;
+}
+
+input.button_black {
+	height: 24px;
+	background-color: #121212;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 5px 10px;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 12px;
+	color: #FFF;
+	border: 0;
+}
+input.button_black:hover {
+	background-color: #f2b600;
+	color: #FFF;
+}
+
+
+/* ------- ------- ------- ------- ------- -------- */
+
+#searchBox {
+	width: 235px;
+	padding: 0px;
+	margin: 75px 0 0 715px;
+	z-index: 100;
+	position: absolute;
+	background-color: #9a0000;
+	overflow: hidden;
+	height: 0px;
+}
+#searchBox .closeSearch {
+	text-decoration: none;
+	text-align: center;
+	font-family: 'Cabin', sans-serif;
+	font-weight: normal;
+	font-size: 13px;
+	color: #b1b1b1;
+	margin: 0 0 0 0;
+}
+#searchBox input.button_black {
+	margin: 5px 5px 5px 0;
+	border: 0;
+}
+#searchBox input.text {
+	margin: 5px 0 5px 5px;
+	width: 150px;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	padding: 3px 4px 3px 4px;
+	border: 1px #474747 solid;
+}
+@media only screen and (max-width: 950px) {
+	#searchBox {
+		margin: 75px 0 0 0;
+		right: 0;
+	}
+}
+
+
+@media only screen and (min-width: 710px) { 
+	#top {
+		top: 0;
+		left: 0;
+		height: 83px;
+		width: 100%;
+		background: #9a0000;
+	}
+	
+	#top .site {
+		max-width: 960px;
+		margin: 0 auto;
+	}
+	
+	#top h1 {
+		width: 215px;
+		display: inline;
+		float: left;
+		margin: 15px 10px 0 10px;
+	}
+	#top h1 a {
+		display: block;
+		width: 215px;
+		height: 53px;
+		background: url(../images/logo.png) no-repeat;
+		text-indent: -9999em;
+	}
+	
+	#top div.metanavigation ul {
+		padding: 0;
+		margin: 0 0 0 0;
+		float: right;
+		list-style: none;
+		background-color: #474747;	
+		border-bottom-left-radius: 2px;
+		-moz-border-bottom-left-radius: 2px;
+		border-bottom-right-radius: 2px;
+		-moz-border-bottom-right-radius: 2px;
+	}
+	#top div.metanavigation li {
+		float: left;	
+	}
+	#top div.metanavigation li a {
+		z-index: 1;
+		height: 20px;
+		text-decoration: none;
+		color: white;
+		padding: 5px 10px 0 10px;
+		float: left;
+		display: block;
+		font-size: 12px;
+		font-style: normal;
+		font-weight: normal;
+		background-image: url("../images/metaNav_trenner.png");
+		background-repeat: no-repeat;
+		background-position: 0px 8px;
+	}
+	#top div.metanavigation li.first a {
+		background-image: none;
+	}
+	#top div.metanavigation li a:hover {
+		color: #ffd200;
+	}
+	
+	#top nav ul {
+		padding: 0;
+		margin: 15px 0 0 0;
+		float: right;
+		list-style: none;	
+	}
+	#top nav li {
+		float: left;	
+	}
+	#top nav li a {
+		height: 22px;
+		text-transform: uppercase;
+		text-decoration: none;
+		color: white;
+		padding: 5px 10px 0 10px;
+		float: left;
+		display: block;
+		font-size: 18px;
+		font-style: normal;
+		font-weight: normal;
+	}
+	#top nav li a.desktopsearch {
+		width: 20px;
+		height: 22px;
+		overflow: hidden;
+		color: white;
+		padding: 5px 0 0 10px;
+		float: left;
+		display: block;
+		border: 0;
+		line-height: 0;
+		font-size: 0;	
+		background-image: url("../images/nav_searchButton.png");
+		background-repeat: no-repeat;
+	}
+	
+	#top nav li a:hover {
+		color: #ffd200;
+	}
+	
+	#top div .mobileHeader {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 754px) {
+	#top nav li a {
+		font-size: 16px;
+	}
+}
+
+@media only screen and (max-width: 709px) {
+	#top {
+		top: 0;
+		left: 0;
+		height: 60px;
+		width: 100%;
+		background: #9a0000;
+	}
+
+	#top .site {
+		min-width: 260px;
+		margin: 0 auto;
+	}
+	
+	#top h1 {
+		width: 189px;
+		display: inline;
+		float: left;
+		margin: 8px 10px 0 10px;
+	}
+	#top h1 a {
+		display: block;
+		width: 189px;
+		height: 46px;
+		background: url(../images/logo.png) no-repeat;
+		background-size: contain;
+		text-indent: -9999em;
+	}
+	#top div.metanavigation, nav {
+		display: none;
+	}
+	#top div .mobileHeader {
+		height: 30px;
+		width: 30px;
+		float: right;
+		margin: 13px 20px 0 0;
+		display: block;
+	}
+}
+
+
+#mobileNavigation {
+	height: 0px;
+	background-color: #474747;
+	width: 100%;
+	overflow: hidden;
+}
+#mobileNavigation ul.mobileMainNavContainer {
+	padding: 0;
+	margin: 0 0 0 0;
+	list-style: none;	
+}
+#mobileNavigation li {
+	text-align: center;
+}
+#mobileNavigation li a {
+	width: 100%;
+	height: 22px;
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	color: white;
+	padding: 10px 0 10px 0;
+	margin: 0 0 0 0;
+	display: block;
+	font-size: 16px;
+	font-style: normal;
+	font-weight: normal;
+	border: 1px #444444 solid;
+}
+#mobileNavigation li a:hover {
+	color: #ffd200;
+}
+#mobileNavigation li input.text {
+	width: 150px;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: normal;
+	padding: 4px 4px 4px 4px;
+	border: 1px #474747 solid;
+}
+
+/* ------- ------- ------ ------- ------- ------- ------- ------ */
+
+#stage {
+	width: 100%;	
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	background-color: #000;
+}
+
+#stage div.pictures {
+	width: 100%;
+	height: 720px;
+	padding: 0 0 0 0;
+	background-repeat: no-repeat;	
+	background-position: top, center;	
+	overflow: hidden;
+}
+#stage .stageContentRight {
+	background-image: url(../images/quote_bg.png);
+	text-align: left;
+	width: 280px;
+	padding: 10px;
+	position: relative;
+	top: 220px;
+	margin: 0 0 0 55%;
+}
+#stage .stageContentLeft {
+	background-image: url(../images/quote_bg.png);
+	text-align: left;
+	width: 280px;
+	padding: 10px;
+	position: relative;
+	top: 280px;
+	margin: 0 0 0 5%;
+}
+#stage .quote {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-family: 'Cabin', sans-serif;
+	font-size: 30px;
+	color: #FFF;
+}
+#stage .quotePerson {
+	margin: 0 0 0 0;
+	color: #FFF;
+	font-family: 'Cabin', sans-serif;
+	font-size: 12px;
+	color: #FFF;
+}
+
+@media only screen and (min-width: 1290px) {
+	#stage div.pictures {
+		align: center;
+		width: 1290px;
+		height: 720px;
+		margin: 0 auto 0 auto;
+		padding: 0 0 0 0;	
+		background-repeat: no-repeat;	
+		background-size: contain;
+	}
+	#stage .stageContentRight {
+		margin: 0 0 0 710px;
+	}
+}
+@media only screen and (max-width: 700px) {
+	#stage .stageContentRight {
+		margin: 0 5% 0 40%;
+	}
+}
+@media only screen and (max-width: 525px) {
+	#stage div.pictures {
+		align: center;
+		width: 100%;
+		height: 300px;
+		padding: 0 0 0 0;	
+		background-repeat: no-repeat;
+		background-position: top, center;	
+		overflow: hidden;
+		background-size: 525px 300px;
+	}
+	#stage .stageContentRight {
+		width: 200px;
+		padding: 10px;
+		top: 160px;
+		margin: 0 0 0 22%;
+	}
+	#stage .stageContentLeft {
+		width: 200px;
+		padding: 10px;
+		top: 160px;
+		margin: 0 0 0 5%;
+	}
+	#stage .quote {
+		font-size: 20px;
+	}
+	#stage .quotePerson {
+		font-size: 11px;
+	}
+}
+
+
+/* ------- ------- ------ ------- ------- ------- ------- ------ */
+/*   CONTENT!                                                    */
+/* ------- ------- ------ ------- ------- ------- ------- ------ */
+
+#content {
+	width: 100%;	
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	z-index: 10;
+	margin-top: -250px;
+	position: relative;
+}
+
+#content div.slidewrapper {
+	align: center;
+	max-width: 980px;
+	margin: 0 auto 0 auto;
+	padding: 0 0 0 0;	
+}
+#content #MainContent {
+	width: 666px;
+	float: left;	
+}
+#content #SidebarContent {
+	width: 313px;
+	background-color: #121212;	
+	float: left;	
+}
+
+/* ------------] Übergeordnete Styles [--------------- */
+
+#content #MainContent h1.module {
+	font-family: 'Cabin', sans-serif;
+	text-transform: uppercase;
+	font-weight:bold;
+	font-size: 24px;
+	color: #121212;
+	border-left: 4px #9a0000 solid;
+	padding-left: 15px;
+	margin: 40px 0 20px 0;
+}
+
+/* ------------] MainContent - Slider [--------------- */
+
+#content #slider  {
+	margin: 0 0 15px 0;
+	padding-right: 15px;
+	text-align: center;
+}
+#content #slider ul {
+	list-style: none;	
+	margin: 0 0 0 0;
+}
+#content #slider li  {
+	list-style-type: none;
+	display: inline-block;
+}
+#content #slider li a {
+	width: 10px;
+	height: 10px;
+	border: 0;
+	line-height: 0;
+	font-size: 0;	
+	list-style-type: none;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 0 0 0 4px;
+	background-color: #FFFFFF;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+}
+#content #slider li a.active  {
+	background-color: #9a0000;
+	cursor: auto;
+}
+
+/* ------------] MainContent - News Teaser [--------------- */
+
+#content #MainContent .BildTextTeaser {
+	width: 313px;
+	background-color:#FFF;
+	margin: 0 20px 0 0;	
+	float: left;
+	box-shadow: 1px 1px 2px #d9d9d9;	
+}
+
+#content #MainContent .BildTextTeaser figure {
+	text-align: center;
+	margin: 10px;
+}
+#content #MainContent .BildTextTeaser h1 {
+	text-align: center;
+	margin: 10px;
+	font-family: 'Cabin', sans-serif;
+	font-weight:bold;
+	font-size: 18px;
+	color: #121212;
+}
+#content #MainContent .BildTextTeaser p {
+	text-align: center;
+	margin: 10px;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 12px;
+	color: #121212;
+}
+#content #MainContent .BildTextTeaser p.more {
+	margin: 20px 0 20px 0;
+}
+
+/* -------] MainContent - News Box [--------- */
+
+#content #MainContent ul.news {
+	padding: 0;
+	margin: 15px 20px 0 0;
+	list-style: none;	
+}
+#content #MainContent ul.news li {
+	padding: 10px;
+	margin: 0 20px 1px 0;
+	width: 626px;
+	background-color: #FFF;
+	box-shadow: 1px 1px 2px #d9d9d9;	
+}
+#content #MainContent ul.news li h1 {
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: #121212;
+	margin: 5px 0 0 0;
+}
+#content #MainContent ul.news li h2 {
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 11px;
+	color: #121212;
+	margin: 0 0 0 0;
+}
+#content #MainContent ul.news li h2 .date {
+	color: #9a0000;
+	font-weight: bold;	
+}
+#content #MainContent ul.news li p {
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: #121212;
+	margin: 0 0 0 0;
+}
+
+/* --------] SideBar - Statistic [-------- */
+
+#content #SidebarContent h1 {
+	text-align: center;
+	font-family: 'Cabin', sans-serif;
+	font-weight:bold;
+	font-size: 18px;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	border-bottom: 2px #464646 solid;
+	padding: 5px 0 10px 0;
+	margin: 70px 15px 0 15px;
+}
+#content #SidebarContent h1.first {
+	margin: 10px 15px 0 15px;
+}
+
+/* --------] SideBar - Statistic [-------- */
+
+#content #SidebarContent .statistic p {
+	text-align: center;
+}
+#content #SidebarContent .statistic table {
+	width: 265px;
+	margin: 0 0 0 25px;
+}
+#content #SidebarContent .statistic td {
+	width: 240px;
+	text-align: left;
+	border-bottom: 1px #464646 solid;
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: #FFFFFF;
+	padding: 5px 0 5px 0;
+	margin: 0;
+}
+#content #SidebarContent .statistic td.value {
+	width: 25px;
+	text-align: right;
+	border-bottom: 1px #464646 solid;
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: #9a0000;
+}
+
+/* --------] SideBar - Dates [-------- */
+
+#content #SidebarContent .dates {
+	margin: 0 0 30px 0;
+}
+#content #SidebarContent .dates ul {
+	padding: 0;
+	margin: 0 0 0 0;
+	list-style: none;
+}
+#content #SidebarContent .dates ul li {
+	padding: 10px;
+	margin: 0 0 0 25px;
+	padding: 0;
+	width: 265px;
+	border-bottom: 1px #464646 solid;	
+}
+#content #SidebarContent .dates ul li h3 {
+	text-align: center;
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 11px;
+	color: #b1b1b1;
+	margin: 10px 0 0 0;
+}
+#content #SidebarContent .dates ul li h3 span.date {
+	color: #9a0000;
+}
+#content #SidebarContent .dates ul li h2 {
+	text-align: center;
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: #FFFFFF;
+	margin: 5px 0 10px 0;
+}
+#content #SidebarContent .dates .more {
+	text-align: center;
+}
+
+/* --------] SideBar - Weather [-------- */
+
+#content #SidebarContent .weather {
+	margin: 0 0 30px 0;
+}
+#content #SidebarContent .weather .wrapper {
+	width: 265px;
+	text-align:center;
+	margin: 10px 0 0 0;
+}
+#content #SidebarContent .weather div.icon {
+	margin: 0 0 0 25px;
+	float: left;
+}
+#content #SidebarContent .weather div.text {
+	margin: 0 0 0 15px;
+	float: left;
+}
+#content #SidebarContent .weather div.text p.grad {
+	text-align: center;
+	font-family: 'Cabin', sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 48px;
+	color: #FFFFFF;
+	margin: 5px 0 10px 0;
+}
+#content #SidebarContent .weather div.text p.grad span.celsius {
+	text-align: center;
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: #FFFFFF;
+	margin: 5px 0 10px 0;
+}
+#content #SidebarContent .weather div.text p.status {
+	text-align: center;
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 14px;
+	color: #9a0000;
+	margin: 5px 0 10px 0;
+}
+#content #SidebarContent .weather .more {
+	text-align: center;
+}
+
+/* ---------------- */
+
+
+@media only screen and (max-width: 1000px) {
+	#content #MainContent {
+		width: 60%;
+		margin: 0 0 0 2%;
+		float: left;	
+	}
+	#content #SidebarContent {
+		width: 35%;
+		float: left;	
+		margin: 0 2% 0 0;
+	}
+
+	#content #MainContent h1.module {
+		margin: 40px 3% 20px 3%;
+	}
+	
+	#content #MainContent .BildTextTeaser {
+		width: 94%;
+		background-color:#FFF;
+		margin: 0 20px 0 0;	
+		clear: both;	
+		margin: 0 3% 20px 3%;
+	}
+	#content #MainContent ul.news li {
+		width: 94%;
+		background-color:#FFF;
+		margin: 0 0 0 0;	
+		clear: both;	
+		margin: 0 3% 1px 3%;
+	}
+
+	#content #SidebarContent .statistic table {
+		width: 90%;
+		margin: 0 0 0 4%;
+	}
+	#content #SidebarContent .dates ul li {
+		width: 90%;
+		margin: 0 0 0 4%;
+	}
+	#content #SidebarContent .weather .wrapper {
+		width: 90%;
+		margin: 10px 0 0 4%;
+	}
+}
+
+@media only screen and (max-width: 525px) {
+	#content {
+		width: 100%;	
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+		position: static;
+	}
+	#content #MainContent {
+		width: 100%;
+		margin: 0 0 0 0;
+		clear: both;	
+	}
+	#content #SidebarContent {
+		width: 100%;
+		position: static;
+		margin: 10px 0 0 0;
+	}
+	#content #slider li a  {
+		background-color: #b1b1b1;	
+	}
+}
+
+
+/* ---------------------------------------------------------- */
+/*    FOOTER!                                                 */
+/* ---------------------------------------------------------- */
+
+#endOfPage {
+	width: 100%;
+	background-color: #191919;
+	margin-top: 30px;
+}
+
+#endOfPage #shortlinks {
+	width: 100%;
+	border-bottom: 1px #464646 solid;
+	background-color: #191919;
+}
+#endOfPage #shortlinks h1 {
+	text-align: center;
+	font-family: 'Cabin', sans-serif;
+	text-transform: uppercase;
+	font-weight: normal;
+	font-size: 24px;
+	color: #FFFFFF;
+	padding: 30px 0 0 0;
+}
+
+#endOfPage #shortlinks ul {
+	width: 400px;
+	height: 15px;
+	padding: 0;
+	margin: 15px auto 30px auto;
+	list-style: none;	
+	text-align: center;
+}
+#endOfPage #shortlinks ul li {
+	border-left: 1px #FFF solid;
+	float: left;	
+}
+#endOfPage #shortlinks ul li.first {
+	border-left: none;
+}
+#endOfPage #shortlinks ul li a {
+	height: 16px;
+	text-transform: normal;
+	text-decoration: none;
+	color: #9a0000;
+	padding: 0 10px 0 10px;
+	display: block;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: normal;
+}
+#endOfPage #shortlinks ul li a:hover {
+	color: #ffd200;
+}
+
+
+#endOfPage #sitemap .completeSitemap {
+	width: 980px;
+	margin: 0 auto;
+}
+#endOfPage #sitemap .smallSitemap {
+	display: none;
+}
+#endOfPage #sitemap ul {
+	padding: 0;
+	margin: 0 25px 0 25px;
+	list-style: none;	
+	text-align: center;
+	float: left;
+}
+#endOfPage #sitemap ul li {
+	margin: 0 0 3px 0;
+}
+#endOfPage #sitemap ul li.headline {
+	margin: 30px 0 20px 0;
+}
+#endOfPage #sitemap ul li a {
+	text-transform: normal;
+	text-decoration: none;
+	color: #FFFFFF;
+	padding: 0 10px 0 10px;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+}
+#endOfPage #sitemap ul li.headline a {
+	text-transform: uppercase;
+	color: #b1b1b1;
+}
+#endOfPage #sitemap ul li a:hover {
+	color: #ffd200;
+}
+
+
+
+#endOfPage #copyright {
+	padding: 30px 0 15px 0;
+}
+#endOfPage #copyright p {
+	text-align: center;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 12px;
+	color: #6b6b6b;
+	padding: 0 10px 0 10px;
+	margin: 0;
+}
+
+
+@media only screen and (max-width: 1000px) {
+
+	#endOfPage #sitemap .completeSitemap {
+		display: none;
+	}
+	#endOfPage #sitemap .smallSitemap {
+		width: 100%;
+		display: block;
+		text-align:center;
+		margin: 30px 0 0 0;
+	}
+	#endOfPage #sitemap .smallSitemap a {
+		text-transform: uppercase;
+		text-decoration: none;
+		color: #b1b1b1;
+		padding: 0 2% 0 2%;
+		font-size: 12px;
+		font-style: normal;
+		font-weight: normal;
+	}
+	#endOfPage #sitemap .smallSitemap a:hover {
+		color: #ffd200;
+	}
+
+}
+
+@media only screen and (max-width: 600px) {
+
+	#endOfPage #shortlinks h1 {
+		font-size: 18px;
+	}
+
+}
+
+@media only screen and (max-width: 525px) {
+
+	
+	#endOfPage #shortlinks ul {
+		width: 100%;
+	}
+	#endOfPage #shortlinks ul li {
+		width: 100%;
+		border: 0;
+		text-align: center;
+		margin: 0 auto 5px auto;
+		clear: left;
+	}
+}
