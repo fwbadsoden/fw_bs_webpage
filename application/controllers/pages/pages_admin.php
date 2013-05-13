@@ -80,6 +80,7 @@ class Pages_Admin extends CI_Controller {
     		$menue['menue']	    = $this->admin->get_menue();
     		$menue['submenue']	= $this->admin->get_submenue();
             $data['templates']  = $this->pages->get_templates();
+            $data['stages']     = $this->pages->get_stages();
     	
     		$this->load->view('backend/templates/admin/header', $header);
     		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -119,7 +120,7 @@ class Pages_Admin extends CI_Controller {
     		$menue['submenue']	= $this->admin->get_submenue();
             $data['page']       = $this->pages->get_page($this->pageID);
             $data['content']    = $this->pages->get_page_content($this->pageID);
-            if($data['page']['stage'] == 1) $data['stages'] = $this->file->get_images(PAGES_IMG_STAGE_CATEGORY);
+            $data['stages']     = $this->pages->get_stages();
     	
     		$this->load->view('backend/templates/admin/header', $header);
     		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -412,6 +413,21 @@ class Pages_Admin extends CI_Controller {
 		
 		$this->pages->switch_online_state($id, $online);
 		redirect($this->session->userdata('pageliste_redirect'), 'refresh');
+	}
+	
+	/**
+	 * Pages_Admin::switch_stage_online_state()
+	 * 
+	 * @param integer $id
+	 * @param integer $state
+	 * @return
+	 */
+	public function switch_stage_online_state($id, $state)
+	{ 		
+		if($state == 1) $online = 0; else $online = 1;
+		
+		$this->pages->switch_stage_online_state($id, $online);
+		redirect($this->session->userdata('stageliste_redirect'), 'refresh');
 	}
 }
 

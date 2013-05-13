@@ -13,12 +13,13 @@
         'value' => set_value('pagename')
     );
     
-    $pageStage = array(
-        'name'  => 'stage',
-        'id'    => 'stage',
-        'class' => 'input_checkbox',
-        'value' => 1
-    );
+    $stage_options = array();
+	$stage_attr = "class = 'input_dropdown' id = 'input_dropdown'";
+    $stage_options[0] = 'keine Bildb&uuml;hne';
+	foreach($stages as $stage)
+	{  
+		$stage_options[$stage['stageID']] = $stage['name'];	
+	}
     
     $templ_options = array();
 	$templ_attr = "class = 'input_dropdown' id = 'input_dropdown'";
@@ -26,8 +27,7 @@
 	{  
 		$templ_options[$templ['templateID']] = $templ['templateName'];	
 	}
-    if(count($templates) == 1) $templ_params = 'disabled="disabled"';
-    else $templ_params = '';
+    if(count($templates) == 1) $templ_attr .= ' disabled="disabled"';
 ?>
    
 <div id='content'>
@@ -54,8 +54,8 @@
                         <td><?=form_input($pageName); ?></td>
                     </tr>
                     <tr>
-                        <td class='form_label'>Vorlage w&auml;hlen:</td>
-                        <td><?=form_dropdown('templateid', $templ_options, 0, $templ_params); ?></td>
+                        <td class='form_label'>Vorlage:</td>
+                        <td><?=form_dropdown('templateid', $templ_options, 0, $templ_attr); ?></td>
                     </tr>
                 </table>
             </td>
@@ -71,8 +71,8 @@
             <td>
                 <table>
                     <tr>
-                        <td class='form_label'><?=form_label('Bildb&uuml;hne:', $pageStage['id']); ?></td>
-                        <td><?=form_checkbox($pageStage); ?></td>
+                        <td class='form_label'>Bildb&uuml;hne:</td>
+                        <td><?=form_dropdown('stageid', $stage_options, 0, $stage_attr); ?></td>
                     </tr>
                 </table>
             </td>
