@@ -32,6 +32,7 @@
     );
     echo doctype('html5');
 ?>
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de-de" lang="de-de">
 <head>
 <title><?=$title?></title>
@@ -50,19 +51,17 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
-
 <header id="top">
 	<div class="site">
     	<h1>
-        	<a href="/" title="Home">Freiwillige Feuerwehr Bad Soden am Taunus</a>
+        	<a href="/" title="Startseite"><?=$title?></a>
         </h1>
         <div class="metanavigation"> 
             <ul>
 <?  foreach($menue_meta as $key => $item) {     
         if($key == 0) echo '<li class="first">'; else echo '<li>';    
-?>
-                <a href="<?=$item['link']?>" target="<?=$item['target']?>><?=$item['name']?></a></li>
-<? } ?>
+        echo'<a href="'.$item['link'].'" target="'.$item['target'].'">'.$item['name'].'</a></li>';
+    } ?>
             </ul>
         </div>
         <nav> 
@@ -77,17 +76,29 @@
         }   
 ?>            
                 <li><a href="<?=$item['link']?>" target="<?=$item['target']?>" <?=$css_class?>><?=$item['name']?></a></li>
-<? } ?>                
+<? } ?> 
             </ul>
             <div id="searchBox">
                 <?=form_open($search_link);?>
                     <?=form_input($search_input);?>
                     <input type="button" value="Go" class="button_black" />
-                    <a href="#" class="closeSearch">x</a>        		
+                    <a href="#" class="closeSearch">x</a>
+                </form>
+        		
             </div>
         </nav>
         <div class="mobileHeader">
-        	<a href="#"><img src="images/nav_mobileButton.png" width="18" height="18" id="mobileNavButton" /></a>
+        	<a href="#"><img src="<?=base_url('images/layout/nav_mobileButton.png')?>" width="18" height="18" id="mobileNavButton" /></a>
         </div>
     </div>
 </header>
+
+<div id="mobileNavigation">    
+   <ul class="mobileMainNavContainer">
+<?  foreach($menue as $item) { 
+        if($item['special_function'] == '') { 
+?>            
+                <li><a href="<?=$item['link']?>" target="<?=$item['target']?>"><?=$item['name']?></a></li>
+<?  } } ?> 
+   </ul>
+</div>

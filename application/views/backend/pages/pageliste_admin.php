@@ -2,7 +2,6 @@
 <? 
 	$this->load->helper('html'); 
 	$this->load->library('CP_auth');
-    $i = 1;
 ?>
 
 <div id="content">
@@ -29,7 +28,7 @@
 <tbody> 
 <? foreach($page as $item) { ?>		
 <tr bgcolor="<?=$item['row_color']?>">
-	<td><?=str_pad($i, 5 ,'0', STR_PAD_LEFT);?></td>
+	<td><?=str_pad($item['pageID'], 5 ,'0', STR_PAD_LEFT);?></td>
 	<td><?=$item['pageName']?></td>
 	<td style='text-align:center'>
 	<?  if($item['online']==1) { ?>
@@ -50,10 +49,7 @@
     <td class="button">><a class="button_mini" title="Seite kann nicht gel&ouml;scht werden.<br>Sie wird in einem Menüpunkt verwendet."><span class='button_lock_small'></span></a></span></td>
 <? } ?>    
 </tr>
-<?
-    $i++; 
-  } 
-?>
+<? } ?>
 </tbody>
 </table>
 <p>&nbsp;</p>

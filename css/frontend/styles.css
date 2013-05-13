@@ -162,7 +162,7 @@ input.button_black:hover {
 		display: block;
 		width: 215px;
 		height: 53px;
-		background: url(../images/logo.png) no-repeat;
+		background: url(../../images/layout/logo.png) no-repeat;
 		text-indent: -9999em;
 	}
 	
@@ -191,7 +191,7 @@ input.button_black:hover {
 		font-size: 12px;
 		font-style: normal;
 		font-weight: normal;
-		background-image: url("../images/metaNav_trenner.png");
+		background-image: url("../../images/layout/metaNav_trenner.png");
 		background-repeat: no-repeat;
 		background-position: 0px 8px;
 	}
@@ -234,7 +234,7 @@ input.button_black:hover {
 		border: 0;
 		line-height: 0;
 		font-size: 0;	
-		background-image: url("../images/nav_searchButton.png");
+		background-image: url("../../images/layout/nav_searchButton.png");
 		background-repeat: no-repeat;
 	}
 	
@@ -277,7 +277,7 @@ input.button_black:hover {
 		display: block;
 		width: 189px;
 		height: 46px;
-		background: url(../images/logo.png) no-repeat;
+		background: url(../../images/layout/logo.png) no-repeat;
 		background-size: contain;
 		text-indent: -9999em;
 	}
@@ -353,7 +353,7 @@ input.button_black:hover {
 	overflow: hidden;
 }
 #stage .stageContentRight {
-	background-image: url(../images/quote_bg.png);
+	background-image: url(../../images/layout/images/quote_bg.png);
 	text-align: left;
 	width: 280px;
 	padding: 10px;
@@ -362,7 +362,7 @@ input.button_black:hover {
 	margin: 0 0 0 55%;
 }
 #stage .stageContentLeft {
-	background-image: url(../images/quote_bg.png);
+	background-image: url(../../images/layout/images/quote_bg.png);
 	text-align: left;
 	width: 280px;
 	padding: 10px;
