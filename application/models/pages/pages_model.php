@@ -58,6 +58,7 @@ class Pages_model extends CI_Model {
         {
             $pages[$i]['pageID']        = $row->pageID;
             $pages[$i]['pageName']      = $row->name;
+            $pages[$i]['pageTitle']     = $row->title;
             $pages[$i]['stageID']       = $row->stageID;
             $pages[$i]['online']        = $row->online;
             $pages[$i]['row_color']     = $this->color = cp_get_color($this->color);
@@ -75,6 +76,7 @@ class Pages_model extends CI_Model {
         
         $page['pageID']         = $id;
         $page['pageName']       = $row->name;
+        $page['pageTitle']      = $row->title;
         $page['templateID']     = $row->templateID;
         $page['stageID']        = $row->stageID;
         $page['is_deletable']   = $this->is_page_deletable($id);
@@ -82,7 +84,7 @@ class Pages_model extends CI_Model {
         return $page;      
     }
     
-    public function get_pagetitle($id)
+    public function get_pagename($id)
     {
         $this->db->select('name');
         $query = $this->db->get_where('page', array('pageID' => $id));
@@ -99,6 +101,14 @@ class Pages_model extends CI_Model {
         if($num_rows == 0) return true; else return false;
     }
     
+    public function get_page_content_frontend($id)
+    {
+        $content = array();
+        //$this->db->select('p1.title');
+       // $this->db->join('page_content
+        //$query = $this->db->get_where('page as p1', array('pageID' => $id));
+    }
+    
     public function get_page_content($id)
     {
         $content = array();
@@ -108,6 +118,8 @@ class Pages_model extends CI_Model {
         
         $content['pageID']      = $id;
         $content['templateID']  = $row->templateID;
+        $content['pageName']    = $row->name;
+        $content['pageTitle']   = $row->title;
         $content['stageID']     = $row->stageID;
         
         $query = $this->db->get_where('page_template', array('templateID' => $row->templateID));
@@ -263,24 +275,6 @@ class Pages_model extends CI_Model {
         return $columns;  
     }
     
-    public function get_stage_templates($online = 1)
-    {
-        if(is_int($online)) $this->db->where('online', $online);
-        $this->db->order_by('name', 'asc');
-        $query = $this->db->get('page_stage_template');
-        $templates = array();
-        $i=0;
-        foreach($query->result() as $row)
-        {
-            $templates[$i]['templateID']        = $row->templateID;
-            $templates[$i]['name']              = $row->name;
-            $templates[$i]['text']              = $row->text;
-            $templates[$i]['multiple_images']   = $row->multiple_images;
-            $templates[$i]['view']              = $row->view;
-            $templates[$i]['online']            = $row->online;
-        }
-    }
-    
     public function get_stages()
     {
         $this->db->order_by('name', 'asc');
@@ -299,6 +293,32 @@ class Pages_model extends CI_Model {
         }
         
         return $stages;
+    }
+    
+    public function get_stage_images($id)
+    {
+        $this->db->select('page_stage_images.text as text, page_stage_images.class as class, page_stage_images.orderID as orderID, file.fullpath, file.title');
+        $this->db->order_by('page_stage_images.orderID', 'asc');
+        $this->db->join('page_stage_images', 'page_stage_images.stageID = page_stage.stageID');
+        $this->db->join('file', 'file.fileID = page_stage_images.fileID');
+        $this->db->join('page_stage_template', 'page_stage_template.templateID = page_stage.templateID');
+        $query = $this->db->get_where('page_stage', array('page_stage.stageID' => $id));
+        
+        $stage_images = array();
+        $i = 0;
+        
+        $stage_images['count_images'] = $query->num_rows();
+        foreach($query->result() as $row)
+        {
+            $stage_images['images'][$i]['text']  = explode(PAGES_STAGE_TEXT_SEPARATOR, $row->text);
+            $stage_images['images'][$i]['title'] = $row->title;
+            $stage_images['images'][$i]['file']  = $row->fullpath;
+            $stage_images['images'][$i]['class']  = $row->class;
+            $stage_images['images'][$i]['orderID']  = $row->orderID;
+            $i++;
+        }
+        
+        return $stage_images;
     }
     
     public function add_row($pageID)
@@ -383,6 +403,7 @@ class Pages_model extends CI_Model {
     {
         $page = array(
             'name'       => $this->input->post('pagename'),
+            'title'      => $this->input->post('pagetitle'),
             'stageID'    => $this->input->post('stageid'),
             'online'     => 0,
             'templateID' => $this->input->post('templateid')
@@ -397,6 +418,7 @@ class Pages_model extends CI_Model {
     { 
         $page = array(
             'name'    => $this->input->post('pagename'),
+            'title'   => $this->input->post('pagetitle'),
             'stageID' => $this->input->post('stageid'),
         );
 		$this->db->update('page', $page, array('pageID' => $id));

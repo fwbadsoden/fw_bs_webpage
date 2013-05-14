@@ -254,7 +254,7 @@ class Pages_Admin extends CI_Controller {
     	$menue['submenue']	= $this->admin->get_submenue();
         $data['type']       = 'page';
         $data['id']         = $pageID;
-        $data['page_title'] = $this->pages->get_pagetitle($pageID);
+        $data['page_title'] = $this->pages->get_pagename($pageID);
         $data['superID']    = 0;
     	
     	$this->load->view('backend/templates/admin/header', $header);

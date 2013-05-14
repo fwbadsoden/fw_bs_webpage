@@ -132,7 +132,7 @@
 <tr bgcolor="<?=$item['row_color']?>">
 	<td><?=str_pad($i, 5 ,'0', STR_PAD_LEFT);?></td>
 	<td><?=$categories[$item['categoryID']]['name']?></td>
-	<td><a href="javascript:;" onClick="imgPreview('<?=$item["fullpath"]?>', '<?=$item["width"]?>', '<?=$item["height"]?>', '<?=$item["title"]?>', '<?=$item["description"]?>', '<?=$item["name"]?>', '<?=$item["fileID"]?>');"><?=$item['name']?></a></td> 
+	<td><a href="javascript:;" onClick="imgPreview('<?=base_url($item["fullpath"])?>', '<?=$item["width"]?>', '<?=$item["height"]?>', '<?=$item["title"]?>', '<?=$item["description"]?>', '<?=$item["name"]?>', '<?=$item["fileID"]?>');"><?=$item['name']?></a></td> 
 </tr>
 <?
     $i++; 

@@ -102,10 +102,10 @@ class File_model extends CI_Model {
         $images = array();
         foreach($query->result() as $row)
         {
-            $images[$i]['fileID'] = $row->fileID;
-            $images[$i]['name'] = $row->name;
+            $images[$i]['fileID']   = $row->fileID;
+            $images[$i]['name']     = $row->name;
             $images[$i]['fullpath'] = $row->fullpath;
-            $images[$i]['title'] = $row->title;
+            $images[$i]['title']    = $row->title;
             $i++;
         }
         return $images;
@@ -115,8 +115,8 @@ class File_model extends CI_Model {
     {
         $file = array();
         $file['description'] = $this->input->post('description');
-        $file['title'] = $this->input->post('title');
-        $file['modified'] = date("Y-m-d H:i:s");
+        $file['title']       = $this->input->post('title');
+        $file['modified']    = date("Y-m-d H:i:s");
         $file['modified_by'] = $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND));
         
         $this->db->update('file', $file, array('fileID' => $this->input->post('file_id')));
@@ -127,19 +127,19 @@ class File_model extends CI_Model {
         $this->load->helper('inflector');
         
         $file = array(
-            'typeID' => $typeID,       
-            'categoryID' => $this->input->post('category'),                
-            'name' => strtolower(underscore($upload_data['client_name'])),           
-            'description' => $this->input->post('description'),              
-            'fullpath' => base_url($upload_data['upload_path'].'/'.$upload_data['file_name']),                  
-            'filename' => $upload_data['file_name'],                  
-            'extension' => $upload_data['file_ext'],                  
-            'mimetype' => $upload_data['file_type'],                 
-            'title' => $this->input->post('title'),                 
-            'size' => $upload_data['file_size'],               
-            'sha1' => $upload_data['sha1'],          
-            'created' => date("Y-m-d H:i:s"),              
-            'created_by' => $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND)) 
+            'typeID'        => $typeID,       
+            'categoryID'    => $this->input->post('category'),                
+            'name'          => strtolower(underscore($upload_data['client_name'])),           
+            'description'   => $this->input->post('description'),              
+            'fullpath'      => $upload_data['upload_path'].'/'.$upload_data['file_name'],                  
+            'filename'      => $upload_data['file_name'],                  
+            'extension'     => $upload_data['file_ext'],                  
+            'mimetype'      => $upload_data['file_type'],                 
+            'title'         => $this->input->post('title'),                 
+            'size'          => $upload_data['file_size'],               
+            'sha1'          => $upload_data['sha1'],          
+            'created'       => date("Y-m-d H:i:s"),              
+            'created_by'    => $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND)) 
         );
         if($upload_data['is_image'] == 1)
         {                        

@@ -1,5 +1,11 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
+    <hr class="clear" />   
+    </div>
+
+</section>
+
+
 <footer id="endOfPage">
 
 	<div id="shortlinks">
