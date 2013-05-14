@@ -72,14 +72,14 @@
 	
 	for($i = 0; $i < count($types); $i++)
 	{
-		$types[$i]['formAttr']['name'] 			= 't_'.$types[$i]['typeID'];
+		$types[$i]['formAttr']['name'] 			= 'einsatztyp';
 		$types[$i]['formAttr']['id']			= 't_'.$types[$i]['typeID'];
 		$types[$i]['formAttr']['class']			= '';
 		$types[$i]['formAttr']['value']			= $types[$i]['typeID'];
         
-		if(!$this->input->post('t_'.$types[$i]['typeID']) == $types[$i]['typeID'])
+		if(!$this->input->post('einsatztyp') == $types[$i]['typeID'])
 		{
-			if(isset($einsatz['type'][$types[$i]['typeID']])) $types[$i]['formAttr']['checked'] = 'checked';	
+			if(isset($einsatz['typeID']) && $einsatz['typeID'] == $types[$i]['formAttr']['value']) $types[$i]['formAttr']['checked'] = 'checked';	
 		}
 		else $types[$i]['formAttr']['checked'] = 'checked';
 	}
@@ -170,7 +170,7 @@ $(function() {
 				</tr>
 			<? foreach($types as $t) { ?>
 				<tr>
-					<td colspan='2'><?=form_checkbox($t['formAttr']); ?> <?=form_label($t['typeName'], $t['formAttr']['id']); ?></td>
+					<td colspan='2'><?=form_radio($t['formAttr']); ?> <?=form_label($t['typeName'], $t['formAttr']['id']); ?></td>
 				</tr>
 			<? } ?>
 				<tr><td colspan='2'>&nbsp;</td></tr>

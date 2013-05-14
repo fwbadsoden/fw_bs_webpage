@@ -20,42 +20,14 @@ sed diam voluptua.</p>
            <hr class="clear" />
            
            <h1 class="module">Einsatz-Ticker</h1>           
-           <ul class="news">    
+           <ul class="news">
+<? foreach($einsatz_overview as $einsatz) { ?>           
                <li>
-                    <h2><span class="date">22.07.2013</span> / &Uuml;ber&ouml;rtlicher Einsatz</h2>
-                    <h1>Ausl&ouml;ser Brandanlage</h1>
-                    <p>Die automatische Brandmeldeanlage eines Gro&szlig;raumkinos im Main-Taunus-Zentrum l&ouml;ste ohne ersichtlichen Grund aus</p>
+                    <h2><span class="date"><?=cp_get_ger_date($einsatz['datum']).' '.$einsatz['beginn']?></span> / <?=$einsatz['type_name']?></h2>
+                    <h1><?=$einsatz['name']?></h1>
+                    <p><?=$einsatz['lage']?></p>
                </li>
-               <li>
-                    <h2><span class="date">22.07.2013</span> / &Uuml;ber&ouml;rtlicher Einsatz</h2>
-                    <h1>Ausl&ouml;ser Brandanlage</h1>
-                    <p>Die automatische Brandmeldeanlage eines Gro&szlig;raumkinos im Main-Taunus-Zentrum l&ouml;ste ohne ersichtlichen Grund aus</p>
-               </li>
-               <li>
-                    <h2><span class="date">22.07.2013</span> / &Uuml;ber&ouml;rtlicher Einsatz</h2>
-                    <h1>Ausl&ouml;ser Brandanlage</h1>
-                    <p>Die automatische Brandmeldeanlage eines Gro&szlig;raumkinos im Main-Taunus-Zentrum l&ouml;ste ohne ersichtlichen Grund aus</p>
-               </li>
-               <li>
-                    <h2><span class="date">22.07.2013</span> / &Uuml;ber&ouml;rtlicher Einsatz</h2>
-                    <h1>Ausl&ouml;ser Brandanlage</h1>
-                    <p>Die automatische Brandmeldeanlage eines Gro&szlig;raumkinos im Main-Taunus-Zentrum l&ouml;ste ohne ersichtlichen Grund aus</p>
-               </li>
-               <li>
-                    <h2><span class="date">22.07.2013</span> / &Uuml;ber&ouml;rtlicher Einsatz</h2>
-                    <h1>Ausl&ouml;ser Brandanlage</h1>
-                    <p>Die automatische Brandmeldeanlage eines Gro&szlig;raumkinos im Main-Taunus-Zentrum l&ouml;ste ohne ersichtlichen Grund aus</p>
-               </li>
-               <li>
-                    <h2><span class="date">22.07.2013</span> / &Uuml;ber&ouml;rtlicher Einsatz</h2>
-                    <h1>Ausl&ouml;ser Brandanlage</h1>
-                    <p>Die automatische Brandmeldeanlage eines Gro&szlig;raumkinos im Main-Taunus-Zentrum l&ouml;ste ohne ersichtlichen Grund aus</p>
-               </li>
-               <li>
-                    <h2><span class="date">22.07.2013</span> / &Uuml;ber&ouml;rtlicher Einsatz</h2>
-                    <h1>Ausl&ouml;ser Brandanlage</h1>
-                    <p>Die automatische Brandmeldeanlage eines Gro&szlig;raumkinos im Main-Taunus-Zentrum l&ouml;ste ohne ersichtlichen Grund aus</p>
-               </li>
+<? } ?>
            </ul>
            
         </div>
@@ -81,18 +53,12 @@ sed diam voluptua.</p>
             <div class="dates">
             	<h1>Termine</h1>
                 <ul>    
+<? foreach($termin_overview as $termin) { ?>                 
                     <li>    
-                        <h3><span class="date">22.07.2012 - 19:00 Uhr</span> / Stadthalle</h3>
-                        <h2>Stammtisch in der Feuerwache</h2>
+                        <h3><span class="date"><?=cp_get_ger_date($termin['datum'])?> - <?=$termin['beginn']?> Uhr</span> / <?=$termin['ort']?></h3>
+                        <h2><?=$termin['name']?></h2>
                     </li>
-                    <li>    
-                        <h3><span class="date">22.07.2012 - 19:00 Uhr</span> / Stadthalle</h3>
-                        <h2>Herbsmarkt zur Gunsten der Feuerwehr</h2>
-                    </li>
-                    <li>    
-                        <h3><span class="date">22.07.2012 - 19:00 Uhr</span> / Stadthalle</h3>
-                        <h2>Stammtisch in der Feuerwache</h2>
-                    </li>
+<? } ?>
                 </ul>
                 <p class="more"><a href="#" class="button_white">Read more</a></p>
             </div>

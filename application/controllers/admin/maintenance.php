@@ -149,6 +149,20 @@ class Maintenance extends CI_Controller {
 			}
 		}
 	}
+    
+    public function db_switch_types()
+    {
+        $query = $this->db->get('einsatz_content');
+        foreach($query->result() as $row)
+        {
+            $this->db->limit(1);
+            $query2 = $this->db->get_where('einsatz_type_mapping', array('einsatzID' => $row->einsatzID));
+            $row2 = $query2->row();
+            
+            $this->db->where('einsatzID', $row->einsatzID);
+            $this->db->update('einsatz_content', array('typeID' => $row2->typeID));
+        }
+    }
 }
 
 ?>

@@ -32,6 +32,10 @@ class Frontend extends CI_Controller {
      */
     public function index()
     {
+        // Models laden
+        $this->load->model('einsatz/einsatz_model', 'einsatz');   
+        $this->load->model('termin/termin_model', 'termin');  
+        
         $menue = $this->menue->get_menue_list('online');
         
         // Daten für Seitenkopf
@@ -43,7 +47,8 @@ class Frontend extends CI_Controller {
         $stage_data['stage_images']     = $this->pages->get_stage_images(1);
         
         // Daten für den Inhalt
-        $content                        = '';
+        $content['einsatz_overview']    = $this->einsatz->get_einsatz_v_list(EINSATZ_STARTPAGE_LIMIT);
+        $content['termin_overview']     = $this->termin->get_termin_v_list(TERMIN_STARTPAGE_LIMIT);
         
         // Daten für Footer
         $footer_data['title']           = FRONTEND_TITLE;

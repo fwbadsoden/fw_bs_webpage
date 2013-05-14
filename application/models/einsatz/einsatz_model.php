@@ -15,7 +15,6 @@ class Einsatz_Model extends CI_Model {
 	
 	private $counterT = 0;
 	private $counterF = 0;
-	private $arr_types_db = array();
 	private $arr_fahrzeuge_db = array();
 	private $color = '';
 	
@@ -29,6 +28,28 @@ class Einsatz_Model extends CI_Model {
 		parent::__construct();		
 		$this->load->helper('html');
 	}	
+    
+    public function get_einsatz_v_list($limit = 10, $offset = 0)
+    {
+        $this->db->limit($limit, $offset);
+        $query = $this->db->get('v_einsatz');
+        $einsaetze = array();
+        $i = 0;
+        
+        foreach($query->result() as $row)
+        {
+            $einsaetze[$i]['einsatzID']    = $row->einsatzID;
+            $einsaetze[$i]['name']         = $row->name;
+            $einsaetze[$i]['datum']        = $row->datum;
+            $einsaetze[$i]['beginn']       = $row->beginn;
+            $einsaetze[$i]['type_name']    = $row->type_name;
+            $einsaetze[$i]['lage']         = $row->lage;
+            
+            $i++;
+        }
+        
+        return $einsaetze;
+    }
 	
 	public function get_einsatz_years()
 	{
@@ -100,14 +121,15 @@ class Einsatz_Model extends CI_Model {
 		$einsatz['einsatzkraefteFreitext']	= $row->weitere_kraefte;
 		$einsatz['anzahlEinsatzkraefte']	= $row->anzahl_kraefte;
 		
-		$this->db->where('einsatzID', $id);
-		$query = $this->db->get('einsatz_type_mapping');
-		$i = 0;
-		foreach($query->result() as $row)
-		{
-			$einsatz['type'][$row->typeID]	= 1;
-			$i++;
-		}
+		$this->db->where('typeID', $row->typeID);
+		$query2 = $this->db->get('einsatz_type');
+		if($query->num_rows() > 0)
+        {
+            $row2 = $query2->row();
+		    $einsatz['typeID']              = $row->typeID;
+		    $einsatz['type_name']           = $row2->name;
+            $einsatz['type_shortname']      = $row2->short_name;
+        }
 		
 		$this->db->where('einsatzID', $id);
 		$query = $this->db->get('einsatz_fahrzeug_mapping');
@@ -189,15 +211,12 @@ class Einsatz_Model extends CI_Model {
 			'lage'				=> $this->input->post('einsatzlage'),
 			'geschehen'			=> $this->input->post('einsatzgeschehen'),
 			'weitere_kraefte'	=> $this->input->post('weitereeinsatzkraefte'),
-			'anzahl_kraefte'	=> $this->input->post('anzahl')
+			'anzahl_kraefte'	=> $this->input->post('anzahl'),
+            'typeID'            => $this->input->post('einsatztyp')
 		);
 		$this->db->insert('einsatz_content', $einsatzContent);
 		
 		array_walk($this->input->post(), array($this, 'callback_einsatz_find_mappings'));
-		foreach($this->arr_types_db as $t)
-		{
-			$this->db->insert('einsatz_type_mapping', array('einsatzID' => $einsatzID, 'typeID' => $t));	
-		}
 		foreach($this->arr_fahrzeuge_db as $f)
 		{
 			$this->db->insert('einsatz_fahrzeug_mapping', array('einsatzID' => $einsatzID, 'fahrzeugID' => $f));	
@@ -222,7 +241,8 @@ class Einsatz_Model extends CI_Model {
 			'lage'				=> $this->input->post('einsatzlage'),
 			'geschehen'			=> $this->input->post('einsatzgeschehen'),
 			'weitere_kraefte'	=> $this->input->post('weitereeinsatzkraefte'),
-			'anzahl_kraefte'	=> $this->input->post('anzahl')
+			'anzahl_kraefte'	=> $this->input->post('anzahl'),
+            'typeID'            => $this->input->post('einsatztyp')
 		);
 		
 		// ++++ TRANSAKTION START ++++ //
@@ -233,15 +253,9 @@ class Einsatz_Model extends CI_Model {
 		$this->db->where('einsatzID', $id);
 		$this->db->update('einsatz_content', $einsatzContent);
 		$this->db->where('einsatzID', $id);
-		$this->db->delete('einsatz_type_mapping', array('einsatzID' => $id));
-		$this->db->where('einsatzID', $id);
 		$this->db->delete('einsatz_fahrzeug_mapping', array('einsatzID' => $id));
 		
 		array_walk($this->input->post(), array($this, 'callback_einsatz_find_mappings'));
-		foreach($this->arr_types_db as $t)
-		{
-			$this->db->insert('einsatz_type_mapping', array('einsatzID' => $id, 'typeID' => $t));	
-		}
 		foreach($this->arr_fahrzeuge_db as $f)
 		{
 			$this->db->insert('einsatz_fahrzeug_mapping', array('einsatzID' => $id, 'fahrzeugID' => $f));	
@@ -258,7 +272,7 @@ class Einsatz_Model extends CI_Model {
 		$this->db->select('datum');
 		$query = $this->db->get_where('einsatz', array('einsatzID' => $id));
 		$row = $query->row();
-		$tables = array('einsatz', 'einsatz_content', 'einsatz_type_mapping', 'einsatz_fahrzeug_mapping');
+		$tables = array('einsatz', 'einsatz_content', 'einsatz_fahrzeug_mapping');
 		$this->db->where('einsatzID', $id);
 		$this->db->delete($tables);
 		$return = $this->recalc_lfdnr(substr($row->datum,0,4));
@@ -322,15 +336,6 @@ class Einsatz_Model extends CI_Model {
 	private function callback_einsatz_find_mappings($value, $key)
 	{ 	
 		$check = explode('_', $key);
-		if($check[0] == 't') // TYPE
-		{	
-			// Sicherheitscheck, dass rechts nur noch Nummer stehen
-			if(is_numeric($check[1]))
-			{	
-				$this->arr_types_db[$this->counterT] = $value;				
-				$this->counterT++;
-			}
-		}
 		if($check[0] == 'f') // Fahrzeug
 		{
 			// Sicherheitscheck, dass rechts nur noch Nummer stehen
