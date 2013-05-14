@@ -13,9 +13,16 @@
         'value' => set_value('pagename')
     );
     
+    $pageTitle = array(
+        'name'  => 'pagetitle',
+        'id'    => 'pagetitle',
+        'class' => 'input_text',
+        'value' => set_value('pagetitle')
+    );  
+    
     $stage_options = array();
 	$stage_attr = "class = 'input_dropdown' id = 'input_dropdown'";
-    $stage_options[0] = 'keine Bildb&uuml;hne';
+    $stage_options[0] = 'Bildb&uuml;hne w&auml;hlen';
 	foreach($stages as $stage)
 	{  
 		$stage_options[$stage['stageID']] = $stage['name'];	
@@ -52,6 +59,10 @@
                     <tr>
                         <td class='form_label'><?=form_label('Seitenname:', $pageName['id']); ?></td>
                         <td><?=form_input($pageName); ?></td>
+                    </tr>
+                    <tr>
+                        <td class='form_label'><?=form_label('Titel (f&uuml;r Frontend):', $pageTitle['id']);?></td>
+                        <td><?=form_input($pageTitle);?></td>
                     </tr>
                     <tr>
                         <td class='form_label'>Vorlage:</td>
