@@ -32,7 +32,7 @@ class Menue_Model extends CI_Model {
 		else $this->area = 'backend';
 	}
 	
-	public function get_menue_list()
+	public function get_menue_list($online)
 	{
 		$menue            = array();
 		$menue_meta       = array();
@@ -41,10 +41,12 @@ class Menue_Model extends CI_Model {
 		$count_meta       = 0;
         $count_shortlink  = 0;
 		
+        $where = array($this->area => 1, 'superID' => 0, 'section' => 'main');
+        if($online == 'online') $where['online'] = 1;
+        
 		$this->db->order_by('orderID', 'asc');
-		$query = $this->db->get_where('menue', array($this->area => 1, 'superID' => 0, 'section' => 'main'));
+		$query = $this->db->get_where('menue', $where);
 		$count = $query->num_rows();
-		
 		$i = 0;
 		foreach($query->result() as $row)
 		{
@@ -58,8 +60,10 @@ class Menue_Model extends CI_Model {
 			$menue[$i]['orderID']            = $row->orderID;
 			$menue[$i]['row_color']	         = $this->color = cp_get_color($this->color);
 			
+            $where = array('superID' => $row->menueID);
+            if($online == 'online') $where['online'] = 1;
 			$this->db->order_by('orderID', 'asc');
-			$query2 = $this->db->get_where('menue', array('superID' => $row->menueID));
+			$query2 = $this->db->get_where('menue', $where);
 			
 			$menue[$i]['subItems'] = $query2->num_rows();
 			
@@ -84,8 +88,10 @@ class Menue_Model extends CI_Model {
 			$i++;
 		}
 		
+        $where = array($this->area => 1, 'section' => 'meta');
+        if($online == 'online') $where['online'] = 1;
 		$this->db->order_by('orderID', 'asc');
-		$query = $this->db->get_where('menue', array($this->area => 1, 'section' => 'meta'));
+		$query = $this->db->get_where('menue', $where);
 		
 		$i = 0;
 		$count_meta = $query->num_rows();
@@ -103,8 +109,10 @@ class Menue_Model extends CI_Model {
 			$i++;
 		}		
 		
+        $where = array($this->area => 1, 'section' => 'shortlink');
+        if($online == 'online') $where['online'] = 1;
 		$this->db->order_by('orderID', 'asc');
-		$query = $this->db->get_where('menue', array($this->area => 1, 'section' => 'shortlink'));
+		$query = $this->db->get_where('menue', $where);
 		
 		$i = 0;
 		$count_shortlink = $query->num_rows();

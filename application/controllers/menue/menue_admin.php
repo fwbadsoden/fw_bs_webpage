@@ -42,7 +42,7 @@ class Menue_Admin extends CI_Controller {
 		$menue['submenue']	= $this->admin->get_submenue();
 		$data['areaUC'] = ucfirst($this->area);
 		$data['area'] = $this->area;
-		$data['menue_arr'] = $this->menue->get_menue_list();
+		$data['menue_arr'] = $this->menue->get_menue_list('all');
 	
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
