@@ -27,7 +27,7 @@ class Pages extends CI_Controller {
     
     public function loader($pageID)
     {
-        $page_content = get_page_content_frontend($pageID);
+        $page_content = $this->pages->get_page_content_frontend($pageID);
         echo "Page ID: ".$pageID;
     }
  }

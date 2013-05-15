@@ -34,29 +34,28 @@ class Frontend extends CI_Controller {
     {
         $uri_segments = $this->uri->rsegment_array();
         // $uri_segments[0] fehlt, da des erste Segment der Ordner des Controller ist
-        var_dump($uri_segments);
+        
         $controller = $uri_segments[3];
         $function   = $uri_segments[4];
             
         if(count($uri_segments) > 4) {
             $j = 0;
             $args = array();
-            for($i = 4; $i <= (count($uri_segments)); $i++) {
+            for($i = 5; $i <= (count($uri_segments)); $i++) {
                 $args[$j] = $uri_segments[$i];
                 $j++;
             }
-            echo "<br>"; var_dump($args);  
-        } die();
+        } 
         
         if($controller == $this->router->class) {
             // dynamisch Funktionen des Frontend Controllers laden
             $this->$function($args);
         }
         else {
-            if($loader == 'page') {
+            if($controller == 'page') {
                 // dynamisch Inhaltseiten laden
-                $this->load->controller('pages/pages', $pages);
-                $this->pages->loader($id);
+                $this->load->controller('pages/pages', 'pages');
+                $this->pages->{$function}($args[0]);
             }
             else {
                 // dynamisch Modulseiten laden
