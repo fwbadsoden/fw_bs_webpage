@@ -153,10 +153,10 @@ switch(ID) {
 	<?  } ?>
     </strong>
 	</td>
-<?	if($item1['online']==0) {	?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/1')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></span></td>
+<?	if($item1['online']==1) {	?>
+	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/0')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></span></td>
 <?	} else { ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/0')?>" class="button_mini" title="Men&uuml;punkt online schalten"><span class='button_offline_small'></span></a></span></td>
+	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/1')?>" class="button_mini" title="Men&uuml;punkt online schalten"><span class='button_offline_small'></span></a></span></td>
 <?	} ?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/edit/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt bearbeiten"><span class='button_edit_small'></span></a></span></td>
 	<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item1['menueID']?>" href="<?=base_url('admin/menue/delete/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt löschen"><span class='button_delete_small'></span></a></span></td>
@@ -186,10 +186,10 @@ switch(ID) {
 						<span style='color: red;'>offline</span>
 					<?  } ?>
 				</td>
-			<?	if($item1['online']==0) {	?>
-				<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item2['menueID'].'/1')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></span></td>
+			<?	if($item2['online']==1) {	?>
+				<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item2['menueID'].'/0')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></span></td>
 			<?	} else { ?>
-				<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item2['menueID'].'/0')?>" class="button_mini" title="Men&uuml;punkt online schalten"><span class='button_offline_small'></span></a></span></td>
+				<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item2['menueID'].'/1')?>" class="button_mini" title="Men&uuml;punkt online schalten"><span class='button_offline_small'></span></a></span></td>
 			<?	} ?>
 				<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/edit/'.$item2['menueID'])?>" class="button_mini" title="Men&uuml;punkt bearbeiten"><span class='button_edit_small'></span></a></span></td>
 				<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item2['menueID']?>" href="<?=base_url('admin/menue/delete/'.$item2['menueID'])?>" class="button_mini" title="Men&uuml;punkt löschen"><span class='button_delete_small'></span></a></span></td>

@@ -25,12 +25,46 @@ class Frontend extends CI_Controller {
 	}
     
     /**
-     * Frontend::index()
-     * Startseite
+     * Frontend::loader()
+     * Loader
      * 
      * @return void
      */
-    public function index()
+    public function loader()
+    {
+        $uri_segments = $this->uri->rsegment_array();
+        // $uri_segments[0] fehlt, da des erste Segment der Ordner des Controller ist
+        var_dump($uri_segments);
+        $controller = $uri_segments[3];
+        $function   = $uri_segments[4];
+            
+        if(count($uri_segments) > 4) {
+            $j = 0;
+            $args = array();
+            for($i = 4; $i <= (count($uri_segments)); $i++) {
+                $args[$j] = $uri_segments[$i];
+                $j++;
+            }
+            echo "<br>"; var_dump($args);  
+        } die();
+        
+        if($controller == $this->router->class) {
+            // dynamisch Funktionen des Frontend Controllers laden
+            $this->$function($args);
+        }
+        else {
+            if($loader == 'page') {
+                // dynamisch Inhaltseiten laden
+                $this->load->controller('pages/pages', $pages);
+                $this->pages->loader($id);
+            }
+            else {
+                // dynamisch Modulseiten laden
+            }
+        }
+    }
+    
+    private function homepage()
     {
         // Models laden 
         $this->load->controller('einsatz/einsatz', 'c_einsatz');  
@@ -45,12 +79,6 @@ class Frontend extends CI_Controller {
         $this->c_einsatz->overview_2col(EINSATZ_STARTPAGE_LIMIT);
         
         $this->site_footer();
-    }
-    
-    public function page_loader()
-    {
-        $page_data = $this->m_pages->get_page_content_frontend($pageID);
-        
     }
     
     private function site_header()

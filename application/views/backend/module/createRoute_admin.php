@@ -37,17 +37,6 @@
 		'value' 	=> set_value('link')
 	);
 	
-	$protectedFlag = array(
-		'name'		=> 'protectedFlag',
-		'id'		=> 'protectedFlag',
-		'value' 	=> 'protectedFlag'
-	);
-	if($this->input->post('protectedFlag')) 
-	{
-		$protectedFlag['checked'] = 'checked'; 
-	}
-	
-	
 ?>
 
 <div id='content'>
@@ -87,10 +76,6 @@
                     <tr>
                         <td class='form_label'><?=form_label('Link:', $linkName['id']); ?></td>
                         <td><?=form_input($linkName); ?></td>
-                    </tr>
-                    <tr>
-                        <td><?=form_label('Geschützte Route?:', $protectedFlag['id']); ?></td>
-                        <td><?=form_checkbox($protectedFlag); ?></td>
                     </tr>
                 </table>
             </td>

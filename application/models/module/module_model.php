@@ -133,8 +133,7 @@ class Module_model extends CI_Model {
             'bereich'       => $this->input->post('bereich'),
 			'internal_link'	=> $this->input->post('link'),
 			'route'		    => $this->input->post('route'),
-			'active'		=> 1,
-			'isprotected'	=> 1
+			'active'		=> 1
 		);
 		
 		$this->db->insert('sys_routes', $route);
@@ -147,8 +146,7 @@ class Module_model extends CI_Model {
 			'moduleID'       => $this->input->post('modul'),
             'bereich'        => $this->input->post('bereich'), 
 			'internal_link'	 => $this->input->post('link'),
-			'route'				  => $this->input->post('route'),
-			'isprotected'		  => 1
+			'route'				  => $this->input->post('route')
 		);
 		$this->db->where('routeID', $id);
 		$this->db->update('sys_routes', $route);
@@ -179,7 +177,6 @@ class Module_model extends CI_Model {
 			$routes[$i]['internalLink'] 	= $row->internal_link;
 			$routes[$i]['route'] 			= $row->route;
 			$routes[$i]['active'] 			= $row->active;
-			$routes[$i]['protectedFlag'] 	= $row->isprotected;
 			$routes[$i]['row_color']		= $this->color = cp_get_color($this->color);
 			$i++;
 		}
@@ -196,7 +193,6 @@ class Module_model extends CI_Model {
 		$route['route']	    = $row->route;
         $route['bereich']   = $row->bereich;
 		$route['internalLink']        = $row->internal_link;
-		$route['protectedFlag'] = $row->isprotected;
 		$route['moduleID'] = $row->moduleID;
 		
 		return $route;
