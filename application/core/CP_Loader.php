@@ -17,7 +17,7 @@ class CP_Loader extends CI_Loader
     }
 
     public function controller($controller, $name = '', $db_conn = FALSE)
-    {
+    { 
         if (is_array($controller))
         {
             foreach ($controller as $babe)

@@ -26,3 +26,4 @@
 <? } ?>
             </ul>
     	</div>
+        <div id="MainContent">        

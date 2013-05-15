@@ -127,15 +127,20 @@ class Pages_Admin extends CI_Controller {
     		$this->load->view('backend/templates/admin/submenue', $menue);	
     		$this->load->view('backend/pages/editPageHeader_admin', $data);	
             
-            if(isset($data['content']['rows']))
-            {
-        		foreach($data['content']['rows'] as $r)
+            if($data['page']['special_page'] != 1) {
+                $this->load->view('backend/pages/editPageRowHeader_admin', $data);
+                if(isset($data['content']['rows']))
                 {
-                    $data['columns'] = $this->pages->get_row_columns($r['rowID']);
-                    $data['row'] = $r;
-                    $this->load->view('backend/pages/editPageRow_admin', $data);
-                }	
+            		foreach($data['content']['rows'] as $r)
+                    {
+                        $data['columns'] = $this->pages->get_row_columns($r['rowID']);
+                        $data['row'] = $r;
+                        $this->load->view('backend/pages/editPageRow_admin', $data);
+                    }	
+                }
+                $this->load->view('backend/pages/editPageRowFooter_admin', $data);
             }
+            
     		$this->load->view('backend/pages/editPageFooter_admin', $data);
     		$this->load->view('backend/templates/admin/footer');
         }

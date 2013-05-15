@@ -56,13 +56,15 @@ class Pages_model extends CI_Model {
         
         foreach($query->result() as $row)
         {
-            $pages[$i]['pageID']        = $row->pageID;
-            $pages[$i]['pageName']      = $row->name;
-            $pages[$i]['pageTitle']     = $row->title;
-            $pages[$i]['stageID']       = $row->stageID;
-            $pages[$i]['online']        = $row->online;
-            $pages[$i]['row_color']     = $this->color = cp_get_color($this->color);
-            $pages[$i]['is_deletable']  = $this->is_page_deletable($row->pageID);
+            $pages[$i]['pageID']            = $row->pageID;
+            $pages[$i]['pageName']          = $row->name;
+            $pages[$i]['pageTitle']         = $row->title;
+            $pages[$i]['special_page']      = $row->special_page;
+            $pages[$i]['special_function']  = $row->special_function;
+            $pages[$i]['stageID']           = $row->stageID;
+            $pages[$i]['online']            = $row->online;
+            $pages[$i]['row_color']         = $this->color = cp_get_color($this->color);
+            $pages[$i]['is_deletable']      = $this->is_page_deletable($row->pageID);
             $i++;
         }
         
@@ -74,12 +76,14 @@ class Pages_model extends CI_Model {
         $query = $this->db->get_where('page', array('pageID' => $id));
 		$row = $query->row();
         
-        $page['pageID']         = $id;
-        $page['pageName']       = $row->name;
-        $page['pageTitle']      = $row->title;
-        $page['templateID']     = $row->templateID;
-        $page['stageID']        = $row->stageID;
-        $page['is_deletable']   = $this->is_page_deletable($id);
+        $page['pageID']             = $id;
+        $page['pageName']           = $row->name;
+        $page['pageTitle']          = $row->title;
+        $page['special_page']       = $row->special_page;
+        $page['special_function']   = $row->special_function;
+        $page['templateID']         = $row->templateID;
+        $page['stageID']            = $row->stageID;
+        $page['is_deletable']       = $this->is_page_deletable($id);
         
         return $page;      
     }
@@ -104,9 +108,45 @@ class Pages_model extends CI_Model {
     public function get_page_content_frontend($id)
     {
         $content = array();
-        //$this->db->select('p1.title');
-       // $this->db->join('page_content
-        //$query = $this->db->get_where('page as p1', array('pageID' => $id));
+        $query = $this->db->get_where('v_page_content', array('pageID' => $id));
+        if($query->num_rows() == 0) return '404';
+        $row_counter = 0;
+        $box_counter = 0;
+        $rowID = 0;
+        $boxContentID = 0;
+        
+        foreach($query->result() as $key => $row) {
+            if($key == 0) {
+                $content['pageID']           = $id;
+                $content['title']            = $row->title;
+                $content['column_count']     = $row->column_count;
+                $content['stage']            = $this->get_stage_images($row->stageID); 
+                $content['special_page']     = $row->special_page;
+                $content['special_function'] = $row->special_function; 
+            }
+            if($row->special_page == 0) {
+                if($row->rowID != $rowID) {
+                    $rowID = $row->rowID;
+                    $row_counter++;
+                }
+                $content['row'][$row_counter]['box'][$box_counter]['special_box']       = $row->special_box;
+                $content['row'][$row_counter]['box'][$box_counter]['box_tags']          = $row->box_tags;
+                $content['row'][$row_counter]['box'][$box_counter]['box_controller']    = $row->box_controller;
+                $content['row'][$row_counter]['box'][$box_counter]['box_function']      = $row->box_function;
+                $content['row'][$row_counter]['box'][$box_counter]['box_content_type']  = $row->box_content_type;
+                if($row->box_content != '')
+                    $content['row'][$row_counter]['box'][$box_counter]['box_content']       = $row->box_content;
+                else {                    
+                    $content['row'][$row_counter]['box'][$box_counter]['box_image']         = $row->box_image;
+                    $content['row'][$row_counter]['box'][$box_counter]['box_image_mime']    = $row->box_image_mime;
+                    $content['row'][$row_counter]['box'][$box_counter]['box_image_title']   = $row->box_image_title;
+                    $content['row'][$row_counter]['box'][$box_counter]['box_image_width']   = $row->box_image_width;
+                    $content['row'][$row_counter]['box'][$box_counter]['box_image_height']  = $row->box_image_height;
+                }
+                $box_counter++;                                           
+            }    
+        }
+        return $content;
     }
     
     public function get_page_content($id)
@@ -121,11 +161,11 @@ class Pages_model extends CI_Model {
         $content['pageName']    = $row->name;
         $content['pageTitle']   = $row->title;
         $content['stageID']     = $row->stageID;
+        $content['columnCount'] = $row->column_count;
         
         $query = $this->db->get_where('page_template', array('templateID' => $row->templateID));
         $row   = $query->row();
         
-        $content['columnCount']     = $row->column_count;
         $content['templateName']    = $row->name;
         
         // eventuell durch JOIN ersetzen
@@ -266,7 +306,7 @@ class Pages_model extends CI_Model {
         
         $ids = $this->get_superIDs_from_rowID($rowID);
         
-        $query = $this->db->get_where('page_template', array('templateID' => $ids['templateID']));
+        $query = $this->db->get_where('page', array('templateID' => $ids['templateID']));
         $row   = $query->row();
         
         $columns['full']  = $fullColumns;
@@ -401,12 +441,17 @@ class Pages_model extends CI_Model {
     
     public function create_page()
     {
+        $query = $this->db->get_where('page_template', array('templateID' => $this->input->post('templateid')));
+        $row = $query->row();
         $page = array(
-            'name'       => $this->input->post('pagename'),
-            'title'      => $this->input->post('pagetitle'),
-            'stageID'    => $this->input->post('stageid'),
-            'online'     => 0,
-            'templateID' => $this->input->post('templateid')
+            'name'              => $this->input->post('pagename'),
+            'title'             => $this->input->post('pagetitle'),
+            'stageID'           => $this->input->post('stageid'),
+            'special_page'      => $row->special_page,
+            'special_function'  => $row->special_function,
+            'column_count'      => $row->column_count,
+            'online'            => 0,
+            'templateID'        => $this->input->post('templateid')
         );
         $this->db->insert('page', $page);
         $pageID = $this->db->insert_id();
