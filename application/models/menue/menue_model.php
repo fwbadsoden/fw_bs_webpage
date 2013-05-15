@@ -55,7 +55,6 @@ class Menue_Model extends CI_Model {
 			$menue[$i]['link']               = $row->link;
 			$menue[$i]['target']             = $row->target;
 			$menue[$i]['slug']               = $row->slug;
-			$menue[$i]['special_function']   = $row->special_function;
 			$menue[$i]['online']             = $row->online;
 			$menue[$i]['orderID']            = $row->orderID;
 			$menue[$i]['row_color']	         = $this->color = cp_get_color($this->color);
@@ -78,7 +77,6 @@ class Menue_Model extends CI_Model {
 					$menue[$i]['submenue'][$j]['link']             = $row2->link;
 					$menue[$i]['submenue'][$j]['target']           = $row2->target;
 					$menue[$i]['submenue'][$j]['slug']             = $row2->slug;
-                    $menue[$i]['submenue'][$j]['special_function'] = $row->special_function;
 					$menue[$i]['submenue'][$j]['online']           = $row2->online;
 					$menue[$i]['submenue'][$j]['orderID']          = $row2->orderID;
 					$menue[$i]['submenue'][$j]['row_color']		   = $this->color = cp_get_color($this->color);
