@@ -20,6 +20,20 @@ class Einsatz extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+        $this->load->model('einsatz/einsatz_model', 'm_einsatz');  
 	}
+    
+    public function overview_2col($limit = EINSATZ_DEFAULT_LIMIT, $offset = EINSATZ_DEFAULT_OFFSET)
+    {
+        $einsatz_header['title']        = 'Einsatz-Ticker';
+        $einsatz_overview               = $this->m_einsatz->get_einsatz_v_list($limit, $offset);
+        
+        $this->load->view('frontend/einsatz/overview_2col_header', $einsatz_header);
+        foreach($einsatz_overview as $einsatz)
+        {
+            $this->load->view('frontend/einsatz/overview_2col_data', $einsatz);
+        }
+        $this->load->view('frontend/einsatz/overview_2col_footer');    
+    }
 }
 ?>

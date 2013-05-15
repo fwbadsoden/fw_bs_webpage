@@ -29,7 +29,7 @@ class Einsatz_Model extends CI_Model {
 		$this->load->helper('html');
 	}	
     
-    public function get_einsatz_v_list($limit = 10, $offset = 0)
+    public function get_einsatz_v_list($limit = EINSATZ_DEFAULT_LIMIT, $offset = EINSATZ_DEFAULT_OFFSET)
     {
         $this->db->limit($limit, $offset);
         $query = $this->db->get('v_einsatz');
