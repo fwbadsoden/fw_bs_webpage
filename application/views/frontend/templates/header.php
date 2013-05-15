@@ -66,17 +66,10 @@
         </div>
         <nav> 
             <ul>
-<?  foreach($menue as $item) { 
-        switch($item['special_function']) {
-            case 'search': $css_class = ' class="desktopsearch"';
-                           $search_link = $item['link'];
-                           $item['link'] = '#';
-                           break;
-            default:       $css_class = '';
-        }   
-?>            
-                <li><a href="<?=$item['link']?>" target="<?=$item['target']?>" <?=$css_class?>><?=$item['name']?></a></li>
+<?  foreach($menue as $item) { ?>            
+                <li><a href="<?=$item['link']?>" target="<?=$item['target']?>"><?=$item['name']?></a></li>
 <? } ?> 
+                <li><a href="#" class="desktopsearch">Suche</a></li>
             </ul>
             <div id="searchBox">
                 <?=form_open($search_link);?>
