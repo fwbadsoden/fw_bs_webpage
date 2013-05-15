@@ -72,9 +72,9 @@
                 <li><a href="#" class="desktopsearch">Suche</a></li>
             </ul>
             <div id="searchBox">
-                <?=form_open($search_link);?>
+                <?=form_open(base_url(FRONTEND_SEARCH_LINK), $search_form);?>
                     <?=form_input($search_input);?>
-                    <input type="button" value="Go" class="button_black" />
+                    <input type="submit" value="Go" class="button_black" />
                     <a href="#" class="closeSearch">x</a>
                 </form>
         		
@@ -88,10 +88,8 @@
 
 <div id="mobileNavigation">    
    <ul class="mobileMainNavContainer">
-<?  foreach($menue as $item) { 
-        if($item['special_function'] == '') { 
-?>            
-                <li><a href="<?=$item['link']?>" target="<?=$item['target']?>"><?=$item['name']?></a></li>
-<?  } } ?> 
+<?  foreach($menue as $item) { ?>            
+        <li><a href="<?=$item['link']?>" target="<?=$item['target']?>"><?=$item['name']?></a></li>
+<?  } ?> 
    </ul>
 </div>

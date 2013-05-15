@@ -23,9 +23,7 @@
         
         <div class="completeSitemap">    
 <? 
-    foreach($menue as $item) {
-        if($item['special_function'] == '') {
-?>        
+    foreach($menue as $item) { ?>        
             <ul>
                 <li class="headline"><a href="<?=$item['link']?>" target="<?=$item['target']?>"><?=$item['name']?></a></li>
 <?          if(isset($item['submenue'])) {
@@ -35,7 +33,6 @@
 <?
                 }
             }
-        }
 ?>
             </ul>
 <? } ?>
