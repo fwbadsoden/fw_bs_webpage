@@ -2,8 +2,7 @@
     $this->load->helper('html'); 
 ?>
 
-<li>
-    <h2><span class="date"><?=cp_get_ger_date($datum).' '.$beginn?></span> / <?=$type_name?></h2>
-    <h1><?=$name?></h1>
-    <p><?=$lage?></p>
+<li>    
+    <h3><span class="date"><?=cp_get_ger_date($datum).' - '.$beginn?></span> / <?=$ort?></h3>
+    <h2><?=$name?></h2>
 </li>

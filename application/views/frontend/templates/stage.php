@@ -1,6 +1,4 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); 
-    $this->load->helper('html'); 
-?>
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
 
 <section id="stage">
 
@@ -15,15 +13,4 @@
       
 </section>
 
-<section id="content">
-    <div class="slidewrapper">
-<? if($stage_images['count_images'] > 1) { ?>
-        <div id="slider">
-            <ul>
-    <? foreach($stage_images['images'] as $key => $item) { ?>             
-                <li><a href="#<?=$key?>" class="changeStage" id="slide-link-<?=$key?>"><?=$key+1?></a></li>
-    <? } ?>                
-<? } ?>
-            </ul>
-    	</div>
-        <div id="MainContent">        
+ 

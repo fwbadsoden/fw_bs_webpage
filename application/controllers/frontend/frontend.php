@@ -52,9 +52,11 @@ class Frontend extends CI_Controller {
         }
         else {
             if($controller == 'page') {
-                // dynamisch Inhaltseiten laden
-                $this->load->controller('pages/pages', 'pages');
-                $this->pages->{$function}($args[0]);
+                // dynamisch Inhaltseiten laden  
+		        $this->load->helper('load_controller');
+          //      $this->load->controller('pages/pages', 'c_pages');
+                $c_pages = load_controller('pages/pages');
+                $c_pages->{$function}($args[0]);
             }
             else {
                 // dynamisch Modulseiten laden

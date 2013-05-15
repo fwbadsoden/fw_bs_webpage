@@ -25,9 +25,9 @@ class Termin extends CI_Controller {
     
     public function overview_1col($limit = TERMIN_DEFAULT_LIMIT, $offset = TERMIN_DEFAULT_OFFSET)
     {
-        $termin_overview               = $this->m_termin->get_termin_v_list($limit, $offset);
-        
-        $this->load->view('frontend/termin/overview_1col_header');
+        $termin_overview = $this->m_termin->get_termin_v_list($limit, $offset);
+        $termin['title'] = 'Termine';
+        $this->load->view('frontend/termin/overview_1col_header', $termin);
         foreach($termin_overview as $termin)
         {
             $this->load->view('frontend/termin/overview_1col_data', $termin);

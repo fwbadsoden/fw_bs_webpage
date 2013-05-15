@@ -2,5 +2,6 @@
     $this->load->helper('html'); 
 ?> 
 
-<h1 class="module"><?=$title?></h1>           
-<ul class="news">
+<div class="dates">
+<h1><?=$title?></h1>
+<ul>  

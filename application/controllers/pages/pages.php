@@ -22,8 +22,9 @@ class Pages extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('pages/pages_model', 'm_pages');
-		$this->load->model('menue/menue_model', 'm_menue');   
-		
+		$this->load->model('menue/menue_model', 'm_menue');
+        $this->load->model('fahrzeug/fahrzeug_model', 'm_fahrzeug');   
+		$this->load->helper('load_controller');
 	}
     
     public function loader($pageID)
@@ -43,18 +44,41 @@ class Pages extends CI_Controller {
     
     private function homepage()
     {
-        // Controller laden 
-        $this->load->controller('einsatz/einsatz', 'c_einsatz');  
-        $this->load->controller('termin/termin', 'c_termin');  
+        $c_einsatz = load_controller('einsatz/einsatz');
         
-        // Views laden 
         $this->site_header();    
         $this->site_stage();        
         
-        $this->c_termin->overview_1col(TERMIN_STARTPAGE_LIMIT);
-        $this->c_einsatz->overview_2col(EINSATZ_STARTPAGE_LIMIT);
+        $this->site_content_header();
+        
+        if($this->page_content['stage']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->site_mainContent_header();
+        
+        $this->load->view('frontend/templates/temp');
+        
+        $c_einsatz->overview_2col(EINSATZ_STARTPAGE_LIMIT);
+        
+        $this->site_mainContent_footer();
+        
+        $this->site_sidebar_homepage();
+        
+        
         
         $this->site_footer();
+    }
+    
+    private function site_sidebar_homepage()
+    { 
+        $c_termin = load_controller('termin/termin');
+        $statistik['fahrzeug_anzahl'] = $this->m_fahrzeug->get_fahrzeug_anzahl();
+        
+        $this->load->view('frontend/templates/sidebar_header');  
+        $this->load->view('frontend/templates/sidebar_report', $statistik);     
+        $c_termin->overview_1col(TERMIN_STARTPAGE_LIMIT);
+        $this->load->view('frontend/templates/weather');
+        $this->load->view('frontend/templates/sidebar_footer');   
     }
     
     private function site_header()
@@ -67,11 +91,36 @@ class Pages extends CI_Controller {
         $this->load->view('frontend/templates/header', $header_data);
     }
     
+    private function site_content_header()
+    {
+        $this->load->view('frontend/templates/contentHeader');
+    }
+    
+    private function site_content_footer()
+    {
+        $this->load->view('frontend/templates/contentFooter');
+    }
+    
+    private function site_mainContent_header()
+    {
+        $this->load->view('frontend/templates/mainContentHeader');
+    }
+    
+    private function site_mainContent_footer()
+    {
+        $this->load->view('frontend/templates/mainContentFooter');
+    }
+    
     private function site_stage()
     {
         $stage_data['stage_images']     = $this->page_content['stage'];  
              
         $this->load->view('frontend/templates/stage', $stage_data);
+    }
+    
+    private function site_stage_slider()
+    {
+        $this->load->view('frontend/templates/stage_slider');
     }
     
     private function site_footer()
@@ -80,6 +129,11 @@ class Pages extends CI_Controller {
         $footer_data['menue_shortlink'] = $this->menue['menue_shortlink'];
         
         $this->load->view('frontend/templates/footer', $footer_data);
+    }
+    
+    private function site_hr_clear()
+    {
+        $this->load->view('frontend/templates/hr_clear');
     }
  }
  ?>

@@ -96,6 +96,12 @@ class Fahrzeug_Model extends CI_Model {
 		
 		return $arr_fahrzeug;
 	}
+    
+    public function get_fahrzeug_anzahl()
+    {
+        $query = $this->db->get('fahrzeug');
+        return $query->num_rows();
+    }
 	
 	public function get_images($id)
 	{

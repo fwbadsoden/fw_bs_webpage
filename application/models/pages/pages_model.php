@@ -37,10 +37,13 @@ class Pages_model extends CI_Model {
         
         foreach($query->result() as $row)
         {
-            $templates[$i]['templateID']    = $row->templateID;
-            $templates[$i]['templateName']  = $row->name;
-            $templates[$i]['columnCount']   = $row->column_count;
-            $templates[$i]['columnCount']   = $row->online;
+            $templates[$i]['templateID']        = $row->templateID;
+            $templates[$i]['templateName']      = $row->name;
+            $templates[$i]['special_page']      = $row->special_page;
+            $templates[$i]['special_function']  = $row->special_function;
+            $templates[$i]['columnCount']       = $row->column_count;
+            $templates[$i]['sidebar']           = $row->sidebar;
+            $templates[$i]['online']            = $row->online;
             $i++;
         }
                
@@ -61,6 +64,8 @@ class Pages_model extends CI_Model {
             $pages[$i]['pageTitle']         = $row->title;
             $pages[$i]['special_page']      = $row->special_page;
             $pages[$i]['special_function']  = $row->special_function;
+            $pages[$i]['column_count']      = $row->column_count;
+            $pages[$i]['sidebar']           = $row->sidebar;;
             $pages[$i]['stageID']           = $row->stageID;
             $pages[$i]['online']            = $row->online;
             $pages[$i]['row_color']         = $this->color = cp_get_color($this->color);
@@ -81,6 +86,8 @@ class Pages_model extends CI_Model {
         $page['pageTitle']          = $row->title;
         $page['special_page']       = $row->special_page;
         $page['special_function']   = $row->special_function;
+        $page['column_count']       = $row->column_count;
+        $page['sidebar']            = $row->sidebar;
         $page['templateID']         = $row->templateID;
         $page['stageID']            = $row->stageID;
         $page['is_deletable']       = $this->is_page_deletable($id);
@@ -123,6 +130,7 @@ class Pages_model extends CI_Model {
                 $content['stage']            = $this->get_stage_images($row->stageID); 
                 $content['special_page']     = $row->special_page;
                 $content['special_function'] = $row->special_function; 
+                $content['sidebar']          = $row->sidebar; 
             }
             if($row->special_page == 0) {
                 if($row->rowID != $rowID) {
@@ -162,6 +170,7 @@ class Pages_model extends CI_Model {
         $content['pageTitle']   = $row->title;
         $content['stageID']     = $row->stageID;
         $content['columnCount'] = $row->column_count;
+        $content['sidebar']     = $row->sidebar;
         
         $query = $this->db->get_where('page_template', array('templateID' => $row->templateID));
         $row   = $query->row();
@@ -450,6 +459,7 @@ class Pages_model extends CI_Model {
             'special_page'      => $row->special_page,
             'special_function'  => $row->special_function,
             'column_count'      => $row->column_count,
+            'sidebar'           => $row->sidebar,
             'online'            => 0,
             'templateID'        => $this->input->post('templateid')
         );
