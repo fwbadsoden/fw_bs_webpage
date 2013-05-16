@@ -41,8 +41,8 @@ class News_model extends CI_Model {
 		foreach($query->result() as $row)
 		{	  			
 			$arr_news_list[$i]['newsID'] 		= $row->newsID;
-			$arr_news_list[$i]['catID'] 		= $row->catID;
-			$arr_news_list[$i]['editor']		= $row->userID;
+			$arr_news_list[$i]['categoryID'] 	= $row->categoryID;
+			$arr_news_list[$i]['created_by']	= $row->created_by;
 			$arr_news_list[$i]['datetime'] 		= cp_get_ger_datetime($row->datetime);
 			$arr_news_list[$i]['title'] 		= $row->title;
 			$arr_news_list[$i]['valid_from'] 	= cp_get_ger_datetime($row->valid_from);
@@ -60,10 +60,14 @@ class News_model extends CI_Model {
 	{
 		$query = $this->db->get('news_category');
 		$cat = array();
+        $i = 0;
 		
 		foreach($query->result() as $row)
 		{
-			$cat[$row->categoryID]['title'] = $row->title;
+			$cat[$i]['categoryID'] = $row->categoryID;
+			$cat[$i]['title']      = $row->title;
+			$cat[$i]['row_color']  = $this->color = cp_get_color($this->color);
+            $i++;
 		}
 		
 		return $cat;

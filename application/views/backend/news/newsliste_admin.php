@@ -20,7 +20,7 @@ $(document).ready(function() {
             // disable it by setting the property sorter to false 
             sorter: false 
             }, 
-        8:  { 
+        7:  { 
             // disable it by setting the property sorter to false 
             sorter: false 
             }  
@@ -31,35 +31,6 @@ $(document).ready(function() {
  	offset: [5, 2]
  	}).dynamic({ bottom: { direction: 'down', bounce: true } });;
  
- $('a.button_mini').click(function(e) {
- 	 	
-var ID = $(this).attr("id");
-var targetUrl = ' ';
-
-switch(ID) {
-<? foreach($news as $item) { ?>	
-	case "confirm_link_<?=$item["newsID"]?>":	targetUrl = "<?=base_url('admin/content/news/delete/'.$item['newsID'])?>"; 
-													var $dialog = $('<div></div>')
-													 .html('Wollen Sie die News wirklich löschen?')
-													  .dialog({
-													   autoOpen: false,
-													   title: 'News löschen',
-													   width: '600px',
-													   modal: true,
-													   buttons: {
-													    "Löschen": function() {
-													             window.location.href = targetUrl;
-													    },
-													    "Zurück": function() {
-													     $( this ).dialog( "close" );
-													    }
-													   }
-													  });
-													$dialog.dialog('open'); return false; 
-													break;
-<? } ?>
-}
- });
 });
 </script> 
 
@@ -80,7 +51,6 @@ switch(ID) {
 		<th class="headline_edit2">Autor</th>
 		<th class="headline_datetime">Gültig ab</th>
 		<th class="headline_datetime">Gültig bis</th>
-		<th class="headline_status">Status</th>
 		<th colspan="3" class="headline_edit">Edit</th>
 	</tr>
 </thead>
@@ -96,13 +66,6 @@ switch(ID) {
 	<td><?=$item['editor']?></td>
 	<td><?=$item['valid_from']?></td>
 	<td><?=$item['valid_to']?></td>
-	<td style='text-align:center'>
-	<?  if($item['online']==1) { ?>
-		<span style='color: green;'>online</span>
-	<?  } else { ?>
-		<span style='color: red;'>offline</span>
-	<?  } ?>
-	</td>
 <?	if($item['online']==1) {	?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/news/status/'.$item['newsID'].'/1/'.$pagination_start)?>" class="button_mini" title="News offline schalten"><span class='button_online_small'></span></a></span></td>
 <?	} else { ?>

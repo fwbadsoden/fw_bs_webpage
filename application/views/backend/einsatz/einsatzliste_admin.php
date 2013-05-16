@@ -29,7 +29,7 @@ $(document).ready(function() {
             // disable it by setting the property sorter to false 
             sorter: false 
             },  
-        8:  { 
+        7:  { 
             // disable it by setting the property sorter to false 
             sorter: false 
             }  
@@ -99,7 +99,6 @@ switch(ID) {
 		<th class="headline_date">Ende</th>
 		<th class="headline_titel">Referenz</th>
 		<th class="headline_id">Bilder</th>
-		<th class="headline_status">Status</th>
 		<th colspan="4" class="headline_edit">Edit</th>
 	</tr>
 </thead>
@@ -113,13 +112,6 @@ switch(ID) {
 	<td><?=$item['ende']?></td>
 	<td><?=$item['einsatzName']?></td>
 	<td><?=str_pad($item['imgCount'], 5 ,'0', STR_PAD_LEFT);?></td>
-	<td style='text-align:center'>
-	<?  if($item['online']==1) { ?>
-		<span style='color: green;'>online</span>
-	<?  } else { ?>
-		<span style='color: red;'>offline</span>
-	<?  } ?>
-	</td>
 <?	if($item['online']==1) {	?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/einsatz/status/'.$item['einsatzID'].'/1/'.$item['year'])?>" class="button_mini" title="Einsatz offline schalten"><span class='button_online_small'></span></a></span></td>
 <?	} else { ?>

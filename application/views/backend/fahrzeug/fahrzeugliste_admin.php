@@ -12,7 +12,7 @@ $(document).ready(function() {
  $("#fahrzeug_table").tablesorter({
  	// pass the headers argument and assing a object 
     headers: { 
-        3:  { 
+        2:  { 
             // disable it by setting the property sorter to false 
             sorter: false 
             } 
@@ -68,7 +68,6 @@ switch(ID) {
 	<tr>
 		<th class="headline_funkrufname">Funkrufname</th>
 		<th class="headline_titel">Fahrzeugname</th>
-		<th class="headline_status">Status</th>
 		<th colspan="4" class="headline_edit">Edit</th>
 	</tr>
 </thead>
@@ -77,13 +76,6 @@ switch(ID) {
 <tr bgcolor="<?=$item['row_color']?>">
 	<td><?=$item['fahrzeugRufnamePrefix']." ".$item['fahrzeugRufname'];?></td>
 	<td><?=$item['fahrzeugName']?></td>
-	<td style='text-align:center'>
-	<?  if($item['online']==1) { ?>
-		<span style='color: green;'>online</span>
-	<?  } else { ?>
-		<span style='color: red;'>offline</span>
-	<?  } ?>
-	</td>
 <?	if($item['online']==1) {	?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/fahrzeug/status/'.$item['fahrzeugID'].'/1')?>" class="button_mini" title="Fahrzeug offline schalten"><span class='button_online_small'></span></a></span></td>
 <?	} else { ?>

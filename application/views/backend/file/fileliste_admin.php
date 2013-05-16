@@ -21,7 +21,6 @@
 	<tr>
 		<th class="headline_id">ID</th>
 		<th class="headline_titel">Name</th>
-		<th class="headline_status">Status</th>
 		<th colspan="3" class="headline_edit">Edit</th>
 	</tr>
 </thead>
@@ -30,13 +29,6 @@
 <tr bgcolor="<?=$item['row_color']?>">
 	<td><?=str_pad($i, 5 ,'0', STR_PAD_LEFT);?></td>
 	<td><?=$item['pageName']?></td>
-	<td style='text-align:center'>
-	<?  if($item['online']==1) { ?>
-		<span style='color: green;'>online</span>
-	<?  } else { ?>
-		<span style='color: red;'>offline</span>
-	<?  } ?>
-	</td>
 <?	if($item['online']==1) {	?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/page/status/'.$item['pageID'].'/1')?>" class="button_mini" title="Seite offline schalten"><span class='button_online_small'></span></a></span></td>
 <?	} else { ?>

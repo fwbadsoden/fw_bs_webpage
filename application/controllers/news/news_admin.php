@@ -59,5 +59,23 @@ class News_Admin extends CI_Controller {
 		$this->load->view('backend/news/newsliste_admin', $data);
 		$this->load->view('backend/templates/admin/footer');	
 	}
+    
+    public function kategorie_liste()
+    {
+		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
+        
+        $this->session->set_userdata('kategorieliste_redirect', current_url());
+        
+        $header['title']        = 'News Kategorien';      
+		$menue['menue']			= $this->admin->get_menue();
+		$menue['submenue']		= $this->admin->get_submenue();
+		$data['categories']		= $this->news->get_news_categories();  
+        
+        $this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/menue', $menue);	
+		$this->load->view('backend/templates/admin/submenue', $menue);	
+		$this->load->view('backend/news/kategorieliste_admin', $data);
+		$this->load->view('backend/templates/admin/footer');
+    }
 }
 ?>

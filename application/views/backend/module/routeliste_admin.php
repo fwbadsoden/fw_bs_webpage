@@ -11,7 +11,7 @@ $(document).ready(function() {
  $("#route_table").tablesorter({
  	// pass the headers argument and assing a object 
     headers: { 
-        5:  { 
+        4:  { 
             // disable it by setting the property sorter to false 
             sorter: false 
             } 
@@ -74,7 +74,6 @@ switch(ID) {
 		<th class="headline_name">Modulname</th>
 		<th class="headline_titel">Route</th>
 		<th class="headline_titel">Link</th>
-		<th class="headline_status">Status</th>
 		<th colspan="2" class="headline_edit">Edit</th>
 	</tr>
 </thead>
@@ -85,13 +84,6 @@ switch(ID) {
 	<td><?=$item['moduleName']?></td>
 	<td><?=$item['route']?></td>
 	<td><?=$item['internalLink']?></td>
-	<td style='text-align:center'>
-	<?  if($item['active']==1) { ?>
-		<span style='color: green;'>aktiv</span>
-	<?  } else { ?>
-		<span style='color: red;'>inaktiv</span>
-	<?  } ?>
-	</td>
 <?	if($item['active']==1) {	?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/system/route/status/'.$item['routeID'].'/1')?>" class="button_mini" title="Route offline schalten"><span class='button_online_small'></span></a></span></td>
 <?	} else { ?>

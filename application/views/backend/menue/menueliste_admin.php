@@ -126,7 +126,6 @@ switch(ID) {
 	<tr>
 		<th class="headline_text">Men&uuml;punkt</th>
 		<th colspan="2" class="headline_pos">Position</th>
-		<th class="headline_status">Status</th>
 		<th colspan="3" class="headline_edit">Edit</th>
 	</tr>
 </thead>
@@ -144,15 +143,6 @@ switch(ID) {
 	<? } else { ?>			
 		<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/order/down/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach unten schieben"><span class='button_down_small'></span></a></span></td>
 	<? } ?>
-	<td style='text-align:center'>
-	<strong>
-	<?  if($item1['online']==1) { ?>
-		<span style='color: green;'>online</span>
-	<?  } else { ?>
-		<span style='color: red;'>offline</span>
-	<?  } ?>
-    </strong>
-	</td>
 <?	if($item1['online']==1) {	?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/0')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></span></td>
 <?	} else { ?>
@@ -162,6 +152,7 @@ switch(ID) {
 	<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item1['menueID']?>" href="<?=base_url('admin/menue/delete/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt löschen"><span class='button_delete_small'></span></a></span></td>
 </tr> 
 <!-- Unterpunkte -->
+    <tr><td></td></tr>
 	<tr>
 		<td colspan="7" class="unterpunkt_bg" id="unterpunkt_<?=$item1['menueID']?>">
 			<table width="100%" cellpadding="0" cellspacing="1">
@@ -179,13 +170,6 @@ switch(ID) {
 					<? } else { ?>			
 						<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/order/down/'.$item2['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach unten schieben"><span class='button_down_small'></span></a></span></td>
 					<? } ?>
-					<td style='text-align:center'>
-					<?  if($item2['online']==1) { ?>
-						<span style='color: green;'>online</span>
-					<?  } else { ?>
-						<span style='color: red;'>offline</span>
-					<?  } ?>
-				</td>
 			<?	if($item2['online']==1) {	?>
 				<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item2['menueID'].'/0')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></span></td>
 			<?	} else { ?>
@@ -201,6 +185,7 @@ switch(ID) {
 		</td>
 	</tr>
     <tr><td></td></tr>
+    <tr><td></td></tr>
 <? }  ?>
 </tbody>
 </table>
@@ -213,7 +198,6 @@ switch(ID) {
 	<tr>
 		<th class="headline_text">Men&uuml;punkt</th>
 		<th colspan="2" class="headline_pos">Position</th>
-		<th class="headline_status">Status</th>
 		<th colspan="3" class="headline_edit">Edit</th>
 	</tr>
 </thead>
@@ -231,13 +215,6 @@ switch(ID) {
 	<? } else { ?>			
 		<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/order/down/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach unten schieben"><span class='button_down_small'></span></a></span></td>
 	<? } ?>
-	<td style='text-align:center'>
-	<?  if($item1['online']==1) { ?>
-		<span style='color: green;'>online</span>
-	<?  } else { ?>
-		<span style='color: red;'>offline</span>
-	<?  } ?>
-	</td>
 <?	if($item1['online']==1) {	?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/1')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></span></td>
 <?	} else { ?>
@@ -259,7 +236,6 @@ switch(ID) {
 	<tr>
 		<th class="headline_text">Men&uuml;punkt</th>
 		<th colspan="2" class="headline_pos">Position</th>
-		<th class="headline_status">Status</th>
 		<th colspan="3" class="headline_edit">Edit</th>
 	</tr>
 </thead>
@@ -277,13 +253,6 @@ switch(ID) {
 	<? } else { ?>			
 		<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/order/down/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach unten schieben"><span class='button_down_small'></span></a></span></td>
 	<? } ?>
-	<td style='text-align:center'>
-	<?  if($item1['online']==1) { ?>
-		<span style='color: green;'>online</span>
-	<?  } else { ?>
-		<span style='color: red;'>offline</span>
-	<?  } ?>
-	</td>
 <?	if($item1['online']==1) {	?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/1')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></span></td>
 <?	} else { ?>
