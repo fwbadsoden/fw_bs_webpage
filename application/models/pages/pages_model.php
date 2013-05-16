@@ -115,7 +115,7 @@ class Pages_model extends CI_Model {
     public function get_page_content_frontend($id)
     {
         $content = array();
-        $query = $this->db->get_where('v_page_content', array('pageID' => $id));
+        $query = $this->db->get_where('v_page', array('pageID' => $id));
         if($query->num_rows() == 0) return '404';
         $row_counter = 0;
         $box_counter = 0;

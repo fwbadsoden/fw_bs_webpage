@@ -75,6 +75,16 @@ class User_Model extends CI_Model {
 		}
 		return $this->user;
 	}
+    
+    public function get_user_fullname($id)
+    {
+        $this->db->select('nachname, vorname');
+        $query = $this->db->get_where($this->db_user_table, array('userID' => $id));
+		$row = $query->row();
+	
+        $name = $row->vorname.' '.$row->nachname;
+        return $name;
+    }
 	
 	public function get_user($id)
 	{

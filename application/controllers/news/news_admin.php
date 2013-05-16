@@ -35,9 +35,11 @@ class News_Admin extends CI_Controller {
 		$menue['menue']				= $this->admin->get_menue();
 		$menue['submenue']			= $this->admin->get_submenue();
 		$data['news'] 				= $this->news->get_news_list();
+        $data['news_count']         = $this->news->get_news_count();
+        $data['news_categories']    = $this->news->get_news_categories();
 		
 		// Pagination Config
-		$this->config->set_item('total_rows', $this->news->news_count());
+		$this->config->set_item('total_rows', $data['news_count']);
 		if(is_int($this->uri->segment($this->uri->total_segments()))) 
 		{
 			$uri = current_url();

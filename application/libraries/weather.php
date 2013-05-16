@@ -16,7 +16,7 @@ class Weather {
         $location = $this->MTK;
         
         $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'http://weather.yahooapis.com/forecastrss?w='.$location.'&u=f');
+        curl_setopt($ch, CURLOPT_URL, 'http://weather.yahooapis.com/forecastrss?w='.$location.'&u=c');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         $weather_rss = curl_exec($ch);
         curl_close($ch);
@@ -31,6 +31,7 @@ class Weather {
         $weather_contents = $weather->channel->item->description;
         preg_match_all('/<img[^>]+>/i',$weather_contents, $img);
         $return['weather_img'] = $img[0][0];
+        $return['weather_img_raw'] = $weather_contents;
      
         /* Get clean parts */
         $return['weather_unit'] = $weather->channel->xpath('yweather:units');

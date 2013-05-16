@@ -24,6 +24,7 @@ class Pages extends CI_Controller {
 		$this->load->model('pages/pages_model', 'm_pages');
 		$this->load->model('menue/menue_model', 'm_menue');
         $this->load->model('fahrzeug/fahrzeug_model', 'm_fahrzeug');   
+        $this->load->library('weather');
 		$this->load->helper('load_controller');
 	}
     
@@ -45,6 +46,7 @@ class Pages extends CI_Controller {
     private function homepage()
     {
         $c_einsatz = load_controller('einsatz/einsatz');
+        $c_news    = load_controller('news/news');
         
         $this->site_header();    
         $this->site_stage();        
@@ -56,7 +58,9 @@ class Pages extends CI_Controller {
         
         $this->site_mainContent_header();
         
-        $this->load->view('frontend/templates/temp');
+        $c_news->homepage_teaser_1col(0);
+        $c_news->homepage_teaser_1col(1);
+        $this->site_hr_clear();
         
         $c_einsatz->overview_2col(EINSATZ_STARTPAGE_LIMIT);
         
@@ -72,12 +76,14 @@ class Pages extends CI_Controller {
     private function site_sidebar_homepage()
     { 
         $c_termin = load_controller('termin/termin');
+        
+        $weather_data['weather']      = $this->weather->get_weather();
         $statistik['fahrzeug_anzahl'] = $this->m_fahrzeug->get_fahrzeug_anzahl();
         
         $this->load->view('frontend/templates/sidebar_header');  
         $this->load->view('frontend/templates/sidebar_report', $statistik);     
         $c_termin->overview_1col(TERMIN_STARTPAGE_LIMIT);
-        $this->load->view('frontend/templates/weather');
+        $this->load->view('frontend/templates/weather', $weather_data);
         $this->load->view('frontend/templates/sidebar_footer');   
     }
     
