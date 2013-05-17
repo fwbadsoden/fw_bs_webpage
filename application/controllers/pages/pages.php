@@ -67,9 +67,7 @@ class Pages extends CI_Controller {
         $this->site_mainContent_footer();
         
         $this->site_sidebar_homepage();
-        
-        
-        
+    
         $this->site_footer();
     }
     
