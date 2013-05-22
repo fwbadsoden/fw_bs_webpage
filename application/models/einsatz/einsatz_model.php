@@ -186,7 +186,7 @@ class Einsatz_Model extends CI_Model {
 	{ 
 		$einsatz = array(
 			'name' 	=> $this->input->post('einsatzname'),
-			'datum'			=> cp_get_eng_date($this->input->post('einsatzdatum')),
+			'datum'			=> $this->input->post('einsatzdatum'),
 			'beginn'		=> $this->input->post('einsatzbeginn'),
 			'ende'			=> $this->input->post('einsatzende'),
 			'einsatz_nr'    => $this->input->post('einsatznr'),
@@ -201,7 +201,7 @@ class Einsatz_Model extends CI_Model {
 		// ++++ TRANSAKTION START ++++ //
 		$this->db->trans_start();	
 		
-		if($row->lfd_nr != null)		$einsatz['lfdNr'] 	= $row->lfd_nr;
+		if($row->lfd_nr != null)		$einsatz['lfd_nr'] 	= $row->lfd_nr;
 		else								   $einsatz['lfd_nr']   = 1;
 		$this->db->insert('einsatz', $einsatz);
 		$einsatzID = $this->db->insert_id();		
@@ -232,7 +232,7 @@ class Einsatz_Model extends CI_Model {
 	{
 		$einsatz = array(
 			'name' 	         => $this->input->post('einsatzname'),
-			'datum'			 => cp_get_eng_date($this->input->post('einsatzdatum')),
+			'datum'			 => $this->input->post('einsatzdatum'),
 			'beginn'		 => $this->input->post('einsatzbeginn'),
 			'ende'			 => $this->input->post('einsatzende'),
 			'einsatz_nr'     => $this->input->post('einsatznr')

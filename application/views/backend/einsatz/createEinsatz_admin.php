@@ -179,7 +179,7 @@ $(function() {
                     </tr>
                     <tr>
                         <td><?=form_label('Anzahl Einsatzkräfte:', $einsatzAnzahl['id']); ?></td>
-                        <td><?=form_input($einsatzAnzahl); ?><div id='slider'></div></td>
+                        <td><?=form_input($einsatzAnzahl); ?></td>
                     </tr>
                     <tr>
                         <td><?=form_label('Einsatzlage:', $einsatzLage['id']); ?></td>

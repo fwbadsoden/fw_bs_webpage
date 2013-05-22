@@ -19,7 +19,7 @@
 		'class' => 'input_small',
 		'value' => $value
 	);
-	if(!$value = set_value('einsatzdatum')) $value = cp_get_ger_date($einsatz['datum']);
+	if(!$value = set_value('einsatzdatum')) $value = $einsatz['datum'];
 	$einsatzDatum = array(
 		'name'	=> 'einsatzdatum',
 		'id'	=> 'einsatzdatum',
@@ -149,6 +149,10 @@ $(function() {
                     <td><?=form_label('Datum, Beginn, Ende:', $einsatzDatum['id']); ?></td>
                     <td><?=form_input($einsatzDatum); ?>&nbsp;<?=form_input($einsatzBeginn); ?>&nbsp;<?=form_input($einsatzEnde); ?></td>
                 </tr>
+                    <tr>
+                        <td><?=form_label('Anzahl Einsatzkräfte:', $einsatzAnzahl['id']); ?></td>
+                        <td><?=form_input($einsatzAnzahl); ?></td>
+                    </tr>
 				<tr>
 					<td><?=form_label('Einsatzlage:', $einsatzLage['id']); ?></td>
 					<td><?=form_textarea($einsatzLage); ?></td>

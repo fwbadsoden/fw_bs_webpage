@@ -113,9 +113,9 @@ if ( ! function_exists('cp_get_eng_datetime'))
 if ( ! function_exists('cp_get_eng_date'))
 {
 	function cp_get_eng_date($date)
-	{
+	{   
 		if($date != null)
-		{
+		{ 
 			$var=explode(".", $date); 
 			$date=$var[2]."-".$var[1]."-".$var[0];
 			return $date;
