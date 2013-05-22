@@ -40,6 +40,6 @@ WS_FTP.LOG
 ########################
 */logs/log-*.php
 */logs/!index.html
-*/cache/.htaccess
-*/cache/index.html
+#*/cache/.htaccess
+#*/cache/index.html
 index.php
