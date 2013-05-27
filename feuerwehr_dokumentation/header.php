@@ -31,7 +31,7 @@
 <table cellpadding="0" cellspacing="0" border="0" style="width:100%">
 <tr>
 <td><h1>feuerwehr-bs.de Entwicklerhandbuch Version 0.1</h1></td>
-<td id="breadcrumb_right"><a href="/toc.php">Inhaltsverzeichnis</a></td>
+<td id="breadcrumb_right"></td>
 </tr>
 </table>
 </div>

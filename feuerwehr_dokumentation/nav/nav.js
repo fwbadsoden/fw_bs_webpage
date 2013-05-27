@@ -19,8 +19,8 @@ function create_menu(basepath)
 
 		'<h3>Installation</h3>' +
 		'<ul>' +
-			'<li><a href="'+base+'index.php?op=install_php">Installation (PHP Code)</a></li>' +
-			'<li><a href="'+base+'index.php?op=install_db">Installation (Datenbank)</a></li>' +
+			'<li><a href="'+base+'index.php?op=php">Installation (PHP Code)</a></li>' +
+			'<li><a href="'+base+'index.php?op=db">Installation (Datenbank)</a></li>' +
 			'<li><a href="'+base+'index.php?op=konfiguration">Konfiguration</a></li>' +
 		'</ul>' +
 		
@@ -34,6 +34,7 @@ function create_menu(basepath)
 		'<li><a href="'+base+'index.php?op=image_lib">Image Manipulation Class</a></li>' +
 		'<li><a href="'+base+'index.php?op=image_moo">Image Moo Class</a></li>' +
 		'<li><a href="'+base+'index.php?op=routing">URI Routing</a></li>' +
+		'<li><a href="'+base+'index.php?op=weather">Weather Class</a></li>' +
 		'<li><a href="'+base+'index.php?op=whence">Whence Class</a></li>' +
 		'</ul>' +
 

@@ -63,21 +63,21 @@ class Weather {
         $this->condition_code_mapping['25']['img']                = '';
         $this->condition_code_mapping['26']['description_DE']     = 'wolkig';
         $this->condition_code_mapping['26']['img']                = 'weather_cloudly.png';
-        $this->condition_code_mapping['27']['description_DE']     = '&uuml;berwiegen wolkig (nachts)';
+        $this->condition_code_mapping['27']['description_DE']     = '&uuml;berwiegen wolkig';
         $this->condition_code_mapping['27']['img']                = 'weather_cloudly.png';
-        $this->condition_code_mapping['28']['description_DE']     = '&uuml;berwiegen wolkig (tags&uuml;ber)';
+        $this->condition_code_mapping['28']['description_DE']     = '&uuml;berwiegen wolkig';
         $this->condition_code_mapping['28']['img']                = 'weather_cloudly.png';
-        $this->condition_code_mapping['29']['description_DE']     = 'teilweise wolkig (nachts)';
+        $this->condition_code_mapping['29']['description_DE']     = 'teilweise wolkig';
         $this->condition_code_mapping['29']['img']                = 'weather_cloudly.png';
-        $this->condition_code_mapping['30']['description_DE']     = 'teilweise wolkig (tags&uuml;ber)';
+        $this->condition_code_mapping['30']['description_DE']     = 'teilweise wolkig';
         $this->condition_code_mapping['30']['img']                = 'weather_cloudly.png';
         $this->condition_code_mapping['31']['description_DE']     = 'klar (nachts)';
         $this->condition_code_mapping['31']['img']                = '';
         $this->condition_code_mapping['32']['description_DE']     = 'sonnig';
         $this->condition_code_mapping['32']['img']                = '';
-        $this->condition_code_mapping['33']['description_DE']     = 'heiter bis wolkig (nachts)';
+        $this->condition_code_mapping['33']['description_DE']     = 'heiter bis wolkig';
         $this->condition_code_mapping['33']['img']                = 'weather_cloudly.png';
-        $this->condition_code_mapping['34']['description_DE']     = 'heiter bis wolkig (tags&uuml;ber)';
+        $this->condition_code_mapping['34']['description_DE']     = 'heiter bis wolkig';
         $this->condition_code_mapping['34']['img']                = 'weather_cloudly.png';
         $this->condition_code_mapping['35']['description_DE']     = 'Hagel und Regen';
         $this->condition_code_mapping['35']['img']                = '';
@@ -127,9 +127,19 @@ class Weather {
         str_replace('"/>', '', $image_yahoo);    
      
         /* Get clean parts */
-        $return['weather_unit']             = $weather->channel->xpath('yweather:units');
+        $weather_unit                       = $weather->channel->xpath('yweather:units');
         $weather_cond                       = $weather->channel->item->xpath('yweather:condition');
-        $return['weather_wind']             = $weather->channel->xpath('yweather:wind');
+        $weather_wind                       = $weather->channel->xpath('yweather:wind');
+        
+        $weather_unit_atts_object           = $weather_unit[0]->attributes();
+        $weather_unit_atts_array            = (array) $weather_unit_atts_object;
+        $weather_unit_atts_array            = $weather_unit_atts_array['@attributes'];
+        $return['weather_unit']             = $weather_unit_atts_array;
+        
+        $weather_wind_atts_object           = $weather_wind[0]->attributes();
+        $weather_wind_atts_array            = (array) $weather_wind_atts_object;
+        $weather_wind_atts_array            = $weather_wind_atts_array['@attributes'];
+        $return['weather_wind']             = $weather_wind_atts_array;
         
         $weather_cond_atts_object           = $weather_cond[0]->attributes();
         $weather_cond_atts_array            = (array) $weather_cond_atts_object;
