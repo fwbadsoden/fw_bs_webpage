@@ -85,7 +85,9 @@
 	<div class="kasten_oben">
 		<img src="<?=base_url("/images/admin/layout/login_login_oben.gif")?>">
 	</div>
-	<div class="kasten_mitte">						
+	<div class="kasten_mitte">			
+    <p style="color:#FF0101;"><strong>ACHTUNG: <br/><br /> Es kann sein, dass der Login nicht möglich ist, da ich derzeit das komplette Userverwaltungssystem neu aufsetze.</strong></p>
+    <br />			
 		<?=form_open(base_url("/admin/check_login"), $form);?>					
 		<p class="login_text"><?=lang('view_admin_login_username')?></p>
 		<p><?=form_input($login)?></p>		
