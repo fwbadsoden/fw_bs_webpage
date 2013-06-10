@@ -198,7 +198,7 @@ class Admin extends CI_Controller {
 	 */
 	public function check_login()
 	{ 
-		$login = $this->user->login();
+		$login = $this->user->login($this->input->post('username'), $this->input->post('password'));
 
 		if($login['authorize'])
 		{ 

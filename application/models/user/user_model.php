@@ -91,74 +91,76 @@ class User_Model extends Ion_auth_model {
 			'email'			=> $row->email
 		);
 		return $userdata;
-	}
+	}	
 	
-	public function create_user()
-	{
-		$this->user['userdata'] = array(
-			'username' 		=> $this->input->post('username'),
-			'email'			=> strtolower($this->input->post('email')),
-			'vorname'		=> $this->input->post('vorname'),
-			'nachname'		=> $this->input->post('nachname'),
-			'creation_date' => date('Y-m-d', time())
-		);
-		
-		$this->db->insert($this->db_user_table, $this->user['userdata']);
-		$this->user['userdata']['userID'] = $this->db->insert_id();
-		
-		$CI =& get_instance();
-		$CI->load->model('cpauth/cpauth_model', 'cpauth');
-		$this->user['authdata']['initial_pw'] = $CI->cpauth->set_initial_password($this->user['userdata']['userID']);
-		
-		return $this->user;
-	}
-	
-	public function update_user($id)
-	{
-		$user = array(
-			'username'		=> $this->input->post('username'),
-			'email'			=> strtolower($this->input->post('email')),
-			'vorname'		=> $this->input->post('vorname'),
-			'nachname'		=> $this->input->post('nachname')
-		);
-		
-		$this->db->where('userID', $id);
-		$this->db->update($this->db_user_table, $user);
-	}
-	
-	public function delete_user($id)
-	{
-		$this->db->trans_start();
-		$tables = array($this->db_user_table, $this->db_auth_table, $this->db_access_keys_table);
-		$this->db->where('userID', $id);
-		$this->db->delete($tables);	
-		if($this->delete_tables_admin == 1)	
-		{
-			$tables = array('admin_quicklink', 'admin_log');
-			$this->db->where('userID', $id);
-			$this->db->delete($tables);			
-		}
-		$this->db->trans_complete();
-	}
-	
-	public function switch_online_state($userID, $active)
-	{
-		$this->db->update($this->db_user_table, array('active' => $active), 'userID = '.$userID);
-	}
-	
-	public function is_attr_unique($area, $attr, $value, $id)
-	{
-		$this->init($area);
-		if($id > 0) $this->db->where('userID !=', $id);
-		$this->db->where($attr, strtolower($value));
-		$query = $this->db->get($this->db_user_table);
-		if($query->num_rows() == 0) return '1'; else return '0';	
-	}
-	
-	public function get_user_table()
-	{
-		return $this->db_user_table;	
-	}
+/**
+ * 	public function create_user()
+ * 	{
+ * 		$this->user['userdata'] = array(
+ * 			'username' 		=> $this->input->post('username'),
+ * 			'email'			=> strtolower($this->input->post('email')),
+ * 			'vorname'		=> $this->input->post('vorname'),
+ * 			'nachname'		=> $this->input->post('nachname'),
+ * 			'creation_date' => date('Y-m-d', time())
+ * 		);
+ * 		
+ * 		$this->db->insert($this->db_user_table, $this->user['userdata']);
+ * 		$this->user['userdata']['userID'] = $this->db->insert_id();
+ * 		
+ * 		$CI =& get_instance();
+ * 		$CI->load->model('cpauth/cpauth_model', 'cpauth');
+ * 		$this->user['authdata']['initial_pw'] = $CI->cpauth->set_initial_password($this->user['userdata']['userID']);
+ * 		
+ * 		return $this->user;
+ * 	}
+ * 	
+ * 	public function update_user($id)
+ * 	{
+ * 		$user = array(
+ * 			'username'		=> $this->input->post('username'),
+ * 			'email'			=> strtolower($this->input->post('email')),
+ * 			'vorname'		=> $this->input->post('vorname'),
+ * 			'nachname'		=> $this->input->post('nachname')
+ * 		);
+ * 		
+ * 		$this->db->where('userID', $id);
+ * 		$this->db->update($this->db_user_table, $user);
+ * 	}
+ * 	
+ * 	public function delete_user($id)
+ * 	{
+ * 		$this->db->trans_start();
+ * 		$tables = array($this->db_user_table, $this->db_auth_table, $this->db_access_keys_table);
+ * 		$this->db->where('userID', $id);
+ * 		$this->db->delete($tables);	
+ * 		if($this->delete_tables_admin == 1)	
+ * 		{
+ * 			$tables = array('admin_quicklink', 'admin_log');
+ * 			$this->db->where('userID', $id);
+ * 			$this->db->delete($tables);			
+ * 		}
+ * 		$this->db->trans_complete();
+ * 	}
+ * 	
+ * 	public function switch_online_state($userID, $active)
+ * 	{
+ * 		$this->db->update($this->db_user_table, array('active' => $active), 'userID = '.$userID);
+ * 	}
+ * 	
+ * 	public function is_attr_unique($area, $attr, $value, $id)
+ * 	{
+ * 		$this->init($area);
+ * 		if($id > 0) $this->db->where('userID !=', $id);
+ * 		$this->db->where($attr, strtolower($value));
+ * 		$query = $this->db->get($this->db_user_table);
+ * 		if($query->num_rows() == 0) return '1'; else return '0';	
+ * 	}
+ * 	
+ * 	public function get_user_table()
+ * 	{
+ * 		return $this->db_user_table;	
+ * 	}
+ */
 }
 
 ?>
