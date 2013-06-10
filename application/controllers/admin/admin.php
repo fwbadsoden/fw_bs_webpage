@@ -23,7 +23,7 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->model('admin/admin_model', 'admin');
 		$this->load->model('user/user_model', 'user');
-        $this->load->library('Ion_auth');
+        $this->load->library('flexi_auth', '', 'auth');
 		
 		$this->session->set_flashdata('redirect', current_url()); 
 	}
@@ -42,7 +42,7 @@ class Admin extends CI_Controller {
 	 **/
 	public function index()
 	{				
-		if($this->ion_auth->logged_in()) $this->dashboard();
+		if($this->auth->is_admin()) $this->dashboard();
 		else $this->login();
 	}
 	
@@ -54,7 +54,7 @@ class Admin extends CI_Controller {
 	 */
 	public function mContent()
 	{
-		if(!$this->user->is_logged_in()) redirect('admin', 'refresh');
+		if(!$this->auth->is_admin()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
@@ -75,7 +75,7 @@ class Admin extends CI_Controller {
 	 */
 	public function mFiles()
 	{
-		if(!$this->user->is_logged_in()) redirect('admin', 'refresh');
+		if(!$this->auth->is_admin()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Dateien bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
@@ -96,7 +96,7 @@ class Admin extends CI_Controller {
 	 */
 	public function mMenue()
 	{
-		if(!$this->user->is_logged_in()) redirect('admin', 'refresh');
+		if(!$this->auth->is_admin()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
@@ -117,7 +117,7 @@ class Admin extends CI_Controller {
 	 */
 	public function mSystem()
 	{
-		if(!$this->user->is_logged_in()) redirect('admin', 'refresh');
+		if(!$this->auth->is_admin()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
@@ -138,7 +138,7 @@ class Admin extends CI_Controller {
 	 */
 	public function mUser()
 	{
-		if(!$this->user->is_logged_in()) redirect('admin', 'refresh');
+		if(!$this->auth->is_admin()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
@@ -200,14 +200,15 @@ class Admin extends CI_Controller {
 	{ 
 		$login = $this->user->login($this->input->post('username'), $this->input->post('password'));
 
-		if($login['authorize'])
+		if($login[0])
 		{ 
-			// eingelogged
-			$this->admin->insert_log(lang('log_admin_loginOK'));
-			$this->dashboard();
+		    if($login[1])
+                $this->change_pw_login('', $login['userID']);
+            else {
+                $this->admin->insert_log(lang('log_admin_loginOK'));
+	            $this->dashboard();
+            }
 		}
-		else if($login['initial'])
-			$this->change_pw_login('', $login['userID']);
 		else
 		{
 			// Login fehlgeschlagen
@@ -335,8 +336,7 @@ class Admin extends CI_Controller {
 	 */
 	public function logout()
 	{
-		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
-		$this->cpauth->logout('admin/admin');	
+		$this->auth->logout('admin/admin');	
 	}
 }
 ?>
