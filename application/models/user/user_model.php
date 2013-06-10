@@ -1,5 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
+include_once( APPPATH . 'models/auth/ion_auth_model.php' );
+
 /**
  * User Model
  *
@@ -11,13 +13,11 @@
  * @author		Habib Pleines
  */	
  
-class User_Model extends CI_Model {
-		
-	private $db_user_table				= '';
-	private $db_auth_table				= '';
-	private $db_access_keys_table   	= '';
-	private $delete_tables_admin		= '';
-	
+class User_Model extends Ion_auth_model {
+	private $db_user_table              = '';
+	private $db_group_table             = '';
+	private $db_user_group_table        = '';	
+	private $db_login_attempt_table     = '';
 	private $user		 				=	array();	//	user info in database	
 	private $color						= '';
 	
@@ -30,32 +30,24 @@ class User_Model extends CI_Model {
 	public function __construct() {
 		parent::__construct();
 		
-		$this->load->library('CP_auth');
+//		$this->load->library('CP_auth');
 		$this->load->helper('string');
 		$this->load->helper('html');
+        
+        $this->db_user_table           = $this->tables['users'];
+        $this->db_group_table          = $this->tables['groups'];
+        $this->db_user_group_table     = $this->tables['users_groups'];
+        $this->db_login_attempt_table  = $this->tables['login_attempts'];
 	}
-	
-	public function init($area)
-	{
-		switch ($area)
-		{
-			case 'backend':		$this->db_user_table 		= CPAUTH_DB_ADMIN_USER_TABLE;
-								$this->db_auth_table 		= CPAUTH_DB_ADMIN_AUTH_TABLE;
-								$this->db_access_keys_table = CPAUTH_DB_ADMIN_ACCESSKEYS_TABLE;
-								$this->delete_tables_admin	= 1;
-								break;
-			case 'frontend':	$this->db_user_table 		= CPAUTH_DB_USER_TABLE;
-								$this->db_auth_table 		= CPAUTH_DB_AUTH_TABLE;	
-								$this->db_access_keys_table = CPAUTH_DB_ACCESSKEYS_TABLE;
-								$this->delete_tables_admin	= 0;
-								break;
-		}
-	}
+    
+    public function is_logged_in() {
+        return $this->logged_in();
+    }
 	
 	public function get_user_list($id = 0)
 	{		
 		if($id != 0) $this->db->where('userID', $id);
-		$this->db->order_by('nachname', 'asc');
+		$this->db->order_by('last_name', 'asc');
 		$query = $this->db->get($this->db_user_table);
 		$i = 0;
 		
@@ -67,8 +59,8 @@ class User_Model extends CI_Model {
 			$this->user[$i]['userID'] 		= $row->userID;	
 			$this->user[$i]['username'] 	= $row->username;	
 			$this->user[$i]['email'] 		= $row->email;	
-			$this->user[$i]['vorname'] 		= $row->vorname;	
-			$this->user[$i]['nachname'] 	= $row->nachname;	
+			$this->user[$i]['vorname'] 		= $row->first_name;	
+			$this->user[$i]['nachname'] 	= $row->last_name;	
 			$this->user[$i]['active'] 		= $row->active;	
 			
 			$i++;
@@ -78,7 +70,7 @@ class User_Model extends CI_Model {
     
     public function get_user_fullname($id)
     {
-        $this->db->select('nachname, vorname');
+        $this->db->select('last_name, first_name');
         $query = $this->db->get_where($this->db_user_table, array('userID' => $id));
 		$row = $query->row();
 	
@@ -94,8 +86,8 @@ class User_Model extends CI_Model {
 		$userdata = array(
 			'userID'		=> $id,
 			'username'		=> $row->username,
-			'vorname'		=> $row->vorname,
-			'nachname'		=> $row->nachname,
+			'vorname'		=> $row->first_name,
+			'nachname'		=> $row->last_name,
 			'email'			=> $row->email
 		);
 		return $userdata;

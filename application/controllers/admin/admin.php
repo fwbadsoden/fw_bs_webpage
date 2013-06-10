@@ -21,12 +21,9 @@ class Admin extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->library('CP_auth');
 		$this->load->model('admin/admin_model', 'admin');
-		$this->load->model('cpauth/cpauth_model', 'cpauth');
-		
-		// CP Auth Konfiguration für Admin Controller
-		$this->cpauth->init('BACKEND');
+		$this->load->model('user/user_model', 'user');
+        $this->load->library('Ion_auth');
 		
 		$this->session->set_flashdata('redirect', current_url()); 
 	}
@@ -45,7 +42,7 @@ class Admin extends CI_Controller {
 	 **/
 	public function index()
 	{				
-		if($this->cpauth->is_logged_in()) $this->dashboard();
+		if($this->ion_auth->logged_in()) $this->dashboard();
 		else $this->login();
 	}
 	
@@ -57,7 +54,7 @@ class Admin extends CI_Controller {
 	 */
 	public function mContent()
 	{
-		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
+		if(!$this->user->is_logged_in()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
@@ -78,7 +75,7 @@ class Admin extends CI_Controller {
 	 */
 	public function mFiles()
 	{
-		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
+		if(!$this->user->is_logged_in()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Dateien bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
@@ -99,7 +96,7 @@ class Admin extends CI_Controller {
 	 */
 	public function mMenue()
 	{
-		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
+		if(!$this->user->is_logged_in()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
@@ -120,7 +117,7 @@ class Admin extends CI_Controller {
 	 */
 	public function mSystem()
 	{
-		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
+		if(!$this->user->is_logged_in()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
@@ -141,7 +138,7 @@ class Admin extends CI_Controller {
 	 */
 	public function mUser()
 	{
-		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
+		if(!$this->user->is_logged_in()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
@@ -201,7 +198,7 @@ class Admin extends CI_Controller {
 	 */
 	public function check_login()
 	{ 
-		$login = $this->cpauth->login();
+		$login = $this->user->login();
 
 		if($login['authorize'])
 		{ 
