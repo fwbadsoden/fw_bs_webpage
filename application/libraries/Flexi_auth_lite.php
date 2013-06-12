@@ -40,7 +40,7 @@ class Flexi_auth_lite
 	{
 		$this->CI =& get_instance();
 		
-		$this->CI->load->model('flexi_auth_lite_model');
+		$this->CI->load->model('auth/flexi_auth_lite_model', 'flexi_auth_lite_model');
 		
 		###++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++###
 		// CHECK LOGIN CREDENTIALS ON LOAD

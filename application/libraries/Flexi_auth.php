@@ -42,7 +42,7 @@ class Flexi_auth extends Flexi_auth_lite
 		parent::__construct();
 		
 		$this->CI->load->library('email');
-		$this->CI->load->model('flexi_auth_model');
+		$this->CI->load->model('auth/flexi_auth_model', 'flexi_auth_model');
 	}	
 	
 	###++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++###	
