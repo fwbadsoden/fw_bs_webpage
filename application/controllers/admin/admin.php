@@ -23,7 +23,11 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->model('admin/admin_model', 'admin');
 		$this->load->model('user/user_model', 'user');
-        $this->load->library('flexi_auth', '', 'auth');
+        
+        // IMPORTANT! This global must be defined BEFORE the flexi auth library is loaded! 
+ 		// It is used as a global that is accessible via both models and both libraries, without it, flexi auth will not work.
+		$this->auth = new stdClass;
+        $this->load->library('flexi_auth');
 		
 		$this->session->set_flashdata('redirect', current_url()); 
 	}
@@ -42,7 +46,7 @@ class Admin extends CI_Controller {
 	 **/
 	public function index()
 	{				
-		if($this->auth->is_admin()) $this->dashboard();
+		if($this->flexi_auth->is_admin()) $this->dashboard();
 		else $this->login();
 	}
 	
@@ -54,7 +58,7 @@ class Admin extends CI_Controller {
 	 */
 	public function mContent()
 	{
-		if(!$this->auth->is_admin()) redirect('admin', 'refresh');
+		if(!$this->flexi_auth->is_admin()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
@@ -75,7 +79,7 @@ class Admin extends CI_Controller {
 	 */
 	public function mFiles()
 	{
-		if(!$this->auth->is_admin()) redirect('admin', 'refresh');
+		if(!$this->flexi_auth->is_admin()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Dateien bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
@@ -96,7 +100,7 @@ class Admin extends CI_Controller {
 	 */
 	public function mMenue()
 	{
-		if(!$this->auth->is_admin()) redirect('admin', 'refresh');
+		if(!$this->flexi_auth->is_admin()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
@@ -117,7 +121,7 @@ class Admin extends CI_Controller {
 	 */
 	public function mSystem()
 	{
-		if(!$this->auth->is_admin()) redirect('admin', 'refresh');
+		if(!$this->flexi_auth->is_admin()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
@@ -138,7 +142,7 @@ class Admin extends CI_Controller {
 	 */
 	public function mUser()
 	{
-		if(!$this->auth->is_admin()) redirect('admin', 'refresh');
+		if(!$this->flexi_auth->is_admin()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
@@ -200,18 +204,13 @@ class Admin extends CI_Controller {
 	{ 
 		$login = $this->user->login($this->input->post('username'), $this->input->post('password'));
 
-		if($login[0])
+		if($login)
 		{ 
-		    if($login[1])
-                $this->change_pw_login('', $login['userID']);
-            else {
-                $this->admin->insert_log(lang('log_admin_loginOK'));
-	            $this->dashboard();
-            }
+		    $this->admin->insert_log(lang('log_admin_loginOK'));
+            $this->dashboard();
 		}
 		else
 		{
-			// Login fehlgeschlagen
 			$this->login($login['error']);
 		}
 	}
@@ -336,7 +335,7 @@ class Admin extends CI_Controller {
 	 */
 	public function logout()
 	{
-		$this->auth->logout('admin/admin');	
+		$this->flexi_auth->logout('admin/admin');	
 	}
 }
 ?>

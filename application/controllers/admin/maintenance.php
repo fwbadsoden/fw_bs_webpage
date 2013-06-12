@@ -16,14 +16,33 @@ class Maintenance extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('maintenance/maintenance_model', 'maintain');
+		$this->load->model('module/module_model', 'module');
 		$this->load->library('CP_auth');
 		$this->load->model('cpauth/cpauth_model', 'cpauth');
 		$this->load->model('admin/admin_model', 'admin');
+        $this->auth = new stdClass;
+        $this->load->library('flexi_auth');
+        $this->load->model('flexi_auth_model', 'flexi_auth_model');
 		
 		// CP Auth Konfiguration für Admin Controller
 		$this->cpauth->init('BACKEND');
 	}
+    
+    // Anlegen von Usern ohne die Adminoberfläche
+    public function create_user()
+    {
+        $user_data = array(
+        	'created_by' => '1'
+        );
+        $userID = $this->flexi_auth_model->insert_user('habib@familiepleines.de', 'kingmaoam', 'q9mlb015', $user_data);
+        $this->flexi_auth_model->activate_user($userID, FALSE, FALSE);
+    }
 	
+    public function write_settings()
+    {
+        $this->module->write_setting_file();
+    }
+    
 	public function show_icons()
 	{
 		

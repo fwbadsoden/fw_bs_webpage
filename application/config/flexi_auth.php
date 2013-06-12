@@ -251,14 +251,14 @@
 	 * Auth Session Name
 	 * Set the root auth session name saved as an array in the CI session, all other flexi auth session data is then stored within this array.
 	*/ 
-	$config['sessions']['name'] = 'auth';
+	$config['sessions']['name'] = AUTH_SESSION_NAME;
 		
 	/**
 	 * Primary User Identifier Session
 	 * Contains the $config['database']['settings']['primary_identity_col'] column value (Defined above).
 	 * This value is then used to internally identify the user when performing CRUD functions.
 	*/
-	$config['sessions']['user_identifier'] = 'user_identifier';
+	$config['sessions']['user_identifier'] = AUTH_SESSION_USER_IDENTIFIER;
 	
 	/**
 	 * User Account Data Sessions
@@ -564,7 +564,7 @@
 	 * This option allows admins to verify account details before enabling users.
 	 * @param: bool
 	*/
-	$config['settings']['suspend_new_accounts'] = TRUE;
+	$config['settings']['suspend_new_accounts'] = FALSE;
 
 	/**
 	 * Set a time limit to grant users instant login access, once expired, they are locked out until they activate their account via an activation email sent to them.
