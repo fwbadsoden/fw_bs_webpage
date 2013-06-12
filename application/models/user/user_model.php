@@ -1,11 +1,12 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-include_once( APPPATH . 'models/auth/ion_auth_model.php' );
+include_once( APPPATH . 'models/auth/flexi_auth_model.php' );
 
 /**
  * User Model
  *
  * Model für den Usercontroller.
+ * Kapselt die Funktionalität des Flexi_auth_model
  *
  * @package		com.cp.feuerwehr.models.user
  * @subpackage	Model
@@ -13,12 +14,7 @@ include_once( APPPATH . 'models/auth/ion_auth_model.php' );
  * @author		Habib Pleines
  */	
  
-class User_Model extends Ion_auth_model {
-	private $db_user_table              = '';
-	private $db_group_table             = '';
-	private $db_user_group_table        = '';	
-	private $db_login_attempt_table     = '';
-	private $user		 				=	array();	//	user info in database	
+class User_Model extends Flexi_auth_model {
 	private $color						= '';
 	
 	/**
@@ -30,18 +26,14 @@ class User_Model extends Ion_auth_model {
 	public function __construct() {
 		parent::__construct();
 		
-//		$this->load->library('CP_auth');
 		$this->load->helper('string');
 		$this->load->helper('html');
-        
-        $this->db_user_table           = $this->tables['users'];
-        $this->db_group_table          = $this->tables['groups'];
-        $this->db_user_group_table     = $this->tables['users_groups'];
-        $this->db_login_attempt_table  = $this->tables['login_attempts'];
 	}
     
-    public function is_logged_in() {
-        return $this->logged_in();
+    
+    public function login($identity, $password)
+    {
+        return parent::login($identity, $password, FALSE);
     }
 	
 	public function get_user_list($id = 0)

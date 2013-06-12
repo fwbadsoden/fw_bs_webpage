@@ -76,6 +76,8 @@ class Admin_model extends CI_Model {
 	
 	public function insert_log($message)
 	{	
+	    var_dump($this->session->userdata(AUTH_SESSION_NAME)); die();
+       
 		if($message == '' || $message == null) $message = $this->lang('log_admin_noMessage');
 		$userdata = $this->cp_auth->cp_get_userdata($this->session->userdata(CPAUTH_SESSION_BACKEND));
 		$this->db->insert('admin_log', array('userID' => $userdata['userID'], 'datetime' => date('Y-m-d H:i:s'), 'message' => $message));

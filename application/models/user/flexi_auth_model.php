@@ -32,6 +32,8 @@
 * Requirements: PHP5 or above and Codeigniter 2.0+
 */
 
+include_once(APPPATH . 'models/user/flexi_auth_lite_model.php');
+
 class Flexi_auth_model extends Flexi_auth_lite_model
 {
 	public function __construct() {}
