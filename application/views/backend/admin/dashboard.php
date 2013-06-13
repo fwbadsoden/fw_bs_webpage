@@ -3,7 +3,7 @@
 
 <div id="content">
 
-<h1>Willkommen <?=$userdata['vorname']?> <?=$userdata['nachname']?></h1>
+<h1>Willkommen <?=$userdata->first_name?> <?=$userdata->last_name?></h1>
 
 
 <!-- This is first column -->

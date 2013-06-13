@@ -1,6 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-include_once( APPPATH . 'models/auth/flexi_auth_model.php' );
 
 /**
  * User Model
@@ -11,11 +10,13 @@ include_once( APPPATH . 'models/auth/flexi_auth_model.php' );
  * @package		com.cp.feuerwehr.models.user
  * @subpackage	Model
  * @category	Model
- * @author		Habib Pleines
+ * @author
+ * 		Habib Pleines
  */	
+include_once( APPPATH . 'models/user/flexi_auth_model.php' );
  
 class User_Model extends Flexi_auth_model {
-	private $color						= '';
+	private $color = '';
 	
 	/**
 	 * Konstruktor
@@ -28,13 +29,8 @@ class User_Model extends Flexi_auth_model {
 		
 		$this->load->helper('string');
 		$this->load->helper('html');
-	}
-    
-    
-    public function login($identity, $password)
-    {
-        return parent::login($identity, $password, FALSE);
-    }
+        $this->load->library('CP_auth');
+	}    
 	
 	public function get_user_list($id = 0)
 	{		

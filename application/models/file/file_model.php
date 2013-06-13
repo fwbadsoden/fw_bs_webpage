@@ -117,7 +117,7 @@ class File_model extends CI_Model {
         $file['description'] = $this->input->post('description');
         $file['title']       = $this->input->post('title');
         $file['modified']    = date("Y-m-d H:i:s");
-        $file['modified_by'] = $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND));
+        $file['modified_by'] = $this->cp_auth->get_user_id();
         
         $this->db->update('file', $file, array('fileID' => $this->input->post('file_id')));
     }
@@ -139,7 +139,7 @@ class File_model extends CI_Model {
             'size'          => $upload_data['file_size'],               
             'sha1'          => $upload_data['sha1'],          
             'created'       => date("Y-m-d H:i:s"),              
-            'created_by'    => $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND)) 
+            'created_by'    => $this->cp_auth->get_user_id() 
         );
         if($upload_data['is_image'] == 1)
         {                        

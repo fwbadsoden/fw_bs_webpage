@@ -16,13 +16,11 @@ class File_Admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('CP_auth');
-		$this->load->model('cpauth/cpauth_model', 'cpauth');
 		$this->load->model('file/file_model', 'file');
 		$this->load->model('admin/admin_model', 'admin');
 		
-		// CP Auth Konfiguration
-		$this->cpauth->init('BACKEND');
-		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
+		// Berechtigungsprüfung TEIL 1: eingelogged und Admin
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 	}
     
     public function file_liste($type) // Später durch jquery File Upload und Schnickschnack zu ersetzen
@@ -33,6 +31,7 @@ class File_Admin extends CI_Controller {
             case 'image':   			
         		$header['title']      = 'Bilder verwalten';		
         		$menue['menue']	      = $this->admin->get_menue();
+                $menue['userdata']    = $this->cp_auth->cp_get_user_by_id();
         		$menue['submenue']	  = $this->admin->get_submenue();   
                 $data['btn_create']   = 'Neues Bild hochladen';     
                 $data['headline']     = $header['title'];
@@ -52,6 +51,7 @@ class File_Admin extends CI_Controller {
             case 'file': 	
         		$header['title']      = 'Dateien verwalten';		
         		$menue['menue']	      = $this->admin->get_menue();
+                $menue['userdata']    = $this->cp_auth->cp_get_user_by_id();
         		$menue['submenue']	  = $this->admin->get_submenue();     
                 $data['btn_create']   = 'Neue Datei hochladen';       
                 $data['headline']     = $header['title'];
@@ -85,7 +85,7 @@ class File_Admin extends CI_Controller {
                     
                     $config['upload_path'] = CONTENT_IMG_UPLOAD_PATH;
             	    $config['allowed_types'] = 'jpg|png|gif';
-            	    $config['file_name'] = $this->image_lib->generate_img_name($_FILES['upload_image']['tmp_name'].$this->cp_auth->cp_generate_salt());;
+            	    $config['file_name'] = $this->image_lib->generate_img_name($_FILES['upload_image']['tmp_name']);;
                     $sha1 = sha1_file($_FILES["upload_image"]["tmp_name"]);
                                     
                     $this->load->library('upload', $config);
@@ -106,7 +106,7 @@ class File_Admin extends CI_Controller {
                 case 'file':
                     $config['upload_path'] = CONTENT_FILE_UPLOAD_PATH;
             	    $config['allowed_types'] = 'pdf|doc|ppt';
-            	    //$config['file_name'] = $this->image_lib->generate_img_name($_FILES['upload_image']['tmp_name'].$this->cp_auth->cp_generate_salt());;
+            	    //$config['file_name'] = $this->image_lib->generate_img_name($_FILES['upload_image']['tmp_name']);;
                     $sha1 = sha1_file($_FILES["upload_file"]["tmp_name"]);
                                     
                     $this->load->library('upload', $config);

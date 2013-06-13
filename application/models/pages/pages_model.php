@@ -426,7 +426,7 @@ class Pages_model extends CI_Model {
                 $boxContent = array(
                     'rowContentID'   => $insertID,
                     'content_type'   => $b,
-                    'created_by'     => $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND)),  
+                    'created_by'     => $this->cp_auth->get_user_id(),  
                     'created'        => date("Y-m-d H:i:s")
                 );       
                 $this->db->insert('page_box_content', $boxContent);
@@ -436,7 +436,7 @@ class Pages_model extends CI_Model {
     
     public function update_box_content($boxContentID)
     { 
-        $boxContent['modified_by'] = $this->cp_auth->cp_get_userid($this->session->userdata(CPAUTH_SESSION_BACKEND));  
+        $boxContent['modified_by'] = $this->cp_auth->get_user_id();  
         $boxContent['modified']   = date("Y-m-d H:i:s");  
         
         if(!$this->input->post('content_txt')) $boxContent['content'] = NULL;

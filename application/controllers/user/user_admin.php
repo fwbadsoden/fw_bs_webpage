@@ -18,13 +18,11 @@ class User_Admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('CP_auth');
-		$this->load->model('cpauth/cpauth_model', 'cpauth');
 		$this->load->model('user/user_model', 'user');
 		$this->load->model('admin/admin_model', 'admin');
 		
-		// Usermodel Konfiguration
-		$this->cpauth->init('BACKEND');
-		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
+		// Berechtigungsprüfung TEIL 1: eingelogged und Admin
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 		
 		$segs = $this->uri->segment_array();		
 		foreach ($segs as $segment)
@@ -49,11 +47,12 @@ class User_Admin extends CI_Controller {
 	{		
 		$this->session->set_userdata('userliste_redirect', current_url()); 
 				
-		$header['title'] = 'Benutzer im '.ucfirst($this->area);
-		$menue['menue']	= $this->admin->get_menue();
+		$header['title']    = 'Benutzer im '.ucfirst($this->area);
+		$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue();
-		$data['user'] = $this->user->get_user_list($this->area);	
-		$data['area'] = $this->area;
+		$data['user']       = $this->user->get_user_list($this->area);	
+		$data['area']       = $this->area;
 	
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -85,6 +84,7 @@ class User_Admin extends CI_Controller {
 		{			
 			$header['title']		= 'User';
 			$menue['menue']			= $this->admin->get_menue();
+            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue'] 		= $this->admin->get_submenue();
 			
 			$this->load->view('backend/templates/admin/header', $header);
@@ -113,6 +113,7 @@ class User_Admin extends CI_Controller {
 		{
 			$header['title'] 		= 'User';
 			$menue['menue']			= $this->admin->get_menue();
+            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
 			$user['user']			= $this->user->get_user($id);
 			$user['id']				= $id;

@@ -17,12 +17,10 @@ class Module_Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->library('CP_auth');
 		$this->load->model('module/module_model', 'module');
-		$this->load->model('cpauth/cpauth_model', 'cpauth');
 		$this->load->model('admin/admin_model', 'admin');
 		
-		// CP Auth Konfiguration
-		$this->cpauth->init('BACKEND');
-		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
+		// Berechtigungsprüfung TEIL 1: eingelogged und Admin
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 		
 		$this->session->set_flashdata('redirect', current_url()); 
 	}
@@ -51,8 +49,9 @@ class Module_Admin extends CI_Controller {
 		
 			$header['title'] 		= 'Einstellungen';		
 			$menue['menue']			= $this->admin->get_menue();
+            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
-			$data['setting'] = $this->module->get_settings();
+			$data['setting']        = $this->module->get_settings();
 		
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/menue', $menue);	
@@ -110,10 +109,11 @@ class Module_Admin extends CI_Controller {
 	 {
 	 	$this->session->set_userdata('languageliste_redirect', current_url()); 	
 	 	
-		$header['title'] = 'Texte';		
-		$menue['menue']	= $this->admin->get_menue();
+		$header['title']    = 'Texte';		
+		$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue();
-		$data['language'] = $this->module->get_languages();
+		$data['language']   = $this->module->get_languages();
         
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -137,10 +137,11 @@ class Module_Admin extends CI_Controller {
 	 {
 	 	$this->session->set_userdata('routeliste_redirect', current_url()); 		
 		
-		$header['title'] = 'CI Routen';		
-		$menue['menue']	= $this->admin->get_menue();
+		$header['title']    = 'CI Routen';		
+		$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue();
-		$data['route'] = $this->module->get_routes();
+		$data['route']      = $this->module->get_routes();
 	
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -167,8 +168,9 @@ class Module_Admin extends CI_Controller {
 		{			
 			$header['title'] 		= 'Routen';		
 			$menue['menue']			= $this->admin->get_menue();
+            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
-			$data['module'] = $this->module->get_modules();
+			$data['module']         = $this->module->get_modules();
 		
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/menue', $menue);	
@@ -196,9 +198,10 @@ class Module_Admin extends CI_Controller {
 		{			
 			$header['title'] 		= 'Routen';		
 			$menue['menue']			= $this->admin->get_menue();
+            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
-			$data['module'] = $this->module->get_modules();
-			$data['route'] = $this->module->get_route($id);
+			$data['module']         = $this->module->get_modules();
+			$data['route']          = $this->module->get_route($id);
 		
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/menue', $menue);	

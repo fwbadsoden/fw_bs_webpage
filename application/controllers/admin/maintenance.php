@@ -18,14 +18,10 @@ class Maintenance extends CI_Controller {
 		$this->load->model('maintenance/maintenance_model', 'maintain');
 		$this->load->model('module/module_model', 'module');
 		$this->load->library('CP_auth');
-		$this->load->model('cpauth/cpauth_model', 'cpauth');
 		$this->load->model('admin/admin_model', 'admin');
-        $this->auth = new stdClass;
-        $this->load->library('flexi_auth');
-        $this->load->model('flexi_auth_model', 'flexi_auth_model');
-		
-		// CP Auth Konfiguration für Admin Controller
-		$this->cpauth->init('BACKEND');
+        
+        // Berechtigungsprüfung TEIL 1: eingelogged und Admin
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 	}
     
     // Anlegen von Usern ohne die Adminoberfläche
@@ -34,8 +30,8 @@ class Maintenance extends CI_Controller {
         $user_data = array(
         	'created_by' => '1'
         );
-        $userID = $this->flexi_auth_model->insert_user('habib@familiepleines.de', 'kingmaoam', 'q9mlb015', $user_data);
-        $this->flexi_auth_model->activate_user($userID, FALSE, FALSE);
+        $userID = $this->cp_auth->insert_user('oliver@oliver-annen.de', 'arxoren', '1xore27', $user_data);
+        $this->cp_auth->activate_user($userID, FALSE, FALSE);
     }
 	
     public function write_settings()

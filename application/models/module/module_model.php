@@ -37,7 +37,7 @@ class Module_model extends CI_Model {
 		
 		foreach($query->result() as $row)
 		{
-			$modules[$row->moduleID]['moduleID'] 			=	$row->moduleID;
+			$modules[$row->moduleID]['moduleID'] 	   =	$row->moduleID;
 			$modules[$row->moduleID]['moduleName']	   =	$row->name;
 		}
 		return $modules;

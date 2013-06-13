@@ -17,22 +17,20 @@ class News_Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->library('CP_auth');
 		$this->load->library('pagination');
-		$this->load->model('cpauth/cpauth_model', 'cpauth');
 		$this->load->model('news/news_model', 'news');
 		$this->load->model('admin/admin_model', 'admin');
 		
-		// CP Auth Konfiguration
-		$this->cpauth->init('BACKEND');
+		// Berechtigungsprüfung TEIL 1: eingelogged und Admin
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 	}
 	
 	public function news_liste()
-	{ 
-		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
-		
+	{ 		
 		$this->session->set_userdata('newsliste_redirect', current_url()); 
 		
 		$header['title'] 			= 'News';		
 		$menue['menue']				= $this->admin->get_menue();
+        $menue['userdata']          = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']			= $this->admin->get_submenue();
 		$data['news'] 				= $this->news->get_news_list();
         $data['news_count']         = $this->news->get_news_count();
@@ -64,12 +62,11 @@ class News_Admin extends CI_Controller {
     
     public function kategorie_liste()
     {
-		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
-        
         $this->session->set_userdata('kategorieliste_redirect', current_url());
         
         $header['title']        = 'News Kategorien';      
 		$menue['menue']			= $this->admin->get_menue();
+        $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']		= $this->admin->get_submenue();
 		$data['categories']		= $this->news->get_news_categories();  
         

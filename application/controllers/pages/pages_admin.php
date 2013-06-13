@@ -22,14 +22,12 @@ class Pages_Admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('CP_auth');
-		$this->load->model('cpauth/cpauth_model', 'cpauth');
 		$this->load->model('pages/pages_model', 'pages');
 		$this->load->model('file/file_model', 'file');
 		$this->load->model('admin/admin_model', 'admin');
 		
-		// CP Auth Konfiguration
-		$this->cpauth->init('BACKEND');
-		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
+		// Berechtigungsprüfung TEIL 1: eingelogged und Admin
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 	}
 	
 	/**
@@ -43,6 +41,7 @@ class Pages_Admin extends CI_Controller {
 		
 		$header['title']      = 'Seiten verwalten';		
 		$menue['menue']	      = $this->admin->get_menue();
+        $menue['userdata']    = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	  = $this->admin->get_submenue();
 		$data['page']         = $this->pages->get_pages();
 	
@@ -78,6 +77,7 @@ class Pages_Admin extends CI_Controller {
             
             $header['title']    = 'Inhaltsseite anlegen';		
     		$menue['menue']	    = $this->admin->get_menue();
+            $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     		$menue['submenue']	= $this->admin->get_submenue();
             $data['templates']  = $this->pages->get_templates();
             $data['stages']     = $this->pages->get_stages();
@@ -117,6 +117,7 @@ class Pages_Admin extends CI_Controller {
             
             $header['title']    = 'Inhaltsseite bearbeiten';		
     		$menue['menue']	    = $this->admin->get_menue();
+            $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     		$menue['submenue']	= $this->admin->get_submenue();
             $data['page']       = $this->pages->get_page($this->pageID);
             $data['content']    = $this->pages->get_page_content($this->pageID);
@@ -195,6 +196,7 @@ class Pages_Admin extends CI_Controller {
 		{            
             $header['title']    = 'Inhaltselement hinzuf&uumlgen';		
     		$menue['menue']	    = $this->admin->get_menue();
+            $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     		$menue['submenue']	= $this->admin->get_submenue();
             $data['boxes']      = $this->pages->get_allowed_boxes($this->rowID);
     	
@@ -220,6 +222,7 @@ class Pages_Admin extends CI_Controller {
         
             $header['title']     = 'Inhalt bearbeiten';		
     		$menue['menue']	     = $this->admin->get_menue();
+            $menue['userdata']   = $this->cp_auth->cp_get_user_by_id();
     		$menue['submenue']	 = $this->admin->get_submenue();       
             $data['box_meta']    = $this->pages->get_box_meta($rowContentID);
             $data['box_content'] = $this->pages->get_box_content($boxContentID);
@@ -256,6 +259,7 @@ class Pages_Admin extends CI_Controller {
     {
         $header['title']    = 'Seite l&ouml;schen';		
     	$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     	$menue['submenue']	= $this->admin->get_submenue();
         $data['type']       = 'page';
         $data['id']         = $pageID;
@@ -293,6 +297,7 @@ class Pages_Admin extends CI_Controller {
     {
         $header['title']    = 'Zeile l&ouml;schen';		
     	$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     	$menue['submenue']	= $this->admin->get_submenue();
         $data['type']       = 'row';
         $data['id']         = $rowID;
@@ -329,6 +334,7 @@ class Pages_Admin extends CI_Controller {
     {
         $header['title']    = 'Box l&ouml;schen';		
     	$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     	$menue['submenue']	= $this->admin->get_submenue();
         $data['type']       = 'box';
         $data['id']         = $rowContentID;
@@ -394,8 +400,9 @@ class Pages_Admin extends CI_Controller {
 		
 		$header['title']      = 'Bildb&uuml;hnen verwalten';		
 		$menue['menue']	      = $this->admin->get_menue();
+        $menue['userdata']    = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	  = $this->admin->get_submenue();
-		$data['stage']         = $this->pages->get_stages();
+		$data['stage']        = $this->pages->get_stages();
 	
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	

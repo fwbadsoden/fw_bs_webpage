@@ -36,7 +36,9 @@ include_once(APPPATH . 'models/user/flexi_auth_lite_model.php');
 
 class Flexi_auth_model extends Flexi_auth_lite_model
 {
-	public function __construct() {}
+	public function __construct() {
+	   parent::__construct();
+	}
 
 	###++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++###	
 	// TOKEN GENERATION

@@ -75,12 +75,11 @@ class Admin_model extends CI_Model {
 	}
 	
 	public function insert_log($message)
-	{	
-	    var_dump($this->session->userdata(AUTH_SESSION_NAME)); die();
-       
+	{   
 		if($message == '' || $message == null) $message = $this->lang('log_admin_noMessage');
-		$userdata = $this->cp_auth->cp_get_userdata($this->session->userdata(CPAUTH_SESSION_BACKEND));
-		$this->db->insert('admin_log', array('userID' => $userdata['userID'], 'datetime' => date('Y-m-d H:i:s'), 'message' => $message));
+		$userdata = $this->cp_auth->cp_get_user_by_id();
+    
+    	$this->db->insert('admin_log', array('userID' => $userdata->uacc_id, 'datetime' => date('Y-m-d H:i:s'), 'message' => $message));
 	}
 	
 	public function get_log()
@@ -95,13 +94,13 @@ class Admin_model extends CI_Model {
 		$query = $this->db->get('admin_log');
 		foreach($query->result() as $row)
 		{
-			$userdata 			= $this->cpauth->get_userdata($row->userID);
+			$userdata 			    = $this->cp_auth->cp_get_user_by_id($row->userID);
 			
 			$log[$i]['logID'] 		= $row->logID;
 			$log[$i]['userID'] 		= $row->userID;
-			$log[$i]['vorname'] 	= $userdata['vorname'];
-			$log[$i]['nachname'] 	= $userdata['nachname'];
-			$log[$i]['email'] 		= $userdata['email'];
+			$log[$i]['vorname'] 	= $userdata->first_name;
+			$log[$i]['nachname'] 	= $userdata->last_name;
+			$log[$i]['email'] 		= $userdata->uacc_email;
 			$log[$i]['datetime'] 	= cp_get_ger_datetime($row->datetime);
 			$log[$i]['message'] 	= $row->message;	
 			$log[$i]['rowColor']	= $this->color = cp_get_color($this->color);
@@ -113,20 +112,20 @@ class Admin_model extends CI_Model {
 	
 	public function insert_quicklink()
 	{
-		$userdata = $this->cp_auth->cp_get_userdata($this->session->userdata(CPAUTH_SESSION_BACKEND));
+		$userID = $this->cp_auth->get_user_id();
 	}
 	
 	public function get_quicklinks()
 	{
 		$this->load->helper('html');
-		$userdata = $this->cp_auth->cp_get_userdata($this->session->userdata(CPAUTH_SESSION_BACKEND));
+		$userID = $this->cp_auth->get_user_id();
 		
 		$links = array();
 		$this->color = '';
 		$i = 0;
 		
 		$this->db->order_by('name', 'asc');
-		$query = $this->db->get_where('admin_quicklink', array('userID' => $userdata['userID']));
+		$query = $this->db->get_where('admin_quicklink', array('userID' => $userID));
 		foreach($query->result() as $row)
 		{
 			$this->color 			= cp_get_color($this->color);
@@ -142,7 +141,7 @@ class Admin_model extends CI_Model {
 	
 	public function edit_adminmessage()
 	{
-		$userdata = $this->cp_auth->cp_get_userdata($this->session->userdata(CPAUTH_SESSION_BACKEND));	
+	   
 	}
 	
 	public function get_adminmessage()
@@ -154,9 +153,9 @@ class Admin_model extends CI_Model {
 		
 		$query = $this->db->get('admin_message');
 		$row = $query->row();
-		$userdata = $this->cpauth->get_userdata($row->userID);
+		$userdata = $this->cp_auth->cp_get_user_by_id($row->userID);
 		$message['datetime']	= cp_get_ger_datetime($row->datetime);
-		$message['editor'] 		= $userdata['vorname'].' '.$userdata['nachname'];
+		$message['editor'] 		= $userdata->first_name.' '.$userdata->last_name;
 		$message['titel'] 		= $row->title;
 		$message['message']		= $row->message;
 		$message['rowColor']	= $this->color;

@@ -79,7 +79,7 @@ $autoload['helper'] = array('url','date','cookie','language');
 |
 */
 
-$autoload['config'] = array('pagination');
+$autoload['config'] = array();
 
 
 /*

@@ -23,14 +23,12 @@ class Einsatz_Admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('CP_auth');
-		$this->load->model('cpauth/cpauth_model', 'cpauth');
 		$this->load->model('einsatz/einsatz_model', 'einsatz');
 		$this->load->model('fahrzeug/fahrzeug_model', 'fahrzeug');
 		$this->load->model('admin/admin_model', 'admin');
 		
-		// CP Auth Konfiguration
-		$this->cpauth->init('BACKEND');
-		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
+        // Berechtigungsprüfung TEIL 1: eingelogged und Admin
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 		
 		$this->upload_path = CONTENT_IMG_EINSATZ_UPLOAD_PATH;
 	}
@@ -45,12 +43,13 @@ class Einsatz_Admin extends CI_Controller {
 	{ 		
 		$this->session->set_userdata('einsatzliste_redirect', current_url()); 
 				
-		$header['title'] = 'Einsätze';		
+		$header['title']    = 'Einsätze';		
 		if($year == 'act') $year = date('Y');
-		$menue['menue']	= $this->admin->get_menue();
+		$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue();
-		$data['einsatz'] = $this->einsatz->get_einsatz_list($year);
-		$data['years']	 = $this->einsatz->get_einsatz_years();	
+		$data['einsatz']    = $this->einsatz->get_einsatz_list($year);
+		$data['years']	    = $this->einsatz->get_einsatz_years();	
 	
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -83,6 +82,7 @@ class Einsatz_Admin extends CI_Controller {
 			$header['title'] 		= 'Einsätze';		
 			$menue['menue']			= $this->admin->get_menue();
 			$menue['submenue']		= $this->admin->get_submenue();
+            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$einsatz['fahrzeuge'] 	= $this->fahrzeug->get_fahrzeug_list_id_name(1);
 			$einsatz['types'] 		= $this->einsatz->get_einsatz_type_list();
 			$einsatz['templates']	= $this->einsatz->get_einsatz_templates();
@@ -120,6 +120,7 @@ class Einsatz_Admin extends CI_Controller {
 		{			
 			$header['title'] 		= 'Einsätze';		
 			$menue['menue']			= $this->admin->get_menue();
+            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
 			$einsatz['fahrzeuge'] 	= $this->fahrzeug->get_fahrzeug_list_id_name(1);
 			$einsatz['types'] 		= $this->einsatz->get_einsatz_type_list();
@@ -194,7 +195,7 @@ class Einsatz_Admin extends CI_Controller {
                 
 				$config['upload_path'] = $this->upload_path;
 				$config['allowed_types'] = 'jpg|png';
-				$config['file_name'] = $this->image_lib->generate_img_name($id.$this->cp_auth->cp_generate_salt());;
+				$config['file_name'] = $this->image_lib->generate_img_name($id);;
                 
 				$this->load->library('upload', $config);
 				
@@ -222,7 +223,7 @@ class Einsatz_Admin extends CI_Controller {
 						$width = 768; 
 						$height = 1024; 		
 					}
-					$thumb = $this->image_lib->generate_img_name($id.$this->cp_auth->cp_generate_salt());
+					$thumb = $this->image_lib->generate_img_name($id);
 					$this->image_moo->set_jpeg_quality(90);
 					// Bild verkleinern 
 					$this->image_moo->load($this->upload_path.$filename)->resize($width, $height)->save($this->upload_path.$filename, true);
@@ -251,6 +252,7 @@ class Einsatz_Admin extends CI_Controller {
 			
 			$header['title'] 		= 'Einsatz - Image Uploader';		
 			$menue['menue']			= $this->admin->get_menue();
+            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
 			$einsatz['einsatz']		= $this->einsatz->get_einsatz($id);
 			$einsatz['images']		= $this->einsatz->get_images($id);

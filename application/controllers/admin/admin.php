@@ -21,14 +21,11 @@ class Admin extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('admin/admin_model', 'admin');
-		$this->load->model('user/user_model', 'user');
+                        
+        $this->load->library('CP_auth');
         
-        // IMPORTANT! This global must be defined BEFORE the flexi auth library is loaded! 
- 		// It is used as a global that is accessible via both models and both libraries, without it, flexi auth will not work.
-		$this->auth = new stdClass;
-        $this->load->library('flexi_auth');
-		
+		$this->load->model('admin/admin_model', 'admin');       
+        
 		$this->session->set_flashdata('redirect', current_url()); 
 	}
 	
@@ -46,7 +43,7 @@ class Admin extends CI_Controller {
 	 **/
 	public function index()
 	{				
-		if($this->flexi_auth->is_admin()) $this->dashboard();
+		if($this->cp_auth->is_logged_in_admin()) $this->dashboard();
 		else $this->login();
 	}
 	
@@ -58,10 +55,11 @@ class Admin extends CI_Controller {
 	 */
 	public function mContent()
 	{
-		if(!$this->flexi_auth->is_admin()) redirect('admin', 'refresh');
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
 		$this->load->view('backend/templates/admin/header', $header);
@@ -79,10 +77,11 @@ class Admin extends CI_Controller {
 	 */
 	public function mFiles()
 	{
-		if(!$this->flexi_auth->is_admin()) redirect('admin', 'refresh');
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Dateien bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
 		$this->load->view('backend/templates/admin/header', $header);
@@ -100,10 +99,11 @@ class Admin extends CI_Controller {
 	 */
 	public function mMenue()
 	{
-		if(!$this->flexi_auth->is_admin()) redirect('admin', 'refresh');
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
 		$this->load->view('backend/templates/admin/header', $header);
@@ -121,10 +121,11 @@ class Admin extends CI_Controller {
 	 */
 	public function mSystem()
 	{
-		if(!$this->flexi_auth->is_admin()) redirect('admin', 'refresh');
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
 		$this->load->view('backend/templates/admin/header', $header);
@@ -142,10 +143,11 @@ class Admin extends CI_Controller {
 	 */
 	public function mUser()
 	{
-		if(!$this->flexi_auth->is_admin()) redirect('admin', 'refresh');
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 		
 		$header['title'] 		= 'Inhalte bearbeiten';	
 		$menue['menue']		= $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
 		$this->load->view('backend/templates/admin/header', $header);
@@ -165,8 +167,9 @@ class Admin extends CI_Controller {
 	{
 		$header['title'] 		= 'Dashboard';	
 		$menue['menue']		= $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue(); 
-		$data['userdata'] 	= $this->cp_auth->cp_get_userdata($this->session->userdata(CPAUTH_SESSION_BACKEND));
+		$data['userdata'] 	= $menue['userdata'];
 		$data['log']		= $this->admin->get_log();
 		$data['qlink']		= $this->admin->get_quicklinks();
 		$data['message']	= $this->admin->get_adminmessage();
@@ -192,56 +195,6 @@ class Admin extends CI_Controller {
 		$this->load->view('backend/templates/admin/header_login', $header);
 		$this->load->view('backend/admin/login', $data);
 		$this->load->view('backend/templates/admin/footer_login');
-	}
-	
-	/**
-	 * Admin::check_login()
-	 * Überprüft die Logindaten und leitet im Erfolgsfall an das Dashboard um
-	 *
-	 * @return
-	 */
-	public function check_login()
-	{ 
-		$login = $this->user->login($this->input->post('username'), $this->input->post('password'));
-
-		if($login)
-		{ 
-		    $this->admin->insert_log(lang('log_admin_loginOK'));
-            $this->dashboard();
-		}
-		else
-		{
-			$this->login($login['error']);
-		}
-	}
-	
-	/**
-	 * Admin::forgot_password()
-	 * Zeigt die Passwort vergessen Seite an
-	 *
-	 * @return
-	 */
-	public function forgot_password()
-	{ 
-		$this->session->set_flashdata('email', $this->input->post('email'));
-		
-		$userID = $this->cpauth->get_userid('', $this->input->post('email'));
-		if(!$userID /*|| $userID['active'] == 0*/) { }
-		else
-		{
-			$code = $this->cpauth->get_reset_code($userID['userID']);	
-			$new_pw = $this->cpauth->reset_password($code['reset_code']);
-			
-			$this->load->library('email');
-			$this->email->cp_send_mail(	array('from' => EMAIL_FROM_ACCOUNT_ACTIVATE, 
-			                                 'from_txt' => EMAIL_FROMTXT_ACCOUNT_ACTIVATE),
-			                           	$code['email'], 
-			                           	lang('email_subject_adminnewpw'), 
-			                           	str_replace('%PW%', $new_pw['temp_pw'], lang('email_text_adminnewpw'))
-			                           );
-			$this->session->set_flashdata('pw_status', 1);
-		}
-		redirect('admin/admin');
 	}
 	
 	/**
@@ -335,7 +288,8 @@ class Admin extends CI_Controller {
 	 */
 	public function logout()
 	{
-		$this->flexi_auth->logout('admin/admin');	
+		$this->cp_auth->logout();
+        redirect('admin/admin');	
 	}
 }
 ?>

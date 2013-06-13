@@ -76,14 +76,4 @@ class News_model extends CI_Model {
 		
 		return $cat;
 	}
-	
-	public function get_editor_sign($id)
-	{
-		$query = $this->db->get_where(CPAUTH_DB_ADMIN_USER_TABLE, array('userID' => $id));
-		$row = $query->row();
-		if($this->db->affected_rows() == 1)
-			return $row->editor_sign;
-		else 
-			return 'n/a';
-	}
 }

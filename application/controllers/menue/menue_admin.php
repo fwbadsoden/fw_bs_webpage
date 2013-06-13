@@ -18,13 +18,11 @@ class Menue_Admin extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('CP_auth');
-		$this->load->model('cpauth/cpauth_model', 'cpauth');
 		$this->load->model('admin/admin_model', 'admin');
 		$this->load->model('menue/menue_model', 'menue');
 		
-		// CP Auth Konfiguration für Admin Controller
-		$this->cpauth->init('BACKEND');
-		if(!$this->cpauth->is_logged_in()) redirect('admin', 'refresh');
+		// Berechtigungsprüfung TEIL 1: eingelogged und Admin
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 		
 		// Menübereich setzen
 		if(!strpos(uri_string(), 'backend')) $this->area = 'frontend';
@@ -37,12 +35,13 @@ class Menue_Admin extends CI_Controller {
 	{
 		$this->session->set_userdata('menueliste_redirect', current_url()); 	
 	 	
-		$header['title'] = 'Menü';		
-		$menue['menue']	= $this->admin->get_menue();
+		$header['title']    = 'Menü';		
+		$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue();
-		$data['areaUC'] = ucfirst($this->area);
-		$data['area'] = $this->area;
-		$data['menue_arr'] = $this->menue->get_menue_list('all');
+		$data['areaUC']     = ucfirst($this->area);
+		$data['area']       = $this->area;
+		$data['menue_arr']  = $this->menue->get_menue_list('all');
 	
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -65,11 +64,12 @@ class Menue_Admin extends CI_Controller {
 			
 		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
 		{					
-			$header['title'] = 'Menü';		
-			$menue['menue']	= $this->admin->get_menue();
-			$menue['submenue']	= $this->admin->get_submenue();
-			$data['menue_arr'] = $this->menue->get_menue_list();
-			$data['mode'] = 'create';
+			$header['title']     = 'Menü';		
+			$menue['menue']	     = $this->admin->get_menue();
+            $menue['userdata']   = $this->cp_auth->cp_get_user_by_id();
+			$menue['submenue']	 = $this->admin->get_submenue();
+			$data['menue_arr']   = $this->menue->get_menue_list();
+			$data['mode']        = 'create';
 		
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/menue', $menue);	
@@ -94,11 +94,12 @@ class Menue_Admin extends CI_Controller {
 			
 		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
 		{					
-			$header['title'] = 'Menü';		
-			$menue['menue']	= $this->admin->get_menue();
-			$menue['submenue']	= $this->admin->get_submenue();
-			$data['menue_arr'] = $this->menue->get_menue_list();
-			$data['mode'] = 'edit';
+			$header['title']     = 'Menü';		
+			$menue['menue']	     = $this->admin->get_menue();
+            $menue['userdata']   = $this->cp_auth->cp_get_user_by_id();
+			$menue['submenue']	 = $this->admin->get_submenue();
+			$data['menue_arr']   = $this->menue->get_menue_list();
+			$data['mode']        = 'edit';
 		
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/menue', $menue);	
