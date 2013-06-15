@@ -29,17 +29,17 @@ class User_Auth extends CI_Controller {
 	 */
 	public function check_login()
 	{ 
-		$login = $this->user->login($this->input->post('username'), $this->input->post('password'));
+		$login = $this->cp_auth->login($this->input->post('username'), $this->input->post('password'));
 
 		if($login)
 		{ 
-            $c_admin = load_controller('admin/admin');
 		    $this->admin->insert_log(lang('log_admin_loginOK'));
-            $c_admin->dashboard();
+            redirect('admin/admin');
 		}
 		else
 		{
-			$c_admin->login($login['error']);
+            $c_admin = load_controller('admin/admin');
+			$c_admin->login(1);
 		}
 	}
 	

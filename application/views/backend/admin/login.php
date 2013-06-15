@@ -52,7 +52,6 @@
 	'id'	=> 'pw_button',
 	'class' => 'login_button_pw'
 	);
-
 ?>
 
 <script>
