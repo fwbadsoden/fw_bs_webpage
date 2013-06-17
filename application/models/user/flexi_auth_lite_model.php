@@ -537,7 +537,6 @@ class Flexi_auth_lite_model extends CI_Model
 				}
 			}
 		}
-			
 		return $message;
 	}
 
@@ -572,15 +571,15 @@ class Flexi_auth_lite_model extends CI_Model
 	 * Get any status or error message(s) that may have been set by recently run functions. 
 	 */
 	private function get_messages($message_type = FALSE, $target_user = 'public', $prefix_delimiter = FALSE, $suffix_delimiter = FALSE)
-	{	echo "get messages anfang<br>";
+	{	
 		if (in_array($message_type, array('status', 'error')))
-		{   echo "get messages if anfang<br>";
+		{   
 			// If $target_user exactly equals TRUE, set the target user as public.
 			$target_user = ($target_user === TRUE) ? 'public' : $target_user;
 
 			// Convert the target user to lowercase to ensure whether comparison values are matched. 
 			$target_user = strtolower($target_user);
-            echo "target user ".$target_user."<br>";
+        
 			// Set message delimiters, by checking they do not exactly equal FALSE, we can allow NULL or empty '' delimiter values. 
 			if (! $prefix_delimiter)
 			{
@@ -598,8 +597,7 @@ class Flexi_auth_lite_model extends CI_Model
 			// Get all messages for public users, or both public AND admin users.
 			if ($target_user === 'public')
 			{
-				$messages = $this->auth->{$message_alias}['public'];
-                echo "messages ".$messages."<br>";
+				$messages = $this->auth->{$message_alias}['public'];              
 			}
 			else
 			{
@@ -608,11 +606,11 @@ class Flexi_auth_lite_model extends CI_Model
 			
 			$statuses = FALSE;
 			foreach ($messages as $message)
-			{
+			{ 
 				$message = ($this->lang->line($message)) ? $this->lang->line($message) : $message;
 				$statuses .= $prefix_delimiter . $message . $suffix_delimiter;
 			}
-			echo "statuses ".$statuses;
+			
 			return $statuses;
 		}
 

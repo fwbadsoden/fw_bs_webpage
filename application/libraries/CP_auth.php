@@ -19,7 +19,6 @@ class CP_auth extends Flexi_auth
 {
     public function __construct()
     {
-        $this->auth = new stdClass;
         parent::__construct();  
     }
     

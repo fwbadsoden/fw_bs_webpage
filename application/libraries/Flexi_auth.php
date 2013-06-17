@@ -65,7 +65,7 @@ class Flexi_auth extends Flexi_auth_lite
 
 		// If no specific error message has been set, set a generic error.
 		if (! $this->CI->flexi_auth_model->error_messages)
-		{   
+		{ 
 			$this->CI->flexi_auth_model->set_error_message('login_unsuccessful', 'config');
 		}
 		return FALSE;
