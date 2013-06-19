@@ -85,16 +85,21 @@
 		<img src="<?=base_url("/images/admin/layout/login_login_oben.gif")?>">
 	</div>
 	<div class="kasten_mitte">			
-    <p style="color:#FF0101;"><strong>ACHTUNG: <br/><br /> Es kann sein, dass der Login nicht möglich ist, da ich derzeit das komplette Userverwaltungssystem neu aufsetze.</strong></p>
     <br />			
 		<?=form_open(base_url("/admin/check_login"), $form);?>					
 		<p class="login_text"><?=lang('view_admin_login_username')?></p>
 		<p><?=form_input($login)?></p>		
 		<p class="spacer"></p>						
 		<p class="login_text"><?=lang('view_admin_login_password')?></p>
-		<p><?=form_password($password)?></p>	
-<!--		<p class="spacer"></p>						
-		<p class="login_text"><?=lang('view_admin_login_remember')?> <?=form_checkbox($remember)?></p>							-->
+		<p><?=form_password($password)?></p>
+        
+<? if(is_array($error)) {   
+     if($error['type'] == 'error') { ?>     
+		<p class="spacer"></p>	
+        <p class="login_text_error"><?=$error['errors']?></p>
+<?   }   
+   } ?>        
+        	
 		<p class="spacer"></p>						
 		<p><?=form_input($button)?></p>								
 		<script type="text/javascript" language="JavaScript">
@@ -103,14 +108,6 @@
 		<?=form_close()?>
 	</div>
 	<div class="kasten_unten"></div>
-<? if($error != '') { ?>
-	<div style="height:10px;"></div> 
-	<div class="kasten_oben"><img src="<?=base_url("/images/admin/layout/login_login_oben.gif")?>"></div>
-	<div class="kasten_mitte">
-		<p class="login_text"><?=$error?></p>
-	</div>
-	<div class="kasten_unten"></div>
-<? } ?>
 	<div style="height:10px;"></div>
 	<div class="kasten_oben">
 		<img src="<?=base_url("/images/admin/layout/login_pw_oben.gif")?>">

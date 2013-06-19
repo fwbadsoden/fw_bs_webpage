@@ -17,9 +17,16 @@ load_class('Flexi_auth', 'libraries', FALSE);
 
 class CP_auth extends Flexi_auth
 {
+    private $area;
+    
     public function __construct()
     {
         parent::__construct();  
+    }
+    
+    public function set_area($area)
+    {
+        $this->area = $area;
     }
     
     public function is_logged_in_admin()

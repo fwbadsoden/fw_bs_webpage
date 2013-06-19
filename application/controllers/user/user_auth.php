@@ -30,7 +30,7 @@ class User_Auth extends CI_Controller {
 	public function check_login()
 	{ 
 		$login = $this->cp_auth->login($this->input->post('username'), $this->input->post('password'));
-
+        $messages = $this->cp_auth->get_messages_array('public');
 		if($login)
 		{ 
 		    $this->admin->insert_log(lang('log_admin_loginOK'));
@@ -39,7 +39,7 @@ class User_Auth extends CI_Controller {
 		else
 		{
             $c_admin = load_controller('admin/admin');
-			$c_admin->login(1);
+			$c_admin->login(1, $messages);
 		}
 	}
 	

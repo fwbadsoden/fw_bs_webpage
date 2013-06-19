@@ -95,6 +95,13 @@
 			font-weight: bold;
 			text-align: left;
 		}
+		.kasten_mitte .login_text_error {
+			font: 11px Arial, Helvetica, sans-serif;
+			color: #FF0101;
+			margin-left: 60px;
+			font-weight: bold;
+			text-align: left;
+		}
 		.kasten_mitte .login_text_pw {
 			font: 11px Arial, Helvetica, sans-serif;
 			color: #8B0A00;

@@ -16,12 +16,12 @@
 */
 
 // Account Creation
-$lang['account_creation_successful']				= 'Your account has successfully been created.';
-$lang['account_creation_unsuccessful']				= 'Unable to create account.';
-$lang['account_creation_duplicate_email']			= 'An account with this email address already exists.'; 
-$lang['account_creation_duplicate_username']		= 'An account with this username already exists.'; 
-$lang['account_creation_duplicate_identity'] 		= 'An account with this identity already exists.';
-$lang['account_creation_insufficient_data']			= 'Insufficient data to create an account. Ensure a valid identity and password are submitted.';
+$lang['account_creation_successful']				= 'Ihr Benutzerkonto wurde erfolgreich erstellt.';
+$lang['account_creation_unsuccessful']				= 'Benutzerkonto kann nicht erstellt werden.';
+$lang['account_creation_duplicate_email']			= 'Ein Konto mit dieser E-Mail-Adresse ist bereits vorhanden.'; 
+$lang['account_creation_duplicate_username']		= 'Ein Konto mit diesem Benutzername existiert bereits.'; 
+$lang['account_creation_duplicate_identity'] 		= 'Ein Konto mit dieser Identität ist bereits vorhanden.';
+$lang['account_creation_insufficient_data']			= 'Nicht genügend Informationen, um ein Konto zu erstellen. Stellen Sie sicher, dass eine gültige Identität und ein Passwort angegeben sind.';
 
 // Password
 $lang['password_invalid']							= "The %s field is invalid.";

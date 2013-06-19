@@ -12,48 +12,28 @@
 
 class User_Admin extends CI_Controller {
 
-	private $userdata, $area, $login_link;
+	private $userdata;
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->library('CP_auth');
-		$this->load->model('user/user_model', 'user');
 		$this->load->model('admin/admin_model', 'admin');
 		
 		// Berechtigungsprüfung TEIL 1: eingelogged und Admin
-		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
-		
-		$segs = $this->uri->segment_array();		
-		foreach ($segs as $segment)
-		{
-		    if($segment == 'frontend') 
-		    {
-		    	$this->user->init($segment);
-		    	$this->area = $segment;
-		    	$this->login_link = EMAIL_LINK_ACCOUNT_ACTIVATE;
-		    }
-		    if($segment == 'backend') 
-		    {
-		    	$this->user->init($segment);
-		    	$this->area = $segment;
-		    	$this->login_link = EMAIL_ADMINLINK_ACCOUNT_ACTIVATE;
-		    }
-		}			
-		if($this->area != 'backend' && $this->area != 'frontend') redirect('admin');
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');	
 	}
 	
 	public function user_liste()
 	{		
 		$this->session->set_userdata('userliste_redirect', current_url()); 
 				
-		$header['title']    = 'Benutzer im '.ucfirst($this->area);
+		$header['title']    = 'Benutzer im Backend';
 		$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue();
-		$data['user']       = $this->user->get_user_list($this->area);	
-		$data['area']       = $this->area;
-	
+		$data['user']       = $this->cp_auth->get_users_query()->result();	
+        
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
@@ -61,6 +41,56 @@ class User_Admin extends CI_Controller {
 		$this->load->view('backend/user/userliste_admin', $data);
 		$this->load->view('backend/templates/admin/footer');		
 	}
+    
+    public function delete_user_verify($userID)
+    {
+        $header['title']    = 'Benutzer l&ouml;schen';		
+    	$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
+    	$menue['submenue']	= $this->admin->get_submenue();
+        $data['user']       = $this->cp_auth->get_user($userID);
+        $data['type']       = 'user';
+    	
+    	$this->load->view('backend/templates/admin/header', $header);
+    	$this->load->view('backend/templates/admin/menue', $menue);	
+    	$this->load->view('backend/templates/admin/submenue', $menue);	
+    	$this->load->view('backend/user/verifyDelete_admin', $data);
+    	$this->load->view('backend/templates/admin/footer');
+    }
+    
+    public function delete_group_verify($groupID)
+    {
+        $header['title']    = 'Gruppe l&ouml;schen';		
+    	$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
+    	$menue['submenue']	= $this->admin->get_submenue();
+        $sql_where          = array('ugrp_id' => $groupID);
+        $data['group']      = $this->cp_auth->get_user_group(FALSE, $sql_where);
+        $data['type']       = 'user';
+    	
+    	$this->load->view('backend/templates/admin/header', $header);
+    	$this->load->view('backend/templates/admin/menue', $menue);	
+    	$this->load->view('backend/templates/admin/submenue', $menue);	
+    	$this->load->view('backend/user/verifyDelete_admin', $data);
+    	$this->load->view('backend/templates/admin/footer');
+    }
+    
+    public function delete_priv_verify($privID)
+    {
+        $header['title']    = 'Berechtigung l&ouml;schen';		
+    	$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
+    	$menue['submenue']	= $this->admin->get_submenue();
+        $sql_where          = array('upriv_id' => $privID);
+        $data['priv']       = $this->cp_auth->get_privileges(FALSE, $sql_where);
+        $data['type']       = 'user';
+    	
+    	$this->load->view('backend/templates/admin/header', $header);
+    	$this->load->view('backend/templates/admin/menue', $menue);	
+    	$this->load->view('backend/templates/admin/submenue', $menue);	
+    	$this->load->view('backend/user/verifyDelete_admin', $data);
+    	$this->load->view('backend/templates/admin/footer');
+    }
 	
 	public function create_user()
 	{
@@ -158,44 +188,6 @@ class User_Admin extends CI_Controller {
 		$this->form_validation->set_rules('nachname', 'Nachname', 'required|alpha|max_length[100]|xss_clean');
 		
 		return $this->form_validation->run();
-	}
-	
-	private function send_initial_login()
-	{
-		$this->load->library('email');
-		
-		// Accountdaten Email
-		$this->email->from(EMAIL_FROM_ACCOUNT_ACTIVATE, EMAIL_FROMTXT_ACCOUNT_ACTIVATE);
-		$this->email->to($this->userdata['userdata']['email']);
-		$this->email->subject('feuerwehr-bs.de - Dein neuer Account für den '.ucfirst($this->area).' Bereich');		
-		$message_html = EMAIL_HTML_HEADER;
-		$message_html.= 'Hallo '.$this->userdata['userdata']['vorname'].'<br>';
-		$message_html.= '<p>Dein neuer Account für den <strong>'.ucfirst($this->area).' Bereich</strong> unter <a href="'.$this->login_link.'" target="_blank">'.$this->login_link.'</a> wurde angelegt.</p>
-		                 <p>Du kannst dich mit folgenden Daten anmelden:</p><br>
-		                 <table>
-		                 	<tr><td><strong>Benutzername:</strong></td><td>'.$this->userdata['userdata']['username'].'</td></tr>
-		                 	<tr><td><strong>Passwort:</strong></td><td>Erhältst du aus Sicherheitsgründen mit einer separeten Email</td></tr>
-		                 </table>';
-		$message_html.= EMAIL_HTML_FOOTER;
-		$this->email->message($message_html);
-		$this->email->send();
-		
-		$this->email->clear();
-		
-		// Passwortdaten Email
-		$this->email->from(EMAIL_FROM_ACCOUNT_ACTIVATE, EMAIL_FROMTXT_ACCOUNT_ACTIVATE);
-		$this->email->to($this->userdata['userdata']['email']);
-		$this->email->subject('feuerwehr-bs.de - Dein Initialpasswort für den '.ucfirst($this->area).' Bereich');
-		$message_html = EMAIL_HTML_HEADER;
-		$message_html.= 'Hallo '.$this->userdata['userdata']['vorname'].'<br>';
-		$message_html.= '<p>Hiermit erhältst du das Initialpasswort. Beim ersten Anmelden wirst du aufgefordert, dieses Passwort zu ändern.</p><br>
-		                 <table>
-		                 	<tr><td><strong>Benutzername:</strong></td><td>Wurde dir in einer vorherigen Mail mitgeteilt</td></tr>
-		                 	<tr><td><strong>Passwort:</strong></td><td>'.$this->userdata['authdata']['initial_pw'].'</td></tr>
-		                 </table>';
-		$message_html.= EMAIL_HTML_FOOTER;
-		$this->email->message($message_html);
-		$this->email->send();		
 	}
 	
 	public function switch_online_state($id, $state)

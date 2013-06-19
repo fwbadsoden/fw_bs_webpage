@@ -188,15 +188,12 @@ class Admin extends CI_Controller {
 	 * @param string $error
 	 * @return
 	 */
-	public function login($error = 0)
+	public function login($error = 0, $messages = NULL)
 	{	
-	    $message = NULL;
 		$header['title'] = 'Backend Login';
-        if($error == 1) {
-            $message = $this->cp_auth->error_messages('public', '<p>', '</p>');
-        }
-        if (isset($message)) echo $message;
-		$data['error'] = $message;
+  
+        if (isset($messages)) $this->debug->dump($messages);
+		$data['error'] = $messages;
 		$this->load->view('backend/templates/admin/header_login', $header);
 		$this->load->view('backend/admin/login', $data);
 		$this->load->view('backend/templates/admin/footer_login');
