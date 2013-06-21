@@ -23,6 +23,24 @@ class User_Admin extends CI_Controller {
 		// Berechtigungsprüfung TEIL 1: eingelogged und Admin
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');	
 	}
+    
+    public function edit_profile()
+    {
+        $this->session->set_userdata('userprofile_redirect', current_url());
+        
+        $userdata           = $this->cp_auth->cp_get_user_by_id();
+        $header['title']    = 'Benutzerprofil von '.$userdata->first_name.' '.$userdata->last_name;
+		$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $userdata;
+		$menue['submenue']	= $this->admin->get_submenue();
+        $data['userdata']   = $userdata;
+        
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/menue', $menue);	
+		$this->load->view('backend/templates/admin/submenue', $menue);	
+		$this->load->view('backend/user/userprofile_admin', $data);
+		$this->load->view('backend/templates/admin/footer');
+    }
 	
 	public function user_liste()
 	{		
@@ -192,16 +210,20 @@ class User_Admin extends CI_Controller {
 	
 	public function switch_online_state($id, $state)
 	{
-		if($state == 1) $online = 0; else $online = 1;
-		
-		$this->user->switch_online_state($id, $online);
+		if($state == 1) 
+            $this->cp_auth->deactivate_user($id);
+        else 
+            $this->cp_auth->activate_user($id, FALSE, FALSE);
+            
 		redirect($this->session->userdata('userliste_redirect'), 'refresh');	
 	}
 	
 	// JSON Call Attribut eindeutig
-	public function json_userattr_unique($area, $attr, $id, $value)
+	public function json_userattr_unique($id, $value)
 	{		
-		echo json_encode($this->user->is_attr_unique($area, $attr, $value, $id));
+        $return = $this->cp_auth->identity_available($value, $id);
+        if($return) $json = 1; else $json = 0;
+		echo json_encode($json);
 	}
 }
 ?>

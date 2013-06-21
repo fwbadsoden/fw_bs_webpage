@@ -65,7 +65,7 @@ class Menue_Admin extends CI_Controller {
 		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
 		{					
 			$header['title']     = 'Menü';		
-			$menue['menue']	     = $this->admin->get_menue();
+		    $menue['menue']	     = $this->admin->get_menue();
             $menue['userdata']   = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']	 = $this->admin->get_submenue();
 			$data['menue_arr']   = $this->menue->get_menue_list();
@@ -95,7 +95,7 @@ class Menue_Admin extends CI_Controller {
 		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
 		{					
 			$header['title']     = 'Menü';		
-			$menue['menue']	     = $this->admin->get_menue();
+		    $menue['menue']	     = $this->admin->get_menue();
             $menue['userdata']   = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']	 = $this->admin->get_submenue();
 			$data['menue_arr']   = $this->menue->get_menue_list();

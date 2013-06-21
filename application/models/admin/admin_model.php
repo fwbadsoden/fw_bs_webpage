@@ -25,6 +25,7 @@ class Admin_model extends CI_Model {
 	{
 		parent::__construct();
 		$this->load->library('CP_auth');
+        $this->load->library('encrypt');
 	}	
 	
 	public function get_menue()
@@ -42,7 +43,7 @@ class Admin_model extends CI_Model {
 			$menue[$i]['target'] 		= $row->target;
 			$i++;	
 		}
-		
+        
 		return $menue;
 	}
 	

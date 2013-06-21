@@ -48,7 +48,7 @@ class Module_Admin extends CI_Controller {
 	 		$this->session->set_userdata('settingliste_redirect', current_url()); 	
 		
 			$header['title'] 		= 'Einstellungen';		
-			$menue['menue']			= $this->admin->get_menue();
+		    $menue['menue']	        = $this->admin->get_menue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
 			$data['setting']        = $this->module->get_settings();
@@ -167,7 +167,7 @@ class Module_Admin extends CI_Controller {
 		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
 		{			
 			$header['title'] 		= 'Routen';		
-			$menue['menue']			= $this->admin->get_menue();
+		    $menue['menue']	        = $this->admin->get_menue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
 			$data['module']         = $this->module->get_modules();
@@ -197,7 +197,7 @@ class Module_Admin extends CI_Controller {
 		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
 		{			
 			$header['title'] 		= 'Routen';		
-			$menue['menue']			= $this->admin->get_menue();
+		    $menue['menue']	        = $this->admin->get_menue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
 			$data['module']         = $this->module->get_modules();

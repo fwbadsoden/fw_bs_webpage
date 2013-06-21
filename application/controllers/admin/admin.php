@@ -57,8 +57,8 @@ class Admin extends CI_Controller {
 	{
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 		
-		$header['title'] 		= 'Inhalte bearbeiten';	
-		$menue['menue']		= $this->admin->get_menue();
+		$header['title'] 	= 'Inhalte bearbeiten';	
+		$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
@@ -79,8 +79,8 @@ class Admin extends CI_Controller {
 	{
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 		
-		$header['title'] 		= 'Dateien bearbeiten';	
-		$menue['menue']		= $this->admin->get_menue();
+		$header['title'] 	= 'Dateien bearbeiten';	
+		$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
@@ -101,8 +101,8 @@ class Admin extends CI_Controller {
 	{
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 		
-		$header['title'] 		= 'Inhalte bearbeiten';	
-		$menue['menue']		= $this->admin->get_menue();
+		$header['title'] 	= 'Inhalte bearbeiten';	
+		$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
@@ -123,8 +123,8 @@ class Admin extends CI_Controller {
 	{
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 		
-		$header['title'] 		= 'Inhalte bearbeiten';	
-		$menue['menue']		= $this->admin->get_menue();
+		$header['title'] 	= 'Inhalte bearbeiten';	
+		$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
@@ -145,8 +145,8 @@ class Admin extends CI_Controller {
 	{
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 		
-		$header['title'] 		= 'Inhalte bearbeiten';	
-		$menue['menue']		= $this->admin->get_menue();
+		$header['title'] 	= 'Inhalte bearbeiten';	
+		$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		
@@ -165,8 +165,8 @@ class Admin extends CI_Controller {
 	 */
 	private function dashboard()
 	{
-		$header['title'] 		= 'Dashboard';	
-		$menue['menue']		= $this->admin->get_menue();
+		$header['title'] 	= 'Dashboard';	
+		$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue(); 
 		$data['userdata'] 	= $menue['userdata'];

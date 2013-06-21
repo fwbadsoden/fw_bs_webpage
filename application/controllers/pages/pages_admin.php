@@ -75,8 +75,8 @@ class Pages_Admin extends CI_Controller {
 		{
             $this->session->set_userdata('pagecreate_redirect', current_url());
             
-            $header['title']    = 'Inhaltsseite anlegen';		
-    		$menue['menue']	    = $this->admin->get_menue();
+            $header['title']    = 'Inhaltsseite anlegen';	
+            $menue['menue']	    = $this->admin->get_menue();
             $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     		$menue['submenue']	= $this->admin->get_submenue();
             $data['templates']  = $this->pages->get_templates();
@@ -115,8 +115,8 @@ class Pages_Admin extends CI_Controller {
 		{
             $this->session->set_userdata('pageedit_redirect', current_url());
             
-            $header['title']    = 'Inhaltsseite bearbeiten';		
-    		$menue['menue']	    = $this->admin->get_menue();
+            $header['title']    = 'Inhaltsseite bearbeiten';
+		    $menue['menue']	    = $this->admin->get_menue();
             $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     		$menue['submenue']	= $this->admin->get_submenue();
             $data['page']       = $this->pages->get_page($this->pageID);
@@ -194,8 +194,8 @@ class Pages_Admin extends CI_Controller {
 			
 		if($this->uri->segment($this->uri->total_segments()) != 'save')
 		{            
-            $header['title']    = 'Inhaltselement hinzuf&uumlgen';		
-    		$menue['menue']	    = $this->admin->get_menue();
+            $header['title']    = 'Inhaltselement hinzuf&uumlgen';	
+		    $menue['menue']	    = $this->admin->get_menue();
             $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     		$menue['submenue']	= $this->admin->get_submenue();
             $data['boxes']      = $this->pages->get_allowed_boxes($this->rowID);
@@ -221,7 +221,7 @@ class Pages_Admin extends CI_Controller {
             $this->session->set_userdata('editboxcontent_submit', current_url());
         
             $header['title']     = 'Inhalt bearbeiten';		
-    		$menue['menue']	     = $this->admin->get_menue();
+		    $menue['menue']	     = $this->admin->get_menue();
             $menue['userdata']   = $this->cp_auth->cp_get_user_by_id();
     		$menue['submenue']	 = $this->admin->get_submenue();       
             $data['box_meta']    = $this->pages->get_box_meta($rowContentID);
@@ -258,7 +258,7 @@ class Pages_Admin extends CI_Controller {
     public function delete_page_verify($pageID)
     {
         $header['title']    = 'Seite l&ouml;schen';		
-    	$menue['menue']	    = $this->admin->get_menue();
+		$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     	$menue['submenue']	= $this->admin->get_submenue();
         $data['type']       = 'page';
@@ -296,7 +296,7 @@ class Pages_Admin extends CI_Controller {
     public function delete_row_verify($rowID, $pageID)
     {
         $header['title']    = 'Zeile l&ouml;schen';		
-    	$menue['menue']	    = $this->admin->get_menue();
+		$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     	$menue['submenue']	= $this->admin->get_submenue();
         $data['type']       = 'row';
@@ -333,7 +333,7 @@ class Pages_Admin extends CI_Controller {
     public function delete_box_verify($rowContentID)
     {
         $header['title']    = 'Box l&ouml;schen';		
-    	$menue['menue']	    = $this->admin->get_menue();
+		$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     	$menue['submenue']	= $this->admin->get_submenue();
         $data['type']       = 'box';
@@ -398,7 +398,7 @@ class Pages_Admin extends CI_Controller {
     {
         $this->session->set_userdata('stageliste_redirect', current_url()); 		
 		
-		$header['title']      = 'Bildb&uuml;hnen verwalten';		
+		$header['title']      = 'Bildb&uuml;hnen verwalten';	
 		$menue['menue']	      = $this->admin->get_menue();
         $menue['userdata']    = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	  = $this->admin->get_submenue();

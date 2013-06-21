@@ -80,7 +80,7 @@ class Einsatz_Admin extends CI_Controller {
 		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
 		{			
 			$header['title'] 		= 'Einsätze';		
-			$menue['menue']			= $this->admin->get_menue();
+    		$menue['menue']	        = $this->admin->get_menue();
 			$menue['submenue']		= $this->admin->get_submenue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$einsatz['fahrzeuge'] 	= $this->fahrzeug->get_fahrzeug_list_id_name(1);
@@ -119,7 +119,7 @@ class Einsatz_Admin extends CI_Controller {
 		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
 		{			
 			$header['title'] 		= 'Einsätze';		
-			$menue['menue']			= $this->admin->get_menue();
+            $menue['menue']	        = $this->admin->get_menue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
 			$einsatz['fahrzeuge'] 	= $this->fahrzeug->get_fahrzeug_list_id_name(1);
@@ -250,8 +250,8 @@ class Einsatz_Admin extends CI_Controller {
 		{			
 			if($this->uri->segment($this->uri->total_segments()) != 'save') $this->session->set_userdata('einsatzimage_submit', current_url());
 			
-			$header['title'] 		= 'Einsatz - Image Uploader';		
-			$menue['menue']			= $this->admin->get_menue();
+			$header['title'] 		= 'Einsatz - Image Uploader';
+            $menue['menue']	        = $this->admin->get_menue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
 			$einsatz['einsatz']		= $this->einsatz->get_einsatz($id);

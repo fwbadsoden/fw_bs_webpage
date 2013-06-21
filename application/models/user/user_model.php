@@ -130,24 +130,7 @@ class User_Model extends Flexi_auth_model {
  * 		$this->db->trans_complete();
  * 	}
  * 	
- * 	public function switch_online_state($userID, $active)
- * 	{
- * 		$this->db->update($this->db_user_table, array('active' => $active), 'userID = '.$userID);
- * 	}
  * 	
- * 	public function is_attr_unique($area, $attr, $value, $id)
- * 	{
- * 		$this->init($area);
- * 		if($id > 0) $this->db->where('userID !=', $id);
- * 		$this->db->where($attr, strtolower($value));
- * 		$query = $this->db->get($this->db_user_table);
- * 		if($query->num_rows() == 0) return '1'; else return '0';	
- * 	}
- * 	
- * 	public function get_user_table()
- * 	{
- * 		return $this->db_user_table;	
- * 	}
  */
 }
 

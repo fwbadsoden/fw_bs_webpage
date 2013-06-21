@@ -76,7 +76,7 @@ class Fahrzeug_Admin extends CI_Controller {
 		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
 		{			
 			$header['title'] 		= 'Fahrzeuge';		
-			$menue['menue']			= $this->admin->get_menue();
+		    $menue['menue']	        = $this->admin->get_menue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
 		
@@ -112,7 +112,7 @@ class Fahrzeug_Admin extends CI_Controller {
 		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
 		{			
 			$header['title'] 		= 'Fahrzeuge';		
-			$menue['menue']			= $this->admin->get_menue();
+		    $menue['menue']	        = $this->admin->get_menue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
 			$fahrzeug['fahrzeug'] 	= $this->fahrzeug->get_fahrzeug($id);
@@ -247,8 +247,8 @@ class Fahrzeug_Admin extends CI_Controller {
 		{			
 			if($this->uri->segment($this->uri->total_segments()) != 'save') $this->session->set_userdata('fahrzeugimage_submit', current_url());
 			
-			$header['title'] 		= 'Fahrzeug - Image Uploader';		
-			$menue['menue']			= $this->admin->get_menue();
+			$header['title'] 		= 'Fahrzeug - Image Uploader';	
+		    $menue['menue']	        = $this->admin->get_menue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
 			$fahrzeug['fahrzeug']	= $this->fahrzeug->get_fahrzeug($id);

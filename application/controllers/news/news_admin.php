@@ -29,7 +29,7 @@ class News_Admin extends CI_Controller {
 		$this->session->set_userdata('newsliste_redirect', current_url()); 
 		
 		$header['title'] 			= 'News';		
-		$menue['menue']				= $this->admin->get_menue();
+		$menue['menue']	            = $this->admin->get_menue();
         $menue['userdata']          = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']			= $this->admin->get_submenue();
 		$data['news'] 				= $this->news->get_news_list();
@@ -65,7 +65,7 @@ class News_Admin extends CI_Controller {
         $this->session->set_userdata('kategorieliste_redirect', current_url());
         
         $header['title']        = 'News Kategorien';      
-		$menue['menue']			= $this->admin->get_menue();
+		$menue['menue']	        = $this->admin->get_menue();
         $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']		= $this->admin->get_submenue();
 		$data['categories']		= $this->news->get_news_categories();  
