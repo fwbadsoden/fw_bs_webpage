@@ -192,7 +192,6 @@ class Admin extends CI_Controller {
 	{	
 		$header['title'] = 'Backend Login';
   
-        if (isset($messages)) $this->debug->dump($messages);
 		$data['error'] = $messages;
 		$this->load->view('backend/templates/admin/header_login', $header);
 		$this->load->view('backend/admin/login', $data);

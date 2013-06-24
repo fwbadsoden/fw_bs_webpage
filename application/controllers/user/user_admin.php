@@ -26,20 +26,44 @@ class User_Admin extends CI_Controller {
     
     public function edit_profile()
     {
-        $this->session->set_userdata('userprofile_redirect', current_url());
+        if($this->uri->segment($this->uri->total_segments()) == 'save')
+		{
+			if($verify = $this->verify_profile())
+            {
+                $userdata = array(
+                    'email'      => $this->input->post('email')
+                );
+                $profiledata = array(
+                    'uprof_users_uacc_fk' => $this->cp_auth->get_user_id(),
+                    'last_name'  => $this->input->post('nachname'),
+                    'first_name' => $this->input->post('vorname'),
+                    'initials'   => $this->input->post('initials')
+                );
+                
+				$this->cp_auth->update_user($this->cp_auth->get_user_id(), $userdata);
+				$this->cp_auth->update_custom_user_data('user_profile', FALSE, $profiledata);
+            }
+		}
+        else
+            $this->session->set_userdata('userprofile_redirect', current_url());
         
-        $userdata           = $this->cp_auth->cp_get_user_by_id();
-        $header['title']    = 'Benutzerprofil von '.$userdata->first_name.' '.$userdata->last_name;
-		$menue['menue']	    = $this->admin->get_menue();
-        $menue['userdata']  = $userdata;
-		$menue['submenue']	= $this->admin->get_submenue();
-        $data['userdata']   = $userdata;
-        
-		$this->load->view('backend/templates/admin/header', $header);
-		$this->load->view('backend/templates/admin/menue', $menue);	
-		$this->load->view('backend/templates/admin/submenue', $menue);	
-		$this->load->view('backend/user/userprofile_admin', $data);
-		$this->load->view('backend/templates/admin/footer');
+        if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
+		{
+            $userdata           = $this->cp_auth->cp_get_user_by_id();
+            $header['title']    = 'Benutzerprofil von '.$userdata->first_name.' '.$userdata->last_name;
+    		$menue['menue']	    = $this->admin->get_menue();
+            $menue['userdata']  = $userdata;
+    		$menue['submenue']	= $this->admin->get_submenue();
+            $data['userdata']   = $userdata;
+            
+    		$this->load->view('backend/templates/admin/header', $header);
+    		$this->load->view('backend/templates/admin/menue', $menue);	
+    		$this->load->view('backend/templates/admin/submenue', $menue);	
+    		$this->load->view('backend/user/userprofile_admin', $data);
+    		$this->load->view('backend/templates/admin/footer');
+        }
+        else 
+            redirect($this->session->userdata('userprofile_redirect', 'refresh'));
     }
 	
 	public function user_liste()
@@ -185,6 +209,21 @@ class User_Admin extends CI_Controller {
 		redirect($this->session->userdata('userliste_redirect'), 'refresh');	
 	}
 	
+	public function verify_profile()
+	{
+		$this->load->library('form_validation');
+		
+		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
+			
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[150]|xss_clean|callback_identity_unique');
+		
+		$this->form_validation->set_rules('vorname', 'Vorname', 'required|alpha|max_length[100]|xss_clean');
+		$this->form_validation->set_rules('nachname', 'Nachname', 'required|alpha|max_length[100]|xss_clean');
+		$this->form_validation->set_rules('initials', 'Initialen', 'xss_clean');
+		
+		return $this->form_validation->run();
+	}
+	
 	public function verify_user($id = 0)
 	{
 		$this->load->library('form_validation');
@@ -225,5 +264,11 @@ class User_Admin extends CI_Controller {
         if($return) $json = 1; else $json = 0;
 		echo json_encode($json);
 	}
+    
+    // callback für identity unique 
+    public function identity_unique($identity)
+    {
+        return $this->cp_auth->identity_available($identity, $this->cp_auth->get_user_id());
+    }
 }
 ?>

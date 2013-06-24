@@ -335,7 +335,7 @@ class Flexi_auth_model extends Flexi_auth_lite_model
 		
 		// Complete SQL transaction.
 		$this->db->trans_complete();
-		
+	
 		return $this->db->trans_status();
 	}
 
