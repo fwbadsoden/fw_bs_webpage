@@ -109,6 +109,7 @@ img{border:0}
 #content .button_online_small{background:url('../../images/admin/buttons/bullet_green.png') no-repeat 5px 0;height:17px;width:26px;display:block}
 #content .button_offline_small{background:url('../../images/admin/buttons/bullet_red.png') no-repeat 5px 0;height:17px;width:26px;display:block}
 #content .button_lock_small{background:url('../../images/admin/buttons/lock.png') no-repeat 5px 0;height:17px;width:26px;display:block}
+#content .button_pw_change{background:url('../../images/admin/buttons/group_key.png') no-repeat 5px 0;height:17px;width:26px;display:block}
 #content .button_status_green_small{background:url('../../images/admin/buttons/flag_green.png') no-repeat 5px 0;height:17px;width:26px;display:block}
 #content .button_status_red_small{background:url('../../images/admin/buttons/flag_red.png') no-repeat 5px 0;height:17px;width:26px;display:block}
 
