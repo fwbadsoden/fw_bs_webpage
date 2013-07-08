@@ -140,13 +140,24 @@ class User_Admin extends CI_Controller {
 		{
 			if($verify = $this->verify_user())
 			{
+                $this->load->helper('string');
 				$this->admin->insert_log(str_replace('%USER%', $this->input->post('username'), lang('log_admin_createUser')));
-				$this->userdata = $this->user->create_user();
-				/*	
-				 *  $this->user['userdata'] = array(userID, username, email, vorname, nachname, creation_date)
-				 *  $this->user['authdata'] = intial_password
-				 */
-				$this->send_initial_login();
+                $userdata = array(
+                    'last_name'   => $this->input->post('nachname'),
+                    'first_name'  => $this->input->post('vorname'),
+                    'gender'      => $this->input->post('geschlecht'),
+                    'initials'    => $this->input->post('initialen'),
+                    'created'     => date('Y-m-d H:i:s'),
+                    'created_by'  => $this->cp_auth->get_user_id()
+                );
+                $initial_pw = random_string('alnum', 8);
+				$userID = $this->cp_auth->insert_user($this->input->post('email'), $this->input->post('username'), $initial_pw, $userdata, AUTH_USER_DEFAULT_GROUP, TRUE);
+				$email_data = array(
+                    'username' => $this->input->post('username'),
+                    'email'    => $this->input->post('email'),
+                    'intial_pw' => $initial_pw
+                );
+                $this->cp_auth->send_email($this->input->post('email'), 'Ihr neuer Account auf feuerwehr-bs.de', 'new_account', $email_data);
 			}
 		}
 		else
@@ -175,7 +186,22 @@ class User_Admin extends CI_Controller {
 			if($verify = $this->verify_user($id))
 			{
 				$this->admin->insert_log(str_replace('%USER%', $this->input->post('username'), lang('log_admin_editUser')));
-				$this->user->update_user($id);
+                $userdata = array(
+                    'username'   => $this->input->post('username'),
+                    'email'      => $this->input->post('email'),
+                    'modified'   => date('Y-m-d H:i:s'),
+                    'modified_by' => $this->cp_auth->get_user_id()
+                );
+                $profiledata = array(
+                    'uprof_users_uacc_fk' => $id,
+                    'last_name'  => $this->input->post('nachname'),
+                    'first_name' => $this->input->post('vorname'),
+                    'initials'   => $this->input->post('initialen'),
+                    'gender'     => $this->input->post('geschlecht')
+                );
+                
+				$this->cp_auth->update_user($id, $userdata);
+				$this->cp_auth->update_custom_user_data('user_profile', FALSE, $profiledata);
 			}
 		}
 		else
@@ -183,12 +209,12 @@ class User_Admin extends CI_Controller {
 			
 		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
 		{
+            $userdata               = $this->cp_auth->cp_get_user_by_id();
 			$header['title'] 		= 'User';
 			$menue['menue']			= $this->admin->get_menue();
-            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
+            $menue['userdata']      = $userdata;
 			$menue['submenue']		= $this->admin->get_submenue();
-			$user['user']			= $this->user->get_user($id);
-			$user['id']				= $id;
+			$user['userdata']		= $userdata;
 			
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/menue', $menue);
@@ -227,19 +253,20 @@ class User_Admin extends CI_Controller {
 	public function verify_user($id = 0)
 	{
 		$this->load->library('form_validation');
-		$user_table = $this->user->get_user_table();
 		
 		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
 		
 		if($id > 0)
 		{
-			$this->form_validation->set_rules('username', 'Benutzername', 'required|alpha_numeric|max_length[20]|xss_clean|edit_unique['.$user_table.'.username.'.$id.'.userID]');	
-			$this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[150]|xss_clean|edit_unique['.$user_table.'.email.'.$id.'.userID]');		
+			$this->form_validation->set_rules('username', 'Benutzername', 'required|alpha_numeric|max_length[20]|xss_clean|identity_unique['.$id.']');	
+			$this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[150]|xss_clean|identity_unique['.$id.']');	
+            $this->form_validation->set_rules('initialen', 'Initialen', 'max_length[10]|xss_clean|edit_unique[user_profile, initials, '.$id.', uprof_id]');	
 		}
 		else
 		{
-			$this->form_validation->set_rules('username', 'Benutzername', 'required|alpha_numeric|max_length[20]|xss_clean|is_unique['.$user_table.'.username]');	
-			$this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[150]|xss_clean|is_unique['.$user_table.'.email]');
+			$this->form_validation->set_rules('username', 'Benutzername', 'required|alpha_numeric|max_length[20]|xss_clean|identity_unique');	
+			$this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[150]|xss_clean|identity_unique');
+        $this->form_validation->set_rules('initialen', 'Initialen', 'max_length[10]|xss_clean|is_unique');
 		}
 		$this->form_validation->set_rules('vorname', 'Vorname', 'required|alpha|max_length[100]|xss_clean');
 		$this->form_validation->set_rules('nachname', 'Nachname', 'required|alpha|max_length[100]|xss_clean');
@@ -266,9 +293,12 @@ class User_Admin extends CI_Controller {
 	}
     
     // callback für identity unique 
-    public function identity_unique($identity)
+    public function identity_unique($identity, $id = 0)
     {
-        return $this->cp_auth->identity_available($identity, $this->cp_auth->get_user_id());
+        if($id == 0)
+            return $this->cp_auth->identity_available($identity, $this->cp_auth->get_user_id());
+        else
+            return $this->cp_auth->identity_available($identity);
     }
 }
 ?>

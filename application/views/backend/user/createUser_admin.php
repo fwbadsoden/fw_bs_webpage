@@ -29,6 +29,18 @@
 		'class'	=> 'input_text',
 		'value'	=> set_value('nachname')			
 	);
+	$userInitials = array(
+		'name' 	=> 'initialen',
+		'id'	=> 'initialen',
+		'class'	=> 'input_text',
+		'value'	=> set_value('initialen')			
+	);
+    $gender_options = array();
+	if(isset($_POST['geschlecht'])) 	     		$gender_selected = $_POST['geschlecht']; 
+	else 											$gender_selected = 'Männlich';
+	$gender_attr 		= "class = 'input_dropdown' id = 'geschlecht'";
+	$gender_options['m'] 	= 'Männlich';
+	$gender_options['w'] 	= 'Weiblich';
 ?>
 
 <script type="text/javascript">
@@ -86,6 +98,16 @@ $(function() {
     	<tr>
             <td class='form_label'><?=form_label('Nachname:', $userNachname['id']); ?></td>
             <td><?=form_input($userNachname); ?></td>
+            <td class='error'></td>
+        </tr>
+        <tr>
+            <td class='form_label'><?=form_label('Geschlecht:', 'geschlecht'); ?></td>
+            <td><?=form_dropdown('geschlecht', $gender_options, $gender_selected, $gender_attr)?></td>
+            <td class='error'></td>
+        </tr>
+    	<tr>
+            <td class='form_label'><?=form_label('Initialen:', $userInitials['id']); ?></td>
+            <td><?=form_input($userInitials); ?></td>
             <td class='error'></td>
         </tr>
     </table>

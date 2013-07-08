@@ -5,34 +5,47 @@
 	$form = array(
 		'id'	 => 'user',
 	);
-	if(!$value = set_value('username')) $value = $user['username'];
+	if(!$value = set_value('username')) $value = $userdata->uacc_username;
 	$userUsername = array(
 		'name'	=> 'username',
 		'id'	=> 'username',
 		'class' => 'input_text',
 		'value' => $value
 	);
-	if(!$value = set_value('email')) $value = $user['email'];
+	if(!$value = set_value('email')) $value = $userdata->uacc_email;
 	$userEmail = array(
 		'name' 	=> 'email',
 		'id'	=> 'email',
 		'class'	=> 'input_text',
 		'value'	=> $value
 	);
-	if(!$value = set_value('vorname')) $value = $user['vorname'];
+	if(!$value = set_value('vorname')) $value = $userdata->first_name;
 	$userVorname = array(
 		'name' 	=> 'vorname',
 		'id'	=> 'vorname',
 		'class'	=> 'input_text',
 		'value'	=> $value		
 	);
-	if(!$value = set_value('nachname')) $value = $user['nachname'];
+	if(!$value = set_value('nachname')) $value = $userdata->last_name;
 	$userNachname = array(
 		'name' 	=> 'nachname',
 		'id'	=> 'nachname',
 		'class'	=> 'input_text',
 		'value'	=> $value			
 	);
+    if(!$value = set_value('initialen')) $value = $userdata->initials;
+	$userInitials = array(
+		'name' 	=> 'initialen',
+		'id'	=> 'initialen',
+		'class'	=> 'input_text',
+		'value'	=> $value			
+	);
+    $gender_options = array();
+	if(isset($_POST['geschlecht'])) 	     		$gender_selected = $_POST['geschlecht']; 
+	else 											$gender_selected = 'Männlich';
+	$gender_attr 		= "class = 'input_dropdown' id = 'geschlecht'";
+	$gender_options['m'] 	= 'Männlich';
+	$gender_options['w'] 	= 'Weiblich';
 ?>
 
 <script type="text/javascript">
@@ -91,6 +104,16 @@ $(function() {
     	<tr>
             <td class='form_label'><?=form_label('Nachname:', $userNachname['id']); ?></td>
             <td><?=form_input($userNachname); ?></td>
+            <td class='error'></td>
+        </tr>
+        <tr>
+            <td class='form_label'><?=form_label('Geschlecht:', 'geschlecht'); ?></td>
+            <td><?=form_dropdown('geschlecht', $gender_options, $gender_selected, $gender_attr)?></td>
+            <td class='error'></td>
+        </tr>
+    	<tr>
+            <td class='form_label'><?=form_label('Initialen:', $userInitials['id']); ?></td>
+            <td><?=form_input($userInitials); ?></td>
             <td class='error'></td>
         </tr>
     </table>
