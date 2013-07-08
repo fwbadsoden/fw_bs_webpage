@@ -1,8 +1,8 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');    
     switch($type) {
         case 'user':    $headline   = 'ACHTUNG: Wollen Sie den Datensatz wirklich l&ouml;schen?';
                         $text       = 'Sind Sie sicher, dass der <strong>Benutzer</strong> <strong>'.$user->uacc_username.' ('.$user->first_name.' '.$user->last_name.')</strong> gel&ouml;scht werden soll?<br>Im Falle der L&ouml;schung werden <strong>s&auml;mtliche</strong> Daten des Benutzers und seine Berechtigungszuordnungen <strong>gel&ouml;scht</strong>!<br><strong>Bitte pr&uuml;fen Sie sorgf&auml;ltig</strong>, ob es sich genau um den Benutzer handelt, welchen Sie l&ouml;schen m&ouml;chten.';
-                        $del_link   = 'admin/user/user/delete/'.$user->uacc_id;
+                        $del_link   = 'admin/user/delete/'.$user->uacc_id;
                         $redirect   = 'userliste_redirect';
                         break;
         case 'group':   $headline   = 'ACHTUNG: Wollen Sie den Datensatz wirklich l&ouml;schen?';

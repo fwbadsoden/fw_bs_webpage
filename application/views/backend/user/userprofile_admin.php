@@ -1,9 +1,12 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); 
 	$this->load->helper('form');
 	$this->load->library('form_validation');
-
+var_dump($pw_msg);
 	$form = array(
 		'id'	 => 'user',
+	);
+    $form_pw = array(
+		'id'	 => 'password',
 	);
 	$userUsername = array(
 		'name'	   => 'username',
@@ -40,6 +43,21 @@
         'class' => 'input_time',
         'value' => $value
     );
+    $pwOld = array(
+        'name'  => 'pw_old',
+        'id'    => 'pw_old',
+        'class' => 'input_password'
+    );
+    $pwNew1 = array(
+        'name'  => 'pw_new1',
+        'id'    => 'pw_new1',
+        'class' => 'input_password'
+    );
+    $pwNew2 = array(
+        'name'  => 'pw_new2',
+        'id'    => 'pw_new2',
+        'class' => 'input_password'
+    );
 ?>
 
 <script type="text/javascript">
@@ -64,10 +82,10 @@ $(function() {
 
     <table>
 		<tr>
-            <td><button type='submit' name='profile_submit' id='profile_submit' class='button_gross'><span class='button_save'>Speichern</span></button></td>
+            <td><button type='submit' name='profile_submit' id='profile_submit' class='button_gross' value='profile_submit'><span class='button_save'>Speichern</span></button></td>
         </tr>
     </table>
-    <br>
+    <br/>
     <?=form_fieldset('&nbsp;&nbsp;&nbsp;Profildaten:&nbsp;&nbsp;&nbsp;');?>
    	<p>
     <table>
@@ -96,6 +114,35 @@ $(function() {
             <td class='form_label'><?=form_label('Initialen:', $userInitials['id']); ?></td>
             <td><?=form_input($userInitials); ?></td>
             <td class='error'></td>
+        </tr>
+    </table>
+    </p>
+    <?=form_fieldset_close();?>
+    <p></p>
+    <?=form_fieldset('&nbsp;&nbsp;&nbsp;Passwort ändern:&nbsp;&nbsp;&nbsp;');?>
+   	<p>
+    <table>
+        <tr><td colspan="2"><?=validation_errors();?></td></tr>
+    	<tr>
+            <td class='form_label'><?=form_label('Altes Passwort:', $pwOld['id']); ?></td>
+            <td><?=form_input($pwOld); ?></td>
+            <td class='error'><span class='error_username'></span></td>
+        </tr>
+    	<tr>
+            <td class='form_label'><?=form_label('Neues Passwort:', $pwNew1['id']); ?></td>
+            <td><?=form_input($pwNew1); ?></td>
+            <td class='error'><span class='error_email'></span></td>
+        </tr>
+    	<tr>
+            <td class='form_label'><?=form_label('Passwort wiederholen:', $pwNew2['id']); ?></td>
+            <td><?=form_input($pwNew2); ?></td>
+            <td class='error'></td>
+        </tr>
+        </tr>
+    </table>
+    <table>
+		<tr>
+            <td><button type='submit' name='change_pw' id='change_pw' class='button_gross' value='change_pw'><span class='button_pw_change'>Passwort ändern</span></button></td>
         </tr>
     </table>
     </p>

@@ -28,26 +28,38 @@ class User_Admin extends CI_Controller {
     {
         if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{
-			if($verify = $this->verify_profile())
+            if($this->input->post('profile_submit'))
             {
-                $userdata = array(
-                    'email'      => $this->input->post('email')
-                );
-                $profiledata = array(
-                    'uprof_users_uacc_fk' => $this->cp_auth->get_user_id(),
-                    'last_name'  => $this->input->post('nachname'),
-                    'first_name' => $this->input->post('vorname'),
-                    'initials'   => $this->input->post('initials')
-                );
-                
-				$this->cp_auth->update_user($this->cp_auth->get_user_id(), $userdata);
-				$this->cp_auth->update_custom_user_data('user_profile', FALSE, $profiledata);
+    			if($verify = $this->verify_profile())
+                {
+                    $userdata = array(
+                        'email'      => $this->input->post('email')
+                    );
+                    $profiledata = array(
+                        'uprof_users_uacc_fk' => $this->cp_auth->get_user_id(),
+                        'last_name'  => $this->input->post('nachname'),
+                        'first_name' => $this->input->post('vorname'),
+                        'initials'   => $this->input->post('initials')
+                    );
+                    
+    				$this->cp_auth->update_user($this->cp_auth->get_user_id(), $userdata);
+    				$this->cp_auth->update_custom_user_data('user_profile', FALSE, $profiledata);
+                }
+            }
+            else if($this->input->post('change_pw'))
+            {
+                if($verify = $this->verify_pw())
+                {
+                    $pw_change = $this->cp_auth->change_pw($this->cp_auth->get_user_id(), $this->input->post('pw_old'), $this->input->post('pw_new1'));
+                    if($pw_change) $message = $this->cp_auth->status_messages('public');
+                    else $message = $this->cp_auth->error_messages('public');
+                }
             }
 		}
         else
             $this->session->set_userdata('userprofile_redirect', current_url());
         
-        if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
+        if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false || isset($pw_change))
 		{
             $userdata           = $this->cp_auth->cp_get_user_by_id();
             $header['title']    = 'Benutzerprofil von '.$userdata->first_name.' '.$userdata->last_name;
@@ -55,6 +67,7 @@ class User_Admin extends CI_Controller {
             $menue['userdata']  = $userdata;
     		$menue['submenue']	= $this->admin->get_submenue();
             $data['userdata']   = $userdata;
+            $data['pw_msg']     = $message;
             
     		$this->load->view('backend/templates/admin/header', $header);
     		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -90,7 +103,7 @@ class User_Admin extends CI_Controller {
     	$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     	$menue['submenue']	= $this->admin->get_submenue();
-        $data['user']       = $this->cp_auth->get_user($userID);
+        $data['user']       = $this->cp_auth->cp_get_user_by_id($userID);
         $data['type']       = 'user';
     	
     	$this->load->view('backend/templates/admin/header', $header);
@@ -152,12 +165,13 @@ class User_Admin extends CI_Controller {
                 );
                 $initial_pw = random_string('alnum', 8);
 				$userID = $this->cp_auth->insert_user($this->input->post('email'), $this->input->post('username'), $initial_pw, $userdata, AUTH_USER_DEFAULT_GROUP, TRUE);
+                echo $initial_pw;
 				$email_data = array(
                     'username' => $this->input->post('username'),
                     'email'    => $this->input->post('email'),
                     'intial_pw' => $initial_pw
                 );
-                $this->cp_auth->send_email($this->input->post('email'), 'Ihr neuer Account auf feuerwehr-bs.de', 'new_account', $email_data);
+                $this->cp_auth->send_email($this->input->post('email'), 'Ihr neuer Account auf feuerwehr-bs.de', 'new_account.tpl.php', $email_data);
 			}
 		}
 		else
@@ -227,10 +241,10 @@ class User_Admin extends CI_Controller {
 	
 	public function delete_user($id)
 	{
-		$userdata = $this->user->get_user_list($id);
-		$this->admin->insert_log(str_replace('%USER%', $userdata[0]['username'], lang('log_admin_deleteUser')));
+		$user = $this->cp_auth->cp_get_user_by_id($id);
+		$this->admin->insert_log(str_replace('%USER%', $user->uacc_username, lang('log_admin_deleteUser')));
 		
-		$this->user->delete_user($id);
+		$this->cp_auth->delete_user($id);
 		
 		redirect($this->session->userdata('userliste_redirect'), 'refresh');	
 	}
@@ -241,14 +255,20 @@ class User_Admin extends CI_Controller {
 		
 		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
 			
-		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[150]|xss_clean|callback_identity_unique');
-		
-		$this->form_validation->set_rules('vorname', 'Vorname', 'required|alpha|max_length[100]|xss_clean');
-		$this->form_validation->set_rules('nachname', 'Nachname', 'required|alpha|max_length[100]|xss_clean');
-		$this->form_validation->set_rules('initials', 'Initialen', 'xss_clean');
+		$this->form_validation->set_rules('pw_old', 'Altes Passwort', 'required|xss_clean');		
+		$this->form_validation->set_rules('pw_new1', 'Neues Passwort', 'required|xss_clean');
+		$this->form_validation->set_rules('pw_new2', 'Passwort wiederholen', 'required|matches[pw_new1]|xss_clean');
 		
 		return $this->form_validation->run();
 	}
+    
+    public function verify_pw()
+    {
+        $this->load->library('form_validation');
+                
+		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
+        
+    }
 	
 	public function verify_user($id = 0)
 	{
@@ -266,7 +286,7 @@ class User_Admin extends CI_Controller {
 		{
 			$this->form_validation->set_rules('username', 'Benutzername', 'required|alpha_numeric|max_length[20]|xss_clean|identity_unique');	
 			$this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[150]|xss_clean|identity_unique');
-        $this->form_validation->set_rules('initialen', 'Initialen', 'max_length[10]|xss_clean|is_unique');
+            $this->form_validation->set_rules('initialen', 'Initialen', 'max_length[10]|xss_clean|is_unique[user_profile.initials');
 		}
 		$this->form_validation->set_rules('vorname', 'Vorname', 'required|alpha|max_length[100]|xss_clean');
 		$this->form_validation->set_rules('nachname', 'Nachname', 'required|alpha|max_length[100]|xss_clean');

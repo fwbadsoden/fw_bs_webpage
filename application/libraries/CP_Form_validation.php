@@ -37,11 +37,10 @@ Class CP_Form_validation extends CI_Form_validation
 	{
 	    $CI =& get_instance();
 	    $CI->load->database();
-		
+        
 	    list($table, $field, $current_id, $db_id_field) = explode(".", $params);
 	
 	    $query = $CI->db->select()->from($table)->where($field, $value)->limit(1)->get();
-	
 	    if ($query->row() && $query->row()->$db_id_field != $current_id)
 	    {
 	        return FALSE;
