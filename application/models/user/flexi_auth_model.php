@@ -1041,7 +1041,6 @@ class Flexi_auth_model extends Flexi_auth_lite_model
 			->get($this->auth->tbl_user_account);
 				 
 	    $result = $query->row();
-
 	    if ($query->num_rows() !== 1)
 	    {
 			return FALSE;
@@ -1052,8 +1051,7 @@ class Flexi_auth_model extends Flexi_auth_lite_model
 		$static_salt = $this->auth->auth_security['static_salt'];
 		
 		require_once(APPPATH.'libraries/phpass/PasswordHash.php');				
-		$hash_token = new PasswordHash(8, FALSE);
-					
+		$hash_token = new PasswordHash(8, FALSE);			
 		return $hash_token->CheckPassword($database_salt . $verify_password . $static_salt, $database_password);
 	}
 

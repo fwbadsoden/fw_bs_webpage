@@ -307,13 +307,12 @@ class Flexi_auth extends Flexi_auth_lite
 	 * @author Mathew Davies
 	 */
 	public function change_password($identity, $current_password, $new_password)
-	{
+	{ 
 		if ($this->CI->flexi_auth_model->change_password($identity, $current_password, $new_password))
 		{
 			$this->CI->flexi_auth_model->set_status_message('password_change_successful', 'config');
 			return TRUE;
 		}
-
 		$this->CI->flexi_auth_model->set_error_message('password_change_unsuccessful', 'config');
 		return FALSE;
 	}	

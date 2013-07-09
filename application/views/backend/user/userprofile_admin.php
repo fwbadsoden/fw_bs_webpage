@@ -1,12 +1,9 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); 
 	$this->load->helper('form');
 	$this->load->library('form_validation');
-var_dump($pw_msg);
+
 	$form = array(
 		'id'	 => 'user',
-	);
-    $form_pw = array(
-		'id'	 => 'password',
 	);
 	$userUsername = array(
 		'name'	   => 'username',
@@ -15,12 +12,12 @@ var_dump($pw_msg);
 		'value'    => $userdata->uacc_username,
         'readonly' => 'readonly'
 	);
-	if(!$value = set_value('email')) $value = $userdata->uacc_email;
 	$userEmail = array(
 		'name' 	=> 'email',
 		'id'	=> 'email',
 		'class'	=> 'input_text',
-		'value'	=> $value
+        'readonly' => 'readonly',
+		'value'	=> $userdata->uacc_email
 	);
 	if(!$value = set_value('vorname')) $value = $userdata->first_name;
 	$userVorname = array(
@@ -89,7 +86,7 @@ $(function() {
     <?=form_fieldset('&nbsp;&nbsp;&nbsp;Profildaten:&nbsp;&nbsp;&nbsp;');?>
    	<p>
     <table>
-        <tr><td colspan="2"><?=validation_errors();?></td></tr>
+        <tr><td colspan="3"><?=validation_errors();?></td></tr>
     	<tr>
             <td class='form_label'><?=form_label('Benutzername:', $userUsername['id']); ?></td>
             <td><?=form_input($userUsername); ?></td>
@@ -122,27 +119,26 @@ $(function() {
     <?=form_fieldset('&nbsp;&nbsp;&nbsp;Passwort ändern:&nbsp;&nbsp;&nbsp;');?>
    	<p>
     <table>
-        <tr><td colspan="2"><?=validation_errors();?></td></tr>
-    	<tr>
+        <tr><td colspan="3">Soll das Passwort nicht geändert werden, dann bitte die folgenden Felder leer lassen.</td></tr>
+        <tr><td></td></tr>
+<? if(isset($message)) { ?>
+        <tr><td colspan="3"><?=$message?></td></tr>
+<? } ?>    	
+        <tr>
             <td class='form_label'><?=form_label('Altes Passwort:', $pwOld['id']); ?></td>
-            <td><?=form_input($pwOld); ?></td>
+            <td><?=form_password($pwOld); ?></td>
             <td class='error'><span class='error_username'></span></td>
         </tr>
     	<tr>
             <td class='form_label'><?=form_label('Neues Passwort:', $pwNew1['id']); ?></td>
-            <td><?=form_input($pwNew1); ?></td>
+            <td><?=form_password($pwNew1); ?></td>
             <td class='error'><span class='error_email'></span></td>
         </tr>
     	<tr>
             <td class='form_label'><?=form_label('Passwort wiederholen:', $pwNew2['id']); ?></td>
-            <td><?=form_input($pwNew2); ?></td>
+            <td><?=form_password($pwNew2); ?></td>
             <td class='error'></td>
         </tr>
-        </tr>
-    </table>
-    <table>
-		<tr>
-            <td><button type='submit' name='change_pw' id='change_pw' class='button_gross' value='change_pw'><span class='button_pw_change'>Passwort ändern</span></button></td>
         </tr>
     </table>
     </p>

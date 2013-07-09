@@ -24,11 +24,11 @@ $lang['account_creation_duplicate_identity'] 		= 'Ein Konto mit dieser Identitä
 $lang['account_creation_insufficient_data']			= 'Nicht genügend Informationen, um ein Konto zu erstellen. Stellen Sie sicher, dass eine gültige Identität und ein Passwort angegeben sind.';
 
 // Password
-$lang['password_invalid']							= "The %s field is invalid.";
-$lang['password_change_successful'] 	 	 		= 'Password has successfully been changed.';
-$lang['password_change_unsuccessful'] 	  	 		= 'Your submitted password does not match our records.';
+$lang['password_invalid']							= "Das Feld %s ist nicht korrekt gefüllt.";
+$lang['password_change_successful'] 	 	 		= 'Passwort erfolgreich geändert.';
+$lang['password_change_unsuccessful'] 	  	 		= 'Das angegebene Passwort stimmt nicht mit der Datenbank überein.';
 $lang['password_token_invalid']  					= 'Your submitted password token is invalid or has expired.'; 
-$lang['email_new_password_successful']				= 'A new password has been emailed to you.';
+$lang['email_new_password_successful']				= 'Ein neues Passwort wurde Ihnen per Email gesendet.';
 $lang['email_forgot_password_successful']	 		= 'An email has been sent to reset your password.';
 $lang['email_forgot_password_unsuccessful']  		= 'Unable to reset password.'; 
 
