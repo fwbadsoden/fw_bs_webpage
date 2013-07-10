@@ -66,18 +66,8 @@
 
 <?
 	$password_forgotten_link = lang('view_admin_login_passwordforgotten_link');
-	if(!$this->session->flashdata('email')) {
-		$password_forgotten_txt = lang('view_admin_login_passwordforgotten_txt');	
-	}
-	else if($this->session->flashdata('pw_status') == 1) {
-		$password_forgotten_txt = lang('view_admin_login_passwordforgotten_success_txt');
-		$password_forgotten_link = '';
-	}
-	else {
-		$password_forgotten_txt = lang('view_admin_login_passwordforgotten_failure_txt'); 
+	$password_forgotten_txt = lang('view_admin_login_passwordforgotten_txt');	
 ?>
-		<script> $(document).ready(function() { $( "pw-forgot-email" ).show(); document.forms['pw'].elements['email'].focus(); }); </script>
-	<? } ?>
 
 <div id="login_box">
 	<div id="logo"></div>
@@ -93,12 +83,14 @@
 		<p class="login_text"><?=lang('view_admin_login_password')?></p>
 		<p><?=form_password($password)?></p>
         
-<? if(is_array($error)) {   
-     if($error['type'] == 'error') { ?>     
+<? if(is_array($messages) && $area == 'login') {   
+     if($messages['type'] == 'error') { ?>     
 		<p class="spacer"></p>	
-        <p class="login_text_error"><?=$error['errors']?></p>
-<?   }   
-   } ?>        
+        <div id="message"><?=$messages['errors']?></div>
+<?   } else if($messages['type'] == 'status') { ?>
+		<p class="spacer"></p>	
+        <div id="message"><?=$messages['status']?></div>
+<? } } ?>             
         	
 		<p class="spacer"></p>						
 		<p><?=form_input($button)?></p>								
@@ -112,17 +104,33 @@
 	<div class="kasten_oben">
 		<img src="<?=base_url("/images/admin/layout/login_pw_oben.gif")?>">
 	</div>
-	<div id="pw-forgot-title" class="kasten_mitte">
+<? if(is_array($messages) && $area == 'password') {  ?>
+	<div id="pw-forgot-title" style="display:none" class="kasten_mitte">
+<? } else { ?>
+    <div id="pw-forgot-title" class="kasten_mitte">
+<? } ?>    
 		<p class="text"><?=$password_forgotten_txt?></p>
 		<p class="spacer"></p>						
 		<p><a class="forgot_password"><?=$password_forgotten_link?></a></p>
 	</div> 
-	<div id="pw-forgot-email" style="display:none" class="kasten_mitte">	
+<? if(is_array($messages) && $area == 'password') {  ?>
+	<div id="pw-forgot-email" class="kasten_mitte">
+<? } else { ?>	
+	<div id="pw-forgot-email" style="display:none" class="kasten_mitte">
+<? } ?>    
 		<p class="text">Bitte geben Sie die Emailadresse an, mit der Sie bei uns registriert sind.</p>
 		<p class="spacer"></p>	
 		<?=form_open('admin/forgot_password', $formPW);?>
 		<p class="login_text">Emailadresse:</p>
 		<p><?=form_input($email)?></p>	
+<? if(is_array($messages) && $area == 'password') {   
+     if($messages['type'] == 'error') { ?>     
+		<p class="spacer"></p>	
+        <div id="message"><?=$messages['errors']?></div>
+<?   } else if($messages['type'] == 'status') { ?>
+		<p class="spacer"></p>	
+        <p class="text"><?=$messages['status']?></p>
+<? } } ?>         
 		<p class="spacer"></p>	
 		<p><?=form_input($buttonPW)?></p>
 		<?=form_close()?>		

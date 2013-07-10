@@ -265,7 +265,7 @@ class Flexi_auth extends Flexi_auth_lite
 			
 			// Set email data.
 			$email_to = $email;
-			$email_title = ' - Account Activation';
+			$email_title = ' - Account Aktivierung';
 		
 			$user_data = array(
 				'user_id' => $user_id,
@@ -349,7 +349,7 @@ class Flexi_auth extends Flexi_auth_lite
 
 			// Set email data.
 			$email_to = $user->{$this->CI->auth->database_config['user_acc']['columns']['email']};
-			$email_title = ' - Forgotten Password Verification';
+			$email_title = ' - Verifikation für vergessenes Passwort';
 			
 			$user_data = array(
 				'user_id' => $user_id,
@@ -414,13 +414,13 @@ class Flexi_auth extends Flexi_auth_lite
 
 			// If no new password is set via $new_password, the function will generate a new one.
 			$new_password = $this->CI->flexi_auth_model->change_forgotten_password($user_id, $forgot_password_token, $new_password, $database_salt);
-			
+
 			// Send user email with new password if function variable $send_email = TRUE.
 			if ($send_email)
 			{
 				// Set email data
 				$email_to = $user->{$this->CI->auth->database_config['user_acc']['columns']['email']};
-				$email_title = ' - New Password';
+				$email_title = ' - Neues Passwort';
 			
 				$user_data = array(
 					'identity' => $identity,
@@ -482,7 +482,7 @@ class Flexi_auth extends Flexi_auth_lite
 			
 			// Send email activation email.
 			$email_to = $new_email;
-			$email_title = ' - Email Change Verification';
+			$email_title = ' - Verifikation für Emailadressänderung';
 		
 			$user_data = array(
 				'user_id' => $user_id,
@@ -579,7 +579,7 @@ class Flexi_auth extends Flexi_auth_lite
 			{
 				// Set email data.
 				$email_to = $email;
-				$email_title = ' - Account Activation';
+				$email_title = ' - Accountaktivierung';
 			
 				$user_data = array(
 					'user_id' => $user_id,

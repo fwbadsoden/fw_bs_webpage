@@ -95,13 +95,6 @@
 			font-weight: bold;
 			text-align: left;
 		}
-		.kasten_mitte .login_text_error {
-			font: 11px Arial, Helvetica, sans-serif;
-			color: #FF0101;
-			margin-left: 60px;
-			font-weight: bold;
-			text-align: left;
-		}
 		.kasten_mitte .login_text_pw {
 			font: 11px Arial, Helvetica, sans-serif;
 			color: #8B0A00;
@@ -160,3 +153,9 @@
 			color: #FFFFFF;
 			padding: 0;
 		}
+        
+        /* Status / Error Messages */
+        /* Messages --------------------------------------------------------------------------------------------------------------------------------------------------- */
+/*        #message {margin-bottom:10px; border:2px solid #333; font-size:18px; font-weight:bold; text-align:center;}*/
+        #message .status_msg {margin:0; padding:5px; color:#01FF01;}
+        #message .error_msg {margin:0; padding:5px; color:#FF0101;}

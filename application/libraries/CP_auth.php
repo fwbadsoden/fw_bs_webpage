@@ -42,8 +42,17 @@ class CP_auth extends Flexi_auth
     {
         // returns an object user
         $userdata = $this->get_user_by_id_query($userID)->result();
-
-        return $userdata[0];
+        if(isset($userdata[0]))
+            return $userdata[0];
+        else return null;
+    }
+    
+    public function cp_get_user_by_identity($identity)
+    {
+        $userdata = $this->get_user_by_identity_query($identity)->result();
+        if(isset($userdata[0]))
+            return $userdata[0];
+        else return null;
     }
 }
 ?>

@@ -39,29 +39,51 @@ class User_Auth extends CI_Controller {
 		else
 		{
             $c_admin = load_controller('admin/admin');
-			$c_admin->login(1, $messages);
+			$c_admin->login('login', $messages);
 		}
 	}
 	
 	/**
 	 * User_Auth::forgot_password()
-	 * Setzt das Passwort zurück und sendet es dem User zu
+	 * Sendet dem User einen Token zum zurücksetzen des Passworts zu
 	 *
 	 * @return
 	 */
 	public function forgot_password()
 	{ 
-		$this->session->set_flashdata('email', $this->input->post('email'));
-		
-        $userdata = $this->cp_auth->get_user_by_identity($this->input->post('email'));
-        
-		if(!is_numeric($userdata->uacc_id)) { }
-		else
-		{
-            $response = $this->cp_auth->forgotten_password($this->input->post('email'));		
-			if($response) $this->session->set_flashdata('pw_status', 1);
-		}
-		redirect('admin/admin');
+        $c_admin = load_controller('admin/admin');
+    
+		$result = $this->cp_auth->forgotten_password($this->input->post('email'));
+        $messages = $this->cp_auth->get_messages_array('public');		  
+        if(!$result)
+            $c_admin->login('password', $messages);
+        else {
+            $header['title'] = 'Backend Login';
+
+		    $data['message'] = $messages;
+		    $this->load->view('backend/templates/admin/header_login', $header);
+		    $this->load->view('backend/admin/new_password', $data);
+		    $this->load->view('backend/templates/admin/footer_login');    
+        }
 	}
+    
+    /** 
+     * User_Auth::reset_forgotten_password()
+     * Bei korrekt übermitteltem Token wird dem User eine Email mit dem neuen Passwort zugesendet
+     * 
+     * @return
+     */
+    public function reset_forgotten_password($userID, $token)
+    {
+        $this->cp_auth->forgotten_password_complete($userID, $token, FALSE, TRUE);
+        $messages = $this->cp_auth->get_messages_array('public');
+        
+  		$header['title'] = 'Backend Login';
+
+		$data['message'] = $messages;
+		$this->load->view('backend/templates/admin/header_login', $header);
+		$this->load->view('backend/admin/new_password', $data);
+		$this->load->view('backend/templates/admin/footer_login');
+    }
 }
 ?>

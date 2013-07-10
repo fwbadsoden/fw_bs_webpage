@@ -1186,7 +1186,7 @@ class Flexi_auth_model extends Flexi_auth_lite_model
 	    {
 			return FALSE;
 	    }
-		
+
 		// If forgotten password token matches and has not expired (expiry set via config)
 	    if ($this->validate_forgotten_password_token($user_id, $token))
 	    {

@@ -188,97 +188,15 @@ class Admin extends CI_Controller {
 	 * @param string $error
 	 * @return
 	 */
-	public function login($error = 0, $messages = NULL)
+	public function login($area = 'login', $messages = NULL)
 	{	
 		$header['title'] = 'Backend Login';
   
-		$data['error'] = $messages;
+        $data['area'] = $area;
+		$data['messages'] = $messages;
 		$this->load->view('backend/templates/admin/header_login', $header);
 		$this->load->view('backend/admin/login', $data);
 		$this->load->view('backend/templates/admin/footer_login');
-	}
-	
-	/**
-	 * Admin::change_pw_login()
-	 * Lässt das Passwort unter Angabe des alten Passworts ändern
-	 *
-	 * @param string $error
-	 * @param integer $userID
-	 * @return
-	 */
-	public function change_pw_login($error = '', $userID = '')
-	{  
-		$header['title'] = 'Backend Login - Passwort ändern';	
-		$data['error'] = $error;	
-		$this->session->set_userdata('check_user_id', $userID);
-		
-		$this->load->view('backend/templates/admin/header_login', $header);
-		if($error == 'success')
-			$this->load->view('backend/admin/change_pw_login_success');
-		else
-			$this->load->view('backend/admin/change_pw_login', $data);
-		$this->load->view('backend/templates/admin/footer_login');
-	}
-	
-	/**
-	 * Admin::check_change_pw_login()
-	 * 
-	 * @return
-	 */
-	public function check_change_pw_login()
-	{
-		$this->load->library('form_validation');
-		$this->form_validation->set_error_delimiters('', '');
-		
-		$this->form_validation->set_rules('password_old', 'Altes Passwort', 'required|max_length[20]|xss_clean|callback_pw_old_is_not_correct');
-		$this->form_validation->set_rules('password_new1', 'Neues Passwort', 'required|max_length[20]|xss_clean|callback_pw_is_like_old');
-		$this->form_validation->set_rules('password_new2', 'Passwort wiederholen', 'required|max_length[20]|xss_clean|callback_pw_1_like_2');
-		$this->form_validation->set_message('pw_old_is_not_correct', 'Das alte Passwort ist nicht korrekt.');
-		$this->form_validation->set_message('pw_is_like_old', 'Das neue Passwort darf nicht dem alten entsprechen.');
-		$this->form_validation->set_message('pw_1_like_2', 'Die neuen Passwörter müssen übereinstimmen.');
-
-		if(!$this->form_validation->run())
-			$this->change_pw_login('error', $this->session->userdata('check_user_id'));
-		else
-		{
-			$this->cpauth->change_pw($this->session->userdata('check_user_id'), $this->input->post('password_old'), $this->input->post('password_new1'));
-			$this->session->unset_userdata('check_user_id');
-			$this->change_pw_login('success');
-		}
-	}
-	
-	/**
-	 * Admin::pw_old_is_not_correct()
-     * Callback Funktion für Prüfung bei Passwortänderung
-	 * 
-	 * @param mixed $pw
-	 * @return
-	 */
-	public function pw_old_is_not_correct($pw)
-	{
-		return $this->cpauth->check_pw($pw, $this->session->userdata('check_user_id'));
-	}
-	/**
-	 * Admin::pw_is_like_old()
-     * Callback Funktion für Prüfung bei Passwortänderung
-	 * 
-	 * @param mixed $pw
-	 * @return
-	 */
-	public function pw_is_like_old($pw)
-	{
-		if($pw == $this->input->post('password_old')) return false; else return true;
-	}
-	/**
-	 * Admin::pw_1_like_2()
-     * Callback Funktion für Prüfung bei Passwortänderung
-	 * 
-	 * @param mixed $pw
-	 * @return
-	 */
-	public function pw_1_like_2($pw)
-	{
-		if($pw == $this->input->post('password_new1')) return true; else return false;	
 	}
 	
 	/**
