@@ -81,6 +81,28 @@ Class CP_Form_validation extends CI_Form_validation
 	}
 	
 	/**
+	 * CP_Form_validation::alpha_dash_space()
+	 * 
+	 * @param mixed $str
+	 * @return
+	 */
+	public function alpha_dash_space($str)
+	{
+		return ( ! preg_match("/^([-a-z0-9äöü_- ])+$/i", $str)) ? FALSE : TRUE;
+	}
+	
+	/**
+	 * CP_Form_validation::priv_name()
+	 * 
+	 * @param mixed $str
+	 * @return
+	 */
+	public function priv_name($str)
+	{
+		return ( ! preg_match("/^([a-z:])+$/i", $str)) ? FALSE : TRUE;
+	}
+	
+	/**
 	 * CP_Form_validation::decimal()
 	 * 
 	 * @param mixed $str

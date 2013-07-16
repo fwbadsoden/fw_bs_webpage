@@ -98,6 +98,22 @@ class Module_model extends CI_Model {
 		write_file(APPPATH.'cache/db_constants.php', $content);	
 	}	
 	
+    public function write_language_file()
+    {
+        $this->load->helper('file');
+        
+        $languages = $this->get_languages();
+		
+		$content = "<?php if (!defined('BASEPATH')) exit('No direct script access allowed');  ";
+		foreach($languages as $language)
+		{
+			$content .=	'$lang["'.$language["key"].'"] = "'.$language["text"].'";';
+		}
+		$content .= '?>'; 
+		
+		write_file(APPPATH.'cache/db_lang_DE.php', $content);	
+    }
+    
 	public function get_languages()
 	{
         $this->db->select('module.name as moduleName, sys_lang.langID, sys_lang.key, sys_lang.text, sys_lang.desc');

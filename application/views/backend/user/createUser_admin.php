@@ -46,7 +46,7 @@
 <script type="text/javascript">
 $(function() {
 	$('#<?=$userUsername['id']?>').bind('change', function(e) {
-			$.getJSON('<?=base_url('user/user_admin/json_userattr_unique')?>/<?=$userdata->uacc_id?>/' + $('#<?=$userUsername['id']?>').val(),
+			$.getJSON('<?=base_url('user/user_admin/json_userattr_unique')?>/0/' + $('#<?=$userUsername['id']?>').val(),
 				function(data) {
 					if(data == 0)
 						$('span.error_username').html('<span style="color: red">Benutzername bereits vergeben!</span>');	
@@ -54,7 +54,7 @@ $(function() {
 			);
 	});
 	$('#<?=$userEmail['id']?>').bind('change', function(e) {
-			$.getJSON('<?=base_url('user/user_admin/json_userattr_unique')?>/<?=$userdata->uacc_id?>/' + $('#<?=$userEmail['id']?>').val(),
+			$.getJSON('<?=base_url('user/user_admin/json_userattr_unique')?>/0/' + $('#<?=$userEmail['id']?>').val(),
 				function(data) {
 					if(data == 0)
 						$('span.error_email').html('<span style="color: red">Emailadresse bereits in Benutzung!</span>');	

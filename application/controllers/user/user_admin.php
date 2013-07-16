@@ -19,6 +19,7 @@ class User_Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->library('CP_auth');
 		$this->load->model('admin/admin_model', 'admin');
+        $this->load->model('module/module_model', 'module');
 		
 		// Berechtigungsprüfung TEIL 1: eingelogged und Admin
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');	
@@ -94,6 +95,25 @@ class User_Admin extends CI_Controller {
 		$this->load->view('backend/templates/admin/footer');		
 	}
     
+    public function priv_liste()
+    {
+        $this->session->set_userdata('privliste_redirect', current_url());
+        
+        $header['title']    = 'Berechtigungen im Backend';
+        $menue['menue']     = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
+        $menue['submenue']  = $this->admin->get_submenue();
+        $data['priv']       = $this->cp_auth->get_privileges_query()->result();
+        $data['module']     = $this->module->get_modules();
+        
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/menue', $menue);	
+		$this->load->view('backend/templates/admin/submenue', $menue);	
+		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
+		$this->load->view('backend/user/privliste_admin', $data);
+		$this->load->view('backend/templates/admin/footer');       
+    }
+    
     public function delete_user_verify($userID)
     {
         $header['title']    = 'Benutzer l&ouml;schen';		
@@ -162,7 +182,7 @@ class User_Admin extends CI_Controller {
                 );
                 $initial_pw = random_string('alnum', 8);
 				$userID = $this->cp_auth->insert_user($this->input->post('email'), $this->input->post('username'), $initial_pw, $userdata, AUTH_USER_DEFAULT_GROUP, TRUE);
-                echo $initial_pw;
+                
 				$email_data = array(
                     'username' => $this->input->post('username'),
                     'email'    => $this->input->post('email'),
@@ -245,6 +265,82 @@ class User_Admin extends CI_Controller {
 		
 		redirect($this->session->userdata('userliste_redirect'), 'refresh');	
 	}
+    
+    public function create_priv()
+    {
+        if($this->uri->segment($this->uri->total_segments()) == 'save')
+		{
+			if($verify = $this->verify_priv())
+			{
+                $this->load->helper('string');
+				$this->admin->insert_log(str_replace('%PRIV%', $this->input->post('username'), lang('log_admin_createPriv')));
+                $privdata = array(
+                    'moduleID'    => $this->input->post('modul'),
+                    'created'     => date('Y-m-d H:i:s'),
+                    'created_by'  => $this->cp_auth->get_user_id()
+                );
+				$this->cp_auth->insert_privilege(strtoupper($this->input->post('name')), $this->input->post('description'), $privdata);
+			}
+		}
+		else
+			$this->session->set_userdata('privcreate_submit', current_url());
+			
+		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
+		{			
+			$header['title']		= 'Berechtigung';
+			$menue['menue']			= $this->admin->get_menue();
+            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
+			$menue['submenue'] 		= $this->admin->get_submenue();
+            $data['module']     = $this->module->get_modules();
+			
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/menue', $menue);
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/user/createPriv_admin', $data);
+			$this->load->view('backend/templates/admin/footer');
+		}
+		else redirect($this->session->userdata('privliste_redirect'), 'refresh');
+    }
+	
+	public function edit_priv($id)
+	{
+		if($this->uri->segment($this->uri->total_segments()) == 'save')
+		{
+			if($verify = $this->verify_priv($id))
+			{
+				$this->admin->insert_log(str_replace('%PRIV%', $this->input->post('username'), lang('log_admin_editPriv')));
+                $privdata = array(
+                    'upriv_name'  => strtoupper($this->input->post('name')),
+                    'upriv_desc'  => $this->input->post('description'),
+                    'moduleID'    => $this->input->post('modul'),
+                    'modified'    => date('Y-m-d H:i:s'),
+                    'modified_by' => $this->cp_auth->get_user_id()
+                );
+                
+				$this->cp_auth->update_privilege($id, $privdata);
+			}
+		}
+		else
+			$this->session->set_userdata('privedit_submit', current_url());
+			
+		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
+		{
+			$header['title'] 		= 'Berechtigung';
+			$menue['menue']			= $this->admin->get_menue();
+            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
+			$menue['submenue']		= $this->admin->get_submenue();
+            $sql_where              = array('upriv_id' => $id);
+            $data['privdata']       = $this->cp_auth->get_privileges(FALSE, $sql_where);
+            $data['module']         = $this->module->get_modules();
+			
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/menue', $menue);
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/user/editPriv_admin', $data);
+			$this->load->view('backend/templates/admin/footer');	
+		}
+		else redirect($this->session->userdata('userliste_redirect'), 'refresh');
+	}
 	
 	public function verify_profile()
 	{
@@ -290,6 +386,25 @@ class User_Admin extends CI_Controller {
 		return $this->form_validation->run();
 	}
 	
+	public function verify_priv($id = 0)
+	{
+		$this->load->library('form_validation');
+		
+		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
+		
+		if($id > 0)
+		{
+			$this->form_validation->set_rules('name', 'Berechtigungsname', 'required|priv_name|max_length[20]|xss_clean|edit_unique[user_privilege.upriv_name.'.$id.'.upriv_id');					
+		}
+		else
+		{
+			$this->form_validation->set_rules('name', 'Berechtigungsname', 'required|priv_name|max_length[20]|xss_clean|is_unique[user_privilege.upriv_name');
+		}
+		$this->form_validation->set_rules('description', 'Beschreibung', 'required|max_length[100]|xss_clean');	
+		
+		return $this->form_validation->run();
+	}
+	
 	public function switch_online_state($id, $state)
 	{
 		if($state == 1) 
@@ -299,7 +414,7 @@ class User_Admin extends CI_Controller {
             
 		redirect($this->session->userdata('userliste_redirect'), 'refresh');	
 	}
-	
+    
 	// JSON Call Attribut eindeutig
 	public function json_userattr_unique($id, $value)
 	{		

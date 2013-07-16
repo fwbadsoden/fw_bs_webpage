@@ -31,17 +31,21 @@ class Admin_model extends CI_Model {
 	public function get_menue()
 	{
 		$menue = array();
-		
 		$this->db->where(array('superID' => 0, 'online' => 1, 'backend' => 1))->order_by('orderID', 'asc');
 		$query = $this->db->get('menue');
 		$i = 0;
 		
 		foreach($query->result() as $row)
 		{
-			$menue[$i]['name'] 			= $row->name;
-			$menue[$i]['link'] 			= $row->link;
-			$menue[$i]['target'] 		= $row->target;
-			$i++;	
+            if($row->priv_key != "") $privileged = $this->cp_auth->is_privileged($row->priv_key);
+            else $privileged = TRUE;
+            if($privileged)
+            {
+    			$menue[$i]['name'] 			= $row->name;
+    			$menue[$i]['link'] 			= $row->link;
+    			$menue[$i]['target'] 		= $row->target;
+		        $i++;
+            }
 		}
         
 		return $menue;
@@ -65,11 +69,15 @@ class Admin_model extends CI_Model {
 		
 		foreach($query->result() as $row)
 		{
-			$submenue[$i]['name'] 		= $row->name;	
-			$submenue[$i]['link'] 		= $row->link;
-			$submenue[$i]['target'] 	= $row->target;
-			
-			$i++;
+            if($row->priv_key != "") $privileged = $this->cp_auth->is_privileged($row->priv_key);
+            else $privileged = TRUE;
+            if($privileged)
+            {
+			     $submenue[$i]['name'] 		= $row->name;	
+			     $submenue[$i]['link'] 		= $row->link;
+			     $submenue[$i]['target'] 	= $row->target;	
+			     $i++;
+            }
 		}
 		
 		return $submenue;

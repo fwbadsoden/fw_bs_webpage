@@ -230,6 +230,12 @@ class Module_Admin extends CI_Controller {
 		$this->write_routes();		
 		redirect($this->session->userdata('routeliste_redirect'), 'refresh');
 	}
+    
+    public function rewrite_languages()
+    {
+        $this->write_languages();
+		redirect($this->session->userdata('languageliste_redirect'), 'refresh');
+    }
 	
 	public function rewrite_routes()
 	{
@@ -249,6 +255,11 @@ class Module_Admin extends CI_Controller {
 	{
 		$this->module->write_route_file();
 	}
+    
+    public function write_languages()
+    {
+        $this->module->write_language_file();
+    }
 }
 
 ?>

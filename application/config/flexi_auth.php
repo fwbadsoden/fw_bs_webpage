@@ -75,10 +75,7 @@
 	$config['database']['user_acc']['columns']['date_added'] = 'created';
 	
 	// Custom columns can be added to the main user account table to enable library functions to handle additional custom data stored within the table.
-	$config['database']['user_acc']['custom_columns'] = array(
-        'created_by', 'modified', 'modified_by'
-		### Example : 'date_modified', 'modified_user_id' etc.
-	); 
+	$config['database']['user_acc']['custom_columns'] = array('created_by', 'modified', 'modified_by'); 
 
 	###++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++###
 	
@@ -111,7 +108,8 @@
 	$config['database']['user_privileges']['columns']['id'] = 'upriv_id';
 	$config['database']['user_privileges']['columns']['name'] = 'upriv_name';
 	$config['database']['user_privileges']['columns']['description'] = 'upriv_desc';
-	
+	$config['database']['user_privileges']['custom_columns'] = array('created', 'created_by', 'modified', 'modified_by', 'moduleID');
+    
 	/**
 	 * User Privilege Users Table
 	 * The user privilege user table is used to assign privileges to users. Multiple privileges can be assigned to a user.
