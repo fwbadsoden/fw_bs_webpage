@@ -92,6 +92,7 @@
 	$config['database']['user_group']['columns']['name'] = 'ugrp_name';
 	$config['database']['user_group']['columns']['description'] = 'ugrp_desc';
 	$config['database']['user_group']['columns']['admin'] = 'ugrp_admin';
+	$config['database']['user_group']['custom_columns'] = array('created', 'created_by', 'modified', 'modified_by');
 	
 	###++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++###
 	

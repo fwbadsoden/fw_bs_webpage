@@ -129,12 +129,8 @@ class Module_model extends CI_Model {
 			$langs[$i]['langID']			= $row->langID;
 			$langs[$i]['key'] 				= $row->key;
             $langs[$i]['moduleName']        = $row->moduleName;
-			$text = substr($row->text, 0, $this->txt_length);
-			if(strlen($row->text) > $this->txt_length) $text .= ' [...]';
-			$langs[$i]['text'] 				= $text;
-			$desc = substr($row->desc, 0, $this->txt_length);
-			if(strlen($row->desc) > $this->txt_length) $desc .= ' [...]';
-			$langs[$i]['desc'] 				= $desc;
+			$langs[$i]['text'] 				= $row->text;
+			$langs[$i]['desc'] 				= $row->desc;
 			$langs[$i]['row_color']		    = $this->color = cp_get_color($this->color);
 			$i++;
 		}		

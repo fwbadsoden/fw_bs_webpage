@@ -114,6 +114,24 @@ class User_Admin extends CI_Controller {
 		$this->load->view('backend/templates/admin/footer');       
     }
     
+    public function group_liste()
+    {
+        $this->session->set_userdata('groupliste_redirect', current_url());
+        
+        $header['title']    = 'Berechtigungsgruppen im Backend';
+        $menue['menue']     = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
+        $menue['submenue']  = $this->admin->get_submenue();
+        $data['group']      = $this->cp_auth->get_groups_query()->result();
+        
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/menue', $menue);	
+		$this->load->view('backend/templates/admin/submenue', $menue);	
+		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
+		$this->load->view('backend/user/groupliste_admin', $data);
+		$this->load->view('backend/templates/admin/footer');       
+    }
+    
     public function delete_user_verify($userID)
     {
         $header['title']    = 'Benutzer l&ouml;schen';		
@@ -339,7 +357,122 @@ class User_Admin extends CI_Controller {
 			$this->load->view('backend/user/editPriv_admin', $data);
 			$this->load->view('backend/templates/admin/footer');	
 		}
-		else redirect($this->session->userdata('userliste_redirect'), 'refresh');
+		else redirect($this->session->userdata('privliste_redirect'), 'refresh');
+	}
+	
+	public function delete_priv($id)
+	{
+		$user = $this->cp_auth->cp_get_user_by_id($id);
+		$this->admin->insert_log(str_replace('%PRIV%', $user->uacc_username, lang('log_admin_deletePriv')));
+		
+		$this->cp_auth->delete_priv($id);
+		
+		redirect($this->session->userdata('privliste_redirect'), 'refresh');	
+	}
+    
+    public function create_group()
+    {
+        if($this->uri->segment($this->uri->total_segments()) == 'save')
+		{
+			if($verify = $this->verify_group())
+			{
+                $this->load->helper('string');
+				$this->admin->insert_log(str_replace('%GROUP%', $this->input->post('username'), lang('log_admin_createGroup')));
+                $groupdata = array(
+                    'created'     => date('Y-m-d H:i:s'),
+                    'created_by'  => $this->cp_auth->get_user_id()
+                );
+				$this->cp_auth->insert_group(strtoupper($this->input->post('name')), $this->input->post('description'), $groupdata);
+                $id = $this->db->insert_id();
+                foreach($_POST as $key => $p) {
+                    if(substr($key, 0, 2) == 'p_')
+                        $this->cp_auth->insert_user_group_privilege($id, $value);
+                }
+			}
+		}
+		else
+			$this->session->set_userdata('groupcreate_submit', current_url());
+			
+		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
+		{			
+			$header['title']		= 'Berechtigungsgruppe';
+			$menue['menue']			= $this->admin->get_menue();
+            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
+			$menue['submenue'] 		= $this->admin->get_submenue();
+            $data['privs']          = $this->cp_auth->get_privileges_query()->result();
+			
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/menue', $menue);
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/user/createGroup_admin', $data);
+			$this->load->view('backend/templates/admin/footer');
+		}
+		else redirect($this->session->userdata('groupliste_redirect'), 'refresh');
+    }
+	
+	public function edit_group($id)
+	{
+		if($this->uri->segment($this->uri->total_segments()) == 'save')
+		{
+			if($verify = $this->verify_group($id))
+			{
+				$this->admin->insert_log(str_replace('%GROUP%', $this->input->post('username'), lang('log_admin_editGroup')));
+                $groupdata = array(
+                    'ugrp_name'   => strtoupper($this->input->post('name')),
+                    'ugrp_desc'   => $this->input->post('description'),
+                    'moduleID'    => $this->input->post('modul'),
+                    'modified'    => date('Y-m-d H:i:s'),
+                    'modified_by' => $this->cp_auth->get_user_id()
+                );
+                if($this->input->post('admin') == 'yes')
+                    $groupdata['ugrp_admin']  = 1;
+                else 
+                    $groupdata['upgrp_admin'] = 0;
+                
+				$this->cp_auth->update_group($id, $groupdata);
+                
+                foreach($_POST as $key => $p) {
+                    if(substr($key, 0, 2) == 'p_') {                
+                        $sql_where   = array('upriv_groups_ugrp_fk' => $id, 'upriv_groups_upriv_fk' => $p);
+                        $group_priv = $this->cp_auth->get_user_group_privileges_query(FALSE, $sql_where)->result(); 
+                        if(!$group_priv)
+                            $this->cp_auth->insert_user_group_privilege($id, $p);
+                    }
+                }
+			}
+		}
+		else
+			$this->session->set_userdata('groupedit_submit', current_url());
+			
+		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
+		{
+			$header['title'] 		= 'Berechtigungsgruppe';
+			$menue['menue']			= $this->admin->get_menue();
+            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
+			$menue['submenue']		= $this->admin->get_submenue();
+            $sql_where              = array('ugrp_id' => $id);
+            $data['groupdata']      = $this->cp_auth->get_groups_query(FALSE, $sql_where)->result();
+            $data['privs']          = $this->cp_auth->get_privileges_query()->result();
+            $sql_where              = array('upriv_groups_ugrp_fk' => $id);
+            $data['group_privs']    = $this->cp_auth->get_user_group_privileges_query(FALSE, $sql_where)->result(); 
+
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/menue', $menue);
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/user/editGroup_admin', $data);
+			$this->load->view('backend/templates/admin/footer');	
+		}
+		else redirect($this->session->userdata('groupliste_redirect'), 'refresh');
+	}
+	
+	public function delete_group($id)
+	{
+		$user = $this->cp_auth->cp_get_user_by_id($id);
+		$this->admin->insert_log(str_replace('%GROUP%', $user->uacc_username, lang('log_admin_deleteGroup')));
+		
+		$this->cp_auth->delete_group($id);
+		
+		redirect($this->session->userdata('groupliste_redirect'), 'refresh');	
 	}
 	
 	public function verify_profile()
@@ -400,6 +533,17 @@ class User_Admin extends CI_Controller {
 		{
 			$this->form_validation->set_rules('name', 'Berechtigungsname', 'required|priv_name|max_length[20]|xss_clean|is_unique[user_privilege.upriv_name');
 		}
+		$this->form_validation->set_rules('description', 'Beschreibung', 'required|max_length[100]|xss_clean');	
+		
+		return $this->form_validation->run();
+	}
+	
+	public function verify_group($id = 0)
+	{
+		$this->load->library('form_validation');
+		
+		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
+		$this->form_validation->set_rules('name', 'Gruppenname', 'required|alpha_dash|max_length[20]|xss_clean');
 		$this->form_validation->set_rules('description', 'Beschreibung', 'required|max_length[100]|xss_clean');	
 		
 		return $this->form_validation->run();
