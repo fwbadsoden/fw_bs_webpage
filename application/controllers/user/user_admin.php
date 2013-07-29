@@ -86,6 +86,7 @@ class User_Admin extends CI_Controller {
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue();
 		$data['user']       = $this->cp_auth->get_users_query()->result();	
+        $data['group']      = $this->cp_auth->cp_get_group_names();
         
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -199,7 +200,7 @@ class User_Admin extends CI_Controller {
                     'created_by'  => $this->cp_auth->get_user_id()
                 );
                 $initial_pw = random_string('alnum', 8);
-				$userID = $this->cp_auth->insert_user($this->input->post('email'), $this->input->post('username'), $initial_pw, $userdata, AUTH_USER_DEFAULT_GROUP, TRUE);
+				$userID = $this->cp_auth->insert_user($this->input->post('email'), $this->input->post('username'), $initial_pw, $userdata, $this->input->post('gruppe'), TRUE);
                 
 				$email_data = array(
                     'username' => $this->input->post('username'),
@@ -218,11 +219,12 @@ class User_Admin extends CI_Controller {
 			$menue['menue']			= $this->admin->get_menue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue'] 		= $this->admin->get_submenue();
+            $data['group']          = $this->cp_auth->get_groups_query()->result();
 			
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/menue', $menue);
 			$this->load->view('backend/templates/admin/submenue', $menue);
-			$this->load->view('backend/user/createUser_admin');
+			$this->load->view('backend/user/createUser_admin', $data);
 			$this->load->view('backend/templates/admin/footer');
 		}
 		else redirect($this->session->userdata('userliste_redirect'), 'refresh');
@@ -236,8 +238,9 @@ class User_Admin extends CI_Controller {
 			{
 				$this->admin->insert_log(str_replace('%USER%', $this->input->post('username'), lang('log_admin_editUser')));
                 $userdata = array(
-                    'username'   => $this->input->post('username'),
-                    'email'      => $this->input->post('email'),
+                    'uacc_group_fk'   => $this->input->post('gruppe'),
+                    'uacc_username'   => $this->input->post('username'),
+                    'uacc_email'      => $this->input->post('email'),
                     'modified'   => date('Y-m-d H:i:s'),
                     'modified_by' => $this->cp_auth->get_user_id()
                 );
@@ -248,7 +251,6 @@ class User_Admin extends CI_Controller {
                     'initials'   => $this->input->post('initialen'),
                     'gender'     => $this->input->post('geschlecht')
                 );
-                
 				$this->cp_auth->update_user($id, $userdata);
 				$this->cp_auth->update_custom_user_data('user_profile', FALSE, $profiledata);
 			}
@@ -258,17 +260,18 @@ class User_Admin extends CI_Controller {
 			
 		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
 		{
-            $userdata               = $this->cp_auth->cp_get_user_by_id();
+            $userdata               = $this->cp_auth->cp_get_user_by_id($id);
 			$header['title'] 		= 'User';
 			$menue['menue']			= $this->admin->get_menue();
             $menue['userdata']      = $userdata;
 			$menue['submenue']		= $this->admin->get_submenue();
-			$user['userdata']		= $userdata;
+			$data['userdata']		= $userdata;
+            $data['group']          = $this->cp_auth->get_groups_query()->result();
 			
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/menue', $menue);
 			$this->load->view('backend/templates/admin/submenue', $menue);
-			$this->load->view('backend/user/editUser_admin', $user);
+			$this->load->view('backend/user/editUser_admin', $data);
 			$this->load->view('backend/templates/admin/footer');	
 		}
 		else redirect($this->session->userdata('userliste_redirect'), 'refresh');
@@ -291,7 +294,7 @@ class User_Admin extends CI_Controller {
 			if($verify = $this->verify_priv())
 			{
                 $this->load->helper('string');
-				$this->admin->insert_log(str_replace('%PRIV%', $this->input->post('username'), lang('log_admin_createPriv')));
+				$this->admin->insert_log(str_replace('%PRIV%', $this->input->post('name'), lang('log_admin_createPriv')));
                 $privdata = array(
                     'moduleID'    => $this->input->post('modul'),
                     'created'     => date('Y-m-d H:i:s'),
@@ -326,7 +329,7 @@ class User_Admin extends CI_Controller {
 		{
 			if($verify = $this->verify_priv($id))
 			{
-				$this->admin->insert_log(str_replace('%PRIV%', $this->input->post('username'), lang('log_admin_editPriv')));
+				$this->admin->insert_log(str_replace('%PRIV%', $this->input->post('name'), lang('log_admin_editPriv')));
                 $privdata = array(
                     'upriv_name'  => strtoupper($this->input->post('name')),
                     'upriv_desc'  => $this->input->post('description'),
@@ -362,8 +365,9 @@ class User_Admin extends CI_Controller {
 	
 	public function delete_priv($id)
 	{
-		$user = $this->cp_auth->cp_get_user_by_id($id);
-		$this->admin->insert_log(str_replace('%PRIV%', $user->uacc_username, lang('log_admin_deletePriv')));
+        $sql_where              = array('upriv_id' => $id);
+        $privdata               = $this->cp_auth->get_privileges(FALSE, $sql_where);
+		$this->admin->insert_log(str_replace('%PRIV%', $privdata->name, lang('log_admin_deletePriv')));
 		
 		$this->cp_auth->delete_priv($id);
 		
@@ -377,7 +381,7 @@ class User_Admin extends CI_Controller {
 			if($verify = $this->verify_group())
 			{
                 $this->load->helper('string');
-				$this->admin->insert_log(str_replace('%GROUP%', $this->input->post('username'), lang('log_admin_createGroup')));
+				$this->admin->insert_log(str_replace('%GROUP%', $this->input->post('name'), lang('log_admin_createGroup')));
                 $groupdata = array(
                     'created'     => date('Y-m-d H:i:s'),
                     'created_by'  => $this->cp_auth->get_user_id()
@@ -399,6 +403,7 @@ class User_Admin extends CI_Controller {
 			$menue['menue']			= $this->admin->get_menue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue'] 		= $this->admin->get_submenue();
+            $this->db->order_by('upriv_name', 'ASC');
             $data['privs']          = $this->cp_auth->get_privileges_query()->result();
 			
 			$this->load->view('backend/templates/admin/header', $header);
@@ -416,7 +421,7 @@ class User_Admin extends CI_Controller {
 		{
 			if($verify = $this->verify_group($id))
 			{
-				$this->admin->insert_log(str_replace('%GROUP%', $this->input->post('username'), lang('log_admin_editGroup')));
+				$this->admin->insert_log(str_replace('%GROUP%', $this->input->post('name'), lang('log_admin_editGroup')));
                 $groupdata = array(
                     'ugrp_name'   => strtoupper($this->input->post('name')),
                     'ugrp_desc'   => $this->input->post('description'),
@@ -452,6 +457,7 @@ class User_Admin extends CI_Controller {
 			$menue['submenue']		= $this->admin->get_submenue();
             $sql_where              = array('ugrp_id' => $id);
             $data['groupdata']      = $this->cp_auth->get_groups_query(FALSE, $sql_where)->result();
+            $this->db->order_by('upriv_name', 'ASC');
             $data['privs']          = $this->cp_auth->get_privileges_query()->result();
             $sql_where              = array('upriv_groups_ugrp_fk' => $id);
             $data['group_privs']    = $this->cp_auth->get_user_group_privileges_query(FALSE, $sql_where)->result(); 
@@ -467,8 +473,9 @@ class User_Admin extends CI_Controller {
 	
 	public function delete_group($id)
 	{
-		$user = $this->cp_auth->cp_get_user_by_id($id);
-		$this->admin->insert_log(str_replace('%GROUP%', $user->uacc_username, lang('log_admin_deleteGroup')));
+        $sql_where              = array('ugrp_id' => $id);
+        $groupdata              = $this->cp_auth->get_groups_query(FALSE, $sql_where)->result();
+		$this->admin->insert_log(str_replace('%GROUP%', $groupdata->name, lang('log_admin_deleteGroup')));
 		
 		$this->cp_auth->delete_group($id);
 		
@@ -482,7 +489,7 @@ class User_Admin extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
 		
         $this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[150]|xss_clean|identity_unique['.$this->cp_auth->get_user_id().']');
-        $this->form_validation->set_rules('initialen', 'Initialen', 'max_length[10]|xss_clean|edit_unique[user_profile, initials, '.$this->cp_auth->get_user_id().', uprof_id]');
+        $this->form_validation->set_rules('initialen', 'Initialen', 'max_length[10]|xss_clean|edit_unique[user_profile.initials.'.$this->cp_auth->get_user_id().'.uprof_users_uacc_fk]');
         $this->form_validation->set_rules('vorname', 'Vorname', 'required|alpha|max_length[100]|xss_clean');
 		$this->form_validation->set_rules('nachname', 'Nachname', 'required|alpha|max_length[100]|xss_clean');
         	
@@ -505,7 +512,7 @@ class User_Admin extends CI_Controller {
 		{
 			$this->form_validation->set_rules('username', 'Benutzername', 'required|alpha_numeric|max_length[20]|xss_clean|identity_unique['.$id.']');	
 			$this->form_validation->set_rules('email', 'Email', 'required|valid_email|max_length[150]|xss_clean|identity_unique['.$id.']');	
-            $this->form_validation->set_rules('initialen', 'Initialen', 'max_length[10]|xss_clean|edit_unique[user_profile, initials, '.$id.', uprof_id]');	
+            $this->form_validation->set_rules('initialen', 'Initialen', 'max_length[10]|xss_clean|edit_unique[user_profile.initials.'.$id.'.uprof_users_uacc_fk]');	
 		}
 		else
 		{

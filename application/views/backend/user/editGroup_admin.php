@@ -41,7 +41,8 @@
 		$pp->id    = 'p_'.$privs[$i]->upriv_id;
 		$pp->class = '';
 		$pp->value = $privs[$i]->upriv_id;	
-        $pp->label = $privs[$i]->upriv_name;	
+        $pp->label = str_pad($privs[$i]->upriv_name, 20).' '.$privs[$i]->upriv_desc;
+        str_replace($pp->label, '&nbsp;', ' ');	
 		
 		if(!$this->input->post('p_'.$privs[$i]->upriv_id) == $privs[$i]->upriv_id) {
             foreach($group_privs as $gp) {

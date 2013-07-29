@@ -36,11 +36,24 @@
 		'value'	=> set_value('initialen')			
 	);
     $gender_options = array();
-	if(isset($_POST['geschlecht'])) 	     		$gender_selected = $_POST['geschlecht']; 
-	else 											$gender_selected = 'Männlich';
+	if(isset($_POST['geschlecht'])) 	     		
+        $gender_selected = $_POST['geschlecht']; 
+	else 											
+        $gender_selected = 'Männlich';
 	$gender_attr 		= "class = 'input_dropdown' id = 'geschlecht'";
 	$gender_options['m'] 	= 'Männlich';
 	$gender_options['w'] 	= 'Weiblich';
+    
+    $group_options = array();
+	if(isset($_POST['gruppe'])) 	     		
+        $group_selected = $_POST['gruppe']; 
+	else 											
+        $group_selected = AUTH_USER_DEFAULT_GROUP;
+	$group_attr 		= "class = 'input_dropdown' id = 'gruppe'";
+    foreach($group as $g)
+    {
+	   $group_options[$g->ugrp_id] = $g->ugrp_name;
+    }
 ?>
 
 <script type="text/javascript">
@@ -108,6 +121,18 @@ $(function() {
     	<tr>
             <td class='form_label'><?=form_label('Initialen:', $userInitials['id']); ?></td>
             <td><?=form_input($userInitials); ?></td>
+            <td class='error'></td>
+        </tr>
+    </table>
+    </p>
+    <?=form_fieldset_close();?>
+    <p></p>
+    <?=form_fieldset('&nbsp;&nbsp;&nbsp;Berechtigungsgruppe:&nbsp;&nbsp;&nbsp;');?>
+    <p>
+    <table>        
+        <tr>
+            <td class='form_label'><?=form_label('Gruppe:', 'gruppe'); ?></td>
+            <td><?=form_dropdown('gruppe', $group_options, $group_selected, $group_attr)?></td>
             <td class='error'></td>
         </tr>
     </table>

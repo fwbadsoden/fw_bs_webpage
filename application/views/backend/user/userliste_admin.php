@@ -43,6 +43,7 @@ $(document).ready(function() {
 			<th class="headline_mail">Email</td>
 			<th class="headline_name">Nachname</td>
 			<th class="headline_name">Vorname</td>
+			<th class="headline_name">Gruppe</td>
 			<th class="headline_status">Status</td>
 			<th colspan="3" class="headline_edit">Edit</td>
 		</tr>
@@ -57,6 +58,7 @@ $(document).ready(function() {
 			<td><?=$u->uacc_email?></td>
 			<td><?=$u->last_name?></td>
 			<td><?=$u->first_name?></td>
+			<td><?=$group[$u->uacc_group_fk]->ugrp_name?></td>
 			<td style='text-align:center'>
 		<?  if($u->uacc_active==1) { ?>
 				<span style='color: green;'>aktiv</span>

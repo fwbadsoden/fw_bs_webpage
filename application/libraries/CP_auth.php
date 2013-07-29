@@ -54,5 +54,15 @@ class CP_auth extends Flexi_auth
             return $userdata[0];
         else return null;
     }
+    
+    public function cp_get_group_names()
+    {
+        $groups = $this->get_groups_query()->result();
+        foreach($groups as $g)
+        {
+            $groups_ret[$g->ugrp_id] = $g;
+        }
+        return $groups_ret;
+    }
 }
 ?>
