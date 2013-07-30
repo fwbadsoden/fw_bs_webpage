@@ -1,5 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); 
-    $row_color = '';
+    $row_color = ''; $i = 0;
 ?>
 
 <script type="text/javascript">
@@ -50,10 +50,11 @@ $(document).ready(function() {
 	</thead>
 	<tbody>
 	<? foreach($user as $u) { 
-	       $row_color = cp_get_color($row_color)	   
+	       $row_color = cp_get_color($row_color);
+           $i++;	   
     ?>
 		<tr bgcolor="<?=$row_color?>">
-			<td><?=str_pad($u->uacc_id, 5 ,'0', STR_PAD_LEFT);?></td>
+			<td><?=str_pad($i, 5 ,'0', STR_PAD_LEFT);?></td>
 			<td><?=$u->uacc_username?></td>
 			<td><?=$u->uacc_email?></td>
 			<td><?=$u->last_name?></td>

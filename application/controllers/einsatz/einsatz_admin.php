@@ -41,6 +41,8 @@ class Einsatz_Admin extends CI_Controller {
 	 */
 	public function einsatz_liste($year = 'act')
 	{ 		
+        if(!$this->cp_auth->is_privileged(EINSATZ_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
+        echo $this->cp_auth->is_privileged(EINSATZ_PRIV_DISPLAY);
 		$this->session->set_userdata('einsatzliste_redirect', current_url()); 
 				
 		$header['title']    = 'Einsätze';		
@@ -66,6 +68,8 @@ class Einsatz_Admin extends CI_Controller {
 	 */
 	public function create_einsatz()
 	{		
+        if(!$this->cp_auth->is_privileged(EINSATZ_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
 			if($verify= $this->verify())
@@ -105,6 +109,8 @@ class Einsatz_Admin extends CI_Controller {
 	 */
 	public function edit_einsatz($id)
 	{				
+        if(!$this->cp_auth->is_privileged(EINSATZ_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{				
 			if($verify = $this->verify())
@@ -144,6 +150,8 @@ class Einsatz_Admin extends CI_Controller {
 	 */
 	public function delete_einsatz($id)
 	{		
+        if(!$this->cp_auth->is_privileged(EINSATZ_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
 		$einsatzdata = $this->einsatz->get_einsatz($id);
 		$this->admin->insert_log(str_replace('%EINSATZ%', $einsatzdata['einsatzName'], lang('log_admin_deleteEinsatz')));
 
@@ -186,6 +194,8 @@ class Einsatz_Admin extends CI_Controller {
 	 */
 	public function image_uploader($id, $recursive = 0, $error = null)
 	{		
+        if(!$this->cp_auth->is_privileged(EINSATZ_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
 		if($this->uri->segment($this->uri->total_segments()) == 'save' && $recursive == 0)
 		{	
 			if($this->input->post('img_manager') == 'img_upload')
@@ -299,6 +309,8 @@ class Einsatz_Admin extends CI_Controller {
 	 */
 	public function switch_online_state($id, $state, $year)
 	{ 		
+        if(!$this->cp_auth->is_privileged(EINSATZ_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
 		if($state == 1) $online = 0; else $online = 1;
 		
 		$this->einsatz->switch_online_state($id, $online);

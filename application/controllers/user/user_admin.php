@@ -85,6 +85,7 @@ class User_Admin extends CI_Controller {
 		$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue();
+        $this->db->order_by('uacc_username', 'ASC');
 		$data['user']       = $this->cp_auth->get_users_query()->result();	
         $data['group']      = $this->cp_auth->cp_get_group_names();
         
@@ -104,6 +105,7 @@ class User_Admin extends CI_Controller {
         $menue['menue']     = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
         $menue['submenue']  = $this->admin->get_submenue();
+        $this->db->order_by('upriv_name', 'ASC');
         $data['priv']       = $this->cp_auth->get_privileges_query()->result();
         $data['module']     = $this->module->get_modules();
         
@@ -123,6 +125,7 @@ class User_Admin extends CI_Controller {
         $menue['menue']     = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
         $menue['submenue']  = $this->admin->get_submenue();
+        $this->db->order_by('ugrp_name', 'ASC');
         $data['group']      = $this->cp_auth->get_groups_query()->result();
         
 		$this->load->view('backend/templates/admin/header', $header);
@@ -157,7 +160,7 @@ class User_Admin extends CI_Controller {
     	$menue['submenue']	= $this->admin->get_submenue();
         $sql_where          = array('ugrp_id' => $groupID);
         $data['group']      = $this->cp_auth->get_user_group(FALSE, $sql_where);
-        $data['type']       = 'user';
+        $data['type']       = 'group';
     	
     	$this->load->view('backend/templates/admin/header', $header);
     	$this->load->view('backend/templates/admin/menue', $menue);	
@@ -173,9 +176,9 @@ class User_Admin extends CI_Controller {
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     	$menue['submenue']	= $this->admin->get_submenue();
         $sql_where          = array('upriv_id' => $privID);
-        $data['priv']       = $this->cp_auth->get_privileges(FALSE, $sql_where);
-        $data['type']       = 'user';
-    	
+        $priv_data          = $this->cp_auth->get_privileges_query(FALSE, $sql_where)->result();
+        $data['priv']       = $priv_data[0];
+        $data['type']       = 'priv';
     	$this->load->view('backend/templates/admin/header', $header);
     	$this->load->view('backend/templates/admin/menue', $menue);	
     	$this->load->view('backend/templates/admin/submenue', $menue);	
@@ -366,10 +369,10 @@ class User_Admin extends CI_Controller {
 	public function delete_priv($id)
 	{
         $sql_where              = array('upriv_id' => $id);
-        $privdata               = $this->cp_auth->get_privileges(FALSE, $sql_where);
-		$this->admin->insert_log(str_replace('%PRIV%', $privdata->name, lang('log_admin_deletePriv')));
+        $privdata               = $this->cp_auth->get_privileges_query(FALSE, $sql_where)->result();
+		$this->admin->insert_log(str_replace('%PRIV%', $privdata[0]->upriv_name, lang('log_admin_deletePriv')));
 		
-		$this->cp_auth->delete_priv($id);
+		$this->cp_auth->delete_privilege($id);
 		
 		redirect($this->session->userdata('privliste_redirect'), 'refresh');	
 	}
@@ -436,8 +439,12 @@ class User_Admin extends CI_Controller {
                 
 				$this->cp_auth->update_group($id, $groupdata);
                 
+                // first delete all old priv assignments (perhaps later switch to update process rather delete all)
+                $sql_where = array('upriv_groups_ugrp_fk' => $id);
+                $this->cp_auth->delete_user_group_privilege($sql_where);
+                
                 foreach($_POST as $key => $p) {
-                    if(substr($key, 0, 2) == 'p_') {                
+                    if(substr($key, 0, 2) == 'p_') {            
                         $sql_where   = array('upriv_groups_ugrp_fk' => $id, 'upriv_groups_upriv_fk' => $p);
                         $group_priv = $this->cp_auth->get_user_group_privileges_query(FALSE, $sql_where)->result(); 
                         if(!$group_priv)

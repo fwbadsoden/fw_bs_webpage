@@ -38,7 +38,7 @@ $(document).ready(function() {
 <table cellpadding="0" cellspacing="1" id="grp_table" class="tablesorter">
 	<thead>
 		<tr>
-			<th class="headline_id">ID</td>
+			<th class="headline_id"></td>
 			<th class="headline_name">Name</td>
 			<th class="headline_text">Beschreibung</td>
 			<th colspan="2" class="headline_edit">Edit</td>

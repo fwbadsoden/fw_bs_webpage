@@ -20,10 +20,9 @@ class Admin extends CI_Controller {
 	 */
 	public function __construct()
 	{
-		parent::__construct();
+		parent::__construct();             
                         
-        $this->load->library('CP_auth');
-        
+        $this->load->library('CP_auth');        
 		$this->load->model('admin/admin_model', 'admin');       
         
 		$this->session->set_flashdata('redirect', current_url()); 
@@ -56,6 +55,7 @@ class Admin extends CI_Controller {
 	public function mContent()
 	{
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
+        if(!$this->cp_auth->is_privileged('NAV:CONTENT:DISPLAY')) redirect('admin/401', 'refresh');
 		
 		$header['title'] 	= 'Inhalte bearbeiten';	
 		$menue['menue']	    = $this->admin->get_menue();
@@ -78,6 +78,7 @@ class Admin extends CI_Controller {
 	public function mFiles()
 	{
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
+        if(!$this->cp_auth->is_privileged('NAV:FILE:DISPLAY')) redirect('admin/401', 'refresh');
 		
 		$header['title'] 	= 'Dateien bearbeiten';	
 		$menue['menue']	    = $this->admin->get_menue();
@@ -100,6 +101,7 @@ class Admin extends CI_Controller {
 	public function mMenue()
 	{
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
+        if(!$this->cp_auth->is_privileged('NAV:MENUE:DISPLAY')) redirect('admin/401', 'refresh');
 		
 		$header['title'] 	= 'Inhalte bearbeiten';	
 		$menue['menue']	    = $this->admin->get_menue();
@@ -122,6 +124,7 @@ class Admin extends CI_Controller {
 	public function mSystem()
 	{
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
+        if(!$this->cp_auth->is_privileged('NAV:SYSTEM:DISPLAY')) redirect('admin/401', 'refresh');
 		
 		$header['title'] 	= 'Inhalte bearbeiten';	
 		$menue['menue']	    = $this->admin->get_menue();
@@ -144,6 +147,7 @@ class Admin extends CI_Controller {
 	public function mUser()
 	{
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
+        if(!$this->cp_auth->is_privileged('NAV:USER:DISPLAY')) redirect('admin/401', 'refresh');
 		
 		$header['title'] 	= 'Inhalte bearbeiten';	
 		$menue['menue']	    = $this->admin->get_menue();
@@ -165,6 +169,8 @@ class Admin extends CI_Controller {
 	 */
 	private function dashboard()
 	{
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
+        
 		$header['title'] 	= 'Dashboard';	
 		$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();

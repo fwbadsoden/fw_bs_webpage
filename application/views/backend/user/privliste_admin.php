@@ -1,5 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); 
-    $row_color = '';
+    $row_color = ''; $i = 0;
 ?>
 
 <script type="text/javascript">
@@ -38,7 +38,7 @@ $(document).ready(function() {
 <table cellpadding="0" cellspacing="1" id="priv_table" class="tablesorter">
 	<thead>
 		<tr>
-			<th class="headline_id">ID</td>
+			<th class="headline_id"></td>
             <th class="headline_module">Modul</th>
 			<th class="headline_name">Name</td>
 			<th class="headline_text">Beschreibung</td>
@@ -47,10 +47,11 @@ $(document).ready(function() {
 	</thead>
 	<tbody>
 	<? foreach($priv as $p) { 
-	       $row_color = cp_get_color($row_color)	   
+	       $row_color = cp_get_color($row_color);
+           $i++;	   
     ?>
 		<tr bgcolor="<?=$row_color?>">
-			<td><?=str_pad($p->upriv_id, 5 ,'0', STR_PAD_LEFT);?></td>
+			<td><?=str_pad($i, 5 ,'0', STR_PAD_LEFT);?></td>
 			<td><?=$module[$p->moduleID]['moduleName']?></td>
 			<td><?=$p->upriv_name?></td>
 			<td><?=$p->upriv_desc?></td>

@@ -105,6 +105,7 @@ img{border:0}
 #content .button_image_edit{background:url('../../images/admin/buttons/picture.png') no-repeat 10px 0;text-indent:40px;display:block}
 #content .button_reset{background:url('../../images/admin/buttons/control_rewind.png') no-repeat 10px 0;text-indent:40px;display:block}
 #content .button_add_small{background:url('../../images/admin/buttons/add.png') no-repeat 5px 0;height:17px;width:26px;display:block}
+#content .button_mark_small{background:url('../../images/admin/buttons/table_multiple.png') no-repeat 5px 0;height:17px;width:26px;display:block}
 #content .button_up_small{background:url('../../images/admin/buttons/arrow_up.png') no-repeat 5px 0;height:17px;width:26px;display:block}
 #content .button_down_small{background:url('../../images/admin/buttons/arrow_down.png') no-repeat 5px 0;height:17px;width:26px;display:block}
 #content .button_edit_small{background:url('../../images/admin/buttons/application_form_edit.png') no-repeat 5px 0;height:17px;width:26px;display:block}
