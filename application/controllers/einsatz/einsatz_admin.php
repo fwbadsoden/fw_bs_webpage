@@ -42,7 +42,6 @@ class Einsatz_Admin extends CI_Controller {
 	public function einsatz_liste($year = 'act')
 	{ 		
         if(!$this->cp_auth->is_privileged(EINSATZ_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
-        echo $this->cp_auth->is_privileged(EINSATZ_PRIV_DISPLAY);
 		$this->session->set_userdata('einsatzliste_redirect', current_url()); 
 				
 		$header['title']    = 'Einsätze';		

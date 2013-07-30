@@ -37,6 +37,7 @@ class Pages_Admin extends CI_Controller {
 	 */
 	public function pages_liste()
 	{
+        if(!$this->cp_auth->is_privileged(PAGES_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
 		$this->session->set_userdata('pageliste_redirect', current_url()); 		
 		
 		$header['title']      = 'Seiten verwalten';		
@@ -60,6 +61,7 @@ class Pages_Admin extends CI_Controller {
      */
     public function create_page()
     {
+        if(!$this->cp_auth->is_privileged(PAGES_PRIV_EDIT)) redirect('admin/401', 'refresh');
        	if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
 			if($verify= $this->verify_create())
@@ -99,6 +101,7 @@ class Pages_Admin extends CI_Controller {
      */
     public function edit_page($id)
     {
+        if(!$this->cp_auth->is_privileged(PAGES_PRIV_EDIT)) redirect('admin/401', 'refresh');
         $this->pageID = $id;
         
         if($this->uri->segment($this->uri->total_segments()) == 'save')
@@ -156,6 +159,7 @@ class Pages_Admin extends CI_Controller {
      */
     public function add_row($pageID)
     {
+        if(!$this->cp_auth->is_privileged(PAGES_PRIV_EDIT)) redirect('admin/401', 'refresh');
         $this->pages->add_row($pageID);
 		redirect($this->session->userdata('pageedit_redirect'), 'refresh');
     }
@@ -169,6 +173,7 @@ class Pages_Admin extends CI_Controller {
      */
     public function change_row_order($dir, $id)
 	{
+        if(!$this->cp_auth->is_privileged(PAGES_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		$this->pages->change_row_order($dir, $id);		
 		redirect($this->session->userdata('pageedit_redirect'), 'refresh');	
 	}
@@ -182,6 +187,7 @@ class Pages_Admin extends CI_Controller {
      */
     public function add_box($rowID, $boxID = NULL)
     {        
+        if(!$this->cp_auth->is_privileged(PAGES_PRIV_EDIT)) redirect('admin/401', 'refresh');
         $this->rowID = $rowID;
         $this->boxID = $boxID;
         
@@ -217,7 +223,8 @@ class Pages_Admin extends CI_Controller {
      * @return 
      */
     public function edit_box_content($rowContentID, $boxContentID)
-    {           
+    {       
+        if(!$this->cp_auth->is_privileged(PAGES_PRIV_EDIT)) redirect('admin/401', 'refresh');    
             $this->session->set_userdata('editboxcontent_submit', current_url());
         
             $header['title']     = 'Inhalt bearbeiten';		
@@ -245,6 +252,7 @@ class Pages_Admin extends CI_Controller {
      */
     public function update_box_content($boxContentID)
     {
+        if(!$this->cp_auth->is_privileged(PAGES_PRIV_EDIT)) redirect('admin/401', 'refresh');
         $this->pages->update_box_content($boxContentID);
         redirect($this->session->userdata('pageedit_redirect'), 'refresh'); 
     }
@@ -257,6 +265,7 @@ class Pages_Admin extends CI_Controller {
      */
     public function delete_page_verify($pageID)
     {
+        if(!$this->cp_auth->is_privileged(PAGES_PRIV_DELETE)) redirect('admin/401', 'refresh');
         $header['title']    = 'Seite l&ouml;schen';		
 		$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
@@ -281,6 +290,7 @@ class Pages_Admin extends CI_Controller {
      */
     public function delete_page($pageID)
     {
+        if(!$this->cp_auth->is_privileged(PAGES_PRIV_DELETE)) redirect('admin/401', 'refresh');
         $this->pages->delete_page($pageID);
 		
 		redirect($this->session->userdata('pageliste_redirect'), 'refresh');    
@@ -295,6 +305,8 @@ class Pages_Admin extends CI_Controller {
      */
     public function delete_row_verify($rowID, $pageID)
     {
+        if(!$this->cp_auth->is_privileged(PAGES_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
         $header['title']    = 'Zeile l&ouml;schen';		
 		$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
@@ -319,6 +331,7 @@ class Pages_Admin extends CI_Controller {
      */
     public function delete_row($rowID, $pageID)
     {
+        if(!$this->cp_auth->is_privileged(PAGES_PRIV_DELETE)) redirect('admin/401', 'refresh');
         $this->pages->delete_row($rowID, $pageID);
 		
 		redirect($this->session->userdata('pageedit_redirect'), 'refresh');    
@@ -332,6 +345,8 @@ class Pages_Admin extends CI_Controller {
      */
     public function delete_box_verify($rowContentID)
     {
+        if(!$this->cp_auth->is_privileged(PAGES_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
         $header['title']    = 'Box l&ouml;schen';		
 		$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
@@ -355,6 +370,8 @@ class Pages_Admin extends CI_Controller {
      */
     public function delete_box($rowContentID)
     {
+        if(!$this->cp_auth->is_privileged(PAGES_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
         $this->pages->delete_box($rowContentID);
 		
 		redirect($this->session->userdata('pageedit_redirect'), 'refresh');    
@@ -396,6 +413,8 @@ class Pages_Admin extends CI_Controller {
      */
     public function stage_liste()
     {
+        if(!$this->cp_auth->is_privileged(STAGES_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
+        
         $this->session->set_userdata('stageliste_redirect', current_url()); 		
 		
 		$header['title']      = 'Bildb&uuml;hnen verwalten';	
@@ -421,6 +440,7 @@ class Pages_Admin extends CI_Controller {
 	 */
 	public function switch_online_state($id, $state)
 	{ 		
+        if(!$this->cp_auth->is_privileged(PAGES_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($state == 1) $online = 0; else $online = 1;
 		
 		$this->pages->switch_online_state($id, $online);
@@ -436,6 +456,7 @@ class Pages_Admin extends CI_Controller {
 	 */
 	public function switch_stage_online_state($id, $state)
 	{ 		
+        if(!$this->cp_auth->is_privileged(STAGES_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($state == 1) $online = 0; else $online = 1;
 		
 		$this->pages->switch_stage_online_state($id, $online);

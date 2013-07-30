@@ -26,6 +26,7 @@ class News_Admin extends CI_Controller {
 	
 	public function news_liste()
 	{ 		
+        if(!$this->cp_auth->is_privileged(NEWS_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
 		$this->session->set_userdata('newsliste_redirect', current_url()); 
 		
 		$header['title'] 			= 'News';		
@@ -62,6 +63,7 @@ class News_Admin extends CI_Controller {
     
     public function kategorie_liste()
     {
+        if(!$this->cp_auth->is_privileged(NEWS_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
         $this->session->set_userdata('kategorieliste_redirect', current_url());
         
         $header['title']        = 'News Kategorien';      

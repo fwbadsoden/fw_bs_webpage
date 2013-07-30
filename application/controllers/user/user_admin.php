@@ -105,6 +105,7 @@ class User_Admin extends CI_Controller {
         $menue['menue']     = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
         $menue['submenue']  = $this->admin->get_submenue();
+        $this->db->order_by('moduleID', 'ASC');
         $this->db->order_by('upriv_name', 'ASC');
         $data['priv']       = $this->cp_auth->get_privileges_query()->result();
         $data['module']     = $this->module->get_modules();
@@ -372,6 +373,8 @@ class User_Admin extends CI_Controller {
         $privdata               = $this->cp_auth->get_privileges_query(FALSE, $sql_where)->result();
 		$this->admin->insert_log(str_replace('%PRIV%', $privdata[0]->upriv_name, lang('log_admin_deletePriv')));
 		
+        $sql_where              = array('upriv_groups_upriv_fk' => $id);
+        $this->cp_auth->delete_user_group_privilege($sql_where);
 		$this->cp_auth->delete_privilege($id);
 		
 		redirect($this->session->userdata('privliste_redirect'), 'refresh');	

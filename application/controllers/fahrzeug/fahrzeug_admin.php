@@ -39,6 +39,7 @@ class Fahrzeug_Admin extends CI_Controller {
 	 */
 	public function fahrzeug_liste()
 	{
+        if(!$this->cp_auth->is_privileged(FAHRZEUG_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
 		$this->session->set_userdata('fahrzeugliste_redirect', current_url()); 
 				
 		$header['title']      = 'Fahrzeuge';		
@@ -62,6 +63,7 @@ class Fahrzeug_Admin extends CI_Controller {
 	 */
 	public function create_fahrzeug()
 	{
+        if(!$this->cp_auth->is_privileged(FAHRZEUG_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
 			if($verify = $this->verify())
@@ -98,6 +100,7 @@ class Fahrzeug_Admin extends CI_Controller {
 	 */
 	public function edit_fahrzeug($id)
 	{
+        if(!$this->cp_auth->is_privileged(FAHRZEUG_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
 			if($verify = $this->verify())
@@ -135,6 +138,7 @@ class Fahrzeug_Admin extends CI_Controller {
 	 */
 	public function delete_fahrzeug($id)
 	{
+        if(!$this->cp_auth->is_privileged(FAHRZEUG_PRIV_DELETE)) redirect('admin/401', 'refresh');
 		$fahrzeugdata = $this->fahrzeug->get_fahrzeug($id);
 		$this->admin->insert_log(str_replace('%FAHRZEUG%', $fahrzeugdata['fahrzeugName'], lang('log_admin_deleteFahrzeug')));
 		
@@ -182,6 +186,7 @@ class Fahrzeug_Admin extends CI_Controller {
 	 */
 	public function image_uploader($id, $recursive = 0, $error = null)
 	{		
+        if(!$this->cp_auth->is_privileged(FAHRZEUG_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($this->uri->segment($this->uri->total_segments()) == 'save' && $recursive == 0)
 		{	
 			if($this->input->post('img_manager') == 'img_upload')
@@ -299,6 +304,7 @@ class Fahrzeug_Admin extends CI_Controller {
 	 */
 	public function switch_online_state($id, $state)
 	{ 		
+        if(!$this->cp_auth->is_privileged(FAHRZEUG_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($state == 1) $online = 0; else $online = 1;
 		
 		$this->fahrzeug->switch_online_state($id, $online);

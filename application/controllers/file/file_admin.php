@@ -25,6 +25,7 @@ class File_Admin extends CI_Controller {
     
     public function file_liste($type) // Später durch jquery File Upload und Schnickschnack zu ersetzen
     {       
+        if(!$this->cp_auth->is_privileged(FILE_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
         $this->session->set_userdata($type.'liste_redirect', current_url());  
         switch($type)
         {
@@ -72,6 +73,7 @@ class File_Admin extends CI_Controller {
     
     public function create_file($type)
     {        
+        if(!$this->cp_auth->is_privileged(FILE_PRIV_EDIT)) redirect('admin/401', 'refresh');
         if($type == 'image') $data['typeID']       = FILE_TYPE_ID_CMSIMAGE; 
         if($type == 'file')  $data['typeID']       = FILE_TYPE_ID_CMSFILE; 
         
@@ -148,6 +150,7 @@ class File_Admin extends CI_Controller {
     
     public function edit_file($type)
     {
+        if(!$this->cp_auth->is_privileged(FILE_PRIV_EDIT)) redirect('admin/401', 'refresh');
         $this->file->update_file();
         redirect($this->session->userdata($type.'liste_redirect'), 'refresh');
     }

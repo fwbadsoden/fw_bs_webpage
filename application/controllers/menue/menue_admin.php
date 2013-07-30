@@ -33,6 +33,7 @@ class Menue_Admin extends CI_Controller {
 	
 	public function menue_liste()
 	{
+        if(!$this->cp_auth->is_privileged(MENUE_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
 		$this->session->set_userdata('menueliste_redirect', current_url()); 	
 	 	
 		$header['title']    = 'Menü';		
@@ -52,6 +53,7 @@ class Menue_Admin extends CI_Controller {
 	
 	public function create_menue()
 	{
+        if(!$this->cp_auth->is_privileged(MENUE_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
 			if($verify = $this->verify())
@@ -82,6 +84,7 @@ class Menue_Admin extends CI_Controller {
 	
 	public function edit_menue($id)
 	{
+        if(!$this->cp_auth->is_privileged(MENUE_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
 			if($verify = $this->verify())
@@ -109,21 +112,39 @@ class Menue_Admin extends CI_Controller {
 		}
 		else redirect($this->session->userdata('menueliste_redirect'), 'refresh');
 	}
+    
+    public function delete_menue_verify($id)
+    {
+        $header['title']    = 'Menüeintrag l&ouml;schen';		
+    	$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
+    	$menue['submenue']	= $this->admin->get_submenue();
+	    $data['menue_arr']  = $this->menue->get_menue_list();
+    	
+    	$this->load->view('backend/templates/admin/header', $header);
+    	$this->load->view('backend/templates/admin/menue', $menue);	
+    	$this->load->view('backend/templates/admin/submenue', $menue);	
+    	$this->load->view('backend/menue/verifyDelete_admin', $data);
+    	$this->load->view('backend/templates/admin/footer');        
+    }
 	
 	public function delete_menue($id)
 	{
+        if(!$this->cp_auth->is_privileged(MENUE_PRIV_DELETE)) redirect('admin/401', 'refresh');
 		$this->menue->delete_menue($id);		
 		redirect($this->session->userdata('menueliste_redirect'), 'refresh');
 	}
 	
 	public function change_order($dir, $id)
 	{
+        if(!$this->cp_auth->is_privileged(MENUE_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		$this->menue->change_order($dir, $id);		
 		redirect($this->session->userdata('menueliste_redirect'), 'refresh');	
 	}
 	
 	public function switch_online_state($id, $online)
 	{
+        if(!$this->cp_auth->is_privileged(MENUE_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		$this->menue->switch_online_state($id, $online);
 		redirect($this->session->userdata('menueliste_redirect'), 'refresh');		
 	}

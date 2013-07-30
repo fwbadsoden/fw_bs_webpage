@@ -37,6 +37,7 @@ class Module_Admin extends CI_Controller {
 	 **/
 	 public function setting_liste()
 	 {		
+        if(!$this->cp_auth->is_privileged(SETTINGS_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
 			$this->module->save_settings();
@@ -77,6 +78,7 @@ class Module_Admin extends CI_Controller {
 	
 	public function rewrite_settings()
 	{
+        if(!$this->cp_auth->is_privileged(SETTINGS_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		$this->write_settings();
 		redirect($this->session->userdata('settingliste_redirect'), 'refresh');
 	}
@@ -91,6 +93,7 @@ class Module_Admin extends CI_Controller {
 	 **/
 	public function write_settings()
 	{
+        if(!$this->cp_auth->is_privileged(SETTINGS_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		$this->module->write_setting_file();
 	}
 	
@@ -107,6 +110,7 @@ class Module_Admin extends CI_Controller {
 	 **/
 	 public function language_liste()
 	 {
+        if(!$this->cp_auth->is_privileged(LANGUAGE_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
 	 	$this->session->set_userdata('languageliste_redirect', current_url()); 	
 	 	
 		$header['title']    = 'Texte';		
@@ -135,6 +139,7 @@ class Module_Admin extends CI_Controller {
 	 **/
 	 public function route_liste()
 	 {
+        if(!$this->cp_auth->is_privileged(ROUTE_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
 	 	$this->session->set_userdata('routeliste_redirect', current_url()); 		
 		
 		$header['title']    = 'CI Routen';		
@@ -153,6 +158,7 @@ class Module_Admin extends CI_Controller {
 	 
 	public function create_route()
 	{		
+        if(!$this->cp_auth->is_privileged(ROUTE_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
 			if($verify= $this->verify_route())
@@ -183,6 +189,7 @@ class Module_Admin extends CI_Controller {
 	 
 	public function edit_route($id)
 	{		
+        if(!$this->cp_auth->is_privileged(ROUTE_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
 			if($verify= $this->verify_route())
@@ -226,6 +233,7 @@ class Module_Admin extends CI_Controller {
 	
 	public function delete_route($id)
 	{		
+        if(!$this->cp_auth->is_privileged(ROUTE_PRIV_DELETE)) redirect('admin/401', 'refresh');
 		$this->module->delete_route($id);
 		$this->write_routes();		
 		redirect($this->session->userdata('routeliste_redirect'), 'refresh');
@@ -233,12 +241,14 @@ class Module_Admin extends CI_Controller {
     
     public function rewrite_languages()
     {
+        if(!$this->cp_auth->is_privileged(LANGUAGE_PRIV_EDIT)) redirect('admin/401', 'refresh');
         $this->write_languages();
 		redirect($this->session->userdata('languageliste_redirect'), 'refresh');
     }
 	
 	public function rewrite_routes()
 	{
+        if(!$this->cp_auth->is_privileged(ROUTE_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		$this->write_routes();
 		redirect($this->session->userdata('routeliste_redirect'), 'refresh');
 	}
@@ -253,11 +263,13 @@ class Module_Admin extends CI_Controller {
 	 **/
 	public function write_routes()
 	{
+        if(!$this->cp_auth->is_privileged(ROUTE_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		$this->module->write_route_file();
 	}
     
     public function write_languages()
     {
+        if(!$this->cp_auth->is_privileged(LANGUAGE_PRIV_EDIT)) redirect('admin/401', 'refresh');
         $this->module->write_language_file();
     }
 }

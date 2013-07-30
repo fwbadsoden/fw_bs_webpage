@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Error
+ * Error_admin
  * 
  * Zentraler Controller für Backendfehler
  * 
@@ -11,21 +11,22 @@
  * @version 2013
  * @access public
  */
-class Error extends CI_Controller {
+class Error_admin extends CI_Controller {
 
 	/**
-	 * Error::__construct()
+	 * Error_admin::__construct()
 	 * 
 	 * @return
 	 */
 	public function __construct()
 	{
 		parent::__construct();
-        $this->load->library('CP_auth');                    
+        $this->load->library('CP_auth');   
+		$this->load->model('admin/admin_model', 'admin');                 
 	}
     
     /**
-     * Error::error_404()
+     * Error_admin::error_404()
      * not authorized page
      * 
      * @return void
@@ -42,7 +43,7 @@ class Error extends CI_Controller {
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);
 		$this->load->view('backend/templates/admin/submenue', $menue);
-		$this->load->view('backend/error/401');
+		$this->load->view('backend/error/e401');
 		$this->load->view('backend/templates/admin/footer');         
     }
 }
