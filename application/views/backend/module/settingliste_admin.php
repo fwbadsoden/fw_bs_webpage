@@ -31,12 +31,14 @@ $(document).ready(function() {
 <?=form_open($this->session->userdata('settingliste_redirect').'/save', $form);?>
 
 <p class="thirdMenue">
+<? if($privileged['edit']) :        ?>
 <table>
         <tr>
             <td><button type='submit' name='setting_submit' id='setting_submit' class='button_gross'><span class='button_save'>Speichern</span></button></td>
             <td><a href="<?=base_url('admin/system/setting/write')?>" class="button_gross"><span class="button_save">Einstellungsdatei neu schreiben</span></a></td>
         </tr>
 </table>
+<? endif;                           ?>
 </p>
 <h1>Einstellungen verwalten</h1>
 <table cellpadding="0" cellspacing="1" id="setting_table" class="tablesorter">
@@ -50,8 +52,7 @@ $(document).ready(function() {
 <tbody>
 <?
 	$i = 0;
-	foreach($setting as $item) 
-	{		 
+	foreach($setting as $item) :	 
 		$constantValue = array(
 			'name'		=> $i.'_value',
 			'id'		=> $i.'_value',
@@ -66,7 +67,7 @@ $(document).ready(function() {
 	<td><?=$item['constantName']?></td>
 	<td><?=form_input($constantValue); ?></td>
 </tr>
-<? } 
+<? endforeach; 
 	 echo form_hidden('counter', $i);
 ?>
 </tbody>

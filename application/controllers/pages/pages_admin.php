@@ -45,6 +45,10 @@ class Pages_Admin extends CI_Controller {
         $menue['userdata']    = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	  = $this->admin->get_submenue();
 		$data['page']         = $this->pages->get_pages();
+        
+        // Berechtigungen für Übersichtsseite weiterreichen
+        $data['privileged']['edit'] = $this->cp_auth->is_privileged(PAGES_PRIV_EDIT);
+        $data['privileged']['delete'] = $this->cp_auth->is_privileged(PAGES_PRIV_DELETE); 
 	
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
@@ -422,6 +426,10 @@ class Pages_Admin extends CI_Controller {
         $menue['userdata']    = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	  = $this->admin->get_submenue();
 		$data['stage']        = $this->pages->get_stages();
+        
+        // Berechtigungen für Übersichtsseite weiterreichen
+        $data['privileged']['edit'] = $this->cp_auth->is_privileged(PAGES_PRIV_EDIT);
+        $data['privileged']['delete'] = $this->cp_auth->is_privileged(PAGES_PRIV_DELETE); 
 	
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	

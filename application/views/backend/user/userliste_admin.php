@@ -28,10 +28,12 @@ $(document).ready(function() {
 </script>
 
 <div id="content">
+<? if($privileged['edit']) :        ?>
 <p class="thirdMenue">
 	<a href="<?=base_url('admin/user/create')?>" class="button_gross"><span class="button_user_add">Neuen Benutzer anlegen</span></a>
 </p>
 <p>&nbsp;</p>
+<? endif;                           ?>
 
 <h1>Benutzer verwalten</h1>
 
@@ -49,7 +51,7 @@ $(document).ready(function() {
 		</tr>
 	</thead>
 	<tbody>
-	<? foreach($user as $u) { 
+	<? foreach($user as $u) : 
 	       $row_color = cp_get_color($row_color);
            $i++;	   
     ?>
@@ -61,21 +63,34 @@ $(document).ready(function() {
 			<td><?=$u->first_name?></td>
 			<td><?=$group[$u->uacc_group_fk]->ugrp_name?></td>
 			<td style='text-align:center'>
-		<?  if($u->uacc_active==1) { ?>
+		<?  if($u->uacc_active==1) : ?>
 				<span style='color: green;'>aktiv</span>
-		<?  } else { ?>
+		<?  else : ?>
 				<span style='color: red;'>inaktiv</span>
-		<?  } ?>
+		<?  endif; ?>
 			</td>
-		<?	if($u->uacc_active==1) {	?>
+		<?	if($u->uacc_active==1) :	?>
+<? if($privileged['edit']) :        ?>        
 			<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/user/status/'.$u->uacc_id.'/1')?>" class="button_mini" title="Benutzer offline schalten"><span class='button_online_small'></span></a></span></td>
-		<?	} else { ?>
+<? else :                           ?>
+            <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Benutzerstatus zu bearbeiten"><span class='button_online_small'></span></a></span></td>
+<? endif;                           ?>            
+		<?	else : ?>
+<? if($privileged['edit']) :        ?>                
 			<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/user/status/'.$u->uacc_id.'/0')?>" class="button_mini" title="Benutzer online schalten"><span class='button_offline_small'></span></a></span></td>
-		<?	} ?>
-			<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/user/edit/'.$u->uacc_id)?>" class="button_mini" title="Benutzer bearbeiten"><span class='button_edit_small'></span></a></span></td>
+<? else :                           ?>
+            <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Benutzerstatus zu bearbeiten"><span class='button_offline_small'></span></a></span></td>
+<? endif;                           ?>
+		<?	endif; ?>
+<? if($privileged['edit']) :        ?>        
+			<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/user/edit/'.$u->uacc_id)?>" class="button_mini" title="Benutzer bearbeiten"><span class='button_edit_small'></span></a></span></td>           
 			<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/user/checkdelete/'.$u->uacc_id)?>" class="button_mini" title="Benutzer löschen"><span class='button_delete_small'></span></a></span></td>
+<? else :                           ?> 
+            <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Benutzer zu bearbeiten"><span class='button_lock_small'></span></a></span></td>           
+            <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Benutzer zu löschen"><span class='button_lock_small'></span></a></span></td>
+<? endif;                           ?>            
 		</tr>
-	<? } ?>
+	<? endforeach; ?>
 	</tbody>
 </table>
 

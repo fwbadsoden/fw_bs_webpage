@@ -92,7 +92,7 @@ $(document).ready(function()
 	</p>
 	<?=form_fieldset_close();?>
 	
-<? if(count($images) > 0) { ?>
+<? if(count($images) > 0) : ?>
 	<p>&nbsp;</p>
 	<span class="span_img_preview" style="display:none">
 	<!-- Bildervorschau -->
@@ -132,15 +132,15 @@ $(document).ready(function()
 	<?=form_fieldset('&nbsp;&nbsp;&nbsp;Bilderliste:&nbsp;&nbsp;&nbsp;');?>
 	<table style="width: 500px;">
 		
-		<? foreach($images as $img) { ?>
+		<? foreach($images as $img) : ?>
 		<tr bgcolor="<?=$img['row_color']?>">
 			<td style="vertical-align: top;">
 				<a id="<?=base_url(CONTENT_IMG_FAHRZEUG_UPLOAD_PATH.$img['img_thumb'])?>||<?=$img['img_desc']?>||<?=$img['imageID']?>" class="preview_img"><?=$img["img_desc"]?></a>
 			</td>
 		</tr>
-		<? } ?>
+		<? endforeach; ?>
 	</table></p>
 	<?=form_fieldset_close();?>
 		
-<? } ?>
+<? endif; ?>
 </div>

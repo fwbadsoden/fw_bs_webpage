@@ -36,6 +36,10 @@ class News_Admin extends CI_Controller {
 		$data['news'] 				= $this->news->get_news_list();
         $data['news_count']         = $this->news->get_news_count();
         $data['news_categories']    = $this->news->get_news_categories();
+        
+        // Berechtigungen für Übersichtsseite weiterreichen
+        $data['privileged']['edit'] = $this->cp_auth->is_privileged(NEWS_PRIV_EDIT);
+        $data['privileged']['delete'] = $this->cp_auth->is_privileged(NEWS_PRIV_DELETE); 
 		
 		// Pagination Config
 		$this->config->set_item('total_rows', $data['news_count']);
@@ -70,7 +74,11 @@ class News_Admin extends CI_Controller {
 		$menue['menue']	        = $this->admin->get_menue();
         $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']		= $this->admin->get_submenue();
-		$data['categories']		= $this->news->get_news_categories();  
+		$data['categories']		= $this->news->get_news_categories(); 
+        
+        // Berechtigungen für Übersichtsseite weiterreichen
+        $data['privileged']['edit'] = $this->cp_auth->is_privileged(NEWS_PRIV_EDIT);
+        $data['privileged']['delete'] = $this->cp_auth->is_privileged(NEWS_PRIV_DELETE);  
         
         $this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	

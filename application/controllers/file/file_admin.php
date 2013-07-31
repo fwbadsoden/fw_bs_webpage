@@ -27,6 +27,11 @@ class File_Admin extends CI_Controller {
     {       
         if(!$this->cp_auth->is_privileged(FILE_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
         $this->session->set_userdata($type.'liste_redirect', current_url());  
+        
+        // Berechtigungen für Übersichtsseite weiterreichen
+        $data['privileged']['edit'] = $this->cp_auth->is_privileged(FILE_PRIV_EDIT);
+        $data['privileged']['delete'] = $this->cp_auth->is_privileged(FILE_PRIV_DELETE);   
+        
         switch($type)
         {
             case 'image':   			
@@ -39,7 +44,7 @@ class File_Admin extends CI_Controller {
                 $data['typeID']       = FILE_TYPE_ID_CMSIMAGE;
                 $data['type']         = $type;
                 $data['files']        = $this->file->get_files(FILE_TYPE_ID_CMSIMAGE);  
-                $data['categories']   = $this->file->get_categories(FILE_TYPE_ID_CMSIMAGE);     
+                $data['categories']   = $this->file->get_categories(FILE_TYPE_ID_CMSIMAGE);  
         
                 $this->load->view('backend/templates/admin/header', $header);
         		$this->load->view('backend/templates/admin/menue', $menue);	

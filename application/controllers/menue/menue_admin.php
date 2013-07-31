@@ -43,6 +43,10 @@ class Menue_Admin extends CI_Controller {
 		$data['areaUC']     = ucfirst($this->area);
 		$data['area']       = $this->area;
 		$data['menue_arr']  = $this->menue->get_menue_list('all');
+        
+        // Berechtigungen für Übersichtsseite weiterreichen
+        $data['privileged']['edit'] = $this->cp_auth->is_privileged(MENUE_PRIV_EDIT);
+        $data['privileged']['delete'] = $this->cp_auth->is_privileged(MENUE_PRIV_DELETE);   
 	
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	

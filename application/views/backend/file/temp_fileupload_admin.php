@@ -67,6 +67,7 @@
 </script>
 
 <div id="content">
+<? if($privileged['edit']) :        ?>
 <p class="thirdMenue">
     <table>
         <tr>
@@ -74,6 +75,7 @@
         </tr>
     </table>
 </p>
+<? endif;                           ?>
 
 <h1><?=$headline?></h1>
 
@@ -98,9 +100,11 @@
 					<br><br>
 					
 			</p>
+<? if($privileged['edit']) :        ?>            
 			<p id="imgDetailBtn" style="display: none">
                 <button type='submit' name='image_submit' id='image_submit' class='button_gross'><span class='button_save'>&Auml;nderung speichern</span></button>
 			</p>
+<? endif;                           ?>            
 <?=form_fieldset_close();?>
 
 <p></p>

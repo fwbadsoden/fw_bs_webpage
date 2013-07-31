@@ -51,6 +51,10 @@ class Einsatz_Admin extends CI_Controller {
 		$menue['submenue']	= $this->admin->get_submenue();
 		$data['einsatz']    = $this->einsatz->get_einsatz_list($year);
 		$data['years']	    = $this->einsatz->get_einsatz_years();	
+        
+        // Berechtigungen für Übersichtsseite weiterreichen
+        $data['privileged']['edit'] = $this->cp_auth->is_privileged(EINSATZ_PRIV_EDIT);
+        $data['privileged']['delete'] = $this->cp_auth->is_privileged(EINSATZ_PRIV_DELETE);
 	
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	

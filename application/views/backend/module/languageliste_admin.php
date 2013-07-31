@@ -57,6 +57,7 @@ switch(ID) {
 </script> 
 
 <div id="content">
+<? if($privileged['edit']) :        ?>
 <p class="thirdMenue">	
 	<table>
         <tr>
@@ -65,6 +66,7 @@ switch(ID) {
         </tr>
     </table>
 </p>
+<? endif;                           ?>
 
 <h1>Texte verwalten</h1>
 
@@ -80,16 +82,21 @@ switch(ID) {
 </thead>
 <tbody>
 
-<? foreach($language as $item) { ?>		
+<? foreach($language as $item) : ?>		
 <tr bgcolor="<?=$item['row_color']?>">
 	<td><?=$item['moduleName']?></td>
 	<td><?=$item['key']?></td>
 	<td><?=$item['text']?></td>
 	<td><?=$item['desc']?></td>
+<?  if($privileged['edit']) :       ?>
 	<td><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/system/language/edit/'.$item['langID'])?>" class="button_mini" title="Text bearbeiten"><span class='button_edit_small'></span></a></span></td>
 	<td><a id="confirm_link_<?=$item['langID']?>" href="<?=base_url('admin/system/language/delete/'.$item['langID'])?>" class="button_mini" title="Text löschen"><span class='button_delete_small'></span></a></span></td>
+<?  else :                          ?>
+    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Text zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
+    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Text zu löschen"><span class='button_lock_small'></span></a></span></td>
+<?  endif;                          ?>
 </tr>
-<? } ?>
+<? endforeach; ?>
 </tbody>
 </table>
 <p>&nbsp;</p>

@@ -28,10 +28,12 @@ $(document).ready(function() {
 </script>
 
 <div id="content">
+<? if($privileged['edit']) :        ?>
 <p class="thirdMenue">
 	<a href="<?=base_url('admin/user/priv/create')?>" class="button_gross"><span class="button_priv_add">Neue Berechtigung anlegen</span></a>
 </p>
 <p>&nbsp;</p>
+<? endif;                           ?>
 
 <h1>Berechtigungen verwalten</h1>
 
@@ -55,8 +57,13 @@ $(document).ready(function() {
 			<td><?=$module[$p->moduleID]['moduleName']?></td>
 			<td><?=$p->upriv_name?></td>
 			<td><?=$p->upriv_desc?></td>
+<? if($privileged['edit']) :        ?>            
 			<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/user/priv/edit/'.$p->upriv_id)?>" class="button_mini" title="Berechtigung bearbeiten"><span class='button_edit_small'></span></a></span></td>
 			<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/user/priv/checkdelete/'.$p->upriv_id)?>" class="button_mini" title="Berechtigung löschen"><span class='button_delete_small'></span></a></span></td>
+<? else :                           ?>            
+            <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Berechtigung zu bearbeiten"><span class='button_lock_small'></span></a></span></td>              
+            <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Berechtigung zu löschen"><span class='button_lock_small'></span></a></span></td>
+<? endif;                           ?>
 		</tr>
 	<? } ?>
 	</tbody>

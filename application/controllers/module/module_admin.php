@@ -53,6 +53,10 @@ class Module_Admin extends CI_Controller {
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
 			$data['setting']        = $this->module->get_settings();
+        
+            // Berechtigungen für Übersichtsseite weiterreichen
+            $data['privileged']['edit'] = $this->cp_auth->is_privileged(SETTINGS_PRIV_EDIT);
+            $data['privileged']['delete'] = $this->cp_auth->is_privileged(SETTINGS_PRIV_DELETE); 
 		
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/menue', $menue);	
@@ -119,6 +123,10 @@ class Module_Admin extends CI_Controller {
 		$menue['submenue']	= $this->admin->get_submenue();
 		$data['language']   = $this->module->get_languages();
         
+        // Berechtigungen für Übersichtsseite weiterreichen
+        $data['privileged']['edit'] = $this->cp_auth->is_privileged(LANGUAGE_PRIV_EDIT);
+        $data['privileged']['delete'] = $this->cp_auth->is_privileged(LANGUAGE_PRIV_DELETE); 
+        
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
@@ -147,6 +155,10 @@ class Module_Admin extends CI_Controller {
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	= $this->admin->get_submenue();
 		$data['route']      = $this->module->get_routes();
+        
+        // Berechtigungen für Übersichtsseite weiterreichen
+        $data['privileged']['edit'] = $this->cp_auth->is_privileged(ROUTE_PRIV_EDIT);
+        $data['privileged']['delete'] = $this->cp_auth->is_privileged(ROUTE_PRIV_DELETE); 
 	
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	

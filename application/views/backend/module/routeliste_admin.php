@@ -55,8 +55,8 @@ switch(ID) {
 </script> 
 
 <div id="content">
-<p class="thirdMenue">
-	
+<? if($privileged['edit']) :        ?>
+<p class="thirdMenue">	
 	<table>
         <tr>
             <td><a href="<?=base_url('admin/system/route/create')?>" class="button_gross"><span class="button_add">Neue Route anlegen</span></a></td>
@@ -64,6 +64,7 @@ switch(ID) {
         </tr>
     </table>
 </p>
+<? endif;                           ?>
 
 <h1>CI Routen verwalten</h1>
 
@@ -78,27 +79,32 @@ switch(ID) {
 	</tr>
 </thead>
 <tbody>
-<? foreach($route as $item) { ?>		
+<? foreach($route as $item) : ?>		
 <tr bgcolor="<?=$item['row_color']?>">
 	<td><?=$item['bereich']?></td>
 	<td><?=$item['moduleName']?></td>
 	<td><?=$item['route']?></td>
 	<td><?=$item['internalLink']?></td>
-<?	if($item['active']==1) {	?>
+<?	if($item['active']==1) :	
+        if($privileged['edit']) :        ?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/system/route/status/'.$item['routeID'].'/1')?>" class="button_mini" title="Route offline schalten"><span class='button_online_small'></span></a></span></td>
-<?	} else { ?>
+<?      else:                            ?>
+
+<?      endif;
+	else : 
+        if($privileged['edit']) :        ?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/system/route/status/'.$item['routeID'].'/0')?>" class="button_mini" title="Route online schalten"><span class='button_offline_small'></span></a></span></td>
-<?	} ?>
+<?      else :                           ?>
+
+<?      endif;                           
+	endif;                           
+    if($privileged['edit']) :            ?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/system/route/edit/'.$item['routeID'])?>" class="button_mini" title="Route bearbeiten"><span class='button_edit_small'></span></a></span></td>
-<!--	<td class="button"><span id='jquery-tools-tooltip'>
-<? if($item['protectedFlag'] != 1) { ?>
-	<a id="confirm_link_<?=$item['routeID']?>" href="<?=base_url('admin/system/route/delete/'.$item['routeID'])?>" class="button_mini" title="Route löschen"><span class='button_delete_small'></span></a></span></td>
-<?  } else { ?>
-		<a class="button_mini" title="Route kann nicht gelöscht werden."><span class='button_lock_small'></span></a>
-<? } ?>
-	</span></td>-->
+<?  else :                               ?>
+    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Route zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
+<?  endif;                               ?>
 </tr>
-<? } ?>
+<? endforeach; ?>
 </tbody>
 </table>
 <p>&nbsp;</p>

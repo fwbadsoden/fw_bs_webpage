@@ -89,6 +89,10 @@ class User_Admin extends CI_Controller {
 		$data['user']       = $this->cp_auth->get_users_query()->result();	
         $data['group']      = $this->cp_auth->cp_get_group_names();
         
+        // Berechtigungen weiterreichen
+        $data['privileged']['edit'] = $this->cp_auth->is_privileged(USER_PRIV_EDIT);
+        $data['privileged']['delete'] = $this->cp_auth->is_privileged(USER_PRIV_DELETE); 
+        
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
@@ -110,6 +114,10 @@ class User_Admin extends CI_Controller {
         $data['priv']       = $this->cp_auth->get_privileges_query()->result();
         $data['module']     = $this->module->get_modules();
         
+        // Berechtigungen weiterreichen
+        $data['privileged']['edit'] = $this->cp_auth->is_privileged(PRIV_PRIV_EDIT);
+        $data['privileged']['delete'] = $this->cp_auth->is_privileged(PRIV_PRIV_DELETE); 
+        
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
@@ -129,6 +137,10 @@ class User_Admin extends CI_Controller {
         $this->db->order_by('ugrp_name', 'ASC');
         $data['group']      = $this->cp_auth->get_groups_query()->result();
         
+        // Berechtigungen weiterreichen
+        $data['privileged']['edit'] = $this->cp_auth->is_privileged(GROUP_PRIV_EDIT);
+        $data['privileged']['delete'] = $this->cp_auth->is_privileged(GROUP_PRIV_DELETE); 
+        
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
@@ -139,6 +151,8 @@ class User_Admin extends CI_Controller {
     
     public function delete_user_verify($userID)
     {
+        if(!$this->cp_auth->is_privileged(USER_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
         $header['title']    = 'Benutzer l&ouml;schen';		
     	$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
@@ -155,6 +169,8 @@ class User_Admin extends CI_Controller {
     
     public function delete_group_verify($groupID)
     {
+        if(!$this->cp_auth->is_privileged(GROUP_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
         $header['title']    = 'Gruppe l&ouml;schen';		
     	$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
@@ -172,6 +188,8 @@ class User_Admin extends CI_Controller {
     
     public function delete_priv_verify($privID)
     {
+        if(!$this->cp_auth->is_privileged(PRIV_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
         $header['title']    = 'Berechtigung l&ouml;schen';		
     	$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
@@ -180,6 +198,7 @@ class User_Admin extends CI_Controller {
         $priv_data          = $this->cp_auth->get_privileges_query(FALSE, $sql_where)->result();
         $data['priv']       = $priv_data[0];
         $data['type']       = 'priv';
+            
     	$this->load->view('backend/templates/admin/header', $header);
     	$this->load->view('backend/templates/admin/menue', $menue);	
     	$this->load->view('backend/templates/admin/submenue', $menue);	
@@ -189,6 +208,8 @@ class User_Admin extends CI_Controller {
 	
 	public function create_user()
 	{
+        if(!$this->cp_auth->is_privileged(USER_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{
 			if($verify = $this->verify_user())
@@ -236,6 +257,8 @@ class User_Admin extends CI_Controller {
 	
 	public function edit_user($id)
 	{
+        if(!$this->cp_auth->is_privileged(USER_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{
 			if($verify = $this->verify_user($id))
@@ -283,6 +306,8 @@ class User_Admin extends CI_Controller {
 	
 	public function delete_user($id)
 	{
+        if(!$this->cp_auth->is_privileged(USER_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
 		$user = $this->cp_auth->cp_get_user_by_id($id);
 		$this->admin->insert_log(str_replace('%USER%', $user->uacc_username, lang('log_admin_deleteUser')));
 		
@@ -293,6 +318,8 @@ class User_Admin extends CI_Controller {
     
     public function create_priv()
     {
+        if(!$this->cp_auth->is_privileged(PRIV_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
         if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{
 			if($verify = $this->verify_priv())
@@ -316,7 +343,7 @@ class User_Admin extends CI_Controller {
 			$menue['menue']			= $this->admin->get_menue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue'] 		= $this->admin->get_submenue();
-            $data['module']     = $this->module->get_modules();
+            $data['module']         = $this->module->get_modules();
 			
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/menue', $menue);
@@ -329,6 +356,8 @@ class User_Admin extends CI_Controller {
 	
 	public function edit_priv($id)
 	{
+        if(!$this->cp_auth->is_privileged(PRIV_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{
 			if($verify = $this->verify_priv($id))
@@ -369,6 +398,8 @@ class User_Admin extends CI_Controller {
 	
 	public function delete_priv($id)
 	{
+        if(!$this->cp_auth->is_privileged(PRIV_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
         $sql_where              = array('upriv_id' => $id);
         $privdata               = $this->cp_auth->get_privileges_query(FALSE, $sql_where)->result();
 		$this->admin->insert_log(str_replace('%PRIV%', $privdata[0]->upriv_name, lang('log_admin_deletePriv')));
@@ -382,6 +413,8 @@ class User_Admin extends CI_Controller {
     
     public function create_group()
     {
+        if(!$this->cp_auth->is_privileged(GROUP_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
         if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{
 			if($verify = $this->verify_group())
@@ -423,6 +456,8 @@ class User_Admin extends CI_Controller {
 	
 	public function edit_group($id)
 	{
+        if(!$this->cp_auth->is_privileged(GROUP_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{
 			if($verify = $this->verify_group($id))
@@ -483,6 +518,8 @@ class User_Admin extends CI_Controller {
 	
 	public function delete_group($id)
 	{
+        if(!$this->cp_auth->is_privileged(GROUP_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
         $sql_where              = array('ugrp_id' => $id);
         $groupdata              = $this->cp_auth->get_groups_query(FALSE, $sql_where)->result();
 		$this->admin->insert_log(str_replace('%GROUP%', $groupdata->name, lang('log_admin_deleteGroup')));
@@ -514,6 +551,8 @@ class User_Admin extends CI_Controller {
 	
 	public function verify_user($id = 0)
 	{
+        if(!$this->cp_auth->is_privileged(USER_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
 		$this->load->library('form_validation');
 		
 		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
@@ -538,6 +577,8 @@ class User_Admin extends CI_Controller {
 	
 	public function verify_priv($id = 0)
 	{
+        if(!$this->cp_auth->is_privileged(PRIV_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
 		$this->load->library('form_validation');
 		
 		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
@@ -557,6 +598,8 @@ class User_Admin extends CI_Controller {
 	
 	public function verify_group($id = 0)
 	{
+        if(!$this->cp_auth->is_privileged(GROUP_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
 		$this->load->library('form_validation');
 		
 		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
@@ -568,6 +611,8 @@ class User_Admin extends CI_Controller {
 	
 	public function switch_online_state($id, $state)
 	{
+        if(!$this->cp_auth->is_privileged(USER_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
 		if($state == 1) 
             $this->cp_auth->deactivate_user($id);
         else 

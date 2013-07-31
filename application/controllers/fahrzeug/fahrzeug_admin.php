@@ -47,6 +47,10 @@ class Fahrzeug_Admin extends CI_Controller {
         $menue['userdata']    = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	  = $this->admin->get_submenue();
 		$data['fahrzeug']     = $this->fahrzeug->get_fahrzeug_list();
+        
+        // Berechtigungen für Übersichtsseite weiterreichen
+        $data['privileged']['edit'] = $this->cp_auth->is_privileged(FAHRZEUG_PRIV_EDIT);
+        $data['privileged']['delete'] = $this->cp_auth->is_privileged(FAHRZEUG_PRIV_DELETE);
 	
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
