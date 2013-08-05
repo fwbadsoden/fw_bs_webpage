@@ -49,7 +49,7 @@
 <?      if($item['is_deletable']) : ?>
 	<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item['pageID']?>" href="<?=base_url('admin/content/page/checkdelete/'.$item['pageID'])?>" class="button_mini" title="Seite l&ouml;schen"><span class='button_delete_small'></span></a></span></td>
 <?      else :                      ?>
-    <td class="button">><a class="button_mini" title="Seite kann nicht gel&ouml;scht werden.<br>Sie wird in einem Menüpunkt verwendet."><span class='button_lock_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Seite kann nicht gel&ouml;scht werden.<br>Sie wird in einem Menüpunkt verwendet."><span class='button_lock_small'></span></a></span></td>
 <?      endif;
     else :                      ?>    
     <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Seite zu bearbeiten"><span class='button_lock_small'></span></a></span></td>

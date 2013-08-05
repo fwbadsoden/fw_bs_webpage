@@ -26,14 +26,57 @@ class Einsatz extends CI_Controller {
     public function overview_2col($limit = EINSATZ_DEFAULT_LIMIT, $offset = EINSATZ_DEFAULT_OFFSET)
     {
         $einsatz_header['title']        = 'Einsatz-Ticker';
-        $einsatz_overview               = $this->m_einsatz->get_einsatz_v_list($limit, $offset);
+        $einsaetze                      = $this->m_einsatz->get_einsatz_overview($limit, $offset);
         
         $this->load->view('frontend/einsatz/overview_2col_header', $einsatz_header);
-        foreach($einsatz_overview as $einsatz)
+        foreach($einsaetze['einsaetze'] as $einsatz)
         {
             $this->load->view('frontend/einsatz/overview_2col_data', $einsatz);
         }
         $this->load->view('frontend/einsatz/overview_2col_footer');    
+    }
+    
+    public function einsatzliste_2col()
+    {        
+        if(!$year = $this->input->post('einsatzJahr')) $year = date('Y');
+        if(!$type = $this->input->post('einsatzArt')) $type = 'all';
+        $month['num'] = null;
+        $monthOld = null;
+        $i = 0;
+        
+        $einsatz_header['title']        = 'Unsere Einsätze';
+        $einsaetze                      = $this->m_einsatz->get_einsatz_overview('all', 'all', $year, $type);
+        $filter['types']                = $einsaetze['types']      = $this->m_einsatz->get_einsatz_type_list();
+        $filter['years']                = $this->m_einsatz->get_einsatz_years();
+        
+        $this->load->view('frontend/einsatz/einsatzliste_2col_filter', $filter);
+        $this->load->view('frontend/einsatz/einsatzliste_2col_statistik', $einsaetze);
+        $this->load->view('frontend/einsatz/einsatzliste_2col_header', $einsatz_header);
+        
+        for($i = 0; $i < count($einsaetze['einsaetze']); $i++)
+        {
+            $einsatz = $einsaetze['einsaetze'][$i];
+            if(($i+1) == count($einsaetze['einsaetze'])) $einsatzNext = null;
+            else $einsatzNext = $einsaetze['einsaetze'][$i+1];
+            
+            if($month['num'] != substr($einsatz->datum, 5, 2)) {
+                if($monthOld == null) $monthOld = substr($einsatz->datum, 5, 2);
+                $month['num'] = substr($einsatz->datum, 5, 2);
+                $month['name'] = strftime('%B', mktime(0, 0, 0, $month['num'], 1, substr($einsatz->datum, 0, 4)));  
+                $month['year'] = substr($einsatz->datum, 0, 4);
+                $this->load->view('frontend/einsatz/einsatzliste_2col_month', $month);
+                if($monthOld != $month['num']) {
+                    $this->load->view('frontend/templates/hr_clear');
+                    $monthOld = $month['num'];
+                }
+            }
+            if($einsatzNext == null)
+                $einsatz->special_class = ' lastRow';
+            elseif(substr($einsatz->datum, 5, 2) != substr($einsatzNext->datum, 5, 2))
+                $einsatz->special_class = ' lastRow';
+            $this->load->view('frontend/einsatz/einsatzliste_2col_data', $einsatz);  
+        }
+        $this->load->view('frontend/einsatz/einsatzliste_2col_footer');
     }
 }
 ?>

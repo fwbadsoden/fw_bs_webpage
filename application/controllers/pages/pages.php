@@ -58,8 +58,8 @@ class Pages extends CI_Controller {
         
         $this->site_mainContent_header();
         
-        $c_news->homepage_teaser_1col(0);
-        $c_news->homepage_teaser_1col(1);
+        $c_news->homepage_teaser_1col(0, 1);
+        $c_news->homepage_teaser_1col(1, 0);
         $this->site_hr_clear();
         
         $c_einsatz->overview_2col(EINSATZ_STARTPAGE_LIMIT);
@@ -67,6 +67,25 @@ class Pages extends CI_Controller {
         $this->site_mainContent_footer();
         
         $this->site_sidebar_homepage();
+    
+        $this->site_footer();
+    }
+    
+    private function einsatz_overview()
+    {
+        $c_einsatz = load_controller('einsatz/einsatz');
+        
+        $this->site_header();    
+        $this->site_stage();        
+        
+        $this->site_content_header();
+        
+        if($this->page_content['stage']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        if(!$year = $this->input->post('year')) $year = date('Y');
+        
+        $c_einsatz->einsatzliste_2col($year);
     
         $this->site_footer();
     }
@@ -113,6 +132,16 @@ class Pages extends CI_Controller {
     private function site_mainContent_footer()
     {
         $this->load->view('frontend/templates/mainContentFooter');
+    }
+    
+    private function site_homepageContent_header()
+    {
+        $this->load->view('frontend/templates/homepageContentHeader');
+    }
+    
+    private function site_homepageContent_footer()
+    {
+        $this->load->view('frontend/templates/homepageContentFooter');
     }
     
     private function site_stage()

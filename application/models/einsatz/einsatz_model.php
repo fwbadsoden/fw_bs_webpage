@@ -17,6 +17,10 @@ class Einsatz_Model extends CI_Model {
 	private $counterF = 0;
 	private $arr_fahrzeuge_db = array();
 	private $color = '';
+    
+    public $id, $name, $datum, $beginn, $ende, $lfd_nr, $online, $type_count,
+           $einsatz_nr, $lage, $geschehen, $weitere_kraefte, 
+           $anzahl_kraefte, $typeID, $type_name, $type_short_name, $row_color, $special_class;
 	
 	/**
 	 * Konstruktor
@@ -29,26 +33,59 @@ class Einsatz_Model extends CI_Model {
 		$this->load->helper('html');
 	}	
     
-    public function get_einsatz_v_list($limit = EINSATZ_DEFAULT_LIMIT, $offset = EINSATZ_DEFAULT_OFFSET)
+    public function get_einsatz_overview($limit = EINSATZ_DEFAULT_LIMIT, $offset = EINSATZ_DEFAULT_OFFSET, $year = 'all', $type = 'all')
     {
-        $this->db->limit($limit, $offset);
+        if(is_numeric($limit) && is_numeric($offset)) 
+            $this->db->limit($limit, $offset);
+        if(is_numeric($year))
+			$this->db->where(array('substring(datum,1,4)' => $year));
+        if(strlen($type) == 1)
+            $this->db->where(array('type_short_name' => $type));
+        $this->db->order_by('datum', 'desc');
+		$this->db->order_by('lfd_nr', 'desc');
+            
         $query = $this->db->get('v_einsatz');
         $einsaetze = array();
         $i = 0;
+        $type_count = array();
         
         foreach($query->result() as $row)
         {
-            $einsaetze[$i]['einsatzID']    = $row->einsatzID;
-            $einsaetze[$i]['name']         = $row->name;
-            $einsaetze[$i]['datum']        = $row->datum;
-            $einsaetze[$i]['beginn']       = $row->beginn;
-            $einsaetze[$i]['type_name']    = $row->type_name;
-            $einsaetze[$i]['lage']         = $row->lage;
+            $this->db->select('imgID');
+            $query2 = $this->db->get_where('einsatz_img', array('einsatzID' => $row->einsatzID)); 
             
+            $einsatz = new Einsatz_model();
+            $einsatz->id            = $row->einsatzID;
+            $einsatz->name          = $row->name;
+            $einsatz->einsatz_nr    = $row->einsatz_nr;
+            $einsatz->lfd_nr        = $row->lfd_nr;
+            $einsatz->datum         = $row->datum;
+            $einsatz->beginn        = $row->beginn;
+            $einsatz->ende          = $row->ende;
+            $einsatz->row_color     = $this->color                  = cp_get_color($this->color);
+            $einsatz->year          = $year;
+            $einsatz->lage          = $row->lage;
+            $einsatz->type_name     = $row->type_name;
+            $einsatz->type_short_name = $row->type_short_name;
+            $einsatz->type_class    = $row->type_class;
+            $einsatz->img_count     = $query2->num_rows();
+            
+            $einsaetze[$i]          = $einsatz;
+//            $einsaetze[$i]['einsatzID']    = $row->einsatzID;
+//            $einsaetze[$i]['name']         = $row->name;
+//            $einsaetze[$i]['datum']        = $row->datum;
+//            $einsaetze[$i]['beginn']       = $row->beginn;
+//            $einsaetze[$i]['type_name']    = $row->type_name;
+//            $einsaetze[$i]['lage']         = $row->lage;
+            if(!isset($type_count[$row->type_short_name])) $type_count[$row->type_short_name] = 0;
+            $type_count[$row->type_short_name]++;
             $i++;
         }
         
-        return $einsaetze;
+        $ret_einsaetze['einsaetze'] = $einsaetze;
+        $ret_einsaetze['statistik'] = $type_count;
+        
+        return $ret_einsaetze;
     }
 	
 	public function get_einsatz_years()
@@ -64,20 +101,23 @@ class Einsatz_Model extends CI_Model {
 		rsort($years);
 		return $years;
 	}
+    
+    public function get_einsatz_count($year = 0)
+    {
+        if ($year == 0) $year = date('Y');
+        $query = $this->db->get_where('einsatz', array('substring(datum,0,4)' => $year));
+        return $query->num_rows();
+    }
 	
 	public function get_einsatz_list($year)
 	{		
 		$arr_einsatz_list = array();
 		
+        $this->db->order_by('datum', 'desc');
+		$this->db->order_by('lfd_nr', 'desc');
 		if(is_numeric($year))
-		{
-			$this->db->order_by('lfd_nr', 'desc');
-			$query = $this->db->get_where('einsatz', array('substring(datum,1,4)' => $year));
-		}
-		else
-		{
-			$query = $this->db->get('einsatz');
-		}
+			$this->db->where(array('substring(datum,1,4)' => $year));		
+		$query = $this->db->get('einsatz');
 		
 		$i = 0;
 		
@@ -85,19 +125,19 @@ class Einsatz_Model extends CI_Model {
 		{
             $this->db->select('imgID');
             $query2 = $this->db->get_where('einsatz_img', array('einsatzID' => $row->einsatzID)); 
-			
-			$arr_einsatz_list[$i]['lfdNr'] 			= $row->lfd_nr;
-			$arr_einsatz_list[$i]['einsatzNr'] 		= $row->einsatz_nr;
-			$arr_einsatz_list[$i]['einsatzID'] 		= $row->einsatzID;
-			$arr_einsatz_list[$i]['einsatzName'] 	= $row->name;
-			$arr_einsatz_list[$i]['datum']	 		= cp_get_ger_date($row->datum);
-			$arr_einsatz_list[$i]['beginn'] 		= $row->beginn;
-			$arr_einsatz_list[$i]['ende']	 		= $row->ende;
-			$arr_einsatz_list[$i]['online'] 		= $row->online;
-			$arr_einsatz_list[$i]['row_color']		= $this->color = cp_get_color($this->color);;
-			$arr_einsatz_list[$i]['year']			= $year;
+		
+ 			$arr_einsatz_list[$i]['lfdNr'] 			= $row->lfd_nr;
+  			$arr_einsatz_list[$i]['einsatzNr'] 		= $row->einsatz_nr;
+  			$arr_einsatz_list[$i]['einsatzID'] 		= $row->einsatzID;
+  			$arr_einsatz_list[$i]['einsatzName'] 	= $row->name;
+  			$arr_einsatz_list[$i]['datum']	 		= cp_get_ger_date($row->datum);
+  			$arr_einsatz_list[$i]['beginn'] 		= $row->beginn;
+  			$arr_einsatz_list[$i]['ende']	 		= $row->ende;
+  			$arr_einsatz_list[$i]['online'] 		= $row->online;
+  			$arr_einsatz_list[$i]['row_color']		= $this->color = cp_get_color($this->color);
+  			$arr_einsatz_list[$i]['year']			= $year;
             $arr_einsatz_list[$i]['imgCount']       = $query2->num_rows();
-			
+ 		
 			$i++;
 		}
 		return $arr_einsatz_list;
@@ -150,9 +190,11 @@ class Einsatz_Model extends CI_Model {
 		
 		foreach($query->result() as $row)
 		{
-			$arr_type[$i]['typeID'] = $row->typeID;
-			$arr_type[$i]['typeName'] = $row->name;
-			$arr_type[$i]['typeShortname'] = $row->short_name;	
+			$arr_type[$i]['typeID']          = $row->typeID;
+			$arr_type[$i]['typeName']        = $row->name;
+			$arr_type[$i]['typeShortname']   = $row->short_name;	
+            $arr_type[$i]['typePlural']      = $row->name_plural;
+            $arr_type[$i]['class']           = $row->class;
 			$i++;
 		}
 		

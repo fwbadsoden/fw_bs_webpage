@@ -2,4 +2,4 @@
     $this->load->helper('html'); 
 ?> 
 
-<div class="<?=$class?>">
+<h1 class="module"><?=$name.' '.$year?></h1>

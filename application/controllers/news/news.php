@@ -18,8 +18,11 @@ class News extends CI_Controller {
 		$this->load->model('news/news_model', 'news');
 	}
     
-    public function homepage_teaser_1col($offset)
+    public function homepage_teaser_1col($offset, $first = 0)
     {
+        if($first == 1) $class['class'] = 'BildTextTeaser first';
+        else $class['class'] = 'BildTextTeaser';
+        
         $this->db->select('newsID, title, teaser, teaser_image_fullpath, teaser_image_width, teaser_image_height, teaser_image_title');
         $this->db->limit(1, $offset);
         $query = $this->db->get('v_news');
@@ -35,7 +38,7 @@ class News extends CI_Controller {
             'teaser_image_title'    => $row->teaser_image_title
         );
         
-        $this->load->view('frontend/news/teaser_1col_header');
+        $this->load->view('frontend/news/teaser_1col_header', $class);
         $this->load->view('frontend/news/teaser_1col_data', $news);
         $this->load->view('frontend/news/teaser_1col_footer');
     }
