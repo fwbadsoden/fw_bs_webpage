@@ -12,6 +12,23 @@
 // ------------------------------------------------------------------------
 
 /**
+ * cp_get_month_name()
+ * Returns the month name for given int month
+ * 
+ * @param mixed $month
+ * @return
+ */
+ if ( ! function_exists('cp_get_month_name'))
+ {
+    function cp_get_month_name($month)
+    {
+        $months = array("", "Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember");
+        $month = (int)$month;
+        return $months[$month];
+    }
+}
+
+/**
  * Validate german date
  * Input must be in german date format to work
  *

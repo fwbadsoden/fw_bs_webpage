@@ -90,6 +90,26 @@ class Pages extends CI_Controller {
         $this->site_footer();
     }
     
+    private function einsatz_detail()
+    {
+        $id = $this->uri->segment($this->uri->total_segments());
+        
+        $c_einsatz = load_controller('einsatz/einsatz');
+        $text = $c_einsatz->get_einsatz_stage_text($id);
+        
+        $this->site_header();
+        $this->site_stage_einsatz($text);
+        
+        $this->site_content_header();
+        
+        if($this->page_content['stage']['count_images'] > 1)
+            $this->site_stage_slider();   
+        
+        $c_einsatz->einsatz_detail_3col($id);
+        
+        $this->site_footer();
+    }
+    
     private function site_sidebar_homepage()
     { 
         $c_termin = load_controller('termin/termin');
@@ -147,7 +167,13 @@ class Pages extends CI_Controller {
     private function site_stage()
     {
         $stage_data['stage_images']     = $this->page_content['stage'];  
-             
+        $this->load->view('frontend/templates/stage');
+    }
+    
+    private function site_stage_einsatz($text = null)
+    {
+        $stage_data['stage_images']     = $this->page_content['stage'];  
+        if($text != null) $stage_date['stage_text'] = $text;
         $this->load->view('frontend/templates/stage', $stage_data);
     }
     

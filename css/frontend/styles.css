@@ -595,7 +595,7 @@ input.button_black:hover {
 	margin: 0 100px 0 auto;
 }
 #stage .stageQuoteLeft {
-	background-image: url(....//images/quote_bg.png);
+	background-image: url(../../images/quote_bg.png);
 	text-align: left;
 	width: 280px;
 	padding: 10px;

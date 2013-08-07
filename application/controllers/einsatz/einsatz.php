@@ -40,13 +40,15 @@ class Einsatz extends CI_Controller {
     {        
         if(!$year = $this->input->post('einsatzJahr')) $year = date('Y');
         if(!$type = $this->input->post('einsatzArt')) $type = 'all';
+        
+        if($type == 0) $type = 'all';
         $month['num'] = null;
         $monthOld = null;
         $i = 0;
         
         $einsatz_header['title']        = 'Unsere Einsätze';
         $einsaetze                      = $this->m_einsatz->get_einsatz_overview('all', 'all', $year, $type);
-        $filter['types']                = $einsaetze['types']      = $this->m_einsatz->get_einsatz_type_list();
+        $filter['types']                = $einsaetze['types'] = $this->m_einsatz->get_einsatz_type_list();
         $filter['years']                = $this->m_einsatz->get_einsatz_years();
         
         $this->load->view('frontend/einsatz/einsatzliste_2col_filter', $filter);
@@ -62,7 +64,7 @@ class Einsatz extends CI_Controller {
             if($month['num'] != substr($einsatz->datum, 5, 2)) {
                 if($monthOld == null) $monthOld = substr($einsatz->datum, 5, 2);
                 $month['num'] = substr($einsatz->datum, 5, 2);
-                $month['name'] = strftime('%B', mktime(0, 0, 0, $month['num'], 1, substr($einsatz->datum, 0, 4)));  
+                $month['name'] = cp_get_month_name($month['num']);  
                 $month['year'] = substr($einsatz->datum, 0, 4);
                 $this->load->view('frontend/einsatz/einsatzliste_2col_month', $month);
                 if($monthOld != $month['num']) {
@@ -77,6 +79,16 @@ class Einsatz extends CI_Controller {
             $this->load->view('frontend/einsatz/einsatzliste_2col_data', $einsatz);  
         }
         $this->load->view('frontend/einsatz/einsatzliste_2col_footer');
+    }
+    
+    public function einsatz_detail_3col($id)
+    {
+        echo $id;
+    }
+    
+    public function get_einsatz_stage_text($id)
+    {
+        return $this->m_einsatz->get_einsatz_stage_text($id);
     }
 }
 ?>

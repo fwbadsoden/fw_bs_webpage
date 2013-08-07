@@ -40,7 +40,7 @@ class Einsatz_Model extends CI_Model {
         if(is_numeric($year))
 			$this->db->where(array('substring(datum,1,4)' => $year));
         if(strlen($type) == 1)
-            $this->db->where(array('type_short_name' => $type));
+            $this->db->where(array('typeID' => $type));
         $this->db->order_by('datum', 'desc');
 		$this->db->order_by('lfd_nr', 'desc');
             
@@ -88,6 +88,18 @@ class Einsatz_Model extends CI_Model {
         return $ret_einsaetze;
     }
 	
+    public function get_einsatz_stage_text($id)
+    {
+        $this->db->select('lage, type_name, type_class');
+        $query = $this->db->get_where('v_einsatz', array('einsatzID' => $id));
+        $row = $query->row();
+        
+        $text['einsatz'] = $row->lage;
+        $text['type']    = $row->type_name;
+        $text['class']   = $row->type_class;
+        return $text;
+    }
+    
 	public function get_einsatz_years()
 	{
 		$years = array();
