@@ -127,7 +127,8 @@ class Pages_model extends CI_Model {
                 $content['pageID']           = $id;
                 $content['title']            = $row->title;
                 $content['column_count']     = $row->column_count;
-                $content['stage']            = $this->get_stage_images($row->stageID); 
+                $content['stage_file']       = $row->stage_file;
+                $content['stage_images']     = $this->get_stage_images($row->stageID); 
                 $content['special_page']     = $row->special_page;
                 $content['special_function'] = $row->special_function; 
                 $content['sidebar']          = $row->sidebar; 
@@ -335,6 +336,7 @@ class Pages_model extends CI_Model {
         {
             $stages[$i]['stageID']      = $row->stageID;
             $stages[$i]['name']         = $row->name;
+            $stages[$i]['file']         = $row->file;
             $stages[$i]['online']       = $row->online;
             $stages[$i]['row_color']    = $this->color = cp_get_color($this->color);
             

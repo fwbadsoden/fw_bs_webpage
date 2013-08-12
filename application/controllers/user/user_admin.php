@@ -10,7 +10,7 @@
  * @package com.cp.feuerwehr.backend.user
  **/
 
-class User_Admin extends CI_Controller {
+class User_Admin extends CP_Controller {
 
 	private $userdata;
 

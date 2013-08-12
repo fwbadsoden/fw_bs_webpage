@@ -10,7 +10,7 @@
  * @package com.cp.feuerwehr.backend.news
  **/
 
-class News_Admin extends CI_Controller {
+class News_Admin extends CP_Controller {
 
 	public function __construct()
 	{

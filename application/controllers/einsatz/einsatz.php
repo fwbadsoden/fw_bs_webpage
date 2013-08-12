@@ -10,7 +10,7 @@
  * @version 2013
  * @access public
  */
-class Einsatz extends CI_Controller {
+class Einsatz extends CP_Controller {
 
 	/**
 	 * Einsatz::__construct()
@@ -83,7 +83,10 @@ class Einsatz extends CI_Controller {
     
     public function einsatz_detail_3col($id)
     {
-        echo $id;
+        $einsatz['einsatz'] = $this->m_einsatz->get_einsatz($id);
+        
+        $this->load->view('frontend/einsatz/einsatzdetail_3col_factsheet', $einsatz);
+        $this->load->view('frontend/einsatz/einsatzdetail_3col_data', $einsatz); 
     }
     
     public function get_einsatz_stage_text($id)

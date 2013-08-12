@@ -10,7 +10,7 @@
  * @version 2013
  * @access public
  */
-class Einsatz_Admin extends CI_Controller {
+class Einsatz_Admin extends CP_Controller {
 	
 	private $upload_path;
 
@@ -176,9 +176,10 @@ class Einsatz_Admin extends CI_Controller {
 		
 		$this->form_validation->set_rules('einsatznr', 'Einsatz-Nr. der Leitstelle', 'required|is_natural_no_zero|xss_clean');
 		$this->form_validation->set_rules('einsatzname', 'Einsatzname', 'required|max_length[255]|xss_clean');	
-		$this->form_validation->set_rules('einsatzdatum', 'Einsatzdatum', 'required|callback_einsatzdatum'); 
-		$this->form_validation->set_rules('einsatzbeginn', 'Einsatzbeginn', 'required|callback_einsatzbeginn'); 
-		$this->form_validation->set_rules('einsatzende', 'Einsatzende', 'required|callback_einsatzende'); 
+		$this->form_validation->set_rules('einsatzdatum_beginn', 'Einsatzbeginn (Datum)', 'required|callback_einsatzdatum_beginn'); 
+		$this->form_validation->set_rules('einsatzuhrzeit_beginn', 'Einsatzbeginn (Uhrzeit)', 'required|callback_einsatzuhrzeit_beginn'); 
+		$this->form_validation->set_rules('einsatzdatum_ende', 'Einsatzende (Datum)', 'required|callback_einsatzdatum_ende'); 
+		$this->form_validation->set_rules('einsatzuhrzeit_ende', 'Einsatzende (Uhrzeit)', 'required|callback_einsatzuhrzeit_ende'); 
 		$this->form_validation->set_rules('anzahl', 'Anzahl Einsatzkräfte', 'required|is_natural_no_zero|xss_clean');
 		$this->form_validation->set_rules('einsatzlage', 'Einsatzlage', 'required|xss_clean');
 		$this->form_validation->set_rules('einsatzgeschehen', 'Einsatzgeschehen', 'required|xss_clean');
@@ -346,41 +347,54 @@ class Einsatz_Admin extends CI_Controller {
 	}
 	
 	/**
-	 * Einsatz_Admin::einsatzdatum()
+	 * Einsatz_Admin::einsatzdatum_beginn()
      * callback für Einsatzdatum
 	 * 
 	 * @param string $datum
 	 * @return
 	 */
-	public function einsatzdatum($datum)
+	public function einsatzdatum_beginn($datum)
 	{
-		$this->form_validation->set_message('einsatzdatum', 'Bitte ein gültiges %s angeben.');
+		$this->form_validation->set_message('einsatzdatum_beginn', 'Bitte einen gültigen %s angeben.');
 		return cp_is_valid_ger_date($datum);		
 	}
 	
 	/**
-	 * Einsatz_Admin::einsatzbeginn()
+	 * Einsatz_Admin::einsatzdatum_ende()
+     * callback für Einsatzdatum
+	 * 
+	 * @param string $datum
+	 * @return
+	 */
+	public function einsatzdatum_ende($datum)
+	{
+		$this->form_validation->set_message('einsatzdatum_ende', 'Bitte ein gültiges %s angeben.');
+		return cp_is_valid_ger_date($datum);		
+	}
+	
+	/**
+	 * Einsatz_Admin::einsatzuhrzeit_beginn()
      * callback für Einsatzbeginn
 	 * 
 	 * @param string $zeit
 	 * @return
 	 */
-	public function einsatzbeginn($zeit)
+	public function einsatzuhrzeit_beginn($zeit)
 	{
-		$this->form_validation->set_message('einsatzbeginn', 'Bitte einen gültigen %s angeben.');
+		$this->form_validation->set_message('einsatzuhrzeit_beginn', 'Bitte einen gültigen %s angeben.');
 		return cp_is_valid_time($zeit);	
 	}
 	
 	/**
-	 * Einsatz_Admin::einsatzende()
+	 * Einsatz_Admin::einsatzuhrzeit_ende()
      * callback für Einsatzende
 	 * 
 	 * @param string $zeit
 	 * @return
 	 */
-	public function einsatzende($zeit)
+	public function einsatzuhrzeit_ende($zeit)
 	{
-		$this->form_validation->set_message('einsatzende', 'Bitte ein gültiges %s angeben.');
+		$this->form_validation->set_message('einsatzuhrzeit_ende', 'Bitte ein gültiges %s angeben.');
 		return cp_is_valid_time($zeit);
 	}
 }

@@ -10,7 +10,7 @@
  * @version 2013
  * @access public
  */
-class File_Admin extends CI_Controller {
+class File_Admin extends CP_Controller {
     
 	public function __construct()
 	{

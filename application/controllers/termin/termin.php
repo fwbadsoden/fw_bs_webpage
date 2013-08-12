@@ -10,7 +10,7 @@
  * @version 2013
  * @access public
  */
-class Termin extends CI_Controller {
+class Termin extends CP_Controller {
 
 	/**
 	 * Termin::__construct()

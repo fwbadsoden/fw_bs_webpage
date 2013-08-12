@@ -11,7 +11,7 @@
  * @version 2013
  * @access public
  */
-class Error_admin extends CI_Controller {
+class Error_admin extends CP_Controller {
 
 	/**
 	 * Error_admin::__construct()

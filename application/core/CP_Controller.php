@@ -10,7 +10,7 @@
 Class CP_Controller extends CI_Controller
 {
 	public function __construct()
-	{
+	{ 
         $this->auth = new stdClass;
 		parent::__construct();
 	}

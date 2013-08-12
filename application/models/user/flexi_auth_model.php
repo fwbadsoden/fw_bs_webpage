@@ -1051,7 +1051,7 @@ class Flexi_auth_model extends Flexi_auth_lite_model
 		$static_salt = $this->auth->auth_security['static_salt'];
 		
 		require_once(APPPATH.'libraries/phpass/PasswordHash.php');				
-		$hash_token = new PasswordHash(8, FALSE);			
+		$hash_token = new PasswordHash(8, FALSE);		
 		return $hash_token->CheckPassword($database_salt . $verify_password . $static_salt, $database_password);
 	}
 
@@ -1546,7 +1546,7 @@ class Flexi_auth_model extends Flexi_auth_lite_model
 			$this->auth->tbl_col_user_account['last_login_date'], 
 			$this->auth->tbl_col_user_account['failed_logins']
 		);
-		
+        		
 		$sql_where = array($this->auth->primary_identity_col => $identity);
 		
 		// Set any custom defined SQL statements.
@@ -1557,7 +1557,7 @@ class Flexi_auth_model extends Flexi_auth_lite_model
 			->get($this->auth->tbl_user_account);
 		
 		###+++++++++++++++++++++++++++++++++###
-		
+        
 	    // User exists, now validate credentials.
 		if ($query->num_rows() == 1)
 	    {	

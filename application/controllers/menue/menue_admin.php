@@ -10,7 +10,7 @@
  * @package com.cp.feuerwehr.backend.admin
  **/
 
-class Menue_Admin extends CI_Controller {
+class Menue_Admin extends CP_Controller {
 	
 	private $area;
 

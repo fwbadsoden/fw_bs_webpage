@@ -10,7 +10,7 @@
  * @version 2013
  * @access public
  */
-class Pages_Admin extends CI_Controller {
+class Pages_Admin extends CP_Controller {
 	private $pageID, $boxID, $rowID;
     
 	/**

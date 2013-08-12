@@ -10,7 +10,7 @@
  * @version 2013
  * @access public
  */
-class Pages extends CI_Controller {
+class Pages extends CP_Controller {
     private $page_content, $menue;
     
 	/**
@@ -32,8 +32,6 @@ class Pages extends CI_Controller {
     {
         $this->page_content = $this->m_pages->get_page_content_frontend($pageID);
         if($this->page_content == '404') redirect(base_url('404_override'));
-       
-       // echo "<pre>"; var_dump ($this->page_content); echo "</pre>";
         
         if($this->page_content['special_page'] == 1) {
             $this->{$this->page_content['special_function']}();
@@ -53,7 +51,7 @@ class Pages extends CI_Controller {
         
         $this->site_content_header();
         
-        if($this->page_content['stage']['count_images'] > 1)
+        if($this->page_content['stage_images']['count_images'] > 1)
             $this->site_stage_slider();    
         
         $this->site_mainContent_header();
@@ -80,7 +78,7 @@ class Pages extends CI_Controller {
         
         $this->site_content_header();
         
-        if($this->page_content['stage']['count_images'] > 1)
+        if($this->page_content['stage_images']['count_images'] > 1)
             $this->site_stage_slider();    
         
         if(!$year = $this->input->post('year')) $year = date('Y');
@@ -93,16 +91,21 @@ class Pages extends CI_Controller {
     private function einsatz_detail()
     {
         $id = $this->uri->segment($this->uri->total_segments());
-        
+       // $this->debug->dump($this->page_content['stage_images']['images']);
         $c_einsatz = load_controller('einsatz/einsatz');
         $text = $c_einsatz->get_einsatz_stage_text($id);
+        foreach($this->page_content['stage_images']['images'] as &$value) {
+            $value['text'][0] = $text['text'][0]; 
+            $value['text'][1] = $text['text'][1];
+            $value['class_einsatz'] = $text['class'];
+        }
         
         $this->site_header();
-        $this->site_stage_einsatz($text);
+        $this->site_stage();
         
         $this->site_content_header();
         
-        if($this->page_content['stage']['count_images'] > 1)
+        if($this->page_content['stage_images']['count_images'] > 1)
             $this->site_stage_slider();   
         
         $c_einsatz->einsatz_detail_3col($id);
@@ -166,20 +169,13 @@ class Pages extends CI_Controller {
     
     private function site_stage()
     {
-        $stage_data['stage_images']     = $this->page_content['stage'];  
-        $this->load->view('frontend/templates/stage');
-    }
-    
-    private function site_stage_einsatz($text = null)
-    {
-        $stage_data['stage_images']     = $this->page_content['stage'];  
-        if($text != null) $stage_date['stage_text'] = $text;
-        $this->load->view('frontend/templates/stage', $stage_data);
+        $stage_data['stage_images']     = $this->page_content['stage_images'];          
+        $this->load->view('frontend/'.$this->page_content['stage_file'], $stage_data);
     }
     
     private function site_stage_slider()
     {
-        $this->load->view('frontend/templates/stage_slider');
+        $this->load->view('frontend/templates/stages/stage_slider');
     }
     
     private function site_footer()

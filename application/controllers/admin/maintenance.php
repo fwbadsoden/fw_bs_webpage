@@ -30,7 +30,7 @@ class Maintenance extends CI_Controller {
         $user_data = array(
         	'created_by' => '1'
         );
-        $userID = $this->cp_auth->insert_user('firepower112@gmx.de', 'mbauer', 'fW_Bs_4dm1n', $user_data);
+        $userID = $this->cp_auth->insert_user('habib.pleines@objective-partner.de', 'tarzan', 'q9mlb015', $user_data);
         $this->cp_auth->activate_user($userID, FALSE, FALSE);
     }
 	

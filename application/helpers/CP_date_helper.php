@@ -11,6 +11,48 @@
 
 // ------------------------------------------------------------------------
 
+    /**
+     * cp_time_diff()
+     * returns the difference of 2 datetime objects in seconds
+     * 
+     * @param mixed $dt1
+     * @param mixed $dt2
+     * @return
+     */
+ if ( ! function_exists('cp_time_diff'))
+ {
+    function cp_time_diff($dt1,$dt2){
+        $y1 = substr($dt1,0,4);
+        $m1 = substr($dt1,5,2);
+        $d1 = substr($dt1,8,2);
+        $h1 = substr($dt1,11,2);
+        $i1 = substr($dt1,14,2);
+        $s1 = substr($dt1,17,2);   
+    
+        $y2 = substr($dt2,0,4);
+        $m2 = substr($dt2,5,2);
+        $d2 = substr($dt2,8,2);
+        $h2 = substr($dt2,11,2);
+        $i2 = substr($dt2,14,2);
+        $s2 = substr($dt2,17,2);   
+    
+        $r1=mktime($h1,$i1,$s1,$m1,$d1,$y1);
+        $r2=mktime($h2,$i2,$s2,$m2,$d2,$y2);
+
+
+        $seconds = abs($r1-$r2);
+        $return['minuten'] = (int)($seconds/60);
+        $return['stunden'] = gmdate("H:i", $seconds%86400);
+        
+//        $return['sekunden'] = abs($r1-$r2);
+//        $return['minuten']  = (int)($return['sekunden']/60);
+//        $mod = ($return['minuten']) % 60;
+//        $return['stunden']  = (int)($mod).':'.$return['minuten'];
+//
+        return ($return);   
+    }
+}
+
 /**
  * cp_get_month_name()
  * Returns the month name for given int month

@@ -10,7 +10,7 @@
  * @package com.cp.feuerwehr.backend.user_auth
  **/
 
-class User_Auth extends CI_Controller {
+class User_Auth extends CP_Controller {
 
 	public function __construct()
 	{

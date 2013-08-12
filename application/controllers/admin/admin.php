@@ -11,7 +11,7 @@
  * @version 2013
  * @access public
  */
-class Admin extends CI_Controller {
+class Admin extends CP_Controller {
 
 	/**
 	 * Admin::__construct()
@@ -20,8 +20,7 @@ class Admin extends CI_Controller {
 	 */
 	public function __construct()
 	{
-		parent::__construct();             
-                        
+		parent::__construct();                
         $this->load->library('CP_auth');        
 		$this->load->model('admin/admin_model', 'admin');       
         

@@ -17,24 +17,31 @@
 		'class' => 'input_small',
 		'value' => set_value('einsatznr')
 	);
-	$einsatzDatum = array(
-		'name'	=> 'einsatzdatum',
-		'id'	=> 'einsatzdatum',
+	$einsatzDatumBeginn = array(
+		'name'	=> 'einsatzdatum_beginn',
+		'id'	=> 'einsatzdatum_beginn',
 		'type'	=> 'date',
 		'class' => 'input_date',
-		'value' => set_value('einsatzdatum')
+		'value' => set_value('einsatzdatum_beginn')
+	);
+	$einsatzDatumEnde = array(
+		'name'	=> 'einsatzdatum_ende',
+		'id'	=> 'einsatzdatum_ende',
+		'type'	=> 'date',
+		'class' => 'input_date',
+		'value' => set_value('einsatzdatum_ende')
 	);
 	$einsatzBeginn = array(
-		'name'	=> 'einsatzbeginn',
-		'id'	=> 'einsatzbeginn',
+		'name'	=> 'einsatzuhrzeit_beginn',
+		'id'	=> 'einsatzuhrzeit_beginn',
 		'class' => 'input_time',
-		'value' => set_value('einsatzbeginn')
+		'value' => set_value('einsatzuhrzeit_beginn')
 	);
 	$einsatzEnde = array(
-		'name'	=> 'einsatzende',
-		'id'	=> 'einsatzende',
+		'name'	=> 'einsatzuhrzeit_ende',
+		'id'	=> 'einsatzuhrzeit_ende',
 		'class' => 'input_time',
-		'value' => set_value('einsatzende')
+		'value' => set_value('einsatzuhrzeit_ende')
 	);
 	$einsatzLage = array(
 		'name' 	=> 'einsatzlage',
@@ -174,8 +181,12 @@ $(function() {
                         <td><?=form_input($einsatzName); ?></td>
                     </tr>
                     <tr>
-                        <td><?=form_label('Datum, Beginn, Ende:', $einsatzDatum['id']); ?></td>
-                        <td><?=form_input($einsatzDatum); ?>&nbsp;<?=form_input($einsatzBeginn); ?>&nbsp;<?=form_input($einsatzEnde); ?></td>
+                        <td><?=form_label('Datum, Uhrzeit (Beginn)', $einsatzDatumBeginn['id']); ?></td>
+                        <td><?=form_input($einsatzDatumBeginn); ?>&nbsp;<?=form_input($einsatzBeginn); ?></td>
+                    </tr>
+                    <tr>
+                        <td><?=form_label('Datum, Uhrzeit (Ende):', $einsatzDatumEnde['id']); ?></td>
+                        <td><?=form_input($einsatzDatumEnde); ?>&nbsp;<?=form_input($einsatzEnde); ?></td>
                     </tr>
                     <tr>
                         <td><?=form_label('Anzahl Einsatzkräfte:', $einsatzAnzahl['id']); ?></td>

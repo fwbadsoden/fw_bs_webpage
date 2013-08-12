@@ -10,7 +10,7 @@
  * @version 2013
  * @access public
  */
-class Fahrzeug_Admin extends CI_Controller {
+class Fahrzeug_Admin extends CP_Controller {
 	
 	private $upload_path;
 

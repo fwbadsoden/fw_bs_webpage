@@ -10,7 +10,7 @@
  * @package com.cp.feuerwehr.backend.module
  **/
 
-class Module_Admin extends CI_Controller {
+class Module_Admin extends CP_Controller {
 
 	public function __construct()
 	{

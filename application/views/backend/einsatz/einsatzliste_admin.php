@@ -96,9 +96,8 @@ switch(ID) {
 	<tr>
 		<th class="headline_id">ID</th>
 		<th class="headline_id">Nr.</th>
-		<th class="headline_date">Datum</th>
-		<th class="headline_date">Beginn</th>
-		<th class="headline_date">Ende</th>
+		<th class="headline_datetime">Beginn</th>
+		<th class="headline_datetime">Ende</th>
 		<th class="headline_titel">Referenz</th>
 		<th class="headline_id">Bilder</th>
 		<th colspan="4" class="headline_edit">Edit</th>
@@ -109,9 +108,8 @@ switch(ID) {
 <tr bgcolor="<?=$item['row_color']?>">
 	<td><?=str_pad($item['lfdNr'], 5 ,'0', STR_PAD_LEFT);?></td>
 	<td><?=str_pad($item['einsatzNr'], 5 ,'0', STR_PAD_LEFT);?></td>
-	<td><?=$item['datum']?></td>
-	<td><?=$item['beginn']?></td>
-	<td><?=$item['ende']?></td>
+	<td><?=$item['datum_beginn']?> <?=$item['uhrzeit_beginn']?></td>
+	<td><?=$item['datum_ende']?> <?=$item['uhrzeit_ende']?></td>
 	<td><?=$item['einsatzName']?></td>
 	<td><?=str_pad($item['imgCount'], 5 ,'0', STR_PAD_LEFT);?></td> 
 

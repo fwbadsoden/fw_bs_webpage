@@ -10,7 +10,7 @@
  * @version 2013
  * @access public
  */
-class Frontend extends CI_Controller {
+class Frontend extends CP_Controller {
     
 	/**
 	 * Frontend::__construct()
