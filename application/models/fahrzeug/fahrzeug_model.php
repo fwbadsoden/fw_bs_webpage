@@ -14,6 +14,7 @@
 class Fahrzeug_Model extends CI_Model {
 	
 	private $color = '';
+    private $upload_path = CONTENT_IMG_FAHRZEUG_UPLOAD_PATH;
 	
 	/**
 	 * Konstruktor
@@ -35,6 +36,7 @@ class Fahrzeug_Model extends CI_Model {
 		$row = $query->row();	
 		$fahrzeug['fahrzeugID']				= $id;
 		$fahrzeug['fahrzeugName']			= $row->name;
+		$fahrzeug['fahrzeugNameLang']		= $row->name_lang;
 		$fahrzeug['fahrzeugRufnamePrefix']	= $row->prefix_rufname;
 		$fahrzeug['fahrzeugRufname']		= $row->rufname;
 		$fahrzeug['fahrzeugText']			= $row->text;
@@ -55,7 +57,7 @@ class Fahrzeug_Model extends CI_Model {
 	public function get_fahrzeug_list()
 	{		
 		$this->db->order_by('online', 'desc');
-		$this->db->order_by('fahrzeugID', 'asc');
+		$this->db->order_by('rufname', 'asc');
 		$query = $this->db->get('fahrzeug');
 		$i = 0;
 		$arr_fahrzeug = array();
@@ -118,6 +120,7 @@ class Fahrzeug_Model extends CI_Model {
 			$images[$i]['img_desc']		= $row->description;
 			$images[$i]['img_file']		= $row->img_file;
 			$images[$i]['img_thumb']	= $row->thumb_file;
+            $images[$i]['img_small_pic']  = $row->small_pic;
 			$images[$i]['img_type']		= $row->filetype;
 			$images[$i]['row_color']	= $this->color;
 			
@@ -130,6 +133,7 @@ class Fahrzeug_Model extends CI_Model {
 	{
 		$fahrzeug = array(
 			'name'			 => $this->input->post('fahrzeugname'),
+			'name_lang'	     => $this->input->post('fahrzeugnamelang'),
 			'rufname'		 => $this->input->post('fahrzeugrufname'),
 			'prefix_rufname' => $this->input->post('fahrzeugprefix'),
 			'online'		 => 0
@@ -142,6 +146,7 @@ class Fahrzeug_Model extends CI_Model {
 		$fahrzeugID = $this->db->insert_id();	
 		
 		$fahrzeugContent = array(
+            'fahrzeugID'    => $fahrzeugID,
 			'text'			=> $this->input->post('fahrzeugtext'),
 			'besatzung'		=> $this->input->post('fahrzeugbesatzung'),
 			'hersteller'	=> $this->input->post('fahrzeughersteller'),
@@ -165,6 +170,7 @@ class Fahrzeug_Model extends CI_Model {
 	{
 		$fahrzeug = array(
 			'name'			 => $this->input->post('fahrzeugname'),
+			'name_lang'	     => $this->input->post('fahrzeugnamelang'),
 			'rufname'		 => $this->input->post('fahrzeugrufname'),
 			'prefix_rufname' => $this->input->post('fahrzeugprefix'),
 		);
@@ -207,15 +213,17 @@ class Fahrzeug_Model extends CI_Model {
 		}
 	}
 	
-	public function insert_image($id, $desc, $file, $thumb, $type) 
+	public function insert_image($id, $desc, $file, $thumb, $type, $small_pic = 0) 
 	{
-		$this->db->insert('fahrzeug_img', array('fahrzeugID' => $id, 'description' => $desc, 'img_file' => $file, 'thumb_file' => $thumb, 'filetype' => $type));	
+	    if($small_pic == 1) $this->db->update('fahrzeug_img', array('small_pic' => 0));
+		$this->db->insert('fahrzeug_img', array('fahrzeugID' => $id, 'description' => $desc, 'small_pic' => 1, 'img_file' => $file, 'thumb_file' => $thumb, 'filetype' => $type));	
 	}
 	
-	public function update_image($id, $desc)
+	public function update_image($id, $desc, $small_pic = 0)
 	{
+	    if($small_pic == 1) $this->db->update('fahrzeug_img', array('small_pic' => 0));
 		$this->db->where('imgID', $id);
-		$this->db->update('fahrzeug_img', array('description' => $desc));	
+		$this->db->update('fahrzeug_img', array('description' => $desc, 'small_pic' => 1));	
 	}
 	
 	public function delete_image($id)
@@ -227,9 +235,10 @@ class Fahrzeug_Model extends CI_Model {
 		unlink($this->upload_path.$row->thumb_file);
 		
 		$this->db->delete('fahrzeug_img', array('imgID' => $id));	
+        if($row->small_pic == 1) $this->db->update('fahrzeug_img', array('small_pic' => 1), array('fahrzeugID' => $row->fahrzeugID), 1);
 	}
 	
-	public function delete_images($id)
+	private function delete_images($id)
 	{
 		$query = $this->db->get_where('fahrzeug_img', array('fahrzeugID' => $id));
 		

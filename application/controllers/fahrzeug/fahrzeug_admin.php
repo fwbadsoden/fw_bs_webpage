@@ -165,6 +165,7 @@ class Fahrzeug_Admin extends CP_Controller {
 		$this->form_validation->set_rules('fahrzeugname', 'Fahrzeugname', 'required|max_length[255]|xss_clean');	
 		$this->form_validation->set_rules('fahrzeugprefix', 'Präfix Funkrufname', 'required|max_length[100]|xss_clean'); 
 		$this->form_validation->set_rules('fahrzeugrufname', 'Fahrzeugrufname', 'required|max_length[10]|xss_clean'); 
+		$this->form_validation->set_rules('fahrzeugrufnamelang', 'Fahrzeugrufname (lang)', 'required|max_length[50]|xss_clean'); 
 		$this->form_validation->set_rules('fahrzeugtext', 'Fahrzeugbeschreibung', 'required|xss_clean'); 
 		$this->form_validation->set_rules('fahrzeugbesatzung', 'Fahrzeugbesatzung', 'max_length[3]|xss_clean'); 
 		$this->form_validation->set_rules('fahrzeughersteller', 'Fahrzeughersteller', 'required|max_length[50]|xss_clean'); 
@@ -192,7 +193,7 @@ class Fahrzeug_Admin extends CP_Controller {
 	{		
         if(!$this->cp_auth->is_privileged(FAHRZEUG_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($this->uri->segment($this->uri->total_segments()) == 'save' && $recursive == 0)
-		{	
+		{
 			if($this->input->post('img_manager') == 'img_upload')
 			{ 
 				$this->load->library('image_lib');	
@@ -200,7 +201,7 @@ class Fahrzeug_Admin extends CP_Controller {
                 
 				$config['upload_path'] = $this->upload_path;
 				$config['allowed_types'] = 'jpg|png';
-				$config['file_name'] = $this->image_lib->generate_img_name($id);;
+				$config['file_name'] = $this->image_lib->generate_img_name($id);
                 
 				$this->load->library('upload', $config);		
 				
@@ -227,8 +228,8 @@ class Fahrzeug_Admin extends CP_Controller {
 						$height_t = 160;			
 						$width = 768; 
 						$height = 1024; 		
-					}
-					$thumb = $this->cp_auth->cp_generate_hash($id);
+					} 
+					$thumb = $this->image_lib->generate_img_name('thumb'.$id.$config['file_name']);
 					$this->load->library('image_moo');
 					$this->image_moo->set_jpeg_quality(90);
 					// Bild verkleinern 
@@ -236,9 +237,13 @@ class Fahrzeug_Admin extends CP_Controller {
 					// Wasserzeichen hinzufügen
 					$this->image_moo->make_watermark_text("(c) Feuerwehr Bad Soden am Taunus", "system/fonts/texb.ttf", 8, "#FFFFFF")->watermark(1)->save($this->upload_path.$filename, true);
 					// Thumbnail erstellen
-					$this->image_moo->resize($width_t, $height_t)->save($this->upload_path.$thumb.$ext, true);
-					
-					$this->fahrzeug->insert_image($id, $this->input->post('alt'), $filename, $thumb.$ext, str_replace('.', '', $ext));
+					$this->image_moo->resize($width_t, $height_t)->save($_SERVER["DOCUMENT_ROOT"].'/'.$this->upload_path.$thumb.$ext, true);
+                    
+                    log_message('debug', 'fahrzeug_admin: Thumbnail-Pfad: '.$_SERVER["DOCUMENT_ROOT"].'/'.$this->upload_path.$thumb.$ext);
+                    
+                    if($this->image_moo->errors) echo $this->image_moo->display_errors();
+                    
+					$this->fahrzeug->insert_image($id, $this->input->post('alt'), $filename, $thumb.$ext, str_replace('.', '', $ext), $this->input->post('img_small_pic'));
 				}
 			}
 			else if($this->input->post('img_manager') == 'img_edit')
@@ -248,7 +253,7 @@ class Fahrzeug_Admin extends CP_Controller {
 				else if($this->input->post('image_submit') == 'img_delete')
 					$this->image_delete();
 			}
-				
+            
 			// Rekursion, um die Liste wieder anzuzeigen
 			$this->image_uploader($id, 1, $error);
 		}
@@ -280,12 +285,6 @@ class Fahrzeug_Admin extends CP_Controller {
 	 */
 	private function image_delete()
 	{
-		$this->load->helper('file');
-		
-		$query = $this->db->get_where('fahrzeug_img', array('imgID' => $this->input->post('img_id')));
-		$row = $query->row();
-		unlink($this->upload_path.$row->imgFile);
-		unlink($this->upload_path.$row->imgFileThumbnail);
 		$this->fahrzeug->delete_image($this->input->post('img_id'));
 	}
 	
@@ -296,7 +295,7 @@ class Fahrzeug_Admin extends CP_Controller {
 	 */
 	private function update_image_details()
 	{
-		$this->fahrzeug->update_image($this->input->post('img_id'), $this->input->post('img_alt'));
+		$this->fahrzeug->update_image($this->input->post('img_id'), $this->input->post('img_alt'), $this->input->post('img_small_pic'));
 	}
 	
 	/**

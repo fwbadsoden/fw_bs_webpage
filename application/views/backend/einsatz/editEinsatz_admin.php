@@ -12,6 +12,13 @@
 		'class' => 'input_text',
 		'value' => $value
 	);
+	if(!$value = set_value('einsatzort')) $value = $einsatz['einsatzort'];
+	$einsatzOrt = array(
+		'name'	=> 'einsatzort',
+		'id'	=> 'einsatzort',
+		'class' => 'input_text',
+		'value' => $value
+	);
 	if(!$value = set_value('einsatznr')) $value = $einsatz['einsatzNr'];
 	$einsatzNr = array(
 		'name'  => 'einsatznr',
@@ -49,17 +56,10 @@
 		'class' => 'input_time',
 		'value' => $value
 	);
-	if(!$value = set_value('einsatzlage')) $value = $einsatz['einsatzlage'];
-	$einsatzLage = array(
-		'name' 	=> 'einsatzlage',
-		'id'	=> 'einsatzlage',
-		'class' => 'tinymce',
-		'value' => $value
-	);
-	if(!$value = set_value('einsatzgeschehen')) $value = $einsatz['einsatzgeschehen'];
-	$einsatzGeschehen = array(
-		'name' 	=> 'einsatzgeschehen',
-		'id'	=> 'einsatzgeschehen',
+	if(!$value = set_value('einsatzbericht')) $value = $einsatz['einsatzbericht'];
+	$einsatzBericht = array(
+		'name' 	=> 'einsatzbericht',
+		'id'	=> 'einsatzbericht',
 		'class' => 'tinymce',
 		'value' => $value
 	);
@@ -104,6 +104,17 @@
 		} 
 		else $fahrzeuge[$i]['formAttr']['checked'] = 'checked';
 	}
+	
+	if(isset($_POST['einsatzstichwort'])) 		       	$cues_selected = $_POST['einsatzstichwort'];
+	else if(isset($einsatz['cueID']))	             	$cues_selected = $einsatz['cueID'];
+	else												$cues_selected = 0;	
+    $cues_options = array();
+	$cues_options[0] = 'Stichwort wählen...';
+    $cues_attr = "class = 'input_dropdown' id = 'input_dropdown'";
+    foreach($cues as $cue)
+    {
+        $cues_options[$cue['cue_id']] = $cue['name'];
+    }
 
 ?>
 
@@ -165,13 +176,13 @@ $(function() {
                     <td><?=form_label('Anzahl Einsatzkräfte:', $einsatzAnzahl['id']); ?></td>
                     <td><?=form_input($einsatzAnzahl); ?></td>
                 </tr>
+                <tr>
+                    <td class='form_label'><?=form_label('Einsatzort:', $einsatzOrt['id']); ?></td>
+                    <td><?=form_input($einsatzOrt); ?></td>
+                </tr>
 				<tr>
-					<td><?=form_label('Einsatzlage:', $einsatzLage['id']); ?></td>
-					<td><?=form_textarea($einsatzLage); ?></td>
-				</tr>
-				<tr>
-					<td><?=form_label('Einsatzgeschehen:', $einsatzGeschehen['id']); ?></td>
-					<td><?=form_textarea($einsatzGeschehen); ?></td>
+					<td><?=form_label('Einsatzbericht:', $einsatzBericht['id']); ?></td>
+					<td><?=form_textarea($einsatzBericht); ?></td>
 				</tr>
 				<tr>
 					<td><?=form_label('Weitere Einsatzkräfte:', $einsatzKraefteW['id']); ?></td>
@@ -180,7 +191,14 @@ $(function() {
 			</table>
 		</td>
 		<td>
-			<table>		
+			<table>	
+                <tr>
+                    <td colspan='2'><strong>Einsatzstichwort:</strong></td>
+                </tr>
+                <tr>
+                    <td colspan='2'><?=form_dropdown('einsatzstichwort', $cues_options, $cues_selected, $cues_attr); ?></td>
+                </tr>
+                <tr><td colspan='2'>&nbsp;</td></tr>	
 				<tr>
 					<td colspan='2'><strong>Einsatzart:</strong></td>
 				</tr>

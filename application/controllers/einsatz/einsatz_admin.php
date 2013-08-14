@@ -93,6 +93,7 @@ class Einsatz_Admin extends CP_Controller {
 			$einsatz['fahrzeuge'] 	= $this->fahrzeug->get_fahrzeug_list_id_name(1);
 			$einsatz['types'] 		= $this->einsatz->get_einsatz_type_list();
 			$einsatz['templates']	= $this->einsatz->get_einsatz_templates();
+            $einsatz['cues']        = $this->einsatz->get_einsatz_cue_list();
 		
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/tiny_mce_inc');
@@ -134,6 +135,7 @@ class Einsatz_Admin extends CP_Controller {
 			$einsatz['fahrzeuge'] 	= $this->fahrzeug->get_fahrzeug_list_id_name(1);
 			$einsatz['types'] 		= $this->einsatz->get_einsatz_type_list();
 			$einsatz['einsatz']		= $this->einsatz->get_einsatz($id);
+            $einsatz['cues']        = $this->einsatz->get_einsatz_cue_list();
 		
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/tiny_mce_inc');
@@ -181,8 +183,8 @@ class Einsatz_Admin extends CP_Controller {
 		$this->form_validation->set_rules('einsatzdatum_ende', 'Einsatzende (Datum)', 'required|callback_einsatzdatum_ende'); 
 		$this->form_validation->set_rules('einsatzuhrzeit_ende', 'Einsatzende (Uhrzeit)', 'required|callback_einsatzuhrzeit_ende'); 
 		$this->form_validation->set_rules('anzahl', 'Anzahl Einsatzkräfte', 'required|is_natural_no_zero|xss_clean');
-		$this->form_validation->set_rules('einsatzlage', 'Einsatzlage', 'required|xss_clean');
-		$this->form_validation->set_rules('einsatzgeschehen', 'Einsatzgeschehen', 'required|xss_clean');
+		$this->form_validation->set_rules('einsatzbericht', 'Einsatzbericht', 'required|xss_clean');
+		$this->form_validation->set_rules('einsatzort', 'Einsatzort', 'xss_clean');
 		$this->form_validation->set_rules('weitereeinsatzkraefte', 'Weitere Einsatzkräfte', 'xss_clean'); 
 
 		return $this->form_validation->run();	
@@ -334,10 +336,8 @@ class Einsatz_Admin extends CP_Controller {
 		//build the JSON array for return
 		$json = array(array('field' => 'einsatzname', 
 							'value' => $template[$id]['einsatz_name']), 
-					  array('field' => 'einsatzlage', 
-							'value' => $template[$id]['einsatz_lage']),
-					  array('field' => 'einsatzgeschehen', 
-							'value' => $template[$id]['einsatz_geschehen']),
+					  array('field' => 'einsatzbericht', 
+							'value' => $template[$id]['einsatz_bericht']),
 					  array('field' => 'einsatzart', 
 							'value' => $template[$id]['einsatz_art']), 
 					  array('field' => 'einsatzfahrzeug', 

@@ -13,6 +13,13 @@
 		'value' 	=> set_value('fahrzeugname')
 	);
 	
+	$fahrzeugNameLang = array(
+		'name'		=> 'fahrzeugnamelang',
+		'id'		=> 'fahrzeugnamelang',
+		'class' 	=> 'input_text',
+		'value' 	=> set_value('fahrzeugnamelang')
+	);
+	
 	$fahrzeugRufname = array(
 		'name'		=> 'fahrzeugrufname',
 		'id'		=> 'fahrzeugrufname',
@@ -51,6 +58,7 @@
 	$hersteller_options['Volkswagen'] 		= 'Volkswagen';
 	$hersteller_options['Iveco'] 			= 'Iveco';
 	$hersteller_options['Mitsubishi'] 		= 'Mitsubishi';
+	$hersteller_options['MAN'] 		          = 'MAN';
 	
 	$fahrzeugAufbau = array(
 		'name'		=> 'fahrzeugaufbau',
@@ -135,6 +143,10 @@
                     <tr>
                         <td class='form_label'><?=form_label('Fahrzeugname:', $fahrzeugName['id']); ?></td>
                         <td><?=form_input($fahrzeugName); ?></td>
+                    </tr>
+                    <tr>
+                        <td class='form_label'><?=form_label('Fahrzeugname (lang):', $fahrzeugNameLang['id']); ?></td>
+                        <td><?=form_input($fahrzeugNameLang); ?></td>
                     </tr>
 					<tr><td></td></tr>
                     <tr>

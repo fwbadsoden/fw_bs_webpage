@@ -11,6 +11,12 @@
 		'class' => 'input_text',
 		'value' => set_value('einsatzname')
 	);
+	$einsatzOrt = array(
+		'name'	=> 'einsatzort',
+		'id'	=> 'einsatzort',
+		'class' => 'input_text',
+		'value' => set_value('einsatzort')
+	);
 	$einsatzNr = array(
 		'name'  => 'einsatznr',
 		'id' 	=> 'einsatznr',
@@ -43,17 +49,11 @@
 		'class' => 'input_time',
 		'value' => set_value('einsatzuhrzeit_ende')
 	);
-	$einsatzLage = array(
-		'name' 	=> 'einsatzlage',
-		'id'	=> 'einsatzlage',
+	$einsatzBericht = array(
+		'name' 	=> 'einsatzbericht',
+		'id'	=> 'einsatzbericht',
 		'class' => 'tinymce',
-		'value' => set_value('einsatzlage')
-	);
-	$einsatzGeschehen = array(
-		'name' 	=> 'einsatzgeschehen',
-		'id'	=> 'einsatzgeschehen',
-		'class' => 'tinymce',
-		'value' => set_value('einsatzgeschehen')
+		'value' => set_value('einsatzbericht')
 	);
 	$einsatzKraefteW = array(
 		'name' 	=> 'weitereeinsatzkraefte',
@@ -67,7 +67,7 @@
 		'class' => 'input_small',
 		'value' => set_value('anzahl')
 	);
-	
+    
 	for($i = 0; $i < count($types); $i++)
 	{
 		$types[$i]['formAttr']['name'] 			= 'einsatztyp';
@@ -94,6 +94,14 @@
 		}
 	}
 	
+    $cues_options = array();
+    $cues_attr = "class = 'input_dropdown' id = 'input_dropdown'";
+	$cues_options[0] = 'Stichwort wählen...';
+    foreach($cues as $cue)
+    {
+        $cues_options[$cue['cue_id']] = $cue['name'];
+    }
+	
 	$templ_options = array();
 	$templ_attr = "class = 'input_dropdown' id = 'input_dropdown'";
 	$templ_options[0] = 'Vorlage wählen...';
@@ -112,8 +120,7 @@ $(function() {
 				function(data) {
 					$.each(data, function(i,item) {
 						if (item.field == "einsatzname") { $('#einsatzname').val(item.value); }
-						else if (item.field == "einsatzlage") { $('#einsatzlage').val(item.value); }
-						else if (item.field == "einsatzgeschehen") { $('#einsatzgeschehen').val(item.value); }
+						else if (item.field == "einsatzbericht") { $('#einsatzbericht').val(item.value); }
 						else if (item.field == "einsatzart") { 
 							var arten = item.value.split('|');
 							$.each(arten, function(index, value) {
@@ -193,12 +200,12 @@ $(function() {
                         <td><?=form_input($einsatzAnzahl); ?></td>
                     </tr>
                     <tr>
-                        <td><?=form_label('Einsatzlage:', $einsatzLage['id']); ?></td>
-                        <td><?=form_textarea($einsatzLage); ?></td>
+                        <td class='form_label'><?=form_label('Einsatzort:', $einsatzOrt['id']); ?></td>
+                        <td><?=form_input($einsatzOrt); ?></td>
                     </tr>
                     <tr>
-                        <td><?=form_label('Einsatzgeschehen:', $einsatzGeschehen['id']); ?></td>
-                        <td><?=form_textarea($einsatzGeschehen); ?></td>
+                        <td><?=form_label('Einsatzbericht:', $einsatzBericht['id']); ?></td>
+                        <td><?=form_textarea($einsatzBericht); ?></td>
                     </tr>
                     <tr>
                         <td><?=form_label('Weitere Einsatzkräfte:', $einsatzKraefteW['id']); ?></td>
@@ -214,6 +221,13 @@ $(function() {
                 	<tr>
                     	<td colspan='2'><?=form_dropdown('einsatz_template', $templ_options, 0, $templ_attr)?></td>
                     </tr>
+                    <tr>
+                        <td colspan='2'><strong>Einsatzstichwort:</strong></td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'><?=form_dropdown('einsatzstichwort', $cues_options, 0, $cues_attr); ?></td>
+                    </tr>
+                    <tr><td colspan='2'>&nbsp;</td></tr>
                     <tr>
                         <td colspan='2'><strong>Einsatzart:</strong></td>
                     </tr>

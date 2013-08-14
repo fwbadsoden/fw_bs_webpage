@@ -17,9 +17,10 @@ class Einsatz_Model extends CI_Model {
 	private $counterF = 0;
 	private $arr_fahrzeuge_db = array();
 	private $color = '';
+    private $upload_path = CONTENT_IMG_EINSATZ_UPLOAD_PATH;
     
     public $id, $name, $datum_beginn, $datum_ende, $uhrzeit_beginn, $uhrzeit_ende, $lfd_nr, $online, $type_count,
-           $einsatz_nr, $lage, $geschehen, $weitere_kraefte, 
+           $einsatz_nr, $bericht, $weitere_kraefte, $cue_name, $cue_mimic, $ort,
            $anzahl_kraefte, $typeID, $type_name, $type_short_name, $row_color, $special_class;
 	
 	/**
@@ -66,19 +67,17 @@ class Einsatz_Model extends CI_Model {
             $einsatz->uhrzeit_ende  = $row->uhrzeit_ende;
             $einsatz->row_color     = $this->color                  = cp_get_color($this->color);
             $einsatz->year          = $year;
-            $einsatz->lage          = $row->lage;
+            $einsatz->bericht       = $row->bericht;
+            $einsatz->ort           = $row->ort;
             $einsatz->type_name     = $row->type_name;
             $einsatz->type_short_name = $row->type_short_name;
             $einsatz->type_class    = $row->type_class;
+            $einsatz->cue_name      = $row->cue_name;
+            $einsatz->cue_mimic     = $row->cue_mimic;
             $einsatz->img_count     = $query2->num_rows();
             
             $einsaetze[$i]          = $einsatz;
-//            $einsaetze[$i]['einsatzID']    = $row->einsatzID;
-//            $einsaetze[$i]['name']         = $row->name;
-//            $einsaetze[$i]['datum']        = $row->datum;
-//            $einsaetze[$i]['beginn']       = $row->beginn;
-//            $einsaetze[$i]['type_name']    = $row->type_name;
-//            $einsaetze[$i]['lage']         = $row->lage;
+            
             if(!isset($type_count[$row->type_short_name])) $type_count[$row->type_short_name] = 0;
             $type_count[$row->type_short_name]++;
             $i++;
@@ -92,11 +91,11 @@ class Einsatz_Model extends CI_Model {
 	
     public function get_einsatz_stage_text($id)
     {
-        $this->db->select('lage, type_name, type_class');
+        $this->db->select('name, type_name, type_class');
         $query = $this->db->get_where('v_einsatz', array('einsatzID' => $id));
         $row = $query->row();
         
-        $text['text'][0] = $row->lage;
+        $text['text'][0] = $row->name;
         $text['text'][1] = $row->type_name;
         $text['class']   = $row->type_class;
         return $text;
@@ -115,6 +114,28 @@ class Einsatz_Model extends CI_Model {
 		rsort($years);
 		return $years;
 	}
+    
+    public function get_einsatz_fahrzeuge($id)
+    {
+        $this->db->join('fahrzeug', 'einsatz_fahrzeug_mapping.fahrzeugID = fahrzeug.fahrzeugID');
+        $query = $this->db->get_where('einsatz_fahrzeug_mapping', array('einsatzID' => $id, 'online' => 1));
+        $fahrzeuge = array();
+        foreach($query->result() as $row)
+        {
+            $this->db->select('img_file');
+            $query2 = $this->db->get_where('fahrzeug_img', array('small_pic' => 1, 'fahrzeugID' => $row->fahrzeugID), 1);
+            $row2 = $query2->row();
+          
+            $fahrzeuge[$row->fahrzeugID]['img']             = $row2->img_file;
+            $fahrzeuge[$row->fahrzeugID]['fahrzeugID']      = $row->fahrzeugID;
+            $fahrzeuge[$row->fahrzeugID]['name']            = $row->name;
+            $fahrzeuge[$row->fahrzeugID]['name_lang']       = $row->name_lang;
+            $fahrzeuge[$row->fahrzeugID]['prefix_rufname']  = $row->prefix_rufname;
+            $fahrzeuge[$row->fahrzeugID]['rufname']         = $row->rufname;
+        }
+        
+        return $fahrzeuge;
+    }
     
     public function get_einsatz_count($year = 0)
     {
@@ -161,33 +182,29 @@ class Einsatz_Model extends CI_Model {
 	
 	public function get_einsatz($id)
 	{
-		$this->db->join('einsatz_content', 'einsatz.einsatzID = einsatz_content.einsatzID');
-		$this->db->where('einsatz.einsatzID', $id);
-		$query = $this->db->get('einsatz');
+		$this->db->where('einsatzID', $id);
+		$query = $this->db->get('v_einsatz');
 		
-		$row = $query->row();
+	    $row = $query->row();
 		$einsatz['einsatzID'] 				= $id;
 		$einsatz['einsatzNr'] 				= $row->einsatz_nr;
+		$einsatz['ldf_nr'] 	        		= $row->lfd_nr;
 		$einsatz['einsatzName'] 			= $row->name;
 		$einsatz['datum_beginn'] 			= $row->datum_beginn;
 		$einsatz['uhrzeit_beginn'] 			= $row->uhrzeit_beginn;
 		$einsatz['datum_ende'] 				= $row->datum_ende;
 		$einsatz['uhrzeit_ende'] 			= $row->uhrzeit_ende;
-		$einsatz['einsatzlage'] 			= $row->lage;
-		$einsatz['einsatzgeschehen'] 		= $row->geschehen;
+		$einsatz['einsatzort'] 			    = $row->ort;
+		$einsatz['einsatzbericht'] 			= $row->bericht;
 		$einsatz['einsatzkraefteFreitext']	= $row->weitere_kraefte;
 		$einsatz['anzahlEinsatzkraefte']	= $row->anzahl_kraefte;
-		
-		$this->db->where('typeID', $row->typeID);
-		$query2 = $this->db->get('einsatz_type');
-		if($query->num_rows() > 0)
-        {
-            $row2 = $query2->row();
-		    $einsatz['typeID']              = $row->typeID;
-		    $einsatz['type_name']           = $row2->name;
-            $einsatz['type_shortname']      = $row2->short_name;
-        }
-		
+        $einsatz['cueID']                   = $row->cueID;
+        $einsatz['cue_name']                = $row->cue_name;
+        $einsatz['cue_mimic']               = $row->cue_mimic;
+		$einsatz['typeID']                  = $row->typeID;
+        $einsatz['type_name']               = $row->name;
+        $einsatz['type_shortname']          = $row->type_short_name;
+        
 		$this->db->where('einsatzID', $id);
 		$query = $this->db->get('einsatz_fahrzeug_mapping');
 		$i = 0;
@@ -198,6 +215,23 @@ class Einsatz_Model extends CI_Model {
 		}
 		return $einsatz;
 	}
+    
+    public function get_einsatz_cue_list()
+    {
+        $query = $this->db->get('einsatz_cue');
+        $i = 0;
+        $arr_cue = array();
+        
+        foreach($query->result() as $row)
+        {
+            $arr_cue[$i]['cue_id']          = $row->cueID;
+            $arr_cue[$i]['name']            = $row->name;
+            $arr_cue[$i]['mimic']           = $row->mimic;
+            $i++;
+        }
+        
+        return $arr_cue;
+    }
 	
 	public function get_einsatz_type_list()
 	{
@@ -268,11 +302,12 @@ class Einsatz_Model extends CI_Model {
 
 		$einsatzContent = array(
 			'einsatzID'			=> $einsatzID,
-			'lage'				=> $this->input->post('einsatzlage'),
-			'geschehen'			=> $this->input->post('einsatzgeschehen'),
+			'bericht'			=> $this->input->post('einsatzbericht'),
+            'ort'               => $this->input->post('einsatzort'),
 			'weitere_kraefte'	=> $this->input->post('weitereeinsatzkraefte'),
 			'anzahl_kraefte'	=> $this->input->post('anzahl'),
-            'typeID'            => $this->input->post('einsatztyp')
+            'typeID'            => $this->input->post('einsatztyp'),
+            'cueID'             => $this->input->post('einsatzstichwort')
 		);
 		$this->db->insert('einsatz_content', $einsatzContent);
 		
@@ -289,7 +324,7 @@ class Einsatz_Model extends CI_Model {
 	}
 	
 	public function update_einsatz($id)
-	{
+	{ 
 		$einsatz = array(
 			'name' 	         => $this->input->post('einsatzname'),
 			'datum_beginn'	 => $this->input->post('einsatzdatum_beginn'),
@@ -299,11 +334,13 @@ class Einsatz_Model extends CI_Model {
 			'einsatz_nr'     => $this->input->post('einsatznr')
 		);		
 		$einsatzContent = array(
-			'lage'				=> $this->input->post('einsatzlage'),
+			'bericht'			=> $this->input->post('einsatzbericht'),
+            'ort'               => $this->input->post('einsatzort'),
 			'geschehen'			=> $this->input->post('einsatzgeschehen'),
 			'weitere_kraefte'	=> $this->input->post('weitereeinsatzkraefte'),
 			'anzahl_kraefte'	=> $this->input->post('anzahl'),
-            'typeID'            => $this->input->post('einsatztyp')
+            'typeID'            => $this->input->post('einsatztyp'),
+            'cueID'             => $this->input->post('einsatzstichwort')
 		);
 		
 		// ++++ TRANSAKTION START ++++ //
@@ -313,6 +350,7 @@ class Einsatz_Model extends CI_Model {
 		$this->db->update('einsatz', $einsatz);
 		$this->db->where('einsatzID', $id);
 		$this->db->update('einsatz_content', $einsatzContent);
+        echo $this->db->last_query();
 		$this->db->where('einsatzID', $id);
 		$this->db->delete('einsatz_fahrzeug_mapping', array('einsatzID' => $id));
 		
@@ -386,8 +424,7 @@ class Einsatz_Model extends CI_Model {
 			$templates[$row->templateID]['template_id'] 		= $row->templateID;
 			$templates[$row->templateID]['template_name'] 		= $row->tmpl_name;
 			$templates[$row->templateID]['einsatz_name']		= $row->name;
-			$templates[$row->templateID]['einsatz_lage']		= $row->lage;
-			$templates[$row->templateID]['einsatz_geschehen']	= $row->geschehen;
+			$templates[$row->templateID]['einsatz_bericht']		= $row->bericht;
 			$templates[$row->templateID]['einsatz_art']			= $row->art;
 			$templates[$row->templateID]['einsatz_fahrzeug']	= $row->fahrzeug;
 		}
@@ -423,13 +460,23 @@ class Einsatz_Model extends CI_Model {
 			$i++;			
 		}
 		
-        $function = create_function('$a, $b', '$ad = new DateTime($a["sort"])
-                                               $bd = new DateTime($b["sort"])
-                                               if ($ad == $bd) {
+        usort($arr_einsatz, function($a, $b) 	{ $ad = new DateTime($a['sort']);
+												  $bd = new DateTime($b['sort']);
+
+												  if ($ad == $bd) {
 												    return 0;
-						                       }
-                                               return $ad > $bd ? 1 : -1');
-		usort($arr_einsatz, $function);
+												  }
+
+												  return $ad > $bd ? 1 : -1;
+												});
+        
+//        $function = create_function('$a, $b', '$ad = new DateTime($a["sort"])
+//                                               $bd = new DateTime($b["sort"])
+//                                               if ($ad == $bd) {
+//												    return 0;
+//						                       }
+//                                               return $ad > $bd ? 1 : -1');
+//		usort($arr_einsatz, $function);
 		
 		foreach($arr_einsatz as $einsatz)
 		{

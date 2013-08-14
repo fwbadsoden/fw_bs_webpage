@@ -14,6 +14,14 @@
 		'value' 	=> $value
 	);
 	
+	if(!$value = set_value('fahrzeugnamelang')) $value = $fahrzeug['fahrzeugNameLang'];
+	$fahrzeugNameLang = array(
+		'name'		=> 'fahrzeugnamelang',
+		'id'		=> 'fahrzeugnamelang',
+		'class' 	=> 'input_text',
+		'value' 	=> $value
+	);
+	
 	if(!$value = set_value('fahrzeugrufname')) $value = $fahrzeug['fahrzeugRufname'];
 	$fahrzeugRufname = array(
 		'name'		=> 'fahrzeugrufname',
@@ -57,6 +65,7 @@
 	$hersteller_options['Volkswagen'] 		= 'Volkswagen';
 	$hersteller_options['Iveco'] 			= 'Iveco';
 	$hersteller_options['Mitsubishi'] 		= 'Mitsubishi';
+	$hersteller_options['MAN'] 		          = 'MAN';
 	
 	if(!$value = set_value('fahrzeugaufbau')) $value = $fahrzeug['fahrzeugAufbau'];
 	$fahrzeugAufbau = array(
@@ -148,6 +157,10 @@
                     <tr>
                         <td class='form_label'><?=form_label('Fahrzeugname:', $fahrzeugName['id']); ?></td>
                         <td><?=form_input($fahrzeugName); ?></td>
+                    </tr>
+                    <tr>
+                        <td class='form_label'><?=form_label('Fahrzeugname (lang):', $fahrzeugNameLang['id']); ?></td>
+                        <td><?=form_input($fahrzeugNameLang); ?></td>
                     </tr>
                     <tr>
                         <td class='form_label'><?=form_label('Präfix Funkrufname:', 'fahrzeugprefix'); ?></td>

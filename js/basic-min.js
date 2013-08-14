@@ -1,19 +1,60 @@
 (function($) {
 
 //-------------------------------------------------------
-//  Mobile Navigation: Annimation
+//  Diverses
+
+	
+	// Floating Menue Einsatzliste
+	/*
+	$(window).scroll(function (event) {
+		if($(window).width()>525) { 
+			var y = $(this).scrollTop();
+			var top = 590;
+			if (y >= top) {
+				$('#submenue').addClass('fixed');
+				$('.filter').css('margin', '0 0 0 0');
+				$('.factSheet_einsatzListe').css('margin', '65px 0 20px 0');
+			} else {
+				$('#submenue').removeClass('fixed');
+				$('.filter').css('margin', '0 0 20px 0');
+				$('.factSheet_einsatzListe').css('margin', '0 0 20px 0');
+			}
+		}
+	});
+	*/
+	// Animiertes Scrollen
+	$('.backToTop').bind("click", function(event) {
+		event.preventDefault();
+		var ziel = $(this).attr("href");
+		$('html,body').animate({
+			scrollTop: $(ziel).offset().top
+		}, 300 , function (){location.hash = ziel;});
+	});
+
+
+
+//-------------------------------------------------------
+//  Mobile Navigation: Animation
 
 	var mobileNavVars = {
 		status: 0,
-		height: 0
+		height: 0,
+		navCount: 0,
+		SubNavCount: 0,
+		metaNavCount: 0
 	};
 	
 	// Anzahl der Bilder ermitteln
-	var navCount = $('.mobileMainNavContainer').children().length;
+	mobileNavVars.navCount = $('.mobileMainNavContainer').children().length;
+	mobileNavVars.SubNavCount = $('.subnavi ul').children().length;
+	mobileNavVars.metaNavCount = $('.metanav ul').children().length;
+	
+	mobileNavVars.metaNavCount = (mobileNavVars.metaNavCount /2);
+	if(mobileNavVars.metaNavCount%2!=0) { mobileNavVars.metaNavCount++; }
 	
 	$('#mobileNavButton').click(function() {
 		if(mobileNavVars.status==0) {
-			mobileNavVars.height=((navCount*44));
+			mobileNavVars.height=(mobileNavVars.navCount*44)+(mobileNavVars.metaNavCount*25)+(mobileNavVars.SubNavCount*25);
 			mobileNavVars.status=1;
 		} else {
 			mobileNavVars.height=0;
@@ -25,39 +66,9 @@
 	});
 	
 
+
 //-------------------------------------------------------
-//  Searchfield: Annimation
-
-	var searchfield = {
-		status: 0,
-		height: 0,
-		maxheight: 34
-	};
-	
-	$('.desktopsearch').click(function() {
-		if(searchfield.status==0) {
-			searchfield.height=searchfield.maxheight;
-			searchfield.status=1;
-			$("#searchitem").focus();
-		} else {
-			searchfield.height=0;
-			searchfield.status=0;
-		}
-		$("#searchBox").animate({
-			height: searchfield.height,
-		}, 100 );
-	});
-	$('.closeSearch').click(function() {
-		searchfield.status=0;
-		$("#searchBox").animate({
-			height: 0,
-		}, 100 );
-	});
-
-
-	
-//-------------------------------------------------------
-//  Stage: Annimation
+//  Stage: Animation
 
 	var stageVars = {
         currentSlide: 0,
@@ -96,9 +107,163 @@
 
 	
 //-------------------------------------------------------
-//  Infographics: Startpage
+//  TabBox
 
+	$('a[func|="tab"]').click(function() { 
+		var modulPart = $(this).attr('href').split("_");
+		var modul = modulPart[0].substr(1);
+		var target = modulPart[1];
+		var tabCount = $('.tabNav_'+modul+'').children().length;
+		
+		for(i=1; i<=tabCount; i++) {
+			$('a[href|="#'+modul+'_'+i+'"]').removeClass('active').addClass('noActive');
+			$('#box_'+modul+'_'+i).css( "display", "none" );
+		}
+		$('a[href|="#'+modul+'_'+target+'"]').removeClass('noActive').addClass('active');
+		$('#box_'+modul+'_'+target).css( "display", "block" );
+
+	}); 
 	
+
+//-------------------------------------------------------
+//  Mobile SUB-Navigation: Animation
+
+	var SubNavVars = {
+		status: 0,
+		height: 0,
+		navCount: 0
+	};
 	
+	// Anzahl der Bilder ermitteln
+	SubNavVars.navCount = $('ul.subnavi_content_mobile').children().length;
+	
+	$('.subnavi_opener_mobile').click(function() {
+		if(SubNavVars.status==0) {
+			SubNavVars.height=((SubNavVars.navCount*30)+30);
+			SubNavVars.status=1;
+			$('.subnavi_opener_mobile').css("border-bottom", "2px #464646 solid");
+			$('.subnavi_opener_mobile').css("padding-bottom", "10px");
+		} else {
+			SubNavVars.height=0;
+			SubNavVars.status=0;
+			$('.subnavi_opener_mobile').css("border-bottom", "0px");
+			$('.subnavi_opener_mobile').css("padding-bottom", "0px");
+		}
+		$('.subnavi_content_mobile').animate({
+			height: SubNavVars.height
+		  }, 300 );
+	});
+	
+
+//-------------------------------------------------------
+//  Slideshow
+
+	var slideShowVars = {
+        currentImage: 1,
+		speed: 400
+    };
+
+	// Bild austauschen
+	$('#slideshow_next').click(function() {
+		
+		var slideShowName = $(this).attr('href').substr(1);
+		var elements = $('#'+slideShowName).children().length;
+		if(slideShowVars.currentImage<elements) {	
+			var target=slideShowVars.currentImage+1;
+		} else {
+			var target=1;
+		}
+		
+		$('#'+slideShowName+'_'+target).css('display', 'inline');
+		$('#'+slideShowName+'_'+slideShowVars.currentImage).css('display', 'none');
+		slideShowVars.currentImage = target;
+
+		return false;
+	});
+	
+	$('#slideshow_prev').click(function() {
+		
+		var slideShowName = $(this).attr('href').substr(1);
+		var elements = $('#'+slideShowName).children().length;
+		if(slideShowVars.currentImage!=1) {	
+			var target=slideShowVars.currentImage-1;
+		} else {
+			var target=elements;
+		}
+		
+		$('#'+slideShowName+'_'+target).css('display', 'inline');
+		$('#'+slideShowName+'_'+slideShowVars.currentImage).css('display', 'none');
+		slideShowVars.currentImage = target;
+
+		return false;
+	});
+
+
+//-------------------------------------------------------
+//  DetailShow
+
+	var detailShowVars = {
+        currentChart: 1,
+		speed: 400
+    };
+
+	// Bild austauschen
+	$('#detailShow_next').click(function() {
+		
+		var elements = $('.charts').children().length;
+		if(detailShowVars.currentChart<elements) {	
+			var target=detailShowVars.currentChart+1;
+		} else {
+			var target=1;
+		}
+		
+		// Content
+		$('#detailShow_'+target).addClass('active');
+		$('#detailShow_'+detailShowVars.currentChart).removeClass('active');
+		// Tabs
+		$('a[href="#'+detailShowVars.currentChart+'"]').removeClass('active');
+		$('a[href="#'+target+'"]').addClass('active');
+		// Welches chart ist aktiv?
+		detailShowVars.currentChart = target;
+
+		return false;
+	});
+	
+	$('#detailShow_prev').click(function() {
+		
+		var elements = $('.charts').children().length;
+		if(detailShowVars.currentChart!=1) {	
+			var target=detailShowVars.currentChart-1;
+		} else {
+			var target=elements;
+		}
+		
+		// Content
+		$('#detailShow_'+target).addClass('active');
+		$('#detailShow_'+detailShowVars.currentChart).removeClass('active');
+		// Tabs
+		$('a[href="#'+detailShowVars.currentChart+'"]').removeClass('active');
+		$('a[href="#'+target+'"]').addClass('active');
+		// Welches chart ist aktiv?
+		detailShowVars.currentChart = target;
+
+		return false;
+	});
+	
+	$('.detailShowLink').click(function() {
+
+		var target = parseInt($(this).attr('href').substr(1));
+		if(target!=detailShowVars.currentChart) {
+			// Content
+			$('#detailShow_'+target).addClass('active');
+			$('#detailShow_'+detailShowVars.currentChart).removeClass('active');
+			// Tabs
+			$('a[href="#'+detailShowVars.currentChart+'"]').removeClass('active');
+			$('a[href="#'+target+'"]').addClass('active');
+			// Welches chart ist aktiv?
+			detailShowVars.currentChart = target;
+		}
+	});
+
 
 })(jQuery);

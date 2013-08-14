@@ -52,6 +52,14 @@
 
 </footer>
 
-<script type="text/javascript" charset="utf-8" src="<?=base_url('js/basic-min.js')?>"></script>
+    <script type="text/javascript" charset="utf-8" src="<?=base_url('js/basic-min.js')?>"></script>
+    <script type="text/javascript" src="<?=base_url('js/lightbox/jquery.lightbox-0.5.js')?>"></script>
+	<link rel="stylesheet" type="text/css" href="<?=base_url('css/frontend/jquery_lightbox.css')?>" media="screen">
+    
+	<script type="text/javascript">
+        $(function() {
+            $('a.lightbox').lightBox();
+        });
+    </script>
 
 </body>

@@ -72,14 +72,8 @@ class Module_model extends CI_Model {
 		
 		for($i = 0; $i <= $this->input->post('counter'); $i++)
 		{
-			$constant = array(
-				'constantID'					=> $this->input->post($i.'_constantID'),
-				'value'				            => $this->input->post($i.'_value')
-			);
-			$update_batch[] = $constant;
-		}
-		
-		$this->db->update_batch('sys_constants', $update_batch, 'constantID');		
+            $this->db->update('sys_constants', array('value' => $this->input->post($i.'_value')), array('constantID' => $this->input->post($i.'_constantID')));
+		}	
 	}
 	
 	public function write_setting_file()

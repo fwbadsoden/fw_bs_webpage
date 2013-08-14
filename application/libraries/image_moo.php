@@ -50,7 +50,8 @@
  * set_jpeg_quality($x) - quality to wrte jpeg files in for save, default 75 (1-100)
  * set_watermark_transparency($x) - the opacity of the watermark 1-100, 1-just about see, 100=solid
  * check_gd() - Run to see if you server can use this library
- * clear_temp() - Call to clear the temp changes using the master image again
+ * clear_temp() - Call to clear the temp changes using the master image again
+
  * clear() - Clears all images in memory
  * -----------------------------------------------------------------------------
  *
@@ -246,7 +247,7 @@ class Image_moo
 	{
 		// validate we loaded a main image
 		if (!$this->_check_image()) return $this;
-
+        log_message('debug', 'image_moo save filename: '.$filename);
 		// if no operations, copy it for temp save
 		$this->_copy_to_temp_if_needed();
 
@@ -1124,7 +1125,8 @@ class Image_moo
 			imagefilledellipse($corner, 0, 0, ($radius * 2)-1, ($radius * 2)-1, $bg);
 		}
 		else
-		{
+		{
+
 			// fill and clear bits
 			imagefilledrectangle($corner, 0, 0, $radius, $radius, $bg);
 			imagefilledellipse($corner, $radius, $radius, ($radius * 2) , ($radius * 2) , $xparent);

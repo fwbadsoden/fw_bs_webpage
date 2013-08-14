@@ -8,16 +8,19 @@
 <div class="oneColumnBox">
             <div class="factSheet_einsatz">
                 <div class="table">
+<? if($einsatz['einsatzort'] == '') : $einsatz['einsatzort'] = 'n/a'; endif; ?>                
                     <div class="row">
                         <div class="black">Einsatzort:</div>
-                        <div class="red">Bad Soden Industriegebiet Süd-West Ring</div>
-                    </div>
+                        <div class="red"><?=$einsatz['einsatzort']?></div>
+                    </div>   
+<? if($einsatz['cueID'] == 0 or $einsatz['cueID'] == '') : $cue = 'n/a'; else : $cue = $einsatz['cue_name'].' - '.$einsatz['cue_mimic']; endif; ?>                  
                     <div class="row">
                         <div class="black">Alarmstichwort:</div>
-                        <div class="red">B3 - Großbrand</div>
-                    </div>
+                        <div class="red"><?=$cue?></div>
+                    </div>   
                     <div class="row">
                         <div class="black lastRow">Einsatzart:</div>
+<? if($einsatz['type_name'] == '') : $einsatz['type_name'] = 'n/a'; endif; ?>      
                         <div class="red lastRow"><?=$einsatz['type_name']?></div>
                     </div>
                 </div>        
