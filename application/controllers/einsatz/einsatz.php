@@ -66,11 +66,11 @@ class Einsatz extends CP_Controller {
             if(($i+1) == count($einsaetze['einsaetze'])) $einsatzNext = null;
             else $einsatzNext = $einsaetze['einsaetze'][$i+1];
             
-            if($month['num'] != substr($einsatz->datum, 5, 2)) {
-                if($monthOld == null) $monthOld = substr($einsatz->datum, 5, 2);
-                $month['num'] = substr($einsatz->datum, 5, 2);
+            if($month['num'] != substr($einsatz->datum_beginn, 5, 2)) {
+                if($monthOld == null) $monthOld = substr($einsatz->datum_beginn, 5, 2);
+                $month['num'] = substr($einsatz->datum_beginn, 5, 2);
                 $month['name'] = cp_get_month_name($month['num']);  
-                $month['year'] = substr($einsatz->datum, 0, 4);
+                $month['year'] = substr($einsatz->datum_beginn, 0, 4);
                 $this->load->view('frontend/einsatz/einsatzliste_2col_month', $month);
                 if($monthOld != $month['num']) {
                     $this->load->view('frontend/templates/hr_clear');
@@ -79,7 +79,7 @@ class Einsatz extends CP_Controller {
             }
             if($einsatzNext == null)
                 $einsatz->special_class = ' lastRow';
-            elseif(substr($einsatz->datum, 5, 2) != substr($einsatzNext->datum, 5, 2))
+            elseif(substr($einsatz->datum_beginn, 5, 2) != substr($einsatzNext->datum_beginn, 5, 2))
                 $einsatz->special_class = ' lastRow';
             $this->load->view('frontend/einsatz/einsatzliste_2col_data', $einsatz);  
         }
