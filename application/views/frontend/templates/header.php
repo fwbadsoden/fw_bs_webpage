@@ -63,89 +63,78 @@
         <nav>    
             <div id="metanavigation"> 
                 <ul>
-          <?  foreach($menue_meta as $key => $item) {     
-            if($key == 0) echo '<li class="first">'; else echo '<li>';    
-            echo'<a href="'.$item['link'].'" target="'.$item['target'].'">'.$item['name'].'</a></li>';
-        } ?>
+                    <li class="first"><a href="mitmachen" target="_top">Mitmachen</a></li>
+                    <li><a href="kontakt" target="_top">Kontakt</a></li>
+                    <li><a href="notruf" target="_top">Notruf</a></li> 
                 </ul>
             </div>
             <ul id="menu">  
-                <li><a href="#">News</a>  
+                <li><a href="news">News</a>  
                    <div class="dropdown">  
                     	<ul>
                         	<li class="headline"><a href="#">Eins&auml;tze</a></li>
-                        	<li><a href="#"><span class="subline">22.07.2013 / &Uuml;ber&ouml;rtlicher Einsatz</span><br />Ausl&ouml;sung der Brandmeldeanlage</a></li>
-                        	<li><a href="#"><span class="subline">22.07.2013 / Brandeinsatz</span><br />Brand einer Lagerhalle</a></li>
-                        	<li><a href="#"><span class="subline">22.07.2013 / Hilfeleistungseinsatz</span><br />Autounfall A66</a></li>
-                        	<li><a href="#"><span class="subline">22.07.2013 / Fehlalarm</span><br />Ausl&ouml;sung der Brandmeldeanlage</a></li>
-                        	<li><a href="#"><span class="subline">22.07.2013 / Hilfeleistungseinsatz</span><br />T&uuml;r&ouml;ffnung für den Rettungsdienst</a></li>
+<? foreach($einsaetze['einsaetze'] as $e) : ?>                            
+                        	<li><a href="einsatz/<?=$e->id?>"><span class="subline"><?=cp_get_ger_date($e->datum_beginn)?> / <?=$e->type_name?></span><br /><?=$e->name?></a></li>
+<? endforeach; ?>                            
                     	</ul>  
                     	<ul>
-                        	<li class="headline"><a href="#">Termine</a></li>
-                        	<li><a href="#"><span class="subline">22.07.2013 / 20:00 Uhr</span><br />Feuerwehr Stammtisch</a></li>
-                        	<li><a href="#"><span class="subline">22.07.2013 / ab 11:00 Uhr</span><br />Tag der offnen T&uuml;r</a></li>
+                        	<li class="headline"><a href="termine">Termine</a></li>
+<? foreach($termine as $t) : ?>                               
+                        	<li><a href="termin/<?=$t['terminID']?>"><span class="subline"><?=cp_get_ger_date($t['datum'])?> / <?=$t['beginn']?> Uhr</span><br /><?=$t['name']?></a></li>
+<? endforeach; ?>  
                     	</ul>  
                     	<ul>
-                        	<li class="headline"><a href="#">Presse</a></li>
+                        	<li class="headline"><a href="presse">Presse</a></li>
                         	<li><a href="#"><span class="subline">22.07.2013 / H&ouml;chsterkreisblatt</span><br />Lorem ipsum dolor</a></li>
                         	<li><a href="#"><span class="subline">22.07.2013 / Taunuszeitung</span><br />Lorem ipsum dolor</a></li>
                         	<li><a href="#"><span class="subline">22.07.2013 / Bad Sodener Echo</span><br />Lorem ipsum dolor</a></li>
                         	<li><a href="#"><span class="subline">22.07.2013 / H&ouml;chsterkreisblatt</span><br />Lorem ipsum dolor</a></li>
                     	</ul>  
-                    	<ul class="special navTeaser">
+              <!--      	<ul class="special navTeaser">
                         	<li class="headline"><a href="#"><img src="images/navTeaser_tagderoffnentuer.png" /></a></li>
-                    	</ul>  
+                    	</ul>  -->
                    </div>  
                 </li>  
-                <li><a href="#">Menschen</a>  
+                <li><a href="menschen">Menschen</a>  
                     <div class="dropdown">  
                     	<ul>
-                        	<li class="headline"><a href="#">Mannschaft</a></li>
-                        	<li><a href="#">Leitung</a></li>
-                            <li><a href="#">Gruppenführer</a></li>
-                            <li><a href="#">Mannschaft</a></li>
+                        	<li class="headline"><a href="menschen">Mannschaft</a></li>
+                        	<li><a href="menschen/fuehrung">Führung</a></li>
+                            <li><a href="menschen/mannschaft">Mannschaft</a></li>
                     	</ul>  
                     	<ul>
-                        	<li class="headline"><a href="#">Die Wache</a></li>
-                            <li><a href="#">Ger&auml;tehaus</a></li>
-                            <li><a href="#">Aufentahltsraum</a></li>
-                            <li><a href="#">Fahrzeugraum</a></li>
+                        	<li class="headline"><a href="wache">Die Wache</a></li>
+                            <li><a href="wache/geraetehaus">Ger&auml;tehaus</a></li>
+                            <li><a href="wache/florianstube">Florianstube</a></li>
+                            <li><a href="wache/fahrzeughalle">Fahrzeughalle</a></li>
                     	</ul>  
                     	<ul>
-                        	<li class="headline"><a href="#">Galerie</a></li>
-                            <li><a href="#">Einsätze</a></li>
-                            <li><a href="#">Feiern</a></li>
-                            <li><a href="#">Fotoshooting</a></li>
-                            <li><a href="#">Unsere Wache</a></li>
+                        	<li class="headline"><a href="galerie">Galerie</a></li>
+                            <li><a href="galerie/einsaetze">Einsätze</a></li>
+                            <li><a href="galerie/feiern">Feiern</a></li>
+                            <li><a href="galerie/fotoshooting">Fotoshooting</a></li>
+                            <li><a href="galerie/wache">Unsere Wache</a></li>
                     	</ul>  
                     	<ul class="special">
-                            <li class="headline"><a href="#">Leistungsgruppe</a></li>
-                            <li class="headline"><a href="#">Alters- und Ehrenabteilung</a></li>
-                            <li class="headline"><a href="#">Verein</a></li>
-                            <li class="headline"><a href="#">Geschichte</a></li>
+                            <li class="headline"><a href="leistungsgruppe">Leistungsgruppe</a></li>
+                            <li class="headline"><a href="altersundehrenabteilung">Alters- und Ehrenabteilung</a></li>
+                            <li class="headline"><a href="verein">Verein</a></li>
+                            <li class="headline"><a href="geschichte">Geschichte</a></li>
                     	</ul>  
                     </div>  
 				</li>  
-                <li><a href="#">Technik</a>  
+                <li><a href="technik">Technik</a>  
                     <div class="dropdown">  
                     	<ul>
-                        	<li class="headline"><a href="#">Fahrzeuge</a></li>
-                        	<li><a href="#">KodW - Kommandowagen</a></li>
-                            <li><a href="#">ELF - Einsatzleitwagen</a></li>
-                            <li><a href="#">MTF - Mannschafttransportfahrzeug</a></li>
-                            <li><a href="#">TLF 24/50 - Tankl&ouml;schfahrzeug</a></li>
-                            <li><a href="#">DLK 23/12- Drehleiterfahrzeug</a></li>
-                            <li><a href="#">LF 16/1 - L&ouml;schfahrzeug</a></li>
-                            <li><a href="#">LF 16/2 - L&ouml;schfahrzeug</a></li>
-                            <li><a href="#">LF 16/3 - L&ouml;schfahrzeug</a></li>
-                            <li><a href="#">RW- R&uuml;stfahrzeug</a></li>
-                            <li><a href="#">GW-L - Ger&auml;tewagen Logistik</a></li>
-                            <li><a href="#">WLF - Wechselladerfahrzeug</a></li>
-                            <li><a href="#">Rettungshundeanh&auml;nger</a></li>
-                            <li><a href="#">Notdienst-PKW</a></li>
+                        	<li class="headline"><a href="fahrzeuge">Fahrzeuge</a></li>
+<? foreach($fahrzeuge as $f) : ?>                            
+                        	<li><a href="fahrzeug/<?=$f['fahrzeugID']?>">
+                            <? if($f['fahrzeugNameLang'] != '') : echo $f['fahrzeugName'].' - '.$f['fahrzeugNameLang']; else : echo $f['fahrzeugName']; endif; ?>
+                            </a></li>
+<? endforeach; ?>
                     	</ul>  
                     	<ul>
-                        	<li class="headline"><a href="#">Ausr&uuml;stung</a></li>
+                        	<li class="headline"><a href="ausruestung">Ausr&uuml;stung</a></li>
                         	<li><a href="#">Rettungssatz</a></li>
                             <li><a href="#">Halligan-Tool</a></li>
                             <li><a href="#">Wasserwerfer</a></li>
@@ -156,62 +145,60 @@
                             <li><a href="#">Mobiler Rauchverschluss</a></li>
                     	</ul>  
                     	<ul>
-                        	<li class="headline"><a href="#">Kleidung</a></li>
+                        	<li class="headline"><a href="kleidung">Kleidung</a></li>
                         	<li><a href="#">Pers&ouml;nliche Ausr&uuml;stung</a></li>
                             <li><a href="#">Funktionswesten</a></li>
                             <li><a href="#">Ausgehuniform</a></li>
                             <li><a href="#">Spezialausr&uuml;stung</a></li>
                     	</ul>  
                     	<ul>
-                        	<li class="headline"><a href="#">Ausbildung</a></li>
+                        	<li class="headline"><a href="ausbildung">Ausbildung</a></li>
                         	<li><a href="#">Erstausbildung</a></li>
                             <li><a href="#">Truppmannausbildung</a></li>
                             <li><a href="#">Atemschutz</a></li>
-                            <li><a href="#">Atemschutz f&uuml;r Tunnel</a></li>
+                            <li><a href="#">Technische Hilfeleistung</a></li>
                             <li><a href="#">Maschinist</a></li>
-                            <li><a href="#">H&ouml;henrettung</a></li>
-                            <li><a href="#">Gefahrengut</a></li>
+                            <li><a href="#">Gefahrgut</a></li>
                     	</ul>  
                     </div>  
                 </li>  
-                <li><a href="#">Infos</a>  
+                <li><a href="infos">Infos</a>  
                     <div class="dropdown">  
                     	<ul>
-                        	<li class="headline"><a href="#">Brandschutztipps</a></li>
-                        	<li><a href="#">Erste Hilfe</a></li>
-                            <li><a href="#">Notruf Absetzen</a></li>
-                            <li><a href="#">Rauchmelder</a></li>
-                            <li><a href="#">Verhalten bei Unf&auml;llen</a></li>
-                            <li><a href="#">Verhalten bei Brandf&auml;llen</a></li>
-                            <li><a href="#">Feuerl&ouml;scher</a></li>
-                            <li><a href="#">K&uuml;chenbrand</a></li>
+                        	<li class="headline"><a href="infos/brandschutz">Brandschutztipps</a></li>
+                        	<li><a href="infos/erstehilfe">Erste Hilfe</a></li>
+                            <li><a href="infos/notruf">Notruf Absetzen</a></li>
+                            <li><a href="infos/rauchmelder">Rauchmelder</a></li>
+                            <li><a href="infos/unfaelle">Verhalten bei Unf&auml;llen</a></li>
+                            <li><a href="infos/feuer">Verhalten bei Brandf&auml;llen</a></li>
+                            <li><a href="infos/feuerloescher">Feuerl&ouml;scher</a></li>
+                            <li><a href="infos/kuechenbrand">K&uuml;chenbrand</a></li>
                     	</ul>  
                     	<ul>
-                        	<li class="headline"><a href="#">B&uuml;rgerinfos</a></li>
-                        	<li><a href="#">Blaulicht und Martinshorn</a></li>
-                            <li><a href="#">Sonderrechte</a></li>
-                            <li><a href="#">Insekten</a></li>
-                            <li><a href="#">Vogelgrippe</a></li>
-                            <li><a href="#">Hinweise zu Unwettern</a></li>
-                            <li><a href="#">Nach dem Brand</a></li>
-                            <li><a href="#">Sichtbare Hausnummern</a></li>
+                        	<li class="headline"><a href="buergerinfos">B&uuml;rgerinfos</a></li>
+                        	<li><a href="buergerinfos/blaulicht">Blaulicht und Martinshorn</a></li>
+                            <li><a href="buergerinfos/sonderrechte">Sonderrechte</a></li>
+                            <li><a href="buergerinfos/insekten">Insekten</a></li>
+                            <li><a href="buergerinfos/unwetter">Hinweise zu Unwettern</a></li>
+                            <li><a href="buergerinfos/brand">Nach dem Brand</a></li>
+                            <li><a href="buergerinfos/hausnummern">Sichtbare Hausnummern</a></li>
                     	</ul>  
                     	<ul>
-                        	<li class="headline"><a href="#">Artikel</a></li>
+                        	<li class="headline"><a href="artikel">Artikel</a></li>
                         	<li><a href="#">Feuerwehraustausch</a></li>
                             <li><a href="#">Tag der offnen T&uuml;r 2013</a></li>
                             <li><a href="#">Atemschutztraining</a></li>
                             <li><a href="#">Turnierbericht</a></li>
                     	</ul>  
                     	<ul class="special">
-                        	<li class="headline"><a href="#">Einsatzgebiet</a></li>
-                        	<li class="headline"><a href="#">Gesetze & Richtlinien</a></li>
-                            <li class="headline"><a href="#">Downloads</a></li>
-                            <li class="headline"><a href="#">H&auml;ufige Fragen</a></li>
+                        	<li class="headline"><a href="einsatzgebiet">Einsatzgebiet</a></li>
+                        	<li class="headline"><a href="gesetze">Gesetze & Richtlinien</a></li>
+                            <li class="headline"><a href="downloads">Downloads</a></li>
+                            <li class="headline"><a href="faq">H&auml;ufige Fragen</a></li>
                     	</ul>  
                     </div>  
                 </li>  
-                <li><a href="#">Jugend</a>  
+                <li><a href="jugend">Jugend</a>  
                 </li> 
                 <li><a href="#" class="desktopsearch">&nbsp;</a>
                     <div class="dropdown">
@@ -233,61 +220,34 @@
     
 </header>
 
-
-<header id="top">
-	<div class="site">
-    	<h1>
-        	<a href="/" title="Home"><?=$title?></a>
-        </h1>
-        <div class="navBox">  
-            <div class="metanavigation"> 
-                <ul>
-     <?  foreach($menue_meta as $key => $item) {     
-            if($key == 0) echo '<li class="first">'; else echo '<li>';    
-            echo'<a href="'.$item['link'].'" target="'.$item['target'].'">'.$item['name'].'</a></li>';
-        } ?>
-                </ul>
-            </div>
-            <nav> 
-                <ul>
-<?  foreach($menue as $item) { ?>            
-                    <li><a href="<?=$item['link']?>" target="<?=$item['target']?>"><?=$item['name']?></a></li>
-<? } ?> 
-                    <li><a href="#" class="desktopsearch">Suche</a></li>
-                </ul>
-                <div id="searchBox">
-                    <?=form_open(base_url(FRONTEND_SEARCH_LINK), $search_form);?>
-                        <?=form_input($search_input);?>
-                        <input type="submit" value="Go" class="button_black" />
-                        <a href="#" class="closeSearch">x</a>
-                    </form>
-            		
-                </div>
-            </nav>
-            <div class="mobileHeader">
-            	<a href="#"><img src="<?=base_url('images/layout/nav_mobileButton.png')?>" width="18" height="18" id="mobileNavButton" /></a>
-            </div>
-        </div>
-    </div>
-</header>
-
 <div id="mobileNavigation">    
    <ul class="mobileMainNavContainer">
-<?  foreach($menue as $item) { ?>            
-        <li><a href="<?=$item['link']?>" target="<?=$item['target']?>"><?=$item['name']?></a></li>
-<?  } ?> 
-        <li class="metanav">
-          	<ul>
-     <?  foreach($menue_meta as $key => $item) { ?>  
-                <li><a href="<?=$item['link']?>" target="<?=$item['target']?>"><?=$item['name']?></a></li>
-     <?  } ?>            
-            </ul>
-        </li>
-        <li class="search">
-            <?=form_open(base_url(FRONTEND_SEARCH_LINK), $search_form);?>
-                <?=form_input($search_input);?>
-                <input type="button" value="Go" class="button_black" />
-            </form>
-        </li>
+      <li><a href="news">News</a></li>
+      <li><a href="menschen">Menschen</a></li>
+      <li><a href="technik">Technik</a></li>
+      <li class="subnavi">    
+          <ul>  
+            <li><a href="fahrzeuge" class="first">Fahrzeuge</a></li>
+            <li><a href="geraete">Geräte</a></li>
+            <li><a href="kleidung">Kleidung</a></li>
+            <li><a href="ausbildung">Ausbildung</a></li>
+          </ul>
+      </li>
+      <li><a href="infos">Infos</a></li>
+      <li><a href="jugend">Jugend</a></li>
+      <li class="metanav">
+      	<ul>
+          <li><a href="admin">Login</a></li>
+          <li><a href="mitmachen">Mitmachen</a></li>
+          <li><a href="kontakt">Kontakt</a></li>
+          <li><a href="notfall">Notfall</a></li>
+        </ul>
+      </li>
+      <li class="search">
+      	<form>
+        	<input type="text" name="searchitem" class="text" />
+           <input type="button" value="Go" class="button_black" />
+        </form>
+      </li>
    </ul>
 </div>

@@ -54,10 +54,11 @@ class Fahrzeug_Model extends CI_Model {
 		return $fahrzeug;
 	}
 	
-	public function get_fahrzeug_list()
+	public function get_fahrzeug_list($online = 'all')
 	{		
 		$this->db->order_by('online', 'desc');
 		$this->db->order_by('rufname', 'asc');
+        if($online != 'all') $this->db->where('online', $online);
 		$query = $this->db->get('fahrzeug');
 		$i = 0;
 		$arr_fahrzeug = array();
@@ -66,6 +67,7 @@ class Fahrzeug_Model extends CI_Model {
 		{
 			$arr_fahrzeug[$i]['fahrzeugID'] 	= $row->fahrzeugID;
 			$arr_fahrzeug[$i]['fahrzeugName'] 	= $row->name;
+			$arr_fahrzeug[$i]['fahrzeugNameLang'] 	= $row->name_lang;
 			$arr_fahrzeug[$i]['fahrzeugRufnamePrefix'] = $row->prefix_rufname;
 			if($row->rufname != '')
 			{

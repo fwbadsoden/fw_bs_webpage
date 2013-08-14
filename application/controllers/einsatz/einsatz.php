@@ -23,6 +23,11 @@ class Einsatz extends CP_Controller {
         $this->load->model('einsatz/einsatz_model', 'm_einsatz');  
 	}
     
+    public function get_einsatz_overview($limit = EINSATZ_DEFAULT_LIMIT, $offset = EINSATZ_DEFAULT_OFFSET)
+    {
+        return $this->m_einsatz->get_einsatz_overview($limit, $offset);
+    }
+    
     public function overview_2col($limit = EINSATZ_DEFAULT_LIMIT, $offset = EINSATZ_DEFAULT_OFFSET)
     {
         $einsatz_header['title']        = 'Einsatz-Ticker';

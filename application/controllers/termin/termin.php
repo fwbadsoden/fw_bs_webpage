@@ -23,6 +23,11 @@ class Termin extends CP_Controller {
         $this->load->model('termin/termin_model', 'm_termin');  
 	}
     
+    public function get_termin_overview($limit = TERMIN_DEFAULT_LIMIT, $offset = TERMIN_DEFAULT_OFFSET)
+    {
+        return $this->m_termin->get_termin_v_list($limit, $offset);
+    }
+    
     public function overview_1col($limit = TERMIN_DEFAULT_LIMIT, $offset = TERMIN_DEFAULT_OFFSET)
     {
         $termin_overview = $this->m_termin->get_termin_v_list($limit, $offset);

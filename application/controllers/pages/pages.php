@@ -129,10 +129,17 @@ class Pages extends CP_Controller {
     
     private function site_header()
     {
+        $c_einsatz = load_controller('einsatz/einsatz');
+        $c_termin  = load_controller('termin/termin');
+        $c_fahrzeug = load_controller('fahrzeug/fahrzeug');
+        
         $this->menue                    = $this->m_menue->get_menue_list('online');
         $header_data['title']           = FRONTEND_TITLE;
         $header_data['menue_meta']      = $this->menue['menue_meta'];
         $header_data['menue']           = $this->menue['menue'];
+        $header_data['einsaetze']       = $c_einsatz->get_einsatz_overview(5,0);
+        $header_data['termine']         = $c_termin->get_termin_overview(5,0);
+        $header_data['fahrzeuge']       = $c_fahrzeug->get_fahrzeug_overview(1);
                 
         $this->load->view('frontend/templates/header', $header_data);
     }
