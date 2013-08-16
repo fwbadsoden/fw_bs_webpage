@@ -48,38 +48,21 @@
 $active_group = 'habib';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'mysql5.familiepleines.de';
-$db['default']['username'] = 'db267644_7';
-$db['default']['password'] = '9ca3da242942204d5a5eaf77699c09af';
-$db['default']['database'] = 'db267644_7';
+$db['default']['hostname'] = 'mysql5.fwbs.domainfactory-kunde.de';
+$db['default']['username'] = 'db403895';
+$db['default']['password'] = 'TPsZGZxU';
+$db['default']['database'] = 'db403895';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = 'fw_';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = TRUE;
-$db['default']['cachedir'] = '/kunden/267644_65812/webseiten/feuerwehr/ci_system/cache/db';
+$db['default']['cachedir'] = '/kunden/403895_65812/webseiten/fw_bs_dev/system/cache/db';
 $db['default']['char_set'] = 'utf8';
 $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
-
-
-$db['habib']['hostname'] = 'localhost';
-$db['habib']['username'] = 'root';
-$db['habib']['password'] = '';
-$db['habib']['database'] = 'db267644_7';
-$db['habib']['dbdriver'] = 'mysqli';
-$db['habib']['dbprefix'] = 'fw_';
-$db['habib']['pconnect'] = TRUE;
-$db['habib']['db_debug'] = TRUE;
-$db['habib']['cache_on'] = TRUE;
-$db['habib']['cachedir'] = '/kunden/267644_65812/webseiten/feuerwehr/ci_system/cache/db';
-$db['habib']['char_set'] = 'utf8';
-$db['habib']['dbcollat'] = 'utf8_general_ci';
-$db['habib']['swap_pre'] = '';
-$db['habib']['autoinit'] = TRUE;
-$db['habib']['stricton'] = FALSE;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

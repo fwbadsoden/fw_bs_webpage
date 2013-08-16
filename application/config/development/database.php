@@ -48,16 +48,16 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'mysql5.familiepleines.de';
-$db['default']['username'] = 'db267644_7';
-$db['default']['password'] = '9ca3da242942204d5a5eaf77699c09af';
-$db['default']['database'] = 'db267644_7';
+$db['default']['hostname'] = 'mysql5.fwbs.domainfactory-kunde.de';
+$db['default']['username'] = 'db403895';
+$db['default']['password'] = 'TPsZGZxU';
+$db['default']['database'] = 'db403895';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = 'fw_';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = TRUE;
-$db['default']['cachedir'] = '/kunden/267644_65812/webseiten/feuerwehr/ci_system/cache/db';
+$db['default']['cachedir'] = '/kunden/403895_65812/webseiten/fw_bs_dev/system/cache/db';
 $db['default']['char_set'] = 'utf8';
 $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';

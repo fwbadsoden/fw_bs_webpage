@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://feuerwehr.familiepleines.de/';
+$config['base_url']	= 'http://dev.fwbs.domainfactory-kunde.de';
 /*
 |--------------------------------------------------------------------------
 | Index File
