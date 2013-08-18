@@ -86,5 +86,122 @@ class News_Admin extends CP_Controller {
 		$this->load->view('backend/news/kategorieliste_admin', $data);
 		$this->load->view('backend/templates/admin/footer');
     }
+    
+    public function create_kategorie()
+    {
+        if(!$this->cp_auth->is_privileged(NEWS_PRIV_EDIT)) redirect('admin/401', 'refresh');
+		if($this->uri->segment($this->uri->total_segments()) == 'save')
+		{		
+			if($verify = $this->verify())
+			{
+				$this->admin->insert_log(str_replace('%NEWSCAT%', $this->input->post('title'), lang('log_admin_createNewsKategorie')));
+				$this->news->create_kategorie();
+			}
+		}
+		else
+			$this->session->set_userdata('kategoriecreate_submit', current_url());	
+			
+		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
+		{			
+			$header['title'] 		= 'News-Kategorien';		
+		    $menue['menue']	        = $this->admin->get_menue();
+            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
+			$menue['submenue']		= $this->admin->get_submenue();
+		
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/news/createNewsKategorie_admin');
+			$this->load->view('backend/templates/admin/footer');
+		}
+		else redirect($this->session->userdata('kategorieliste_redirect'), 'refresh');        
+    }
+    
+    public function edit_kategorie($id)
+    {
+        if(!$this->cp_auth->is_privileged(NEWS_PRIV_EDIT)) redirect('admin/401', 'refresh');
+		if($this->uri->segment($this->uri->total_segments()) == 'save')
+		{		
+			if($verify = $this->verify())
+			{
+				$this->admin->insert_log(str_replace('%NEWSCAT%', $this->input->post('title'), lang('log_admin_editNewsKategorie')));
+				$this->news->update_kategorie($id);
+			}
+		}
+		else
+			$this->session->set_userdata('kategorieedit_submit', current_url());	
+			
+		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
+		{			
+			$header['title'] 		= 'News-Kategorien';		
+		    $menue['menue']	        = $this->admin->get_menue();
+            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
+			$menue['submenue']		= $this->admin->get_submenue();
+            $category['kategorie']  = $this->news->get_news_category($id);
+            		
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/news/editNewsKategorie_admin', $category);
+			$this->load->view('backend/templates/admin/footer');
+		}
+		else redirect($this->session->userdata('kategorieliste_redirect'), 'refresh');        
+    }	
+    
+    private function verify()
+	{		
+		$this->load->library('form_validation');
+		
+		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
+		
+		$this->form_validation->set_rules('title', 'Kategorietitel', 'required|max_length[255]|xss_clean');	
+
+		return $this->form_validation->run();	
+	}
+    
+    public function delete_news_verify($id)
+    {
+        if(!$this->cp_auth->is_privileged(NEWS_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
+        $header['title']    = 'Kategorie l&ouml;schen';		
+    	$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
+    	$menue['submenue']	= $this->admin->get_submenue();
+        $category['news']  = $this->news->get_news($id);
+        $data['type']       = 'news';
+    	
+    	$this->load->view('backend/templates/admin/header', $header);
+    	$this->load->view('backend/templates/admin/menue', $menue);	
+    	$this->load->view('backend/templates/admin/submenue', $menue);	
+    	$this->load->view('backend/news/verifyDelete_admin', $data);
+    	$this->load->view('backend/templates/admin/footer');
+    }
+    
+    public function delete_kategorie_verify($id)
+    {
+        if(!$this->cp_auth->is_privileged(NEWS_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
+        $header['title']    = 'Kategorie l&ouml;schen';		
+    	$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
+    	$menue['submenue']	= $this->admin->get_submenue();
+        $data['category']  = $this->news->get_news_category($id);
+        $data['type']       = 'category';
+    	
+    	$this->load->view('backend/templates/admin/header', $header);
+    	$this->load->view('backend/templates/admin/menue', $menue);	
+    	$this->load->view('backend/templates/admin/submenue', $menue);	
+    	$this->load->view('backend/news/verifyDelete_admin', $data);
+    	$this->load->view('backend/templates/admin/footer');
+    }
+    
+    public function delete_category($id)
+    {
+        if(!$this->cp_auth->is_privileged(NEWS_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
+        $this->news->delete_category($id);
+		
+		redirect($this->session->userdata('kategorieliste_redirect'), 'refresh');	
+    }
 }
 ?>

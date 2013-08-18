@@ -22,8 +22,31 @@ class News_model extends CI_Model {
 	 */
 	public function __construct() {
 		parent::__construct();
+		$this->load->library('CP_auth');
 		$this->load->helper('html');
 	}
+    
+    public function create_kategorie()
+    {
+        $kategorie = array(
+            'title' => $this->input->post('title'),
+            'created_by' => $this->cp_auth->get_user_id(),
+            'created' => date("Y-m-d H:i:s")
+        );
+        
+        $this->db->insert('news_category', $kategorie);
+    }
+    
+    public function update_kategorie($id)
+    {
+        $kategorie = array(
+            'title' => $this->input->post('title'),
+            'modified_by' => $this->cp_auth->get_user_id(),
+            'modified' => date("Y-m-d H:i:s")
+        );
+        
+        $this->db->update('news_category', $kategorie, array('categoryID' => $id));
+    }
 	
 	public function get_news_count()
 	{ 
@@ -76,4 +99,22 @@ class News_model extends CI_Model {
 		
 		return $cat;
 	}
+    
+    public function get_news_category($id)
+    {
+        $this->db->where('categoryID', $id);
+        $query = $this->db->get('news_category');
+        $row = $query->row();
+        
+        $category['categoryID'] = $row->categoryID;
+        $category['title']      = $row->title;
+        
+        return $category;
+    }
+    
+    public function delete_category($id)
+    {
+        $this->db->where('categoryID', $id);
+        $this->db->delete('news_category');
+    }
 }

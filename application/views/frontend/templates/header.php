@@ -64,8 +64,8 @@
             <div id="metanavigation"> 
                 <ul>
                     <li class="first"><a href="mitmachen" target="_top">Mitmachen</a></li>
-                    <li><a href="kontakt" target="_top">Kontakt</a></li>
-                    <li><a href="notruf" target="_top">Notruf</a></li> 
+                    <li><a href="<?=base_url('kontakt')?>" target="_top">Kontakt</a></li>
+                    <li><a href="<?=base_url('notruf')?>" target="_top">Notruf</a></li> 
                 </ul>
             </div>
             <ul id="menu">  
@@ -74,13 +74,13 @@
                     	<ul>
                         	<li class="headline"><a href="#">Eins&auml;tze</a></li>
 <? foreach($einsaetze['einsaetze'] as $e) : ?>                            
-                        	<li><a href="einsatz/<?=$e->id?>"><span class="subline"><?=cp_get_ger_date($e->datum_beginn)?> / <?=$e->type_name?></span><br /><?=$e->name?></a></li>
+                        	<li><a href="<?=base_url('einsatz/'.$e->id)?>"><span class="subline"><?=cp_get_ger_date($e->datum_beginn)?> / <?=$e->type_name?></span><br /><?=$e->name?></a></li>
 <? endforeach; ?>                            
                     	</ul>  
                     	<ul>
                         	<li class="headline"><a href="termine">Termine</a></li>
 <? foreach($termine as $t) : ?>                               
-                        	<li><a href="termin/<?=$t['terminID']?>"><span class="subline"><?=cp_get_ger_date($t['datum'])?> / <?=$t['beginn']?> Uhr</span><br /><?=$t['name']?></a></li>
+                        	<li><a href=""<?=base_url('termin/'.$t['terminID'])?>"><span class="subline"><?=cp_get_ger_date($t['datum'])?> / <?=$t['beginn']?> Uhr</span><br /><?=$t['name']?></a></li>
 <? endforeach; ?>  
                     	</ul>  
                     	<ul>

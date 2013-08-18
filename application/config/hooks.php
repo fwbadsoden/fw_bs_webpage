@@ -9,8 +9,20 @@
 |	http://codeigniter.com/user_guide/general/hooks.html
 |
 */
-
-
+if(ENVIRONMENT != 'production') {
+    $hook['post_system'][] = array(
+        'class' => 'QueryLogHook',
+        'function' => 'log_queries',
+        'filename' => 'QueryLogHook.php',
+        'filepath' => 'hooks');
+}
+        
+// hook for compress webpage output
+    $hook['display_override'][] = array(
+        'class'    => '',
+        'function' => 'compress',
+        'filename' => 'compress.php',
+        'filepath' => 'hooks');
 
 /* End of file hooks.php */
 /* Location: ./application/config/hooks.php */

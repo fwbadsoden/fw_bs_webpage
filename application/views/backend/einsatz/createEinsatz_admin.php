@@ -49,6 +49,12 @@
 		'class' => 'input_time',
 		'value' => set_value('einsatzuhrzeit_ende')
 	);
+	$einsatzLage = array(
+		'name' 	=> 'einsatzlage',
+		'id'	=> 'einsatzlage',
+		'class' => 'tinymce',
+		'value' => set_value('einsatzlage')
+	);
 	$einsatzBericht = array(
 		'name' 	=> 'einsatzbericht',
 		'id'	=> 'einsatzbericht',
@@ -120,7 +126,7 @@ $(function() {
 				function(data) {
 					$.each(data, function(i,item) {
 						if (item.field == "einsatzname") { $('#einsatzname').val(item.value); }
-						else if (item.field == "einsatzbericht") { $('#einsatzbericht').val(item.value); }
+						else if (item.field == "einsatzlage") { $('#einsatzlage').val(item.value); }
 						else if (item.field == "einsatzart") { 
 							var arten = item.value.split('|');
 							$.each(arten, function(index, value) {
@@ -203,6 +209,10 @@ $(function() {
                         <td class='form_label'><?=form_label('Einsatzort:', $einsatzOrt['id']); ?></td>
                         <td><?=form_input($einsatzOrt); ?></td>
                     </tr>
+    				<tr>
+    					<td><?=form_label('Kurze Lagemeldung:', $einsatzLage['id']); ?></td>
+    					<td><?=form_textarea($einsatzLage); ?></td>
+    				</tr>
                     <tr>
                         <td><?=form_label('Einsatzbericht:', $einsatzBericht['id']); ?></td>
                         <td><?=form_textarea($einsatzBericht); ?></td>

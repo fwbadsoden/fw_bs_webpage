@@ -183,6 +183,7 @@ class Einsatz_Admin extends CP_Controller {
 		$this->form_validation->set_rules('einsatzdatum_ende', 'Einsatzende (Datum)', 'required|callback_einsatzdatum_ende'); 
 		$this->form_validation->set_rules('einsatzuhrzeit_ende', 'Einsatzende (Uhrzeit)', 'required|callback_einsatzuhrzeit_ende'); 
 		$this->form_validation->set_rules('anzahl', 'Anzahl Einsatzkräfte', 'required|is_natural_no_zero|xss_clean');
+		$this->form_validation->set_rules('einsatzlage', 'Lagemeldung', 'required|xss_clean');
 		$this->form_validation->set_rules('einsatzbericht', 'Einsatzbericht', 'required|xss_clean');
 		$this->form_validation->set_rules('einsatzort', 'Einsatzort', 'xss_clean');
 		$this->form_validation->set_rules('weitereeinsatzkraefte', 'Weitere Einsatzkräfte', 'xss_clean'); 
@@ -336,8 +337,8 @@ class Einsatz_Admin extends CP_Controller {
 		//build the JSON array for return
 		$json = array(array('field' => 'einsatzname', 
 							'value' => $template[$id]['einsatz_name']), 
-					  array('field' => 'einsatzbericht', 
-							'value' => $template[$id]['einsatz_bericht']),
+					  array('field' => 'einsatzlage', 
+							'value' => $template[$id]['einsatz_lage']),
 					  array('field' => 'einsatzart', 
 							'value' => $template[$id]['einsatz_art']), 
 					  array('field' => 'einsatzfahrzeug', 

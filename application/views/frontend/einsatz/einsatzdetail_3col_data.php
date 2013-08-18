@@ -7,7 +7,8 @@
             
             <div class="article">
 				<h1>Einsatzbericht</h1>
-				<?=$einsatz['einsatzbericht']?>
+                <p><?=$einsatz['einsatzlage']?></p>
+				<p><?=$einsatz['einsatzbericht']?></p>
             </div>
 <? if(count($bilder) > 0) : ?>
             <div class="slideshow">

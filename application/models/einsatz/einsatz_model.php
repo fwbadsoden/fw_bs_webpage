@@ -20,7 +20,7 @@ class Einsatz_Model extends CI_Model {
     private $upload_path = CONTENT_IMG_EINSATZ_UPLOAD_PATH;
     
     public $id, $name, $datum_beginn, $datum_ende, $uhrzeit_beginn, $uhrzeit_ende, $lfd_nr, $online, $type_count,
-           $einsatz_nr, $bericht, $weitere_kraefte, $cue_name, $cue_mimic, $ort,
+           $einsatz_nr, $lage, $bericht, $weitere_kraefte, $cue_name, $cue_mimic, $ort,
            $anzahl_kraefte, $typeID, $type_name, $type_short_name, $row_color, $special_class;
 	
 	/**
@@ -67,6 +67,7 @@ class Einsatz_Model extends CI_Model {
             $einsatz->uhrzeit_ende  = $row->uhrzeit_ende;
             $einsatz->row_color     = $this->color                  = cp_get_color($this->color);
             $einsatz->year          = $year;
+            $einsatz->lage          = $row->lage;
             $einsatz->bericht       = $row->bericht;
             $einsatz->ort           = $row->ort;
             $einsatz->type_name     = $row->type_name;
@@ -195,6 +196,7 @@ class Einsatz_Model extends CI_Model {
 		$einsatz['datum_ende'] 				= $row->datum_ende;
 		$einsatz['uhrzeit_ende'] 			= $row->uhrzeit_ende;
 		$einsatz['einsatzort'] 			    = $row->ort;
+        $einsatz['einsatzlage']             = $row->lage;
 		$einsatz['einsatzbericht'] 			= $row->bericht;
 		$einsatz['einsatzkraefteFreitext']	= $row->weitere_kraefte;
 		$einsatz['anzahlEinsatzkraefte']	= $row->anzahl_kraefte;
@@ -302,6 +304,7 @@ class Einsatz_Model extends CI_Model {
 
 		$einsatzContent = array(
 			'einsatzID'			=> $einsatzID,
+            'lage'              => $this->input->post('einsatzlage'),
 			'bericht'			=> $this->input->post('einsatzbericht'),
             'ort'               => $this->input->post('einsatzort'),
 			'weitere_kraefte'	=> $this->input->post('weitereeinsatzkraefte'),
@@ -334,6 +337,7 @@ class Einsatz_Model extends CI_Model {
 			'einsatz_nr'     => $this->input->post('einsatznr')
 		);		
 		$einsatzContent = array(
+            'lage'              => $this->input->post('einsatzlage'),
 			'bericht'			=> $this->input->post('einsatzbericht'),
             'ort'               => $this->input->post('einsatzort'),
 			'geschehen'			=> $this->input->post('einsatzgeschehen'),
@@ -424,7 +428,7 @@ class Einsatz_Model extends CI_Model {
 			$templates[$row->templateID]['template_id'] 		= $row->templateID;
 			$templates[$row->templateID]['template_name'] 		= $row->tmpl_name;
 			$templates[$row->templateID]['einsatz_name']		= $row->name;
-			$templates[$row->templateID]['einsatz_bericht']		= $row->bericht;
+			$templates[$row->templateID]['einsatz_lage']		= $row->lage;
 			$templates[$row->templateID]['einsatz_art']			= $row->art;
 			$templates[$row->templateID]['einsatz_fahrzeug']	= $row->fahrzeug;
 		}

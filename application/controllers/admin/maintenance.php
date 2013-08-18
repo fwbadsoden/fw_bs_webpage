@@ -42,29 +42,16 @@ class Maintenance extends CP_Controller {
 //        $this->cp_auth->activate_user($userID, FALSE, FALSE);
 //    }
 //	
-//    public function write_settings()
-//    {
-//        $this->module->write_setting_file();
-//    }
-//    
-//	public function show_icons()
-//	{
-//		
-//		$header['title'] 		= 'Icons';		
-//	
-//		$this->load->view('maintenance/show_icons');
-//		
-//	}
-//	
-//	public function show_buttons()
-//	{
-//		$header['title'] 		= 'Buttons';		
-//	
-//		$this->load->view('backend/templates/admin/header', $header);
-//		$this->load->view('backend/maintenance/show_icons');
-//		$this->load->view('backend/templates/admin/footer');
-//	}
 //
+    public function set_einsatz_ort()
+    {
+        $query = $this->db->get('OLD_einsaetze');
+        foreach($query->result() as $row)
+        {
+            $this->db->where('einsatzID', $row->newid);
+            $this->db->update('einsatz_content', array('ort' => $row->ort));
+        }
+    }
 //    
 //	
 //	public function get_einsatz_bilder()
@@ -201,21 +188,45 @@ class Maintenance extends CP_Controller {
 //        }
 //    }
 //	
+//
+//    public function db_map_fahrzeuge()
+//    {
+////        $this->db->where('done', 0);
+////		$this->db->where('fahrzeuge !=', 'null'); 
+////		$query = $this->db->get('OLD_einsaetze');
+////        echo $query->num_rows();
+////        echo $this->db->last_query();
+////		foreach ($query->result() as $row)
+////		{
+////            $fahrzeuge = $row->fahrzeuge;
+////		   	$arr_f = explode(',', $row->fahrzeuge);
+////			foreach($arr_f as $f)
+////			{
+////			   $f = trim($f);
+////                $this->db->insert('OLD_einsatz_fahrzeug',array('einsatzID' => $row->newid, 'fahrzeug' => $f));
+////            }            
+////        }
+//        $this->db->where('fahrzeugID', 0);
+//    //    $this->db->where('id <', 5291);
+//        $this->db->like('fahrzeug', 'LF');
+//        $query = $this->db->get('OLD_einsatz_fahrzeug');
+//        foreach($query->result() as $row)
+//        {
+//            $this->db->where('id', $row->id);
+//            $this->db->update('OLD_einsatz_fahrzeug', array('fahrzeugID' => 14));
+//        }
+//    }
+//
+//
 //	public function db_fahrzeug()
 //	{
-//		$this->db->where('fahrzeuge !=', 'null'); 
-//		$query = $this->db->get('OLD_einsatz');
-//		foreach ($query->result() as $row)
-//		{
-//		   	$arr_f = explode(',', $row->fahrzeuge);
-//			foreach($arr_f as $f)
-//			{
-//				$this->db->insert('einsatz_fahrzeug_mapping', array('einsatzID' => $row->newID, 'fahrzeugID' => $f));	
-//
-//			}
-//		}
+//		$query = $this->db->get('OLD_einsatz_fahrzeug');
+//        foreach($query->result() as $row)
+//        {
+//            $this->db->insert('einsatz_fahrzeug_mapping', array('einsatzID' => $row->einsatzID, 'fahrzeugID' => $row->fahrzeugID));
+//        }
 //	}
-//    
+////    
 //    public function db_switch_types()
 //    {
 //        $query = $this->db->get('einsatz_content');

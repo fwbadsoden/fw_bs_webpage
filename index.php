@@ -33,11 +33,7 @@ if (defined('ENVIRONMENT'))
 	{
 		case 'development':
 			error_reporting(E_ALL);
-		break;
-		case 'habib':
-			error_reporting(E_ALL);
-		break;
-	
+		break;	
 		case 'testing':
 			error_reporting(E_ALL);
 		break;
