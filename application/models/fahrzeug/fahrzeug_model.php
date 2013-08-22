@@ -39,10 +39,17 @@ class Fahrzeug_Model extends CI_Model {
 		$fahrzeug['fahrzeugNameLang']		= $row->name_lang;
 		$fahrzeug['fahrzeugRufnamePrefix']	= $row->prefix_rufname;
 		$fahrzeug['fahrzeugRufname']		= $row->rufname;
+        $fahrzeug['fahrzeugShortText']      = $row->short_text;
 		$fahrzeug['fahrzeugText']			= $row->text;
+        $fahrzeug['fahrzeugGeschichte']     = $row->geschichte;
+        $fahrzeug['fahrzeugStatistik']      = $row->statistik;
+        $fahrzeug['fahrzeugBaujahr']        = $row->baujahr;
 		$fahrzeug['fahrzeugBesatzung']		= $row->besatzung;
 		$fahrzeug['fahrzeugHersteller']		= $row->hersteller;
 		$fahrzeug['fahrzeugAufbau']			= $row->aufbau;
+        $fahrzeug['fahrzeugPumpe']          = $row->pumpe;
+        $fahrzeug['fahrzeugLoeschmittel']   = $row->loeschmittel;
+        $fahrzeug['fahrzeugBesonderheit']   = $row->besonderheit;
 		$fahrzeug['fahrzeugLeistungKW']		= $row->kw;
 		$fahrzeug['fahrzeugLeistungPS']		= $row->ps;
 		$fahrzeug['fahrzeugLaenge']			= $row->laenge;
@@ -50,14 +57,28 @@ class Fahrzeug_Model extends CI_Model {
 		$fahrzeug['fahrzeugHoehe']			= $row->hoehe;
 		$fahrzeug['fahrzeugLeermasse']		= $row->leermasse;
 		$fahrzeug['fahrzeugGesamtmasse']	= $row->gesamtmasse;
+        $fahrzeug['show_einsaetze']         = $row->show_einsaetze;
 				
 		return $fahrzeug;
 	}
+    
+    public function get_fahrzeug_stage_text($id)
+    {
+        $this->db->select('name, name_lang, short_text');
+        $this->db->where('fahrzeug.fahrzeugID', $id);
+        $this->db->join('fahrzeug_content', 'fahrzeug.fahrzeugID = fahrzeug_content.fahrzeugID');
+        $query = $this->db->get('fahrzeug');
+        $row = $query->row();
+        $text['name']       = $row->name;
+        $text['name_lang']  = $row->name_lang;
+        $text['short_text'] = $row->short_text;
+        return $text;
+    }
 	
 	public function get_fahrzeug_list($online = 'all')
 	{		
 		$this->db->order_by('online', 'desc');
-		$this->db->order_by('rufname', 'asc');
+		$this->db->order_by('orderID', 'asc');
         if($online != 'all') $this->db->where('online', $online);
 		$query = $this->db->get('fahrzeug');
 		$i = 0;
@@ -105,6 +126,59 @@ class Fahrzeug_Model extends CI_Model {
     {
         $query = $this->db->get('fahrzeug');
         return $query->num_rows();
+    }
+    
+    public function get_fahrzeug_images($id)
+    {
+        $this->db->where('small_pic', 0);
+        $this->db->where('fahrzeugID', $id);
+        $query = $this->db->get('fahrzeug_img');
+        $i = 0;
+        $images = array();
+        foreach($query->result() as $row)
+        {
+            $images[$i]['description']  = $row->description;
+            $images[$i]['text']         = $row->text;
+            $images[$i]['img_file']     = $row->img_file;
+            $i++;
+        }
+        return $images;
+    }
+    
+    public function get_fahrzeug_einsaetze($id)
+    {
+        $this->db->select('einsatz_content.lage as lage, einsatz.name as name, einsatz.einsatzID as id, einsatz.datum_beginn as datum');
+        $this->db->limit(5,0);
+        $this->db->order_by('datum_beginn', 'DESC');
+        $this->db->order_by('uhrzeit_beginn', 'DESC');
+        $this->db->where('einsatz_fahrzeug_mapping.fahrzeugID', $id);
+        $this->db->join('einsatz_content', 'einsatz_content.einsatzID = einsatz.einsatzID');
+        $this->db->join('einsatz_fahrzeug_mapping', 'einsatz_fahrzeug_mapping.einsatzID = einsatz.einsatzID');
+        $query = $this->db->get('einsatz'); 
+        $i = 0;
+        $einsaetze = array();
+        foreach($query->result() as $row)
+        {
+            $einsaetze[$i]['einsatzID'] = $row->id;
+            $einsaetze[$i]['name']      = $row->name;
+            $einsaetze[$i]['lage']      = $row->lage;
+            $einsaetze[$i]['datum']     = $row->datum;
+            $i++;
+        }
+        return $einsaetze;
+    }
+    
+    public function get_setcard_image($id)
+    {
+        $this->db->where('small_pic', 1);
+        $this->db->where('fahrzeugID', $id);
+        $query = $this->db->get('fahrzeug_img');
+        $row = $query->row();
+        
+        $img['thumb'] = $row->thumb_file;
+        $img['img']   = $row->img_file;
+        
+        return $img;
     }
 	
 	public function get_images($id)

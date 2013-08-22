@@ -69,6 +69,47 @@ class Pages extends CP_Controller {
         $this->site_footer();
     }
     
+    private function fahrzeug_overview()
+    {
+        $c_fahrzeug = load_controller('fahrzeug/fahrzeug');
+        
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header();
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();  
+            
+        $c_fahrzeug->fahrzeugliste_3col();
+        
+        $this->site_footer();
+    }
+    
+    public function fahrzeug_detail()
+    {
+        $id = $this->uri->segment($this->uri->total_segments());
+        $c_fahrzeug = load_controller('fahrzeug/fahrzeug');
+        $text = $c_fahrzeug->get_fahrzeug_stage_text($id);
+        foreach($this->page_content['stage_images']['images'] as &$value) {
+            $value['text'][0] = $text['name'];
+            $value['text'][1] = $text['name_lang'];
+            $value['text'][2] = $text['short_text'];
+        }
+        
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header();
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();   
+        
+        $c_fahrzeug->fahrzeug_detail_3col($id);
+        
+        $this->site_footer();        
+    }
+    
     private function einsatz_overview()
     {
         $c_einsatz = load_controller('einsatz/einsatz');

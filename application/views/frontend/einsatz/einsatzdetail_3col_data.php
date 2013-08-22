@@ -45,7 +45,7 @@
                 <ul>
 <? foreach ($fahrzeuge as $f) : ?>
                     <li>
-                        <a href="#">
+                        <a href="<?=base_url('fahrzeug/'.$f['fahrzeugID'])?>">
                         <figure><img src="<?=base_url(CONTENT_IMG_FAHRZEUG_UPLOAD_PATH.$f['img'])?>" width="100" height="50" /></figure>
                         <div class="info">
                             <h2><?=$f['name']?></h2>
@@ -62,7 +62,7 @@
 <? endif; ?>            
 <? if(count($einsatzkraefte) > 0) : ?>           
             <div class="SBListe">
-                <h1>Alamierte Einsatzkräfte</h1>
+                <h1>Alarmierte Einsatzkräfte</h1>
                 <ul>
 <? foreach ($einsatzkraefte as $e) : ?>               
                     <li><?=trim($e);?></li>

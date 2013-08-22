@@ -1,4 +1,0 @@
-AuthName "cron searchindex"
-AuthType Basic
-AuthUserFile /.htpasswd
-require valid-user
