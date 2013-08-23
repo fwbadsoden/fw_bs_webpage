@@ -2,7 +2,15 @@
 	AUTHOR: Osvaldas Valutis, www.osvaldas.info
 */
 
-
+/*
+$(document).ready(function() {
+	$('.touchhover').bind('touchstart touchend', function(e) {
+		//e.preventDefault();
+		alert("go");
+		$('#js_mainnav1').toggleClass('hover_effect');
+	});
+});
+*/
 
 ;(function( $, window, document, undefined )
 {
@@ -23,6 +31,7 @@
 				{
 					e.preventDefault();
 					curItem = item;
+					$(this).toggleClass('hover_effect');
 				}
 			});
 

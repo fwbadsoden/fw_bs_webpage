@@ -54,49 +54,60 @@ class Maintenance extends CP_Controller {
     }
 //    
 //	
-//	public function get_einsatz_bilder()
-//	{
-//		$this->load->library('image_lib');
-//		$this->load->helper('string');
-//		$this->load->helper('file');
-//		
-//		
-//		$this->db->where('processed !=', 'X');
-//		$this->db->limit(60);
-//		$query = $this->db->get('OLD_einsatz_img');
-//        echo $query->num_rows();
-//		foreach($query->result() as $row)
-//		{
-//			$contents = file_get_contents('http://www.feuerwehr-bs.de/data/einsaetze/'.$row->id.'gr.jpg');
-//			setlocale(LC_TIME, 'de_DE');
-//			$filename = $this->image_lib->generate_img_name('GR'.$row->id);
-//			$savename = $filename.".jpg";
-//			$savefile = fopen($savename, "w");
-//			#fwrite($savefile, $contents);
-//			#fclose($savefile);
-//			
-//			write_file('images/content/einsatz/'.$savename, $contents);
-//			$savename = ""; $savefile = ""; $contents = ""; 
-//			
-//			$contentskl = file_get_contents('http://www.feuerwehr-bs.de/data/einsaetze/'.$row->id.'.jpg');
-//			setlocale(LC_TIME, 'de_DE');
-//			$filenamekl = $this->image_lib->generate_img_name('KL'.$row->id);
-//			$savenamekl =$filenamekl.".jpg";
-//			$savefilekl = fopen($savenamekl, "w");
-//			write_file('images/content/einsatz/'.$savenamekl, $contentskl);
-//			$savenamekl = ""; $savefilekl = ""; $contentskl = ""; 
-//			$image = array(
-//			   'einsatzID' => $row->newid ,
-//			   'description' => $row->pic ,
-//			   'img_file' => $filename,
-//			   'thumb_file' => $filenamekl,
-//			   'fileType' => 'jpg'
-//			);
-//			$this->db->insert('einsatz_img', $image);
-//			$this->db->where('id', $row->id);
-//			$this->db->update('OLD_einsatz_img', array('processed' => 'X'));
-//		}
-//	}
+	public function get_einsatz_bilder()
+	{
+		$this->load->library('image_lib');
+		$this->load->helper('string');
+		$this->load->helper('file');
+		//$this->db->where('id', 209);
+		$this->db->where('processed !=', 'X');
+		$this->db->limit(200);
+        
+		$query = $this->db->get('OLD_einsatz_img');
+        echo $query->num_rows();
+		foreach($query->result() as $row)
+		{
+			$contents = file_get_contents('http://www.feuerwehr-bs.de/data/einsaetze/'.$row->id.'gr.jpg');
+			setlocale(LC_TIME, 'de_DE');
+			$filename = $this->image_lib->generate_img_name('GR'.$row->id);
+			$savename = $filename.".jpg";
+			$savefile = fopen($savename, "w");
+			#fwrite($savefile, $contents);
+			#fclose($savefile);
+			
+			write_file('images/content/einsatz/'.$savename, $contents);
+			$savename = ""; $savefile = ""; $contents = ""; 
+			
+			$contentskl = file_get_contents('http://www.feuerwehr-bs.de/data/einsaetze/'.$row->id.'.jpg');
+			setlocale(LC_TIME, 'de_DE');
+			$filenamekl = $this->image_lib->generate_img_name('KL'.$row->id);
+			$savenamekl =$filenamekl.".jpg";
+			$savefilekl = fopen($savenamekl, "w");
+			write_file('images/content/einsatz/'.$savenamekl, $contentskl);
+			$savenamekl = ""; $savefilekl = ""; $contentskl = ""; 
+			$image = array(
+			   'einsatzID' => $row->newid ,
+			   'description' => $row->pic ,
+			   'img_file' => $filename.".jpg",
+			   'thumb_file' => $filenamekl.".jpg",
+			   'fileType' => 'jpg'
+			);
+        //    echo $filename.'<br>'.$filenamekl;
+			$this->db->insert('einsatz_img', $image);
+			$this->db->where('id', $row->id);
+			$this->db->update('OLD_einsatz_img', array('processed' => 'X'));
+		}
+	}
+    
+    public function correct_image_id()
+    {
+        $query = $this->db->get('OLD_einsaetze');
+        foreach($query->result() as $row)
+        {
+            $this->db->where('einsatz', $row->id);
+            $this->db->update('OLD_einsatz_img', array('newid' => $row->newid));
+        }
+    }
 //    
 //    public function set_correct_date()
 //    {

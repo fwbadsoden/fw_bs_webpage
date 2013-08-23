@@ -22,7 +22,7 @@
                     <li id="slideshow_car_<?=$slide_count?>" <? if($slide_count == 1) : ?> class="active" <? endif; ?> >
                         <figure>
                         	<img src="<?=base_url(CONTENT_IMG_EINSATZ_UPLOAD_PATH.$b['img_file'])?>" alt="" />
-                        	<div class="zoom"><a href="<?=base_url(CONTENT_IMG_EINSATZ_UPLOAD_PATH.$b['img_file'])?>" class="lightbox"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        	<div class="zoom"><a href="<?=base_url(CONTENT_IMG_EINSATZ_UPLOAD_PATH.$b['img_file'])?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                         <p><?=$slide_count?> <?=$b['img_desc']?></p>
                     </li>

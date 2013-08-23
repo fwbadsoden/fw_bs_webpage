@@ -1,5 +1,55 @@
 (function($) {
 
+
+	var stageVars = {
+        currentSlide: 0,
+        currentImage: '',
+        totalSlides: 0,
+        pause: 0,
+		highlight: 0,
+		speed: 400
+    };
+
+
+	$(document).ready(function() {
+		
+		// Loading Stage Picture - Choose first Picture
+		$('#pictures_'+stageVars.currentSlide).fadeIn(stageVars.speed);
+		// Loading Stage Picture - Set active (red Dot)
+		$('#slide-link-'+stageVars.highlight).removeClass('changeStage').addClass('active');
+	
+			/*
+			 *  Simple image gallery. Uses default settings
+			 */
+
+		$('.fancybox').fancybox();
+
+		// Button helper. Disable animations, hide close button, change title type and content
+		$('.fancybox-gallery').fancybox({
+			openEffect  : 'none',
+			closeEffect : 'none',
+			prevEffect : 'fade',
+			nextEffect : 'fade',
+
+			helpers : {
+				title : {
+					type : 'inside'
+				},
+				buttons	: {}
+			},
+			afterLoad : function() {
+				this.title = 'Image ' + (this.index + 1) + ' of ' + this.group.length + (this.title ? ' - ' + this.title : '');
+			}
+		});
+		
+		$(".fancybox-metaLayer").fancybox({
+			padding: 0,
+			openEffect  : 'fade',
+			closeEffect : 'fade',
+		});
+
+	});
+
 //-------------------------------------------------------
 //  Diverses
 
@@ -66,26 +116,13 @@
 	});
 	
 
+// ------------------------------------------------------
+//  Notruf-Layer
 
+
+	
 //-------------------------------------------------------
 //  Stage: Animation
-
-	var stageVars = {
-        currentSlide: 0,
-        currentImage: '',
-        totalSlides: 0,
-        pause: 0,
-		highlight: 0,
-		speed: 400
-    };
-
-	// Erstes Bild laden
-	$(document).ready(function() {
-		// Choose first Picture
-		$('#pictures_'+stageVars.currentSlide).fadeIn(stageVars.speed);
-		// Set active (red Dot)
-		$('#slide-link-'+stageVars.highlight).removeClass('changeStage').addClass('active');
-	});
 
 	// Bild austauschen
 	$('.changeStage').click(function() {
