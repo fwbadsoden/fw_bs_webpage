@@ -7,7 +7,7 @@
                 <h1>Alle Fahrzeuge</h1>
                 <ul>
 <? foreach($fahrzeuge as $key => $fahrzeug) : ?>      
-<? if(count($fahrzeug) == ($key + 1)) : ?>
+<? if(count($fahrzeuge) == ($key + 1)) : ?>
                     <li class="last">
 <? else : ?>
                     <li>
@@ -19,7 +19,7 @@
                 <h1 class="subnavi_opener_mobile">Alle Fahrzeuge</h1>
                 <ul class="subnavi_content_mobile">
 <? foreach($fahrzeuge as $key => $fahrzeug) : ?>      
-<? if(count($fahrzeug) == ($key + 1)) : ?>
+<? if(count($fahrzeuge) == ($key + 1)) : ?>
                     <li class="last">
 <? else : ?>
                     <li>

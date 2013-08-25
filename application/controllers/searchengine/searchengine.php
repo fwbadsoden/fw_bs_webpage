@@ -9,7 +9,7 @@ class Searchengine extends CP_Controller
 		parent::__construct();
         $this->load->library('zend');
 		$this->zend->load('ZendSearch/Lucene/Lucene');
-        
+
         // Suchindex festlegen
         $this->search_index = APPPATH . 'cache/search_index/index';
 	}   
@@ -21,13 +21,13 @@ class Searchengine extends CP_Controller
     
     public function index_it() 
     {
-        if($this->input->get('index_id') == '8730eeacceaf4f0b071d1c3a5d659f5a1361e817a25a0090db4815501d')
-        {
+       // if($this->input->get('index_id') == '8730eeacceaf4f0b071d1c3a5d659f5a1361e817a25a0090db4815501d')
+       // {
     		// Index erstellen (bisheriger Index wird gelöscht)
     		$index = Zend_Search_Lucene::create($this->search_index);
      
     		// Content, der indexiert werden soll aus DB auslesen
-    		$query = $this->db->get('news');
+    		$query = $this->db->get('v_einsatz');
      
     		// Alle Content-Instanzen zum Index hinzufügen
     		foreach ($query->result() as $item) {
@@ -35,11 +35,12 @@ class Searchengine extends CP_Controller
     			$doc = new Zend_Search_Lucene_Document();
      
     			// dieser Titel wird in den Suchergebnissen angezeigt
-    			$doc->addField(Zend_Search_Lucene_Field::Text('title', $item->title));
+    			$doc->addField(Zend_Search_Lucene_Field::Text('title', $item->name));
     			// mit diesem Pfad werden die Suchergebnisse verknüpft
-    			$doc->addField(Zend_Search_Lucene_Field::Text('path', '/brand/'.$item->parent.'/' . $item->slug.'/'));
+    			$doc->addField(Zend_Search_Lucene_Field::Text('path', base_url('einsatz/'.$item->einsatzID)));
     			// dieser Inhalt wird neben dem Titel indexiert
-    			$doc->addField(Zend_Search_Lucene_Field::UnStored('content', $item->content));
+    			$doc->addField(Zend_Search_Lucene_Field::UnStored('lage', $item->lage));
+    			$doc->addField(Zend_Search_Lucene_Field::UnStored('bericht', $item->bericht));
      
     			// zum Index hinzufügen
     			$index->addDocument($doc);
@@ -48,7 +49,7 @@ class Searchengine extends CP_Controller
     		}
      
     		$index->optimize();
-        }
+        //}
 	}
  
 	public function result() 
