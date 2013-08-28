@@ -30,13 +30,17 @@ class Fahrzeug extends CP_Controller {
     public function fahrzeugliste_3col()
     {
         $fahrzeuge = $this->m_fahrzeug->get_fahrzeug_list(1);
+        $i = 1;
         
         $this->load->view('frontend/fahrzeug/fahrzeugliste_3col_header');
         foreach($fahrzeuge as $f)
         {
+            if($i > 3) $i = 1;
             $fahrzeug['fahrzeug'] = $f;
+            $fahrzeug['listcount'] = $i;
             $fahrzeug['image'] = $this->m_fahrzeug->get_setcard_image($f['fahrzeugID']);
             $this->load->view('frontend/fahrzeug/fahrzeugliste_3col_data', $fahrzeug);
+            $i++;
         }
         $this->load->view('frontend/fahrzeug/fahrzeugliste_3col_footer');
     }

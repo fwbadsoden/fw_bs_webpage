@@ -62,6 +62,7 @@
                 <ul>
                     <li class="first"><a href="<?=base_url('admin')?>" target='_blank'>Login</a></li>
                     <li><a href="<?=base_url('kontakt')?>" target="_top">Kontakt</a></li>
+                    <li><a href="<?=base_url('mitmachen')?>" target="_top">Mitmachen</a></li>
                     <li><a class="fancybox-metaLayer" href="#notruflayer_js" >Notfall</a></li>
                 </ul>
             </div>
@@ -92,12 +93,12 @@
                     	</ul>  -->
                    </div>  
                 </li>  
-                <li><a href="<?=base_url('menschen')?>">Menschen</a>  
+                <li><a href="<?=base_url('mannschaft')?>">Menschen</a>  
                     <div class="dropdown">  
                     	<ul>
-                        	<li class="headline"><a href="<?=base_url('menschen')?>">Mannschaft</a></li>
-                        	<li><a href="<?=base_url('menschen/fuehrung')?>">Führung</a></li>
-                            <li><a href="<?=base_url('menschen/mannschaft')?>">Mannschaft</a></li>
+                        	<li class="headline"><a href="<?=base_url('mannschaft')?>">Mannschaft</a></li>
+                        	<li><a href="<?=base_url('mannschaft#anker_fuehrung')?>">Führung</a></li>
+                            <li><a href="<?=base_url('mannschaft#anker_mannschaft')?>">Mannschaft</a></li>
                     	</ul>  
                     	<ul>
                         	<li class="headline"><a href="<?=base_url('wache')?>">Die Wache</a></li>
@@ -111,7 +112,7 @@
                             <li><a href="<?=base_url('galerie/feiern')?>">Feiern</a></li>
                             <li><a href="<?=base_url('galerie/fotoshooting')?>">Fotoshooting</a></li>
                             <li><a href="<?=base_url('galerie/wache')?>">Unsere Wache</a></li>
-                    	</ul>  
+                    	</ul> 
                     	<ul class="special">
                             <li class="headline"><a href="<?=base_url('leistungsgruppe')?>">Leistungsgruppe</a></li>
                             <li class="headline"><a href="<?=base_url('altersundehrenabteilung')?>">Alters- und Ehrenabteilung</a></li>
@@ -130,7 +131,7 @@
                             </a></li>
 <? endforeach; ?>
                     	</ul>  
-                    	<ul>
+                    <!--	<ul>
                         	<li class="headline"><a href="<?=base_url('ausruestung')?>">Ausr&uuml;stung</a></li>
                         	<li><a href="<?=base_url('')?>">Rettungssatz</a></li>
                             <li><a href="<?=base_url('')?>">Halligan-Tool</a></li>
@@ -140,15 +141,15 @@
                             <li><a href="<?=base_url('')?>">Atemschutz</a></li>
                             <li><a href="<?=base_url('')?>">Stromerzeuger</a></li>
                             <li><a href="<?=base_url('')?>">Mobiler Rauchverschluss</a></li>
-                    	</ul>  
-                    	<ul>
+                    	</ul>  -->
+                    <!--	<ul>
                         	<li class="headline"><a href="<?=base_url('kleidung')?>">Kleidung</a></li>
                         	<li><a href="<?=base_url('')?>">Pers&ouml;nliche Ausr&uuml;stung</a></li>
                             <li><a href="<?=base_url('')?>">Funktionswesten</a></li>
                             <li><a href="<?=base_url('')?>">Ausgehuniform</a></li>
                             <li><a href="<?=base_url('')?>">Spezialausr&uuml;stung</a></li>
-                    	</ul>  
-                    	<ul>
+                    	</ul>  -->
+                    <!--	<ul>
                         	<li class="headline"><a href="<?=base_url('ausbildung')?>">Ausbildung</a></li>
                         	<li><a href="<?=base_url('')?>">Erstausbildung</a></li>
                             <li><a href="<?=base_url('')?>">Truppmannausbildung</a></li>
@@ -156,29 +157,29 @@
                             <li><a href="<?=base_url('')?>">Technische Hilfeleistung</a></li>
                             <li><a href="<?=base_url('')?>">Maschinist</a></li>
                             <li><a href="<?=base_url('')?>">Gefahrgut</a></li>
-                    	</ul>  
+                    	</ul>  -->
                     </div>  
                 </li>  
-                <li><a href="<?=base_url('infos')?>">Infos</a>  
+                <li><a href="<?=base_url('informationen')?>">Infos</a>  
                     <div class="dropdown">  
                     	<ul>
-                        	<li class="headline"><a href="<?=base_url('infos/brandschutz')?>">Brandschutztipps</a></li>
-                        	<li><a href="<?=base_url('infos/erstehilfe')?>">Erste Hilfe</a></li>
-                            <li><a href="<?=base_url('infos/notruf')?>">Notruf Absetzen</a></li>
-                            <li><a href="<?=base_url('infos/rauchmelder')?>">Rauchmelder</a></li>
-                            <li><a href="<?=base_url('infos/unfaelle')?>">Verhalten bei Unf&auml;llen</a></li>
-                            <li><a href="<?=base_url('infos/feuer')?>">Verhalten bei Brandf&auml;llen</a></li>
-                            <li><a href="<?=base_url('infos/feuerloescher')?>">Feuerl&ouml;scher</a></li>
-                            <li><a href="<?=base_url('infos/kuechenbrand')?>">K&uuml;chenbrand</a></li>
+                        	<li class="headline"><a href="<?=base_url('informationen/brandschutz')?>">Brandschutztipps</a></li>
+                        	<li><a href="<?=base_url('informationen/erstehilfe')?>">Erste Hilfe</a></li>
+                            <li><a href="<?=base_url('informationen/notruf')?>">Notruf Absetzen</a></li>
+                            <li><a href="<?=base_url('informationen/rauchmelder')?>">Rauchmelder</a></li>
+                            <li><a href="<?=base_url('informationen/unfaelle')?>">Verhalten bei Unf&auml;llen</a></li>
+                            <li><a href="<?=base_url('informationen/feuer')?>">Verhalten bei Brandf&auml;llen</a></li>
+                            <li><a href="<?=base_url('informationen/feuerloescher')?>">Feuerl&ouml;scher</a></li>
+                            <li><a href="<?=base_url('informationen/kuechenbrand')?>">K&uuml;chenbrand</a></li>
                     	</ul>  
                     	<ul>
-                        	<li class="headline"><a href="<?=base_url('buergerinfos')?>">B&uuml;rgerinfos</a></li>
-                        	<li><a href="<?=base_url('buergerinfos/blaulicht')?>">Blaulicht und Martinshorn</a></li>
-                            <li><a href="<?=base_url('buergerinfos/sonderrechte')?>">Sonderrechte</a></li>
-                            <li><a href="<?=base_url('buergerinfos/insekten')?>">Insekten</a></li>
-                            <li><a href="<?=base_url('buergerinfos/unwetter')?>">Hinweise zu Unwettern</a></li>
-                            <li><a href="<?=base_url('buergerinfos/brand')?>">Nach dem Brand</a></li>
-                            <li><a href="<?=base_url('buergerinfos/hausnummern')?>">Sichtbare Hausnummern</a></li>
+                        	<li class="headline"><a href="<?=base_url('buergerinformationen')?>">B&uuml;rgerinfos</a></li>
+                        	<li><a href="<?=base_url('buergerinformationen/blaulicht')?>">Blaulicht und Martinshorn</a></li>
+                            <li><a href="<?=base_url('buergerinformationen/sonderrechte')?>">Sonderrechte</a></li>
+                            <li><a href="<?=base_url('buergerinformationen/insekten')?>">Insekten</a></li>
+                            <li><a href="<?=base_url('buergerinformationen/unwetter')?>">Hinweise zu Unwettern</a></li>
+                            <li><a href="<?=base_url('buergerinformationen/brand')?>">Nach dem Brand</a></li>
+                            <li><a href="<?=base_url('buergerinformationen/hausnummern')?>">Sichtbare Hausnummern</a></li>
                     	</ul>  
                     	<ul>
                         	<li class="headline"><a href="<?=base_url('artikel')?>">Artikel</a></li>
@@ -225,9 +226,9 @@
       <li class="subnavi">    
           <ul>  
             <li><a href="<?=base_url('fahrzeuge')?>" class="first">Fahrzeuge</a></li>
-            <li><a href="<?=base_url('geraete')?>">Geräte</a></li>
-            <li><a href="<?=base_url('kleidung')?>">Kleidung</a></li>
-            <li><a href="<?=base_url('ausbildung')?>">Ausbildung</a></li>
+      <!--      <li><a href="<?=base_url('geraete')?>">Geräte</a></li> --> 
+      <!--      <li><a href="<?=base_url('kleidung')?>">Kleidung</a></li> -->
+      <!--      <li><a href="<?=base_url('ausbildung')?>">Ausbildung</a></li> -->
           </ul>
       </li>
       <li><a href="<?=base_url('infos')?>">Infos</a></li>
@@ -236,7 +237,8 @@
       	<ul>
           <li><a href="<?=base_url('admin')?>" target="_blank">Login</a></li>
           <li><a href="<?=base_url('kontakt')?>">Kontakt</a></li>
-          <li><a href="<?=base_url('notfall')?>">Notfall</a></li>
+          <li><a href="<?=base_url('mitmachen')?>" target="_top">Mitmachen</a></li>
+          <li><a class="fancybox-metaLayer" href="#notruflayerjs">Notfall</a></li>
         </ul>
       </li>
       <li class="search">

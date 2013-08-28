@@ -214,27 +214,32 @@ if ( ! function_exists('cp_get_ger_datetime'))
  * @access	public
  * @return	datetime
  */
- 
-if ( ! function_exists('cp_get_ger_date'))
+function cp_get_ger_date($date)
 {
-	function cp_get_ger_date($date)
-	{
-		if($date != null)
-		{
-			$a = explode("-", $date);
-			return "".$a[2].".".$a[1].".".$a[0]."";
-		} else return "";
-	}
+    if($date != null)
+    {
+        $a = explode("-", $date);
+        return "".$a[2].".".$a[1].".".$a[0]."";
+    } else return "";
 }
 
-if ( ! function_exists('cp_get_year'))
+function cp_get_year($date)
 {
-	function cp_get_year($date)
-	{
-		if(strpos($date, '-') == 5)
-			return substr($date, 0, 4);
-		else
-			return substr($date, 6, 4);
-	}
+    if(strpos($date, '-') == 5)
+		return substr($date, 0, 4);
+	else
+		return substr($date, 6, 4);
 }
+
+function cp_get_alter($datum)
+{   
+    list($y, $m, $d) = explode('-', $datum);
+    $alter = date('Y') - $y;
+    $monat = date('m');
+    if ($monat < $m or ($monat == $m and $d > date('d'))) {
+        $alter--;
+    }
+    return $alter;
+}
+
 ?>

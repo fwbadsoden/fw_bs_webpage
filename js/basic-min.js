@@ -7,9 +7,21 @@
         totalSlides: 0,
         pause: 0,
 		highlight: 0,
-		speed: 400
+		timer: 0,
+		animation: '',
+		speed: 600
     };
-
+	var settings = {
+		pauseTime: 7000,
+		autoChange: 1
+	};
+	// Anzahl der Bilder ermitteln
+	var kids = $('#stage').children();
+	kids.each(function() {
+		var child = $(this);
+		var link = '';
+		stageVars.totalSlides++;
+	});		
 
 	$(document).ready(function() {
 		
@@ -17,13 +29,13 @@
 		$('#pictures_'+stageVars.currentSlide).fadeIn(stageVars.speed);
 		// Loading Stage Picture - Set active (red Dot)
 		$('#slide-link-'+stageVars.highlight).removeClass('changeStage').addClass('active');
-	
-			/*
-			 *  Simple image gallery. Uses default settings
-			 */
+		if(stageVars.totalSlides>1) {	
+			autoSlides();
+		}
 
+		// FancyBox Initialisierung
 		$('.fancybox').fancybox();
-
+		
 		// Button helper. Disable animations, hide close button, change title type and content
 		$('.fancybox-gallery').fancybox({
 			openEffect  : 'none',
@@ -48,6 +60,7 @@
 			closeEffect : 'fade',
 		});
 
+
 	});
 
 //-------------------------------------------------------
@@ -55,32 +68,37 @@
 
 	
 	// Floating Menue Einsatzliste
-	/*
+	
 	$(window).scroll(function (event) {
+		
+		var y = $(this).scrollTop();
+		var top = 530;
+
 		if($(window).width()>525) { 
-			var y = $(this).scrollTop();
-			var top = 590;
 			if (y >= top) {
 				$('#submenue').addClass('fixed');
 				$('.filter').css('margin', '0 0 0 0');
-				$('.factSheet_einsatzListe').css('margin', '65px 0 20px 0');
+				$('.jsplatzhalter').css('display', 'block');
 			} else {
 				$('#submenue').removeClass('fixed');
 				$('.filter').css('margin', '0 0 20px 0');
-				$('.factSheet_einsatzListe').css('margin', '0 0 20px 0');
+				$('.jsplatzhalter').css('display', 'none');
 			}
+		} else {
+			$('#submenue').removeClass('fixed');
+			$('.jsplatzhalter').css('display', 'none');
+			$('.filter').css('margin', '0 0 20px 0');
 		}
 	});
-	*/
+	
 	// Animiertes Scrollen
-	$('.backToTop').bind("click", function(event) {
+	$('a[rel="nicescrolling"]').bind("click", function(event) {
 		event.preventDefault();
 		var ziel = $(this).attr("href");
 		$('html,body').animate({
 			scrollTop: $(ziel).offset().top
 		}, 300 , function (){location.hash = ziel;});
 	});
-
 
 
 //-------------------------------------------------------
@@ -114,35 +132,63 @@
 			height: mobileNavVars.height
 		  }, 300 );
 	});
-	
-
-// ------------------------------------------------------
-//  Notruf-Layer
 
 
-	
 //-------------------------------------------------------
 //  Stage: Animation
 
 	// Bild austauschen
 	$('.changeStage').click(function() {
 		var target = $(this).attr('href').substr(1);
+		//clearTimeout(stageVars.timer);
+		stageVars.pause = 1;
 		
 		$('#pictures_'+stageVars.currentSlide).fadeOut(stageVars.speed, function() {
 			$('#pictures_'+target).fadeIn(stageVars.speed);
 			
 			// Set active (red Dot)
-			$('#slide-link-'+target).removeClass('changeStage').addClass('active');
-			$('#slide-link-'+stageVars.highlight).removeClass('active').addClass('changeStage');
-			
+			highlight(stageVars.currentSlide, target);
+
 			stageVars.pause = 1;
 			stageVars.highlight = target;
 			stageVars.currentSlide = target;
 		});
 		return false;
 	});
+	
+	function nextImage() {
+		var last = stageVars.currentSlide;
+		$('#pictures_'+stageVars.currentSlide).fadeOut(stageVars.speed, function() {
+			if(stageVars.totalSlides>(stageVars.currentSlide+1)) {	
+				stageVars.currentSlide++;
+			} else {
+				stageVars.currentSlide = 0;	
+			}
+			$('#pictures_'+stageVars.currentSlide).fadeIn(stageVars.speed);
+			highlight(last, stageVars.currentSlide);
+			autoSlides();	
+		});
+	}
+	
+	function highlight(last, next) {
+		for(i=0; i<stageVars.totalSlides; i++) {
+			if(next!=i) {
+				$('#slide-link-'+last).removeClass('active').addClass('changeStage');
+			} else {
+				$('#slide-link-'+next).removeClass('changeStage').addClass('active');
+			}
+		}
+	}
+	
+	function autoSlides() {
+		
+		if(settings.autoChange==1 && stageVars.pause == 0 && kids.length > 1){
+			timer = setTimeout (function() { nextImage(); }, settings.pauseTime);
+		}	
+	}
 
 	
+
 //-------------------------------------------------------
 //  TabBox
 

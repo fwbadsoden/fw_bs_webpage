@@ -340,7 +340,6 @@ class Einsatz_Model extends CI_Model {
             'lage'              => $this->input->post('einsatzlage'),
 			'bericht'			=> $this->input->post('einsatzbericht'),
             'ort'               => $this->input->post('einsatzort'),
-			'geschehen'			=> $this->input->post('einsatzgeschehen'),
 			'weitere_kraefte'	=> $this->input->post('weitereeinsatzkraefte'),
 			'anzahl_kraefte'	=> $this->input->post('anzahl'),
             'typeID'            => $this->input->post('einsatztyp'),
@@ -352,9 +351,10 @@ class Einsatz_Model extends CI_Model {
 		
 		$this->db->where('einsatzID', $id);
 		$this->db->update('einsatz', $einsatz);
+        
 		$this->db->where('einsatzID', $id);
 		$this->db->update('einsatz_content', $einsatzContent);
-        echo $this->db->last_query();
+        
 		$this->db->where('einsatzID', $id);
 		$this->db->delete('einsatz_fahrzeug_mapping', array('einsatzID' => $id));
 		

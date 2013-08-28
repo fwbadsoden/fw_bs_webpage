@@ -58,19 +58,20 @@ class News_model extends CI_Model {
 	{		
 		$arr_news_list = array();
 		
-		$this->db->order_by('datetime', 'desc');
+		$this->db->order_by('valid_from', 'desc');
 		$query = $this->db->get('news', $limit, $offset);
 		$i = 0;
         
         $CI =& get_instance();
-        $CI->load->model('user/user_model', 'user');
-        $this->user->init('backend');
+        $CI->load->library('CP_auth');
         
 		foreach($query->result() as $row)
-		{	  			
+		{	  		
+            $user = $this->cp_auth->get_user_by_id_query($row->created_by)->result();
+ 
 			$arr_news_list[$i]['newsID'] 		= $row->newsID;
 			$arr_news_list[$i]['categoryID'] 	= $row->categoryID;
-			$arr_news_list[$i]['created_by']  	= $this->user->get_user_fullname($row->created_by);
+			$arr_news_list[$i]['created_by']  	= $user[0]->first_name.' '.$user[0]->last_name;
 			$arr_news_list[$i]['title'] 		= $row->title;
 			$arr_news_list[$i]['valid_from'] 	= $row->valid_from;
 			$arr_news_list[$i]['valid_to'] 		= $row->valid_to;			

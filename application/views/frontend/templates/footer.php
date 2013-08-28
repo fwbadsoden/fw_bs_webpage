@@ -9,45 +9,69 @@
 <footer id="endOfPage">
 
 	<div id="shortlinks">
-    	<h1><?=$title?></h1>
+    	<h1>Freiwillige Feuerwehr Bad Soden am Taunus</h1>
         <ul>
-<?  foreach($menue_shortlink as $key => $item) { 
-        if($key == 0) echo '<li class="first">'; else echo '<li>';    
-?>
-        <a href="<?=base_url($item['link'])?>" target="<?=$item['target']?>"><?=$item['name']?></a></li>
-<? } ?>
+        	<li class="first"><a href="<?=base_url('kontakt')?>">Kontakt</a></li>
+        	<li><a href="<?=base_url('mitmachen')?>">Mitmachen</a></li>
+        	<li><a href="<?=base_url('links')?>">Links</a></li>
+        	<li><a href="<?=base_url('impressum')?>">Impressum</a></li>
         </ul>
         <hr class="clear" />
     </div>
     <div id="sitemap">
         
         <div class="completeSitemap">    
-<? 
-    foreach($menue as $item) { ?>        
             <ul>
-                <li class="headline"><a href="<?=$item['link']?>" target="<?=$item['target']?>"><?=$item['name']?></a></li>
-<?          if(isset($item['submenue'])) {
-                foreach($item['submenue'] as $subitem) {
-?>
-                <li><a href="<?=$subitem['link']?>" target="<?=$subitem['target']?>"><?=$subitem['name']?></a></li>
-<?
-                }
-            }
-?>
+                <li class="headline"><a href="<?=base_url('news')?>">News</a></li>
+                <li><a href="<?=base_url('einsaetze')?>">Einsätze</a></li>
+                <li><a href="<?=base_url('termine')?>">Termine</a></li>
+                <li><a href="<?=base_url('presse')?>">Presse</a></li>
             </ul>
-<? } ?>
+            <ul>
+                <li class="headline"><a href="<?=base_url('mannschaft')?>">Menschen</a></li>
+                <li><a href="<?=base_url('mannschaft')?>">Mannschaft</a></li>
+                <li><a href="<?=base_url('leistungsgruppe')?>">Leistungsgruppe</a></li>
+                <li><a href="<?=base_url('galerie')?>">Galerie</a></li>
+                <li><a href="<?=base_url('altersundehrenabteilung')?>">Alters- und Ehrenabteilung</a></li>
+                <li><a href="<?=base_url('verein')?>">Verein und Geschichte</a></li>
+            </ul>
+            <ul>
+                <li class="headline"><a href="<?=base_url('fahrzeuge')?>">Technik</a></li>
+                <li><a href="<?=base_url('fahrzeuge')?>">Fahrzeuge</a></li>
+               <!-- <li><a href="#">Geräte</a></li>
+                <li><a href="#">Kleidung</a></li>
+                <li><a href="#">Ausbildung</a></li>-->
+            </ul>
+            <ul>
+                <li class="headline"><a href="#">Information</a></li>
+                <li><a href="#">Tipps</a></li>
+                <li><a href="#">Einsatzgebiet</a></li>
+                <li><a href="#">Gesetze und Richtlinien</a></li>
+                <li><a href="#">Downloads</a></li>
+            </ul>
+            <ul>
+                <li class="headline"><a href="<?=base_url('jugend')?>">Jugend</a></li>
+                <li><a href="#">Mannschaft</a></li>
+                <li><a href="#">Aktivitäten</a></li>
+                <li><a href="#">Ausbildung</a></li>
+                <li><a href="#">Leistungsgruppe</a></li>
+                <li><a href="#">Galerie</a></li>
+            </ul>
             <hr class="clear" />
         </div>
 
-        <div class="smallSitemap">  
-<?  foreach($menue as $item) { ?> 
-            <a href="<?=$item['link']?>" target="<?=$item['target']?>"><?=$item['name']?></a>
-<? } ?>
+        <div class="smallSitemap">    
+            <a href="<?=base_url('news')?>">News</a>
+            <a href="<?=base_url('mannschaft')?>">Menschen</a>
+            <a href="<?=base_url('fahrzeuge')?>">Technik</a>
+            <a href="<?=base_url('informationen')?>">Information</a>
+            <a href="<?=base_url('jugend')?>">Jugend</a>
+            <a href="<?=base_url('mitmachen')?>">Mitmachen</a>
         </div>
         
     </div>
     <div id="copyright">
-    	<p><?=FRONTEND_FOOTER?></p>
+    	<p>&copy;2013 Freiwillige Feuerwehr Bad Soden am Taunus 1868 e.V. / Hunsrückstraße 5-7 / 65812 Bad Soden am Taunus</p>
     </div>
 
 </footer>
@@ -77,8 +101,8 @@
 	</div>
 	<hr class="clear" />
 		<div class="greybox">
-			<p class="number">Giftnotruf <span>+49 6131-19240</span></p>
-			<p class="button"><a href="#" class="button_red">Alle Rufnummern <span class="zusatz">auf einen Blick</span> &raquo;</a></p>
+			<p class="number">Zentrale Leistelle <span>+49 6192-5095</span></p>
+			<!--<p class="button"><a href="#" class="button_red">Alle Rufnummern <span class="zusatz">auf einen Blick</span> &raquo;</a></p>-->
 			<hr class="clear" />
 		</div>
 	</div>

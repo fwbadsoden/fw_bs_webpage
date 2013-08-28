@@ -348,7 +348,7 @@ class Pages_model extends CI_Model {
     
     public function get_stage_images($id)
     {
-        $this->db->select('page_stage_images.text as text, page_stage_images.class as class, page_stage_images.orderID as orderID, file.fullpath, file.title');
+        $this->db->select('page_stage_images.text as text, page_stage_images.class as class, page_stage_images.link as link, page_stage_images.orderID as orderID, file.fullpath, file.title');
         $this->db->order_by('page_stage_images.orderID', 'asc');
         $this->db->join('page_stage_images', 'page_stage_images.stageID = page_stage.stageID');
         $this->db->join('file', 'file.fileID = page_stage_images.fileID');
@@ -361,14 +361,15 @@ class Pages_model extends CI_Model {
         $stage_images['count_images'] = $query->num_rows();
         foreach($query->result() as $row)
         {
-            $stage_images['images'][$i]['text']  = explode(PAGES_STAGE_TEXT_SEPARATOR, $row->text);
-            $stage_images['images'][$i]['title'] = $row->title;
-            $stage_images['images'][$i]['file']  = $row->fullpath;
-            $stage_images['images'][$i]['class']  = $row->class;
-            $stage_images['images'][$i]['orderID']  = $row->orderID;
+            $stage_images['images'][$i]['text']    = explode(PAGES_STAGE_TEXT_SEPARATOR, $row->text);
+            $stage_images['images'][$i]['title']   = $row->title;
+            $stage_images['images'][$i]['file']    = $row->fullpath;
+            $stage_images['images'][$i]['class']   = $row->class;
+            $stage_images['images'][$i]['link']    = $row->link;
+            $stage_images['images'][$i]['orderID'] = $row->orderID;
             $i++;
         }
-        
+        if(count($stage_images) > 1) shuffle($stage_images['images']);
         return $stage_images;
     }
     

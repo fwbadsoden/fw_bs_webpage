@@ -9,6 +9,7 @@
 <? if(isset($item['text'][0])) : ?> <h1 class="quote"><?=$item['text'][0]?></h1> <? endif; ?>
 <? if(isset($item['text'][1])) : ?> <h2 class="quotePerson"><?=$item['text'][1]?></h2> <? endif; ?>
 <? if(isset($item['text'][2])) : ?> <p><?=$item['text'][2]?></p> <? endif; ?>
+<? if($item['link'] != '')     : ?> <h2 class="button"><a href="<?=base_url($item['link'])?>" class="button_white">weiter lesen</a></h2><? endif; ?>
             </div>
         </div>
     </div>

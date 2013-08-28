@@ -31,6 +31,46 @@ class Maintenance extends CP_Controller {
         $result = $this->dbutil->optimize_database();
     }
 
+    public function recalc($year)
+    {
+        $this->db->order_by('datum_beginn', 'asc');
+		$query = $this->db->get_where('einsatz', array('substr(datum_beginn,1,4)' => $year));
+		$lfdNr = 1;
+		$arr_einsatz = array();
+		$i = 0;
+		
+		foreach($query->result() as $row)
+		{
+			$arr_einsatz[$i]['einsatzID'] = $row->einsatzID;
+			$arr_einsatz[$i]['sort'] = $row->datum_beginn.' '.$row->uhrzeit_beginn;
+			$i++;			
+		}
+		
+        usort($arr_einsatz, function($a, $b) 	{ $ad = new DateTime($a['sort']);
+												  $bd = new DateTime($b['sort']);
+
+												  if ($ad == $bd) {
+												    return 0;
+												  }
+
+												  return $ad > $bd ? 1 : -1;
+												});
+        
+//        $function = create_function('$a, $b', '$ad = new DateTime($a["sort"])
+//                                               $bd = new DateTime($b["sort"])
+//                                               if ($ad == $bd) {
+//												    return 0;
+//						                       }
+//                                               return $ad > $bd ? 1 : -1');
+//		usort($arr_einsatz, $function);
+		
+		foreach($arr_einsatz as $einsatz)
+		{
+			$this->db->where('einsatzID', $einsatz['einsatzID']);
+			$this->db->update('einsatz', array('lfd_nr' => $lfdNr));
+			$lfdNr++;	
+		}
+    }
     
 //    // Anlegen von Usern ohne die Adminoberfläche
 //    public function create_user()
@@ -43,71 +83,71 @@ class Maintenance extends CP_Controller {
 //    }
 //	
 //
-    public function set_einsatz_ort()
-    {
-        $query = $this->db->get('OLD_einsaetze');
-        foreach($query->result() as $row)
-        {
-            $this->db->where('einsatzID', $row->newid);
-            $this->db->update('einsatz_content', array('ort' => $row->ort));
-        }
-    }
+//    public function set_einsatz_ort()
+//    {
+//        $query = $this->db->get('OLD_einsaetze');
+//        foreach($query->result() as $row)
+//        {
+//            $this->db->where('einsatzID', $row->newid);
+//            $this->db->update('einsatz_content', array('ort' => $row->ort));
+//        }
+//    }
+////    
+////	
+//	public function get_einsatz_bilder()
+//	{
+//		$this->load->library('image_lib');
+//		$this->load->helper('string');
+//		$this->load->helper('file');
+//		//$this->db->where('id', 209);
+//		$this->db->where('processed !=', 'X');
+//		$this->db->limit(200);
+//        
+//		$query = $this->db->get('OLD_einsatz_img');
+//        echo $query->num_rows();
+//		foreach($query->result() as $row)
+//		{
+//			$contents = file_get_contents('http://www.feuerwehr-bs.de/data/einsaetze/'.$row->id.'gr.jpg');
+//			setlocale(LC_TIME, 'de_DE');
+//			$filename = $this->image_lib->generate_img_name('GR'.$row->id);
+//			$savename = $filename.".jpg";
+//			$savefile = fopen($savename, "w");
+//			#fwrite($savefile, $contents);
+//			#fclose($savefile);
+//			
+//			write_file('images/content/einsatz/'.$savename, $contents);
+//			$savename = ""; $savefile = ""; $contents = ""; 
+//			
+//			$contentskl = file_get_contents('http://www.feuerwehr-bs.de/data/einsaetze/'.$row->id.'.jpg');
+//			setlocale(LC_TIME, 'de_DE');
+//			$filenamekl = $this->image_lib->generate_img_name('KL'.$row->id);
+//			$savenamekl =$filenamekl.".jpg";
+//			$savefilekl = fopen($savenamekl, "w");
+//			write_file('images/content/einsatz/'.$savenamekl, $contentskl);
+//			$savenamekl = ""; $savefilekl = ""; $contentskl = ""; 
+//			$image = array(
+//			   'einsatzID' => $row->newid ,
+//			   'description' => $row->pic ,
+//			   'img_file' => $filename.".jpg",
+//			   'thumb_file' => $filenamekl.".jpg",
+//			   'fileType' => 'jpg'
+//			);
+//        //    echo $filename.'<br>'.$filenamekl;
+//			$this->db->insert('einsatz_img', $image);
+//			$this->db->where('id', $row->id);
+//			$this->db->update('OLD_einsatz_img', array('processed' => 'X'));
+//		}
+//	}
 //    
-//	
-	public function get_einsatz_bilder()
-	{
-		$this->load->library('image_lib');
-		$this->load->helper('string');
-		$this->load->helper('file');
-		//$this->db->where('id', 209);
-		$this->db->where('processed !=', 'X');
-		$this->db->limit(200);
-        
-		$query = $this->db->get('OLD_einsatz_img');
-        echo $query->num_rows();
-		foreach($query->result() as $row)
-		{
-			$contents = file_get_contents('http://www.feuerwehr-bs.de/data/einsaetze/'.$row->id.'gr.jpg');
-			setlocale(LC_TIME, 'de_DE');
-			$filename = $this->image_lib->generate_img_name('GR'.$row->id);
-			$savename = $filename.".jpg";
-			$savefile = fopen($savename, "w");
-			#fwrite($savefile, $contents);
-			#fclose($savefile);
-			
-			write_file('images/content/einsatz/'.$savename, $contents);
-			$savename = ""; $savefile = ""; $contents = ""; 
-			
-			$contentskl = file_get_contents('http://www.feuerwehr-bs.de/data/einsaetze/'.$row->id.'.jpg');
-			setlocale(LC_TIME, 'de_DE');
-			$filenamekl = $this->image_lib->generate_img_name('KL'.$row->id);
-			$savenamekl =$filenamekl.".jpg";
-			$savefilekl = fopen($savenamekl, "w");
-			write_file('images/content/einsatz/'.$savenamekl, $contentskl);
-			$savenamekl = ""; $savefilekl = ""; $contentskl = ""; 
-			$image = array(
-			   'einsatzID' => $row->newid ,
-			   'description' => $row->pic ,
-			   'img_file' => $filename.".jpg",
-			   'thumb_file' => $filenamekl.".jpg",
-			   'fileType' => 'jpg'
-			);
-        //    echo $filename.'<br>'.$filenamekl;
-			$this->db->insert('einsatz_img', $image);
-			$this->db->where('id', $row->id);
-			$this->db->update('OLD_einsatz_img', array('processed' => 'X'));
-		}
-	}
-    
-    public function correct_image_id()
-    {
-        $query = $this->db->get('OLD_einsaetze');
-        foreach($query->result() as $row)
-        {
-            $this->db->where('einsatz', $row->id);
-            $this->db->update('OLD_einsatz_img', array('newid' => $row->newid));
-        }
-    }
+//    public function correct_image_id()
+//    {
+//        $query = $this->db->get('OLD_einsaetze');
+//        foreach($query->result() as $row)
+//        {
+//            $this->db->where('einsatz', $row->id);
+//            $this->db->update('OLD_einsatz_img', array('newid' => $row->newid));
+//        }
+//    }
 //    
 //    public function set_correct_date()
 //    {

@@ -24,6 +24,7 @@ class Pages extends CP_Controller {
 		$this->load->model('pages/pages_model', 'm_pages');
 		$this->load->model('menue/menue_model', 'm_menue');
         $this->load->model('fahrzeug/fahrzeug_model', 'm_fahrzeug');   
+        $this->load->model('mannschaft/mannschaft_model', 'm_mannschaft');
         $this->load->library('weather');
 		$this->load->helper('load_controller');
 	}
@@ -117,7 +118,7 @@ class Pages extends CP_Controller {
         $this->site_header();    
         $this->site_stage();        
         
-        $this->site_content_header();
+        $this->site_content_header('slidewrapper smallstage');
         
         if($this->page_content['stage_images']['count_images'] > 1)
             $this->site_stage_slider();    
@@ -154,11 +155,29 @@ class Pages extends CP_Controller {
         $this->site_footer();
     }
     
+    private function mannschaft_overview()
+    {
+        $c_mannschaft = load_controller('mannschaft/mannschaft');
+        
+        $this->site_header();    
+        $this->site_stage();        
+        
+        $this->site_content_header('slidewrapper');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $c_mannschaft->mannschaftliste_3col();
+    
+        $this->site_footer();
+    }
+    
     private function site_sidebar_homepage()
     { 
         $c_termin = load_controller('termin/termin');
         
         $weather_data['weather']      = $this->weather->get_weather();
+        $statistik['mannschaft']      = $this->m_mannschaft->get_mannschaft_anzahl();
         $statistik['fahrzeug_anzahl'] = $this->m_fahrzeug->get_fahrzeug_anzahl();
         
         $this->load->view('frontend/templates/sidebar_header');  
@@ -185,9 +204,10 @@ class Pages extends CP_Controller {
         $this->load->view('frontend/templates/header', $header_data);
     }
     
-    private function site_content_header()
+    private function site_content_header($class = 'slidewrapper')
     {
-        $this->load->view('frontend/templates/contentHeader');
+        $c['class'] = $class;
+        $this->load->view('frontend/templates/contentHeader', $c);
     }
     
     private function site_content_footer()
