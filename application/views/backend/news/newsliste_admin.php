@@ -64,8 +64,8 @@ $(document).ready(function() {
 	<td><?=$news_categories[$item['categoryID']]['title']?></td>
 	<td><?=$item['title']?></td>
 	<td><?=$item['created_by']?></td>
-	<td><?=cp_get_ger_datetime($item['valid_from'])?></td>
-	<td><?=cp_get_ger_datetime($item['valid_to'])?></td>
+	<td><?=cp_get_ger_date($item['valid_from'])?> <?=$item['valid_from_time']?></td>
+	<td><?=cp_get_ger_date($item['valid_to'])?> <?=$item['valid_to_time']?></td>
 <?	if($item['online']==1) :	
         if($privileged['edit']) :   ?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/news/status/'.$item['newsID'].'/1/'.$pagination_start)?>" class="button_mini" title="News offline schalten"><span class='button_online_small'></span></a></span></td>

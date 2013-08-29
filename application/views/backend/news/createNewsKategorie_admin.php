@@ -47,7 +47,7 @@
     <?=form_fieldset_close();?>
     <p></p>
     <script type="text/javascript" language="JavaScript">
-    	document.forms['<?=$form['id']?>'].elements['<?=$route['id']?>'].focus();
+    	document.forms['<?=$form['id']?>'].elements['<?=$title['id']?>'].focus();
     </script>
 </div>
 

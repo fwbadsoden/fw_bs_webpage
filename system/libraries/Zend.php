@@ -15,7 +15,7 @@
 * * the second usage is useful for autoloading the Zend Framework library
 * * Zend/Package/Name does not need the '.php' at the end
 */
-class Zend
+class CI_Zend
 {
     /**
     * Constructor

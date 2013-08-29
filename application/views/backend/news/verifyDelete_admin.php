@@ -2,12 +2,12 @@
     switch($type) {
         case 'news':    $headline   = 'ACHTUNG: Wollen Sie den Datensatz wirklich l&ouml;schen?';
                         $text       = 'Sind Sie sicher, dass die <strong>News '.$news['title'].'</strong> gel&ouml;scht werden soll?';
-                        $del_link   = 'admin/news/delete/'.$news['newsID'];
+                        $del_link   = 'admin/content/news/delete/'.$news['newsID'];
                         $redirect   = 'userliste_redirect';
                         break;
         case 'category':   $headline   = 'ACHTUNG: Wollen Sie den Datensatz wirklich l&ouml;schen?';
                         $text       = 'Sind Sie sicher, dass die <strong>Kategorie '.$category['title'].'</strong> gel&ouml;scht werden soll?';
-                        $del_link   = 'admin/news/category/delete/'.$category['categoryID'];
+                        $del_link   = 'admin/content/news/kategorie/delete/'.$category['categoryID'];
                         $redirect   = 'groupliste_redirect';
                         break;
     }

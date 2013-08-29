@@ -17,6 +17,11 @@ class Fire_log{
 		$this->CI->load->helper( array('file','url') );	
 		$this->CI->load->library( 'pagination' );
 
+		//HMVC compatible
+		$this->CI->lang->load('fire_log', $this->CI->config->item('language'), FALSE, TRUE, APPPATH . '../sparks/fire_log/'); 
+
+		$this->log_path = $this->CI->config->item( 'log_path' );
+
 
 		define( 'PARAM_DILEM', $this->CI->config->item( 'fire_log_param_dilem' ));
 
@@ -43,6 +48,23 @@ class Fire_log{
 
 				$this->clear_file( $params[ 'delete' ] );
 				log_message( 'info', $this->CI->lang->line( 'fire_log_file_deleted' ) . $params[ 'delete'] );
+
+				$this->log_file = $this->today;
+				redirect( current_url().'/file'.PARAM_DILEM .$this->today);
+			}
+			else if( isset( $params[ 'delete_all' ] ))
+			{
+				$all = $this->list_files();
+				if ( ! empty($all))
+				{
+					foreach ($all as $f)
+					{
+						if ($f['name'] === 'index.html') continue; // Don't delete index.html
+						$this->clear_file($f['name']);
+					}
+					
+					log_message('info', $this->CI->lang->line( 'fire_log_file_deleted' ) . $params[ 'delete_all'] );
+				}				
 
 				$this->log_file = $this->today;
 				redirect( current_url().'/file'.PARAM_DILEM .$this->today);
@@ -82,8 +104,8 @@ class Fire_log{
 
 
 		public function list_files()
-		{
-			$list = get_dir_file_info( APPPATH . 'logs' );
+		{ 
+			$list = get_dir_file_info( $this->log_path );
 			$filtered_list = array();
 
 			foreach ($list as $file )
@@ -116,7 +138,7 @@ class Fire_log{
 		public function get_file( $log_file )
 		{
 
-			$path = APPPATH . 'logs/' .$log_file;
+			$path = $this->log_path .$log_file;
 
 			if( file_exists( $path ))
 			{
@@ -180,7 +202,7 @@ class Fire_log{
 
 		public function clear_file( $log_file )
 		{
-			$file = APPPATH . 'logs/' . $log_file;
+			$file = $this->log_path . $log_file;
 			if( file_exists( $file ))
 			{
 				@unlink( $file );
