@@ -1279,6 +1279,7 @@ input.button_black:hover {
 	background-color:#FFF;
 	margin: 0 0 0 0;	
 	float: left;
+	box-shadow: 1px 1px 2px #d9d9d9;
 }
 #content .listContent a {
 	font-family: Arial, sans-serif;
@@ -1316,7 +1317,19 @@ input.button_black:hover {
 	display: table-cell;
 	white-space: nowrap;
 	margin: 0;
-	padding: 0 10px;
+	padding: 10px 10px;
+}
+#content .listContent .date_small {
+	height: 26px;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+	color: #000000;
+	border-bottom: solid 1px #a1a1a1;  
+	display: table-cell;
+	white-space: nowrap;
+	margin: 0;
+	padding: 10px 10px;
 }
 #content .listContent .icon {
 	margin: 0;
@@ -1339,13 +1352,45 @@ input.button_black:hover {
 #content .listContent .icon a.false { background-image: url(../../images/icon_einsaetze/false_small.png); }
 #content .listContent .icon a.city { background-image: url(../../images/icon_einsaetze/city_small.png); }
 
+#content .listContent .size {
+	margin: 5px 0 0 0;
+	padding: 10px 10px;
+	border-bottom: solid 1px #a1a1a1;
+	display: table-cell; 
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+	color: #000000;
+}
+#content .listContent .size p {
+	margin: 0;
+	padding: 0;
+}
+#content .listContent p.bytes {
+	font-size: 11px;
+	white-space: nowrap;
+}
+#content .listContent .smallBoxHead {
+	margin: 5px 0 0 0;
+	padding: 10px 10px;
+}
 #content .listContent .headline {
 	height: 26px;
 	width: 565px;
 	margin: 5px 0 0 0;
-	padding: 0 0 0 10px;
+	padding: 10px 10px;
 	border-bottom: solid 1px #a1a1a1;
 	display: table-cell; 
+	font-family: Arial, sans-serif;
+	font-weight: bold;
+	font-size: 14px;
+	color: #9a0000;
+}
+#content .listContent .headline .medium {
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 12px;
+	color: #000000;
 }
 #content .listContent .headline a {
 	font-family: Arial, sans-serif;
@@ -1360,6 +1405,16 @@ input.button_black:hover {
 	padding: 0 10px 0 10px;
 	border-bottom: solid 1px #a1a1a1;
 	display: table-cell;  
+}
+#content .listContent .moreButton_arrow {
+	padding: 0 10px 0 10px;
+	border-bottom: solid 1px #a1a1a1;
+	display: table-cell;  
+	width: 12px;
+	padding: 13px 6px;
+	background-image: url(../../images/layout/more_button_mobile.png);
+	background-repeat:no-repeat;
+	background-position: center;
 }
 #content .listContent .moreButton_mobile {	
 	height: auto;
@@ -1406,18 +1461,189 @@ input.button_black:hover {
 		
 	#content .listContent .number { display: block; border: 0; float: left; margin: 0; padding: 0 5px; }
 	#content .listContent .date { white-space: nowrap; display: block; border: 0; clear: right; margin: 0 0 0 40px; padding: 2px 5px 0 0; }
+	#content .listContent .date_small { white-space: nowrap; display: block; float: left; border: 0; margin: 0 0 0 10px; padding: 2px 5px 0 0; }
+	#content .listContent .size { white-space: nowrap; display: block; float: left; border: 0; margin: 0 0 0 10px; padding: 2px 5px 0 0; }
+	#content .listContent .size p { white-space: nowrap; display: block; float: left; font-size: 12px; margin-left: 5px; }
+	#content .listContent .size p.bytes { white-space: nowrap; display: block; float: left; font-size: 12px; }
 	#content .listContent .icon { display: block; border: 0; float: left; margin: 0; padding: 0; }
-	#content .listContent .headline { width: auto; height: auto; display: block; border: 0; clear: right; margin: 0 39px; padding: 0; }
+	#content .listContent .headline { width: auto; height: auto; display: block; border: 0; clear: both; margin: 0 39px; padding: 0; }
+	#content .listContent .smallBoxHead { margin: 0 10px; }
+	#content .listContent .moreButton_arrow { display: block; border: 0; float: right; margin-top: -50px; }
 	#content .listContent .moreButton_mobile { display: block; border: 0; float: right; margin-top: -50px; }
 	
 	#content .listContent .trenner { background-image: none; }
 }
 
+/* ------------] MainContent - ListContent - Termine [--------------- */
+
+#content ul.terminListe {
+	list-style: none;
+	margin: 0;
+	padding: 0;	
+}
+#content ul.terminListe li {
+	background-color: #FFFFFF;
+	border-bottom: solid 0px #a1a1a1;		
+}
+#content .terminListe a {
+	font-family: Arial, sans-serif;
+	text-decoration: none;
+	font-weight: normal;
+	font-size: 12px;
+	color: #000000;
+}
+#content .terminListe .termin_date {
+	min-width: 75px;
+	text-align: center;
+	background-color: #1f1f1f;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 12px;
+	color: #FFF;
+	display: table-cell;
+	border-bottom: solid 1px #a1a1a1; 
+}
+#content .terminListe .termin_details {
+	display: none; 
+}
+#content .terminListe .red {
+	background-color: #9a0000;
+}
+#content .terminListe .termin_date p {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+#content .terminListe .termin_date p.day {
+	font-size: 24px;
+	margin: 8px 0 0 0;
+	padding: 0 0 0 0;
+}
+
+#content .terminListe .termin_headline {
+	width: 100%;
+	text-align: left;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 12px;
+	display: table-cell;
+	padding: 0 15px; 
+	border-bottom: solid 1px #a1a1a1;
+}
+#content .terminListe .termin_headline h1 {
+	text-align: left;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 24px;
+	margin: 12px 0 0 0;
+	padding: 0 0 0 0;
+}
+#content .terminListe .termin_headline h2 {
+	text-align: left;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+#content .terminListe .termin_headline p {
+	text-align: left;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+#content .terminListe .termin_headline .linkleiste {
+	width: 100%;
+	margin: 10px 0 10px 0;
+	padding: 0 0 0 0;
+}
+#content .terminListe .termin_headline .linkleiste p {
+	width: 105px;
+	background-repeat: no-repeat;
+	background-position: right;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	text-transform: uppercase;
+	font-size: 14px;
+	display: none;
+}
+#content .terminListe .termin_headline .linkleiste p.link_open {
+	background-image: url(../../images/layout/link_arrow_down.png);
+}
+#content .terminListe .termin_headline .linkleiste p.link_close {
+	background-image: url(../../images/layout/link_arrow_up.png);
+}
+
+#content .terminListe .time {
+	width: 350px;
+	height: 70px;
+	background-color: #ebebeb;
+	display: inline-block;
+	margin: 10px 20px 15px 0;
+	background-image: url(../../images/layout/termin_time.png);
+	background-repeat: no-repeat;
+	background-position: left;
+}
+#content .terminListe .time .datum {
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	text-transform: normal;
+	font-size: 12px;
+	margin: 10px 0 0 60px;
+}
+#content .terminListe .time .clock {
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	text-transform: normal;
+	font-size: 24px;
+	margin: 5px 0 10px 60px;
+	white-space:nowrap;
+}
+#content .terminListe .time .clock .word {
+	font-size: 14px;
+}
+#content .terminListe .loction {
+	width: 350px;
+	height: 70px;
+	background-color: #ebebeb;
+	display: inline-block;
+	background-image: url(../../images/layout/termin_location.png);
+	background-repeat: no-repeat;
+	background-position: left;
+}
+#content .terminListe .loction p {
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	text-transform: normal;
+	font-size: 12px;
+	margin: 10px 0 10px 60px;
+}
+
+#content .terminListe .termin_headline .active {
+	display: block;	
+}
+#content .terminListe .termin_headline p.active {
+	display: block;	
+}
+#content .terminListe .lastRow {
+	border-bottom: solid 0px #a1a1a1;
+}
+
+@media only screen and (max-width: 490px) {
+
+	#content .terminListe .loction, #content .terminListe .time { width: 100%; height: auto; background-size: 35px; background-position: left 3px top 5px; }
+	#content .terminListe .time .datum { margin: 5px 0 10px 40px; }
+	#content .terminListe .time .clock { margin: 5px 0 10px 40px; }
+	#content .terminListe .loction p { margin: 5px 0 10px 40px; }
+	#content .terminListe .time .clock { white-space: normal; }
+	#content .terminListe .time .clock span.trenner { display: none; }
+		
+}
 /* ------------] MainContent - Filter [--------------- */
 
 #content .filter {
 	max-width: 980px;
-	height: 50px;
 	background-color:#FFF;
 	margin: 0 0 20px 0;	
 }
@@ -2463,6 +2689,93 @@ input.button_black:hover {
 
 }
 
+/* ------------] MainContent - Kontaktformular [--------------- */
+
+#content .kontaktformularOpener {
+	margin: 0;
+	padding: 0 0 0 0;
+	display: block;	
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	text-transform: uppercase;
+	font-size: 18px;
+}
+#content .kontaktformularOpener p.link_open {
+	background-repeat: no-repeat;
+	background-position: right;
+	background-image: url(../../images/layout/link_arrow_down.png);
+	width: 200px;
+	display: none;
+}
+#content .kontaktformularOpener p.link_close {
+	background-repeat: no-repeat;
+	background-position: right;
+	background-image: url(../../images/layout/link_arrow_up.png);
+	width: 230px;
+	display: none;
+}
+
+#content .kontaktformular {
+	margin: 0 20px;
+	padding: 0 0 0 0;
+	display: none;
+	border-top: 1px solid #b1b1b1;	
+}
+#content .kontaktformular p.label {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #000000;
+	margin: 0;
+	padding: 5px 0 0 0;
+}
+#content .kontaktformular p.form {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #000000;
+	margin: 0 0 15px 0;
+	padding: 0;
+}
+#content .kontaktformular p.button {
+	text-align: center;
+}
+#content .kontaktformular input {
+	width: 96%;
+	border: 1px solid #b1b1b1;
+	background-color: #ebebeb;
+	padding: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+}
+#content .kontaktformular textarea {
+	width: 96%;
+	height: 120px;
+	border: 1px solid #b1b1b1;
+	background-color: #ebebeb;
+	padding: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+}
+#content .kontaktformular input.submitButton {
+	width: 185px;
+	background-color: #191919;
+	padding: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+	color: #FFFFFF;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+#content .kontaktformularOpener p.active {
+	display: block;	
+}
+
 /* ------------] MainContent - Dates [--------------- */
 
 #content .dateBox {
@@ -2732,6 +3045,88 @@ input.button_black:hover {
 #content #SidebarContent h1.first {
 	margin: 10px 15px 0 15px;
 }
+
+/* --------] SideBar - TextTeaser [-------- */
+
+#content #SidebarContent .textTeaser {
+	margin: 0 0 30px 0;
+}
+#content #SidebarContent .textTeaser p {
+	text-align: center;
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: #FFFFFF;
+	padding: 0 20px;
+}
+#content #SidebarContent .textTeaser h2 {
+	text-align: center;
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: bold;
+	font-size: 14px;
+	color: #FFFFFF;
+}
+#content #SidebarContent .textTeaser a {
+	text-align: center;
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+#content #SidebarContent .textTeaser a:hover { color: #ffd200; }
+#content #SidebarContent .textTeaser a:focus { color: #ffd200; }
+
+
+/* --------] SideBar - Address [-------- */
+
+#content #SidebarContent .address p {
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: #FFFFFF;
+	padding: 0 30px;
+}
+#content #SidebarContent .address ul {
+	list-style: none;
+	margin: 0 30px;
+	padding: 0;
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+#content #SidebarContent .address ul li {
+	height: 18px;
+	background-repeat: no-repeat;	
+	padding: 0 0 0 25px;
+}
+#content #SidebarContent .address ul li.tel { background-image: url(../../images/icons/tel_mini_white.png); }
+#content #SidebarContent .address ul li.mail { background-image: url(../../images/icons/mail_mini_white.png); }
+
+#content #SidebarContent .address h2 {
+	text-align: center;
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: bold;
+	font-size: 14px;
+	color: #FFFFFF;
+}
+
+#content #SidebarContent .address a {
+	text-align: center;
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+#content #SidebarContent .address a:hover { color: #ffd200; }
+#content #SidebarContent .address a:focus { color: #ffd200; }
 
 /* --------] SideBar - Statistic [-------- */
 

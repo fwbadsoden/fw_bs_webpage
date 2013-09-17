@@ -172,6 +172,31 @@ class Pages extends CP_Controller {
         $this->site_footer();
     }
     
+    public function termin_overview()
+    {
+        $c_termin = load_controller('termin/termin');
+        
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+                   
+        $c_termin->terminliste_1col();
+        
+        $this->site_footer();
+    }
+    
+    public function presse_overview()
+    {
+        $c_presse = load_controller('presse/presse');
+        
+        $this->site_header();
+        $this->site_stage();
+    }
+    
     private function site_sidebar_homepage()
     { 
         $c_termin = load_controller('termin/termin');

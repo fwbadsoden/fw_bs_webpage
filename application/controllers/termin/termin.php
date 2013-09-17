@@ -39,5 +39,29 @@ class Termin extends CP_Controller {
         }
         $this->load->view('frontend/termin/overview_1col_footer');    
     }
+    
+    public function terminliste_1col()
+    {
+        $termine = $this->m_termin->get_termin_v_list_all_by_month();
+        $monate['monate'] = $this->m_termin->get_termin_months_for_filter();
+        $i = 1;
+        $j = 0;
+        
+        $this->load->view('frontend/termin/terminliste_1col_filter', $monate);
+        foreach($termine as $key => $month)
+        {   
+            $monat['monat'] = $key;
+            if($j != 0) $this->load->view('frontend/termin/terminliste_1col_month', $monat);
+            $this->load->view('frontend/termin/terminliste_1col_header');
+            foreach($month as $termin)
+            {   
+                $termin['count'] = $i;
+                $this->load->view('frontend/termin/terminliste_1col_data', $termin);
+                $i++;
+            }
+            $this->load->view('frontend/termin/terminliste_1col_footer');
+            $j++;
+        }
+    }
 }
 ?>

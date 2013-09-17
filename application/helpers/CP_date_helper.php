@@ -71,6 +71,19 @@
 }
 
 /**
+ * cp_get_day_name()
+ * Returns the day name in german for a given date
+ * 
+ * @param mixed $date
+ * @return void
+ */
+    function cp_get_day_name($date)
+    {
+        $timestamp = mktime(0,0,0, substr($date, 5,2), substr($date, 8,2), substr($date,0,4));
+        return date('l', $timestamp);
+    }
+
+/**
  * Validate german date
  * Input must be in german date format to work
  *

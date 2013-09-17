@@ -347,6 +347,56 @@
 			detailShowVars.currentChart = target;
 		}
 	});
+	
+	
+//-------------------------------------------------------
+//  Termine
+
+	
+	$('a[rel="js_terminopen"]').click(function() {
+		var target = parseInt($(this).attr('href').substr(1));
+		
+		if($("#js_termincolor_"+target).hasClass('red')) {
+			
+			$("#js_termin_"+target).removeClass('active');
+			$("#js_termincolor_"+target).removeClass('red');
+			$("#js_linkopen_"+target).addClass('active');
+			$("#js_linkclose_"+target).removeClass('active');
+		
+		} else {
+			
+			$("#js_termin_"+target).addClass('active');
+			$("#js_termincolor_"+target).addClass('red');
+			$("#js_linkopen_"+target).removeClass('active');
+			$("#js_linkclose_"+target).addClass('active');
+		
+		}
+	
+	});
+
+
+//-------------------------------------------------------
+//  Kontaktformular
+
+	
+	$('a[rel="js_contact"]').click(function(e) {
+		e.preventDefault();
+		
+		if($("#js_openKontakt").hasClass('active')) {
+			
+			$("#js_openKontakt").removeClass('active');
+			$("#js_closeKontakt").addClass('active');
+			$(".kontaktformular").css('display', 'block');
+		
+		} else {
+			
+			$("#js_openKontakt").addClass('active');
+			$("#js_closeKontakt").removeClass('active');
+			$(".kontaktformular").css('display', 'none');
+		
+		}
+	
+	});
 
 
 })(jQuery);

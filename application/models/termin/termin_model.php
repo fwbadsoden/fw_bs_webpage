@@ -27,6 +27,7 @@ class Termin_model extends CI_Model {
     public function get_termin_v_list($limit = 10, $offset = 0)
     {
         $this->db->limit($limit, $offset);
+        $this->db->where('datum >=', date('Y-m-d'));
         $query = $this->db->get('v_termin');
         $termine = array();
         $i = 0;
@@ -37,7 +38,7 @@ class Termin_model extends CI_Model {
             $termine[$i]['name'] = $row->name;
             $termine[$i]['datum'] = $row->datum;
             $termine[$i]['beginn'] = $row->beginn;
-            $termine[$i]['dauer'] = $row->dauer;
+            $termine[$i]['ende'] = $row->ende;
             $termine[$i]['ort'] = $row->ort;
             $termine[$i]['category_name'] = $row->category_name;
             $termine[$i]['super_category_name'] = $row->super_category_name;
@@ -46,6 +47,68 @@ class Termin_model extends CI_Model {
         }
         
         return $termine;
+    }
+    
+    public function get_termin_v_list_all_by_month()
+    {
+        $this->db->where('datum >=', date('Y-m-d'));
+        $query = $this->db->get('v_termin');
+        
+        $termine = array();
+        $i = 0;
+        $month = '';      
+        
+        foreach($query->result() as $row)
+        {
+            if($month == '') $month = cp_get_month_name((int)substr($row->datum, 5, 2));
+            if($month != cp_get_month_name((int)substr($row->datum, 5, 2)))
+            {
+                $month = cp_get_month_name((int)substr($row->datum, 5, 2));
+                $i = 0;
+            }
+            $termine[$month][$i]['terminID']            = $row->terminID;
+            $termine[$month][$i]['name']                = $row->name;
+            $termine[$month][$i]['description']         = $row->description;
+            $termine[$month][$i]['datum']               = $row->datum;
+            $termine[$month][$i]['jahr']                = substr($row->datum, 0, 4);
+            $termine[$month][$i]['monat']               = $month;
+            $termine[$month][$i]['monat_int']           = substr($row->datum, 5, 2);
+            $termine[$month][$i]['tag']                 = cp_get_day_name($row->datum);
+            $termine[$month][$i]['tag_int']             = substr($row->datum, 8, 2);
+            $termine[$month][$i]['beginn']              = $row->beginn;
+            $termine[$month][$i]['ende']                = $row->ende;
+            $termine[$month][$i]['ort']                 = $row->ort;
+            $termine[$month][$i]['category_name']       = $row->category_name;
+            $termine[$month][$i]['super_category_name'] = $row->super_category_name;
+            $termine[$month][$i]['super_category_id']   = $row->super_category_id;
+            $i++;
+        }
+        
+        return $termine;
+    }
+    
+    public function get_termin_months_for_filter()
+    {   
+        $this->db->select('datum');
+        $this->db->where('datum >=', date('Y-m-d'));
+        $this->db->order_by('datum', 'ASC');
+        $query = $this->db->get('termin');
+        $i=0;
+        $months = array();
+        $month = '';
+        
+        foreach($query->result() as $row)
+        {
+            if($month == '') $month = cp_get_month_name(substr($row->datum,5,2));    
+            if($month != cp_get_month_name(substr($row->datum,5,2)))
+            {
+                $i++;
+                $month = cp_get_month_name(substr($row->datum,5,2));
+            }
+            $months[$i] = $month;
+        }
+        
+        return $months;
     }
  }
  ?>
