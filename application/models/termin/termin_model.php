@@ -36,6 +36,7 @@ class Termin_model extends CI_Model {
         {
             $termine[$i]['terminID'] = $row->terminID;
             $termine[$i]['name'] = $row->name;
+            $termine[$i]['description'] = $row->description;
             $termine[$i]['datum'] = $row->datum;
             $termine[$i]['beginn'] = $row->beginn;
             $termine[$i]['ende'] = $row->ende;
