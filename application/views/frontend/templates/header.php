@@ -100,22 +100,23 @@
                         	<li><a href="<?=base_url('mannschaft#anker_fuehrung')?>">Führung</a></li>
                             <li><a href="<?=base_url('mannschaft#anker_mannschaft')?>">Mannschaft</a></li>
                     	</ul>  
-                    	<ul>
+                    	<!--<ul>
                         	<li class="headline"><a href="<?=base_url('wache')?>">Die Wache</a></li>
                             <li><a href="<?=base_url('wache/geraetehaus')?>">Ger&auml;tehaus</a></li>
                             <li><a href="<?=base_url('wache/florianstube')?>">Florianstube</a></li>
                             <li><a href="<?=base_url('wache/fahrzeughalle')?>">Fahrzeughalle</a></li>
-                    	</ul>  
-                    	<ul>
+                    	</ul>  -->
+                    	<!--<ul>
                         	<li class="headline"><a href="<?=base_url('galerie')?>">Galerie</a></li>
                             <li><a href="<?=base_url('galerie/einsaetze')?>">Einsätze</a></li>
                             <li><a href="<?=base_url('galerie/feiern')?>">Feiern</a></li>
                             <li><a href="<?=base_url('galerie/fotoshooting')?>">Fotoshooting</a></li>
                             <li><a href="<?=base_url('galerie/wache')?>">Unsere Wache</a></li>
-                    	</ul> 
+                    	</ul> -->
                     	<ul class="special">
                             <li class="headline"><a href="<?=base_url('leistungsgruppe')?>">Leistungsgruppe</a></li>
-                            <li class="headline"><a href="<?=base_url('altersundehrenabteilung')?>">Alters- und Ehrenabteilung</a></li>
+							<li class="headline"><a href="<?=base_url('rettungshunde')?>">Rettungshundeeinheit</a></li>
+                            <!--<li class="headline"><a href="<?=base_url('altersundehrenabteilung')?>">Alters- und Ehrenabteilung</a></li>-->
                             <li class="headline"><a href="<?=base_url('verein')?>">Verein</a></li>
                             <li class="headline"><a href="<?=base_url('geschichte')?>">Geschichte</a></li>
                     	</ul>  
@@ -162,7 +163,7 @@
                 </li>  
                 <li><a href="<?=base_url('informationen')?>">Infos</a>  
                     <div class="dropdown">  
-                    	<ul>
+                    	<!--<ul>
                         	<li class="headline"><a href="<?=base_url('informationen/brandschutz')?>">Brandschutztipps</a></li>
                         	<li><a href="<?=base_url('informationen/erstehilfe')?>">Erste Hilfe</a></li>
                             <li><a href="<?=base_url('informationen/notruf')?>">Notruf Absetzen</a></li>
@@ -171,7 +172,7 @@
                             <li><a href="<?=base_url('informationen/feuer')?>">Verhalten bei Brandf&auml;llen</a></li>
                             <li><a href="<?=base_url('informationen/feuerloescher')?>">Feuerl&ouml;scher</a></li>
                             <li><a href="<?=base_url('informationen/kuechenbrand')?>">K&uuml;chenbrand</a></li>
-                    	</ul>  
+                    	</ul>  -->
                     	<ul>
                         	<li class="headline"><a href="<?=base_url('buergerinformationen')?>">B&uuml;rgerinfos</a></li>
                         	<li><a href="<?=base_url('buergerinformationen/blaulicht')?>">Blaulicht und Martinshorn</a></li>
@@ -181,17 +182,17 @@
                             <li><a href="<?=base_url('buergerinformationen/brand')?>">Nach dem Brand</a></li>
                             <li><a href="<?=base_url('buergerinformationen/hausnummern')?>">Sichtbare Hausnummern</a></li>
                     	</ul>  
-                    	<ul>
+                    	<!--<ul>
                         	<li class="headline"><a href="<?=base_url('artikel')?>">Artikel</a></li>
                         	<li><a href="<?=base_url('#')?>">Feuerwehraustausch</a></li>
                             <li><a href="<?=base_url('#')?>">Tag der offnen T&uuml;r 2013</a></li>
                             <li><a href="<?=base_url('#')?>">Atemschutztraining</a></li>
-                    	</ul>  
+                    	</ul>  -->
                     	<ul class="special">
                         	<li class="headline"><a href="<?=base_url('einsatzgebiet')?>">Einsatzgebiet</a></li>
                         	<li class="headline"><a href="<?=base_url('gesetze')?>">Gesetze & Richtlinien</a></li>
-                            <li class="headline"><a href="<?=base_url('downloads')?>">Downloads</a></li>
-                            <li class="headline"><a href="<?=base_url('faq')?>">H&auml;ufige Fragen</a></li>
+                            <!--<li class="headline"><a href="<?=base_url('downloads')?>">Downloads</a></li>-->
+                            <!--<li class="headline"><a href="<?=base_url('faq')?>">H&auml;ufige Fragen</a></li>-->
                     	</ul>  
                     </div>  
                 </li>  
