@@ -197,7 +197,7 @@
                 </li>  
                 <li><a href="<?=base_url('jugend')?>">Jugend</a>  
                 </li> 
-                <li><a href="#" class="desktopsearch">&nbsp;</a>
+           <!--     <li><a href="#" class="desktopsearch">&nbsp;</a>
                     <div class="dropdown">
                         <?=form_open(base_url(FRONTEND_SEARCH_LINK), $search_form);?>
                         <div class="search">	
@@ -205,7 +205,7 @@
                         </div>
                         <input type="button" value="Suchen &raquo;" class="searchbutton" />
                     </div>
-                </li>
+                </li>-->
             </ul>
        	</nav>
         
@@ -241,11 +241,11 @@
           <li><a class="fancybox-metaLayer" href="#notruflayerjs">Notfall</a></li>
         </ul>
       </li>
-      <li class="search">
+ <!--     <li class="search">
       	<form>
         	<input type="text" name="searchitem" class="text" />
            <input type="button" value="Go" class="button_black" />
         </form>
-      </li>
+      </li>-->
    </ul>
 </div>
