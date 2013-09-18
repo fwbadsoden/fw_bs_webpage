@@ -41,6 +41,7 @@ class Termin_model extends CI_Model {
             $termine[$i]['beginn'] = $row->beginn;
             $termine[$i]['ende'] = $row->ende;
             $termine[$i]['ort'] = $row->ort;
+            $termine[$i]['ort_short'] = $row->ort_short;
             $termine[$i]['category_name'] = $row->category_name;
             $termine[$i]['super_category_name'] = $row->super_category_name;
             $termine[$i]['super_category_id'] = $row->super_category_id;
@@ -79,6 +80,7 @@ class Termin_model extends CI_Model {
             $termine[$month][$i]['beginn']              = $row->beginn;
             $termine[$month][$i]['ende']                = $row->ende;
             $termine[$month][$i]['ort']                 = $row->ort;
+            $termine[$month][$i]['ort_short']           = $row->ort_short;
             $termine[$month][$i]['category_name']       = $row->category_name;
             $termine[$month][$i]['super_category_name'] = $row->super_category_name;
             $termine[$month][$i]['super_category_id']   = $row->super_category_id;
@@ -130,6 +132,7 @@ class Termin_model extends CI_Model {
 			'datum' => $datum,
 			'beginn' => $beginn,
 			'ende' => $ende,
+            'ort_short' => 'Feuerwehr Bad Soden',
 			'ort' => 'Freiwillige Feuerwehr Bad Soden am Taunus e.V.<br />Hunsrückstr. 5-7<br />65812 Bad Soden am Taunus',
 			'online' => 1
 		);

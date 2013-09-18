@@ -109,7 +109,7 @@
 </div>
 
     <script type="text/javascript" charset="utf-8" src="<?=base_url('js/basic-min.js')?>"></script>
-    <script type="text/javascript" charset="utf-8" src="<?=base_url('js/doubletabtogo.js')?>"></script>
+    <script type="text/javascript" charset="utf-8" src="<?=base_url('js/doubletaptogo.js')?>"></script>
 
 	<script type="text/javascript" src="<?=base_url('js/jquery.mousewheel-3.0.6.pack.js')?>"></script>
 	<script type="text/javascript" src="<?=base_url('js/fancyBox/jquery.fancybox.js?v=2.1.5')?>"></script>

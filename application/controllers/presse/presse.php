@@ -23,9 +23,22 @@ class Presse extends CP_Controller {
         $this->load->model('presse/presse_model', 'm_presse');  
 	}
     
-    public function presse_overview()
+    public function get_presse_overview()
     {
-        
+        return $this->m_presse->get_articles($limit = PRESSE_DEFAULT_LIMIT, $offset = PRESSE_DEFAULT_OFFSET);
+    }
+    
+    public function overview_2col()
+    {
+        $presse['articles'] = $this->m_presse->get_articles();
+		
+		$this->load->view('frontend/presse/overview_2col_contact');
+		$this->load->view('frontend/presse/overview_2col_articles', $presse);
+    }
+    
+    public function overview_sidebar()
+    {
+		$this->load->view('frontend/presse/overview_2col_sidebar');        
     }
 }
 ?>

@@ -4,4 +4,4 @@
 
 <div class="oneColumnBox">
 
-			<div class="TeaserListe">
+            <ul class="TeaserListe">

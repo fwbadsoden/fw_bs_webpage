@@ -3,6 +3,6 @@
 ?>
 
 <li>    
-    <h3><span class="date"><?=cp_get_ger_date($datum).' - '.$beginn?></span> / <?=$ort?></h3>
+    <h3><span class="date"><?=cp_get_ger_date($datum).' - '.$beginn?></span> / <?=$ort_short?></h3>
     <h2><?=$name?></h2>
 </li>

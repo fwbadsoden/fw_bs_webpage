@@ -83,11 +83,14 @@
                     	</ul>  
                     	<ul>
                         	<li class="headline"><a href="<?=base_url('presse')?>">Presse</a></li>
-                        	<li><a href="<?=base_url('presse/1')?>"><span class="subline">22.07.2013 / H&ouml;chsterkreisblatt</span><br />Lorem ipsum dolor</a></li>
-                        	<li><a href="<?=base_url('presse/2')?>"><span class="subline">22.07.2013 / Taunuszeitung</span><br />Lorem ipsum dolor</a></li>
-                        	<li><a href="<?=base_url('presse/2')?>"><span class="subline">22.07.2013 / Bad Sodener Echo</span><br />Lorem ipsum dolor</a></li>
-                        	<li><a href="<?=base_url('presse/3')?>"><span class="subline">22.07.2013 / H&ouml;chsterkreisblatt</span><br />Lorem ipsum dolor</a></li>
-                    	</ul>  
+<? foreach($articles as $a) : ?>                            
+<? if($a['link'] == '') : ?>
+                	       <li><a href="<?=base_url($a['fullpath'])?>" download="<?=$a['name']?>"><span class="subline"><?=cp_get_ger_date($a['datum'])?> / <?=$a['source']?></span><br /><?=$a['name']?></a></li>
+<? else : ?>
+                           <li><a href="<?=$a['link']?>" target="_blank"><span class="subline"><?=cp_get_ger_date($a['datum'])?> / <?=$a['source']?></span><br /><?=$a['name']?></a></li>
+<? endif; ?>
+<? endforeach; ?>
+                       	</ul>  
               <!--      	<ul class="special navTeaser">
                         	<li class="headline"><a href="<?=base_url('')?>"><img src="images/navTeaser_tagderoffnentuer.png" /></a></li>
                     	</ul>  -->
@@ -126,10 +129,12 @@
                     <div class="dropdown">  
                     	<ul>
                         	<li class="headline"><a href="<?=base_url('fahrzeuge')?>">Fahrzeuge</a></li>
-<? foreach($fahrzeuge as $f) : ?>                            
+<?  $i = 0; $count = count($fahrzeuge);
+    foreach($fahrzeuge as $f) : ?>                        
                         	<li><a href="<?=base_url('fahrzeug/'.$f['fahrzeugID'])?>">
                             <? if($f['fahrzeugNameLang'] != '') : echo $f['fahrzeugName'].' - '.$f['fahrzeugNameLang']; else : echo $f['fahrzeugName']; endif; ?>
                             </a></li>
+    <? if ($i == 3) { $i = 0; echo "</ul><ul><li class='headline'><a href='".base_url('fahrzeuge')."'>&nbsp;</a></li>"; } else $i++; ?>    
 <? endforeach; ?>
                     	</ul>  
                     <!--	<ul>

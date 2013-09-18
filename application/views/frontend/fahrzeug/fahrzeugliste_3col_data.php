@@ -8,8 +8,10 @@
         case '3': $class = ' class="third"'; break;
     }
 ?> 
+                <a href="<?=base_url('fahrzeug/'.$fahrzeug['fahrzeugID'])?>">
                 <li<?=$class?>>
-                    <figure><a href="<?=base_url('fahrzeug/'.$fahrzeug['fahrzeugID'])?>"><img src="<?=CONTENT_IMG_FAHRZEUG_UPLOAD_PATH.$image['img']?>" /></a></figure>
-                  	<h1><a href="<?=base_url('fahrzeug/'.$fahrzeug['fahrzeugID'])?>"><?=$fahrzeug['fahrzeugNameLang']?></a></h1>
-                    <h2><a href="<?=base_url('fahrzeug/'.$fahrzeug['fahrzeugID'])?>"><?=$fahrzeug['fahrzeugName']?></a></h2>
+                    <figure><img src="<?=CONTENT_IMG_FAHRZEUG_UPLOAD_PATH.$image['img']?>" /></figure>
+                  	<h1><?=$fahrzeug['fahrzeugNameLang']?></h1>
+                    <h2><?=$fahrzeug['fahrzeugName']?></h2>
                 </li>
+                </a>

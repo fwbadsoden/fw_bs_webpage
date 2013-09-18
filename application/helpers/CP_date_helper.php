@@ -265,4 +265,9 @@ function cp_get_alter($datum)
     return $alter;
 }
 
+function cp_get_date_as_array($date)
+{
+    return explode('-', $date);
+}
+
 ?>
