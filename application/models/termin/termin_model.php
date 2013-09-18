@@ -111,5 +111,31 @@ class Termin_model extends CI_Model {
         
         return $months;
     }
+
+	
+	public function delete_termin($id)
+	{	
+		$tables = array('termin');
+		$this->db->where('terminId', $id);
+		$this->db->delete($tables);
+	}
+	
+
+	public function create_termin($name, $description, $datum, $beginn, $ende)
+	{
+		$termin = array(
+			'categoryID' => 2,
+			'name' => $name,
+			'description' => $description,
+			'datum' => $datum,
+			'beginn' => $beginn,
+			'ende' => $ende,
+			'ort' => 'Feuerwache Bad Soden',
+			'online' => 1
+		);
+		
+		$this->db->insert('termin',  $termin);
+	}
+
  }
  ?>
