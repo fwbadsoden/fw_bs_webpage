@@ -38,24 +38,24 @@
             <ul>
                 <li class="headline"><a href="<?=base_url('fahrzeuge')?>">Technik</a></li>
                 <li><a href="<?=base_url('fahrzeuge')?>">Fahrzeuge</a></li>
-               <!-- <li><a href="#">Geräte</a></li>
-                <li><a href="#">Kleidung</a></li>
-                <li><a href="#">Ausbildung</a></li>-->
+               <!-- <li><a href="<?=base_url('geraete')?>">Geräte</a></li>
+                <li><a href="<?=base_url('kleidung')?>">Kleidung</a></li>
+                <li><a href="<?=base_url('ausbildung')?>">Ausbildung</a></li>-->
             </ul>
             <ul>
-                <li class="headline"><a href="#">Information</a></li>
-                <li><a href="#">Tipps</a></li>
-                <li><a href="#">Einsatzgebiet</a></li>
-                <li><a href="#">Gesetze und Richtlinien</a></li>
-                <li><a href="#">Downloads</a></li>
+                <li class="headline"><a href="<?=base_url('informationen')?>">Information</a></li>
+                <li><a href="<?=base_url('tipps')?>">Tipps</a></li>
+                <li><a href="<?=base_url('einsatzgebiet')?>">Einsatzgebiet</a></li>
+                <li><a href="<?=base_url('gesetze')?>">Gesetze und Richtlinien</a></li>
+                <!--<li><a href="<?=base_url('downloads')?>">Downloads</a></li>-->
             </ul>
             <ul>
                 <li class="headline"><a href="<?=base_url('jugend')?>">Jugend</a></li>
-                <li><a href="#">Mannschaft</a></li>
-                <li><a href="#">Aktivitäten</a></li>
-                <li><a href="#">Ausbildung</a></li>
-                <li><a href="#">Leistungsgruppe</a></li>
-                <li><a href="#">Galerie</a></li>
+               <!-- <li><a href="<?=base_url('jugend/mannschaft')?>">Mannschaft</a></li>
+                <li><a href="<?=base_url('jugend/aktivitaeten')?>">Aktivitäten</a></li>
+                <li><a href="<?=base_url('jugend/ausbildung')?>">Ausbildung</a></li>
+                <li><a href="<?=base_url('jugend/leistungsgruppe')?>">Leistungsgruppe</a></li>
+                <li><a href="<?=base_url('galerie/jugend')?>">Galerie</a></li>-->
             </ul>
             <hr class="clear" />
         </div>
@@ -101,7 +101,7 @@
 	</div>
 	<hr class="clear" />
 		<div class="greybox">
-			<p class="number">Zentrale Leistelle <span>+49 6192-5095</span></p>
+			<p class="number">Zentrale Leitstelle <span>+49 6192-5095</span></p>
 			<!--<p class="button"><a href="#" class="button_red">Alle Rufnummern <span class="zusatz">auf einen Blick</span> &raquo;</a></p>-->
 			<hr class="clear" />
 		</div>

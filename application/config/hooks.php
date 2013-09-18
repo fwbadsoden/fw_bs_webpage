@@ -15,7 +15,6 @@ if(ENVIRONMENT != 'production') {
         'function' => 'log_queries',
         'filename' => 'QueryLogHook.php',
         'filepath' => 'hooks');
-}
         
 // hook for compress webpage output
     $hook['display_override'][] = array(
@@ -23,6 +22,6 @@ if(ENVIRONMENT != 'production') {
         'function' => 'compress',
         'filename' => 'compress.php',
         'filepath' => 'hooks');
-
+}
 /* End of file hooks.php */
 /* Location: ./application/config/hooks.php */

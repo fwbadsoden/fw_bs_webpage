@@ -2,9 +2,9 @@
 
 /**
  * Termin
- * Controller für die Anzeige der Einsätze
+ * Controller für die Anzeige der Termine
  * 
- * @package com.cp.feuerwehr.frontend.einsatz  
+ * @package com.cp.feuerwehr.frontend.termin  
  * @author Habib Pleines <habib@familiepleines.de>
  * @copyright 
  * @version 2013

@@ -195,6 +195,15 @@ class Pages extends CP_Controller {
         
         $this->site_header();
         $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+                   
+        $c_presse->presse_overview();
+        
+        $this->site_footer();        
     }
     
     private function site_sidebar_homepage()
