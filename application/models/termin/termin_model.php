@@ -130,7 +130,7 @@ class Termin_model extends CI_Model {
 			'datum' => $datum,
 			'beginn' => $beginn,
 			'ende' => $ende,
-			'ort' => 'Feuerwache Bad Soden',
+			'ort' => 'Freiwillige Feuerwehr Bad Soden am Taunus e.V.<br />Hunsrückstr. 5-7<br />65812 Bad Soden am Taunus',
 			'online' => 1
 		);
 		

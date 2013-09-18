@@ -80,7 +80,17 @@
     function cp_get_day_name($date)
     {
         $timestamp = mktime(0,0,0, substr($date, 5,2), substr($date, 8,2), substr($date,0,4));
-        return date('l', $timestamp);
+        $wochentag = date('w', $timestamp);
+        
+        $tag[0] = "Sonntag"; 
+        $tag[1] = "Montag"; 
+        $tag[2] = "Dienstag"; 
+        $tag[3] = "Mittwoch"; 
+        $tag[4] = "Donnerstag"; 
+        $tag[5] = "Freitag"; 
+        $tag[6] = "Samstag"; 
+        
+        return $tag[$wochentag];
     }
 
 /**
