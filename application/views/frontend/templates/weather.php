@@ -1,6 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); 
     $this->load->helper('html'); 
-   //echo "<pre>"; var_dump($weather); echo "</pre>";
 ?>
 
             <div class="weather">
