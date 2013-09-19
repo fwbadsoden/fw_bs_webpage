@@ -94,7 +94,7 @@
 		<ul>
 			<li>/ <span class="hightlight">Wo</span> ist es passiert?</li>
 			<li>/ <span class="hightlight">Was</span> ist passiert?</li>
-			<li>/ <span class="hightlight">Wie</span> viele personen sind betroffen?</li>
+			<li>/ <span class="hightlight">Wie</span> viele Personen sind betroffen?</li>
 			<li>/ <span class="hightlight">Welche</span> Art der Erkrankung oder Verletzung liegt vor?</li>
 			<li>/ <span class="hightlight">Warten</span> auf Rückfragen.</li>
 		</ul>

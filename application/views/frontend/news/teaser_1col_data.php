@@ -8,4 +8,4 @@
 <? } ?>
 <h1><?=$title?></h1>
 <p><?=$teaser?></p>
-<p class="more"><a href="#" class="button_black">Read more</a></p>
+<!--<p class="more"><a href="#" class="button_black">Read more</a></p>-->
