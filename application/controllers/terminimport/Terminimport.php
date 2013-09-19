@@ -18,14 +18,18 @@ class Terminimport extends CP_Controller {
         $this->load->model('termin/termin_model', 'm_termin');  
     }
 
-	
+	/**
+	*	Provides list of stored future appointments
+	*/
 	public function fetch()
     {
+		//Check if remote host is in IP4-Whitelist
 		if(in_array($_SERVER['HTTP_HOST'], explode(";",TERMIN_IMPORT_WHITELIST))){
 			echo "NOT AUTHENTICATED: ".$_SERVER['HTTP_HOST'];
 			exit;
 		}
 
+		//Print for each future appointment id and md5-hash of relevant data
 		$termine = $this->m_termin->get_termin_v_list(10000, 0);
         foreach($termine as $termin)
         {
@@ -35,8 +39,12 @@ class Terminimport extends CP_Controller {
 		echo "FETCH_OK";
      }
 
+	/*
+	*	Insert additional and removes obsolete appointments
+	*/
 	public function update()
     {
+		//Check if remote host is in IP4-Whitelist
 		if(in_array($_SERVER['HTTP_HOST'], explode(";",TERMIN_IMPORT_WHITELIST))){
 			echo "NOT AUTHENTICATED: ".$_SERVER['HTTP_HOST'];
 			exit;
@@ -44,6 +52,7 @@ class Terminimport extends CP_Controller {
 
 		if(isset($_GET['toDelete']) && isset($_GET['toInsert'])){
 
+			//Delete obsolete appointments 
 			if(strlen($_GET['toDelete'])>0){
 		    	foreach(explode(";", $_GET['toDelete']) as $idToDelete)
 		    	{
@@ -52,6 +61,7 @@ class Terminimport extends CP_Controller {
 		    	}
 			}
 
+			//Insert additional appointments
 			if(strlen($_GET['toInsert'])>0){
 				foreach(explode("\n", $_GET['toInsert']) as $lineToInsert)
 				{

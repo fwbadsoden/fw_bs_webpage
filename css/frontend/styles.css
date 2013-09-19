@@ -2993,6 +2993,9 @@ input.button_black:hover {
 	margin: 15px 0 0 0;
 	list-style: none;	
 }
+#content #MainContent ul.news a {
+	text-decoration: none;	
+}
 #content #MainContent ul.news li {
 	padding: 10px;
 	margin: 0 0 1px 0;
