@@ -208,6 +208,117 @@ class Pages extends CP_Controller {
         $this->site_footer();        
     }
     
+/*****************************************************************************
+*
+*   INHALTSSEITEN -> NACH GOLIVE DYNAMISIEREN
+*
+******************************************************************************/    
+    
+    public function leistungsgruppe_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/leistungsgruppe_overview');
+        $this->site_footer();  
+    }
+    
+    public function rettungshunde_overview()
+    {
+        $this->site_header();
+        $this->site_stage(); 
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/rettungshunde_overview');
+        $this->site_footer();     
+    }
+    
+    public function verein_overview()
+    {
+        $this->site_header();
+        $this->site_stage();    
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/verein_overview');
+        $this->site_footer();  
+    }
+    
+    public function geschichte_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/geschichte_overview');
+        $this->site_footer();  
+    }
+    
+    public function einsatzgebiet_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/einsatzgebiet_overview');
+        $this->site_footer();  
+    }
+    
+    public function gesetze_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/gesetze_overview');
+        $this->site_footer();  
+    }
+    
+    public function jugend_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/jugend_overview');
+        $this->site_footer();  
+    }
+    
+    
+/*****************************************************************************
+*
+*   INHALTSSEITEN -> ENDE
+*
+******************************************************************************/    
+    
     private function site_sidebar_homepage()
     { 
         $c_termin = load_controller('termin/termin');
