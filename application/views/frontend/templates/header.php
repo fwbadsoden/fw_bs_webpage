@@ -78,7 +78,8 @@
                     	<ul>
                         	<li class="headline"><a href="<?=base_url('termine')?>">Termine</a></li>
 <? foreach($termine as $t) : ?>                               
-                        	<li><a href=""<?=base_url('termin/'.$t['terminID'])?>"><span class="subline"><?=cp_get_ger_date($t['datum'])?> / <?=$t['beginn']?> Uhr</span><br /><?=$t['name']?></a></li>
+                        	<li><a><span class="subline"><?=cp_get_ger_date($t['datum'])?> / <?=$t['beginn']?> Uhr</span><br /><?=$t['name']?></a></li>
+                            <!--<li><a href="<?=base_url('termin/'.$t['terminID'])?>"><span class="subline"><?=cp_get_ger_date($t['datum'])?> / <?=$t['beginn']?> Uhr</span><br /><?=$t['name']?></a></li>-->
 <? endforeach; ?>  
                     	</ul>  
                     	<ul>

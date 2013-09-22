@@ -298,6 +298,20 @@ class Pages extends CP_Controller {
         $this->site_footer();  
     }
     
+    public function impressum_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/impressum_overview');
+        $this->site_footer();  
+    }
+    
     public function jugend_overview()
     {
         $this->site_header();

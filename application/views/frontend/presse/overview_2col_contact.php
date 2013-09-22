@@ -22,7 +22,7 @@
                     <p class="form"><textarea name="message"></textarea></p>
                     <p class="label"><label for="name">Name</label></p>
                     <p class="form"><input type="text" name="name" value="" /></p>
-                    <p class="label"><label for="redaktion">Redaktion / Organisaton</label></p>
+                    <p class="label"><label for="redaktion">Redaktion / Organisation</label></p>
                     <p class="form"><input type="text" name="redaktion" value="" /></p>
                     <p class="label"><label for="email">E-Mail Adresse</label></p>
                     <p class="form"><input type="text" name="email" value="" /></p>
