@@ -45,10 +45,10 @@
 | the active record class
 */
 
-$active_group = 'habib';
+$active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'mysql5.fwbs.domainfactory-kunde.de';
+$db['default']['hostname'] = 'mysql5.feuerwehr-bs.de';
 $db['default']['username'] = 'db403895';
 $db['default']['password'] = 'TPsZGZxU';
 $db['default']['database'] = 'db403895';
