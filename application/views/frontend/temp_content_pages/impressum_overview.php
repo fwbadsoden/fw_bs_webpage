@@ -11,7 +11,7 @@ Inhaltlich Verantwortlicher gemäß § 10 Absatz 3 MDStV: Harald Zengeler <br />
 <strong>Konzeption, Gestaltung und Programmierung:</strong><br />
 Habib Pleines<br />
 Oliver Annen<br />
-Philippe Mudra <a href="www.pmudra-photography.com" target="_blank">pmudra-photography.com</a>
+Philippe Mudra <a href="http://www.pmudra-photography.com" target="_blank">pmudra-photography.com</a>
 </p>
 <p>
 <strong>Pflege der Inhalte:</strong><br />
