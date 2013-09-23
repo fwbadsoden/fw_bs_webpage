@@ -31,9 +31,11 @@
                 <li class="headline"><a href="<?=base_url('mannschaft')?>">Menschen</a></li>
                 <li><a href="<?=base_url('mannschaft')?>">Mannschaft</a></li>
                 <li><a href="<?=base_url('leistungsgruppe')?>">Leistungsgruppe</a></li>
-                <li><a href="<?=base_url('galerie')?>">Galerie</a></li>
-                <li><a href="<?=base_url('altersundehrenabteilung')?>">Alters- und Ehrenabteilung</a></li>
-                <li><a href="<?=base_url('verein')?>">Verein und Geschichte</a></li>
+                <li><a href="<?=base_url('rettungshunde')?>">Rettungshundeeinheit</a></li>
+                <!--<li><a href="<?=base_url('galerie')?>">Galerie</a></li>-->
+                <!--<li><a href="<?=base_url('altersundehrenabteilung')?>">Alters- und Ehrenabteilung</a></li>-->
+                <li><a href="<?=base_url('verein')?>">Verein</a></li>
+                <li><a href="<?=base_url('geschichte')?>">Geschichte</a></li>
             </ul>
             <ul>
                 <li class="headline"><a href="<?=base_url('fahrzeuge')?>">Technik</a></li>
@@ -44,8 +46,11 @@
             </ul>
             <ul>
                 <li class="headline"><a href="<?=base_url('informationen')?>">Information</a></li>
-                <li><a href="<?=base_url('tipps')?>">Tipps</a></li>
+                <!--<li><a href="<?=base_url('tipps')?>">Tipps</a></li>-->
+                <li><a href="<?=base_url('buergerinformationen')?>">Bürgerinfos</a></li>
                 <li><a href="<?=base_url('einsatzgebiet')?>">Einsatzgebiet</a></li>
+                <li><a href="<?=base_url('aufgaben')?>">Aufgaben</a></li>
+                <li><a href="<?=base_url('aao')?>">Alarm- und Ausrückeordnung</a></li>
                 <li><a href="<?=base_url('gesetze')?>">Gesetze und Richtlinien</a></li>
                 <!--<li><a href="<?=base_url('downloads')?>">Downloads</a></li>-->
             </ul>
