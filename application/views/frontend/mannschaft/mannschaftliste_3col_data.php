@@ -45,12 +45,7 @@
 <?    else : ?>         
                         <p>&nbsp;</p>
 <?    endif; ?>
-<? endif; ?>                        
-<? if($f->familienstand != '') : ?>
-                        <p>/  <?=$f->familienstand?></p>
-<? else : ?>            
-                        <p>&nbsp;</p>                        
-<? endif; ?>                        
+<? endif; ?>                                       
                     </li>
 <? endforeach; 
    $listcount = 1;
@@ -97,12 +92,7 @@
 <?    else : ?>         
                         <p>&nbsp;</p>
 <?    endif; ?>
-<? endif; ?>              
-<? if($t->familienstand != '') : ?>
-                        <p>/ <?=$t->familienstand?></p>
-<? else : ?>            
-                        <p>&nbsp;</p>                        
-<? endif; ?>                        
+<? endif; ?>                                   
                     </li>
 <? endforeach; ?>                    
                 </ul>
