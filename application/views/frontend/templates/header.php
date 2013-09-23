@@ -196,6 +196,7 @@
                     	</ul>  -->
                     	<ul class="special">
                         	<li class="headline"><a href="<?=base_url('einsatzgebiet')?>">Einsatzgebiet</a></li>
+                        	<li class="headline"><a href="<?=base_url('aufgaben')?>">Aufgaben</a></li>
                         	<li class="headline"><a href="<?=base_url('gesetze')?>">Gesetze & Richtlinien</a></li>
                             <!--<li class="headline"><a href="<?=base_url('downloads')?>">Downloads</a></li>-->
                             <!--<li class="headline"><a href="<?=base_url('faq')?>">H&auml;ufige Fragen</a></li>-->

@@ -2,7 +2,7 @@
     $this->load->helper('html'); 
 ?> 
 
-<div class="BigBox firstColumn">  
+        <div class="BigBox firstColumn">  
             <div class="slideshow">
 
                 <div class="prevPic"><a href="#slideshow_car" id="slideshow_prev"><img src="<?=base_url('images/layout/button_detailShow_previous.png')?>" /></a></div>
