@@ -183,7 +183,7 @@
                         	<li class="headline"><a href="<?=base_url('buergerinformationen')?>">B&uuml;rgerinfos</a></li>
                         	<li><a href="<?=base_url('buergerinformationen/blaulicht')?>">Blaulicht und Martinshorn</a></li>
                             <li><a href="<?=base_url('buergerinformationen/sonderrechte')?>">Sonderrechte</a></li>
-                            <li><a href="<?=base_url('buergerinformationen/insekten')?>">Insekten</a></li>
+                            <!--<li><a href="<?=base_url('buergerinformationen/insekten')?>">Insekten</a></li>-->
                             <li><a href="<?=base_url('buergerinformationen/unwetter')?>">Hinweise zu Unwettern</a></li>
                             <li><a href="<?=base_url('buergerinformationen/brand')?>">Nach dem Brand</a></li>
                             <li><a href="<?=base_url('buergerinformationen/hausnummern')?>">Sichtbare Hausnummern</a></li>
@@ -197,6 +197,7 @@
                     	<ul class="special">
                         	<li class="headline"><a href="<?=base_url('einsatzgebiet')?>">Einsatzgebiet</a></li>
                         	<li class="headline"><a href="<?=base_url('aufgaben')?>">Aufgaben</a></li>
+                        	<li class="headline"><a href="<?=base_url('aao')?>">Alarm- und Ausrückeordnung</a></li>
                         	<li class="headline"><a href="<?=base_url('gesetze')?>">Gesetze & Richtlinien</a></li>
                             <!--<li class="headline"><a href="<?=base_url('downloads')?>">Downloads</a></li>-->
                             <!--<li class="headline"><a href="<?=base_url('faq')?>">H&auml;ufige Fragen</a></li>-->

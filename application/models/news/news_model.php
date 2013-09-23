@@ -37,7 +37,6 @@ class News_model extends CI_Model {
             $slug = $title_lc;
         else
             $slug = $title_lc.'-'.$query_num_rows()+1;
-        
         $news = array(
             'categoryID'    => $this->input->post('category_id'),
             'slug'          => $slug,
