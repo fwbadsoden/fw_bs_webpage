@@ -97,7 +97,8 @@ switch(ID) {
 <?      if($item['delete']==1) :	?>	
 		<a id="confirm_link_<?=$item['fahrzeugID']?>" href="<?=base_url('admin/content/fahrzeug/delete/'.$item['fahrzeugID'])?>" class="button_mini" title="Fahrzeug löschen"><span class='button_delete_small'></span></a></span>
 <?      else :                      ?>
-		<a class="button_mini" title="Fahrzeug kann nicht gelöscht werden.<br>Wird bereits verwendet."><span class='button_lock_small'></span></a></span>
+		<a class="button_mini" title="Fahrzeug kann nicht gelöscht werden. 
+Wird bereits verwendet."><span class='button_lock_small'></span></a></span>
 <?      endif;                      ?>
     </td>
 <?  else :                          ?>
