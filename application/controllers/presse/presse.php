@@ -40,5 +40,22 @@ class Presse extends CP_Controller {
     {
 		$this->load->view('frontend/presse/overview_2col_sidebar');        
     }
+    
+    public function send_email()
+    {
+        $this->load->library('email');
+        $this->email->from($this->input->post('email'), $this->input->post('name'));
+        $this->email->to('habib@familiepleines.de');
+        $this->email->subject($this->input->post('betreff'));
+        $message = 'Name: '.$this->input->post('name').'<br />';
+        $message.= 'Redaktion: '.$this->input->post('redaktion').'<br />';
+        $message.= 'Email-Adresse: '.$this->input->post('email').'<br />';
+        $message.= 'Telefon: '.$this->input->post('telefon').'<br />';
+        $message.= 'Nachricht: <br />'.$this->input->post('message').'<br />';
+        $this->email->message($message);
+        $this->email->send();
+        //echo $this->email->print_debugger();
+        redirect($this->input->server('HTTP_REFERER', TRUE).'gesendet'); 
+    }
 }
 ?>

@@ -17,6 +17,9 @@
     if($f->geschlecht == 'm') $dienstgrad_name = $f->dienstgrad_name_m;
     elseif($f->geschlecht == 'w') $dienstgrad_name = $f->dienstgrad_name_w;
     else $dienstgrad_name = $f->dienstgrad_name;
+    
+    if($f->funktion_name != "") $rang_text = $dienstgrad_name.', '.$f->funktion_name;
+    else $rang_text = $dienstgrad_name;
 ?>
                     <li<?=$class?>>
                         <figure>
@@ -24,12 +27,12 @@
                             <img src="<?=base_url(CONTENT_IMG_DIENSTGRAD_UPLOAD_PATH.$f->dienstgrad_img)?>" class="abzeichen" original-title="Dienstgrad" rel="tipsy" />
                         </figure>
                         <h1><?=$f->vorname?> <?=$f->name?></h1>
-                        <h2><?=$dienstgrad_name?></h2>
-<? if($f->funktion_name != '') : ?>
+                        <h2><?=$rang_text?></h2>
+<!--<? if($f->funktion_name != '') : ?>
                         <h2><?=$f->funktion_name?></h2>
 <? else : ?>    
                         <h2>&nbsp;</h2>
-<? endif; ?>                                                                    
+<? endif; ?>       -->                                                             
 <? if($f->geburtstag != '' and $f->geburtstag != '0000-00-00') : ?>                        
                         <p><?=cp_get_alter($f->geburtstag)?> Jahre 
 <? endif; ?>                        

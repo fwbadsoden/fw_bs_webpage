@@ -15,9 +15,9 @@
 $config['useragent'] 	= 'FeuerwehrBadSoden';
 $config['protocol'] 	= 'smtp';
 $config['mailpath'] 	= '/usr/lib/sendmail';
-$config['smtp_host'] 	= 'smtp.familiepleines.de';
-$config['smtp_user']	= 'fw-no-reply@familiepleines.de';
-$config['smtp_pass']	= 'ggFbXGK5';
+$config['smtp_host'] 	= 'smtp.feuerwehr-bs.de';
+$config['smtp_user']	= 'noreply@feuerwehr-bs.de';
+$config['smtp_pass']	= 'qam5Qzp%pg6e';
 
 $config['mailtype'] = 'html';
 $config['charset'] = 'utf-8';
