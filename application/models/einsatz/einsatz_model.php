@@ -9,6 +9,7 @@
  * @subpackage	Model
  * @category	Model
  * @author		Habib Pleines
+ * @author		Patrick Ritter <pa_ritter@arcor.de>
  */	
  
 class Einsatz_Model extends CI_Model {
@@ -217,6 +218,26 @@ class Einsatz_Model extends CI_Model {
 		}
 		return $einsatz;
 	}
+
+
+	public function get_einsatz_raw($id)
+	{
+		$this->db->where('einsatzID', $id);
+		$query = $this->db->get('einsatz');
+		
+	    $row = $query->row();
+		$einsatz['einsatzID'] 				= $id;
+		$einsatz['einsatzNr'] 				= $row->einsatz_nr;
+		$einsatz['ldf_nr'] 	        		= $row->lfd_nr;
+		$einsatz['einsatzName'] 			= $row->name;
+		$einsatz['datum_beginn'] 			= $row->datum_beginn;
+		$einsatz['uhrzeit_beginn'] 			= $row->uhrzeit_beginn;
+		$einsatz['datum_ende'] 				= $row->datum_ende;
+		$einsatz['uhrzeit_ende'] 			= $row->uhrzeit_ende;
+        
+		return $einsatz;
+	}
+	
     
     public function get_einsatz_cue_list()
     {

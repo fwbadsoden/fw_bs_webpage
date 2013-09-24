@@ -6,6 +6,7 @@
  * 
  * @package com.cp.feuerwehr.backend.einsatz  
  * @author Habib Pleines <habib@familiepleines.de>
+ * @author Patrick Ritter <pa_ritter@arcor.de.de>
  * @copyright 
  * @version 2013
  * @access public
@@ -146,6 +147,30 @@ class Einsatz_Admin extends CP_Controller {
 		}
 		else redirect($this->session->userdata('einsatzliste_redirect'), 'refresh');	
 	}
+
+	/**
+	 * Einsatz_Admin::delete_einsatz_verify()
+	 * 
+	 * @param integer $einsatzId
+	 * @return
+	 */
+	public function delete_einsatz_verify($einsatzId)
+    {
+        if(!$this->cp_auth->is_privileged(EINSATZ_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
+        $header['title']    = 'Einsatz l&ouml;schen';		
+    	$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
+    	$menue['submenue']	= $this->admin->get_submenue();
+		
+        $data = $this->einsatz->get_einsatz_raw($einsatzId);
+    	
+    	$this->load->view('backend/templates/admin/header', $header);
+    	$this->load->view('backend/templates/admin/menue', $menue);	
+    	$this->load->view('backend/templates/admin/submenue', $menue);	
+    	$this->load->view('backend/einsatz/verifyDelete_admin', $data);
+    	$this->load->view('backend/templates/admin/footer');
+    }
 	
 	/**
 	 * Einsatz_Admin::delete_einsatz()
@@ -157,7 +182,7 @@ class Einsatz_Admin extends CP_Controller {
 	{		
         if(!$this->cp_auth->is_privileged(EINSATZ_PRIV_DELETE)) redirect('admin/401', 'refresh');
         
-		$einsatzdata = $this->einsatz->get_einsatz($id);
+		$einsatzdata = $this->einsatz->get_einsatz_raw($id);
 		$this->admin->insert_log(str_replace('%EINSATZ%', $einsatzdata['einsatzName'], lang('log_admin_deleteEinsatz')));
 
 		$this->einsatz->delete_einsatz($id);
