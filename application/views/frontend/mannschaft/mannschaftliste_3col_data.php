@@ -31,7 +31,7 @@
                         <h2>&nbsp;</h2>
 <? endif; ?>                                                                    
 <? if($f->geburtstag != '' and $f->geburtstag != '0000-00-00') : ?>                        
-                        <p>/ <?=cp_get_alter($f->geburtstag)?> Jahre 
+                        <p><?=cp_get_alter($f->geburtstag)?> Jahre 
 <? endif; ?>                        
 <? if($f->beruf != '') : ?>
 <?    if($f->geburtstag != '' and $f->geburtstag != '0000-00-00') : ?>
@@ -78,7 +78,7 @@
                         <h1><?=$t->vorname?> <?=$t->name?></h1>
                         <h2><?=$dienstgrad_name?></h2>
 <? if($t->geburtstag != '' and $t->geburtstag != '0000-00-00') : ?>                        
-                        <p>/ <?=cp_get_alter($t->geburtstag)?> Jahre 
+                        <p><?=cp_get_alter($t->geburtstag)?> Jahre 
 <? endif; ?>                        
 <? if($t->beruf != '') : ?>
 <?    if($t->geburtstag != '' and $t->geburtstag != '0000-00-00') : ?>
