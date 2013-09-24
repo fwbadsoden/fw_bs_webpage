@@ -143,7 +143,7 @@ class News_Admin extends CP_Controller {
 		return $this->form_validation->run();
     }
     
-    public function delete_news()
+    public function delete_news($id)
     {
         if(!$this->cp_auth->is_privileged(NEWS_PRIV_DELETE)) redirect('admin/401', 'refresh');
         

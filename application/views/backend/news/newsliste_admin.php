@@ -81,7 +81,7 @@ $(document).ready(function() {
 	endif;                          
     if($privileged['edit']) :       ?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/news/edit/'.$item['newsID'])?>" class="button_mini" title="News bearbeiten"><span class='button_edit_small'></span></a></span></td>
-	<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item['newsID']?>" href="<?=base_url('admin/content/news/delete/'.$item['newsID'])?>" class="button_mini" title="News löschen"><span class='button_delete_small'></span></a></span></td>
+	<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item['newsID']?>" href="<?=base_url('admin/content/news/checkdel/'.$item['newsID'])?>" class="button_mini" title="News löschen"><span class='button_delete_small'></span></a></span></td>
 <?  else :                          ?>
     <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die News zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
     <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die News zu löschen"><span class='button_lock_small'></span></a></span></td>

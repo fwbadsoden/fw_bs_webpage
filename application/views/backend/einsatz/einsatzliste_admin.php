@@ -129,7 +129,7 @@ switch(ID) {
     if($privileged['edit']) :       ?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/einsatz/edit/'.$item['einsatzID'])?>" class="button_mini" title="Einsatz bearbeiten"><span class='button_edit_small'></span></a></span></td>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/einsatz/image/edit/'.$item['einsatzID'])?>" class="button_mini" title="Einsatzbilder bearbeiten"><span class='button_image_edit_small'></span></a></span></td>
-	<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item['einsatzID']?>" href="<?=base_url('admin/content/einsatz/delete_einsatz_verify/'.$item['einsatzID'])?>" class="button_mini" title="Einsatz löschen"><span class='button_delete_small'></span></a></span></td>
+	<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item['einsatzID']?>" href="<?=base_url('admin/content/einsatz/checkdel/'.$item['einsatzID'])?>" class="button_mini" title="Einsatz löschen"><span class='button_delete_small'></span></a></span></td>
 <?  else :                          ?>
     <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Einsatz zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
     <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Einsatzbilder zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
