@@ -45,6 +45,8 @@
 <div id="SidebarContent">   
     <div class="textTeaser">
         <h1 class="first">Karte des Einsatzgebietes</h1>
+        <img src="<?=base_url('images/content/Einsatzgebiet.png')?>" width="150" title="Unser Einsatzgebiet" alt="Unser Einsatzgebiet" />
+        <div class="zoom"><a href="<?=base_url('images/content/Einsatzgebiet.png')?>" title="Unser Einsatzgebiet" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
     </div>    
 </div>
 <hr class="clear" />
