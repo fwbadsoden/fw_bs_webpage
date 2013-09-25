@@ -63,5 +63,23 @@ class Frontend extends CP_Controller {
             }
         }
     }
+    
+    public function send_email()
+    {
+        $this->load->library('email');
+        $this->email->from($this->input->post('email'), $this->input->post('name'));
+        $this->email->to(EMAIL_CONTACT_FORM_TO);
+        $this->email->subject($this->input->post('betreff'));
+        $message = 'Name: '.$this->input->post('name').'<br />';
+        $message.= 'Email-Adresse: '.$this->input->post('email').'<br />';
+        $message.= 'Telefon: '.$this->input->post('telefon').'<br />';
+        $message.= 'Nachricht: <br />'.$this->input->post('message').'<br />';
+        $this->email->message($message);
+        $this->email->send();
+        //echo $this->email->print_debugger();
+        
+        $this->session->set_userdata('contact_send','send');
+        redirect($this->input->server('HTTP_REFERER', TRUE)); 
+    }
  }
  ?>

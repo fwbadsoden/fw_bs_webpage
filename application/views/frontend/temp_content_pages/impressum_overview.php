@@ -1,4 +1,7 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+    $this->load->helper('form');
+?>
+
         <div id="MainContent">      
             <div class="article">
                 <p>
@@ -24,10 +27,13 @@
                     Haftungshinweis:<br />
                     Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
                 </p>
+<? if($this->session->set_userdata('contact_send') == 'send') : ?>
+                <p><strong>Vielen Dank! Wir haben Ihre Anfrage erhalten und werden uns mit Ihnen in Verbindung setzen.</strong></p>
+<? endif; ?> 
 				<div class="kontaktformularOpener"><p class="link_open active" id="js_openKontakt"><a href="#" rel="js_contact">Kontaktformular öffnen</a></p></div>
 				<div class="kontaktformularOpener"><p class="link_close" id="js_closeKontakt"><a href="#" rel="js_contact">Kontaktformular schlie&szlig;en</a></p></div>
                 <div class="kontaktformular">
-                	<form action="mailto:pressestelle@feuerwehr-bs.de" method="post">
+                	<?=form_open(base_url('kontakt/email'))?>
                         <input type="hidden" name="betreff" value="Kontakt über Impressum" />
                         <p class="label"><label for="message">Nachricht</label></p>
                         <p class="form"><textarea name="message"></textarea></p>

@@ -183,10 +183,10 @@
                         	<li><a href="<?=base_url('buergerinformationen/blaulicht')?>">Blaulicht und Martinshorn</a></li>
                             <li><a href="<?=base_url('buergerinformationen/sonderrechte')?>">Sonderrechte</a></li>
                             <li><a href="<?=base_url('buergerinformationen/notfaelle')?>">Tipps bei Notfällen</a></li>
-                            <!--<li><a href="<?=base_url('buergerinformationen/insekten')?>">Insekten</a></li>-->
+                            <li><a href="<?=base_url('buergerinformationen/notruf')?>">Notruf Absetzen</a></li>
                             <li><a href="<?=base_url('buergerinformationen/unwetter')?>">Hinweise zu Unwettern</a></li>
-                            <!--<li><a href="<?=base_url('buergerinformationen/brand')?>">Nach dem Brand</a></li>-->
-                            <!--<li><a href="<?=base_url('buergerinformationen/hausnummern')?>">Sichtbare Hausnummern</a></li>-->
+                            <li><a href="<?=base_url('buergerinformationen/nachdembrand')?>">Nach dem Brand</a></li>
+                            <li><a href="<?=base_url('buergerinformationen/hausnummern')?>">Sichtbare Hausnummern</a></li>
                     	</ul>  
                     	<!--<ul>
                         	<li class="headline"><a href="<?=base_url('artikel')?>">Artikel</a></li>

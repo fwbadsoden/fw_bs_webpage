@@ -45,7 +45,7 @@ class Presse extends CP_Controller {
     {
         $this->load->library('email');
         $this->email->from($this->input->post('email'), $this->input->post('name'));
-        $this->email->to('habib@familiepleines.de');
+        $this->email->to('pressestelle@feuerwehr-bs.de');
         $this->email->subject($this->input->post('betreff'));
         $message = 'Name: '.$this->input->post('name').'<br />';
         $message.= 'Redaktion: '.$this->input->post('redaktion').'<br />';
