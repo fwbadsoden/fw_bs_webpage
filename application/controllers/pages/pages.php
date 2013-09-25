@@ -354,6 +354,117 @@ class Pages extends CP_Controller {
         $this->site_footer();  
     }
     
+    public function mitmachen_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/mitmachen_overview');
+        $this->site_footer();  
+    }   
+    
+    public function tippsbeinotfaellen_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/tippsbeinotfaellen_overview');
+        $this->site_footer();  
+    } 
+    
+    public function buergerinfos_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/buergerinfos_overview');
+        $this->site_footer();  
+    } 
+    
+    public function blaulicht_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/blaulicht_overview');
+        $this->site_footer();  
+    } 
+    
+    public function sonderrechte_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/sonderrechte_overview');
+        $this->site_footer();  
+    } 
+    
+    public function unwetter_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/unwetter_overview');
+        $this->site_footer();  
+    } 
+    
+    public function kontakt_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/kontakt_overview');
+        $this->site_footer();  
+    }  
+    
+    public function links_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/links_overview');
+        $this->site_footer();  
+    }      
     
 /*****************************************************************************
 *
