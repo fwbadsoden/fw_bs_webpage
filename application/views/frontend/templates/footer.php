@@ -38,7 +38,7 @@
                 <li><a href="<?=base_url('geschichte')?>">Geschichte</a></li>
             </ul>
             <ul>
-                <li class="headline"><a href="<?=base_url('fahrzeuge')?>">Technik</a></li>
+                <li class="headline"><a href="<?=base_url('technik')?>">Technik</a></li>
                 <li><a href="<?=base_url('fahrzeuge')?>">Fahrzeuge</a></li>
                <!-- <li><a href="<?=base_url('geraete')?>">Geräte</a></li>
                 <li><a href="<?=base_url('kleidung')?>">Kleidung</a></li>
