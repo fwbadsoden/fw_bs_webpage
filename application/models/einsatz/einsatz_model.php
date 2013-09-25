@@ -119,8 +119,9 @@ class Einsatz_Model extends CI_Model {
     
     public function get_einsatz_fahrzeuge($id)
     {
+        $this->db->select('fahrzeug.fahrzeugID, name, name_lang, prefix_rufname, rufname, online');
         $this->db->join('fahrzeug', 'einsatz_fahrzeug_mapping.fahrzeugID = fahrzeug.fahrzeugID');
-        $query = $this->db->get_where('einsatz_fahrzeug_mapping', array('einsatzID' => $id, 'online' => 1));
+        $query = $this->db->get_where('einsatz_fahrzeug_mapping', array('einsatzID' => $id));
         $fahrzeuge = array();
         foreach($query->result() as $row)
         {
@@ -134,6 +135,7 @@ class Einsatz_Model extends CI_Model {
             $fahrzeuge[$row->fahrzeugID]['name_lang']       = $row->name_lang;
             $fahrzeuge[$row->fahrzeugID]['prefix_rufname']  = $row->prefix_rufname;
             $fahrzeuge[$row->fahrzeugID]['rufname']         = $row->rufname;
+            $fahrzeuge[$row->fahrzeugID]['online']          = $row->online;
         }
         
         return $fahrzeuge;

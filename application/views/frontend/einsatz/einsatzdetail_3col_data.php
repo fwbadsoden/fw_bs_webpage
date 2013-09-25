@@ -33,7 +33,7 @@
             <h1 class="module">Einsatzort</h1>
             <div class="googlemaps">
 				<div class="Flexible-container">
-                    <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.de/maps?q=Bad+Soden+am+Taunus&ie=UTF8&t=m&z=13&output=embed"></iframe><br /><small><a href="https://maps.google.de/maps?q=Bad+Soden+am+Taunus" style="color:#0000FF;text-align:left">Größere Kartenansicht</a></small>
+                    <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.de/maps?q=<?=$einsatz['einsatzort']?>&ie=UTF8&t=m&z=13&output=embed"></iframe><br /><small><a href="https://maps.google.de/maps?q=Bad+Soden+am+Taunus" style="color:#0000FF;text-align:left">Größere Kartenansicht</a></small>
             	</div>
             </div>
             
@@ -45,7 +45,9 @@
                 <ul>
 <? foreach ($fahrzeuge as $f) : ?>
                     <li>
+<? if($f['online'] == 1) : ?>                    
                         <a href="<?=base_url('fahrzeug/'.$f['fahrzeugID'])?>">
+<? endif; ?>
                         <figure><img src="<?=base_url(CONTENT_IMG_FAHRZEUG_UPLOAD_PATH.$f['img'])?>" width="100" height="50" /></figure>
                         <div class="info">
                             <h2><?=$f['name']?></h2>
@@ -53,7 +55,9 @@
                             <h3><?=$f['name_lang']?></h3>
 <? endif; ?>
 						</div>
+<? if($f['online'] == 1) : ?>  
                         </a>
+<? endif; ?>
                         <hr class="clear" />
                     </li>
 <? endforeach; ?>      
