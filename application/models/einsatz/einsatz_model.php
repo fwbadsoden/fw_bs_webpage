@@ -206,6 +206,7 @@ class Einsatz_Model extends CI_Model {
         $einsatz['cueID']                   = $row->cueID;
         $einsatz['cue_name']                = $row->cue_name;
         $einsatz['cue_mimic']               = $row->cue_mimic;
+        $einsatz['cue_aao']                 = $row->cue_aao;
 		$einsatz['typeID']                  = $row->typeID;
         $einsatz['type_name']               = $row->type_name;
         $einsatz['type_shortname']          = $row->type_short_name;
