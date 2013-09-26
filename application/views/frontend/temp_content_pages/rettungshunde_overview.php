@@ -20,7 +20,7 @@
                                 Aus diesem Grund entschlossen wir uns 2011, gemeinsam mit der Ortsgruppe Bad Soden am Taunus im Verein für Deutsche Schäferhunde SV e.V., eine eigene "Facheinheit Rettungshunde-Ortungstechnik" 
                                 (RHOT) in Dienst zu stellen. Damit geht die Feuerwehr Bad Soden neue Wege, da Rettungshundeeinheiten bei deutschen Feuerwehren traditionell nur vereinzelt vorhanden sind.
                             </p>
-                            <p><img src="<?=base_url('images/content_rettungshunde_einleitung.jpg')?>" /></p>
+                            <p><img src="<?=base_url('images/content/content_rettungshunde_einleitung.jpg')?>" /></p>
                             <p>
                                 Unsere Rettungshundeteams sind, wie fast alle Mitglieder unserer Feuerwehr, Freiwillige. Gemeinsam mit ihren Hunden werden sie für die Trümmersuche und die Suche auf Flächengeländen, wie große 
                                 Waldflächen und anderen unwegsamen Geländen, ausgebildet. Auf diese Weise unterstützen sie die regulären Feuerwehreinheiten bei der Suche nach vermissten oder verletzten Personen. 
@@ -34,7 +34,7 @@
                             Typischerweise handelt es sich bei den Einsätzen um Suchen nach vermissten Personen. Die Hunde werden dabei über das Gelände geführt, 
                             so dass sie die menschliche Witterung aufnehmen können. Hat ein Hund eine Person gefunden, gibt es drei Anzeigemöglichkeiten, mit denen er seinem Hundeführer mitteilen kann, 
                             wo sich die vermisste Person befindet.</p>
-                            <p><img src="<?=base_url('images/content_rettungshunde_flaechensuche.jpg')?>" /></p>
+                            <p><img src="<?=base_url('images/content/content_rettungshunde_flaechensuche.jpg')?>" /></p>
                             <ul>
                             	<li>Bellen: Der Hund bellt bei der gefundenen Person so lange, bis sein Hundeführer bei ihm ist</li>
                                 <li>Bringseln: Der Hund nimmt einen Gegenstand der Person auf und bringt ihn seinem Hundeführer. Anschließend führt er den Hundeführer zurück zu der vermissten Person.</li>
@@ -47,7 +47,7 @@
                             <p>Die Arbeit als Trümmersuchhund zählt zu den schwierigsten Formen der Rettungshundearbeit. Typische Einsätze sind Suchen nach vermissten Personen nach Gasexplosionen und Erdbeben. 
                             Dabei müssen Hund und Hundeführer höchste Aufmerksamkeit und Konzentration walten lassen, da das Gelände oft unberechenbar und gefährlich ist. Solche Einsätze verlangen daher eine 
                             hohe Disziplin von Hund und Mensch.</p>
-                            <p><img src="<?=base_url('images/content_rettungshunde_truemmersuche.jpg')?>" /></p>
+                            <p><img src="<?=base_url('images/content/content_rettungshunde_truemmersuche.jpg')?>" /></p>
                             <p>Während der Suche muss der Rettungshund die menschliche Witterung durch meterdicken Schutt und Trümmerschichten aufnehmen. Zusätzlich sind bei solchen Katastrophen eine Vielzahl 
                             von ablenkenden Gerüchen freigesetzt worden, so dass es für die Hunde nicht einfach ist, die richtige Witterung aufzunehmen. </p>
 							<p>Einsätze in ausländischen Katastrophengebieten erfordern eine außerordentlich hohe Disziplin und Belastbarkeit von Hund und Führer. Nur Rettungshundeteams mit der 
