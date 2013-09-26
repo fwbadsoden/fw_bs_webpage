@@ -12,9 +12,9 @@
                 </p>
                 <p>
                     <strong>Konzeption, Gestaltung und Programmierung:</strong><br />
-                    Habib Pleines<br />
-                    Oliver Annen<br />
-                    Philippe Mudra <a href="http://www.pmudra-photography.com" target="_blank">pmudra-photography.com</a>
+                    Programmierung: Habib Pleines, Patrick Ritter<br />
+                    Gestaltung und Konzeption: Oliver Annen<br />
+                    Fotograf: Philippe Mudra <a href="http://www.pmudra-photography.com" target="_blank">www.pmudra-photography.com</a>
                 </p>
                 <p>
                     <strong>Pflege der Inhalte:</strong><br />

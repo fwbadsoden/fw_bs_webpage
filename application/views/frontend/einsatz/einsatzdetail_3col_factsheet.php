@@ -21,7 +21,10 @@
                     <div class="row">
                         <div class="black lastRow">Einsatzart:</div>
 <? if($einsatz['type_name'] == '') : $einsatz['type_name'] = 'n/a'; endif; ?>      
-                        <div class="red lastRow"><?=$einsatz['type_name']?></div>
+                        <div class="red lastRow">
+<? if($einsatz['ueberoertlich'] == 1) : echo 'Überörtlicher '; endif; ?>                             
+                        <?=$einsatz['type_name']?>                   
+                        </div>
                     </div>
                 </div>        
                 <div class="data">
