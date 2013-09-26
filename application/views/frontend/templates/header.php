@@ -92,9 +92,6 @@
 <? endif; ?>
 <? endforeach; ?>
                        	</ul>  
-              <!--      	<ul class="special navTeaser">
-                        	<li class="headline"><a href="<?=base_url('')?>"><img src="images/navTeaser_tagderoffnentuer.png" /></a></li>
-                    	</ul>  -->
                    </div>  
                 </li>  
                 <li><a href="<?=base_url('mannschaft')?>">Menschen</a>  
