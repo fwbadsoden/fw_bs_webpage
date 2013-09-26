@@ -73,6 +73,7 @@
                                 Der Hundeführer tritt, falls er mit seinem Hund eine Einsatztätigkeit anstrebt, einer Feuerwehr bei und absolviert dort seine Feuerwehrgrundausbildung. 
                                 Des Weiteren erhält er unter anderem eine Ausbildung in den Bereichen Suchtaktik, Funken, Erste Hilfe Hund und Mensch, Kynologie und Navigation.
                             </p>
+                            <img src="http://rettungshundeeinheit.de/ausbildungsablauf_rettungshund_feuerwehr.png" />
                             <p>    
                                 Sobald der Hund über Grundfertigkeiten in den Bereichen Gehorsam, Gewandtheit und Sucharbeit verfügt, demonstriert er diese in einer Rettungshundeprüfung RH1. 
                                 Aus dieser folgt noch keine Einsatztauglichkeit, sie dient lediglich als Zwischenprüfung.
@@ -96,32 +97,38 @@
                 <ul id="slideshow_car">
                     <li id="slideshow_car_1" class="active">
                         <figure>
-                        	<img src="<?=base_url('images/content/anhaenger.jpg')?>" alt="" />
-                        	<div class="zoom"><a href="<?=base_url('images/content/anhaenger.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        	<img src="<?=base_url('images/content/rh_01.jpg')?>" alt="" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/rh_01.jpg')?>" class="fancybox-gallery" rel="gallery1" title="Unser Rettungshundeanhänger im Einsatz"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                     </li>
                     <li id="slideshow_car_2" >
                         <figure>
-                        	<img src="<?=base_url('images/content/hund_black.jpg')?>" alt="" />
-                        	<div class="zoom"><a href="<?=base_url('images/content/hund_black.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        	<img src="<?=base_url('images/content/rh_02.jpg')?>" alt="" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/rh_02.jpg')?>" class="fancybox-gallery" rel="gallery1" title="Wuff"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                     </li>
                     <li id="slideshow_car_3" >
                         <figure>
-                        	<img src="<?=base_url('images/content/uebung_2.jpg')?>" alt="" />
-                            <div class="zoom"><a href="<?=base_url('images/content/uebung_2.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        	<img src="<?=base_url('images/content/rh_03.jpg')?>" alt="" />
+                            <div class="zoom"><a href="<?=base_url('images/content/rh_03.jpg')?>" class="fancybox-gallery" rel="gallery1" title="Die Suche beginnt"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                     </li>
                     <li id="slideshow_car_4" >
                         <figure>
-                        	<img src="<?=base_url('images/content/uebung_1.jpg')?>" alt="" />
-                        	<div class="zoom"><a href="<?=base_url('images/content/uebung_1.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        	<img src="<?=base_url('images/content/rh_04.jpg')?>" alt="" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/rh_04.jpg')?>" class="fancybox-gallery" rel="gallery1" title="Suche im Schutthaufen"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                     </li>
                     <li id="slideshow_car_5">
                         <figure>
-                        	<img src="<?=base_url('images/content/rettungshundeteam.jpg')?>" alt="" />
-                            <div class="zoom"><a href="<?=base_url('images/content/rettungshundeteam.jpg')?>" class="fancybox-gallery" rel="gallery1" title="loremipsum"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        	<img src="<?=base_url('images/content/rh_05.jpg')?>" alt="" />
+                            <div class="zoom"><a href="<?=base_url('images/content/rh_05.jpg')?>" class="fancybox-gallery" rel="gallery1" title="Belohnung nach getaner Arbeit"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        </figure>
+                    </li>
+                    <li id="slideshow_car_6">
+                        <figure>
+                        	<img src="<?=base_url('images/content/rh_06.jpg')?>" alt="" />
+                            <div class="zoom"><a href="<?=base_url('images/content/rh_06.jpg')?>" class="fancybox-gallery" rel="gallery1" title="Das Opfer im Schutthaufen ist gefunden"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                     </li>
                 </ul>
@@ -149,8 +156,8 @@
 			</div>
 			<div class="textTeaser">    
 				<h1>Trainingsgelände</h1>
-				<p>Sie können uns auch ohne einen Hund zu besitzen unterstützen. Um den Hunden ein möglichst abwechselungsreiches Training zu ermöglichen suchen wir immer geeignete Trainingsgelände. 
-                Wenn Sie über Abbruch-, Wald- oder Flächengelände verfügen, die Sie uns für ein Training zur Verfügung stellen möchten, würden wir uns sehr freuen.</p>
+				<p>Sie können uns auch ohne einen Hund zu besitzen unterstützen. Um den Hunden ein möglichst abwechslungsreiches Training zu ermöglichen, suchen wir immer geeignete Trainingsgelände. 
+                Wenn Sie über Abbruch-, Wald- oder Flächengelände verfügen, das Sie uns für ein Training zur Verfügung stellen möchten, würden wir uns sehr freuen.</p>
 			</div>
 		</div>
         <hr class="clear" />

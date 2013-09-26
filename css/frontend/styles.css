@@ -2263,6 +2263,16 @@ input.button_black:hover {
 	box-shadow: 1px 1px 2px #d9d9d9;
 	clear: left;	
 }
+#content .TabBox .TabBoxContent ul {
+	list-style: square;
+}
+#content .TabBox .TabBoxContent ul li {
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 12px;
+	color: #121212;
+	margin: 0 0 10px 0;
+}
 #content .TabBox .TabBoxContent h1 {
 	font-family: Arial, sans-serif;
 	font-weight: bold;
