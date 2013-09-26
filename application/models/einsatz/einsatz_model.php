@@ -21,7 +21,7 @@ class Einsatz_Model extends CI_Model {
     private $upload_path = CONTENT_IMG_EINSATZ_UPLOAD_PATH;
     
     public $id, $name, $datum_beginn, $datum_ende, $uhrzeit_beginn, $uhrzeit_ende, $lfd_nr, $online, $type_count,
-           $einsatz_nr, $lage, $bericht, $weitere_kraefte, $cue_name, $cue_mimic, $ort,
+           $einsatz_nr, $lage, $bericht, $weitere_kraefte, $cue_name, $cue_mimic, $ort, $ueberoertlich,
            $anzahl_kraefte, $typeID, $type_name, $type_short_name, $row_color, $special_class;
 	
 	/**
@@ -51,6 +51,7 @@ class Einsatz_Model extends CI_Model {
         $einsaetze = array();
         $i = 0;
         $type_count = array();
+        $ueberoertlich = 0;
         
         foreach($query->result() as $row)
         {
@@ -71,6 +72,7 @@ class Einsatz_Model extends CI_Model {
             $einsatz->lage          = $row->lage;
             $einsatz->bericht       = $row->bericht;
             $einsatz->ort           = $row->ort;
+            $einsatz->ueberoertlich = $row->ueberoertlich;
             $einsatz->type_name     = $row->type_name;
             $einsatz->type_short_name = $row->type_short_name;
             $einsatz->type_class    = $row->type_class;
@@ -80,11 +82,13 @@ class Einsatz_Model extends CI_Model {
             
             $einsaetze[$i]          = $einsatz;
             
+            if($row->ueberoertlich == 1) $ueberoertlich++;
             if(!isset($type_count[$row->type_short_name])) $type_count[$row->type_short_name] = 0;
             $type_count[$row->type_short_name]++;
             $i++;
         }
         
+        $type_count['ueberoertlich'] = $ueberoertlich;
         $ret_einsaetze['einsaetze'] = $einsaetze;
         $ret_einsaetze['statistik'] = $type_count;
         
@@ -207,6 +211,7 @@ class Einsatz_Model extends CI_Model {
         $einsatz['cue_name']                = $row->cue_name;
         $einsatz['cue_mimic']               = $row->cue_mimic;
         $einsatz['cue_aao']                 = $row->cue_aao;
+        $einsatz['ueberoertlich']           = $row->ueberoertlich;
 		$einsatz['typeID']                  = $row->typeID;
         $einsatz['type_name']               = $row->type_name;
         $einsatz['type_shortname']          = $row->type_short_name;
@@ -333,6 +338,7 @@ class Einsatz_Model extends CI_Model {
             'ort'               => $this->input->post('einsatzort'),
 			'weitere_kraefte'	=> $this->input->post('weitereeinsatzkraefte'),
 			'anzahl_kraefte'	=> $this->input->post('anzahl'),
+            'ueberoertlich'     => $this->input->post('ueberoertlich'),
             'typeID'            => $this->input->post('einsatztyp'),
             'cueID'             => $this->input->post('einsatzstichwort')
 		);
@@ -366,6 +372,7 @@ class Einsatz_Model extends CI_Model {
             'ort'               => $this->input->post('einsatzort'),
 			'weitere_kraefte'	=> $this->input->post('weitereeinsatzkraefte'),
 			'anzahl_kraefte'	=> $this->input->post('anzahl'),
+            'ueberoertlich'     => $this->input->post('ueberoertlich'),
             'typeID'            => $this->input->post('einsatztyp'),
             'cueID'             => $this->input->post('einsatzstichwort')
 		);

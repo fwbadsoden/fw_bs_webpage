@@ -26,6 +26,11 @@
                       <div class="label">Insgesamt:</div>
                       <div class="red"><?=$count?></div>
                    </div>
+                   <div class="row">
+                      <div class="icon city"><a style="width: 36px;">Icon:City</a></div> 
+                      <div class="label">Davon überörtliche Einsätze:</div>
+                      <div class="red"><?=$statistik['ueberoertlich']?></div>
+                   </div>
                </div>
             </div>
         </div>

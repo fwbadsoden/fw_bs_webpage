@@ -99,6 +99,13 @@
 			$fahrzeuge[$i]['formAttr']['checked'] = 'checked'; 
 		}
 	}
+    
+    $ueberoertlich['formAttr']['name']  = 'ueberoertlich';
+    $ueberoertlich['formAttr']['id']    = 'ueberoertlich';
+    $ueberoertlich['formAttr']['class'] = '';
+    $ueberoertlich['formAttr']['value'] = '1';
+    if($this->input->post($ueberoertlich['formAttr']['id']))
+        $ueberoertlich['formAttr']['checked'] = 'checked'; 
 	
     $cues_options = array();
     $cues_attr = "class = 'input_dropdown' id = 'input_dropdown'";
@@ -246,6 +253,9 @@ $(function() {
                         <td colspan='2'><?=form_radio($t['formAttr']); ?> <?=form_label($t['typeName'], $t['formAttr']['id']); ?></td>
                     </tr>
                 <? } ?>	
+                    <tr>
+                        <td colspan='2'><?=form_checkbox($ueberoertlich['formAttr']); ?> <?=form_label('Überörtlich', $ueberoertlich['formAttr']['id']); ?></td>
+                    </tr>
                     <tr><td colspan='2'>&nbsp;</td></tr>
                     <tr>
                         <td colspan='2'><strong>Fahrzeuge im Einsatz:</strong></td>

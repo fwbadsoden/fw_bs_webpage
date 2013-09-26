@@ -111,6 +111,18 @@
 		} 
 		else $fahrzeuge[$i]['formAttr']['checked'] = 'checked';
 	}
+    
+    $ueberoertlich['formAttr']['name']  = 'ueberoertlich';
+    $ueberoertlich['formAttr']['id']    = 'ueberoertlich';
+    $ueberoertlich['formAttr']['class'] = '';
+    $ueberoertlich['formAttr']['value'] = '1';
+    if(!$this->input->post($ueberoertlich['formAttr']['id']))
+    {
+        if($einsatz['ueberoertlich'] == 1)
+            $ueberoertlich['formAttr']['checked'] = 'checked';
+    }
+    else
+        $ueberoertlich['formAttr']['checked'] = 'checked'; 
 	
 	if(isset($_POST['einsatzstichwort'])) 		       	$cues_selected = $_POST['einsatzstichwort'];
 	else if(isset($einsatz['cueID']))	             	$cues_selected = $einsatz['cueID'];
@@ -218,6 +230,9 @@ $(function() {
 					<td colspan='2'><?=form_radio($t['formAttr']); ?> <?=form_label($t['typeName'], $t['formAttr']['id']); ?></td>
 				</tr>
 			<? } ?>
+                    <tr>
+                        <td colspan='2'><?=form_checkbox($ueberoertlich['formAttr']); ?> <?=form_label('Überörtlich', $ueberoertlich['formAttr']['id']); ?></td>
+                    </tr>
 				<tr><td colspan='2'>&nbsp;</td></tr>
 				<tr>
 					<td colspan='2'><strong>Fahrzeuge im Einsatz:</strong></td>
