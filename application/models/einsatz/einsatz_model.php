@@ -207,7 +207,7 @@ class Einsatz_Model extends CI_Model {
         $einsatz['cue_name']                = $row->cue_name;
         $einsatz['cue_mimic']               = $row->cue_mimic;
 		$einsatz['typeID']                  = $row->typeID;
-        $einsatz['type_name']               = $row->name;
+        $einsatz['type_name']               = $row->type_name;
         $einsatz['type_shortname']          = $row->type_short_name;
         
 		$this->db->where('einsatzID', $id);
