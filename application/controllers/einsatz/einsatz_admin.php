@@ -207,11 +207,13 @@ class Einsatz_Admin extends CP_Controller {
 		$this->form_validation->set_rules('einsatzuhrzeit_beginn', 'Einsatzbeginn (Uhrzeit)', 'required|callback_einsatzuhrzeit_beginn'); 
 		$this->form_validation->set_rules('einsatzdatum_ende', 'Einsatzende (Datum)', 'required|callback_einsatzdatum_ende'); 
 		$this->form_validation->set_rules('einsatzuhrzeit_ende', 'Einsatzende (Uhrzeit)', 'required|callback_einsatzuhrzeit_ende'); 
-		$this->form_validation->set_rules('anzahl', 'Anzahl Einsatzkräfte', 'required|is_natural_no_zero|xss_clean');
+		$this->form_validation->set_rules('anzahl', 'Anzahl Einsatzkräfte', 'required|is_natural_no_zero|xss_clean'); 
 		$this->form_validation->set_rules('einsatzlage', 'Lagemeldung', 'required|xss_clean');
 		$this->form_validation->set_rules('einsatzbericht', 'Einsatzbericht', 'required|xss_clean');
 		$this->form_validation->set_rules('einsatzort', 'Einsatzort', 'xss_clean');
 		$this->form_validation->set_rules('weitereeinsatzkraefte', 'Weitere Einsatzkräfte', 'xss_clean'); 
+		$this->form_validation->set_rules('einsatztyp', 'Einsatzart', 'required|is_natural_no_zero'); 
+		$this->form_validation->set_rules('einsatzstichwort', 'Einsatzstichwort', 'required|is_natural_no_zero');
 
 		return $this->form_validation->run();	
 	}
@@ -296,7 +298,7 @@ class Einsatz_Admin extends CP_Controller {
             $menue['menue']	        = $this->admin->get_menue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
-			$einsatz['einsatz']		= $this->einsatz->get_einsatz($id);
+			$einsatz['einsatz']		= $this->einsatz->get_einsatz_raw($id);
 			$einsatz['images']		= $this->einsatz->get_images($id);
 			$einsatz['error']		= $error;
 		

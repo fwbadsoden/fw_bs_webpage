@@ -191,7 +191,7 @@ class Einsatz_Model extends CI_Model {
 	public function get_einsatz($id)
 	{
 		$this->db->where('einsatzID', $id);
-		$query = $this->db->get('v_einsatz');
+		$query = $this->db->get('v_einsatz_all');
 		
 	    $row = $query->row();
 		$einsatz['einsatzID'] 				= $id;
