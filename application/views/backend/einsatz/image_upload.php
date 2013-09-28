@@ -91,6 +91,8 @@ $(document).ready(function()
 		</table>
 	</p>
 	<?=form_fieldset_close();?>
+	<?=form_close();?>
+	</form>
 	
 <? if(count($images) > 0) : ?>
 	<p>&nbsp;</p>
@@ -135,7 +137,7 @@ $(document).ready(function()
 		<? foreach($images as $img) : ?>
 		<tr bgcolor="<?=$img['row_color']?>">
 			<td style="vertical-align: top;">
-				<a id="<?=base_url(CONTENT_IMG_EINSATZ_UPLOAD_PATH.$img['img_thumb'])?>||<?=$img['img_desc']?>||<?=$img['imageID']?>" class="preview_img"><?=$img["img_desc"]?></a>
+				<a id="<?=base_url(CONTENT_IMG_EINSATZ_UPLOAD_PATH.$img['img_thumb'])?>||<?=$img['img_desc']?>||<?=$img['imageID']?>" class="preview_img"><?=$img["img_desc"]==""?"Ohne Beschreibung":$img["img_desc"]?></a>
 			</td>
 		</tr>
 		<? endforeach; ?>
