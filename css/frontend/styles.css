@@ -2213,6 +2213,31 @@ input.button_black:hover {
 #content .article ul li {
 	margin: 5px 0 0 0;
 }
+#content .article h1.einsatzIcon_prefire {
+	background-image: url(../../images/icon_einsaetze/prefire_small.png);
+	background-repeat: no-repeat;
+	padding: 6px 0 4px 40px;
+}
+#content .article h1.einsatzIcon_fire {
+	background-image: url(../../images/icon_einsaetze/fire_small.png);
+	background-repeat: no-repeat;
+	padding: 6px 0 4px 40px;
+}
+#content .article h1.einsatzIcon_saw {
+	background-image: url(../../images/icon_einsaetze/saw_small.png);
+	background-repeat: no-repeat;
+	padding: 6px 0 4px 40px;
+}
+#content .article h1.einsatzIcon_tools {
+	background-image: url(../../images/icon_einsaetze/tools_small.png);
+	background-repeat: no-repeat;
+	padding: 6px 0 4px 40px;
+}
+#content .article h1.einsatzIcon_gas {
+	background-image: url(../../images/icon_einsaetze/gas_small.png);
+	background-repeat: no-repeat;
+	padding: 6px 0 4px 40px;
+}
 
 /* ------------] MainContent - TAB-Box [--------------- */
 
@@ -3093,6 +3118,37 @@ input.button_black:hover {
 	font-size: 12px;
 	color: #FFFFFF;
 }
+#content #SidebarContent .textTeaser ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#content #SidebarContent .textTeaser ul li {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+#content #SidebarContent .textTeaser ul li p {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	font-family: Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: #b1b1b1;
+}
+#content #SidebarContent .textTeaser ul li p span.platzierung {
+	color: #FFFFFF;
+	font-weight: bold;
+}
+#content #SidebarContent .textTeaser ul li h2 {
+	font-family: 'Cabin', Arial, sans-serif;
+	text-transform: normal;
+	font-weight: normal;
+	font-size: 16px;
+	margin: 15px 0 5px 0;
+	padding: 0 0 0 0;
+	color: #FFFFFF;
+}
 #content #SidebarContent .textTeaser a:hover { color: #ffd200; }
 #content #SidebarContent .textTeaser a:focus { color: #ffd200; }
 
@@ -3126,6 +3182,7 @@ input.button_black:hover {
 #content #SidebarContent .address ul li.tel { background-image: url(../../images/icons/tel_mini_white.png); }
 #content #SidebarContent .address ul li.mail { background-image: url(../../images/icons/mail_mini_white.png); }
 #content #SidebarContent .address ul li.fax { background-image: url(../../images/icons/fax_mini_white.png); }
+#content #SidebarContent .address ul li.pdf { background-image: url(../../images/icons/pdf_mini.png); }
 
 #content #SidebarContent .address h2 {
 	text-align: center;

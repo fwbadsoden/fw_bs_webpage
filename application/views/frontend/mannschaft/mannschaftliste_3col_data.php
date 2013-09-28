@@ -34,7 +34,7 @@
                         <h2>&nbsp;</h2>
 <? endif; ?>       -->                                                             
 <? if($f->geburtstag != '' and $f->geburtstag != '0000-00-00') : ?>                        
-                        <p><?=cp_get_alter($f->geburtstag)?> Jahre 
+                        <p><?=cp_get_alter($f->geburtstag)?> Jahre
 <? endif; ?>                        
 <? if($f->beruf != '') : ?>
 <?    if($f->geburtstag != '' and $f->geburtstag != '0000-00-00') : ?>

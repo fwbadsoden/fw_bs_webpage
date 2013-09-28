@@ -55,14 +55,7 @@ class Maintenance extends CP_Controller {
 
 												  return $ad > $bd ? 1 : -1;
 												});
-        
-//        $function = create_function('$a, $b', '$ad = new DateTime($a["sort"])
-//                                               $bd = new DateTime($b["sort"])
-//                                               if ($ad == $bd) {
-//												    return 0;
-//						                       }
-//                                               return $ad > $bd ? 1 : -1');
-//		usort($arr_einsatz, $function);
+
 		
 		foreach($arr_einsatz as $einsatz)
 		{
@@ -71,40 +64,28 @@ class Maintenance extends CP_Controller {
 			$lfdNr++;	
 		}
     }
-    
-//    // Anlegen von Usern ohne die Adminoberfläche
-//    public function create_user()
-//    {
-//        $user_data = array(
-//        	'created_by' => '1'
-//        );
-//        $userID = $this->cp_auth->insert_user('habib.pleines@objective-partner.de', 'tarzan', 'q9mlb015', $user_data);
-//        $this->cp_auth->activate_user($userID, FALSE, FALSE);
-//    }
-//	
-//
-//    public function set_einsatz_ort()
-//    {
-//        $query = $this->db->get('OLD_einsaetze');
-//        foreach($query->result() as $row)
-//        {
-//            $this->db->where('einsatzID', $row->newid);
-//            $this->db->update('einsatz_content', array('ort' => $row->ort));
-//        }
-//    }
-////    
+//    
+////    // Anlegen von Usern ohne die Adminoberfläche
+////    public function create_user()
+////    {
+////        $user_data = array(
+////        	'created_by' => '1'
+////        );
+////        $userID = $this->cp_auth->insert_user('habib.pleines@objective-partner.de', 'tarzan', 'q9mlb015', $user_data);
+////        $this->cp_auth->activate_user($userID, FALSE, FALSE);
+////    }
 ////	
+//
+//
+//	
 //	public function get_einsatz_bilder()
 //	{
 //		$this->load->library('image_lib');
 //		$this->load->helper('string');
 //		$this->load->helper('file');
-//		//$this->db->where('id', 209);
-//		$this->db->where('processed !=', 'X');
-//		$this->db->limit(200);
 //        
 //		$query = $this->db->get('OLD_einsatz_img');
-//        echo $query->num_rows();
+//      
 //		foreach($query->result() as $row)
 //		{
 //			$contents = file_get_contents('http://www.feuerwehr-bs.de/data/einsaetze/'.$row->id.'gr.jpg');
@@ -132,10 +113,7 @@ class Maintenance extends CP_Controller {
 //			   'thumb_file' => $filenamekl.".jpg",
 //			   'fileType' => 'jpg'
 //			);
-//        //    echo $filename.'<br>'.$filenamekl;
 //			$this->db->insert('einsatz_img', $image);
-//			$this->db->where('id', $row->id);
-//			$this->db->update('OLD_einsatz_img', array('processed' => 'X'));
 //		}
 //	}
 //    
@@ -151,23 +129,19 @@ class Maintenance extends CP_Controller {
 //    
 //    public function set_correct_date()
 //    {
-//        $this->db->limit(100,0);
 //        $where = 'zeit2 < zeit';
 //        $this->db->where($where);
-//        $this->db->where('done', '');
 //        $query = $this->db->get('OLD_einsaetze');
 //        echo $query->num_rows();
 //        foreach($query->result() as $row)
 //        {
 //            $this->db->where('id', $row->id);
-//            $this->db->update('OLD_einsaetze', array('done' => 1, 'datum2' => date("Y-m-d", strtotime($row->datum) + (3600 * 24))));
+//            $this->db->update('OLD_einsaetze', array( 'datum2' => date("Y-m-d", strtotime($row->datum) + (3600 * 24))));
 //        }
 //    }
 //    
 //    public function set_type_id()
 //    {
-//        $this->db->limit(100,0);
-//        $this->db->where('done', '0');
 //        $this->db->like('art', 'GG');
 //        $query = $this->db->get('OLD_einsaetze');
 //        
@@ -219,6 +193,7 @@ class Maintenance extends CP_Controller {
 //                'typeID' => $row->art,
 //				'lage' => $row->ausgang,
 //				'bericht' => $row->bericht,
+//                'ort' => $row->ort,
 //				'weitere_kraefte' => $row->weitere,
 //				'anzahl_kraefte' => $row->anzahl
 //			);
@@ -226,48 +201,99 @@ class Maintenance extends CP_Controller {
 //		}
 //	}
 //    
-//    public function set_ort()
-//    {
-//        $this->db->where('done', '0');
-//        $this->db->where('ort', '');
-//        $query = $this->db->get('OLD_einsaetze');
-//            echo $query->num_rows();
-//        foreach($query->result() as $row)
-//        {
-//                $this->db->where('id', $row->id);
-//                $this->db->update('OLD_einsaetze', array('done' => 1, 'ort' => 'Bad Soden am Taunus'));
-//        }
-//    }
-//	
 //
 //    public function db_map_fahrzeuge()
 //    {
-////        $this->db->where('done', 0);
-////		$this->db->where('fahrzeuge !=', 'null'); 
-////		$query = $this->db->get('OLD_einsaetze');
-////        echo $query->num_rows();
-////        echo $this->db->last_query();
-////		foreach ($query->result() as $row)
-////		{
-////            $fahrzeuge = $row->fahrzeuge;
-////		   	$arr_f = explode(',', $row->fahrzeuge);
-////			foreach($arr_f as $f)
-////			{
-////			   $f = trim($f);
-////                $this->db->insert('OLD_einsatz_fahrzeug',array('einsatzID' => $row->newid, 'fahrzeug' => $f));
-////            }            
-////        }
+//		$this->db->where('fahrzeuge !=', ''); 
+//		$query = $this->db->get('OLD_einsaetze');
+//		foreach ($query->result() as $row)
+//		{
+//            $fahrzeuge = $row->fahrzeuge;
+//		   	$arr_f = explode(',', $row->fahrzeuge);
+//			foreach($arr_f as $f)
+//			{
+//			   $f = trim($f);
+//                $this->db->insert('OLD_einsatz_fahrzeug',array('einsatzID' => $row->newid, 'fahrzeug' => $f));
+//            }            
+//        }
+//    }
+//    
+//    public function db_correct_fahrzeug()
+//   {
 //        $this->db->where('fahrzeugID', 0);
-//    //    $this->db->where('id <', 5291);
-//        $this->db->like('fahrzeug', 'LF');
+//        $this->db->where('fahrzeug', 'ELW 1');
 //        $query = $this->db->get('OLD_einsatz_fahrzeug');
 //        foreach($query->result() as $row)
 //        {
 //            $this->db->where('id', $row->id);
-//            $this->db->update('OLD_einsatz_fahrzeug', array('fahrzeugID' => 14));
+//            $this->db->update('OLD_einsatz_fahrzeug', array('fahrzeugID' => 1));
+//        }
+//        $this->db->where('fahrzeugID', 0);
+//        $this->db->where('fahrzeug', 'LF 16/2');
+//        $query = $this->db->get('OLD_einsatz_fahrzeug');
+//        foreach($query->result() as $row)
+//        {
+//            $this->db->where('id', $row->id);
+//            $this->db->update('OLD_einsatz_fahrzeug', array('fahrzeugID' => 2));
+//        }
+//        $this->db->where('fahrzeugID', 0);
+//        $this->db->where('fahrzeug', 'LF 16/1');
+//        $query = $this->db->get('OLD_einsatz_fahrzeug');
+//        foreach($query->result() as $row)
+//        {
+//            $this->db->where('id', $row->id);
+//            $this->db->update('OLD_einsatz_fahrzeug', array('fahrzeugID' => 3));
+//        }
+//        $this->db->where('fahrzeugID', 0);
+//        $this->db->where('fahrzeug', 'DLK 23/12');
+//        $query = $this->db->get('OLD_einsatz_fahrzeug');
+//        foreach($query->result() as $row)
+//        {
+//            $this->db->where('id', $row->id);
+//            $this->db->update('OLD_einsatz_fahrzeug', array('fahrzeugID' => 4));
+//        }
+//        $this->db->where('fahrzeugID', 0);
+//        $this->db->where('fahrzeug', 'MTF');
+//        $query = $this->db->get('OLD_einsatz_fahrzeug');
+//        foreach($query->result() as $row)
+//        {
+//            $this->db->where('id', $row->id);
+//            $this->db->update('OLD_einsatz_fahrzeug', array('fahrzeugID' => 11));
+//        }
+//        $this->db->where('fahrzeugID', 0);
+//        $this->db->where('fahrzeug', 'LF 16/3');
+//        $query = $this->db->get('OLD_einsatz_fahrzeug');
+//        foreach($query->result() as $row)
+//        {
+//            $this->db->where('id', $row->id);
+//            $this->db->update('OLD_einsatz_fahrzeug', array('fahrzeugID' => 25));
+//        }
+//        $this->db->where('fahrzeugID', 0);
+//        $this->db->where('fahrzeug', 'Pkw');
+//        $query = $this->db->get('OLD_einsatz_fahrzeug');
+//        foreach($query->result() as $row)
+//        {
+//            $this->db->where('id', $row->id);
+//            $this->db->update('OLD_einsatz_fahrzeug', array('fahrzeugID' => 12));
+//        }
+//        $this->db->where('fahrzeugID', 0);
+//        $this->db->where('fahrzeug', 'SBI-KdoW');
+//        $query = $this->db->get('OLD_einsatz_fahrzeug');
+//        foreach($query->result() as $row)
+//        {
+//            $this->db->where('id', $row->id);
+//            $this->db->update('OLD_einsatz_fahrzeug', array('fahrzeugID' => 16));
+//        }
+//        $this->db->where('fahrzeugID', 0);
+//        $this->db->where('fahrzeug', 'StBI-KdoW');
+//        $query = $this->db->get('OLD_einsatz_fahrzeug');
+//        foreach($query->result() as $row)
+//        {
+//            $this->db->where('id', $row->id);
+//            $this->db->update('OLD_einsatz_fahrzeug', array('fahrzeugID' => 16));
 //        }
 //    }
-//
+////
 //
 //	public function db_fahrzeug()
 //	{
@@ -277,20 +303,7 @@ class Maintenance extends CP_Controller {
 //            $this->db->insert('einsatz_fahrzeug_mapping', array('einsatzID' => $row->einsatzID, 'fahrzeugID' => $row->fahrzeugID));
 //        }
 //	}
-////    
-//    public function db_switch_types()
-//    {
-//        $query = $this->db->get('einsatz_content');
-//        foreach($query->result() as $row)
-//        {
-//            $this->db->limit(1);
-//            $query2 = $this->db->get_where('einsatz_type_mapping', array('einsatzID' => $row->einsatzID));
-//            $row2 = $query2->row();
-//            
-//            $this->db->where('einsatzID', $row->einsatzID);
-//            $this->db->update('einsatz_content', array('typeID' => $row2->typeID));
-//        }
-//    }
+
 }
 
 ?>

@@ -9,7 +9,7 @@ if (!function_exists('load_controller'))
             $path = $arr_controller[0].'/';
             $controller = $arr_controller[1];
         }
-        
+
         require_once(FCPATH . APPPATH . 'controllers/' . $path . $controller . '.php');
 
         $controller = new $controller();
