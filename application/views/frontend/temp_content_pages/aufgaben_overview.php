@@ -9,7 +9,7 @@
                     Mitgliedern bestehen, haben den Auftrag die Sicherheit der Bevölkerung zu garantieren. Dabei werden sie von einigen wenigen hauptamtlichen Kräften unterstützt.
                 </p>
             </div>
-            <h1 class="module">Die Aufgaben der Feuerwehr</h1>
+            <h1 class="module" id="anker_aufgaben">Die Aufgaben der Feuerwehr</h1>
             <div class="article"> 
             	<h1 class="einsatzIcon_prefire">Vorbeugender Brandschutz</h1>  
                 <p>
@@ -37,7 +37,7 @@
                    die große Palette der Gefahrstoffunfälle im ABC-Bereich.
                 </p>
            </div>
-           <h1 class="module">Gesetzliche Lage</h1>
+           <h1 class="module" id="anker_gesetze">Gesetzliche Lage</h1>
            <div class="article">
                 <p>
                     Die Feuerwehren sind somit eine kommunale Institution, die nach geltendem Recht arbeitet. Da bei Einsätzen Rechtsmittel des Grundgesetzes, ähnlich wie bei der Polizei, verletzt werden, wie z.B.:
@@ -62,8 +62,8 @@
             	<h1 class="first">Weiteres Material</h1> 
                 <p>Hier haben wir einige offizielle Dokumente zum Nachlesen zusammen gestellt:</p>
                 <ul> 
-                	<li class="pdf"><a href="http://verwaltung.hessen.de/irj/servlet/prt/portal/prtroot/slimp.CMReader/HMdI_15/HMdI_Internet/med/c8e/c8e70d47-545e-3301-2892-8f18fc951cbc,22222222-2222-2222-2222-222222222222,true">HBKG</a></li>
-                	<li class="pdf"><a href="http://www.gesetze-im-internet.de/bundesrecht/gg/gesamt.pdf">Grundgesetz der Bundesrepublik Deutschland</a></li>
+                	<li class="pdf"><a href="http://verwaltung.hessen.de/irj/servlet/prt/portal/prtroot/slimp.CMReader/HMdI_15/HMdI_Internet/med/c8e/c8e70d47-545e-3301-2892-8f18fc951cbc,22222222-2222-2222-2222-222222222222,true" target="_blank">HBKG</a></li>
+                	<li class="pdf"><a href="http://www.gesetze-im-internet.de/bundesrecht/gg/gesamt.pdf" target="_blank">Grundgesetz der Bundesrepublik Deutschland</a></li>
                 </ul>
                 <p>&nbsp;</p> 
             </div>

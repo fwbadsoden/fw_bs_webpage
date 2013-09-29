@@ -12,7 +12,7 @@
                 </p>
             </div>
             <h1 class="module">Der theoretische Teil</h1>
-            <div class="article">   
+            <div class="article" id="anker_theorie">  
                 <p>
                     Zunächst müssen feuerwehrtechnische Fachfragen aus den verschiedensten Wissensgebieten im Multiple-Choice-Verfahren beantwortet werden. 
                     Je nach zu erreichendem Abzeichen kann sich die Zahl der zu beantworteten Fragen über die Jahre bis auf ca. 50 erhöhen.
@@ -27,7 +27,7 @@
                     <li>Als Voraussetzung gilt das Bestehen des "Zusatzbogens" (Bronze, Silber oder Gold) im jeweiligen Jahr.</li>
                 </ul>
            </div>
-           <h1 class="module">Der praktische Teil</h1>
+           <h1 class="module" id="anker_praxis">Der praktische Teil</h1>
            <div class="article">
                 <p>
                     Im praktischen Teil wird nun ein Brandeinsatz mit Innenangriff simuliert. Hier gilt es, innerhalb der vorgegebenen Zeit eine vermisste Person 

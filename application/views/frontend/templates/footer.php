@@ -22,46 +22,40 @@
         
         <div class="completeSitemap">    
             <ul>
-                <li class="headline"><a href="<?=base_url('news')?>">News</a></li>
-                <li><a href="<?=base_url('einsaetze')?>">Einsätze</a></li>
-                <li><a href="<?=base_url('termine')?>">Termine</a></li>
-                <li><a href="<?=base_url('presse')?>">Presse</a></li>
+                <li class="headline"><a href="<?=base_url('aktuelles/einsaetze')?>">News</a></li>
+                <li><a href="<?=base_url('aktuelles/einsaetze')?>">Einsätze</a></li>
+                <li><a href="<?=base_url('aktuelles/termine')?>">Termine</a></li>
+                <li><a href="<?=base_url('aktuelles/presse')?>">Presse</a></li>
             </ul>
             <ul>
-                <li class="headline"><a href="<?=base_url('mannschaft')?>">Menschen</a></li>
-                <li><a href="<?=base_url('mannschaft')?>">Mannschaft</a></li>
-                <li><a href="<?=base_url('leistungsgruppe')?>">Leistungsgruppe</a></li>
-                <li><a href="<?=base_url('rettungshunde')?>">Rettungshundeeinheit</a></li>
-                <li><a href="<?=base_url('verein')?>">Verein</a></li>
-                <li><a href="<?=base_url('geschichte')?>">Geschichte</a></li>
+                <li class="headline"><a href="<?=base_url('menschen')?>">Menschen</a></li>
+                <li><a href="<?=base_url('menschen/mannschaft')?>">Mannschaft</a></li>
+                <li><a href="<?=base_url('menschen/rettungshunde')?>">Rettungshundeeinheit</a></li>
+                <li><a href="<?=base_url('menschen/jugend')?>">Jugend</a></li>
+                <li><a href="<?=base_url('menschen/leistungsgruppe')?>">Leistungsgruppe</a></li>
             </ul>
             <ul>
                 <li class="headline"><a href="<?=base_url('technik')?>">Technik</a></li>
-                <li><a href="<?=base_url('fahrzeuge')?>">Fahrzeuge</a></li>
+                <li><a href="<?=base_url('technik/fahrzeuge')?>">Fahrzeuge</a></li>
             </ul>
             <ul>
                 <li class="headline"><a href="<?=base_url('informationen')?>">Information</a></li>
-                <li><a href="<?=base_url('buergerinformationen')?>">Bürgerinfos</a></li>
-                <li><a href="<?=base_url('einsatzgebiet')?>">Einsatzgebiet</a></li>
-                <li><a href="<?=base_url('aufgaben')?>">Aufgaben</a></li>
-                <li><a href="<?=base_url('aao')?>">Alarm- und Ausrückeordnung</a></li>
-                <li><a href="<?=base_url('gesetze')?>">Gesetze und Richtlinien</a></li>
+                <li><a href="<?=base_url('informationen/buergerinformationen')?>">Bürgerinfos</a></li>
+                <li><a href="<?=base_url('informationen/einsatzgebiet')?>">Einsatzgebiet</a></li>
+                <li><a href="<?=base_url('informationen/aufgaben')?>">Aufgaben</a></li>
+                <li><a href="<?=base_url('informationen/aao')?>">Alarm- und Ausrückeordnung</a></li>
+                <li><a href="<?=base_url('informationen')?>">Aufgaben & Gesetze</a></li>
             </ul>
             <ul>
-                <li class="headline"><a href="<?=base_url('jugend')?>">Jugend</a></li>
-               <!-- <li><a href="<?=base_url('jugend/mannschaft')?>">Mannschaft</a></li>
-                <li><a href="<?=base_url('jugend/aktivitaeten')?>">Aktivitäten</a></li>
-                <li><a href="<?=base_url('jugend/ausbildung')?>">Ausbildung</a></li>
-                <li><a href="<?=base_url('jugend/leistungsgruppe')?>">Leistungsgruppe</a></li>
-                <li><a href="<?=base_url('galerie/jugend')?>">Galerie</a></li>-->
+                <li class="headline"><a href="<?=base_url('verein')?>">verein</a></li>
             </ul>
             <hr class="clear" />
         </div>
 
         <div class="smallSitemap">    
-            <a href="<?=base_url('news')?>">News</a>
-            <a href="<?=base_url('mannschaft')?>">Menschen</a>
-            <a href="<?=base_url('fahrzeuge')?>">Technik</a>
+            <a href="<?=base_url('aktuelles/einsaetze')?>">Einsätze</a>
+            <a href="<?=base_url('menschen')?>">Menschen</a>
+            <a href="<?=base_url('technik')?>">Technik</a>
             <a href="<?=base_url('informationen')?>">Information</a>
             <a href="<?=base_url('jugend')?>">Jugend</a>
             <a href="<?=base_url('mitmachen')?>">Mitmachen</a>
@@ -100,7 +94,7 @@
 	<hr class="clear" />
 		<div class="greybox">
 			<p class="number">Zentrale Leitstelle <span>+49 6192-5095</span></p>
-			<!--<p class="button"><a href="#" class="button_red">Alle Rufnummern <span class="zusatz">auf einen Blick</span> &raquo;</a></p>-->
+			<p class="button"><a href="http://www.gehoerlosen-bund.de/dgb/images/stories/pdfs/dgb_notruftelefaxvorlage.pdf" class="button_black_gross" target="_blank">Notruffax &raquo;</a></p>
 			<hr class="clear" />
 		</div>
 	</div>

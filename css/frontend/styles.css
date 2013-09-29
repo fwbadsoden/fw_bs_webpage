@@ -73,6 +73,23 @@ a.button_red:hover {
 	background: linear-gradient(#f2b600,  #f2b600 90%);
 	color: #FFF;
 }
+a.button_black_gross {
+	background: #121212;
+	height: 24px;
+	text-align: center;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 10px 15px;
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 14px;
+	color: #FFF;
+	white-space:nowrap;
+}
+a.button_black_gross:hover {
+	background: #f2b600;
+	color: #FFF;
+}
 a.button_black {
 	width: 90px;
 	height: 24px;
@@ -891,6 +908,9 @@ input.button_black:hover {
 	top: 200px;
 	margin: 0 0 0 0;
 }
+#stage .carRight {
+	margin: 0 0 0 69%;
+}
 #stage .stageContentHeadline {
 	width: auto;
 	text-align: left;
@@ -1429,9 +1449,6 @@ input.button_black:hover {
 	font-size: 0;
 }
 #content .listContent .moreButton a { color: #FFFFFF; padding: 6px 15px; margin: 10px 0 0 0; } 
-#content .listContent .lastRow {
-	border-bottom: solid 0px #a1a1a1;
-}
 #content .listContent .trenner {
 	background-image: url(../../images/layout/listen_trenner.png);
 	background-repeat: no-repeat;
@@ -2193,6 +2210,9 @@ input.button_black:hover {
 	font-weight: bold;
 	font-size: 18px;
 	color: #121212;
+	margin: 25px 0 0 0;
+}
+#content .article h1.first {
 	margin: 10px 0 0 0;
 }
 #content .article p {
@@ -2200,7 +2220,11 @@ input.button_black:hover {
 	font-weight: normal;
 	font-size: 12px;
 	color: #121212;
-	margin: 15px 0 15px 0;
+	margin: 10px 0 15px 0;
+}
+#content .article p.smallimages img {
+	float: left;
+	margin: 0 15px 0 0;
 }
 #content .article ul {
 	font-family: Arial, sans-serif;
@@ -2237,6 +2261,70 @@ input.button_black:hover {
 	background-image: url(../../images/icon_einsaetze/gas_small.png);
 	background-repeat: no-repeat;
 	padding: 6px 0 4px 40px;
+}
+
+#content .article div.wappen {
+	width: 40px;
+	float: left;
+	margin: 0 0 0 0;
+	padding: 0;
+	text-align:center;
+}
+#content .article div.links {
+	float: left;
+	margin: 0 0 0 0;
+	padding: 0;
+	border-left: 1px solid #b1b1b1;
+	margin: 0 0 0 15px;
+	padding: 0 0 0 15px;
+}
+#content .article div.links h2 {
+	font-family: 'Cabin', Arial, sans-serif;
+	font-size: 18px;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #000000;
+	margin: 0 0 10px 0;
+	padding: 0;
+}
+#content .article ul.linktable_first {
+	width: 265px;
+	list-style: none;
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+#content .article ul.linktable_second {
+	width: 265px;
+	list-style: none;
+	margin: 0 0 0 15px;
+	padding: 0;
+	float: left;
+}
+#content .article ul.linktable_big {
+	list-style: none;
+	margin: 0 0 0 15px;
+	padding: 0;
+	float: left;
+}
+#content .article .row {
+	margin: 0 0 30px 0;
+}
+#content .article a {
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: underline;
+	color: #000000;
+}
+#content .article a:hover {
+	color: #ffd200;
+}
+#content .article a:active {
+	color: #ffd200;
 }
 
 /* ------------] MainContent - TAB-Box [--------------- */
@@ -2288,16 +2376,6 @@ input.button_black:hover {
 	box-shadow: 1px 1px 2px #d9d9d9;
 	clear: left;	
 }
-#content .TabBox .TabBoxContent ul {
-	list-style: square;
-}
-#content .TabBox .TabBoxContent ul li {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #121212;
-	margin: 0 0 10px 0;
-}
 #content .TabBox .TabBoxContent h1 {
 	font-family: Arial, sans-serif;
 	font-weight: bold;
@@ -2311,6 +2389,16 @@ input.button_black:hover {
 	font-size: 12px;
 	color: #121212;
 	margin: 15px 0 15px 0;
+}
+#content .TabBox .TabBoxContent ul {
+	list-style: square;
+}
+#content .TabBox .TabBoxContent ul li {
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 12px;
+	color: #121212;
+	margin: 0 0 10px 0;
 }
 #content .TabBox .TabBoxContent .facttable {
 	clear: both;
@@ -2405,6 +2493,9 @@ input.button_black:hover {
 	padding: 0 0 5px 0;
 	border-bottom: 1px #464646 solid;
 }
+#content .menueBox ul li a.active {
+	color: #ffd200;
+}
 #content .menueBox ul li.last {
 	border-bottom: none;
 }
@@ -2472,6 +2563,30 @@ input.button_black:hover {
 	#content .TabBox .tabNav_details { display: none; }
 	#content .TabBox .TabBoxContent h1.reiter { display: block; }
 
+}
+
+/* ------------] MainContent - backtooverview [--------------- */
+
+#content .backtooverview {
+	width: 100%;
+	background-color:#FFF;
+	margin: 0 0 20px 0;
+	padding: 8px 0;	
+	float: left;
+	box-shadow: 1px 1px 2px #d9d9d9;	
+}
+#content .backtooverview a.backlink {
+	font-family: Arial, sans-serif;
+	font-weight: normal;
+	font-size: 12px;
+	text-decoration: none;
+	text-transform: normal;
+	color: #000000;
+	margin: 0 0 0 10px;
+	padding: 0 0 0 20px;
+	background-image:url(../../images/layout/link_arrow_left.png);
+	background-repeat: no-repeat;
+	background-position: 5px;
 }
 
 /* ------------] MainContent - DetailShow [--------------- */
@@ -2908,6 +3023,11 @@ input.button_black:hover {
 	box-shadow: 1px 1px 2px #d9d9d9;
 }
 #content .TeaserListe li.third { margin: 0 0 20px 0; }
+#content .TeaserListe li.text { height: 220px; }
+
+#content .TeaserListe li .border {
+	padding: 5px;
+}
 
 #content .TeaserListe a li:hover {
 	background-color:#ffd200;
@@ -2955,9 +3075,11 @@ input.button_black:hover {
 	left: 0;
 }
 
+
 @media only screen and (max-width: 1000px) {
 
 	#content .TeaserListe li { width: 32%; margin: 0 2% 20px 0; }
+    #content .TeaserListe li.text { height: 240px; }
 
 }
 
@@ -2970,6 +3092,7 @@ input.button_black:hover {
 @media only screen and (max-width: 525px) {
 	
 	#content .TeaserListe {	margin-top: 30px; }
+    #content .TeaserListe li.text { height: 200px; }
 	#content .TeaserListe li h1 { font-size: 14px; }
 	#content .TeaserListe li h2 { font-size: 11px; }
 	#content .TeaserListe li .abzeichen { width: 40px; margin: -33px 0 0 5px; }
@@ -2981,6 +3104,7 @@ input.button_black:hover {
 	#content .TeaserListe li .abzeichen { width: 50px; margin: -43px 0 0 5px; }
 	#content .TeaserListe li { width: 100%; margin: 0 0 20px 0; }
 	#content .TeaserListe li h1 { font-size: 18px; }
+    #content .TeaserListe li.text { height: auto; }
 
 }
 

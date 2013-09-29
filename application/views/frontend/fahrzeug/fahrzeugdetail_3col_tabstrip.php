@@ -52,15 +52,7 @@
                                     <li><?=trim($b)?></li>
 <? endforeach; ?>          
                                 </ul>
-                            </div>                            
-                            <div class="right">
-                              <!--  <h1>Löschmittelvorrat</h1>
-                                <ul>
-                                    <li>2000 l Wasser</li>
-                                    <li>150 l Schaummittel AFFF</li>
-                                    <li>50 l Schaummittel Class A</li>
-                                </ul>-->
-                            </div>                         
+                            </div>                           
                             <hr class="clear" />
                         </div>
 <? endif; ?>                                             

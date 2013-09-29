@@ -13,7 +13,7 @@
 			<div class="textTeaser">    
 				<h1>Kontakt am Einsatzort</h1>
 				<p>An größeren Einsatzstellen steht Ihnen unser Pressesprecher direkt am Einsatzort zur Verfügung.</p>
-				<p>Damit sie ihn besser finden, trägt er eine grünen Weste mit der Aufschrift: </p>
+				<p>Damit sie ihn besser finden, trägt er eine grüne Weste mit der Aufschrift: </p>
 				<h2>"Feuerwehr Pressestelle"</h2>
 			</div>
 			<div class="textTeaser">    

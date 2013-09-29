@@ -8,7 +8,7 @@
                 <ul>
 <? foreach($einsaetze as $einsatz) : ?>                
                     <li>
-                        <a href="<?=base_url('einsatz/'.$einsatz['einsatzID'])?>">
+                        <a href="<?=base_url('aktuelles/einsatz/'.$einsatz['einsatzID'])?>">
                         <h2><?=cp_get_ger_date($einsatz['datum'])?></h2>
                         <p><?=$einsatz['lage']?></p>
                         </a>

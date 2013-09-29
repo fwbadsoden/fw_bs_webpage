@@ -354,6 +354,34 @@ class Pages extends CP_Controller {
         $this->site_footer();  
     }
     
+    public function jugend_aktivitaeten_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/jugend_aktivitaeten_overview');
+        $this->site_footer();  
+    }
+    
+    public function jugend_ausbildung_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/jugend_ausbildung_overview');
+        $this->site_footer();  
+    }
+    
     public function mitmachen_overview()
     {
         $this->site_header();
@@ -378,7 +406,7 @@ class Pages extends CP_Controller {
         if($this->page_content['stage_images']['count_images'] > 1)
             $this->site_stage_slider();    
         
-        $this->load->view('frontend/temp_content_pages/tippsbeinotfaellen_overview');
+        $this->load->view('frontend/temp_content_pages/buergerinfos_tippsbeinotfaellen_overview');
         $this->site_footer();  
     } 
     
@@ -396,6 +424,20 @@ class Pages extends CP_Controller {
         $this->site_footer();  
     } 
     
+    public function hausnummern_overview()
+    {
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/buergerinfos_hausnummern_overview');
+        $this->site_footer();  
+    } 
+    
     public function blaulicht_overview()
     {
         $this->site_header();
@@ -406,7 +448,7 @@ class Pages extends CP_Controller {
         if($this->page_content['stage_images']['count_images'] > 1)
             $this->site_stage_slider();    
         
-        $this->load->view('frontend/temp_content_pages/blaulicht_overview');
+        $this->load->view('frontend/temp_content_pages/buergerinfos_blaulicht_overview');
         $this->site_footer();  
     } 
     
@@ -420,7 +462,7 @@ class Pages extends CP_Controller {
         if($this->page_content['stage_images']['count_images'] > 1)
             $this->site_stage_slider();    
         
-        $this->load->view('frontend/temp_content_pages/sonderrechte_overview');
+        $this->load->view('frontend/temp_content_pages/buergerinfos_sonderrechte_overview');
         $this->site_footer();  
     } 
     
@@ -434,7 +476,7 @@ class Pages extends CP_Controller {
         if($this->page_content['stage_images']['count_images'] > 1)
             $this->site_stage_slider();    
         
-        $this->load->view('frontend/temp_content_pages/unwetter_overview');
+        $this->load->view('frontend/temp_content_pages/buergerinfos_unwetter_overview');
         $this->site_footer();  
     } 
     
@@ -476,23 +518,9 @@ class Pages extends CP_Controller {
         if($this->page_content['stage_images']['count_images'] > 1)
             $this->site_stage_slider();    
         
-        $this->load->view('frontend/temp_content_pages/nachdembrand_overview');
+        $this->load->view('frontend/temp_content_pages/buergerinfos_nachdembrand_overview');
         $this->site_footer();  
     } 
-    
-    public function notruf_overview()
-    {
-        $this->site_header();
-        $this->site_stage();
-        
-        $this->site_content_header('slidewrapper smallstage');
-        
-        if($this->page_content['stage_images']['count_images'] > 1)
-            $this->site_stage_slider();    
-        
-        $this->load->view('frontend/temp_content_pages/notruf_overview');
-        $this->site_footer();  
-    }   
     
 /*****************************************************************************
 *

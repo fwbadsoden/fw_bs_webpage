@@ -66,7 +66,8 @@
                         <img src="<?=base_url('images/icons/icon_cars.png')?>">
                     </div>
                     <div class="info">    
-                        <h2><?=count($einsatz['fahrzeug'])?></h2>
+<? if(isset($einsatz['fahrzeug'])) : $count = count($einsatz['fahrzeug']); else : $count = 0; endif; ?>                  
+                        <h2><?=$count?></h2>
                     </div>
 	                <hr class="clear" />
                 </div>

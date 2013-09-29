@@ -12,7 +12,7 @@
 <? else : ?>
                     <li>
 <? endif; ?>                                                  
-                        <a href="<?=base_url('fahrzeug/'.$fahrzeug['fahrzeugID'])?>"><?=$fahrzeug['fahrzeugNameLang']?> - <span class="downlight"><?=$fahrzeug['fahrzeugName']?></span></a>
+                        <a href="<?=base_url('technik/fahrzeug/'.$fahrzeug['fahrzeugID'])?>"><?=$fahrzeug['fahrzeugNameLang']?> - <span class="downlight"><?=$fahrzeug['fahrzeugName']?></span></a>
                     </li>
 <? endforeach; ?>                    
                 </ul>
@@ -24,7 +24,7 @@
 <? else : ?>
                     <li>
 <? endif; ?>                                                  
-                        <a href="<?=base_url('fahrzeug/'.$fahrzeug['fahrzeugID'])?>"><?=$fahrzeug['fahrzeugNameLang']?> - <span class="downlight"><?=$fahrzeug['fahrzeugName']?></span></a>
+                        <a href="<?=base_url('technik/fahrzeug/'.$fahrzeug['fahrzeugID'])?>"><?=$fahrzeug['fahrzeugNameLang']?> - <span class="downlight"><?=$fahrzeug['fahrzeugName']?></span></a>
                     </li>
 <? endforeach; ?>   
                 </ul>

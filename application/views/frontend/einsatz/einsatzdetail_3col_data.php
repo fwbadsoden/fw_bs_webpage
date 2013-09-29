@@ -41,12 +41,12 @@
         <div id="SidebarContent">  
 <? if(count($fahrzeuge) > 0) : ?>        
     	    <div class="SBfahrzeugListe">
-                <h1 class="first">Eingesetzte Fahrzeuge</h1>
+                <h1 class="first">Eingesetzte Fahrzeuge</h1>                
                 <ul>
 <? foreach ($fahrzeuge as $f) : ?>
                     <li>
 <? if($f['online'] == 1) : ?>                    
-                        <a href="<?=base_url('fahrzeug/'.$f['fahrzeugID'])?>">
+                        <a href="<?=base_url('technik/fahrzeug/'.$f['fahrzeugID'])?>">
 <? endif; ?>
                         <figure><img src="<?=base_url(CONTENT_IMG_FAHRZEUG_UPLOAD_PATH.$f['img'])?>" width="100" height="50" /></figure>
                         <div class="info">

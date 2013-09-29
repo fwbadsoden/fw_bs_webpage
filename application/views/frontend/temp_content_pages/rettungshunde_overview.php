@@ -11,7 +11,7 @@
                     <div class="TabBoxContent">
                         <h1 class="reiter"><a href="#details_1" func="tab" class="active">Einleitung</a></h1>
                         <div id="box_details_1" style="">
-                            <h1>Rettungshunde bei der Feuerwehr</h1>
+                            <h1 id="anker_einleitung">Rettungshunde bei der Feuerwehr</h1>
                             <p>
                                 Rettungshunde sind zuverlässige Helfer bei der Rettung von in Not geratenen Menschen. Dank ihrem ausgeprägten Geruchssinn können sie große Gebiete effektiv und schnell nach einem Opfer absuchen.
                                 Ihre Hundenasen sind dabei so genau, dass es die gängige Technik nicht mit ihnen aufnehmen kann. Somit sind Rettungshunde mit ihrem Hundeführer im modernen Rettungswesen nicht mehr wegzudenken.
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 
- 	                     <div class="article">
+ 	                     <div class="article" id="anker_ausbildung">
 							<h1>Ablauf der Ausbildung</h1>
                             <p>
                                 Die Ausbildung der Rettungshunde bei der Feuerwehr Bad Soden erfolgt gemäß den «Mindeststandards Rettungshunde-Ortungstechnik des Deutschen Feuerwehrverbandes» 

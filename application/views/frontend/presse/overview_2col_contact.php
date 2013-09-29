@@ -16,7 +16,7 @@
 				<div class="kontaktformularOpener"><p class="link_open active" id="js_openKontakt"><a href="#" rel="js_contact">Kontaktformular öffnen</a></p></div>
 				<div class="kontaktformularOpener"><p class="link_close" id="js_closeKontakt"><a href="#" rel="js_contact">Kontaktformular schlie&szlig;en</a></p></div>
                 <div class="kontaktformular">
-                	<?=form_open(base_url('presse/anfrage'))?>
+                	<?=form_open(base_url('aktuelles/presse/anfrage'))?>
                     <p>
                     	<select name="betreff">
                     		<option value="Verteiler Anfrage">Anfrage zur Aufnahme in den Presseverteiler</option>

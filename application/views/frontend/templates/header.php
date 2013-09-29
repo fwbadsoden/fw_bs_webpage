@@ -67,26 +67,31 @@
                 </ul>
             </div>
             <ul id="menu">  
-                <li><a href="news">News</a>  
+<? if(current_url() == base_url('aktuelles')) : $class = ' class="active"'; else : $class = ''; endif; ?>             
+                <li><a href="<?=base_url('aktuelles')?>"<?=$class?>>News</a>  
                    <div class="dropdown">  
                     	<ul>
-                        	<li class="headline"><a href="<?=base_url('einsaetze')?>">Einsätze</a></li>
-<? foreach($einsaetze['einsaetze'] as $e) : ?>                            
-                        	<li><a href="<?=base_url('einsatz/'.$e->id)?>"><span class="subline"><?=cp_get_ger_date($e->datum_beginn)?> / <?=$e->type_name?></span><br /><?=$e->name?></a></li>
+<? if(current_url() == base_url('aktuelles/einsaetze')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
+                        	<li class="headline"><a href="<?=base_url('aktuelles/einsaetze')?>"<?=$class?>>Einsätze</a></li>
+<? foreach($einsaetze['einsaetze'] as $e) : ?>             
+<? if(current_url() == base_url('aktuelles/einsatz/'.$e->id)) : $class = ' class="active"'; else : $class = ''; endif; ?>                
+                        	<li><a href="<?=base_url('aktuelles/einsatz/'.$e->id)?>"<?=$class?>><span class="subline"><?=cp_get_ger_date($e->datum_beginn)?> / <?=$e->type_name?></span><br /><?=$e->name?></a></li>
 <? endforeach; ?>                            
                     	</ul>  
                     	<ul>
-                        	<li class="headline"><a href="<?=base_url('termine')?>">Termine</a></li>
+<? if(current_url() == base_url('aktuelles/termine')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
+                        	<li class="headline"><a href="<?=base_url('aktuelles/termine')?>"<?=$class?>>Termine</a></li>
 <? foreach($termine as $t) : ?>                               
                         	<li><a><span class="subline"><?=cp_get_ger_date($t['datum'])?> / <?=$t['beginn']?> Uhr</span><br /><?=$t['name']?></a></li>
                             <!--<li><a href="<?=base_url('termin/'.$t['terminID'])?>"><span class="subline"><?=cp_get_ger_date($t['datum'])?> / <?=$t['beginn']?> Uhr</span><br /><?=$t['name']?></a></li>-->
 <? endforeach; ?>  
                     	</ul>  
                     	<ul>
-                        	<li class="headline"><a href="<?=base_url('presse')?>">Presse</a></li>
+<? if(current_url() == base_url('aktuelles/presse')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
+                        	<li class="headline"><a href="<?=base_url('aktuelles/presse')?>"<?=$class?>>Presse</a></li>
 <? foreach($articles as $a) : ?>                            
 <? if($a['link'] == '') : ?>
-                	       <li><a href="<?=base_url($a['fullpath'])?>" download="<?=$a['name']?>"><span class="subline"><?=cp_get_ger_date($a['datum'])?> / <?=$a['source']?></span><br /><?=$a['name']?></a></li>
+                	       <li><a href="<?=base_url($a['fullpath'])?>" target="_blank"><span class="subline"><?=cp_get_ger_date($a['datum'])?> / <?=$a['source']?></span><br /><?=$a['name']?></a></li>
 <? else : ?>
                            <li><a href="<?=$a['link']?>" target="_blank"><span class="subline"><?=cp_get_ger_date($a['datum'])?> / <?=$a['source']?></span><br /><?=$a['name']?></a></li>
 <? endif; ?>
@@ -94,113 +99,121 @@
                        	</ul>  
                    </div>  
                 </li>  
-                <li><a href="<?=base_url('mannschaft')?>">Menschen</a>  
+<? if(strpos(current_url(), base_url('menschen/mannschaft')) !== false) : $class = ' class="active"'; else : $class = ''; endif; ?>                 
+                <li><a href="<?=base_url('menschen/mannschaft')?>"<?=$class?>>Menschen</a>  
                     <div class="dropdown">  
-                    	<ul>
-                        	<li class="headline"><a href="<?=base_url('mannschaft')?>">Mannschaft</a></li>
-                        	<li><a href="<?=base_url('mannschaft#anker_fuehrung')?>">Führung</a></li>
-                            <li><a href="<?=base_url('mannschaft#anker_mannschaft')?>">Mannschaft</a></li>
+                    	<ul>                      
+                        	<li class="headline"><a href="<?=base_url('menschen/mannschaft')?>"<?=$class?>>Mannschaft</a></li>
+                        	<li><a href="<?=base_url('menschen/mannschaft#anker_fuehrung')?>">Führung</a></li>
+                            <li><a href="<?=base_url('menschen/mannschaft#anker_mannschaft')?>">Mannschaft</a></li>
                     	</ul>  
-                    	<!--<ul>
-                        	<li class="headline"><a href="<?=base_url('wache')?>">Die Wache</a></li>
-                            <li><a href="<?=base_url('wache/geraetehaus')?>">Ger&auml;tehaus</a></li>
-                            <li><a href="<?=base_url('wache/florianstube')?>">Florianstube</a></li>
-                            <li><a href="<?=base_url('wache/fahrzeughalle')?>">Fahrzeughalle</a></li>
-                    	</ul>  -->
-                    	<!--<ul>
-                        	<li class="headline"><a href="<?=base_url('galerie')?>">Galerie</a></li>
-                            <li><a href="<?=base_url('galerie/einsaetze')?>">Einsätze</a></li>
-                            <li><a href="<?=base_url('galerie/feiern')?>">Feiern</a></li>
-                            <li><a href="<?=base_url('galerie/fotoshooting')?>">Fotoshooting</a></li>
-                            <li><a href="<?=base_url('galerie/wache')?>">Unsere Wache</a></li>
-                    	</ul> -->
-                    	<ul class="special">
-                            <li class="headline"><a href="<?=base_url('leistungsgruppe')?>">Leistungsgruppe</a></li>
-							<li class="headline"><a href="<?=base_url('rettungshunde')?>">Rettungshundeeinheit</a></li>
-                            <!--<li class="headline"><a href="<?=base_url('altersundehrenabteilung')?>">Alters- und Ehrenabteilung</a></li>-->
-                            <li class="headline"><a href="<?=base_url('verein')?>">Verein</a></li>
-                            <li class="headline"><a href="<?=base_url('geschichte')?>">Geschichte</a></li>
+                    	<ul>
+<? if(current_url() == base_url('menschen/jugend')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
+                        	<li class="headline"><a href="<?=base_url('menschen/jugend')?>"<?=$class?>>Jugend</a></li>
+<? if(current_url() == base_url('menschen/jugend/aktivitaeten')) : $class = ' class="active"'; else : $class = ''; endif; ?>                             
+                        	<li><a href="<?=base_url('menschen/jugend/aktivitaeten')?>"<?=$class?>>Aktivitäten</a></li>
+<? if(current_url() == base_url('menschen/jugend/ausbildung')) : $class = ' class="active"'; else : $class = ''; endif; ?>                             
+                            <li><a href="<?=base_url('menschen/jugend/ausbildung')?>"<?=$class?>>Ausbildung</a></li>
+                    	</ul>  
+                    	<ul>
+<? if(strpos(current_url(), base_url('menschen/rettungshunde')) !== false) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
+                        	<li class="headline"><a href="<?=base_url('menschen/rettungshunde')?>"<?=$class?>>Rettungshunde</a></li>
+                        	<li><a href="<?=base_url('menschen/rettungshunde#anker_einleitung')?>">Einleitung</a></li>
+                            <li><a href="<?=base_url('menschen/rettungshunde#anker_ausbildung')?>">Ablauf der Ausbildung</a></li>
+                    	</ul>  
+                    	<ul>
+<? if(strpos(current_url(), base_url('menschen/jugend')) !== false) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
+                        	<li class="headline"><a href="<?=base_url('menschen/leistungsgruppe')?>"<?=$class?>>Leistungsgruppe</a></li>
+                        	<li><a href="<?=base_url('menschen/mannschaft#anker_theorie')?>">Theorie</a></li>
+                            <li><a href="<?=base_url('menschen/mannschaft#anker_praxis')?>">Praxis</a></li>
                     	</ul>  
                     </div>  
 				</li>  
-                <li><a href="<?=base_url('technik')?>">Technik</a>  
+<? if(current_url() == base_url('technik')) : $class = ' class="active"'; else : $class = ''; endif; ?>                 
+                <li><a href="<?=base_url('technik')?>"<?=$class?>>Technik</a>  
                     <div class="dropdown">  
                     	<ul>
-                        	<li class="headline"><a href="<?=base_url('fahrzeuge')?>">Fahrzeuge</a></li>
+<? if(current_url() == base_url('technik/fahrzeuge')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
+                        	<li class="headline"><a href="<?=base_url('technik/fahrzeuge')?>"<?=$class?>>Fahrzeuge</a></li>
 <?  $i = 0; $count = count($fahrzeuge);
     foreach($fahrzeuge as $f) : ?>                        
-                        	<li><a href="<?=base_url('fahrzeug/'.$f['fahrzeugID'])?>">
+<? if(current_url() == base_url('technik/fahrzeug/'.$f['fahrzeugID'])) : $class = ' class="active"'; else : $class = ''; endif; ?>     
+                        	<li><a href="<?=base_url('technik/fahrzeug/'.$f['fahrzeugID'])?>"<?=$class?>>
                             <? if($f['fahrzeugNameLang'] != '') : echo $f['fahrzeugName'].' - '.$f['fahrzeugNameLang']; else : echo $f['fahrzeugName']; endif; ?>
                             </a></li>
-    <? if ($i == 3) { $i = 0; echo "</ul><ul><li class='headline'><a href='".base_url('fahrzeuge')."'>&nbsp;</a></li>"; } else $i++; ?>    
+    <? if ($i == 3) { $i = 0; echo "</ul><ul><li class='headline'><a href='".base_url('technik/fahrzeuge')."'>&nbsp;</a></li>"; } else $i++; ?>    
 <? endforeach; ?>
                     	</ul>  
-                    <!--	<ul>
-                        	<li class="headline"><a href="<?=base_url('ausruestung')?>">Ausr&uuml;stung</a></li>
-                        	<li><a href="<?=base_url('')?>">Rettungssatz</a></li>
-                            <li><a href="<?=base_url('')?>">Halligan-Tool</a></li>
-                            <li><a href="<?=base_url('')?>">Wasserwerfer</a></li>
-                            <li><a href="<?=base_url('')?>">Bel&uuml;ftungsger&auml;te</a></li>
-                            <li><a href="<?=base_url('')?>">Tauchpumpe</a></li>
-                            <li><a href="<?=base_url('')?>">Atemschutz</a></li>
-                            <li><a href="<?=base_url('')?>">Stromerzeuger</a></li>
-                            <li><a href="<?=base_url('')?>">Mobiler Rauchverschluss</a></li>
-                    	</ul>  -->
-                    <!--	<ul>
-                        	<li class="headline"><a href="<?=base_url('kleidung')?>">Kleidung</a></li>
-                        	<li><a href="<?=base_url('')?>">Pers&ouml;nliche Ausr&uuml;stung</a></li>
-                            <li><a href="<?=base_url('')?>">Funktionswesten</a></li>
-                            <li><a href="<?=base_url('')?>">Ausgehuniform</a></li>
-                            <li><a href="<?=base_url('')?>">Spezialausr&uuml;stung</a></li>
-                    	</ul>  -->
-                    <!--	<ul>
-                        	<li class="headline"><a href="<?=base_url('ausbildung')?>">Ausbildung</a></li>
-                        	<li><a href="<?=base_url('')?>">Erstausbildung</a></li>
-                            <li><a href="<?=base_url('')?>">Truppmannausbildung</a></li>
-                            <li><a href="<?=base_url('')?>">Atemschutz</a></li>
-                            <li><a href="<?=base_url('')?>">Technische Hilfeleistung</a></li>
-                            <li><a href="<?=base_url('')?>">Maschinist</a></li>
-                            <li><a href="<?=base_url('')?>">Gefahrgut</a></li>
-                    	</ul>  -->
                     </div>  
                 </li>  
-                <li><a href="<?=base_url('informationen')?>">Infos</a>  
+<? if(current_url() == base_url('informationen')) : $class = ' class="active"'; else : $class = ''; endif; ?>                 
+                <li><a href="<?=base_url('informationen')?>"<?=$class?>>Infos</a>  
                     <div class="dropdown">  
-                    	<!--<ul>
-                        	<li class="headline"><a href="<?=base_url('informationen/brandschutz')?>">Brandschutztipps</a></li>
-                        	<li><a href="<?=base_url('informationen/erstehilfe')?>">Erste Hilfe</a></li>
-                            <li><a href="<?=base_url('informationen/notruf')?>">Notruf Absetzen</a></li>
-                            <li><a href="<?=base_url('informationen/rauchmelder')?>">Rauchmelder</a></li>
-                            <li><a href="<?=base_url('informationen/feuer')?>">Verhalten bei Brandf&auml;llen</a></li>
-                            <li><a href="<?=base_url('informationen/feuerloescher')?>">Feuerl&ouml;scher</a></li>
-                            <li><a href="<?=base_url('informationen/kuechenbrand')?>">K&uuml;chenbrand</a></li>
-                    	</ul>  -->
                     	<ul>
-                        	<li class="headline"><a href="<?=base_url('buergerinformationen')?>">B&uuml;rgerinfos</a></li>
-                        	<li><a href="<?=base_url('buergerinformationen/blaulicht')?>">Blaulicht und Martinshorn</a></li>
-                            <li><a href="<?=base_url('buergerinformationen/sonderrechte')?>">Sonderrechte</a></li>
-                            <li><a href="<?=base_url('buergerinformationen/notfaelle')?>">Tipps bei Notfällen</a></li>
-                            <li><a href="<?=base_url('buergerinformationen/notruf')?>">Notruf Absetzen</a></li>
-                            <li><a href="<?=base_url('buergerinformationen/unwetter')?>">Hinweise zu Unwettern</a></li>
-                            <li><a href="<?=base_url('buergerinformationen/nachdembrand')?>">Nach dem Brand</a></li>
-                            <li><a href="<?=base_url('buergerinformationen/hausnummern')?>">Sichtbare Hausnummern</a></li>
-                    	</ul>  
-                    	<!--<ul>
-                        	<li class="headline"><a href="<?=base_url('artikel')?>">Artikel</a></li>
-                        	<li><a href="<?=base_url('#')?>">Feuerwehraustausch</a></li>
-                            <li><a href="<?=base_url('#')?>">Tag der offnen T&uuml;r 2013</a></li>
-                            <li><a href="<?=base_url('#')?>">Atemschutztraining</a></li>
-                    	</ul>  -->
+<? if(current_url() == base_url('informationen/buergerinformationen')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
+                        	<li class="headline"><a href="<?=base_url('informationen/buergerinformationen')?>"<?=$class?>>B&uuml;rgerinfos</a></li>
+<? if(current_url() == base_url('informationen/buergerinformationen/blaulicht')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                        	<li><a href="<?=base_url('informationen/buergerinformationen/blaulicht')?>"<?=$class?>>Blaulicht und Martinshorn</a></li>
+<? if(current_url() == base_url('informationen/buergerinformationen/nachdembrand')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                            <li><a href="<?=base_url('informationen/buergerinformationen/nachdembrand')?>"<?=$class?>>Nach dem Brand</a></li>
+<? if(current_url() == base_url('informationen/buergerinformationen/hausnummern')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                            <li><a href="<?=base_url('informationen/buergerinformationen/hausnummern')?>"<?=$class?>>Sichtbare Hausnummern</a></li>
+                    	</ul>   
+                        <ul>
+<? if(current_url() == base_url('informationen/einsatzgebiet')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                        	<li class="headline"><a href="<?=base_url('informationen/einsatzgebiet')?>"<?=$class?>>Einsatzgebiet</a></li>
+                            <li><a href="<?=base_url('informationen/einsatzgebiet#anker_allgemein')?>">Allgemein</a></li>
+                            <li><a href="<?=base_url('informationen/einsatzgebiet#anker_schwerpunkte')?>">Schwerpunkte</a></li>
+                        </ul>
+                        <ul>
+<? if(current_url() == base_url('informationen/aufgaben')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                        	<li class="headline"><a href="<?=base_url('informationen/aufgaben')?>"<?=$class?>>Aufgaben & Gesetze</a></li>
+                            <li><a href="<?=base_url('informationen/aufgaben#anker_aufgaben')?>">Aufgaben</a></li>
+                            <li><a href="<?=base_url('informationen/aufgaben#anker_gesetze')?>">Gesetze</a></li>                            
+                        </ul>
+                        <ul>
+<? if(current_url() == base_url('informationen/aao')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                        	<li class="headline"><a href="<?=base_url('informationen/aao')?>"<?=$class?>>Alarm- und Ausrückeordnung</a></li>
+                            <li><a href="<?=base_url('informationen/aao#anker_oertlich')?>">Örtlich</a></li>
+                            <li><a href="<?=base_url('informationen/aao#anker_uoertlich')?>">Überörtlich</a></li>                        
+                        </ul>
+                    </div>  
+                </li>
+<!--
+<? if(current_url() == base_url('informationen')) : $class = ' class="active"'; else : $class = ''; endif; ?>                 
+                <li><a href="<?=base_url('informationen')?>"<?=$class?>>Infos</a>  
+                    <div class="dropdown">  
+                    	<ul>
+<? if(current_url() == base_url('informationen/buergerinformationen')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
+                        	<li class="headline"><a href="<?=base_url('informationen/buergerinformationen')?>"<?=$class?>>B&uuml;rgerinfos</a></li>
+<? if(current_url() == base_url('informationen/buergerinformationen/blaulicht')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                        	<li><a href="<?=base_url('informationen/buergerinformationen/blaulicht')?>"<?=$class?>>Blaulicht und Martinshorn</a></li>
+<? if(current_url() == base_url('informationen/buergerinformationen/sonderrechte')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                            <li><a href="<?=base_url('informationen/buergerinformationen/sonderrechte')?>"<?=$class?>>Sonderrechte</a></li>
+<? if(current_url() == base_url('informationen/buergerinformationen/notfaelle')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                            <li><a href="<?=base_url('informationen/buergerinformationen/notfaelle')?>"<?=$class?>>Tipps bei Notfällen</a></li>
+                    	</ul> 
+                    	<ul>
+                        	<li class="headline"><a href="<?=base_url('informationen/buergerinformationen')?>">&nbsp;</a></li>
+<? if(current_url() == base_url('informationen/buergerinformationen/unwetter')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                            <li><a href="<?=base_url('informationen/buergerinformationen/unwetter')?>"<?=$class?>>Hinweise zu Unwettern</a></li>
+<? if(current_url() == base_url('informationen/buergerinformationen/nachdembrand')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                            <li><a href="<?=base_url('informationen/buergerinformationen/nachdembrand')?>"<?=$class?>>Nach dem Brand</a></li>
+<? if(current_url() == base_url('informationen/buergerinformationen/hausnummern')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                            <li><a href="<?=base_url('informationen/buergerinformationen/hausnummern')?>"<?=$class?>>Sichtbare Hausnummern</a></li>
+                    	</ul>   
                     	<ul class="special">
-                        	<li class="headline"><a href="<?=base_url('einsatzgebiet')?>">Einsatzgebiet</a></li>
-                        	<li class="headline"><a href="<?=base_url('aufgaben')?>">Aufgaben, Gesetze & Richtlinien</a></li>
-                        	<li class="headline"><a href="<?=base_url('aao')?>">Alarm- und Ausrückeordnung</a></li>
-                            <!--<li class="headline"><a href="<?=base_url('downloads')?>">Downloads</a></li>-->
-                            <!--<li class="headline"><a href="<?=base_url('faq')?>">H&auml;ufige Fragen</a></li>-->
+<? if(current_url() == base_url('informationen/einsatzgebiet')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                        	<li class="headline"><a href="<?=base_url('informationen/einsatzgebiet')?>"<?=$class?>>Einsatzgebiet</a></li>
+<? if(current_url() == base_url('informationen/aufgaben')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                        	<li class="headline"><a href="<?=base_url('informationen/aufgaben')?>"<?=$class?>>Aufgaben, Gesetze & Richtlinien</a></li>
+<? if(current_url() == base_url('informationen/aao')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                        	<li class="headline"><a href="<?=base_url('informationen/aao')?>"<?=$class?>>Alarm- und Ausrückeordnung</a></li>
                     	</ul>  
                     </div>  
-                </li>  
-                <li><a href="<?=base_url('jugend')?>">Jugend</a>  
+                </li>  -->
+<? if(current_url() == base_url('verein')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                <li><a href="<?=base_url('verein')?>"<?=$class?>>Verein</a>  
                 </li> 
            <!--     <li><a href="#" class="desktopsearch">&nbsp;</a>
                     <div class="dropdown">
@@ -224,20 +237,16 @@
 
 <div id="mobileNavigation">    
    <ul class="mobileMainNavContainer">
-      <li><a href="<?=base_url('news')?>">News</a></li>
-      <li><a href="<?=base_url('einsaetze')?>">Einsätze</a></li>
+      <li><a href="<?=base_url('aktuelles/einsaetze')?>">Einsätze</a></li>
       <li><a href="<?=base_url('menschen')?>">Menschen</a></li>
       <li><a href="<?=base_url('technik')?>">Technik</a></li>
       <li class="subnavi">    
           <ul>  
-            <li><a href="<?=base_url('fahrzeuge')?>" class="first">Fahrzeuge</a></li>
-      <!--      <li><a href="<?=base_url('geraete')?>">Geräte</a></li> --> 
-      <!--      <li><a href="<?=base_url('kleidung')?>">Kleidung</a></li> -->
-      <!--      <li><a href="<?=base_url('ausbildung')?>">Ausbildung</a></li> -->
+            <li><a href="<?=base_url('technik/fahrzeuge')?>" class="first">Fahrzeuge</a></li>
           </ul>
       </li>
-      <li><a href="<?=base_url('infos')?>">Infos</a></li>
-      <li><a href="<?=base_url('jugend')?>">Jugend</a></li>
+      <li><a href="<?=base_url('informationen')?>">Infos</a></li>
+      <li><a href="<?=base_url('menschen/jugend')?>">Jugend</a></li>
       <li class="metanav">
       	<ul>
           <li><a href="<?=base_url('admin')?>" target="_blank">Login</a></li>
@@ -246,11 +255,5 @@
           <li><a class="fancybox-metaLayer" href="#notruflayerjs">Notfall</a></li>
         </ul>
       </li>
- <!--     <li class="search">
-      	<form>
-        	<input type="text" name="searchitem" class="text" />
-           <input type="button" value="Go" class="button_black" />
-        </form>
-      </li>-->
    </ul>
 </div>
