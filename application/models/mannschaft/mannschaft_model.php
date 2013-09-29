@@ -15,7 +15,7 @@ class Mannschaft_Model extends CI_Model {
 	
 	private $color = '';
     private $upload_path = CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH;
-    public $mannschaftID, $name, $img, $geburtstag, $beruf, $familienstand, $dienstgrad_name, $dienstgrad_img, 
+    public $mannschaftID, $name, $img, $geburtstag, $beruf, $dienstgrad_name, $dienstgrad_img, 
            $funktion_name, $teamID, $team_name, $anzahl, $anzahl_m, $anzahl_w;
 	
 	/**
@@ -55,7 +55,6 @@ class Mannschaft_Model extends CI_Model {
             $mitglied->geburtstag       = $row->geburtstag;
             $mitglied->beruf            = $row->beruf;
             $mitglied->geschlecht       = $row->geschlecht;
-            $mitglied->familienstand    = $row->familienstand;
             $mitglied->dienstgrad_name  = $row->dienstgrad_name;
             $mitglied->dienstgrad_name_m = $row->dienstgrad_name_m;
             $mitglied->dienstgrad_name_w = $row->dienstgrad_name_w;
