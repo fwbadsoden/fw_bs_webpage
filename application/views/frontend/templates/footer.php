@@ -12,7 +12,7 @@
     	<h1>Freiwillige Feuerwehr Bad Soden am Taunus</h1>
         <ul>
         	<li class="first"><a href="<?=base_url('kontakt')?>">Kontakt</a></li>
-        	<li><a href="<?=base_url('mitmachen')?>">Mitmachen</a></li>
+        	<!--<li><a href="<?=base_url('mitmachen')?>">Mitmachen</a></li>-->
         	<li><a href="<?=base_url('links')?>">Links</a></li>
         	<li><a href="<?=base_url('impressum')?>">Impressum</a></li>
         </ul>
@@ -47,7 +47,7 @@
                 <li><a href="<?=base_url('informationen')?>">Aufgaben & Gesetze</a></li>
             </ul>
             <ul>
-                <li class="headline"><a href="<?=base_url('verein')?>">verein</a></li>
+                <li class="headline"><a href="<?=base_url('verein')?>">Verein</a></li>
             </ul>
             <hr class="clear" />
         </div>
@@ -58,7 +58,7 @@
             <a href="<?=base_url('technik')?>">Technik</a>
             <a href="<?=base_url('informationen')?>">Information</a>
             <a href="<?=base_url('jugend')?>">Jugend</a>
-            <a href="<?=base_url('mitmachen')?>">Mitmachen</a>
+            <!--<a href="<?=base_url('mitmachen')?>">Mitmachen</a>-->
         </div>
         
     </div>

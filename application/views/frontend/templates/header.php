@@ -61,13 +61,15 @@
             <div id="metanavigation"> 
                 <ul>
                     <li class="first"><a href="<?=base_url('admin')?>" target='_blank'>Login</a></li>
-                    <li><a href="<?=base_url('kontakt')?>" target="_top">Kontakt</a></li>
-                    <li><a href="<?=base_url('mitmachen')?>" target="_top">Mitmachen</a></li>
+<? if(current_url() == base_url('kontakt')) : $class = ' class="active"'; else : $class = ''; endif; ?>   
+                    <li><a href="<?=base_url('kontakt')?>"<?=$class?> target="_top">Kontakt</a></li>
+<? if(current_url() == base_url('mitmachen')) : $class = ' class="active"'; else : $class = ''; endif; ?>   
+                   <!-- <li><a href="<?=base_url('mitmachen')?>"<?=$class?> target="_top">Mitmachen</a></li>-->
                     <li><a class="fancybox-metaLayer" href="#notruflayer_js" >Notfall</a></li>
                 </ul>
             </div>
             <ul id="menu">  
-<? if(current_url() == base_url('aktuelles')) : $class = ' class="active"'; else : $class = ''; endif; ?>             
+<? if(strpos(current_url(), base_url('aktuelles')) !== false) : $class = ' class="active"'; else : $class = ''; endif; ?>             
                 <li><a href="<?=base_url('aktuelles')?>"<?=$class?>>News</a>  
                    <div class="dropdown">  
                     	<ul>
@@ -129,7 +131,7 @@
                     	</ul>  
                     </div>  
 				</li>  
-<? if(current_url() == base_url('technik')) : $class = ' class="active"'; else : $class = ''; endif; ?>                 
+<? if(strpos(current_url(), base_url('technik')) !== false) : $class = ' class="active"'; else : $class = ''; endif; ?>                 
                 <li><a href="<?=base_url('technik')?>"<?=$class?>>Technik</a>  
                     <div class="dropdown">  
                     	<ul>
@@ -146,7 +148,7 @@
                     	</ul>  
                     </div>  
                 </li>  
-<? if(current_url() == base_url('informationen')) : $class = ' class="active"'; else : $class = ''; endif; ?>                 
+<? if(strpos(current_url(), base_url('informationen')) !== false) : $class = ' class="active"'; else : $class = ''; endif; ?>                 
                 <li><a href="<?=base_url('informationen')?>"<?=$class?>>Infos</a>  
                     <div class="dropdown">  
                     	<ul>
@@ -251,7 +253,7 @@
       	<ul>
           <li><a href="<?=base_url('admin')?>" target="_blank">Login</a></li>
           <li><a href="<?=base_url('kontakt')?>">Kontakt</a></li>
-          <li><a href="<?=base_url('mitmachen')?>" target="_top">Mitmachen</a></li>
+        <!--  <li><a href="<?=base_url('mitmachen')?>" target="_top">Mitmachen</a></li>-->
           <li><a class="fancybox-metaLayer" href="#notruflayerjs">Notfall</a></li>
         </ul>
       </li>

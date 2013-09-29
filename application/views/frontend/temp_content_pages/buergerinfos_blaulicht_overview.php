@@ -17,7 +17,7 @@
                     Hierfür müssen Blaulicht und Martinshorn vom Fahrtbeginn bis zum Fahrtende eingeschaltet sein. Das Blaulicht 
                     allein ist nur eine Warneinrichtung, die keinerlei Wegerecht nach sich zieht. Die Übertretung der StVO, die uns während der 
                     Einsatzfahrt erlaubt ist, sofern keine Personen gefährdet werden, ist nur genehmigt bei gleichzeitigem Betrieb von 
-                    Blaulicht UND Martinshorn. Nur dann gelten die Sonder- und Wegerechte. (siehe <a href="<?=base_url('informationen/buergerinformationen/sonderrechte')?>">Sonderrechte</a>)
+                    Blaulicht UND Martinshorn. Nur dann gelten die Sonder- und Wegerechte.
                 </p>
                 <p>
                     Je früher andere Verkehrsteilnehmer das Einsatzfahrzeug bemerken, um so mehr Zeit bleibt ihnen in geordneter und ruhiger Weise
@@ -47,10 +47,10 @@
                 <h1 class="first">Weitere Informationen</h1>
                 <ul>
                     <li><a href="<?=base_url('informationen/buergerinformationen/blaulicht')?>" class="active">Blaulicht und Martinshorn</a></li>
-                    <li><a href="<?=base_url('informationen/buergerinformationen/sonderrechte')?>">Sonderrechte</a></li>
-                    <li><a href="<?=base_url('informationen/buergerinformationen/notfaelle')?>">Tipps bei Notfällen</a></li>
+                   <!-- <li><a href="<?=base_url('informationen/buergerinformationen/sonderrechte')?>">Sonderrechte</a></li>-->
+                    <!--<li><a href="<?=base_url('informationen/buergerinformationen/notfaelle')?>">Tipps bei Notfällen</a></li>-->
                     <li><a class="fancybox-metaLayer" href="#notruflayer_js" >Notruf absetzen</a></li>
-                    <li><a href="<?=base_url('informationen/buergerinformationen/unwetter')?>">Hinweise zu Unwettern</a></li>
+                    <!--<li><a href="<?=base_url('informationen/buergerinformationen/unwetter')?>">Hinweise zu Unwettern</a></li>-->
                     <li><a href="<?=base_url('informationen/buergerinformationen/nachdembrand')?>">Nach dem Brand</a></li>
                     <li><a href="<?=base_url('informationen/buergerinformationen/hausnummern')?>">Sichtbare Hausnummern</a></li>
                 </ul>

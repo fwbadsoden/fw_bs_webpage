@@ -323,7 +323,10 @@ input.button_black:hover {
 	#metanavigation li a:hover {
 		color: #ffd200;
 	}
-
+	#metanavigation li a.active {
+	color: #ffd200;
+    }
+    
 	#menu {  
 		clear: both;
 		list-style:none;  
@@ -365,7 +368,9 @@ input.button_black:hover {
 	#menu li:hover a {  
 		color:#ffd200;  
 	}
-	
+    #menu li a.active {  
+    	color:#ffd200;  
+    }
 	.dropdown {  
 		width: 980px;
 		position: absolute;
@@ -3060,7 +3065,7 @@ input.button_black:hover {
 	color: #121212;
 }
 #content .TeaserListe li p {
-	margin: 0 0 0 15px;
+	margin: 0 15px 0 15px;
 	padding: 0;
 	text-decoration: none;
 	font-family: Arial, sans-serif;
@@ -3132,6 +3137,15 @@ input.button_black:hover {
 	font-weight:bold;
 	font-size: 18px;
 	color: #121212;
+}
+#content #MainContent .BildTextTeaser h2 {
+	text-align: center;
+	margin: -8px 0 15px 0;
+	font-family: 'Cabin', sans-serif;
+	font-weight:bold;
+	text-transform: uppercase;
+	font-size: 12px;
+	color: #474747;
 }
 #content #MainContent .BildTextTeaser p {
 	text-align: center;

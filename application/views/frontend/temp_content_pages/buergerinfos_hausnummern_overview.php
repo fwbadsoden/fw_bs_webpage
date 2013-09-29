@@ -45,10 +45,10 @@
                 <h1 class="first">Weitere Informationen</h1>
                 <ul>
                     <li><a href="<?=base_url('informationen/buergerinformationen/blaulicht')?>">Blaulicht und Martinshorn</a></li>
-                    <li><a href="<?=base_url('informationen/buergerinformationen/sonderrechte')?>">Sonderrechte</a></li>
-                    <li><a href="<?=base_url('informationen/buergerinformationen/notfaelle')?>">Tipps bei Notfällen</a></li>
+                    <!--<li><a href="<?=base_url('informationen/buergerinformationen/sonderrechte')?>">Sonderrechte</a></li>-->
+                    <!--<li><a href="<?=base_url('informationen/buergerinformationen/notfaelle')?>">Tipps bei Notfällen</a></li>-->
                     <li><a class="fancybox-metaLayer" href="#notruflayer_js" >Notruf absetzen</a></li>
-                    <li><a href="<?=base_url('informationen/buergerinformationen/unwetter')?>">Hinweise zu Unwettern</a></li>
+                    <!--<li><a href="<?=base_url('informationen/buergerinformationen/unwetter')?>">Hinweise zu Unwettern</a></li>-->
                     <li><a href="<?=base_url('informationen/buergerinformationen/nachdembrand')?>">Nach dem Brand</a></li>
                     <li><a href="<?=base_url('informationen/buergerinformationen/hausnummern')?>" class="active">Sichtbare Hausnummern</a></li>
                 </ul>
