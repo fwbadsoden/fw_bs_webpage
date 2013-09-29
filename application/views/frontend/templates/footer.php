@@ -31,7 +31,7 @@
                 <li class="headline"><a href="<?=base_url('menschen')?>">Menschen</a></li>
                 <li><a href="<?=base_url('menschen/mannschaft')?>">Mannschaft</a></li>
                 <li><a href="<?=base_url('menschen/rettungshunde')?>">Rettungshundeeinheit</a></li>
-                <li><a href="<?=base_url('menschen/jugend')?>">Jugend</a></li>
+                <li><a href="<?=base_url('menschen/jugend')?>">Jugendfeuerwehr</a></li>
                 <li><a href="<?=base_url('menschen/leistungsgruppe')?>">Leistungsgruppe</a></li>
             </ul>
             <ul>
@@ -57,7 +57,7 @@
             <a href="<?=base_url('menschen')?>">Menschen</a>
             <a href="<?=base_url('technik')?>">Technik</a>
             <a href="<?=base_url('informationen')?>">Information</a>
-            <a href="<?=base_url('jugend')?>">Jugend</a>
+            <a href="<?=base_url('jugend')?>">Jugendfeuerwehr</a>
             <!--<a href="<?=base_url('mitmachen')?>">Mitmachen</a>-->
         </div>
         
@@ -117,5 +117,4 @@
 
     <script>$( function() { $( '#menu li:has(div)' ).doubleTapToGo(); });</script>
  
-
 </body>

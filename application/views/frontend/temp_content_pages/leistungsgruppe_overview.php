@@ -137,10 +137,8 @@
                 <ul> 
                 	<li>
                     	<h2>2013</h2>
-                        <p><span class="platzierung">1. Platz</span> auf Kreisebene<br />Bad Soden - Altenhain</p>
                         <p><span class="platzierung">3. Platz</span> auf Kreisebene<br />Bad Soden 1</p>
                         <p><span class="platzierung">4. Platz</span> auf Kreisebene<br />Bad Soden 2</p>
-                        <p><span class="platzierung">13. Platz</span> auf dem Bezirksentscheid<br/>in Groß-Umstadt-Semd</p>
                     </li>
                 	<li>
                     	<h2>2012</h2>

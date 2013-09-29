@@ -13,7 +13,7 @@
 <? if($key == 1) : ?>
                     <li id="slideshow_car_<?=$key+1?>" class="active">
 <? else : ?>
-                    <li id="slideshow_car_<?=$key+1?>">
+                    <li id="slideshow_car_<?=$key+1?>" class="noActive">
 <? endif; ?>
                         <figure>
                         	<img src="<?=base_url(CONTENT_IMG_FAHRZEUG_UPLOAD_PATH.$img['img_file'])?>" alt="<?=$img['description']?>" />

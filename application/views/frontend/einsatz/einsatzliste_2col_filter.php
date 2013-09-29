@@ -38,7 +38,8 @@
                     <div class="styled-select">
                         <?=form_dropdown('einsatzArt', $type_options, $type_selected, $type_attr)?>
                 	</div>
-                    <div><a href="#top" class="backToTop"></a></div>
+                    <div><a href="#top" class="backToTop" rel="nicescrolling"></a></div>
+	                <hr class="clear" />
                 </div>
             </div>
         

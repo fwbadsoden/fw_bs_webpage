@@ -29,7 +29,7 @@
            </div>
                 <div class="listContent">
 				<div class="row">
-                	<a href="<?=base_url('anmeldefug.pdf')?>" target="_blank">
+                	<a href="<?=base_url('files/content/anmeldefug.pdf')?>" target="_blank">
                  	<div class="size trenner"><p>PDF</p><p class="bytes">80 KB</p></div>
 	               	<div class="headline smallBoxHead"><span class="medium">Freiwilligen Feuerwehr Bad Soden e.V.</span><br/>Anmeldeformular Freunde und Gönner</div>
                     <div class="moreButton_arrow">&nbsp;</div>
@@ -79,14 +79,14 @@
             <h1 class="module" id="anker_mannschaft">Downloads</h1>
             <div class="listContent">
 				<div class="row">
-                	<a href="<?=base_url('satzung.pdf')?>" target="_blank">
+                	<a href="<?=base_url('files/content/satzung.pdf')?>" target="_blank">
                  	<div class="size trenner"><p>PDF</p><p class="bytes">80 KB</p></div>
 	               	<div class="headline smallBoxHead"><span class="medium">Freiwilligen Feuerwehr Bad Soden e.V.</span><br/>Vereinssatzung</div>
                     <div class="moreButton_arrow">&nbsp;</div>
                		</a>
                 </div>
 				<div class="row">
-                	<a href="<?=base_url('Chronik.pdf')?>" target="_blank">
+                	<a href="<?=base_url('files/content/Chronik.pdf')?>" target="_blank">
                  	<div class="size trenner"><p>PDF</p><p class="bytes">85 KB</p></div>
 	               	<div class="headline smallBoxHead"><span class="medium">Freiwilligen Feuerwehr Bad Soden e.V.</span><br/>Chronik</div>
                     <div class="moreButton_arrow">&nbsp;</div>

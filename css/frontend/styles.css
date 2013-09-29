@@ -371,12 +371,14 @@ input.button_black:hover {
     #menu li a.active {  
     	color:#ffd200;  
     }
+    
 	.dropdown {  
 		width: 980px;
 		position: absolute;
 		display: block;
 		top: 70px;
 		left: 0;
+        margin: 0 0 0 -10px;
 		z-index: 9999;
 		text-align: left;
 	 
@@ -648,7 +650,9 @@ input.button_black:hover {
 		color: #ffd200;
 	}
 
-
+@media only screen and (max-width: 1000px) {
+    .dropdown {  width: 960px; }
+}
 @media only screen and (max-width: 970px) {
 
 	.dropdown { max-width: 100%; text-align: center; }
@@ -1713,6 +1717,9 @@ input.button_black:hover {
 	#content .filter .backToTop { display: none; }	
 	#content .filter .thirdnavi_button { margin: 15px 0 15px 15px;	}
 }
+@media only screen and (max-width: 400px) {
+	#content .filter .thirdnavi_button { margin: 12px 0; clear: both; width: 100%; text-align: center; }
+}
 
 
 /* ------------] MainContent - FactSheet [--------------- */
@@ -2280,8 +2287,8 @@ input.button_black:hover {
 	margin: 0 0 0 0;
 	padding: 0;
 	border-left: 1px solid #b1b1b1;
-	margin: 0 0 0 15px;
-	padding: 0 0 0 15px;
+	margin: 0 0 0 20px;
+	padding: 0 0 0 20px;
 }
 #content .article div.links h2 {
 	font-family: 'Cabin', Arial, sans-serif;
@@ -2300,11 +2307,12 @@ input.button_black:hover {
 	float: left;
 	margin: 0;
 	padding: 0;
+	margin: 0 15px 0 0;
 }
 #content .article ul.linktable_second {
 	width: 265px;
 	list-style: none;
-	margin: 0 0 0 15px;
+	margin: 0 0 0 0;
 	padding: 0;
 	float: left;
 }
@@ -2330,6 +2338,26 @@ input.button_black:hover {
 }
 #content .article a:active {
 	color: #ffd200;
+}
+
+@media only screen and (max-width: 1000px) {
+	
+	#content .article ul.linktable_first { clear:both; width: 100%; }
+	#content .article ul.linktable_second { clear:both; width: 100%; }
+	
+}
+@media only screen and (max-width: 650px) {
+	#content .article div.links { clear:left; }
+}
+@media only screen and (max-width: 570px) {
+	
+	#content .article div.links { float:left; clear:none; }
+	
+}
+@media only screen and (max-width: 400px) {
+	
+	#content .article div.links { clear:both; }
+	
 }
 
 /* ------------] MainContent - TAB-Box [--------------- */
@@ -3108,8 +3136,8 @@ input.button_black:hover {
 
 	#content .TeaserListe li .abzeichen { width: 50px; margin: -43px 0 0 5px; }
 	#content .TeaserListe li { width: 100%; margin: 0 0 20px 0; }
-	#content .TeaserListe li h1 { font-size: 18px; }
     #content .TeaserListe li.text { height: auto; }
+	#content .TeaserListe li h1 { font-size: 18px; }
 
 }
 

@@ -50,10 +50,21 @@
 </head>
 <body>
 
+<? if(ENVIRONMENT == 'production') : ?>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-44450948-1', 'feuerwehr-bs.de');
+  ga('send', 'pageview');
+
+</script>
+<? endif; ?>
 
 <header>
-	<div class="site">
+	<div class="site" id="top">
     	<h1>
         	<a href="<?=base_url('')?>" title="Home">Freiwillige Feuerwehr Bad Soden am Taunus</a>
         </h1>
@@ -111,7 +122,7 @@
                     	</ul>  
                     	<ul>
 <? if(current_url() == base_url('menschen/jugend')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
-                        	<li class="headline"><a href="<?=base_url('menschen/jugend')?>"<?=$class?>>Jugend</a></li>
+                        	<li class="headline"><a href="<?=base_url('menschen/jugend')?>"<?=$class?>>Jugendfeuerwehr</a></li>
 <? if(current_url() == base_url('menschen/jugend/aktivitaeten')) : $class = ' class="active"'; else : $class = ''; endif; ?>                             
                         	<li><a href="<?=base_url('menschen/jugend/aktivitaeten')?>"<?=$class?>>Aktivitäten</a></li>
 <? if(current_url() == base_url('menschen/jugend/ausbildung')) : $class = ' class="active"'; else : $class = ''; endif; ?>                             
@@ -126,8 +137,8 @@
                     	<ul>
 <? if(strpos(current_url(), base_url('menschen/jugend')) !== false) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
                         	<li class="headline"><a href="<?=base_url('menschen/leistungsgruppe')?>"<?=$class?>>Leistungsgruppe</a></li>
-                        	<li><a href="<?=base_url('menschen/mannschaft#anker_theorie')?>">Theorie</a></li>
-                            <li><a href="<?=base_url('menschen/mannschaft#anker_praxis')?>">Praxis</a></li>
+                        	<li><a href="<?=base_url('menschen/leistungsgruppe#anker_theorie')?>">Theorie</a></li>
+                            <li><a href="<?=base_url('menschen/leistungsgruppe#anker_praxis')?>">Praxis</a></li>
                     	</ul>  
                     </div>  
 				</li>  
@@ -240,7 +251,8 @@
 <div id="mobileNavigation">    
    <ul class="mobileMainNavContainer">
       <li><a href="<?=base_url('aktuelles/einsaetze')?>">Einsätze</a></li>
-      <li><a href="<?=base_url('menschen')?>">Menschen</a></li>
+      <li><a href="<?=base_url('menschen/mannschaft')?>">Mannschaft</a></li>
+      <li><a href="<?=base_url('menschen/jugend')?>">Jugendfeuerwehr</a></li>
       <li><a href="<?=base_url('technik')?>">Technik</a></li>
       <li class="subnavi">    
           <ul>  
@@ -248,7 +260,6 @@
           </ul>
       </li>
       <li><a href="<?=base_url('informationen')?>">Infos</a></li>
-      <li><a href="<?=base_url('menschen/jugend')?>">Jugend</a></li>
       <li class="metanav">
       	<ul>
           <li><a href="<?=base_url('admin')?>" target="_blank">Login</a></li>

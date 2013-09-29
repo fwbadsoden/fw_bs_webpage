@@ -19,7 +19,7 @@
                 <p>
                     <strong>Pflege der Inhalte:</strong><br />
                     Hauptverantwortlicher: Alexander Zengeler (az)<br />
-                    Aktuelles: Marc Bauer (mb), Sascha Zengeler (sz)<br />
+                    Aktuelles: Marc Bauer (mb), Alexander Zengeler (az)<br />
                     Einsätze: Marc Bauer (mb), Alexander Zengeler (az)<br />
                 </p>
                 <p>

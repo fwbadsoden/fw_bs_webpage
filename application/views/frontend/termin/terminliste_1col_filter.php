@@ -9,7 +9,7 @@
                 <div class="thirdnavi_button"><a href="#anker_<?=strtolower($monat)?>" class="button_black" rel="nicescrolling"><?=ucfirst($monat)?></a></div>
 <? endforeach; ?>
                 <div><a href="#top" class="backToTop" rel="nicescrolling"></a></div>
-            	<hr class="clear" />
+	            <hr class="clear" />
             </div>
             
         

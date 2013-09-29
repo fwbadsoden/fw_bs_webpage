@@ -78,7 +78,7 @@ class Fahrzeug_Model extends CI_Model {
 	public function get_fahrzeug_list($online = 'all')
 	{		
 		$this->db->order_by('online', 'desc');
-		$this->db->order_by('orderID', 'asc');
+		$this->db->order_by('rufname', 'asc');
         if($online != 'all') $this->db->where('online', $online);
 		$query = $this->db->get('fahrzeug');
 		$i = 0;

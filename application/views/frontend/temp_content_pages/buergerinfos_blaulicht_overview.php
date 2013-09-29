@@ -7,11 +7,7 @@
             </div>
 
             <div class="article">
-                <h1 class="first"> DUMMY EINLEITENDE ÜBERSCHRIFT</h1>
-                <p>
-                    DUMMY Einleitungstext
-                </p>
-               	<h1>Grundsätze für den Einsatz von Blaulicht und Martinshorn</h1>
+               	<h1 class="first">Grundsätze für den Einsatz von Blaulicht und Martinshorn</h1>
                 <p>
                 	In der Straßenverkehrsordnung (§35 StVO) ist beschrieben, wie Sonder- bzw. Wegerechte in Anspruch genommen werden können. 
                     Hierfür müssen Blaulicht und Martinshorn vom Fahrtbeginn bis zum Fahrtende eingeschaltet sein. Das Blaulicht 

@@ -5,14 +5,14 @@
         <div id="MainContent">      
             <div class="article">
                 <p>
-                    Sollten Sie Fragen zur Feuerwehrarbeit, zum Feuerwehrverein oder ähnlichem haben können Sie gerne über unten stehendes Formular mit uns in Kontakt treten.<br />
+                    Sollten Sie Fragen zur Feuerwehrarbeit, zum Feuerwehrverein oder Ähnlichem haben können Sie gerne über unten stehendes Formular mit uns in Kontakt treten.<br />
                     Auch haben wir auf diese Seite noch mal alle Kontaktinformationen für Sie zusammengefasst.
                 </p>
                 <p>Bei konkreten Fragen können Sie direkt auf die unten stehenden Seiten gehen, um weitere Informationen zu erhalten.</p>
                 <ul>
-                    <li><a href="<?=base_url('mitmachen')?>">Sie wollen bei der Feuerwehr mitmachen oder die Feuerwehr unterstützen?</a></li>
-                    <li><a href="<?=base_url('presse')?>">Sie sind von der Presse und haben Fragen an uns?</a></li>
-                    <li><a href="<?=base_url('jugend')?>">Sie oder Ihre Kinder interessieren Sich für unsere Jugendfeuerwehr?</a></li>
+                   <!-- <li><a href="<?=base_url('mitmachen')?>">Sie wollen bei der Feuerwehr mitmachen oder die Feuerwehr unterstützen?</a></li>-->
+                    <li><a href="<?=base_url('aktuelles/presse')?>">Sie sind von der Presse und haben Fragen an uns?</a></li>
+                    <li><a href="<?=base_url('menschen/jugend')?>">Sie oder Ihre Kinder interessieren sich für unsere Jugendfeuerwehr?</a></li>
                 </ul>
 <? if($this->session->set_userdata('contact_send') == 'send') : ?>
                 <p><strong>Vielen Dank! Wir haben Ihre Anfrage erhalten und werden uns mit Ihnen in Verbindung setzen.</strong></p>

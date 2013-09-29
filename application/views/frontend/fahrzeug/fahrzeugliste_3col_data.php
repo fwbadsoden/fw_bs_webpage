@@ -10,7 +10,7 @@
 ?> 
                 <a href="<?=base_url('technik/fahrzeug/'.$fahrzeug['fahrzeugID'])?>">
                 <li<?=$class?>>
-                    <figure><img src="<?=CONTENT_IMG_FAHRZEUG_UPLOAD_PATH.$image['img']?>" /></figure>
+                    <figure><img src="<?=base_url(CONTENT_IMG_FAHRZEUG_UPLOAD_PATH.$image['img'])?>" /></figure>
                   	<h1><?=$fahrzeug['fahrzeugNameLang']?></h1>
                     <h2><?=$fahrzeug['fahrzeugName']?></h2>
                 </li>

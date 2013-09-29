@@ -141,7 +141,7 @@ Aufgrund der relativ großen Halle, konnte man nach Lust und Laune zwischen leic
 			</div>
            	<div class="address">
 				<h1 class="first">Kontaktadresse</h1>
-				<p>Jugendfeuerwehr<br/>Bad Soden am Taunus e.V.</p>
+				<p>Jugendfeuerwehr<br/>Bad Soden am Taunus</p>
 				<p>Hunsrückstr. 5-7<br/>65812 Bad Soden am Taunus</p>
 				<ul>
 					<li class="mail"><a href="mailto:jugendfeuerwehr@feuerwehr-bs.de">jugendfeuerwehr@feuerwehr-bs.de</a></li>
@@ -156,6 +156,10 @@ Aufgrund der relativ großen Halle, konnte man nach Lust und Laune zwischen leic
             	<h1>Historie</h1>
                 <p>Auch die Jugendfeuerwehr nimmt jährlich an einem Leistungswettbewerb teil.</p> 
                 <ul> 
+                	<li>
+                    	<h2>2013</h2>
+                        <p><span class="platzierung">2. Platz</span> auf Kreisebene</p>                        
+                    </li>
                 	<li>
                     	<h2>2012</h2>
                         <p><span class="platzierung">1. Platz</span> auf Kreisebene</p>
