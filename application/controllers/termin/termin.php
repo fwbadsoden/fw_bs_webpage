@@ -51,6 +51,7 @@ class Termin extends CP_Controller {
         foreach($termine as $key => $month)
         {   
             $monat['monat'] = $key;
+            $this->load->view('frontend/termin/terminliste_1col_anchor', $monat);
             if($j != 0) $this->load->view('frontend/termin/terminliste_1col_month', $monat);
             $this->load->view('frontend/termin/terminliste_1col_header');
             foreach($month as $termin)

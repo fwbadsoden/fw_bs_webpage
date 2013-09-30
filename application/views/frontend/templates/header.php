@@ -104,7 +104,7 @@
 <? foreach($articles as $a) : ?>    
 <? if(strlen($a['name']) > 32) $a['name'] = substr($a['name'],0,32).'...'; ?>                        
 <? if($a['link'] == '') : ?>
-                	       <li><a href="<?=base_url($a['fullpath'])?>" class="fancybox-gallery" rel="gallery1"><span class="subline"><?=cp_get_ger_date($a['datum'])?> / <?=$a['source']?></span><br /><?=$a['name']?></a></li>
+                	       <li><a href="<?=base_url($a['fullpath'])?>" class="fancybox-gallery" rel="gallery_presse_menue"><span class="subline"><?=cp_get_ger_date($a['datum'])?> / <?=$a['source']?></span><br /><?=$a['name']?></a></li>
 <? else : ?>
                            <li><a href="<?=$a['link']?>" target="_blank"><span class="subline"><?=cp_get_ger_date($a['datum'])?> / <?=$a['source']?></span><br /><?=$a['name']?></a></li>
 <? endif; ?>
