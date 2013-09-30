@@ -3,7 +3,7 @@
 <div class="oneColumnBox">  
             <div class="article" id="anker_allgemein">
                 <p>
-                    Wie alle Feuerwehren hat wir bei der Feuerwehr Bad Soden ein bestimmtes Einsatzgebiet für das wir zuständig sind. Das Gebiet umfasst das Stadtgebiet der Stadt Bad Soden am Taunus mit den Stadtteilen 
+                    Wie alle Feuerwehren haben auch wir bei der Feuerwehr Bad Soden ein bestimmtes Einsatzgebiet, für das wir zuständig sind. Das Gebiet umfasst das Stadtgebiet der Stadt Bad Soden am Taunus mit den Stadtteilen 
                     Neuenhain und Altenhain. Darüber hinaus werden wir für überörtliche Einsätze im gesamten Main-Taunus-Kreis eingesetzt.
                 </p>
                 <p>
@@ -25,7 +25,6 @@
 					<li>Kliniken des Main-Taunus-Kreises Bad Soden am Taunus</li>
 					<li>Enddarmkliniken</li>
 					<li>Medico-Palais</li>
-					<li>Sodenia Therme - Thermalsolebad</li>
 					<li>Badehaus</li>
 					<li>Freibad</li>
 					<li>Wohnstift Collegium Augustinum</li>
@@ -46,8 +45,6 @@
                 </ul>
                 <h1>Überschwemmungsgebiet Innenstadt / Heilquellen / Kureinrichtungen</h1>
                 <p>
-                    Durch die besondere Lage der Kernstadt ist Bad Soden am Taunus Überschwemmungsgebiet, was bereits öfter zu größeren Problemen führte. 3 Bäche (Sulzbach, Niedersdorfbach und Waldbach) fließen 
-                    durch Bad Soden am Taunus. Bei Hochwasser hat dies schon zu katastrophalen Wasserständen in der Innenstadt geführt. Deshalb werden präventiv bei starken Regenfällen im gesamten Stadtgebiet die 
-                    Bachläufe und die Rechen kontrolliert und von Dreck und Unrat befreit.
+                    Durch die besondere Lage der Kernstadt ist Bad Soden am Taunus für Überschwemmungen anfällig, was bereits des Öfteren schon zu größeren Problemen führte. Drei Bäche (Sulzbach, Niedersdorfbach und Waldbach) fließen durch unsere Stadt. Bei Hochwasser hat dies schon zu katastrophalen Wasserständen in der Innenstadt geführt. Deshalb werden bei starken Regenfällen präventiv im gesamten Stadtgebiet die Bachläufe und die Rechen kontrolliert und von Dreck sowie Unrat befreit.
                 </p>
            </div>

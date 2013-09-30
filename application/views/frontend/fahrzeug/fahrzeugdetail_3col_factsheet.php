@@ -7,7 +7,8 @@
                 <div class="table">
                     <div class="row">
                         <div class="black">Funkrufname:</div>
-                        <div class="red"><?=$fahrzeug['fahrzeugRufnamePrefix'].' '.$fahrzeug['fahrzeugRufname']?></div>
+<? if($fahrzeug['fahrzeugRufname'] == 'n/a') : $rufname = 'n/a'; else : $rufname = $fahrzeug['fahrzeugRufnamePrefix'].' '.$fahrzeug['fahrzeugRufname']; endif; ?>                      
+                        <div class="red"><?=$rufname?></div>
                     </div>
                     <div class="row">
                         <div class="black">Hersteller:</div>

@@ -1350,6 +1350,7 @@ input.button_black:hover {
 }
 #content .listContent .date_small {
 	height: 26px;
+    width: 100px;
 	font-family: Arial, sans-serif;
 	font-weight: normal;
 	font-size: 14px;
@@ -3649,7 +3650,7 @@ input.button_black:hover {
 }
 
 #endOfPage #shortlinks ul {
-	width: 400px;
+	width: 220px;
 	height: 15px;
 	padding: 0;
 	margin: 15px auto 30px auto;

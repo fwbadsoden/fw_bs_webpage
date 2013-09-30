@@ -74,8 +74,8 @@
                     <li class="first"><a href="<?=base_url('admin')?>" target='_blank'>Login</a></li>
 <? if(current_url() == base_url('kontakt')) : $class = ' class="active"'; else : $class = ''; endif; ?>   
                     <li><a href="<?=base_url('kontakt')?>"<?=$class?> target="_top">Kontakt</a></li>
-<? if(current_url() == base_url('mitmachen')) : $class = ' class="active"'; else : $class = ''; endif; ?>   
-                   <!-- <li><a href="<?=base_url('mitmachen')?>"<?=$class?> target="_top">Mitmachen</a></li>-->
+<? if(current_url() == base_url('links')) : $class = ' class="active"'; else : $class = ''; endif; ?>                     
+        	        <li><a href="<?=base_url('links')?>">Links</a></li>
                     <li><a class="fancybox-metaLayer" href="#notruflayer_js" >Notfall</a></li>
                 </ul>
             </div>
@@ -96,15 +96,15 @@
                         	<li class="headline"><a href="<?=base_url('aktuelles/termine')?>"<?=$class?>>Termine</a></li>
 <? foreach($termine as $t) : ?>                               
                         	<li><a><span class="subline"><?=cp_get_ger_date($t['datum'])?> / <?=$t['beginn']?> Uhr</span><br /><?=$t['name']?></a></li>
-                            <!--<li><a href="<?=base_url('termin/'.$t['terminID'])?>"><span class="subline"><?=cp_get_ger_date($t['datum'])?> / <?=$t['beginn']?> Uhr</span><br /><?=$t['name']?></a></li>-->
 <? endforeach; ?>  
                     	</ul>  
                     	<ul>
 <? if(current_url() == base_url('aktuelles/presse')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
                         	<li class="headline"><a href="<?=base_url('aktuelles/presse')?>"<?=$class?>>Presse</a></li>
-<? foreach($articles as $a) : ?>                            
+<? foreach($articles as $a) : ?>    
+<? if(strlen($a['name']) > 32) $a['name'] = substr($a['name'],0,32).'...'; ?>                        
 <? if($a['link'] == '') : ?>
-                	       <li><a href="<?=base_url($a['fullpath'])?>" target="_blank"><span class="subline"><?=cp_get_ger_date($a['datum'])?> / <?=$a['source']?></span><br /><?=$a['name']?></a></li>
+                	       <li><a href="<?=base_url($a['fullpath'])?>" class="fancybox-gallery" rel="gallery1"><span class="subline"><?=cp_get_ger_date($a['datum'])?> / <?=$a['source']?></span><br /><?=$a['name']?></a></li>
 <? else : ?>
                            <li><a href="<?=$a['link']?>" target="_blank"><span class="subline"><?=cp_get_ger_date($a['datum'])?> / <?=$a['source']?></span><br /><?=$a['name']?></a></li>
 <? endif; ?>
@@ -121,19 +121,19 @@
                             <li><a href="<?=base_url('menschen/mannschaft#anker_mannschaft')?>">Mannschaft</a></li>
                     	</ul>  
                     	<ul>
+<? if(strpos(current_url(), base_url('menschen/rettungshunde')) !== false) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
+                        	<li class="headline"><a href="<?=base_url('menschen/rettungshunde')?>"<?=$class?>>Rettungshunde</a></li>
+                        	<li><a href="<?=base_url('menschen/rettungshunde#anker_einleitung')?>">Einleitung</a></li>
+                            <li><a href="<?=base_url('menschen/rettungshunde#anker_ausbildung')?>">Ablauf der Ausbildung</a></li>
+                    	</ul> 
+                    	<ul>
 <? if(current_url() == base_url('menschen/jugend')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
                         	<li class="headline"><a href="<?=base_url('menschen/jugend')?>"<?=$class?>>Jugendfeuerwehr</a></li>
 <? if(current_url() == base_url('menschen/jugend/aktivitaeten')) : $class = ' class="active"'; else : $class = ''; endif; ?>                             
                         	<li><a href="<?=base_url('menschen/jugend/aktivitaeten')?>"<?=$class?>>Aktivitäten</a></li>
 <? if(current_url() == base_url('menschen/jugend/ausbildung')) : $class = ' class="active"'; else : $class = ''; endif; ?>                             
                             <li><a href="<?=base_url('menschen/jugend/ausbildung')?>"<?=$class?>>Ausbildung</a></li>
-                    	</ul>  
-                    	<ul>
-<? if(strpos(current_url(), base_url('menschen/rettungshunde')) !== false) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
-                        	<li class="headline"><a href="<?=base_url('menschen/rettungshunde')?>"<?=$class?>>Rettungshunde</a></li>
-                        	<li><a href="<?=base_url('menschen/rettungshunde#anker_einleitung')?>">Einleitung</a></li>
-                            <li><a href="<?=base_url('menschen/rettungshunde#anker_ausbildung')?>">Ablauf der Ausbildung</a></li>
-                    	</ul>  
+                    	</ul>   
                     	<ul>
 <? if(strpos(current_url(), base_url('menschen/jugend')) !== false) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
                         	<li class="headline"><a href="<?=base_url('menschen/leistungsgruppe')?>"<?=$class?>>Leistungsgruppe</a></li>
@@ -166,11 +166,11 @@
 <? if(current_url() == base_url('informationen/buergerinformationen')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
                         	<li class="headline"><a href="<?=base_url('informationen/buergerinformationen')?>"<?=$class?>>B&uuml;rgerinfos</a></li>
 <? if(current_url() == base_url('informationen/buergerinformationen/blaulicht')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
-                        	<li><a href="<?=base_url('informationen/buergerinformationen/blaulicht')?>"<?=$class?>>Blaulicht und Martinshorn</a></li>
-<? if(current_url() == base_url('informationen/buergerinformationen/nachdembrand')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
-                            <li><a href="<?=base_url('informationen/buergerinformationen/nachdembrand')?>"<?=$class?>>Nach dem Brand</a></li>
-<? if(current_url() == base_url('informationen/buergerinformationen/hausnummern')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
-                            <li><a href="<?=base_url('informationen/buergerinformationen/hausnummern')?>"<?=$class?>>Sichtbare Hausnummern</a></li>
+                            	<li><a href="<?=base_url('informationen/buergerinformationen/blaulicht')?>"<?=$class?>>Blaulicht und Martinshorn</a></li>
+    <? if(current_url() == base_url('informationen/buergerinformationen/nachdembrand')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                                <li><a href="<?=base_url('informationen/buergerinformationen/nachdembrand')?>"<?=$class?>>Nach dem Brand</a></li>
+    <? if(current_url() == base_url('informationen/buergerinformationen/hausnummern')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                                <li><a href="<?=base_url('informationen/buergerinformationen/hausnummern')?>"<?=$class?>>Sichtbare Hausnummern</a></li>
                     	</ul>   
                         <ul>
 <? if(current_url() == base_url('informationen/einsatzgebiet')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
@@ -250,9 +250,23 @@
 
 <div id="mobileNavigation">    
    <ul class="mobileMainNavContainer">
-      <li><a href="<?=base_url('aktuelles/einsaetze')?>">Einsätze</a></li>
-      <li><a href="<?=base_url('menschen/mannschaft')?>">Mannschaft</a></li>
-      <li><a href="<?=base_url('menschen/jugend')?>">Jugendfeuerwehr</a></li>
+      <li><a href="<?=base_url('aktuelles')?>">News</a></li>
+      <li class="subnavi">    
+          <ul> 
+              <li><a href="<?=base_url('aktuelles/einsaetze')?>">Einsätze</a></li>
+              <li><a href="<?=base_url('aktuelles/termine')?>">Termine</a></li>
+              <li><a href="<?=base_url('aktuelles/presse')?>">Presse</a></li>
+            </ul>
+      </li>
+      <li><a href="<?=base_url('menschen')?>">Menschen</a></li>
+      <li class="subnavi">    
+          <ul> 
+              <li><a href="<?=base_url('menschen/mannschaft')?>">Mannschaft</a></li>
+              <li><a href="<?=base_url('menschen/rettungshunde')?>">Rettungshunde</a></li>
+              <li><a href="<?=base_url('menschen/jugend')?>">Jugendfeuerwehr</a></li>
+              <li><a href="<?=base_url('menschen/leistungsgruppe')?>">Leistungsgruppe</a></li>
+          </ul>
+      </li>
       <li><a href="<?=base_url('technik')?>">Technik</a></li>
       <li class="subnavi">    
           <ul>  
@@ -260,11 +274,18 @@
           </ul>
       </li>
       <li><a href="<?=base_url('informationen')?>">Infos</a></li>
+      <li class="subnavi">    
+          <ul>  
+                <li><a href="<?=base_url('informationen/buergerinformationen')?>">Bürgerinfos</a></li>
+                <li><a href="<?=base_url('informationen/einsatzgebiet')?>"<?=$class?>>Einsatzgebiet</a></li>
+               	<li><a href="<?=base_url('informationen/aufgaben')?>"<?=$class?>>Aufgaben & Gesetze</a></li>
+               	<li><a href="<?=base_url('informationen/aao')?>"<?=$class?>>Alarm- und Ausrückeordnung</a></li>
+          </ul>
+      </li>
       <li class="metanav">
       	<ul>
           <li><a href="<?=base_url('admin')?>" target="_blank">Login</a></li>
           <li><a href="<?=base_url('kontakt')?>">Kontakt</a></li>
-        <!--  <li><a href="<?=base_url('mitmachen')?>" target="_top">Mitmachen</a></li>-->
           <li><a class="fancybox-metaLayer" href="#notruflayerjs">Notfall</a></li>
         </ul>
       </li>

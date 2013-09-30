@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://prod.feuerwehr-bs.de/';
+$config['base_url']	= 'http://www.feuerwehr-bs.de/';
 /*
 |--------------------------------------------------------------------------
 | Index File

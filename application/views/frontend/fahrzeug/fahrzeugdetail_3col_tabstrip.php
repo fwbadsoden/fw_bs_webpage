@@ -5,6 +5,8 @@
     $besonderheit = explode('|', $fahrzeug['fahrzeugBesonderheit']);
     $tab_index_1  = 1;
     $tab_index_2  = 1;
+    if($fahrzeug['fahrzeugRufname'] == 'n/a') : $rufname = 'n/a'; 
+    else : $rufname = $fahrzeug['fahrzeugRufnamePrefix'].' '.$fahrzeug['fahrzeugRufname']; endif; 
 ?> 
 
 <div class="BigBox firstColumn">    
@@ -21,7 +23,8 @@
                 <div class="TabBoxContent">                
                     <h1 class="reiter"><a href="#details_<?=$tab_index_2?>" func="tab" class="active">Beschreibung</a></h1>
                     <div id="box_details_<?=$tab_index_2?>" style="">
-                        <h1><?=$tab_index_2?>: <?=$fahrzeug['fahrzeugRufnamePrefix'].' '.$fahrzeug['fahrzeugRufname']?></h1>
+<?     if($fahrzeug['fahrzeugRufname'] == 'n/a') : $rufname = $fahrzeug['fahrzeugNameLang']; else : $rufname = $fahrzeug['fahrzeugRufnamePrefix'].' '.$fahrzeug['fahrzeugRufname']; endif; ?>
+                        <h1><?=$tab_index_2?>: <?=$rufname?></h1>
                         <p><?=$fahrzeug['fahrzeugText']?></p>                     
 <? if($fahrzeug['fahrzeugPumpe'] != '' && $fahrzeug['fahrzeugLoeschmittel'] != '') : ?>                        
                         <div class="facttable">   
@@ -59,15 +62,15 @@
                     </div>
 <? if($fahrzeug['fahrzeugGeschichte'] != '') : $tab_index_2++; ?>        
                     <h1 class="reiter"><a href="#details_<?=$tab_index_2?>" func="tab" class="noActive">Geschichte</a></h1>
-                    <div id="box_details_<?=$tab_index_2?>" style="display: none;">
-                        <h1><?=$tab_index_2?>: <?=$fahrzeug['fahrzeugRufnamePrefix'].' '.$fahrzeug['fahrzeugRufname']?></h1>
+                    <div id="box_details_<?=$tab_index_2?>" style="display: none;">                     
+                        <h1><?=$tab_index_2?>: <?=$rufname?></h1>
                         <p><?=$fahrzeug['fahrzeugGeschichte']?></p>
                     </div>
 <? endif; ?>
 <? if($fahrzeug['fahrzeugStatistik'] != '') : $tab_index_2++; ?>                    
                     <h1 class="reiter"><a href="#details_<?=$tab_index_2?>" func="tab" class="noActive">Einsatzstatistik</a></h1>
                     <div id="box_details_<?=$tab_index_2?>" style="display: none;">
-                        <h1><?=$tab_index_2?>: <?=$fahrzeug['fahrzeugRufnamePrefix'].' '.$fahrzeug['fahrzeugRufname']?></h1>
+                        <h1><?=$tab_index_2?>: <?=$rufname?></h1>
                         <p><?=$fahrzeug['fahrzeugStatistik']?></p>
                     </div>
 <? endif; ?>                    

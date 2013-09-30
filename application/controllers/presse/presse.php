@@ -55,7 +55,7 @@ class Presse extends CP_Controller {
         $this->email->message($message);
         $this->email->send();
         //echo $this->email->print_debugger();
-        redirect($this->input->server('HTTP_REFERER', TRUE).'gesendet'); 
+        redirect($this->input->server('HTTP_REFERER', TRUE).'/gesendet'); 
     }
 }
 ?>

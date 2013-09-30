@@ -3,5 +3,5 @@
 ?>
 
 </ul>
-<p class="more"><a href="<?=base_url('termine')?>" class="button_white">Mehr lesen</a></p>
+<p class="more"><a href="<?=base_url('aktuelles/termine')?>" class="button_white">Mehr lesen</a></p>
 </div>

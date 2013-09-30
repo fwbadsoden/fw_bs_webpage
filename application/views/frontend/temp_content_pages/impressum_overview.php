@@ -27,7 +27,7 @@
                     Haftungshinweis:<br />
                     Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.
                 </p>
-<? if($this->session->set_userdata('contact_send') == 'send') : ?>
+<? if($this->session->userdata('contact_send') == 'send') : ?>
                 <p><strong>Vielen Dank! Wir haben Ihre Anfrage erhalten und werden uns mit Ihnen in Verbindung setzen.</strong></p>
 <? endif; ?> 
 				<div class="kontaktformularOpener"><p class="link_open active" id="js_openKontakt"><a href="#" rel="js_contact">Kontaktformular öffnen</a></p></div>

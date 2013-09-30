@@ -28,18 +28,18 @@ class News_model extends CI_Model {
     
     public function create_news()
     {
-        $title_lc = strtolower($this->input->post('title'));
-        str_replace(' ', '-', $title_lc);
-        $this->db->select('slug');
-        $this->db->like('slug', $title_lc);
-        $query = $this->db->get('news');
-        if($query->num_rows() == 0)
-            $slug = $title_lc;
-        else
-            $slug = $title_lc.'-'.$query_num_rows()+1;
+       // $title_lc = strtolower($this->input->post('title'));
+       // str_replace(' ', '-', $title_lc);
+       // $this->db->select('slug');
+       // $this->db->like('slug', $title_lc);
+       // $query = $this->db->get('news');
+        //if($query->num_rows() == 0)
+        //    $slug = $title_lc;
+        //else
+        //    $slug = $title_lc.'-'.$query_num_rows()+1;
         $news = array(
             'categoryID'    => $this->input->post('category_id'),
-            'slug'          => $slug,
+          //  'slug'          => $slug,
             'title'         => $this->input->post('title'),
             'valid_from'    => $this->input->post('valid_from'),
             'valid_from_time' => $this->input->post('valid_from_time'),
@@ -68,19 +68,19 @@ class News_model extends CI_Model {
     
     public function update_news($id)
     {
-        $title_lc = strtolower($this->input->post('title'));
-        str_replace(' ', '-', $title_lc);
-        $this->db->select('slug');
-        $this->db->like('slug', $title_lc);
-        $query = $this->db->get('news');
-        if($query->num_rows() == 0)
-            $slug = $title_lc;
-        else
-            $slug = $title_lc.'-'.$query->num_rows()+1;
+      //  $title_lc = strtolower($this->input->post('title'));
+      //  str_replace(' ', '-', $title_lc);
+      //  $this->db->select('slug');
+      //  $this->db->like('slug', $title_lc);
+      //  $query = $this->db->get('news');
+      //  if($query->num_rows() == 0)
+      //      $slug = $title_lc;
+      //  else
+       //     $slug = $title_lc.'-'.$query->num_rows()+1;
         
         $news = array(
             'categoryID'    => $this->input->post('category_id'),
-            'slug'          => $slug,
+         //   'slug'          => $slug,
             'title'         => $this->input->post('title'),
             'valid_from'    => $this->input->post('valid_from'),
             'valid_from_time' => $this->input->post('valid_from_time'),
@@ -97,8 +97,7 @@ class News_model extends CI_Model {
         $news_content = array(
             'newsID'        => $id,
             'teaser'        => $this->input->post('teaser'),
-            'text'          => $this->input->post('text'),
-            'teaser_image'  => $this->input->post('teaser_img')
+            'text'          => $this->input->post('text')
         );  
         
         $this->db->where('newsID', $id); 

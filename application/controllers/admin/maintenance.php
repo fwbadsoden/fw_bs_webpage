@@ -23,7 +23,7 @@ class Maintenance extends CP_Controller {
         // Berechtigungsprüfung TEIL 1: eingelogged und Admin
 	//	if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 	}
-    
+
     public function optimize_db()
     {
         // Load the DB utility class

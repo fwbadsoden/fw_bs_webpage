@@ -57,9 +57,56 @@
                     Trotz des Einsatzes am Samstagmorgen in der KiTa "Unterm Regenbogen", den die Einsatzabteilungen aus Bad Soden bewältigen mussten, konnte der BF Tag der Jugendfeuerwehr wie geplant stattfinden. 
                     Die Betreuer bedanken sich bei allen Helfern, ohne die dieser Umfang und diese Vielzahl von Aufgaben nie zu bewältigen gewesen wäre.                
                 </p>
-                <p>
-                    Die Jugendfeuerwehr bedankt sich bei den beiden Kameraden für einen spannenden und informativen Abend und freut sich schon auf den nächsten Vortrag dieser Art.
-                </p>
+            </div>
+            <div class="slideshow">
+
+                <div class="prevPic"><a href="#slideshow_car" id="slideshow_prev"><img src="<?=base_url('images/layout/button_detailShow_previous.png')?>" /></a></div>
+                <div class="nextPic"><a href="#slideshow_car" id="slideshow_next"><img src="<?=base_url('images/layout/button_detailShow_next.png')?>" /></a></div>
+                
+                <ul id="slideshow_car">
+                    <li id="slideshow_car_1" class="active">
+                        <figure>
+                        	<img src="<?=base_url('images/content/bftag2013_00.jpg')?>" alt="BF Tag der Jugend" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/lg01.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        </figure>
+                        <p>1: BF Tag der Jugend</p>
+                    </li>
+                    <li id="slideshow_car_2" class="noActive">
+                        <figure>
+                        	<img src="<?=base_url('images/content/bftag2013_01.jpg')?>" alt="BF Tag der Jugend" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/bftag2013_01.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        </figure>
+                        <p>2: BF Tag der Jugend</p>
+                    </li>
+                    <li id="slideshow_car_3" class="noActive">
+                        <figure>
+                        	<img src="<?=base_url('images/content/bftag2013_02.jpg')?>" alt="BF Tag der Jugend" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/bftag2013_02.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        </figure>
+                        <p>3: BF Tag der Jugend</p>
+                    </li>
+                    <li id="slideshow_car_4" class="noActive">
+                        <figure>
+                        	<img src="<?=base_url('images/content/bftag2013_03.jpg')?>" alt="BF Tag der Jugend" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/bftag2013_03.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        </figure>
+                        <p>4: BF Tag der Jugend</p>
+                    </li>
+                    <li id="slideshow_car_5" class="noActive">
+                        <figure>
+                        	<img src="<?=base_url('images/content/bftag2013_04.jpg')?>" alt="BF Tag der Jugend" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/bftag2013_04.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        </figure>
+                        <p>5: BF Tag der Jugend</p>
+                    </li>
+                    <li id="slideshow_car_6" class="noActive">
+                        <figure>
+                        	<img src="<?=base_url('images/content/bftag2013_05.jpg')?>" alt="BF Tag der Jugend" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/bftag2013_05.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        </figure>
+                        <p>6: BF Tag der Jugend</p>
+                    </li>
+                </ul>
             </div>
            <hr class="clear" />
 

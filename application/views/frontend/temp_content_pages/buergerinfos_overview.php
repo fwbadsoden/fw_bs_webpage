@@ -11,7 +11,7 @@
                         <p>Licht- und Tonsignal sind vorgeschrieben wenn die Feuerwehr von ihrem Sonderrecht gebrauch macht.</p>
                     </li>
                     </a>
-                    <a href="<?=base_url('informationen/buergerinformationen/sonderrechte')?>">
+                    <!--<a href="<?=base_url('informationen/buergerinformationen/sonderrechte')?>">
                     <li class="text">
                         <figure class="border">
                             <img src="<?=base_url('images/content/content_buergerinfos/sonderrechte.jpg')?>" />
@@ -46,7 +46,7 @@
                         <h1>Hinweise bei Unwettern</h1>
                         <p>In den letzten Jahren werden Unwetter in Deutschland immer stärker.</p>
                     </li>
-                    </a>
+                    </a>-->
                     <a href="<?=base_url('informationen/buergerinformationen/nachdembrand')?>">
                     <li class="text third">
                         <figure class="border">

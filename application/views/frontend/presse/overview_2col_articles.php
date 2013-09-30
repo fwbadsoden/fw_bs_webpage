@@ -7,11 +7,12 @@
 ?>
 				<div class="row">
 <? if($article['link'] == '') : ?>
-                	<a href="<?=base_url($article['fullpath'])?>" download="<?=$article['name']?>">
+                <!--	<a href="<?=base_url($article['fullpath'])?>" target="_blank">-->
+                    <a href="<?=base_url($article['fullpath'])?>" class="fancybox-gallery" rel="gallery1">
 <? else : ?>
                     <a href="<?=$article['link']?>" target="_blank">
 <? endif; ?>
-                	<div class="date_small trenner"><span class="inline_date"><?=$date[2]?>. <?=cp_get_month_name($date[1])?> <?=$date[0]?></span></div>
+                	<div class="date_small trenner"><span class="inline_date"><?=$date[2]?>. <?=cp_get_month_short_name($date[1])?>. <?=$date[0]?></span></div>
 <? if($article['link'] == '') : ?>                    
                  	<div class="size trenner"><p><?=strtoupper($article['extension'])?></p><p class="bytes"><?=$article['size']?> KB</p></div>
 <? else : ?>

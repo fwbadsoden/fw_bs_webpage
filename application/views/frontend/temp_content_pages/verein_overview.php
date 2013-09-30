@@ -13,7 +13,7 @@
            <hr class="clear" />
           
           
-        	<h1 class="module">Werden Sie Gönner</h1>
+        	<h1 class="module">Werden Sie Freund und Gönner</h1>
             <div class="article">
                 <p>
                     Mit einem Betrag Ihrer Wahl (Mindestbetrag 15 €) können Sie "Freund und Gönner" der Feuerwehr werden und einen aktiven Beitrag zur Sicherheit in unserer Stadt leisten. 

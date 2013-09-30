@@ -39,12 +39,11 @@
                 <li><a href="<?=base_url('technik/fahrzeuge')?>">Fahrzeuge</a></li>
             </ul>
             <ul>
-                <li class="headline"><a href="<?=base_url('informationen')?>">Information</a></li>
+                <li class="headline"><a href="<?=base_url('informationen')?>">Infos</a></li>
                 <li><a href="<?=base_url('informationen/buergerinformationen')?>">Bürgerinfos</a></li>
                 <li><a href="<?=base_url('informationen/einsatzgebiet')?>">Einsatzgebiet</a></li>
-                <li><a href="<?=base_url('informationen/aufgaben')?>">Aufgaben</a></li>
+                <li><a href="<?=base_url('informationen/aufgaben')?>"<?=$class?>>Aufgaben & Gesetze</a></li>
                 <li><a href="<?=base_url('informationen/aao')?>">Alarm- und Ausrückeordnung</a></li>
-                <li><a href="<?=base_url('informationen')?>">Aufgaben & Gesetze</a></li>
             </ul>
             <ul>
                 <li class="headline"><a href="<?=base_url('verein')?>">Verein</a></li>

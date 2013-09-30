@@ -6,7 +6,7 @@
                 <p>
                     Nach dem Hessischen Gesetz über den Brandschutz, den Katastrophenschutz und die Allgemeine Hilfe (HBKG), müssen die Kommunen den Gefahrenschutz in ihrer Gebietskörperschaft sicherstellen. 
                     Zu diesem Zweck unterhält die Stadt Bad Soden am Taunus drei öffentliche Feuerwehren: Bad Soden am Taunus, Neuenhain und Altenhain. Die drei Feuerwehren, die hauptsächlich aus ehrenamtlichen 
-                    Mitgliedern bestehen, haben den Auftrag die Sicherheit der Bevölkerung zu garantieren. Dabei werden sie von einigen wenigen hauptamtlichen Kräften unterstützt.
+                    Mitgliedern bestehen, haben den Auftrag, die Sicherheit der Bevölkerung zu garantieren. Dabei werden sie von einigen wenigen hauptamtlichen Kräften unterstützt.
                 </p>
             </div>
             <h1 class="module" id="anker_aufgaben">Die Aufgaben der Feuerwehr</h1>

@@ -7,8 +7,8 @@
                    Reaktion auf den eingehenden Notruf zu erreichen. Dabei wird neben der unterschiedlichen Ausrüstung auch die Reaktionsgeschwindigkeit der betreffenden Feuerwehr berücksichtigt.
                 </p>
                 <p> 
-                   Freiwillige Feuerwehren haben eine längere Reaktionszeit als Berufsfeuerwehren, die allerdings nicht überall vorhanden sind. Damit die Alamierung reibungslos und schnell funktioniert, werden 
-                   die eingehenden Notrufe mit Hilfe von Alarmstichworten kategorisiert, so dass klar ist welche Mittel und Einheiten benötigt werden und was die Rettungsteams erwartet.
+                   Freiwillige Feuerwehren haben eine längere Reaktionszeit als Berufsfeuerwehren, die allerdings nicht überall vorhanden sind. Damit die Alarmierung reibungslos und schnell funktioniert, werden 
+                   die eingehenden Notrufe mit Hilfe von Alarmstichworten kategorisiert, sodass klar ist welche Mittel und Einheiten benötigt werden und was die Rettungsteams erwartet.
                 </p>
                 <p>
                     Die Alarmstichworte, welche bei der Alarmierung eingesetzt werden bestehen aus dem Stichwort, der Alarmstufe und der daraus folgenden Alarmreaktion. Das Alarmstichwort besteht aus einem prägnanten Wort, 
@@ -23,8 +23,7 @@
                     <h1 class="first">Weiteres Material</h1> 
                     <p>Hier haben wir einige offizielle Dokumente zum Nachlesen zusammen gestellt:</p>
                     <ul> 
-                        <li class="pdf"><a href="#">Irgend eine Verordnung</a></li>
-                        <li class="pdf"><a href="#">Irgend eine Verordnung</a></li>
+                        <li class="pdf"><a href="http://verwaltung.hessen.de/irj/servlet/prt/portal/prtroot/slimp.CMReader/HMdI_15/HMdI_Internet/med/f11/f1162ad1-622c-321b-30bc-d44e9169fccd,22222222-2222-2222-2222-222222222222,true" target="_blank">Erlass zur Festlegung der Alarmstichworte</a></li>
                     </ul>
                     <p>&nbsp;</p> 
                 </div>

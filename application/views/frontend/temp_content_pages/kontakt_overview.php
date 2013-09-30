@@ -14,7 +14,7 @@
                     <li><a href="<?=base_url('aktuelles/presse')?>">Sie sind von der Presse und haben Fragen an uns?</a></li>
                     <li><a href="<?=base_url('menschen/jugend')?>">Sie oder Ihre Kinder interessieren sich für unsere Jugendfeuerwehr?</a></li>
                 </ul>
-<? if($this->session->set_userdata('contact_send') == 'send') : ?>
+<? if($this->session->userdata('contact_send') == 'send') : ?>
                 <p><strong>Vielen Dank! Wir haben Ihre Anfrage erhalten und werden uns mit Ihnen in Verbindung setzen.</strong></p>
 <? endif; ?> 
 				<div class="kontaktformularOpener"><p class="link_open active" id="js_openKontakt"><a href="#" rel="js_contact">Kontaktformular öffnen</a></p></div>

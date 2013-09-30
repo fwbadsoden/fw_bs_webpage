@@ -71,6 +71,23 @@
 }
 
 /**
+ * cp_get_month_short_name()
+ * Returns the month short name for given int month
+ * 
+ * @param mixed $month
+ * @return
+ */
+ if ( ! function_exists('cp_get_month_short_name'))
+ {
+    function cp_get_month_short_name($month)
+    {
+        $months = array("", "Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez");
+        $month = (int)$month;
+        return $months[$month];
+    }
+}
+
+/**
  * cp_get_day_name()
  * Returns the day name in german for a given date
  * 
