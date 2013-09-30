@@ -2,6 +2,7 @@
 
 
 	var stageVars = {
+	lastSlide: 0,
         currentSlide: 0,
         currentImage: '',
         totalSlides: 0,
@@ -29,7 +30,7 @@
 		$('#pictures_'+stageVars.currentSlide).fadeIn(stageVars.speed);
 		// Loading Stage Picture - Set active (red Dot)
 		$('#slide-link-'+stageVars.highlight).removeClass('changeStage').addClass('active');
-		if(stageVars.totalSlides>1) {	
+		if(stageVars.totalSlides>1) {
 			autoSlides();
 		}
 
@@ -139,35 +140,46 @@
 
 	// Bild austauschen
 	$('.changeStage').click(function() {
-		var target = $(this).attr('href').substr(1);
-		//clearTimeout(stageVars.timer);
-		stageVars.pause = 1;
+		if(slideAllowed()){
+			slided();
+			var target = $(this).attr('href').substr(1);
+			if(target != stageVars.currentSlide){
+				//clearTimeout(stageVars.timer);
+				stageVars.pause = 1;
 		
-		$('#pictures_'+stageVars.currentSlide).fadeOut(stageVars.speed, function() {
-			$('#pictures_'+target).fadeIn(stageVars.speed);
+				$('#pictures_'+stageVars.currentSlide).fadeOut(stageVars.speed, function() {
+					$('#pictures_'+target).fadeIn(stageVars.speed);
 			
-			// Set active (red Dot)
-			highlight(stageVars.currentSlide, target);
+					// Set active (red Dot)
+					highlight(stageVars.currentSlide, target);
 
-			stageVars.pause = 1;
-			stageVars.highlight = target;
-			stageVars.currentSlide = target;
-		});
+					stageVars.pause = 1;
+					stageVars.highlight = target;
+					stageVars.currentSlide = target;
+				});
+			}
+		}
 		return false;
 	});
 	
 	function nextImage() {
-		var last = stageVars.currentSlide;
-		$('#pictures_'+stageVars.currentSlide).fadeOut(stageVars.speed, function() {
-			if(stageVars.totalSlides>(stageVars.currentSlide+1)) {	
-				stageVars.currentSlide++;
-			} else {
-				stageVars.currentSlide = 0;	
-			}
-			$('#pictures_'+stageVars.currentSlide).fadeIn(stageVars.speed);
-			highlight(last, stageVars.currentSlide);
-			autoSlides();	
-		});
+		if(slideAllowed()){
+			slided();
+			var last = stageVars.currentSlide;
+			$('#pictures_'+stageVars.currentSlide).fadeOut(stageVars.speed, function() {
+				if(stageVars.totalSlides>(stageVars.currentSlide+1)) {	
+					stageVars.currentSlide++;
+				} else {
+					stageVars.currentSlide = 0;	
+				}
+				$('#pictures_'+stageVars.currentSlide).fadeIn(stageVars.speed);
+				highlight(last, stageVars.currentSlide);
+				autoSlides();	
+			});
+		}
+		else{
+			autoSlides();
+		}
 	}
 	
 	function highlight(last, next) {
@@ -187,6 +199,17 @@
 		}	
 	}
 
+	function time(){
+		return (new Date()).getTime();
+	}
+
+	function slided(){
+		stageVars.lastSlide=time();
+	}
+
+	function slideAllowed(){
+		return time()-stageVars.lastSlide > 1000;
+	}
 	
 
 //-------------------------------------------------------
