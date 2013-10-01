@@ -111,7 +111,7 @@ switch(ID) {
 	<td><?=$item['datum_beginn']?> <?=$item['uhrzeit_beginn']?></td>
 	<td><?=$item['datum_ende']?> <?=$item['uhrzeit_ende']?></td>
 	<td><?=$item['einsatzName']?></td>
-	<td class="centered"><?=str_pad($item['imgCount'], 5 ,' ', STR_PAD_LEFT);?></td> 
+	<td class="centered"><?=$item['imgCount']?></td> 
 
 <?	if($item['online']==1) :        	
         if($privileged['edit']) :   ?>
