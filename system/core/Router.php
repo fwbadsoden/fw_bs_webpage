@@ -343,6 +343,7 @@ class CI_Router {
 			return $x;
 		}
 
+
 		// Nothing else to do at this point but show a 404
 		show_404($segments[0]);
 	}
