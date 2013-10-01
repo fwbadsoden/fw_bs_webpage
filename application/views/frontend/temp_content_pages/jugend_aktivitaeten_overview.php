@@ -154,7 +154,7 @@ Aufgrund der relativ großen Halle, konnte man nach Lust und Laune zwischen leic
 			</div>
             <div class="textTeaser"> 
             	<h1>Historie</h1>
-                <p>Auch die Jugendfeuerwehr nimmt jährlich an einem Leistungswettbewerb teil.</p> 
+                <p>Die Jugendfeuerwehr nimmt jährlich an einem Bundeswettbewerb teil.</p> 
                 <ul> 
                 	<li>
                     	<h2>2013</h2>
@@ -163,7 +163,7 @@ Aufgrund der relativ großen Halle, konnte man nach Lust und Laune zwischen leic
                 	<li>
                     	<h2>2012</h2>
                         <p><span class="platzierung">1. Platz</span> auf Kreisebene</p>
-                        <p><span class="platzierung">13. Platz</span> auf dem Landesentscheid</p>
+                        <p><span class="platzierung">28. Platz</span> auf dem Landesentscheid</p>
                     </li>
                 	<li>
                     	<h2>2011</h2>
