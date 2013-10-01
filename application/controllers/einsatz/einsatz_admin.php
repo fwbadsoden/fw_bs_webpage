@@ -384,7 +384,7 @@ class Einsatz_Admin extends CP_Controller {
 	public function einsatzdatum_beginn($datum)
 	{
 		$this->form_validation->set_message('einsatzdatum_beginn', 'Bitte einen gültigen %s angeben.');
-		return cp_is_valid_ger_date($datum);		
+		return cp_is_valid_eng_date($datum);		
 	}
 	
 	/**
@@ -397,7 +397,7 @@ class Einsatz_Admin extends CP_Controller {
 	public function einsatzdatum_ende($datum)
 	{
 		$this->form_validation->set_message('einsatzdatum_ende', 'Bitte ein gültiges %s angeben.');
-		return cp_is_valid_ger_date($datum);		
+		return cp_is_valid_eng_date($datum);		
 	}
 	
 	/**
