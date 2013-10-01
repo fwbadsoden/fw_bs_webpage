@@ -279,7 +279,7 @@ class CI_Form_validation {
 	 * @return	bool
 	 */
 	public function run($group = '')
-	{   
+	{
 		// Do we even have any data to process?  Mm?
 		if (count($_POST) == 0)
 		{
@@ -1079,11 +1079,12 @@ class CI_Form_validation {
 	 *
 	 * @access	public
 	 * @param	string
+	 * @param	string "ipv4" or "ipv6" to validate a specific ip format
 	 * @return	string
 	 */
-	public function valid_ip($ip)
+	public function valid_ip($ip, $which = '')
 	{
-		return $this->CI->input->valid_ip($ip);
+		return $this->CI->input->valid_ip($ip, $which);
 	}
 
 	// --------------------------------------------------------------------
