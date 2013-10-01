@@ -53,11 +53,9 @@
 
         <div class="smallSitemap">    
             <a href="<?=base_url('aktuelles/einsaetze')?>">Einsätze</a>
-            <a href="<?=base_url('menschen')?>">Menschen</a>
-            <a href="<?=base_url('technik')?>">Technik</a>
-            <a href="<?=base_url('informationen')?>">Information</a>
-            <a href="<?=base_url('jugend')?>">Jugendfeuerwehr</a>
-            <!--<a href="<?=base_url('mitmachen')?>">Mitmachen</a>-->
+            <a href="<?=base_url('menschen/mannschaft')?>">Mannschaft</a>
+            <a href="<?=base_url('technik/fahrzeuge')?>">Fahrzeuge</a>
+            <a href="<?=base_url('informationen/buergerinformationen')?>">Bürgerinfos</a>
         </div>
         
     </div>
