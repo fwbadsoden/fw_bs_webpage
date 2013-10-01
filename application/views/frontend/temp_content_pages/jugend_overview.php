@@ -40,7 +40,7 @@
            <hr class="clear" />
 
             <div class="BildTextTeaser first">
-            	<figure><img src="<?=base_url('images/content/mannschaft/10947B755FB3426739A660BBE27A2AD9.jpg')?>" /></figure>
+            	<figure><img src="<?=base_url('images/content/mannschaft/9C639050D58568444430BEC3F3684B58.jpg')?>" /></figure>
                 <h1 class="name">Alexander Zengeler</h1>
                 <h2 class="titel">Jugendfeuerwehrwart</h2>
             </div>
