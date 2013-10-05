@@ -205,7 +205,7 @@
                     <div class="links">
                        <h2>Sulzbach (Taunus)</h2>
                        <ul class="linktable_first">
-                            <li><a href="http://www.feuerwehr-sulzbach.de/" target="_blank">Feuerwehr Sulzbach</a> &raquo;</li>
+                            <li><a href="http://www.feuerwehr-sulzbach.org/" target="_blank">Feuerwehr Sulzbach</a> &raquo;</li>
                         </ul>
                     </div>
                     <hr class="clear" />
