@@ -38,6 +38,7 @@
 <title><?=$title?></title>
 <?=meta($meta)?>	
 <link rel="shortcut icon" href="<?=base_url('images/favicon.ico')?>" type="image/x-icon" />
+
 <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="<?=base_url('css/frontend/styles.css')?>" type="text/css" />
 

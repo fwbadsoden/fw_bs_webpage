@@ -149,7 +149,7 @@ Aufgrund der relativ großen Halle, konnte man nach Lust und Laune zwischen leic
 			</div>    
 			<div class="textTeaser">    
 				<h1>Interesse bekommen?</h1>
-				<p>Dann bist Du herzlich eingeladen einfach bei uns vorbei zu schauen.</p>
+				<p>Dann bist Du herzlich eingeladen, einfach bei uns vorbei zu schauen.</p>
                 <p>Wir treffen uns immer montags ab 17:30 Uhr in der Feuerwehr Bad Soden.</p>
 			</div>
             <div class="textTeaser"> 
