@@ -17,7 +17,7 @@
             <div class="article">
                 <p>
                     Mit einem Betrag Ihrer Wahl (Mindestbetrag 15 €) können Sie "Freund und Gönner" der Feuerwehr werden und einen aktiven Beitrag zur Sicherheit in unserer Stadt leisten. 
-                    Ein Formular hierfür finden Sie am Ende dieses Abschnittes. Auch eine Spende auf unser Konto Nr. 44105 BLZ: 501 900 00 bei der Frankfurter Volksbank würde uns sehr unterstützen.
+                    Ein Formular hierfür finden Sie am Ende dieses Abschnittes. Auch eine Spende auf unser Konto (IBAN DE52501900000000044105, BIC FFVBDEFF) bei der Frankfurter Volksbank würde uns sehr unterstützen.
                 </p>
                 <p>
                     Möchten sie aktive Hilfe für in Not geratene Bürger leisten, können Sie sich bei uns unverbindlich den Dienst in der Feuerwehr anschauen.
@@ -110,7 +110,7 @@
            	<div class="textTeaser">
 				<h1>Bankverbindung</h1>
 				<p>Ihre Spende unterstützt die Feuerwehr</p>
-                <p>Volksbank Bad Soden<br/>BLZ 501 900 00<br/>Kto. 44 105</p>
+                <p>Volksbank Bad Soden<br/>IBAN DE52501900000000044105<br/>BIC FFVBDEFF</p>
 			</div>    
 			<div class="textTeaser">    
 				<h1>Ehrenmitglieder</h1>
