@@ -1,5 +1,25 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
     $this->load->helper('form');
+    $this->load->helper('captcha');
+    $vals = array(
+        'img_path'    => 'captcha/',
+        'img_url'     => base_url('captcha').'/',
+        'font_path'   => 'fonts/arial.ttf',
+        //'word'        => 'random word',
+        'img_width'   => '150',
+        'img_height'  => '50',
+        'expiration'  => '7200'
+    );
+    
+    $cap = create_captcha($vals);
+    $data = array(
+        'captcha_time' => $cap['time'],
+        'ip_address'   => $this->input->ip_address(),
+        'word'         => $cap['word']
+    );
+    
+    $query = $this->db->insert_string('captcha', $data);
+    $this->db->query($query);
 ?>
 
         <div id="MainContent">      
@@ -29,6 +49,10 @@
                 </p>
 <? if($this->session->userdata('contact_send') == 'send') : ?>
                 <p><strong>Vielen Dank! Wir haben Ihre Anfrage erhalten und werden uns mit Ihnen in Verbindung setzen.</strong></p>
+<? elseif($this->session->userdata('contact_send') == 'validation_error') : ?>
+                <p class="error_msg"><strong><?=validation_errors();?></strong></p>            
+<? elseif($this->session->userdata('contact_send') == 'captcha_false') : ?>
+                <p class="error_msg"><strong>Bitte geben Sie den Text exakt wie auf dem Bild angegeben ein!</strong></p>                  
 <? endif; ?> 
 				<div class="kontaktformularOpener"><p class="link_open active" id="js_openKontakt"><a href="#" rel="js_contact">Kontaktformular öffnen</a></p></div>
 				<div class="kontaktformularOpener"><p class="link_close" id="js_closeKontakt"><a href="#" rel="js_contact">Kontaktformular schlie&szlig;en</a></p></div>
@@ -43,6 +67,10 @@
                         <p class="form"><input type="text" name="email" value="" /></p>
                         <p class="label"><label for="telefon">Telefon</label></p>
                         <p class="form"><input type="text" name="telefon" value="" /></p>
+                        <p class="label"><label for="captcha_img">Captcha</label></p>
+                        <p><?=$cap['image']?></p>
+                        <p class="label"><label for="captcha">Bitte den Text abtippen</label></p>
+                        <p class="form"><input type="text" name="captcha" value="" /></p>
                         <p class="button"><input type="submit" name="sendeButton" value="Formular Senden" class="submitButton" /></p>
                     </form>
                 </div>

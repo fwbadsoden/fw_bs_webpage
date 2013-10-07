@@ -34,6 +34,7 @@ img {
 	background-color: #FFF;
 	border-bottom: 1px solid #474747;
 }
+.error_msg {margin:0; padding:5px; color:#FFAAAA;}
 
 
 hr.clear {

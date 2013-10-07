@@ -66,20 +66,47 @@ class Frontend extends CP_Controller {
     
     public function send_email()
     {
-        $this->load->library('email');
-        $this->email->from($this->input->post('email'), $this->input->post('name'));
-        $this->email->to(EMAIL_CONTACT_FORM_TO);
-        $this->email->subject($this->input->post('betreff'));
-        $message = 'Name: '.$this->input->post('name').'<br />';
-        $message.= 'Email-Adresse: '.$this->input->post('email').'<br />';
-        $message.= 'Telefon: '.$this->input->post('telefon').'<br />';
-        $message.= 'Nachricht: <br />'.$this->input->post('message').'<br />';
-        $this->email->message($message);
-        $this->email->send();
-        //echo $this->email->print_debugger();
+        $result = $this->validate_form();
         
-        $this->session->set_userdata('contact_send','send');
+        if($result == true)
+        {
+            $this->load->library('email');
+            $this->email->from($this->input->post('email'), $this->input->post('name'));
+            $this->email->to(EMAIL_CONTACT_FORM_TO);
+            $this->email->subject($this->input->post('betreff'));
+            $message = 'Name: '.$this->input->post('name').'<br />';
+            $message.= 'Email-Adresse: '.$this->input->post('email').'<br />';
+            $message.= 'Telefon: '.$this->input->post('telefon').'<br />';
+            $message.= 'Nachricht: <br />'.$this->input->post('message').'<br />';
+            $this->email->message($message);
+            $this->email->send();
+            //echo $this->email->print_debugger();
+            
+            $this->session->set_userdata('contact_send','send');
+        }
+        
+        $this->session->set_userdata('contact_send',$result);
         redirect($this->input->server('HTTP_REFERER', TRUE)); 
+    }
+    
+    private function validate_form()
+    {
+        $this->load->library('form_validation');
+        $this->load->helper('captcha');
+        
+        $this->form_validation->set_error_delimiters('', '');		
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|xss_clean');	
+		$result = $this->form_validation->run(); 
+        
+        if(!$result) return 'validation_error';
+        $expiration = time()-7200;
+        $this->db->where('captcha_time <', $expiration);
+        $this->db->query->delete('captcha');
+        
+        $this->db->where(array('word' => $_POST['captcha'], 'ip_address' => $this->input->ip_address(), 'captcha_time >' => $expiration));
+        $count = $this->db->count_all_results();
+        
+        if($count == 0) return 'captcha_false'; else return true;
     }
  }
  ?>
