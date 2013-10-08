@@ -30,6 +30,26 @@ class Maintenance extends CP_Controller {
         $this->load->dbutil();
         $result = $this->dbutil->optimize_database();
     }
+    
+    public function minify()
+    {
+        $this->load->driver('minify');
+        
+        $contents = $this->minify->css->min('css/frontend/styles.css');
+        $this->minify->save_file($contents, 'css/frontend/styles.min.css');
+        
+        $contents = $this->minify->css->min('css/backend/admin.css');
+        $this->minify->save_file($contents, 'css/backend/admin.min.css');
+        
+        $contents = $this->minify->css->min('css/backend/login.css');
+        $this->minify->save_file($contents, 'css/backend/login.min.css');
+        
+        $contents = $this->minify->css->min('css/frontend/styles.css');
+        $this->minify->save_file($contents, 'css/frontend/styles.min.css');
+        
+        $contents = $this->minify->css->min('css/frontend/styles.css');
+        $this->minify->save_file($contents, 'css/frontend/styles.min.css');
+    }
 
     public function recalc($year)
     {

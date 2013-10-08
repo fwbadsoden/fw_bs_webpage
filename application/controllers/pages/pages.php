@@ -327,7 +327,8 @@ class Pages extends CP_Controller {
     }
     
     public function impressum_overview()
-    {
+    {   
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -544,7 +545,7 @@ class Pages extends CP_Controller {
     }
     
     private function site_header()
-    {
+    {           
         $c_einsatz = load_controller('einsatz/einsatz');
         $c_termin  = load_controller('termin/termin');
         $c_fahrzeug = load_controller('fahrzeug/fahrzeug');
@@ -558,7 +559,7 @@ class Pages extends CP_Controller {
         $header_data['termine']         = $c_termin->get_termin_overview(5,0);
         $header_data['fahrzeuge']       = $c_fahrzeug->get_fahrzeug_overview(1);
         $header_data['articles']        = $c_presse->get_presse_overview();
-                
+                        
         $this->load->view('frontend/templates/header', $header_data);
     }
     
