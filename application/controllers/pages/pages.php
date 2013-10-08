@@ -157,6 +157,7 @@ class Pages extends CP_Controller {
     
     private function mannschaft_overview()
     {
+        $this->output->cache(60);
         $c_mannschaft = load_controller('mannschaft/mannschaft');
         
         $this->site_header();    
@@ -216,6 +217,7 @@ class Pages extends CP_Controller {
     
     public function leistungsgruppe_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -230,6 +232,7 @@ class Pages extends CP_Controller {
     
     public function rettungshunde_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage(); 
         
@@ -244,6 +247,7 @@ class Pages extends CP_Controller {
     
     public function verein_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();    
         
@@ -258,6 +262,7 @@ class Pages extends CP_Controller {
     
     public function geschichte_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -272,6 +277,7 @@ class Pages extends CP_Controller {
     
     public function aao_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -286,6 +292,7 @@ class Pages extends CP_Controller {
     
     public function einsatzgebiet_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -300,6 +307,7 @@ class Pages extends CP_Controller {
     
     public function gesetze_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -314,6 +322,7 @@ class Pages extends CP_Controller {
     
     public function aufgaben_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -343,6 +352,7 @@ class Pages extends CP_Controller {
     
     public function jugend_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -357,6 +367,7 @@ class Pages extends CP_Controller {
     
     public function jugend_aktivitaeten_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -371,6 +382,7 @@ class Pages extends CP_Controller {
     
     public function jugend_ausbildung_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -385,6 +397,7 @@ class Pages extends CP_Controller {
     
     public function mitmachen_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -399,6 +412,7 @@ class Pages extends CP_Controller {
     
     public function tippsbeinotfaellen_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -413,6 +427,7 @@ class Pages extends CP_Controller {
     
     public function buergerinfos_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -427,6 +442,7 @@ class Pages extends CP_Controller {
     
     public function hausnummern_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -441,6 +457,7 @@ class Pages extends CP_Controller {
     
     public function blaulicht_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -455,6 +472,7 @@ class Pages extends CP_Controller {
     
     public function sonderrechte_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -469,6 +487,7 @@ class Pages extends CP_Controller {
     
     public function unwetter_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -483,6 +502,7 @@ class Pages extends CP_Controller {
     
     public function kontakt_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -497,6 +517,7 @@ class Pages extends CP_Controller {
     
     public function links_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
@@ -511,6 +532,7 @@ class Pages extends CP_Controller {
     
     public function nachdembrand_overview()
     {
+        $this->output->cache(60);
         $this->site_header();
         $this->site_stage();
         
