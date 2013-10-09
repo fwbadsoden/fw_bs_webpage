@@ -4,6 +4,11 @@ class Searchengine extends CP_Controller
 {
     private $search_index;
     
+	/**
+	 * Searchengine::__construct()
+	 * 
+	 * @return
+	 */
 	public function __construct()
 	{
 		parent::__construct();
@@ -14,11 +19,21 @@ class Searchengine extends CP_Controller
         $this->search_index = APPPATH . 'cache/search_index/index';
 	}   
     
+    /**
+     * Searchengine::index()
+     * 
+     * @return
+     */
     public function index()
     {
 		$this->load->view('search_view');
 	} 
     
+    /**
+     * Searchengine::index_it()
+     * 
+     * @return
+     */
     public function index_it() 
     {
        // if($this->input->get('index_id') == '8730eeacceaf4f0b071d1c3a5d659f5a1361e817a25a0090db4815501d')
@@ -55,6 +70,11 @@ class Searchengine extends CP_Controller
         //}
 	}
  
+	/**
+	 * Searchengine::result()
+	 * 
+	 * @return
+	 */
 	public function result() 
     {
 		$data['results'] = array();

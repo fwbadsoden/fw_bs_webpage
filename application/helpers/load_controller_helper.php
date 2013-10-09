@@ -2,6 +2,13 @@
 
 if (!function_exists('load_controller'))
 {
+    /**
+     * load_controller()
+     * Funktion, um in einem Controller einen weiteren Controller instanziieren zu können
+     * 
+     * @param mixed $controller
+     * @return
+     */
     function load_controller($controller)
     {
         $arr_controller = explode('/', $controller);

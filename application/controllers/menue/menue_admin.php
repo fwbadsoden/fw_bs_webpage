@@ -14,6 +14,11 @@ class Menue_Admin extends CP_Controller {
 	
 	private $area;
 
+	/**
+	 * Menue_Admin::__construct()
+	 * 
+	 * @return
+	 */
 	public function __construct()
 	{
 		parent::__construct();
@@ -31,6 +36,11 @@ class Menue_Admin extends CP_Controller {
 		$this->session->set_flashdata('redirect', current_url()); 
 	}
 	
+	/**
+	 * Menue_Admin::menue_liste()
+	 * 
+	 * @return
+	 */
 	public function menue_liste()
 	{
         if(!$this->cp_auth->is_privileged(MENUE_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
@@ -55,6 +65,11 @@ class Menue_Admin extends CP_Controller {
 		$this->load->view('backend/templates/admin/footer');
 	}
 	
+	/**
+	 * Menue_Admin::create_menue()
+	 * 
+	 * @return
+	 */
 	public function create_menue()
 	{
         if(!$this->cp_auth->is_privileged(MENUE_PRIV_EDIT)) redirect('admin/401', 'refresh');
@@ -86,6 +101,12 @@ class Menue_Admin extends CP_Controller {
 		else redirect($this->session->userdata('menueliste_redirect'), 'refresh');
 	}
 	
+	/**
+	 * Menue_Admin::edit_menue()
+	 * 
+	 * @param mixed $id
+	 * @return
+	 */
 	public function edit_menue($id)
 	{
         if(!$this->cp_auth->is_privileged(MENUE_PRIV_EDIT)) redirect('admin/401', 'refresh');
@@ -117,6 +138,12 @@ class Menue_Admin extends CP_Controller {
 		else redirect($this->session->userdata('menueliste_redirect'), 'refresh');
 	}
     
+    /**
+     * Menue_Admin::delete_menue_verify()
+     * 
+     * @param mixed $id
+     * @return
+     */
     public function delete_menue_verify($id)
     {
         $header['title']    = 'Menüeintrag l&ouml;schen';		
@@ -132,6 +159,12 @@ class Menue_Admin extends CP_Controller {
     	$this->load->view('backend/templates/admin/footer');        
     }
 	
+	/**
+	 * Menue_Admin::delete_menue()
+	 * 
+	 * @param mixed $id
+	 * @return
+	 */
 	public function delete_menue($id)
 	{
         if(!$this->cp_auth->is_privileged(MENUE_PRIV_DELETE)) redirect('admin/401', 'refresh');
@@ -139,6 +172,13 @@ class Menue_Admin extends CP_Controller {
 		redirect($this->session->userdata('menueliste_redirect'), 'refresh');
 	}
 	
+	/**
+	 * Menue_Admin::change_order()
+	 * 
+	 * @param mixed $dir
+	 * @param mixed $id
+	 * @return
+	 */
 	public function change_order($dir, $id)
 	{
         if(!$this->cp_auth->is_privileged(MENUE_PRIV_EDIT)) redirect('admin/401', 'refresh');
@@ -146,6 +186,13 @@ class Menue_Admin extends CP_Controller {
 		redirect($this->session->userdata('menueliste_redirect'), 'refresh');	
 	}
 	
+	/**
+	 * Menue_Admin::switch_online_state()
+	 * 
+	 * @param mixed $id
+	 * @param mixed $online
+	 * @return
+	 */
 	public function switch_online_state($id, $online)
 	{
         if(!$this->cp_auth->is_privileged(MENUE_PRIV_EDIT)) redirect('admin/401', 'refresh');

@@ -11,7 +11,8 @@
  * @access public
  */
 class Mannschaft extends CP_Controller {
-    /**
+
+	/**
 	 * Mannschaft::__construct()
 	 * 
 	 * @return
@@ -22,6 +23,12 @@ class Mannschaft extends CP_Controller {
         $this->load->model('mannschaft/mannschaft_model', 'm_mannschaft');  
 	}
     
+    /**
+     * Mannschaft::mannschaftliste_3col()
+     * Mannschaftsübersichtsseite
+     * 
+     * @return
+     */
     public function mannschaftliste_3col()
     {
         $mannschaft['fuehrung'] = $this->m_mannschaft->get_mannschaft_overview(TEAM_ID_LEADER);

@@ -25,9 +25,8 @@ class Frontend extends CP_Controller {
     
     /**
      * Frontend::loader()
-     * Loader
      * 
-     * @return void
+     * @return
      */
     public function loader()
     {
@@ -64,6 +63,12 @@ class Frontend extends CP_Controller {
         }
     }
     
+    /**
+     * Frontend::send_email()
+     * sendet eine Email nach Validierung der Emailadresse und des Captchas.
+     * 
+     * @return
+     */
     public function send_email()
     {
         $result = $this->validate_form();
@@ -89,6 +94,12 @@ class Frontend extends CP_Controller {
         redirect($this->input->server('HTTP_REFERER', TRUE)); 
     }
     
+    /**
+     * Frontend::validate_form()
+     * Validiert die Emailadresse und das Captcha
+     * 
+     * @return
+     */
     private function validate_form()
     {
         $this->load->library('form_validation');

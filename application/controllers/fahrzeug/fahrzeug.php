@@ -11,7 +11,8 @@
  * @access public
  */
 class Fahrzeug extends CP_Controller {
-    /**
+
+	/**
 	 * Fahrzeug::__construct()
 	 * 
 	 * @return
@@ -22,11 +23,22 @@ class Fahrzeug extends CP_Controller {
         $this->load->model('fahrzeug/fahrzeug_model', 'm_fahrzeug');  
 	}
     
+    /**
+     * Fahrzeug::get_fahrzeug_overview()
+     * 
+     * @param string $online
+     * @return
+     */
     public function get_fahrzeug_overview($online = 'all')
     {
         return $this->m_fahrzeug->get_fahrzeug_list($online);
     }
     
+    /**
+     * Fahrzeug::fahrzeugliste_3col()
+     * 
+     * @return
+     */
     public function fahrzeugliste_3col()
     {
         $fahrzeuge = $this->m_fahrzeug->get_fahrzeug_list(1);
@@ -45,6 +57,12 @@ class Fahrzeug extends CP_Controller {
         $this->load->view('frontend/fahrzeug/fahrzeugliste_3col_footer');
     }
     
+    /**
+     * Fahrzeug::fahrzeug_detail_3col()
+     * 
+     * @param mixed $id
+     * @return
+     */
     public function fahrzeug_detail_3col($id)
     {
         $fahrzeug['fahrzeug']   = $this->m_fahrzeug->get_fahrzeug($id);
@@ -67,6 +85,12 @@ class Fahrzeug extends CP_Controller {
             $this->load->view('frontend/fahrzeug/fahrzeugdetail_3col_einsaetze', $einsaetze);        
     }
     
+    /**
+     * Fahrzeug::get_fahrzeug_stage_text()
+     * 
+     * @param mixed $id
+     * @return
+     */
     public function get_fahrzeug_stage_text($id)
     {
         return $this->m_fahrzeug->get_fahrzeug_stage_text($id);

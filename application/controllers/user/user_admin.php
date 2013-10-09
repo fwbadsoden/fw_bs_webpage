@@ -14,6 +14,11 @@ class User_Admin extends CP_Controller {
 
 	private $userdata;
 
+	/**
+	 * User_Admin::__construct()
+	 * 
+	 * @return
+	 */
 	public function __construct()
 	{
 		parent::__construct();
@@ -25,6 +30,11 @@ class User_Admin extends CP_Controller {
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');	
 	}
     
+    /**
+     * User_Admin::edit_profile()
+     * 
+     * @return
+     */
     public function edit_profile()
     {
         $message = NULL;        
@@ -77,6 +87,11 @@ class User_Admin extends CP_Controller {
             redirect($this->session->userdata('userprofile_redirect', 'refresh'));
     }
 	
+	/**
+	 * User_Admin::user_liste()
+	 * 
+	 * @return
+	 */
 	public function user_liste()
 	{		
 		$this->session->set_userdata('userliste_redirect', current_url()); 
@@ -101,6 +116,11 @@ class User_Admin extends CP_Controller {
 		$this->load->view('backend/templates/admin/footer');		
 	}
     
+    /**
+     * User_Admin::priv_liste()
+     * 
+     * @return
+     */
     public function priv_liste()
     {
         $this->session->set_userdata('privliste_redirect', current_url());
@@ -126,6 +146,11 @@ class User_Admin extends CP_Controller {
 		$this->load->view('backend/templates/admin/footer');       
     }
     
+    /**
+     * User_Admin::group_liste()
+     * 
+     * @return
+     */
     public function group_liste()
     {
         $this->session->set_userdata('groupliste_redirect', current_url());
@@ -149,6 +174,12 @@ class User_Admin extends CP_Controller {
 		$this->load->view('backend/templates/admin/footer');       
     }
     
+    /**
+     * User_Admin::delete_user_verify()
+     * 
+     * @param mixed $userID
+     * @return
+     */
     public function delete_user_verify($userID)
     {
         if(!$this->cp_auth->is_privileged(USER_PRIV_DELETE)) redirect('admin/401', 'refresh');
@@ -167,6 +198,12 @@ class User_Admin extends CP_Controller {
     	$this->load->view('backend/templates/admin/footer');
     }
     
+    /**
+     * User_Admin::delete_group_verify()
+     * 
+     * @param mixed $groupID
+     * @return
+     */
     public function delete_group_verify($groupID)
     {
         if(!$this->cp_auth->is_privileged(GROUP_PRIV_DELETE)) redirect('admin/401', 'refresh');
@@ -186,6 +223,12 @@ class User_Admin extends CP_Controller {
     	$this->load->view('backend/templates/admin/footer');
     }
     
+    /**
+     * User_Admin::delete_priv_verify()
+     * 
+     * @param mixed $privID
+     * @return
+     */
     public function delete_priv_verify($privID)
     {
         if(!$this->cp_auth->is_privileged(PRIV_PRIV_DELETE)) redirect('admin/401', 'refresh');
@@ -206,6 +249,11 @@ class User_Admin extends CP_Controller {
     	$this->load->view('backend/templates/admin/footer');
     }
 	
+	/**
+	 * User_Admin::create_user()
+	 * 
+	 * @return
+	 */
 	public function create_user()
 	{
         if(!$this->cp_auth->is_privileged(USER_PRIV_EDIT)) redirect('admin/401', 'refresh');
@@ -255,6 +303,12 @@ class User_Admin extends CP_Controller {
 		else redirect($this->session->userdata('userliste_redirect'), 'refresh');
 	}
 	
+	/**
+	 * User_Admin::edit_user()
+	 * 
+	 * @param mixed $id
+	 * @return
+	 */
 	public function edit_user($id)
 	{
         if(!$this->cp_auth->is_privileged(USER_PRIV_EDIT)) redirect('admin/401', 'refresh');
@@ -304,6 +358,12 @@ class User_Admin extends CP_Controller {
 		else redirect($this->session->userdata('userliste_redirect'), 'refresh');
 	}
 	
+	/**
+	 * User_Admin::delete_user()
+	 * 
+	 * @param mixed $id
+	 * @return
+	 */
 	public function delete_user($id)
 	{
         if(!$this->cp_auth->is_privileged(USER_PRIV_DELETE)) redirect('admin/401', 'refresh');
@@ -316,6 +376,11 @@ class User_Admin extends CP_Controller {
 		redirect($this->session->userdata('userliste_redirect'), 'refresh');	
 	}
     
+    /**
+     * User_Admin::create_priv()
+     * 
+     * @return
+     */
     public function create_priv()
     {
         if(!$this->cp_auth->is_privileged(PRIV_PRIV_EDIT)) redirect('admin/401', 'refresh');
@@ -354,6 +419,12 @@ class User_Admin extends CP_Controller {
 		else redirect($this->session->userdata('privliste_redirect'), 'refresh');
     }
 	
+	/**
+	 * User_Admin::edit_priv()
+	 * 
+	 * @param mixed $id
+	 * @return
+	 */
 	public function edit_priv($id)
 	{
         if(!$this->cp_auth->is_privileged(PRIV_PRIV_EDIT)) redirect('admin/401', 'refresh');
@@ -396,6 +467,12 @@ class User_Admin extends CP_Controller {
 		else redirect($this->session->userdata('privliste_redirect'), 'refresh');
 	}
 	
+	/**
+	 * User_Admin::delete_priv()
+	 * 
+	 * @param mixed $id
+	 * @return
+	 */
 	public function delete_priv($id)
 	{
         if(!$this->cp_auth->is_privileged(PRIV_PRIV_DELETE)) redirect('admin/401', 'refresh');
@@ -411,6 +488,11 @@ class User_Admin extends CP_Controller {
 		redirect($this->session->userdata('privliste_redirect'), 'refresh');	
 	}
     
+    /**
+     * User_Admin::create_group()
+     * 
+     * @return
+     */
     public function create_group()
     {
         if(!$this->cp_auth->is_privileged(GROUP_PRIV_EDIT)) redirect('admin/401', 'refresh');
@@ -454,6 +536,12 @@ class User_Admin extends CP_Controller {
 		else redirect($this->session->userdata('groupliste_redirect'), 'refresh');
     }
 	
+	/**
+	 * User_Admin::edit_group()
+	 * 
+	 * @param mixed $id
+	 * @return
+	 */
 	public function edit_group($id)
 	{
         if(!$this->cp_auth->is_privileged(GROUP_PRIV_EDIT)) redirect('admin/401', 'refresh');
@@ -516,6 +604,12 @@ class User_Admin extends CP_Controller {
 		else redirect($this->session->userdata('groupliste_redirect'), 'refresh');
 	}
 	
+	/**
+	 * User_Admin::delete_group()
+	 * 
+	 * @param mixed $id
+	 * @return
+	 */
 	public function delete_group($id)
 	{
         if(!$this->cp_auth->is_privileged(GROUP_PRIV_DELETE)) redirect('admin/401', 'refresh');
@@ -529,6 +623,11 @@ class User_Admin extends CP_Controller {
 		redirect($this->session->userdata('groupliste_redirect'), 'refresh');	
 	}
 	
+	/**
+	 * User_Admin::verify_profile()
+	 * 
+	 * @return
+	 */
 	public function verify_profile()
 	{
 		$this->load->library('form_validation');
@@ -549,6 +648,12 @@ class User_Admin extends CP_Controller {
 		return $this->form_validation->run();
 	}
 	
+	/**
+	 * User_Admin::verify_user()
+	 * 
+	 * @param integer $id
+	 * @return
+	 */
 	public function verify_user($id = 0)
 	{
         if(!$this->cp_auth->is_privileged(USER_PRIV_EDIT)) redirect('admin/401', 'refresh');
@@ -575,6 +680,12 @@ class User_Admin extends CP_Controller {
 		return $this->form_validation->run();
 	}
 	
+	/**
+	 * User_Admin::verify_priv()
+	 * 
+	 * @param integer $id
+	 * @return
+	 */
 	public function verify_priv($id = 0)
 	{
         if(!$this->cp_auth->is_privileged(PRIV_PRIV_EDIT)) redirect('admin/401', 'refresh');
@@ -596,6 +707,12 @@ class User_Admin extends CP_Controller {
 		return $this->form_validation->run();
 	}
 	
+	/**
+	 * User_Admin::verify_group()
+	 * 
+	 * @param integer $id
+	 * @return
+	 */
 	public function verify_group($id = 0)
 	{
         if(!$this->cp_auth->is_privileged(GROUP_PRIV_EDIT)) redirect('admin/401', 'refresh');
@@ -609,6 +726,13 @@ class User_Admin extends CP_Controller {
 		return $this->form_validation->run();
 	}
 	
+	/**
+	 * User_Admin::switch_online_state()
+	 * 
+	 * @param mixed $id
+	 * @param mixed $state
+	 * @return
+	 */
 	public function switch_online_state($id, $state)
 	{
         if(!$this->cp_auth->is_privileged(USER_PRIV_EDIT)) redirect('admin/401', 'refresh');
@@ -621,7 +745,14 @@ class User_Admin extends CP_Controller {
 		redirect($this->session->userdata('userliste_redirect'), 'refresh');	
 	}
     
-	// JSON Call Attribut eindeutig
+	/**
+	 * User_Admin::json_userattr_unique()
+	 * JSON Call Attribut eindeutig
+	 * 
+	 * @param mixed $id
+	 * @param mixed $value
+	 * @return
+	 */
 	public function json_userattr_unique($id, $value)
 	{		
         $return = $this->cp_auth->identity_available($value, $id);
@@ -629,7 +760,14 @@ class User_Admin extends CP_Controller {
 		echo json_encode($json);
 	}
     
-    // callback für identity unique 
+    /**
+     * User_Admin::identity_unique()
+     * callback für identity unique 
+     * 
+     * @param mixed $identity
+     * @param integer $id
+     * @return
+     */
     public function identity_unique($identity, $id = 0)
     {
         if($id == 0)

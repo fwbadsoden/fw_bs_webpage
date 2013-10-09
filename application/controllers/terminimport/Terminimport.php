@@ -12,6 +12,11 @@
  */
 class Terminimport extends CP_Controller {
 
+	 /**
+	  * Terminimport::__construct()
+	  * 
+	  * @return
+	  */
 	 public function __construct()
     {
         parent::__construct();
@@ -19,8 +24,11 @@ class Terminimport extends CP_Controller {
     }
 
 	/**
+	 * Terminimport::fetch()
 	*	Provides list of stored future appointments
-	*/
+	 * 
+	 * @return
+	 */
 	public function fetch()
     {
 		//Check if remote host is in IP4-Whitelist
@@ -39,9 +47,12 @@ class Terminimport extends CP_Controller {
 		echo "FETCH_OK";
      }
 
-	/*
+	/**
+	 * Terminimport::update()
 	*	Insert additional and removes obsolete appointments
-	*/
+	 * 
+	 * @return
+	 */
 	public function update()
     {
 		//Check if remote host is in IP4-Whitelist

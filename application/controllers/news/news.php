@@ -12,12 +12,24 @@
 
 class News extends CP_Controller {
 
+	/**
+	 * News::__construct()
+	 * 
+	 * @return
+	 */
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('news/news_model', 'news');
 	}
     
+    /**
+     * News::homepage_teaser_1col()
+     * 
+     * @param mixed $offset
+     * @param integer $first
+     * @return
+     */
     public function homepage_teaser_1col($offset, $first = 0)
     {
         if($first == 1) $class['class'] = 'BildTextTeaser first';

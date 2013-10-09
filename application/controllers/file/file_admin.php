@@ -12,6 +12,11 @@
  */
 class File_Admin extends CP_Controller {
     
+	/**
+	 * File_Admin::__construct()
+	 * 
+	 * @return
+	 */
 	public function __construct()
 	{
 		parent::__construct();
@@ -23,6 +28,12 @@ class File_Admin extends CP_Controller {
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 	}
     
+    /**
+     * File_Admin::file_liste()
+     * 
+     * @param mixed $type
+     * @return
+     */
     public function file_liste($type) // Später durch jquery File Upload und Schnickschnack zu ersetzen
     {       
         if(!$this->cp_auth->is_privileged(FILE_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
@@ -76,6 +87,12 @@ class File_Admin extends CP_Controller {
         }
     }
     
+    /**
+     * File_Admin::create_file()
+     * 
+     * @param mixed $type
+     * @return
+     */
     public function create_file($type)
     {        
         if(!$this->cp_auth->is_privileged(FILE_PRIV_EDIT)) redirect('admin/401', 'refresh');
@@ -153,6 +170,12 @@ class File_Admin extends CP_Controller {
         }    
     }
     
+    /**
+     * File_Admin::edit_file()
+     * 
+     * @param mixed $type
+     * @return
+     */
     public function edit_file($type)
     {
         if(!$this->cp_auth->is_privileged(FILE_PRIV_EDIT)) redirect('admin/401', 'refresh');

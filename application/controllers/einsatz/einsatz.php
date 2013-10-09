@@ -23,11 +23,25 @@ class Einsatz extends CP_Controller {
         $this->load->model('einsatz/einsatz_model', 'm_einsatz');  
 	}
     
+    /**
+     * Einsatz::get_einsatz_overview()
+     * 
+     * @param mixed $limit
+     * @param mixed $offset
+     * @return
+     */
     public function get_einsatz_overview($limit = EINSATZ_DEFAULT_LIMIT, $offset = EINSATZ_DEFAULT_OFFSET)
     {
         return $this->m_einsatz->get_einsatz_overview($limit, $offset);
     }
     
+    /**
+     * Einsatz::overview_2col()
+     * 
+     * @param mixed $limit
+     * @param mixed $offset
+     * @return
+     */
     public function overview_2col($limit = EINSATZ_DEFAULT_LIMIT, $offset = EINSATZ_DEFAULT_OFFSET)
     {
         $einsatz_header['title']        = 'Einsatz-Ticker';
@@ -41,6 +55,11 @@ class Einsatz extends CP_Controller {
         $this->load->view('frontend/einsatz/overview_2col_footer');    
     }
     
+    /**
+     * Einsatz::einsatzliste_2col()
+     * 
+     * @return
+     */
     public function einsatzliste_2col()
     {        
         if(!$year = $this->input->post('einsatzJahr')) $year = date('Y');
@@ -86,6 +105,12 @@ class Einsatz extends CP_Controller {
         $this->load->view('frontend/einsatz/einsatzliste_2col_footer');
     }
     
+    /**
+     * Einsatz::einsatz_detail_3col()
+     * 
+     * @param mixed $id
+     * @return
+     */
     public function einsatz_detail_3col($id)
     {
         $einsatz['einsatz']   = $this->m_einsatz->get_einsatz($id);
@@ -96,6 +121,12 @@ class Einsatz extends CP_Controller {
         $this->load->view('frontend/einsatz/einsatzdetail_3col_data', $einsatz); 
     }
     
+    /**
+     * Einsatz::get_einsatz_stage_text()
+     * 
+     * @param mixed $id
+     * @return
+     */
     public function get_einsatz_stage_text($id)
     {
         return $this->m_einsatz->get_einsatz_stage_text($id);

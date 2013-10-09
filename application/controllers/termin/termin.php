@@ -23,11 +23,25 @@ class Termin extends CP_Controller {
         $this->load->model('termin/termin_model', 'm_termin');  
 	}
     
+    /**
+     * Termin::get_termin_overview()
+     * 
+     * @param mixed $limit
+     * @param mixed $offset
+     * @return
+     */
     public function get_termin_overview($limit = TERMIN_DEFAULT_LIMIT, $offset = TERMIN_DEFAULT_OFFSET)
     {
         return $this->m_termin->get_termin_v_list($limit, $offset);
     }
     
+    /**
+     * Termin::overview_1col()
+     * 
+     * @param mixed $limit
+     * @param mixed $offset
+     * @return
+     */
     public function overview_1col($limit = TERMIN_DEFAULT_LIMIT, $offset = TERMIN_DEFAULT_OFFSET)
     {
         $termin_overview = $this->m_termin->get_termin_v_list($limit, $offset);
@@ -40,6 +54,11 @@ class Termin extends CP_Controller {
         $this->load->view('frontend/termin/overview_1col_footer');    
     }
     
+    /**
+     * Termin::terminliste_1col()
+     * 
+     * @return
+     */
     public function terminliste_1col()
     {
         $termine = $this->m_termin->get_termin_v_list_all_by_month();
