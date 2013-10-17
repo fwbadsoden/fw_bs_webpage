@@ -182,10 +182,11 @@ class News_model extends CI_Model {
         $this->db->join('news_content', 'news.newsID = news_content.newsID');
         $query = $this->db->get('news');
         $row = $query->row();
-        
+                
         $news['newsID']         = $row->newsID;
         $news['categoryID']     = $row->categoryID;
         $news['title']          = $row->title;
+        $news['link']           = $row->link;
         $news['valid_from']     = $row->valid_from;
         $news['valid_from_time'] = $row->valid_from_time;
         $news['valid_to']       = $row->valid_to;

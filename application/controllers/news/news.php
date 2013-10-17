@@ -35,7 +35,7 @@ class News extends CP_Controller {
         if($first == 1) $class['class'] = 'BildTextTeaser first';
         else $class['class'] = 'BildTextTeaser';
         
-        $this->db->select('newsID, title, teaser, teaser_image_fullpath, teaser_image_width, teaser_image_height, teaser_image_title');
+        $this->db->select('newsID, title, teaser, teaser_image_fullpath, teaser_image_width, teaser_image_height, teaser_image_title, link');
         $this->db->limit(1, $offset);
         $query = $this->db->get('v_news');
         $row = $query->row();
@@ -43,6 +43,7 @@ class News extends CP_Controller {
         $news = array(
             'newsID'                => $row->newsID,
             'title'                 => $row->title,
+            'link'                  => $row->link,
             'teaser'                => $row->teaser,
             'teaser_image_fullpath' => $row->teaser_image_fullpath,
             'teaser_image_width'    => $row->teaser_image_width,

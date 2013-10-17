@@ -8,4 +8,6 @@
 <? } ?>
 <h1><?=$title?></h1>
 <p><?=$teaser?></p>
-<!--<p class="more"><a href="#" class="button_black">Mehr lesen</a></p>-->
+<? if($link != '') : ?>
+<p class="more"><a href="<?=base_url($link)?>" class="button_black">Mehr lesen</a></p>
+<? endif; ?>
