@@ -213,7 +213,8 @@ class User_Admin extends CP_Controller {
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     	$menue['submenue']	= $this->admin->get_submenue();
         $sql_where          = array('ugrp_id' => $groupID);
-        $data['group']      = $this->cp_auth->get_user_group(FALSE, $sql_where);
+        $group_data         = $this->cp_auth->get_groups_query(FALSE, $sql_where)->result();
+        $data['group']      = $group_data[0];
         $data['type']       = 'group';
     	
     	$this->load->view('backend/templates/admin/header', $header);
