@@ -5,6 +5,9 @@
 <? foreach($menue as $m) { ?>
 		<li><a href="<?=base_url($m['link'])?>" target="<?=$m['target']?>"><?=$m['name']?></a></li>   
 <? } ?>
+<? if(ENVIRONMENT == 'development') : ?>
+    <li><a href="http://feuerwehr-bs.de/admin/maintenance/show_buttons" target="_blank">Icons anzeigen</a></li>
+<? endif; ?> 
 	</ul>
 	<div class="logout">
 	<span style="font-weight: normal;">eingelogged als:</span>&nbsp;&nbsp;<a href="<?=base_url('admin/edit_profile/')?>"><?=$userdata->first_name?> <?=$userdata->last_name?></a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="<?=base_url('admin/logout')?>">Logout</a>
