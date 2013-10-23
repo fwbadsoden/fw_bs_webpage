@@ -758,7 +758,7 @@ class Pages extends CP_Controller {
         $header_data['title']           = FRONTEND_TITLE;
         $header_data['menue_meta']      = $this->menue['menue_meta'];
         $header_data['menue']           = $this->menue['menue'];
-        $header_data['einsaetze']       = $c_einsatz->get_einsatz_overview(5,0);
+        $header_data['einsaetze']       = $c_einsatz->get_einsatz_overview(1,5,0);
         $header_data['termine']         = $c_termin->get_termin_overview(5,0);
         $header_data['fahrzeuge']       = $c_fahrzeug->get_fahrzeug_overview(1);
         $header_data['articles']        = $c_presse->get_presse_overview();

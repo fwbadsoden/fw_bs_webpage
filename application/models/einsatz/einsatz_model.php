@@ -21,7 +21,7 @@ class Einsatz_Model extends CI_Model {
     private $upload_path = CONTENT_IMG_EINSATZ_UPLOAD_PATH;
     
     public $id, $name, $datum_beginn, $datum_ende, $uhrzeit_beginn, $uhrzeit_ende, $lfd_nr, $online, $type_count,
-           $einsatz_nr, $lage, $bericht, $weitere_kraefte, $cue_name, $cue_mimic, $ort, $ueberoertlich,
+           $einsatz_nr, $lage, $bericht, $weitere_kraefte, $cue_name, $cue_mimic, $ort, $ueberoertlich, $anzahl_einsaetze,
            $anzahl_kraefte, $typeID, $type_name, $type_short_name, $row_color, $special_class;
 	
 	/**
@@ -35,13 +35,15 @@ class Einsatz_Model extends CI_Model {
 		$this->load->helper('html');
 	}	
     
-    public function get_einsatz_overview($limit = EINSATZ_DEFAULT_LIMIT, $offset = EINSATZ_DEFAULT_OFFSET, $year = 'all', $type = 'all')
+    public function get_einsatz_overview($online, $limit = EINSATZ_DEFAULT_LIMIT, $offset = EINSATZ_DEFAULT_OFFSET, $year = 'all', $type = 'all')
     {
         if(is_numeric($limit) && is_numeric($offset)) 
             $this->db->limit($limit, $offset);
+        if($online != 'all')
+            $this->db->where('online', $online); 
         if(is_numeric($year))
 			$this->db->where(array('substring(datum_beginn,1,4)' => $year));
-        if(strlen($type) == 1)
+        if($type != 'all')
             $this->db->where(array('typeID' => $type));
         $this->db->order_by('datum_beginn', 'desc');
         $this->db->order_by('uhrzeit_beginn', 'desc');
@@ -59,32 +61,37 @@ class Einsatz_Model extends CI_Model {
             $query2 = $this->db->get_where('einsatz_img', array('einsatzID' => $row->einsatzID)); 
             
             $einsatz = new Einsatz_model();
-            $einsatz->id            = $row->einsatzID;
-            $einsatz->name          = $row->name;
-            $einsatz->einsatz_nr    = $row->einsatz_nr;
-            $einsatz->lfd_nr        = $row->lfd_nr;
-            $einsatz->datum_beginn  = $row->datum_beginn;
-            $einsatz->uhrzeit_beginn = $row->uhrzeit_beginn;
-            $einsatz->datum_ende    = $row->datum_ende;
-            $einsatz->uhrzeit_ende  = $row->uhrzeit_ende;
-            $einsatz->row_color     = $this->color                  = cp_get_color($this->color);
-            $einsatz->year          = $year;
-            $einsatz->lage          = $row->lage;
-            $einsatz->bericht       = $row->bericht;
-            $einsatz->ort           = $row->ort;
-            $einsatz->ueberoertlich = $row->ueberoertlich;
-            $einsatz->type_name     = $row->type_name;
-            $einsatz->type_short_name = $row->type_short_name;
-            $einsatz->type_class    = $row->type_class;
-            $einsatz->cue_name      = $row->cue_name;
-            $einsatz->cue_mimic     = $row->cue_mimic;
-            $einsatz->img_count     = $query2->num_rows();
+            $einsatz->id                = $row->einsatzID;
+            $einsatz->name              = $row->name;
+            $einsatz->einsatz_nr        = $row->einsatz_nr;
+            $einsatz->lfd_nr            = $row->lfd_nr;
+            $einsatz->datum_beginn      = $row->datum_beginn;
+            $einsatz->uhrzeit_beginn    = $row->uhrzeit_beginn;
+            $einsatz->datum_ende        = $row->datum_ende;
+            $einsatz->uhrzeit_ende      = $row->uhrzeit_ende;
+            $einsatz->row_color         = $this->color                  = cp_get_color($this->color);
+            $einsatz->year              = $year;
+            $einsatz->lage              = $row->lage;
+            $einsatz->bericht           = $row->bericht;
+            $einsatz->ort               = $row->ort;
+            $einsatz->ueberoertlich     = $row->ueberoertlich;
+            $einsatz->type_name         = $row->type_name;
+            $einsatz->type_short_name   = $row->type_short_name;
+            $einsatz->type_class        = $row->type_class;
+            $einsatz->cue_name          = $row->cue_name;
+            $einsatz->cue_mimic         = $row->cue_mimic;
+            $einsatz->online            = $row->online;
+            if($row->anzahl_einsaetze == 0 || $row->anzahl_einsaetze == '') 
+                $einsatz->anzahl_einsaetze = 1;
+            else 
+                $einsatz->anzahl_einsaetze  = $row->anzahl_einsaetze;
+            $einsatz->img_count         = $query2->num_rows();
             
-            $einsaetze[$i]          = $einsatz;
+            $einsaetze[$i]              = $einsatz;
             
-            if($row->ueberoertlich == 1) $ueberoertlich++;
-            if(!isset($type_count[$row->type_short_name])) $type_count[$row->type_short_name] = 0;
-            $type_count[$row->type_short_name]++;
+            if($row->ueberoertlich == 1) $ueberoertlich = $ueberoertlich + $einsatz->anzahl_einsaetze;
+            if(!isset($type_count[$row->type_short_name])) $type_count[$row->type_short_name] = 0;            
+            $type_count[$row->type_short_name] = $type_count[$row->type_short_name] + $einsatz->anzahl_einsaetze;
             $i++;
         }
         
@@ -191,7 +198,7 @@ class Einsatz_Model extends CI_Model {
 	public function get_einsatz($id)
 	{
 		$this->db->where('einsatzID', $id);
-		$query = $this->db->get('v_einsatz_all');
+		$query = $this->db->get('v_einsatz');
 		
 	    $row = $query->row();
 		$einsatz['einsatzID'] 				= $id;
@@ -212,6 +219,7 @@ class Einsatz_Model extends CI_Model {
         $einsatz['cue_mimic']               = $row->cue_mimic;
         $einsatz['cue_aao']                 = $row->cue_aao;
         $einsatz['ueberoertlich']           = $row->ueberoertlich;
+        $einsatz['anzahl_einsaetze']        = $row->anzahl_einsaetze;
 		$einsatz['typeID']                  = $row->typeID;
         $einsatz['type_name']               = $row->type_name;
         $einsatz['type_shortname']          = $row->type_short_name;
@@ -331,6 +339,9 @@ class Einsatz_Model extends CI_Model {
 		$this->db->insert('einsatz', $einsatz);
 		$einsatzID = $this->db->insert_id();		
 
+        if($this->input->post('anzahl_einsaetze') == 0 || $this->input->post('anzahl_einsaetze') == '')
+            $anzahl_einsaetze = 1;
+        else $anzahl_einsaetze = $this->input->post('anzahl_einsaetze');
 		$einsatzContent = array(
 			'einsatzID'			=> $einsatzID,
             'lage'              => $this->input->post('einsatzlage'),
@@ -338,6 +349,7 @@ class Einsatz_Model extends CI_Model {
             'ort'               => $this->input->post('einsatzort'),
 			'weitere_kraefte'	=> $this->input->post('weitereeinsatzkraefte'),
 			'anzahl_kraefte'	=> $this->input->post('anzahl'),
+            'anzahl_einsaetze'  => $anzahl_einsaetze,
             'ueberoertlich'     => $this->input->post('ueberoertlich'),
             'typeID'            => $this->input->post('einsatztyp'),
             'cueID'             => $this->input->post('einsatzstichwort')
@@ -366,12 +378,17 @@ class Einsatz_Model extends CI_Model {
 			'uhrzeit_ende'   => $this->input->post('einsatzuhrzeit_ende'),
 			'einsatz_nr'     => $this->input->post('einsatznr')
 		);		
+
+        if($this->input->post('anzahl_einsaetze') == 0 || $this->input->post('anzahl_einsaetze') == '')
+            $anzahl_einsaetze = 1;
+        else $anzahl_einsaetze = $this->input->post('anzahl_einsaetze');
 		$einsatzContent = array(
             'lage'              => $this->input->post('einsatzlage'),
 			'bericht'			=> $this->input->post('einsatzbericht'),
             'ort'               => $this->input->post('einsatzort'),
 			'weitere_kraefte'	=> $this->input->post('weitereeinsatzkraefte'),
 			'anzahl_kraefte'	=> $this->input->post('anzahl'),
+            'anzahl_einsaetze'  => $anzahl_einsaetze,
             'ueberoertlich'     => $this->input->post('ueberoertlich'),
             'typeID'            => $this->input->post('einsatztyp'),
             'cueID'             => $this->input->post('einsatzstichwort')

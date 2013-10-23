@@ -73,6 +73,12 @@
 		'class' => 'input_small',
 		'value' => set_value('anzahl')
 	);
+    $einsatzAnzahlEinsaetze = array(
+        'name'  => 'anzahl_einsaetze',
+        'id'    => 'anzahl_einsaetze',
+        'class' => 'input_time',
+        'value' => set_value('anzahl_einsaetze')
+    );
     
 	for($i = 0; $i < count($types); $i++)
 	{
@@ -211,6 +217,10 @@ $(function() {
                     <tr>
                         <td><?=form_label('Anzahl Einsatzkräfte:', $einsatzAnzahl['id']); ?></td>
                         <td><?=form_input($einsatzAnzahl); ?></td>
+                    </tr>
+                    <tr>
+                        <td><?=form_label('Anzahl Einsätze:', $einsatzAnzahlEinsaetze['id']); ?></td>
+                        <td><?=form_input($einsatzAnzahlEinsaetze); ?> (tatsächliche Anzahl unter dieser Nummer geführter Einsätze)</td>
                     </tr>
                     <tr>
                         <td class='form_label'><?=form_label('Einsatzort:', $einsatzOrt['id']); ?></td>
