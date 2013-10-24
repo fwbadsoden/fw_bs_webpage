@@ -63,9 +63,9 @@ class Weather {
         $this->condition_code_mapping['25']['img']                = '';
         $this->condition_code_mapping['26']['description_DE']     = 'wolkig';
         $this->condition_code_mapping['26']['img']                = 'weather_cloudly.png';
-        $this->condition_code_mapping['27']['description_DE']     = '&uuml;berwiegen wolkig';
+        $this->condition_code_mapping['27']['description_DE']     = '&uuml;berwiegend wolkig';
         $this->condition_code_mapping['27']['img']                = 'weather_cloudly.png';
-        $this->condition_code_mapping['28']['description_DE']     = '&uuml;berwiegen wolkig';
+        $this->condition_code_mapping['28']['description_DE']     = '&uuml;berwiegend wolkig';
         $this->condition_code_mapping['28']['img']                = 'weather_cloudly.png';
         $this->condition_code_mapping['29']['description_DE']     = 'teilweise wolkig';
         $this->condition_code_mapping['29']['img']                = 'weather_cloudly.png';
