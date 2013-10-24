@@ -8,15 +8,15 @@
               #map-canvas { height: 100% }
             </style>
             <script type="text/javascript"
-              src="https://maps.googleapis.com/maps/api/js?key=<?=API_KEY?>&sensor=false">
+              src="https://maps.googleapis.com/maps/api/js?key=<?=$api_key?>&sensor=<?=$sensor?>">
             </script>
             <script type="text/javascript">
               function initialize() {
-                google.maps.visualRefresh = <?=$maps['visual_refresh']?>;
+                google.maps.visualRefresh = <?=$visual_refresh?>;
                 var useragent = navigator.userAgent;
                 var mapdiv = document.getElementById("map-canvas");
                 var mapOptions = {
-                  center: new google.maps.LatLng(-34.397, 150.644),
+                  center: new google.maps.LatLng(<?=$lat_lng_1?>, <?=$lat_lng_2?>),
                   zoom: 8,
                   mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
@@ -31,6 +31,6 @@
             </script>
           </head>
           <body>
-            <div id="map-canvas"/>
+            <div id="map-canvas"></div>
           </body>
         </html>
