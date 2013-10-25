@@ -1,7 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); 
 	$this->load->helper('form');
 	$this->load->library('form_validation');
-    include_once('application/models/utility_models/form_element.php');
     $groupdata = $groupdata[0];
 	
 	$form = array(
@@ -33,26 +32,27 @@
 		$groupAdmin['checked'] = 'checked'; 
 	}
  
-    $priv_list = new FormElement();
+    $priv_list = array();
+    
     for($i = 0; $i < count($privs); $i++)
 	{
-        $pp        = new FormElement();
-		$pp->name  = 'p_'.$privs[$i]->upriv_id;
-		$pp->id    = 'p_'.$privs[$i]->upriv_id;
-		$pp->class = '';
-		$pp->value = $privs[$i]->upriv_id;	
-        $pp->label = str_pad($privs[$i]->upriv_name, 20).' '.$privs[$i]->upriv_desc;
-        str_replace($pp->label, '&nbsp;', ' ');	
+        $pp = array();
+		$pp['name']  = 'p_'.$privs[$i]->upriv_id;
+		$pp['id']    = 'p_'.$privs[$i]->upriv_id;
+		$pp['class'] = '';
+		$pp['value'] = $privs[$i]->upriv_id;	
+        $pp['label'] = str_pad($privs[$i]->upriv_name, 20).' '.$privs[$i]->upriv_desc;
+        str_replace($pp['label'], '&nbsp;', ' ');	
 		
 		if(!$this->input->post('p_'.$privs[$i]->upriv_id) == $privs[$i]->upriv_id) {
             foreach($group_privs as $gp) {
                 if($gp->upriv_id == $privs[$i]->upriv_id) 
-                    $pp->checked = 'checked';
+                    $pp['checked'] = 'checked';
             } 
 		}
         else
-            $pp->checked = 'checked';
-        $priv_list->list[$i] = $pp;
+            $pp['checked'] = 'checked';
+        $priv_list[$i] = $pp;
 	}
 ?>
 
@@ -93,7 +93,7 @@
                  <table>
 <? foreach($privs as $i => $value) { ?>
                     <tr>
-                        <td colspan='2'><?=form_checkbox((array) $priv_list->list[$i]); ?> <?=form_label($priv_list->list[$i]->label, $priv_list->list[$i]->id); ?></td>
+                        <td colspan='2'><?=form_checkbox($priv_list[$i]); ?> <?=form_label($priv_list[$i]['label'], $priv_list[$i]['id']); ?></td>
                     </tr>    
 <? } ?>               
                 </table>

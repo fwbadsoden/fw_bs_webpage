@@ -37,7 +37,7 @@ class QueryLogHook {
         }
 
         $CI->load->helper('file');
-        if ( ! write_file(APPPATH  . "/logs/queries.log.txt", $output, 'a+'))
+        if ( ! write_file(APPPATH  . "/logs/".date('Y-m-d')."-queries.log.txt", $output, 'a+'))
         {
              log_message('debug','Unable to write query the file');
         }   

@@ -138,6 +138,29 @@ class Admin extends CP_Controller {
 	}
 	
 	/**
+	 * Admin::mInformation()
+	 * Landingpage für den Informationsbereich
+	 *
+	 * @return
+	 */
+	public function mInformation()
+	{
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
+        if(!$this->cp_auth->is_privileged('NAV:INFO:DISPLAY')) redirect('admin/401', 'refresh');
+		
+		$header['title'] 	= 'Informationen anzeigen';	
+		$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
+		$menue['submenue']	= $this->admin->get_submenue(); 
+		
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/menue', $menue);
+		$this->load->view('backend/templates/admin/submenue', $menue);
+		$this->load->view('backend/admin/landingpages/information');
+		$this->load->view('backend/templates/admin/footer');
+	}
+	
+	/**
 	 * Admin::mUser()
 	 * Landingpage für den Benutzerverwaltungsbereich
 	 *
