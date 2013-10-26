@@ -206,6 +206,8 @@ class Pages extends CP_Controller {
         if(!$year = $this->input->post('year')) $year = date('Y');
         
         $c_news->newsliste_3col($year);
+        
+        $this->site_sidebar_small();
     
         $this->site_footer();
     }
@@ -762,6 +764,23 @@ class Pages extends CP_Controller {
         $this->load->view('frontend/templates/sidebar_header');  
         $this->load->view('frontend/templates/sidebar_report', $statistik);     
         $c_termin->overview_1col(TERMIN_STARTPAGE_LIMIT);
+        $this->load->view('frontend/templates/weather', $weather_data);
+        $this->load->view('frontend/templates/sidebar_footer');   
+    }    
+    
+    /**
+     * Pages::site_sidebar_small()
+     * 
+     * @return
+     */
+    private function site_sidebar_small()
+    { 
+        $c_termin = load_controller('termin/termin');
+        
+        $weather_data['weather']      = $this->weather->get_weather();
+        
+        $this->load->view('frontend/templates/sidebar_header');      
+        $c_termin->overview_1col(TERMIN_STARTPAGE_LIMIT, TERMIN_DEFAULT_OFFSET, 1);
         $this->load->view('frontend/templates/weather', $weather_data);
         $this->load->view('frontend/templates/sidebar_footer');   
     }

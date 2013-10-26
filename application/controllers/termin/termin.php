@@ -42,10 +42,11 @@ class Termin extends CP_Controller {
      * @param mixed $offset
      * @return
      */
-    public function overview_1col($limit = TERMIN_DEFAULT_LIMIT, $offset = TERMIN_DEFAULT_OFFSET)
+    public function overview_1col($limit = TERMIN_DEFAULT_LIMIT, $offset = TERMIN_DEFAULT_OFFSET, $first = 0)
     {
         $termin_overview = $this->m_termin->get_termin_v_list($limit, $offset);
         $termin['title'] = 'Termine';
+        if($first == 1) $termin['class'] = 'first'; 
         $this->load->view('frontend/termin/overview_1col_header', $termin);
         foreach($termin_overview as $termin)
         {
