@@ -16,11 +16,11 @@
         	<li><a href="<?=base_url('links')?>">Links</a></li>
         	<li><a href="<?=base_url('impressum')?>">Impressum</a></li>
         </ul>
-        <hr class="clear" />
     </div>
     <div id="sitemap">
         
-        <div class="completeSitemap">    
+        <div class="completeSitemap"> 
+        <div class="sitemapBox">   
             <ul>
                 <li class="headline"><a href="<?=base_url('aktuelles/einsaetze')?>">News</a></li>
                 <li><a href="<?=base_url('aktuelles/einsaetze')?>">Einsätze</a></li>
@@ -48,7 +48,7 @@
             <ul>
                 <li class="headline"><a href="<?=base_url('verein')?>">Verein</a></li>
             </ul>
-            <hr class="clear" />
+        </div>
         </div>
 
         <div class="smallSitemap">    

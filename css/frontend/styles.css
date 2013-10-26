@@ -3156,6 +3156,11 @@ input.button_black:hover {
 #content #MainContent .first {
 	margin: 0 20px 0 0;	
 }
+
+#content #MainContent ul.onlyList {
+	margin: 0 0 0 0;
+}
+
 #content #MainContent .BildTextTeaser figure {
 	text-align: center;
 	margin: 10px;
@@ -3651,7 +3656,6 @@ input.button_black:hover {
 }
 
 #endOfPage #shortlinks ul {
-	width: 220px;
 	height: 15px;
 	padding: 0;
 	margin: 15px auto 30px auto;
@@ -3660,7 +3664,7 @@ input.button_black:hover {
 }
 #endOfPage #shortlinks ul li {
 	border-left: 1px #FFF solid;
-	float: left;	
+	display: inline-block;	
 }
 #endOfPage #shortlinks ul li.first {
 	border-left: none;
@@ -3682,18 +3686,25 @@ input.button_black:hover {
 
 
 #endOfPage #sitemap .completeSitemap {
+	width: auto;
+}
+#endOfPage #sitemap .completeSitemap .sitemapBox {
 	max-width: 980px;
 	margin: 0 auto;
+	text-align: center;
 }
+
 #endOfPage #sitemap .smallSitemap {
 	display: none;
 }
 #endOfPage #sitemap ul {
-	padding: 0;
+    padding: 0;
 	margin: 0 25px 0 25px;
 	list-style: none;	
 	text-align: center;
-	float: left;
+	display: inline-block;
+	vertical-align: top;
+
 }
 #endOfPage #sitemap ul li {
 	margin: 0 0 3px 0;
@@ -3774,6 +3785,7 @@ input.button_black:hover {
 	
 	#endOfPage #shortlinks ul {
 		width: 100%;
+        height: auto;
 	}
 	#endOfPage #shortlinks ul li {
 		width: 100%;

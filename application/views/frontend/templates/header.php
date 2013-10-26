@@ -40,11 +40,7 @@
 <link rel="shortcut icon" href="<?=base_url('images/favicon.ico')?>" type="image/x-icon" />
 
 <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css' />
-<? if(ENVIRONMENT == 'production') : ?>
-<link rel="stylesheet" href="<?=base_url('css/frontend/styles.min.css')?>" type="text/css" />
-<? else : ?>
 <link rel="stylesheet" href="<?=base_url('css/frontend/styles.css')?>" type="text/css" />
-<? endif; ?>
 <!--[if lt IE 9]>
     <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <script type="text/javascript" src="<?=base_url('js/respond.js')?>"></script>
