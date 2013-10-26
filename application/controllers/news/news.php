@@ -20,7 +20,7 @@ class News extends CP_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('news/news_model', 'news');
+		$this->load->model('news/news_model', 'm_news');
 	}
     
     /**
@@ -35,25 +35,38 @@ class News extends CP_Controller {
         if($first == 1) $class['class'] = 'BildTextTeaser first';
         else $class['class'] = 'BildTextTeaser';
         
-        $this->db->select('newsID, title, teaser, teaser_image_fullpath, teaser_image_width, teaser_image_height, teaser_image_title, link');
-        $this->db->limit(1, $offset);
-        $query = $this->db->get('v_news');
-        $row = $query->row();
-        
-        $news = array(
-            'newsID'                => $row->newsID,
-            'title'                 => $row->title,
-            'link'                  => $row->link,
-            'teaser'                => $row->teaser,
-            'teaser_image_fullpath' => $row->teaser_image_fullpath,
-            'teaser_image_width'    => $row->teaser_image_width,
-            'teaser_image_height'   => $row->teaser_image_height,
-            'teaser_image_title'    => $row->teaser_image_title
-        );
+        $news = $this->m_news->homepage_teaser_1col($offset);
         
         $this->load->view('frontend/news/teaser_1col_header', $class);
         $this->load->view('frontend/news/teaser_1col_data', $news);
         $this->load->view('frontend/news/teaser_1col_footer');
+    }
+    
+    /**
+     * Einsatz::newsliste_3col()
+     * 
+     * @return
+     */
+    public function newsliste_3col()
+    {        
+        if(!$year = $this->input->post('newsJahr'))        $year = date('Y');
+        if(!$category_id = $this->input->post('newsArt'))  $category_id = 'all';
+        
+        if($category_id == 0) $category_id = 'all';
+        $i = 0;
+        
+        $news_arr             = $this->m_news->get_news_overview('all', 'all', $year, $category_id);
+        $filter['categories'] = $this->m_news->get_news_categories();
+        
+        $this->load->view('frontend/news/newsliste_2col_filter', $filter);
+        $this->load->view('frontend/news/newsliste_2col_header');
+        
+        for($i = 0; $i < count($news_arr); $i++)
+        {
+            $news = $news_arr[$i]; 
+            $this->load->view('frontend/news/newsliste_2col_data', $news); 
+        }
+        $this->load->view('frontend/news/newsliste_2col_footer');
     }
 } 
 ?>

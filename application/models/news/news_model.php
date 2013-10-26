@@ -11,7 +11,9 @@
  **/
 
 class News_model extends CI_Model {
-
+    
+    public  $id, $title, $valid_from, $category_title, $link, $teaser, $text, $teaser_image_fullpath, $teaser_image_mimetype, $teaser_image_width,
+            $teaser_image_height, $teaser_image_title, $category_id, $row_color;
 	private $color = '';
 
 	/**
@@ -25,6 +27,66 @@ class News_model extends CI_Model {
 		$this->load->library('CP_auth');
 		$this->load->helper('html');
 	}
+    
+    public function get_news_overview($limit = NEWS_DEFAULT_LIMIT, $offset = NEWS_DEFAULT_OFFSET, $year = 'all', $category = 'all')
+    {
+        if(is_numeric($limit) && is_numeric($offset)) 
+            $this->db->limit($limit, $offset);
+        if(is_numeric($year))
+			$this->db->where(array('substring(valid_from,1,4)' => $year));
+        if($category != 'all')
+            $this->db->where(array('category_id' => $category));
+        $this->db->order_by('valid_from', 'desc');
+            
+        $query = $this->db->get('v_news');
+        $news_arr = array();
+        $i = 0;
+    
+        foreach($query->result() as $row)
+        {            
+            $news = new News_model();
+            $news->id                       = $row->newsID;
+            $news->title                    = $row->title;
+            $news->valid_from               = $row->valid_from;
+            $news->category_id              = $row->category_id;
+            $news->category_title           = $row->category_title;
+            $news->link                     = $row->link;
+            $news->teaser                   = $row->teaser;
+            $news->text                     = $row->text;
+            $news->row_color                = $this->color                  = cp_get_color($this->color);
+            $news->teaser_image_fullpath    = $row->teaser_image_fullpath;
+            $news->teaser_image_mimetype    = $row->teaser_image_mimetype;
+            $news->teaser_image_width       = $row->teaser_image_width;
+            $news->teaser_image_height      = $row->teaser_image_height;
+            $news->teaser_image_title       = $row->teaser_image_title;
+   
+            $news_arr[$i]                   = $news;
+            $i++;
+        }
+        
+        return $news_arr;
+    }
+    
+    public function homepage_teaser_1col($offset)
+    {
+        $this->db->select('newsID, title, teaser, teaser_image_fullpath, teaser_image_width, teaser_image_height, teaser_image_title, link');
+        $this->db->limit(1, $offset);
+        $query = $this->db->get('v_news');
+        $row = $query->row();
+        
+        $news = array(
+            'newsID'                => $row->newsID,
+            'title'                 => $row->title,
+            'link'                  => $row->link,
+            'teaser'                => $row->teaser,
+            'teaser_image_fullpath' => $row->teaser_image_fullpath,
+            'teaser_image_width'    => $row->teaser_image_width,
+            'teaser_image_height'   => $row->teaser_image_height,
+            'teaser_image_title'    => $row->teaser_image_title
+        );
+        
+        return $news;
+    }
     
     public function create_news()
     {

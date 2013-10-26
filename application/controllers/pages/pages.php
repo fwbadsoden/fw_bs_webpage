@@ -187,6 +187,30 @@ class Pages extends CP_Controller {
     }
     
     /**
+     * Pages::news_overview()
+     * 
+     * @return
+     */
+    private function news_overview()
+    {
+        $c_news = load_controller('news/news');
+        
+        $this->site_header();    
+        $this->site_stage();        
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();    
+        
+        if(!$year = $this->input->post('year')) $year = date('Y');
+        
+        $c_news->newsliste_3col($year);
+    
+        $this->site_footer();
+    }
+    
+    /**
      * Pages::mannschaft_overview()
      * 
      * @return

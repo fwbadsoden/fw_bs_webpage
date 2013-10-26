@@ -22,7 +22,7 @@
         <div class="completeSitemap"> 
         <div class="sitemapBox">   
             <ul>
-                <li class="headline"><a href="<?=base_url('aktuelles/einsaetze')?>">News</a></li>
+                <li class="headline"><a href="<?=base_url('aktuelles/news')?>">News</a></li>
                 <li><a href="<?=base_url('aktuelles/einsaetze')?>">Einsätze</a></li>
                 <li><a href="<?=base_url('aktuelles/termine')?>">Termine</a></li>
                 <li><a href="<?=base_url('aktuelles/presse')?>">Presse</a></li>
@@ -52,6 +52,7 @@
         </div>
 
         <div class="smallSitemap">    
+            <a href="<?=base_url('aktuelles/news')?>">News</a>
             <a href="<?=base_url('aktuelles/einsaetze')?>">Einsätze</a>
             <a href="<?=base_url('menschen/mannschaft')?>">Mannschaft</a>
             <a href="<?=base_url('technik/fahrzeuge')?>">Fahrzeuge</a>
