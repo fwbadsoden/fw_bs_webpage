@@ -201,7 +201,7 @@ class Einsatz_Admin extends CP_Controller {
 		
 		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
 		
-		$this->form_validation->set_rules('einsatznr', 'Einsatz-Nr. der Leitstelle', 'required|is_natural_no_zero|xss_clean');
+		//$this->form_validation->set_rules('einsatznr', 'Einsatz-Nr. der Leitstelle', 'required|is_natural_no_zero|xss_clean');
 		$this->form_validation->set_rules('einsatzname', 'Einsatzname', 'required|max_length[255]|xss_clean');	
 		$this->form_validation->set_rules('einsatzdatum_beginn', 'Einsatzbeginn (Datum)', 'required|callback_einsatzdatum_beginn'); 
 		$this->form_validation->set_rules('einsatzuhrzeit_beginn', 'Einsatzbeginn (Uhrzeit)', 'required|callback_einsatzuhrzeit_beginn'); 
