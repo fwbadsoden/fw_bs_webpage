@@ -24,9 +24,7 @@ class Maintenance extends CP_Controller {
 		$this->load->model('module/module_model', 'module');
 		$this->load->library('CP_auth');
 		$this->load->model('admin/admin_model', 'admin');
-        
-        // Berechtigungsprüfung TEIL 1: eingelogged und Admin
-	//	if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
+        $this->load->model('einsatz/einsatz_model', 'einsatz');        
 	}
 
     /**
@@ -66,6 +64,13 @@ class Maintenance extends CP_Controller {
         
         $contents = $this->minify->css->min('css/frontend/styles.css');
         $this->minify->save_file($contents, 'css/frontend/styles.min.css');
+    }
+    
+    public function recalc($year)
+    {
+        // Berechtigungsprüfung TEIL 1: eingelogged und Admin
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
+        $this->einsatz->recalc_maintain($year);   
     }
 }
 

@@ -24,6 +24,7 @@
 		'name'  => 'einsatznr',
 		'id' 	=> 'einsatznr',
 		'class' => 'input_small',
+              'readonly'    => 'readonly',
 		'value' => $value
 	);
 	if(!$value = set_value('einsatzdatum_beginn')) $value = $einsatz['datum_beginn'];
@@ -183,7 +184,7 @@ $(function() {
 		<td>
 			<table>
                 <tr>
-                    <td><?=form_label('Einsatz-Nr. der Leitstelle:', $einsatzNr['id']); ?></td>
+                    <td><?=form_label('Einsatz-Nr.:', $einsatzNr['id']); ?></td>
                     <td><?=form_input($einsatzNr); ?></div></td>
                 </tr>
 				<tr>

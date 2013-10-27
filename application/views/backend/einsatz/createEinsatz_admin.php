@@ -17,12 +17,6 @@
 		'class' => 'input_text',
 		'value' => set_value('einsatzort')
 	);
-	$einsatzNr = array(
-		'name'  => 'einsatznr',
-		'id' 	=> 'einsatznr',
-		'class' => 'input_small',
-		'value' => set_value('einsatznr')
-	);
 	$einsatzDatumBeginn = array(
 		'name'	=> 'einsatzdatum_beginn',
 		'id'	=> 'einsatzdatum_beginn',
@@ -199,8 +193,8 @@ $(function() {
             <td>
                 <table>
                     <tr>
-                        <td><?=form_label('Einsatz-Nr. der Leitstelle:', $einsatzNr['id']); ?></td>
-                        <td><?=form_input($einsatzNr); ?></div></td>
+                        <td>Einsatz-Nr.</td>
+                        <td>wird automatisch vergeben</div></td>
                     </tr>
                     <tr>
                         <td class='form_label'><?=form_label('Einsatzname:', $einsatzName['id']); ?></td>

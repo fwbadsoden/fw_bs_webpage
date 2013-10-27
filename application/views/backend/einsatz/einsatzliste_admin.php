@@ -106,7 +106,7 @@ switch(ID) {
 <tbody>
 <? foreach($einsatz as $item) :     ?>		
 <tr bgcolor="<?=$item['row_color']?>">
-	<td><?=str_pad($item['lfdNr'], 5 ,'0', STR_PAD_LEFT);?></td>
+	<td><?=str_pad($item['einsatzID'], 5 ,'0', STR_PAD_LEFT);?></td>
 	<td><?=str_pad($item['einsatzNr'], 5 ,'0', STR_PAD_LEFT);?></td>
 	<td><?=$item['datum_beginn']?> <?=$item['uhrzeit_beginn']?></td>
 	<td><?=$item['datum_ende']?> <?=$item['uhrzeit_ende']?></td>

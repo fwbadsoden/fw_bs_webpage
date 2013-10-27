@@ -20,7 +20,7 @@ class Einsatz_Model extends CI_Model {
 	private $color = '';
     private $upload_path = CONTENT_IMG_EINSATZ_UPLOAD_PATH;
     
-    public $id, $name, $datum_beginn, $datum_ende, $uhrzeit_beginn, $uhrzeit_ende, $lfd_nr, $online, $type_count,
+    public $id, $name, $datum_beginn, $datum_ende, $uhrzeit_beginn, $uhrzeit_ende, $online, $type_count,
            $einsatz_nr, $lage, $bericht, $weitere_kraefte, $cue_name, $cue_mimic, $ort, $ueberoertlich, $anzahl_einsaetze,
            $anzahl_kraefte, $typeID, $type_name, $type_short_name, $row_color, $special_class;
 	
@@ -47,7 +47,7 @@ class Einsatz_Model extends CI_Model {
             $this->db->where(array('typeID' => $type));
         $this->db->order_by('datum_beginn', 'desc');
         $this->db->order_by('uhrzeit_beginn', 'desc');
-		$this->db->order_by('lfd_nr', 'desc');
+		$this->db->order_by('einsatz_nr', 'desc');
             
         $query = $this->db->get('v_einsatz');
         $einsaetze = array();
@@ -64,7 +64,6 @@ class Einsatz_Model extends CI_Model {
             $einsatz->id                = $row->einsatzID;
             $einsatz->name              = $row->name;
             $einsatz->einsatz_nr        = $row->einsatz_nr;
-            $einsatz->lfd_nr            = $row->lfd_nr;
             $einsatz->datum_beginn      = $row->datum_beginn;
             $einsatz->uhrzeit_beginn    = $row->uhrzeit_beginn;
             $einsatz->datum_ende        = $row->datum_ende;
@@ -165,7 +164,7 @@ class Einsatz_Model extends CI_Model {
 		
         $this->db->order_by('datum_beginn', 'desc');
         $this->db->order_by('uhrzeit_beginn', 'desc');
-		$this->db->order_by('lfd_nr', 'desc');
+		$this->db->order_by('einsatz_nr', 'desc');
 		if(is_numeric($year))
 			$this->db->where(array('substring(datum_beginn,1,4)' => $year));		
 		$query = $this->db->get('einsatz');
@@ -177,7 +176,6 @@ class Einsatz_Model extends CI_Model {
             $this->db->select('imgID');
             $query2 = $this->db->get_where('einsatz_img', array('einsatzID' => $row->einsatzID)); 
 		
- 			$arr_einsatz_list[$i]['lfdNr'] 			= $row->lfd_nr;
   			$arr_einsatz_list[$i]['einsatzNr'] 		= $row->einsatz_nr;
   			$arr_einsatz_list[$i]['einsatzID'] 		= $row->einsatzID;
   			$arr_einsatz_list[$i]['einsatzName'] 	= $row->name;
@@ -203,7 +201,6 @@ class Einsatz_Model extends CI_Model {
 	    $row = $query->row();
 		$einsatz['einsatzID'] 				= $id;
 		$einsatz['einsatzNr'] 				= $row->einsatz_nr;
-		$einsatz['ldf_nr'] 	        		= $row->lfd_nr;
 		$einsatz['einsatzName'] 			= $row->name;
 		$einsatz['datum_beginn'] 			= $row->datum_beginn;
 		$einsatz['uhrzeit_beginn'] 			= $row->uhrzeit_beginn;
@@ -244,7 +241,6 @@ class Einsatz_Model extends CI_Model {
 	    $row = $query->row();
 		$einsatz['einsatzID'] 				= $id;
 		$einsatz['einsatzNr'] 				= $row->einsatz_nr;
-		$einsatz['ldf_nr'] 	        		= $row->lfd_nr;
 		$einsatz['einsatzName'] 			= $row->name;
 		$einsatz['datum_beginn'] 			= $row->datum_beginn;
 		$einsatz['uhrzeit_beginn'] 			= $row->uhrzeit_beginn;
@@ -322,20 +318,18 @@ class Einsatz_Model extends CI_Model {
 			'uhrzeit_beginn'=> $this->input->post('einsatzuhrzeit_beginn'),
 			'datum_ende'	=> $this->input->post('einsatzdatum_ende'),
 			'uhrzeit_ende'  => $this->input->post('einsatzuhrzeit_ende'),
-			'einsatz_nr'    => $this->input->post('einsatznr'),
-			'lfd_nr'		=> 0,
 			'online'		=> 0
 		);
 		
-		$this->db->select_max('lfd_nr');
+		$this->db->select_max('einsatz_nr');
 		$query = $this->db->get_where('einsatz', array('substr(datum_beginn,1,4)' => substr($einsatz['datum_beginn'],0,4)));
 		$row = $query->row();	
 		
 		// ++++ TRANSAKTION START ++++ //
 		$this->db->trans_start();	
 		
-		if($row->lfd_nr != null)		$einsatz['lfd_nr'] 	= $row->lfd_nr;
-		else							$einsatz['lfd_nr']   = 1;
+		if($row->einsatz_nr != null)	$einsatz['einsatz_nr'] 	= $row->einsatz_nr;
+		else							$einsatz['einsatz_nr']  = 1;
 		$this->db->insert('einsatz', $einsatz);
 		$einsatzID = $this->db->insert_id();		
 
@@ -361,7 +355,7 @@ class Einsatz_Model extends CI_Model {
 		{
 			$this->db->insert('einsatz_fahrzeug_mapping', array('einsatzID' => $einsatzID, 'fahrzeugID' => $f));	
 		}		
-		$this->recalc_lfdnr(substr($einsatz['datum_beginn'],0,4));
+		$this->recalc_einsatznr(substr($einsatz['datum_beginn'],0,4));
 		
 		$this->db->trans_complete();
 		// ++++ TRANSAKTION ENDE ++++ //
@@ -376,7 +370,6 @@ class Einsatz_Model extends CI_Model {
 			'uhrzeit_beginn' => $this->input->post('einsatzuhrzeit_beginn'),
 			'datum_ende'	 => $this->input->post('einsatzdatum_ende'),
 			'uhrzeit_ende'   => $this->input->post('einsatzuhrzeit_ende'),
-			'einsatz_nr'     => $this->input->post('einsatznr')
 		);		
 
         if($this->input->post('anzahl_einsaetze') == 0 || $this->input->post('anzahl_einsaetze') == '')
@@ -411,7 +404,7 @@ class Einsatz_Model extends CI_Model {
 		{
 			$this->db->insert('einsatz_fahrzeug_mapping', array('einsatzID' => $id, 'fahrzeugID' => $f));	
 		}
-		$this->recalc_lfdnr(substr($einsatz['datum_beginn'],0,4));
+		$this->recalc_einsatznr(substr($einsatz['datum_beginn'],0,4));
 		
 		$this->db->trans_complete();
 		// ++++ TRANSAKTION ENDE ++++ //
@@ -426,7 +419,7 @@ class Einsatz_Model extends CI_Model {
 		$tables = array('einsatz', 'einsatz_content', 'einsatz_fahrzeug_mapping');
 		$this->db->where('einsatzID', $id);
 		$this->db->delete($tables);
-		$return = $this->recalc_lfdnr(substr($row->datum_beginn,0,4));
+		$return = $this->recalc_einsatznr(substr($row->datum_beginn,0,4));
 	}
 	
 	public function insert_image($id, $desc, $file, $thumb, $type) 
@@ -497,18 +490,22 @@ class Einsatz_Model extends CI_Model {
 		}
 	}
 	
-	private function recalc_lfdnr($year)
+	private function recalc_einsatznr($year)
 	{
 		$this->db->order_by('datum_beginn', 'asc');
+        $this->db->order_by('uhrzeit_beginn','asc');
+        $this->db->join('einsatz_content', 'einsatz.einsatzID = einsatz_content.einsatzID');
 		$query = $this->db->get_where('einsatz', array('substr(datum_beginn,1,4)' => $year));
-		$lfdNr = 1;
+		$einsatznr = 0;
 		$arr_einsatz = array();
 		$i = 0;
+        $last_anzahl = 1;
 		
 		foreach($query->result() as $row)
 		{
 			$arr_einsatz[$i]['einsatzID'] = $row->einsatzID;
 			$arr_einsatz[$i]['sort'] = $row->datum_beginn.' '.$row->uhrzeit_beginn;
+            $arr_einsatz[$i]['anzahl_einsaetze'] = $row->anzahl_einsaetze;
 			$i++;			
 		}
 		
@@ -521,22 +518,20 @@ class Einsatz_Model extends CI_Model {
 
 												  return $ad > $bd ? 1 : -1;
 												});
-        
-//        $function = create_function('$a, $b', '$ad = new DateTime($a["sort"])
-//                                               $bd = new DateTime($b["sort"])
-//                                               if ($ad == $bd) {
-//												    return 0;
-//						                       }
-//                                               return $ad > $bd ? 1 : -1');
-//		usort($arr_einsatz, $function);
 		
 		foreach($arr_einsatz as $einsatz)
 		{
+            $einsatznr = $einsatznr + $last_anzahl;
 			$this->db->where('einsatzID', $einsatz['einsatzID']);
-			$this->db->update('einsatz', array('lfd_nr' => $lfdNr));
-			$lfdNr++;	
+			$this->db->update('einsatz', array('einsatz_nr' => $einsatznr));
+			$last_anzahl = $einsatz['anzahl_einsaetze'];
 		}
 	}
+    
+    public function recalc_maintain($year)
+    {
+        $this->recalc_einsatznr($year);
+    }
 	
 	public function switch_online_state($einsatzID, $online)
 	{
