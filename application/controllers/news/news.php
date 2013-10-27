@@ -58,8 +58,7 @@ class News extends CP_Controller {
         $news_arr             = $this->m_news->get_news_overview('all', 'all', $year, $category_id);
         $filter['categories'] = $this->m_news->get_news_categories();
         
-        $title['title']       = 'Unsere News';
-        $this->load->view('frontend/news/newsliste_2col_header', $title);
+        $this->load->view('frontend/news/newsliste_2col_header');
         
         for($i = 0; $i < count($news_arr); $i++)
         {
