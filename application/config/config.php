@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://www.feuerwehr-bs.de/';
+$config['base_url']	= 'http://feuerwehr-bs.de/';
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -264,7 +264,11 @@ $config['sess_time_to_update']	= 300;
 | 'cookie_secure' =  Cookies will only be set if a secure HTTPS connection exists.
 |
 */
-$config['cookie_prefix']	= "";
+$url = parse_url($_SERVER['REQUEST_URI']);
+if(!strpos($url['path'],'admin'))
+    $config['cookie_prefix'] = "";
+else
+    $config['cookie_prefix']	= "adm_";
 $config['cookie_domain']	= "";
 $config['cookie_path']		= "/";
 $config['cookie_secure']	= FALSE;
