@@ -72,6 +72,11 @@ class Maintenance extends CP_Controller {
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
         $this->einsatz->recalc_maintain($year);   
     }
+    
+    public function generate_names($name)
+    {
+        echo strtoupper(md5($name));
+    }
 }
 
 ?>

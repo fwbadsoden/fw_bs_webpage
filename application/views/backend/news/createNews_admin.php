@@ -13,12 +13,20 @@
 		'value' 	=> set_value('title')
 	);
     
+	$stage_title = array(
+		'name'		=> 'stage_title',
+		'id'		=> 'stage_title',
+		'class' 	=> 'input_text',
+		'value' 	=> set_value('stage_title')
+	);
+    
     $valid_from = array(
         'name'      => 'valid_from',
         'id'        => 'valid_from',
 		'type'	    => 'date',
 		'class'     => 'input_date',
-        'value'     => set_value('valid_from')
+        'readonly'  => 'readonly',
+        'value'     => set_value('valid_from', date('Y-m-d'))
     );
     
     $valid_from_time = array(
@@ -115,13 +123,17 @@ $(function() {
                         <td><?=form_input($title); ?></td>
                     </tr>
                     <tr>
-                        <td class='form_label'><?=form_label('Gültig ab:', $valid_from['id']); ?></td>
-                        <td><?=form_input($valid_from); ?><?=form_input($valid_from_time)?></td>
+                        <td class='form_label'><?=form_label('Titel für Bildbühne:', $stage_title['id']); ?></td>
+                        <td><?=form_input($stage_title); ?></td>
                     </tr>
                     <tr>
-                        <td class='form_label'><?=form_label('Gültig bis:', $valid_to['id']); ?></td>
-                        <td><?=form_input($valid_to); ?><?=form_input($valid_to_time)?></td>
+                        <td class='form_label'><?=form_label('Gültig ab:', $valid_from['id']); ?></td>
+                        <td><?=form_input($valid_from); ?><!--<?=form_input($valid_from_time)?>--></td>
                     </tr>
+                   <!-- <tr>
+                        <td class='form_label'><?=form_label('Gültig bis:', $valid_to['id']); ?></td>
+                        <td><?=form_input($valid_to); ?> <?=form_input($valid_to_time); ?></td>
+                    </tr>-->
                     <tr>
                         <td class='form_label'><?=form_label('Teaser:', $teaser['id']); ?></td>
                         <td><?=form_textarea($teaser); ?></td>

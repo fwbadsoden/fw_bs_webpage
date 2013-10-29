@@ -72,7 +72,7 @@
 	                <hr class="clear" />
                 </div>
                 <div class="data">
-                    <h1>Einsatzkr&auml;fte:</h1>
+                    <h1>Eigene Kr&auml;fte:</h1>
                     <div class="icon">
                         <img src="<?=base_url('images/icons/icon_people.png')?>">
                     </div>

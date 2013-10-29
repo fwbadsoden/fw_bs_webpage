@@ -168,9 +168,12 @@ class Pages extends CP_Controller {
         $c_einsatz = load_controller('einsatz/einsatz');
         $text = $c_einsatz->get_einsatz_stage_text($id);
         foreach($this->page_content['stage_images']['images'] as &$value) {
-            $value['text'][0] = $text['text'][0]; 
-            $value['text'][1] = $text['text'][1];
-            $value['class_einsatz'] = $text['class'];
+            if(isset($text['text'][0])) $value['text'][0]       = $text['text'][0];
+            else                        $value['text'][0]       = ''; 
+            if(isset($text['text'][1])) $value['text'][1]       = $text['text'][1];
+            else                        $value['text'][1]       = '';
+            if(isset($text['class']))   $value['class_einsatz'] = $text['class'];
+            else                        $value['class_einsatz'] = '';
         }
         
         $this->site_header();
@@ -205,10 +208,37 @@ class Pages extends CP_Controller {
         
         if(!$year = $this->input->post('year')) $year = date('Y');
         
-        $c_news->newsliste_3col($year);
+        $c_news->newsliste_2col($year);
         
         $this->site_sidebar_small();
     
+        $this->site_footer();
+    }
+    
+    private function news_detail()
+    {
+        $id = $this->uri->segment($this->uri->total_segments());
+        $c_news = load_controller('news/news');
+        $text = $c_news->get_news_stage_text($id);
+        foreach($this->page_content['stage_images']['images'] as &$value) {
+            if(isset($text['text'][0])) $value['text'][0]    = $text['text'][0];
+            else                        $value['text'][0]    = ''; 
+            if(isset($text['text'][1])) $value['text'][1]    = $text['text'][1];
+            else                        $value['text'][1]    = '';
+            if(isset($text['class']))   $value['class_news'] = $text['class'];
+            else                        $value['class_news'] = '';
+        }
+        
+        $this->site_header();
+        $this->site_stage();
+        
+        $this->site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->site_stage_slider();   
+        
+        $c_news->news_detail_3col($id);
+        
         $this->site_footer();
     }
     
@@ -794,6 +824,7 @@ class Pages extends CP_Controller {
     {           
         $c_einsatz = load_controller('einsatz/einsatz');
         $c_termin  = load_controller('termin/termin');
+        $c_news    = load_controller('news/news');
         $c_fahrzeug = load_controller('fahrzeug/fahrzeug');
         $c_presse = load_controller('presse/presse');
         
@@ -802,6 +833,7 @@ class Pages extends CP_Controller {
         $header_data['menue_meta']      = $this->menue['menue_meta'];
         $header_data['menue']           = $this->menue['menue'];
         $header_data['einsaetze']       = $c_einsatz->get_einsatz_overview(1,5,0);
+        $header_data['news']            = $c_news->get_news_overview(5,0);
         $header_data['termine']         = $c_termin->get_termin_overview(5,0);
         $header_data['fahrzeuge']       = $c_fahrzeug->get_fahrzeug_overview(1);
         $header_data['articles']        = $c_presse->get_presse_overview();

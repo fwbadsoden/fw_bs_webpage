@@ -12,7 +12,7 @@
 
 class News_model extends CI_Model {
     
-    public  $id, $title, $valid_from, $category_title, $link, $teaser, $text, $teaser_image_fullpath, $teaser_image_mimetype, $teaser_image_width,
+    public  $id, $title, $stage_title, $valid_from, $category_title, $link, $teaser, $text, $teaser_image_fullpath, $teaser_image_mimetype, $teaser_image_width,
             $teaser_image_height, $teaser_image_title, $category_id, $row_color;
 	private $color = '';
 
@@ -47,6 +47,7 @@ class News_model extends CI_Model {
             $news = new News_model();
             $news->id                       = $row->newsID;
             $news->title                    = $row->title;
+            $news->stage_title              = $row->stage_title;
             $news->valid_from               = $row->valid_from;
             $news->category_id              = $row->category_id;
             $news->category_title           = $row->category_title;
@@ -69,7 +70,7 @@ class News_model extends CI_Model {
     
     public function homepage_teaser_1col($offset)
     {
-        $this->db->select('newsID, title, teaser, teaser_image_fullpath, teaser_image_width, teaser_image_height, teaser_image_title, link');
+        $this->db->select('newsID, title, stage_title, teaser, teaser_image_fullpath, teaser_image_width, teaser_image_height, teaser_image_title, link');
         $this->db->limit(1, $offset);
         $query = $this->db->get('v_news');
         $row = $query->row();
@@ -77,6 +78,7 @@ class News_model extends CI_Model {
         $news = array(
             'newsID'                => $row->newsID,
             'title'                 => $row->title,
+            'stage_title'           => $row->stage_title,
             'link'                  => $row->link,
             'teaser'                => $row->teaser,
             'teaser_image_fullpath' => $row->teaser_image_fullpath,
@@ -88,24 +90,94 @@ class News_model extends CI_Model {
         return $news;
     }
     
+    public function get_news_stage_text($id)
+    {
+        $this->db->select('stage_title, title');
+        $this->db->where('newsID', $id);
+        $query = $this->db->get('v_news');        
+        $row = $query->row();
+        
+        $text['text'][0] = $row->stage_title;
+        $text['text'][1] = $row->title;
+        
+        return $text;
+    }
+    
+    public function get_news($id)
+    {
+        $this->db->where('newsID', $id);
+        $query = $this->db->get('v_news');
+        
+        $row = $query->row();
+        
+        $news = new News_model;
+        $news->id                       = $row->newsID;
+        $news->title                    = $row->title;
+        $news->stage_title              = $row->stage_title;
+        $news->valid_from               = $row->valid_from;
+        $news->category_id              = $row->category_id;
+        $news->category_title           = $row->category_title;
+        $news->link                     = $row->link;
+        $news->teaser                   = $row->teaser;
+        $news->text                     = $row->text;
+        $news->teaser_image_fullpath    = $row->teaser_image_fullpath;
+        $news->teaser_image_mimetype    = $row->teaser_image_mimetype;
+        $news->teaser_image_width       = $row->teaser_image_width;
+        $news->teaser_image_height      = $row->teaser_image_height;
+        $news->teaser_image_title       = $row->teaser_image_title;
+        
+        return $news;
+    }
+    
+    public function get_latest_news()
+    {
+        $this->db->select('newsID, title');
+        $this->db->order_by('valid_from', 'DESCENDING');
+        $this->db->limit(10);
+        $query = $this->db->get('v_news');
+        
+        $news_arr = array();
+        $i = 0;
+        foreach($query->result() as $row)
+        {
+            $news = new News_model;
+            $news->id                   = $row->newsID;
+            $news->title                = $row->title;
+            $news_arr[$i] = $news;
+            $i++;
+        }
+        return $news_arr;
+    }
+    
+    public function get_news_images($id)
+    {
+        $this->db->where('newsID', $id);
+        $query = $this->db->get('v_news_images');
+        
+        $images = array();
+        $i=0;
+        
+        foreach($query->result() as $row)
+        {
+            $image['name']          = $row->name;
+            $image['description']   = $row->description;	
+            $image['fullpath']      = $row->fullpath;	
+            $image['filename']      = $row->filename;
+            $image['title']         = $row->title;
+            $images[$i] = $image;
+        }
+        return $images;
+    }
+    
     public function create_news()
     {
-       // $title_lc = strtolower($this->input->post('title'));
-       // str_replace(' ', '-', $title_lc);
-       // $this->db->select('slug');
-       // $this->db->like('slug', $title_lc);
-       // $query = $this->db->get('news');
-        //if($query->num_rows() == 0)
-        //    $slug = $title_lc;
-        //else
-        //    $slug = $title_lc.'-'.$query_num_rows()+1;
         $news = array(
             'categoryID'    => $this->input->post('category_id'),
-          //  'slug'          => $slug,
             'title'         => $this->input->post('title'),
+            'stage_title'   => $this->input->post('stage_title'),
             'valid_from'    => $this->input->post('valid_from'),
             'valid_from_time' => $this->input->post('valid_from_time'),
-            'valid_to'      => $this->input->post('valid_to'),
+            'valid_to'      => '9999-12-31',
             'valid_to_time' => $this->input->post('valid_to_time'),
             'created_by'    => $this->cp_auth->get_user_id(),
             'created'       => date("Y-m-d H:i:s"),
@@ -129,24 +201,14 @@ class News_model extends CI_Model {
     }
     
     public function update_news($id)
-    {
-      //  $title_lc = strtolower($this->input->post('title'));
-      //  str_replace(' ', '-', $title_lc);
-      //  $this->db->select('slug');
-      //  $this->db->like('slug', $title_lc);
-      //  $query = $this->db->get('news');
-      //  if($query->num_rows() == 0)
-      //      $slug = $title_lc;
-      //  else
-       //     $slug = $title_lc.'-'.$query->num_rows()+1;
-        
+    {        
         $news = array(
             'categoryID'    => $this->input->post('category_id'),
-         //   'slug'          => $slug,
             'title'         => $this->input->post('title'),
+            'stage_title'   => $this->input->post('stage_title'),
             'valid_from'    => $this->input->post('valid_from'),
             'valid_from_time' => $this->input->post('valid_from_time'),
-            'valid_to'      => $this->input->post('valid_to'),
+            'valid_to'      => '9999-12-31',
             'valid_to_time' => $this->input->post('valid_to_time'),
             'modified_by'   => $this->cp_auth->get_user_id(),
             'modified'      => date("Y-m-d H:i:s")
@@ -238,7 +300,7 @@ class News_model extends CI_Model {
 		return $arr_news_list;
 	}
     
-    public function get_news($id)
+    public function get_news_admin($id)
     {
         $this->db->where('news.newsID', $id);
         $this->db->join('news_content', 'news.newsID = news_content.newsID');
@@ -248,6 +310,7 @@ class News_model extends CI_Model {
         $news['newsID']         = $row->newsID;
         $news['categoryID']     = $row->categoryID;
         $news['title']          = $row->title;
+        $news['stage_title']    = $row->stage_title;
         $news['link']           = $row->link;
         $news['valid_from']     = $row->valid_from;
         $news['valid_from_time'] = $row->valid_from_time;

@@ -117,7 +117,7 @@ class News_Admin extends CP_Controller {
 		    $menue['menue']	        = $this->admin->get_menue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
-            $news['news']           = $this->news->get_news($id);
+            $news['news']           = $this->news->get_news_admin($id);
             $news['categories']     = $this->news->get_news_categories();
             		
 			$this->load->view('backend/templates/admin/header', $header);      
@@ -137,6 +137,7 @@ class News_Admin extends CP_Controller {
 		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
 		
 		$this->form_validation->set_rules('title', 'Titel', 'required|max_length[255]|xss_clean');
+		$this->form_validation->set_rules('stage_title', 'Titel', 'required|max_length[15]|xss_clean');
 		$this->form_validation->set_rules('valid_from', 'Gültig ab', 'required|xss_clean');	
 		$this->form_validation->set_rules('teaser', 'Teaser', 'required|xss_clean');			
 
@@ -160,7 +161,7 @@ class News_Admin extends CP_Controller {
     	$menue['menue']	    = $this->admin->get_menue();
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     	$menue['submenue']	= $this->admin->get_submenue();
-        $data['news']       = $this->news->get_news($id);
+        $data['news']       = $this->news->get_news_admin($id);
         $data['type']       = 'news';
     	
     	$this->load->view('backend/templates/admin/header', $header);

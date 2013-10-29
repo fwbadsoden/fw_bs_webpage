@@ -43,11 +43,23 @@ class News extends CP_Controller {
     }
     
     /**
-     * Einsatz::newsliste_3col()
+     * News::get_news_overview()
+     * 
+     * @param mixed $limit
+     * @param mixed $offset
+     * @return
+     */
+    public function get_news_overview($limit = NEWS_DEFAULT_LIMIT, $offset = NEWS_DEFAULT_OFFSET)
+    { 
+        return $this->m_news->get_news_overview($limit, $offset);
+    }
+    
+    /**
+     * Einsatz::newsliste_2col()
      * 
      * @return
      */
-    public function newsliste_3col()
+    public function newsliste_2col()
     {        
         if(!$year = $this->input->post('newsJahr'))        $year = date('Y');
         if(!$category_id = $this->input->post('newsArt'))  $category_id = 'all';
@@ -66,6 +78,22 @@ class News extends CP_Controller {
             $this->load->view('frontend/news/newsliste_2col_data', $news); 
         }
         $this->load->view('frontend/news/newsliste_2col_footer');
+    }
+    
+    public function news_detail_3col($id)
+    {
+        $news['news']           = $this->m_news->get_news($id);
+        $news['liste']          = $this->m_news->get_latest_news();
+        $news['images']         = $this->m_news->get_news_images($id);
+        
+        $this->load->view('frontend/news/newsdetail_3col_header');
+        $this->load->view('frontend/news/newsdetail_3col_data', $news);
+        $this->load->view('frontend/news/newsdetail_3col_footer');
+    }
+    
+    public function get_news_stage_text($id)
+    {
+        return $this->m_news->get_news_stage_text($id);
     }
 } 
 ?>

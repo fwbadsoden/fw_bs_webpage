@@ -2,6 +2,8 @@
     $this->load->helper('html'); 
     if($class == 'first')
         $class_first = ' class="first"';
+    else
+        $class_first = '';
 ?> 
 
 <div class="dates">

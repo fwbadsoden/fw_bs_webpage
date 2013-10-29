@@ -84,6 +84,14 @@
                 <li><a href="<?=base_url('aktuelles')?>"<?=$class?>>News</a>  
                    <div class="dropdown">  
                     	<ul>
+<? if(current_url() == base_url('aktuelles/news')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
+                        	<li class="headline"><a href="<?=base_url('aktuelles/news')?>"<?=$class?>>News</a></li>
+<? foreach($news as $n) : ?>             
+<? if(current_url() == base_url('aktuelles/news/'.$n->id)) : $class = ' class="active"'; else : $class = ''; endif; ?>                
+                        	<li><a href="<?=base_url('aktuelles/news/'.$n->id)?>"<?=$class?>><span class="subline"><?=cp_get_ger_date($n->valid_from)?></span><br /><?=$n->title?></a></li>
+<? endforeach; ?>                            
+                    	</ul>                    
+                    	<ul>
 <? if(current_url() == base_url('aktuelles/einsaetze')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
                         	<li class="headline"><a href="<?=base_url('aktuelles/einsaetze')?>"<?=$class?>>Einsätze</a></li>
 <? foreach($einsaetze['einsaetze'] as $e) : ?>             
