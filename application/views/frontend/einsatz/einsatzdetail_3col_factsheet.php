@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="black">Alarmstichwort:</div>
                         <div class="red"><?=$cue?></div>
-                    </div>   
+                    </div>  
                     <div class="row">
                         <div class="black lastRow">Einsatzart:</div>
 <? if($einsatz['type_name'] == '') : $einsatz['type_name'] = 'n/a'; endif; ?>      

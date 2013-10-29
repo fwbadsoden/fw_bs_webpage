@@ -103,12 +103,12 @@ class Einsatz_Model extends CI_Model {
 	
     public function get_einsatz_stage_text($id)
     {
-        $this->db->select('name, type_name, type_class');
+        $this->db->select('einsatzID, name, type_name, type_class');
         $query = $this->db->get_where('v_einsatz', array('einsatzID' => $id));
         $row = $query->row();
         
         $text['text'][0] = $row->name;
-        $text['text'][1] = $row->type_name;
+        $text['text'][1] = $row->type_name.' (Einsatz-Nr.: '.$row->einsatzID.')';
         $text['class']   = $row->type_class;
         return $text;
     }
