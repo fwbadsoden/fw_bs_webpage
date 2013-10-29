@@ -142,7 +142,7 @@
 				<p>Rettungshundeeinheit<br/>der Freiwilligen Feuerwehr<br/>Bad Soden am Taunus</p>
 				<p>Marco Bölling<br/>Patrick Ritter</p>
 				<ul>
-					<li class="mail"><a href="mailto:mitmachen@rettungshundeeinheit.de">mitmachen@rettungshundeeinheit.de</a></li>
+					<li class="mail"><?=safe_mailto('mitmachen@rettungshundeeinheit.de', 'mitmachen@rettungshundeeinheit.de')?></li>
 				</ul>
 			</div>    
 			<div class="textTeaser">    

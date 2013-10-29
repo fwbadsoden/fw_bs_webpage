@@ -85,7 +85,7 @@
 				<ul>
 					<li class="tel">+49 6196 24074</li>
                     <li class="fax">+49 6196 62596</li></li>
-					<li class="mail"><a href="mailto:info@feuerwehr-bs.de">info@feuerwehr-bs.de</a></li>
+					<li class="mail"><?=safe_mailto('info@feuerwehr-bs.de', 'info@feuerwehr-bs.de')?></li>
 				</ul>
                 <br />
 			</div>    

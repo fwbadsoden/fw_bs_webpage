@@ -177,7 +177,7 @@
 				<p>Jugendfeuerwehr<br/>Bad Soden am Taunus</p>
 				<p>Hunsrückstr. 5-7<br/>65812 Bad Soden am Taunus</p>
 				<ul>
-					<li class="mail"><a href="mailto:jugendfeuerwehr@feuerwehr-bs.de">jugendfeuerwehr@feuerwehr-bs.de</a></li>
+					<li class="mail"><?=safe_mailto('jugendfeuerwehr@feuerwehr-bs.de', 'jugendfeuerwehr@feuerwehr-bs.de')?></li>
 				</ul>
 			</div>    
 			<div class="textTeaser">    

@@ -104,7 +104,7 @@
 				<p>Hunsrückstr. 5-7<br/>65812 Bad Soden am Taunus</p>
 				<ul>
 					<li class="tel">+49 6196 / 24 07 4</li>
-					<li class="mail"><a href="mailto:verein@feuerwehr-bs.de">verein@feuerwehr-bs.de</a></li>
+					<li class="mail"><?=safe_mailto('verein@feuerwehr-bs.de', 'verein@feuerwehr-bs.de')?></li>
 				</ul>
 			</div>    
            	<div class="textTeaser">

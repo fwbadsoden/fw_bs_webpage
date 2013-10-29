@@ -435,11 +435,11 @@
 				<ul>
 					<li class="tel">+49 6196 24074</li>
                     <li class="fax">+49 6196 62596</li></li>
-					<li class="mail"><a href="mailto:stadtbrandinspektor@feuerwehr-bs.de">Stadtbrandinspektor</a></li>
-					<li class="mail"><a href="mailto:wehrfuehrung@feuerwehr-bs.de">Wehrführung</a></li>
-					<li class="mail"><a href="mailto:pressestelle@feuerwehr-bs.de">Pressestelle</a></li>
-					<li class="mail"><a href="mailto:jugendfeuerwehr@feuerwehr-bs.de">Jugendfeuerwehr</a></li>
-					<li class="mail"><a href="mailto:verein@feuerwehr-bs.de">Verein</a></li>
+					<li class="mail"><?=safe_mailto('stadtbrandinspektor@feuerwehr-bs.de', 'Stadtbrandinspektor')?></li>
+					<li class="mail"><?=safe_mailto('wehrfuehrung@feuerwehr-bs.de', 'Wehrführung')?></li>
+					<li class="mail"><?=safe_mailto('pressestelle@feuerwehr-bs.de', 'Pressestelle')?></li>
+					<li class="mail"><?=safe_mailto('jugendfeuerwehr@feuerwehr-bs.de', 'Jugendfeuerwehr')?></li>
+					<li class="mail"><?=safe_mailto('verein@feuerwehr-bs.de', 'Verein')?></li>
 				</ul>
                 <br />
 			</div>    
