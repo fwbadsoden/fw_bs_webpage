@@ -89,7 +89,7 @@ class Module_model extends CI_Model {
 		}
 		$content .= '?>'; 
 		
-		write_file(APPPATH.'cache/db_constants.php', $content);	
+		write_file(APPPATH.'cache/config/db_constants.php', $content);	
 	}	
 	
     public function write_language_file()
@@ -105,7 +105,7 @@ class Module_model extends CI_Model {
 		}
 		$content .= '?>'; 
 		
-		write_file(APPPATH.'cache/db_lang_DE.php', $content);	
+		write_file(APPPATH.'cache/config/db_lang_DE.php', $content);	
     }
     
 	public function get_languages()
@@ -217,7 +217,7 @@ class Module_model extends CI_Model {
 		}
 		$content .= '?>'; 
 		
-		write_file(APPPATH.'cache/db_routes.php', $content);	
+		write_file(APPPATH.'cache/config/db_routes.php', $content);	
 	}	
 	
 }

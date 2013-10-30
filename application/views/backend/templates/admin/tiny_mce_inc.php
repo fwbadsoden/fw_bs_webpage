@@ -13,7 +13,7 @@ $tinymce['default'] = '
     menu: "newdocument undo redo visualaid cut copy paste selectall bold italic underline strikethrough subscript superscript removeformat formats link charmap print preview hr pagebreak spellchecker searchreplace visualblocks visualchars code fullscreen insertdatetime nonbreaking inserttable tableprops deletetable cell row column",
     pagebreak_separator: "<br>",
     save_onsavecallback : "ajaxSave",
-    toolbar: "undo redo cut copy paste | link nonbreaking hr charmap | preview fullscreen | visualblocks visualchars code | spellchecker | styleselect | bold italic underline strikethrough subscript superscript | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent",     
+    toolbar: "undo redo cut copy paste | link nonbreaking charmap | preview fullscreen | code | spellchecker | bold italic underline",     
 ';
 
 $tinymce['pages'] = '

@@ -21,7 +21,7 @@ class Einsatz_Model extends CI_Model {
     private $upload_path = CONTENT_IMG_EINSATZ_UPLOAD_PATH;
     
     public $id, $name, $datum_beginn, $datum_ende, $uhrzeit_beginn, $uhrzeit_ende, $online, $type_count,
-           $einsatz_nr, $lage, $bericht, $weitere_kraefte, $cue_name, $cue_mimic, $ort, $ueberoertlich, $anzahl_einsaetze,
+           $einsatz_nr, $lage, $bericht, $weitere_kraefte, $cue_name, $cue_mimic, $ort, $display_ort, $ueberoertlich, $anzahl_einsaetze,
            $anzahl_kraefte, $typeID, $type_name, $type_short_name, $row_color, $special_class;
 	
 	/**
@@ -73,6 +73,7 @@ class Einsatz_Model extends CI_Model {
             $einsatz->lage              = $row->lage;
             $einsatz->bericht           = $row->bericht;
             $einsatz->ort               = $row->ort;
+            $einsatz->display_ort       = $row->display_ort;
             $einsatz->ueberoertlich     = $row->ueberoertlich;
             $einsatz->type_name         = $row->type_name;
             $einsatz->type_short_name   = $row->type_short_name;
@@ -103,12 +104,12 @@ class Einsatz_Model extends CI_Model {
 	
     public function get_einsatz_stage_text($id)
     {
-        $this->db->select('einsatzID, name, type_name, type_class');
+        $this->db->select('einsatz_nr, name, type_name, type_class');
         $query = $this->db->get_where('v_einsatz', array('einsatzID' => $id));
         $row = $query->row();
         
         $text['text'][0] = $row->name;
-        $text['text'][1] = $row->type_name.' (Einsatz-Nr.: '.$row->einsatzID.')';
+        $text['text'][1] = $row->type_name.' (#'.$row->einsatz_nr.')';
         $text['class']   = $row->type_class;
         return $text;
     }
@@ -207,6 +208,7 @@ class Einsatz_Model extends CI_Model {
 		$einsatz['datum_ende'] 				= $row->datum_ende;
 		$einsatz['uhrzeit_ende'] 			= $row->uhrzeit_ende;
 		$einsatz['einsatzort'] 			    = $row->ort;
+		$einsatz['display_einsatzort'] 		= $row->display_ort;
         $einsatz['einsatzlage']             = $row->lage;
 		$einsatz['einsatzbericht'] 			= $row->bericht;
 		$einsatz['einsatzkraefteFreitext']	= $row->weitere_kraefte;
@@ -287,6 +289,32 @@ class Einsatz_Model extends CI_Model {
 		return $arr_type;
 	}
 	
+	public function get_einsatz_images($id)
+	{
+		$query = $this->db->get_where('einsatz_img', array('einsatzID' => $id));	
+		$images = array();
+		$i = 0;
+		
+		foreach($query->result() as $row)
+		{
+			$this->color= cp_get_color($this->color);
+			
+			$images[$i]['imageID']		= $row->imgID;
+			$images[$i]['einsatzID']	= $row->einsatzID;
+			$images[$i]['img_desc']		= $row->description;
+			$images[$i]['img_file']		= $row->img_file;
+			$images[$i]['img_thumb']	= $row->thumb_file;
+			$images[$i]['img_type']		= $row->filetype;
+            if($row->photographer != '') $photographer = '<br><em>Foto: '.$row->photographer.'</em>';
+            else                         $photographer = '';
+			$images[$i]['photographer'] = $photographer;
+			$images[$i]['row_color']	= $this->color;
+			
+			$i++;
+		}
+		return $images;
+	}
+	
 	public function get_images($id)
 	{
 		$query = $this->db->get_where('einsatz_img', array('einsatzID' => $id));	
@@ -303,6 +331,7 @@ class Einsatz_Model extends CI_Model {
 			$images[$i]['img_file']		= $row->img_file;
 			$images[$i]['img_thumb']	= $row->thumb_file;
 			$images[$i]['img_type']		= $row->filetype;
+			$images[$i]['photographer'] = $row->photographer;
 			$images[$i]['row_color']	= $this->color;
 			
 			$i++;
@@ -341,6 +370,7 @@ class Einsatz_Model extends CI_Model {
             'lage'              => $this->input->post('einsatzlage'),
 			'bericht'			=> $this->input->post('einsatzbericht'),
             'ort'               => $this->input->post('einsatzort'),
+            'display_ort'       => $this->input->post('display_einsatzort'),
 			'weitere_kraefte'	=> $this->input->post('weitereeinsatzkraefte'),
 			'anzahl_kraefte'	=> $this->input->post('anzahl'),
             'anzahl_einsaetze'  => $anzahl_einsaetze,
@@ -379,6 +409,7 @@ class Einsatz_Model extends CI_Model {
             'lage'              => $this->input->post('einsatzlage'),
 			'bericht'			=> $this->input->post('einsatzbericht'),
             'ort'               => $this->input->post('einsatzort'),
+            'display_ort'       => $this->input->post('display_einsatzort'),
 			'weitere_kraefte'	=> $this->input->post('weitereeinsatzkraefte'),
 			'anzahl_kraefte'	=> $this->input->post('anzahl'),
             'anzahl_einsaetze'  => $anzahl_einsaetze,
@@ -422,15 +453,15 @@ class Einsatz_Model extends CI_Model {
 		$return = $this->recalc_einsatznr(substr($row->datum_beginn,0,4));
 	}
 	
-	public function insert_image($id, $desc, $file, $thumb, $type) 
+	public function insert_image($id, $desc, $file, $thumb, $type, $photographer) 
 	{
-		$this->db->insert('einsatz_img', array('einsatzID' => $id, 'description' => $desc, 'img_file' => $file, 'thumb_file' => $thumb, 'filetype' => $type));	
+		$this->db->insert('einsatz_img', array('einsatzID' => $id, 'description' => $desc, 'img_file' => $file, 'thumb_file' => $thumb, 'filetype' => $type, 'photographer' => $photographer));	
 	}
 	
-	public function update_image($id, $desc)
+	public function update_image($id, $desc, $photographer)
 	{
 		$this->db->where('imgID', $id);
-		$this->db->update('einsatz_img', array('description' => $desc));	
+		$this->db->update('einsatz_img', array('description' => $desc, 'photographer' => $photographer));	
 	}
 	
 	public function delete_image($id)

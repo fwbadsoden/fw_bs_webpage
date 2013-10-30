@@ -53,7 +53,7 @@ class Maintenance_Model extends CI_Model {
 		}
 		$content .= '?>'; 
 		
-		write_file(APPPATH.'cache/db_lang_DE.php', $content);
+		write_file(APPPATH.'cache/config/db_lang_DE.php', $content);
 	}
 	
 	public function add_lang_entry($key, $text, $desc)

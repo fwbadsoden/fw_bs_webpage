@@ -24,19 +24,20 @@
                         	<img src="<?=base_url(CONTENT_IMG_EINSATZ_UPLOAD_PATH.$b['img_file'])?>" alt="" />
                         	<div class="zoom"><a href="<?=base_url(CONTENT_IMG_EINSATZ_UPLOAD_PATH.$b['img_file'])?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
-                        <p><?=$slide_count?> <?=$b['img_desc']?></p>
+                        <p><?=$slide_count?>: <?=$b['img_desc']?> <?=$b['photographer']?></p>
                     </li>
 <? endforeach; ?>                    
                 </ul>
             </div>
-<? endif; ?>                    
+<? endif; ?>     
+<? if($einsatz['display_einsatzort'] == 1) : ?>               
             <h1 class="module">Einsatzort</h1>
             <div class="googlemaps">
 				<div class="Flexible-container">
                     <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.de/maps?q=<?=$einsatz['einsatzort']?>&ie=UTF8&t=m&z=13&output=embed"></iframe><br /><small><a href="https://maps.google.de/maps?q=Bad+Soden+am+Taunus" style="color:#0000FF;text-align:left">Größere Kartenansicht</a></small>
             	</div>
             </div>
-            
+<? endif; ?>            
         </div>	
         <div id="SidebarContent">  
 <? if(count($fahrzeuge) > 0) : ?>        

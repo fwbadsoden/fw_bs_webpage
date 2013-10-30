@@ -8,7 +8,7 @@
 <div class="oneColumnBox">
             <div class="factSheet_einsatz">
                 <div class="table">
-<? if($einsatz['einsatzort'] == '') : $einsatz['einsatzort'] = 'n/a'; endif; ?>                
+<? if($einsatz['einsatzort'] == '' || $einsatz['display_einsatzort'] != 1) : $einsatz['einsatzort'] = 'n/a'; endif; ?>                
                     <div class="row">
                         <div class="black">Einsatzort:</div>
                         <div class="red"><?=$einsatz['einsatzort']?></div>

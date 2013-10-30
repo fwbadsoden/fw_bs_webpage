@@ -118,7 +118,7 @@ class Einsatz extends CP_Controller {
     {
         $einsatz['einsatz']   = $this->m_einsatz->get_einsatz($id);
         $einsatz['fahrzeuge'] = $this->m_einsatz->get_einsatz_fahrzeuge($id);
-        $einsatz['bilder']    = $this->m_einsatz->get_images($id);
+        $einsatz['bilder']    = $this->m_einsatz->get_einsatz_images($id);
         
         $this->load->view('frontend/einsatz/einsatzdetail_3col_factsheet', $einsatz);
         $this->load->view('frontend/einsatz/einsatzdetail_3col_data', $einsatz); 

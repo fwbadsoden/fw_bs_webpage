@@ -15,21 +15,31 @@
 		'name'	=> 'einsatzort',
 		'id'	=> 'einsatzort',
 		'class' => 'input_text',
-		'value' => set_value('einsatzort')
+		'value' => set_value('einsatzort', 'Bad Soden am Taunus')
 	);
+    
+    $displayeinsatzOrt['formAttr']['name']  = 'display_einsatzort';
+    $displayeinsatzOrt['formAttr']['id']    = 'display_einsatzort';
+    $displayeinsatzOrt['formAttr']['class'] = '';
+    $displayeinsatzOrt['formAttr']['value'] = '1';
+    if($this->input->post($displayeinsatzOrt['formAttr']['id']))
+        $displayeinsatzOrt['formAttr']['checked'] = 'checked';
+    if(!count($_POST))
+        $displayeinsatzOrt['formAttr']['checked'] = 'checked';        
+        
 	$einsatzDatumBeginn = array(
 		'name'	=> 'einsatzdatum_beginn',
 		'id'	=> 'einsatzdatum_beginn',
 		'type'	=> 'date',
 		'class' => 'input_date',
-		'value' => set_value('einsatzdatum_beginn')
+		'value' => set_value('einsatzdatum_beginn', date('Y-m-d'))
 	);
 	$einsatzDatumEnde = array(
 		'name'	=> 'einsatzdatum_ende',
 		'id'	=> 'einsatzdatum_ende',
 		'type'	=> 'date',
 		'class' => 'input_date',
-		'value' => set_value('einsatzdatum_ende')
+		'value' => set_value('einsatzdatum_ende', date('Y-m-d'))
 	);
 	$einsatzBeginn = array(
 		'name'	=> 'einsatzuhrzeit_beginn',
@@ -71,7 +81,7 @@
         'name'  => 'anzahl_einsaetze',
         'id'    => 'anzahl_einsaetze',
         'class' => 'input_time',
-        'value' => set_value('anzahl_einsaetze')
+        'value' => set_value('anzahl_einsaetze', 1)
     );
     
 	for($i = 0; $i < count($types); $i++)
@@ -194,43 +204,44 @@ $(function() {
                 <table>
                     <tr>
                         <td>Einsatz-Nr.</td>
-                        <td>wird automatisch vergeben</div></td>
+                        <td colspan="2">wird automatisch vergeben</div></td>
                     </tr>
                     <tr>
                         <td class='form_label'><?=form_label('Einsatzname:', $einsatzName['id']); ?></td>
-                        <td><?=form_input($einsatzName); ?></td>
+                        <td colspan="2"><?=form_input($einsatzName); ?></td>
                     </tr>
                     <tr>
                         <td><?=form_label('Datum, Uhrzeit (Beginn)', $einsatzDatumBeginn['id']); ?></td>
-                        <td><?=form_input($einsatzDatumBeginn); ?>&nbsp;<?=form_input($einsatzBeginn); ?></td>
+                        <td colspan="2"><?=form_input($einsatzDatumBeginn); ?>&nbsp;<?=form_input($einsatzBeginn); ?></td>
                     </tr>
                     <tr>
                         <td><?=form_label('Datum, Uhrzeit (Ende):', $einsatzDatumEnde['id']); ?></td>
-                        <td><?=form_input($einsatzDatumEnde); ?>&nbsp;<?=form_input($einsatzEnde); ?></td>
+                        <td colspan="2"><?=form_input($einsatzDatumEnde); ?>&nbsp;<?=form_input($einsatzEnde); ?></td>
                     </tr>
                     <tr>
                         <td><?=form_label('Anzahl Einsatzkräfte:', $einsatzAnzahl['id']); ?></td>
-                        <td><?=form_input($einsatzAnzahl); ?></td>
+                        <td colspan="2"><?=form_input($einsatzAnzahl); ?></td>
                     </tr>
                     <tr>
                         <td><?=form_label('Anzahl Einsätze:', $einsatzAnzahlEinsaetze['id']); ?></td>
-                        <td><?=form_input($einsatzAnzahlEinsaetze); ?> (tatsächliche Anzahl unter dieser Nummer geführter Einsätze)</td>
+                        <td colspan="2"><?=form_input($einsatzAnzahlEinsaetze); ?> (tatsächliche Anzahl unter dieser Nummer geführter Einsätze)</td>
                     </tr>
                     <tr>
                         <td class='form_label'><?=form_label('Einsatzort:', $einsatzOrt['id']); ?></td>
                         <td><?=form_input($einsatzOrt); ?></td>
+                        <td style="width: 180px"><?=form_checkbox($displayeinsatzOrt['formAttr']); ?> <?=form_label('im Frontend anzeigen', $displayeinsatzOrt['formAttr']['id']); ?></td>
                     </tr>
     				<tr>
     					<td><?=form_label('Kurze Lagemeldung:', $einsatzLage['id']); ?></td>
-    					<td><?=form_textarea($einsatzLage); ?></td>
+    					<td colspan="2"><?=form_textarea($einsatzLage); ?></td>
     				</tr>
                     <tr>
                         <td><?=form_label('Einsatzbericht:', $einsatzBericht['id']); ?></td>
-                        <td><?=form_textarea($einsatzBericht); ?></td>
+                        <td colspan="2"><?=form_textarea($einsatzBericht); ?></td>
                     </tr>
                     <tr>
                         <td><?=form_label('Weitere Einsatzkräfte:', $einsatzKraefteW['id']); ?></td>
-                        <td><?=form_textarea($einsatzKraefteW); ?></td>
+                        <td colspan="2"><?=form_textarea($einsatzKraefteW); ?></td>
                     </tr>
                 </table>
             </td>
