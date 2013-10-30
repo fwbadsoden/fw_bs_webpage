@@ -8,8 +8,7 @@
 
 <!-- This is first column -->
 <div id="dashboard_column_1" class="dashboard_column">
-  <div id="item_1" class="dashboard_dragbox">
-    <!-- this one is first item of 1st column -->
+ <!-- <div id="item_1" class="dashboard_dragbox">
     <div class="dashboard_dragbox-content">
     	<div class="adminTask">
 			<h2 class="welcomeHead">
@@ -18,10 +17,7 @@
 					<a href="<?=base_url('admin/admin/message')?>">
 						<?=img(array('src' => 'images/admin/buttons/btn_newContent_kl.gif', 'style' => 'margin-bottom: -5px;', 'alt' => 'Nachricht bearbeiten'))?>
 					</a>
-				<!--	&nbsp;
-					<a href="<?=base_url('admin/admin/message_delete')?>">
-						<?=img(array('src' => 'images/admin/buttons/btn_delContent_kl.gif', 'style' => 'margin-bottom: -5px;', 'alt' => 'Nachricht löschen'))?>
-					</a>-->
+
 				</span>
 			</h2>
 						
@@ -32,7 +28,7 @@
 			</div>
 		</div>    
     </div>
-  </div>
+  </div>-->
   <div id="item_2" class="dashboard_dragbox">
     <!-- this one is third item of 1st column -->
     <div class="dashboard_dragbox-content">

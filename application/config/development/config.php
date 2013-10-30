@@ -266,9 +266,9 @@ $config['sess_time_to_update']	= 300;
 */
 $url = parse_url($_SERVER['REQUEST_URI']);
 if(!strpos($url['path'],'admin'))
-    $config['cookie_prefix'] = "";
+    $config['cookie_prefix'] = "dev_";
 else
-    $config['cookie_prefix']	= "adm_";
+    $config['cookie_prefix']	= "dev_adm_";
 $config['cookie_domain']	= "";
 $config['cookie_path']		= "/";
 $config['cookie_secure']	= FALSE;
