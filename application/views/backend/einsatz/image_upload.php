@@ -36,6 +36,11 @@
 		'class' => 'bild_details',
 		'readonly' => 'readonly'
 	);
+	$photographer_upload = array(
+		'name'	=> 'photographer_upload',
+		'id'	=> 'photographer_upload',
+		'class' => 'bild_details',
+	);
 	$photographer = array(
 		'name'	=> 'photographer',
 		'id'	=> 'photographer',
@@ -91,7 +96,7 @@ $(document).ready(function()
 			<tr><td colspan='2'><?=form_upload($image_upload)?></td></tr>	
 			<tr><td colspan="2">&nbsp;</td></tr>
 			<tr><td>Beschreibung:</td><td><?=form_input($alt_upload)?></td></tr>
-			<tr><td>Fotograf:</td><td><?=form_input($photographer)?></td></tr>
+			<tr><td>Fotograf:</td><td><?=form_input($photographer_upload)?></td></tr>
 			<tr><td colspan="2"></td></tr>
 			<tr>
 				<td><button type='submit' name='image_submit' id='image_submit' class='button_gross'><span class='button_save'>Hochladen</span></button></td>

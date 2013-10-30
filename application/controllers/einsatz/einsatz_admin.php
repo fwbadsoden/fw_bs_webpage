@@ -275,7 +275,7 @@ class Einsatz_Admin extends CP_Controller {
 					// Thumbnail erstellen
 					$this->image_moo->resize($width_t, $height_t)->save($this->upload_path.$thumb.$ext, true);
 					
-					$this->einsatz->insert_image($id, $this->input->post('alt'), $filename, $thumb.$ext, str_replace('.', '', $ext), $this->input->post('photographer'));
+					$this->einsatz->insert_image($id, $this->input->post('alt'), $filename, $thumb.$ext, str_replace('.', '', $ext), $this->input->post('photographer_upload'));
 				}
 			}
 			else if($this->input->post('img_manager') == 'img_edit')
