@@ -261,6 +261,7 @@
       <li><a href="<?=base_url('aktuelles')?>">News</a></li>
       <li class="subnavi">    
           <ul> 
+              <li><a href="<?=base_url('aktuelles/news')?>">News</a></li>
               <li><a href="<?=base_url('aktuelles/einsaetze')?>">Einsätze</a></li>
               <li><a href="<?=base_url('aktuelles/termine')?>">Termine</a></li>
               <li><a href="<?=base_url('aktuelles/presse')?>">Presse</a></li>
