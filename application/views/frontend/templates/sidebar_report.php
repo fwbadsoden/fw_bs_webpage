@@ -11,6 +11,7 @@
                
                 <hr class="clear" />
                 <table>
+                	<tr><td>Einsätze <?=date('Y')?></td><td class="value"><?=$einsatz_anzahl?></td></tr>
                 	<tr><td>Mannschaft</td><td class="value"><?=$mannschaft->anzahl?></td></tr>
                 	<tr><td>Frauen</td><td class="value"><?=$mannschaft->anzahl_w?></td></tr>
                 	<tr><td>M&auml;nner</td><td class="value"><?=$mannschaft->anzahl_m?></td></tr>

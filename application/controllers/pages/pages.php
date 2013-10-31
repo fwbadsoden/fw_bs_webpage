@@ -786,10 +786,12 @@ class Pages extends CP_Controller {
     private function site_sidebar_homepage()
     { 
         $c_termin = load_controller('termin/termin');
+        $c_einsatz = load_controller('einsatz/einsatz');
         
         $weather_data['weather']      = $this->weather->get_weather();
         $statistik['mannschaft']      = $this->m_mannschaft->get_mannschaft_anzahl();
         $statistik['fahrzeug_anzahl'] = $this->m_fahrzeug->get_fahrzeug_anzahl();
+        $statistik['einsatz_anzahl']  = $c_einsatz->get_einsatz_anzahl(date('Y'));
         
         $this->load->view('frontend/templates/sidebar_header');  
         $this->load->view('frontend/templates/sidebar_report', $statistik);     
