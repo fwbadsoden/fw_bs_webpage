@@ -70,7 +70,7 @@ class News_model extends CI_Model {
     
     public function homepage_teaser_1col($offset)
     {
-        $this->db->select('newsID, title, stage_title, teaser, teaser_image_fullpath, teaser_image_width, teaser_image_height, teaser_image_title, link');
+        $this->db->select('newsID, title, stage_title, teaser, text, teaser_image_fullpath, teaser_image_width, teaser_image_height, teaser_image_title, link');
         $this->db->limit(1, $offset);
         $query = $this->db->get('v_news');
         $row = $query->row();
@@ -81,6 +81,7 @@ class News_model extends CI_Model {
             'stage_title'           => $row->stage_title,
             'link'                  => $row->link,
             'teaser'                => $row->teaser,
+            'text'                  => $row->text, // für Prüfung auf mehr lesen button
             'teaser_image_fullpath' => $row->teaser_image_fullpath,
             'teaser_image_width'    => $row->teaser_image_width,
             'teaser_image_height'   => $row->teaser_image_height,
@@ -132,7 +133,7 @@ class News_model extends CI_Model {
     public function get_latest_news()
     {
         $this->db->select('newsID, title');
-        $this->db->order_by('valid_from', 'DESCENDING');
+        $this->db->order_by('valid_from', 'DESC');
         $this->db->limit(10);
         $query = $this->db->get('v_news');
         

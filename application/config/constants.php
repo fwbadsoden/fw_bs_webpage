@@ -40,7 +40,7 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 // Einbinden der dynamischen Kontanten
-include_once APPPATH . "cache/db_constants.php"; 
+include_once APPPATH . "cache/config/db_constants.php"; 
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

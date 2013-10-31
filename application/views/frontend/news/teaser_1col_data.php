@@ -8,6 +8,6 @@
 <? } ?>
 <h1><?=$title?></h1>
 <p><?=$teaser?></p>
-<? if(!isset($text)) : ?>
+<? if($text != '') : ?>
 <p class="more"><a href="<?=base_url('/aktuelles/news/'.$newsID)?>" class="button_black">Mehr lesen</a></p>
 <? endif; ?>

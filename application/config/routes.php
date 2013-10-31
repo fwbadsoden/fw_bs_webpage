@@ -43,7 +43,7 @@
 $route['404_override'] 						= 'errors/page_missing';
 
 // Einbinden der dynamischen Routen
-include_once APPPATH . "cache/db_routes.php"; 
+include_once APPPATH . "cache/config/db_routes.php"; 
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
