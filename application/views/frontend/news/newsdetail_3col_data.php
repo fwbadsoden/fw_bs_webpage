@@ -19,7 +19,7 @@
                     <?=$news->text?>
                 </p>
             </div>
-<? if(count($images) > 0) : ?>            
+<? if(count($images) > 1) : ?>            
             <div class="slideshow">
 
                 <div class="prevPic"><a href="#slideshow_car" id="slideshow_prev"><img src="<?=base_url('images/layout/button_detailShow_previous.png')?>" /></a></div>
@@ -39,7 +39,18 @@
 <? endforeach; ?>                    
                 </ul>
             </div>
-<? endif; ?>            
+<? elseif(count($images) == 1) : ?> 
+            <div class="slideshow">        
+                <ul id="slideshow_car">              
+                    <li id="slideshow_car_1" class="active">
+                        <figure>
+                        	<img src="<?=base_url($images[0]['fullpath'])?>" alt="<?=$images[0]['title']?>" />
+                        	<div class="zoom"><a href="<?=base_url($images[0]['fullpath'])?>" class="fancybox-gallery" rel="gallery1" title="<?=$images[0]['title']?>"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        </figure>
+                    </li>                 
+                </ul>
+            </div>
+<? endif; ?>           
         </div>
         
         <div id="SidebarContent">   

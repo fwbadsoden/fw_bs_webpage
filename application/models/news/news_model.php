@@ -166,6 +166,7 @@ class News_model extends CI_Model {
             $image['filename']      = $row->filename;
             $image['title']         = $row->title;
             $images[$i] = $image;
+            $i++;
         }
         return $images;
     }

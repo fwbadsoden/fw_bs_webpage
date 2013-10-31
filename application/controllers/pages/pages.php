@@ -946,7 +946,6 @@ class Pages extends CP_Controller {
      */
     private function site_hr_clear()
     {
-        if(ENVIRONMENT=='production') $this->output->cache(60000);
         $this->load->view('frontend/templates/hr_clear');
     }
  }

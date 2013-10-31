@@ -53,19 +53,17 @@ $(document).ready(function() {
 		<th class="headline_titel">Titel</th>
 		<th class="headline_name">Autor</th>
 		<th class="headline_datetime">Gültig ab</th>
-		<th class="headline_datetime">Gültig bis</th>
 		<th colspan="3" class="headline_edit">Edit</th>
 	</tr>
 </thead>
 <tbody>
-<? 	foreach($news as $item) :       ?>		
+<? 	foreach($news as $key => $item) :       ?>		
 <tr bgcolor="<?=$item['row_color']?>">
-	<td><?=str_pad($i, 5 ,'0', STR_PAD_LEFT);?></td>
+	<td><?=str_pad($key+1, 5 ,'0', STR_PAD_LEFT);?></td>
 	<td><?=$news_categories[$item['categoryID']]['title']?></td>
 	<td><?=$item['title']?></td>
 	<td><?=$item['created_by']?></td>
-	<td><?=cp_get_ger_date($item['valid_from'])?> <?=$item['valid_from_time']?></td>
-	<td><?=cp_get_ger_date($item['valid_to'])?> <?=$item['valid_to_time']?></td>
+	<td><?=cp_get_ger_date($item['valid_from'])?></td>
 <?	if($item['online']==1) :	
         if($privileged['edit']) :   ?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/news/status/'.$item['newsID'].'/1/'.$pagination_start)?>" class="button_mini" title="News offline schalten"><span class='button_online_small'></span></a></span></td>
@@ -87,8 +85,7 @@ $(document).ready(function() {
     <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die News zu löschen"><span class='button_lock_small'></span></a></span></td>
 <?  endif;                          ?>
 </tr>
-<?  $i--; 
-    endforeach; ?>
+<?  endforeach; ?>
 </tbody>
 </table>
 <br>
