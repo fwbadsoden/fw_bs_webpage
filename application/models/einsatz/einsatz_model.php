@@ -130,9 +130,11 @@ class Einsatz_Model extends CI_Model {
     
     public function get_einsatz_anzahl($year)
     {
+        $this->db->select_sum('anzahl_einsaetze');
         $this->db->where(array('substring(datum_beginn,1,4)' => $year));
-        $this->db->from('v_einsatz');
-        return $this->db->count_all_results();
+        $query = $this->db->get('v_einsatz');
+        $row = $query->row();
+        return $row->anzahl_einsaetze;
     }
     
     public function get_einsatz_fahrzeuge($id)
