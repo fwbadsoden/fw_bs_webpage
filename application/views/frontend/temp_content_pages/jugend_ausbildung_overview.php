@@ -67,7 +67,7 @@
                     <li id="slideshow_car_1" class="active">
                         <figure>
                         	<img src="<?=base_url('images/content/bftag2013_00.jpg')?>" alt="BF Tag der Jugend" />
-                        	<div class="zoom"><a href="<?=base_url('images/content/lg01.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        	<div class="zoom"><a href="<?=base_url('images/content/bftag2013_00.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                         <p>1: BF Tag der Jugend</p>
                     </li>
