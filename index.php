@@ -46,6 +46,16 @@ if (defined('ENVIRONMENT'))
 	}
 }
 
+
+/*
+ *---------------------------------------------------------------
+ * TIMEZONE FIX
+ *---------------------------------------------------------------
+ *
+ * Added by Patrick. Necessary in PHP5.3 to prevent date() warnings
+ */
+date_default_timezone_set('Europe/Berlin');
+
 /*
  *---------------------------------------------------------------
  * SYSTEM FOLDER NAME

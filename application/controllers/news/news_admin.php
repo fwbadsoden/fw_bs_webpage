@@ -139,7 +139,8 @@ class News_Admin extends CP_Controller {
 		$this->form_validation->set_rules('title', 'Titel', 'required|max_length[255]|xss_clean');
 		$this->form_validation->set_rules('stage_title', 'Titel', 'required|max_length[15]|xss_clean');
 		$this->form_validation->set_rules('valid_from', 'Gültig ab', 'required|xss_clean');	
-		$this->form_validation->set_rules('teaser', 'Teaser', 'required|xss_clean');			
+		$this->form_validation->set_rules('teaser', 'Teaser', 'required|xss_clean');	
+		$this->form_validation->set_rules('text', 'Text', 'required|xss_clean');				
 
 		return $this->form_validation->run();
     }
