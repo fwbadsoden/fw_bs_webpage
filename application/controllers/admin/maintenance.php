@@ -73,6 +73,13 @@ class Maintenance extends CP_Controller {
         $this->einsatz->recalc_maintain($year);   
     }
     
+    public function phpinfo()
+    {
+        // Berechtigungsprüfung TEIL 1: eingelogged und Admin
+		if(!$this->cp_auth->is_logged_in_admin() or ENVIRONMENT != 'development') redirect('admin', 'refresh');
+        phpinfo();   
+    }
+    
     public function generate_names($name)
     {
         echo strtoupper(md5($name));
