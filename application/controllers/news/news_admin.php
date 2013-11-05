@@ -136,11 +136,11 @@ class News_Admin extends CP_Controller {
 		
 		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
 		
-		$this->form_validation->set_rules('title', 'Titel', 'required|max_length[255]|xss_clean');
-		$this->form_validation->set_rules('stage_title', 'Titel', 'required|max_length[15]|xss_clean');
+		$this->form_validation->set_rules('title', 'Titel', 'trim|required|max_length[255]|xss_clean');
+		$this->form_validation->set_rules('stage_title', 'Titel', 'trim|required|max_length[15]|xss_clean');
 		$this->form_validation->set_rules('valid_from', 'Gültig ab', 'required|xss_clean');	
 		$this->form_validation->set_rules('teaser', 'Teaser', 'required|xss_clean');	
-		$this->form_validation->set_rules('text', 'Text', 'required|xss_clean');				
+		$this->form_validation->set_rules('text', 'Text', 'xss_clean');				
 
 		return $this->form_validation->run();
     }
