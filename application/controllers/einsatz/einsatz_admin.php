@@ -27,6 +27,7 @@ class Einsatz_Admin extends CP_Controller {
 		$this->load->model('einsatz/einsatz_model', 'einsatz');
 		$this->load->model('fahrzeug/fahrzeug_model', 'fahrzeug');
 		$this->load->model('admin/admin_model', 'admin');
+		$this->load->model('autosuggest/autosuggest_model', 'autosuggest');
 		
         // Berechtigungsprüfung TEIL 1: eingelogged und Admin
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
@@ -87,14 +88,15 @@ class Einsatz_Admin extends CP_Controller {
 			
 		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
 		{			
-			$header['title'] 		= 'Einsätze';		
-    		$menue['menue']	        = $this->admin->get_menue();
-			$menue['submenue']		= $this->admin->get_submenue();
-            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
-			$einsatz['fahrzeuge'] 	= $this->fahrzeug->get_fahrzeug_list_id_name(1);
-			$einsatz['types'] 		= $this->einsatz->get_einsatz_type_list();
-			$einsatz['templates']	= $this->einsatz->get_einsatz_templates();
-            $einsatz['cues']        = $this->einsatz->get_einsatz_cue_list();
+			$header['title'] 		    = 'Einsätze';		
+    		$menue['menue']	            = $this->admin->get_menue();
+			$menue['submenue']		    = $this->admin->get_submenue();
+            $menue['userdata']          = $this->cp_auth->cp_get_user_by_id();
+			$einsatz['fahrzeuge'] 	    = $this->fahrzeug->get_fahrzeug_list_id_name(1);
+			$einsatz['types'] 		    = $this->einsatz->get_einsatz_type_list();
+			$einsatz['templates']	    = $this->einsatz->get_einsatz_templates();
+            $einsatz['cues']            = $this->einsatz->get_einsatz_cue_list();
+            $einsatz['weitere_kraefte'] = $this->autosuggest->get_values('einsatz_weitere_kraefte');
 		
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/tiny_mce_inc');
@@ -129,14 +131,15 @@ class Einsatz_Admin extends CP_Controller {
 			
 		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
 		{			
-			$header['title'] 		= 'Einsätze';		
-            $menue['menue']	        = $this->admin->get_menue();
-            $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
-			$menue['submenue']		= $this->admin->get_submenue();
-			$einsatz['fahrzeuge'] 	= $this->fahrzeug->get_fahrzeug_list_id_name(1);
-			$einsatz['types'] 		= $this->einsatz->get_einsatz_type_list();
-			$einsatz['einsatz']		= $this->einsatz->get_einsatz($id);
-            $einsatz['cues']        = $this->einsatz->get_einsatz_cue_list();
+			$header['title'] 		    = 'Einsätze';		
+            $menue['menue']	            = $this->admin->get_menue();
+            $menue['userdata']          = $this->cp_auth->cp_get_user_by_id();
+			$menue['submenue']		    = $this->admin->get_submenue();
+			$einsatz['fahrzeuge'] 	    = $this->fahrzeug->get_fahrzeug_list_id_name(1);
+			$einsatz['types'] 		    = $this->einsatz->get_einsatz_type_list();
+			$einsatz['einsatz']		    = $this->einsatz->get_einsatz($id);
+            $einsatz['cues']            = $this->einsatz->get_einsatz_cue_list();
+            $einsatz['weitere_kraefte'] = $this->autosuggest->get_values('einsatz_weitere_kraefte');
 		
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/tiny_mce_inc');

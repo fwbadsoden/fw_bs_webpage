@@ -134,8 +134,6 @@
 	}
 ?>
 
-<!-- Timepicker URL http://fgelinas.com/code/timepicker/ -->
-<script src="<?=base_url('js/jquery.ui.timepicker.js')?>"></script>
 <script type="text/javascript">
 $(function() {
 	$('#input_dropdown').bind('change', function(e) {
@@ -159,23 +157,12 @@ $(function() {
 			);
 	});
     
-    //$( "#slider_anzahl" ).slider({ value:5, min: 0, max: 50, step: 1 });
-    //$( "#anzahl" ).val( "$" + $( "#slider_anzahl" ).slider( "value" ) );    
-	//$( "#einsatzdatum" ).datepicker();
-    $.timepicker.regional['de'] = {
-                hourText: 'Stunde',
-                minuteText: 'Minuten',
-                amPmText: ['AM', 'PM'] ,
-                closeButtonText: 'Beenden',
-                nowButtonText: 'Jetzt',                
-                deselectButtonText: 'Zur&uuml;cksetzen' }
-    $.timepicker.setDefaults($.timepicker.regional['de']);
-    $('.input_time').timepicker({
-        showNowButton: true,
-        showDeselectButton: true,
-        showPeriodLabels: false,
-        defaultTime: '',  // removes the highlighted time for when the input is empty.
-        showCloseButton: true
+    var availableTags = new Array();
+<? foreach($weitere_kraefte as $key => $wert): 
+      echo "availableTags['$key'] = '$wert';\n";
+   endforeach; ?>
+    $( "#weitereeinsatzkraefte" ).autocomplete({
+      source: availableTags
     });
 });
 
@@ -241,7 +228,7 @@ $(function() {
                     </tr>
                     <tr>
                         <td><?=form_label('Weitere Einsatzkräfte:', $einsatzKraefteW['id']); ?></td>
-                        <td colspan="2"><?=form_textarea($einsatzKraefteW); ?></td>
+                        <td colspan="2"><div class="ui-widget"><?=form_textarea($einsatzKraefteW); ?></div></td>
                     </tr>
                 </table>
             </td>
