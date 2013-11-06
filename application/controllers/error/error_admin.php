@@ -47,4 +47,5 @@ class Error_admin extends CP_Controller {
 		$this->load->view('backend/templates/admin/footer');         
     }
 }
-?>
+/* End of file error_admin.php */
+/* Location: ./application/controllers/error/error_admin.php */

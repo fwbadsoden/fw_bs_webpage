@@ -86,4 +86,5 @@ class Maintenance extends CP_Controller {
     }
 }
 
-?>
+/* End of file maintenance.php */
+/* Location: ./application/controllers/admin/maintenance.php */

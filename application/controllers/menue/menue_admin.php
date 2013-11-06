@@ -200,4 +200,5 @@ class Menue_Admin extends CP_Controller {
 		redirect($this->session->userdata('menueliste_redirect'), 'refresh');		
 	}
 }
-?>
+/* End of file menue_admin.php */
+/* Location: ./application/controllers/menue/menue_admin.php */

@@ -326,4 +326,5 @@ class Fahrzeug_Admin extends CP_Controller {
 		return ( ! preg_match("1\/[1-8]{1}", $str)) ? FALSE : TRUE;
 	}
 }
-?>
+/* End of file fahrzeug_admin.php */
+/* Location: ./application/controllers/fahrzeug/fahrzeug_admin.php */

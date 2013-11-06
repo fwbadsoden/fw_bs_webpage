@@ -23,4 +23,5 @@
 	$config['cur_tag_close'] = '</b>';
 	$config['num_tag_open'] = '<div>';
 	$config['num_tag_close'] = '</div>';
-?>
+/* End of file pagination.php */
+/* Location: ./application/config/pagination.php */

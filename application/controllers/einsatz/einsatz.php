@@ -140,4 +140,5 @@ class Einsatz extends CP_Controller {
         return $this->m_einsatz->get_einsatz_anzahl($year);
     }
 }
-?>
+/* End of file einsatz.php */
+/* Location: ./application/controllers/einsatz/einsatz.php */

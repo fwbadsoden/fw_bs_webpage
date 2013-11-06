@@ -86,4 +86,5 @@ class User_Auth extends CP_Controller {
 		$this->load->view('backend/templates/admin/footer_login');
     }
 }
-?>
+/* End of file user_authphp */
+/* Location: ./application/controllers/user/user_auth.php */

@@ -285,5 +285,5 @@ class Module_Admin extends CP_Controller {
         $this->module->write_language_file();
     }
 }
-
-?>
+/* End of file module_admin.php */
+/* Location: ./application/controllers/module/module_admin.php */

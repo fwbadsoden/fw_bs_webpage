@@ -120,4 +120,5 @@ class Frontend extends CP_Controller {
         if($count == 0) return 'captcha_false'; else return true;
     }
  }
- ?>
+/* End of file frontend.php */
+/* Location: ./application/controllers/frontend/frontend.php */

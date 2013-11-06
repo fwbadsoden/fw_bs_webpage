@@ -323,3 +323,5 @@ $config['groups']['yui'] = array(
 
 );
 
+/* End of file carabiner.php */
+/* Location: ./application/config/carabiner.php */

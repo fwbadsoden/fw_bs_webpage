@@ -425,4 +425,5 @@ class Einsatz_Admin extends CP_Controller {
 		return cp_is_valid_time($zeit);
 	}
 }
-?>
+/* End of file einsatz.php */
+/* Location: ./application/controllers/einsatz/einsatz_admin.php */

@@ -46,4 +46,5 @@ class Maps extends CP_Controller {
         $this->load->view('frontend/maps/test', $maps);
     }
  }
- ?>
+/* End of file maps.php */
+/* Location: ./application/controllers/maps/maps.php */

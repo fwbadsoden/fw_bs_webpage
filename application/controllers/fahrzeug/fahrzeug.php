@@ -96,4 +96,5 @@ class Fahrzeug extends CP_Controller {
         return $this->m_fahrzeug->get_fahrzeug_stage_text($id);
     }
 }
-?>
+/* End of file fahrzeug.php */
+/* Location: ./application/controllers/fahrzeug/fahrzeug.php */

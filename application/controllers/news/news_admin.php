@@ -303,4 +303,5 @@ class News_Admin extends CP_Controller {
 		redirect($this->session->userdata('newsliste_redirect'), 'refresh');
 	}
 }
-?>
+/* End of file news_admin.php */
+/* Location: ./application/controllers/news/news_admin.php */

@@ -734,4 +734,4 @@
 	$config['messages']['target_user']['form_validation_duplicate_username'] = 'public';
 
 /* End of file flexi_auth.php */
-/* Location: ./system/application/config/flexi_auth.php */
+/* Location: ./application/config/flexi_auth.php */

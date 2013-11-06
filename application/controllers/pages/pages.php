@@ -949,4 +949,5 @@ class Pages extends CP_Controller {
         $this->load->view('frontend/templates/hr_clear');
     }
  }
- ?>
+/* End of file pages.php */
+/* Location: ./application/controllers/pages/pages.php */

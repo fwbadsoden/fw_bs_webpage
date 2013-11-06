@@ -85,4 +85,5 @@ class Termin extends CP_Controller {
         }
     }
 }
-?>
+/* End of file termin.php */
+/* Location: ./application/controllers/termin/termin.php */

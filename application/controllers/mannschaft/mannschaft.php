@@ -39,4 +39,5 @@ class Mannschaft extends CP_Controller {
     }
 }
 
-?>
+/* End of file mannschaft.php */
+/* Location: ./application/controllers/mannschaft/mannschaft.php */

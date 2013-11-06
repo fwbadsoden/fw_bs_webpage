@@ -96,4 +96,5 @@ class News extends CP_Controller {
         return $this->m_news->get_news_stage_text($id);
     }
 } 
-?>
+/* End of file news.php */
+/* Location: ./application/controllers/news/news.php */

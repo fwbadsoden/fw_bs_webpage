@@ -183,3 +183,5 @@ class File_Admin extends CP_Controller {
         redirect($this->session->userdata($type.'liste_redirect'), 'refresh');
     }
 }
+/* End of file file_admin.php */
+/* Location: ./application/controllers/file/file_admin.php */

@@ -239,4 +239,5 @@ class Admin extends CP_Controller {
         redirect('admin/admin');	
 	}
 }
-?>
+/* End of file admin.php */
+/* Location: ./application/controllers/admin/admin.php */

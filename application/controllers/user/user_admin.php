@@ -777,4 +777,5 @@ class User_Admin extends CP_Controller {
             return $this->cp_auth->identity_available($identity);
     }
 }
-?>
+/* End of file user_admin.php */
+/* Location: ./application/controllers/user/user_admin.php */

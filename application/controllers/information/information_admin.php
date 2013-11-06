@@ -48,4 +48,5 @@ class Information_Admin extends CP_Controller {
 		$this->load->view('backend/templates/admin/footer');
     }
 }
-?>
+/* End of file information.php */
+/* Location: ./application/controllers/information/information_admin.php */

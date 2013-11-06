@@ -27,4 +27,5 @@ class Log extends CP_Controller {
   }
 }
 
-?>
+/* End of file log.php */
+/* Location: ./application/controllers/admin/log.php */

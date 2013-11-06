@@ -87,7 +87,8 @@ class Module_model extends CI_Model {
 		{
 			$content .=	'define("'.strtoupper($setting['constantName']).'", "'.$setting['constantValue'].'"); ';
 		}
-		$content .= '?>'; 
+		$content .= '/* End of file db_constants.php */
+                     /* Location: ./application/cache/config/db_constants.php */'; 
 		
 		write_file(APPPATH.'cache/config/db_constants.php', $content);	
 	}	
@@ -103,7 +104,8 @@ class Module_model extends CI_Model {
 		{
 			$content .=	'$lang["'.$language["key"].'"] = "'.$language["text"].'";';
 		}
-		$content .= '?>'; 
+		$content .= '/* End of file db_lang_DE.php */
+                     /* Location: ./application/cache/config/db_lang_DE.php */';  
 		
 		write_file(APPPATH.'cache/config/db_lang_DE.php', $content);	
     }
@@ -215,7 +217,8 @@ class Module_model extends CI_Model {
 		{
 			$content .=	'$route["'.$route["route"].'"] = "'.$route["internalLink"].'";';
 		}
-		$content .= '?>'; 
+		$content .= '/* End of file db_routes.php */
+                     /* Location: ./application/cache/config/db_routes.php */'; 
 		
 		write_file(APPPATH.'cache/config/db_routes.php', $content);	
 	}	

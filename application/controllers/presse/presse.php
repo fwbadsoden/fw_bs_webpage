@@ -78,4 +78,5 @@ class Presse extends CP_Controller {
         redirect($this->input->server('HTTP_REFERER', TRUE).'/gesendet'); 
     }
 }
-?>
+/* End of file presse.php */
+/* Location: ./application/controllers/presse/presse.php */

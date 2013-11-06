@@ -472,4 +472,5 @@ class Pages_Admin extends CP_Controller {
 	}
 }
 
-?>
+/* End of file pages_admin.php */
+/* Location: ./application/controllers/pages/pages_admin.php */
