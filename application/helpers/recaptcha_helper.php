@@ -272,6 +272,5 @@ function recaptcha_mailhide_html($pubkey, $privkey, $email) {
     "' onclick=\"window.open('" . htmlentities ($url) . "', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;\" title=\"Reveal this e-mail address\">...</a>@" . htmlentities ($emailparts [1]);
 
 }
-
-
-?>
+/* End of file recaptcha_helper.php */
+/* Location: ./application/helpers/recaptcha_helper.php */

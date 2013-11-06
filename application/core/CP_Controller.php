@@ -21,4 +21,5 @@ Class CP_Controller extends CI_Controller
 		parent::__construct();
 	}
 }
-?>
+/* End of file CP_Controller.php */
+/* Location: ./application/core/CP_Controller.php */

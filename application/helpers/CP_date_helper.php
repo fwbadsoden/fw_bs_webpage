@@ -287,4 +287,5 @@ function cp_get_date_as_array($date)
     return explode('-', $date);
 }
 
-?>
+/* End of file CP_date_helper.php */
+/* Location: ./application/helpers/CP_date_helper.php */

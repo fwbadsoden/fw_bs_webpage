@@ -263,3 +263,5 @@ class CP_Loader extends CI_Loader
         }
 	}
 }
+/* End of file CP_Loader.php */
+/* Location: ./application/core/CP_Loader.php */

@@ -114,4 +114,5 @@ Class CP_Router extends CI_Router
 		show_404($segments[0]);
 	}
 }
-?>
+/* End of file CP_Router.php */
+/* Location: ./application/core/CP_Router.php */

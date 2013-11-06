@@ -33,5 +33,5 @@ if ( ! function_exists('cp_get_color'))
 		return($color);
 	}
 }
-
-?>
+/* End of file CP_html_helper.php */
+/* Location: ./application/helpers/CP_html_helper.php */

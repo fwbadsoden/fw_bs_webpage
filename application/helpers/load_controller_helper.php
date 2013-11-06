@@ -24,3 +24,5 @@ if (!function_exists('load_controller'))
         return $controller;
     }
 }
+/* End of file load_controller_helper.php */
+/* Location: ./application/helpers/load_controller_helper.php */
