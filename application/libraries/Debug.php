@@ -8,4 +8,6 @@ class Debug {
         echo "</pre>";
     }
 }   
-?>
+
+/* End of file Debug.php */
+/* Location: ./application/libraries/Debug.php */

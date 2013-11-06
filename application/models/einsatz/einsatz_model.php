@@ -578,4 +578,6 @@ class Einsatz_Model extends CI_Model {
 		$this->db->update('einsatz', array('online' => $online), 'einsatzID = '.$einsatzID);
 	}
 }
-?>
+
+/* End of file einsatz_model.php */
+/* Location: ./application/models/einsatz/einsatz_model.php */

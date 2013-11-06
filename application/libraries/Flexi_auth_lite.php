@@ -670,4 +670,4 @@ class Flexi_auth_lite
 }
 
 /* End of file flexi_auth_lite.php */
-/* Location: ./application/controllers/flexi_auth_lite.php */
+/* Location: ./application/libraries/flexi_auth_lite.php */

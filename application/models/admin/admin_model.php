@@ -172,4 +172,6 @@ class Admin_model extends CI_Model {
 		return $message;
 	}
 }
-?>
+
+/* End of file admin_model.php */
+/* Location: ./application/models/admin/admin_model.php */

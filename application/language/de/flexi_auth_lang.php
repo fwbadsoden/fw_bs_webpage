@@ -65,3 +65,6 @@ $lang['form_validation_duplicate_identity'] 		= "Ein Account mit dieser Emailadr
 $lang['form_validation_duplicate_email'] 			= "Emailadresse bereits vergeben.";
 $lang['form_validation_duplicate_username'] 		= "Benutzername bereits vergeben.";
 $lang['form_validation_current_password'] 			= "Das Passwort ist falsch.";
+
+/* End of file flexi_auth_lang.php */
+/* Location: ./application/language/de/flexi_auth_lang.php */

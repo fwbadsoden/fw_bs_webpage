@@ -1219,3 +1219,6 @@ class Carabiner {
 		return preg_match($pattern, $string);
 	}
 }
+
+/* End of file carabiner.php */
+/* Location: ./application/libraries/carabiner.php */

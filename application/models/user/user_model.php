@@ -80,58 +80,7 @@ class User_Model extends Flexi_auth_model {
 		);
 		return $userdata;
 	}	
-	
-/**
- * 	public function create_user()
- * 	{
- * 		$this->user['userdata'] = array(
- * 			'username' 		=> $this->input->post('username'),
- * 			'email'			=> strtolower($this->input->post('email')),
- * 			'vorname'		=> $this->input->post('vorname'),
- * 			'nachname'		=> $this->input->post('nachname'),
- * 			'creation_date' => date('Y-m-d', time())
- * 		);
- * 		
- * 		$this->db->insert($this->db_user_table, $this->user['userdata']);
- * 		$this->user['userdata']['userID'] = $this->db->insert_id();
- * 		
- * 		$CI =& get_instance();
- * 		$CI->load->model('cpauth/cpauth_model', 'cpauth');
- * 		$this->user['authdata']['initial_pw'] = $CI->cpauth->set_initial_password($this->user['userdata']['userID']);
- * 		
- * 		return $this->user;
- * 	}
- * 	
- * 	public function update_user($id)
- * 	{
- * 		$user = array(
- * 			'username'		=> $this->input->post('username'),
- * 			'email'			=> strtolower($this->input->post('email')),
- * 			'vorname'		=> $this->input->post('vorname'),
- * 			'nachname'		=> $this->input->post('nachname')
- * 		);
- * 		
- * 		$this->db->where('userID', $id);
- * 		$this->db->update($this->db_user_table, $user);
- * 	}
- * 	
- * 	public function delete_user($id)
- * 	{
- * 		$this->db->trans_start();
- * 		$tables = array($this->db_user_table, $this->db_auth_table, $this->db_access_keys_table);
- * 		$this->db->where('userID', $id);
- * 		$this->db->delete($tables);	
- * 		if($this->delete_tables_admin == 1)	
- * 		{
- * 			$tables = array('admin_quicklink', 'admin_log');
- * 			$this->db->where('userID', $id);
- * 			$this->db->delete($tables);			
- * 		}
- * 		$this->db->trans_complete();
- * 	}
- * 	
- * 	
- */
 }
 
-?>
+/* End of file user_model.php */
+/* Location: ./application/models/user/user_model.php */

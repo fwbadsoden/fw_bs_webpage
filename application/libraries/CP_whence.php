@@ -106,4 +106,6 @@ class CP_whence
         print_r($this->_ci->session->userdata['whence']);
     }
  } 
-?>
+
+/* End of file CP_whence.php */
+/* Location: ./application/libraries/CP_whence.php */

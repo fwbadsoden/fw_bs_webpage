@@ -176,4 +176,6 @@ class Weather {
         return $direction;
     }    
 }
-?>
+
+/* End of file Weather.php */
+/* Location: ./application/libraries/Weather.php */

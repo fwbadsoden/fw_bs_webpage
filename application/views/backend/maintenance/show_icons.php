@@ -22,4 +22,6 @@ foreach($dir as $d) {
   
 }
 echo "</ul>";
-?>
+
+/* End of file show_icons.php */
+/* Location: ./application/views/backend/maintenance/show_icons.php */

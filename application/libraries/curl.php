@@ -300,5 +300,5 @@ class Curl {
 }
 // END cURL Class
 
-/* End of file cURL.php */
+/* End of file curl.php */
 /* Location: ./application/libraries/curl.php */

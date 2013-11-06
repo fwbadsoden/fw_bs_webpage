@@ -148,4 +148,7 @@ class File_model extends CI_Model {
         }
         $this->db->insert('file', $file);        
     }
- }
+}
+
+/* End of file file_model.php */
+/* Location: ./application/models/file/file_model.php */

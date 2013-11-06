@@ -55,4 +55,6 @@ class Information_model extends CI_Model {
         return $emails;
     }
 }
-?>
+
+/* End of file information_model.php */
+/* Location: ./application/models/information/information_model.php */

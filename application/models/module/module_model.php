@@ -224,4 +224,6 @@ class Module_model extends CI_Model {
 	}	
 	
 }
-?>
+
+/* End of file module_model.php */
+/* Location: ./application/models/module/module_model.php */

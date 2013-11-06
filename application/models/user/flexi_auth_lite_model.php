@@ -841,4 +841,4 @@ class Flexi_auth_lite_model extends CI_Model
 }
 
 /* End of file flexi_auth_lite_model.php */
-/* Location: ./application/controllers/flexi_auth_lite_model.php */
+/* Location: ./application/models/user/flexi_auth_lite_model.php */

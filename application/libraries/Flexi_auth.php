@@ -1148,4 +1148,4 @@ class Flexi_auth extends Flexi_auth_lite
 }
 
 /* End of file flexi_auth.php */
-/* Location: ./application/controllers/flexi_auth.php */
+/* Location: ./application/libraries/flexi_auth.php */

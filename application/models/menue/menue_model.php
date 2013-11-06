@@ -190,4 +190,6 @@ class Menue_Model extends CI_Model {
 		$this->db->update('menue', array('online' => $online), 'menueID = '.$id);
 	}
 }
-?>
+
+/* End of file menue_model.php */
+/* Location: ./application/models/menue/menue_model.php */

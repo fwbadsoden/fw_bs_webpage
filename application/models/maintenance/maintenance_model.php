@@ -68,4 +68,6 @@ class Maintenance_Model extends CI_Model {
 		$this->db->insert('sys_lang', $data); 
 	}
 }
-?>
+
+/* End of file maintenance_model.php */
+/* Location: ./application/models/maintenance/maintenance_model.php */

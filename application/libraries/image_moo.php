@@ -1152,4 +1152,4 @@ class Image_moo
 
 }
 /* End of file image_moo.php */
-/* Location: .system/application/libraries/image_moo.php */
+/* Location: ./application/libraries/image_moo.php */

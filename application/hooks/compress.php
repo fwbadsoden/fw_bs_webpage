@@ -28,4 +28,5 @@
      $CI->output->set_output($buffer);
      $CI->output->_display();
  }
-?>
+/* End of file compress.php */
+/* Location: ./application/hooks/compress.php */

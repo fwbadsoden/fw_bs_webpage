@@ -45,3 +45,6 @@ class Presse_model extends CI_Model {
         return $articles;
     }
 }
+
+/* End of file presse_model.php */
+/* Location: ./application/models/presse/presse_model.php */

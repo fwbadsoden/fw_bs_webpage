@@ -44,4 +44,5 @@ class QueryLogHook {
     }
 
 }
-?>
+/* End of file QueryLogHook.php */
+/* Location: ./application/hooks/QueryLogHook.php */

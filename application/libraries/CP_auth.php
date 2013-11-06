@@ -65,4 +65,6 @@ class CP_auth extends Flexi_auth
         return $groups_ret;
     }
 }
-?>
+
+/* End of file CP_auth.php */
+/* Location: ./application/libraries/CP_auth.php */

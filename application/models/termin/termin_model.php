@@ -141,4 +141,6 @@ class Termin_model extends CI_Model {
 	}
 
  }
- ?>
+
+/* End of file termin_model.php */
+/* Location: ./application/models/termin/termin_model.php */

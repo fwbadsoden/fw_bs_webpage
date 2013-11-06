@@ -339,4 +339,6 @@ class Fahrzeug_Model extends CI_Model {
 		$this->db->update('fahrzeug', array('online' => $online), 'fahrzeugID = '.$id);
 	}
 }
-?>
+
+/* End of file fahrzeug_model.php */
+/* Location: ./application/models/fahrzeug/fahrzeug_model.php */

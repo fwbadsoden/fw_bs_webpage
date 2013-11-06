@@ -89,4 +89,6 @@ class Mannschaft_Model extends CI_Model {
         return $mitglied;
     }
 }
-?>
+
+/* End of file mannschaft_model.php */
+/* Location: ./application/models/mannschaft/mannschaft_model.php */

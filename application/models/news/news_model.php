@@ -364,3 +364,6 @@ class News_model extends CI_Model {
 		$this->db->update('news', array('online' => $online), 'newsID = '.$newsID);
 	}
 }
+
+/* End of file news_model.php */
+/* Location: ./application/models/news/news_model.php */

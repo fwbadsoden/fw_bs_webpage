@@ -26,4 +26,6 @@ Class CP_Image_lib extends CI_Image_lib
         return substr(base64_encode(bin2hex(mhash(MHASH_SHA512,uniqid(rand(), true).$var1.microtime()))), 0, 200);
     }
 }
-?>
+
+/* End of file CP_Image_lib.php */
+/* Location: ./application/libraries/CP_Image_lib.php */

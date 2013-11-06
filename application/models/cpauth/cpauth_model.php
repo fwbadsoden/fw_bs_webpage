@@ -443,4 +443,6 @@ private $user		 			=	array();	//	user info in database
 		return $this->cp_auth->cp_generate_hash($phrase);	
 	}	
 }
-?>
+
+/* End of file cpauth_model.php */
+/* Location: ./application/models/cpauth/cpauth_model.php */

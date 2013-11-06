@@ -306,4 +306,6 @@ class JSMin {
 
 // -- Exceptions ---------------------------------------------------------------
 class JSMinException extends Exception {}
-?>
+
+/* End of file jsmin.php */
+/* Location: ./application/libraries/jsmin.php */

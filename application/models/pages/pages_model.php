@@ -550,4 +550,6 @@ class Pages_model extends CI_Model {
 		$this->db->update('stage', array('online' => $online), 'stageID = '.$id);
 	}
 }
-?>
+
+/* End of file pages_model.php */
+/* Location: ./application/models/pages/pages_model.php */

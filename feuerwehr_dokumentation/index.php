@@ -48,6 +48,8 @@ switch($_GET['op']) {
     case 'user_model': include_once('models/user_model.php'); break;
     default: include_once('general/homepage.php'); break;
 }
-?>
 
-<? include_once('footer.php'); ?>
+include_once('footer.php');
+
+/* End of file index.php */
+/* Location: ./index.php */
