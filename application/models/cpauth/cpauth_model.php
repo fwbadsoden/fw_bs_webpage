@@ -88,7 +88,7 @@ private $user		 			=	array();	//	user info in database
 	 */
 	public function logout($redirect = '', $drop_cookie = true) {
 		$this->session->sess_destroy();
-		if ($drop_cookie == true) $this->drop_userinfo();
+		if ($drop_cookie == true) $this->_drop_userinfo();
 		if (!empty($redirect)) redirect($redirect);
 	}
 	
@@ -142,7 +142,7 @@ private $user		 			=	array();	//	user info in database
 				if($userdata->is_initial == 1)
 					return array('authorize' => false, 'initial' => true, 'userID' => $userdata->userID);
 				
-				$this->update_session($userdata);
+				$this->_update_session($userdata);
 				
 				// Update User with current loginDate
 				$this->db->where('userID', $userdata->userID);
@@ -166,7 +166,7 @@ private $user		 			=	array();	//	user info in database
 	 *
 	 * @access private
 	 */
-	private function update_session($cp_array) {
+	private function _update_session($cp_array) {
 		$cp[$this->session_name] = $cp_array;
 		$this->session->set_userdata($cp);
 		$this->user = $cp_array;
@@ -204,7 +204,7 @@ private $user		 			=	array();	//	user info in database
 	public function get_reset_code($userID) {
 		if (empty($userID)) return false;
 		
-		$reset_code = $this->generate_activation_code('$art/&/§"$%§"$§$)65754234%('.random_string('unique').$userID);
+		$reset_code = $this->_generate_activation_code('$art/&/§"$%§"$§$)65754234%('.random_string('unique').$userID);
 		
 		$this->db->where('userID', $userID);
 		$this->db->update($this->db_auth_table, array('reset_code' => $reset_code));
@@ -250,7 +250,8 @@ private $user		 			=	array();	//	user info in database
 	 * @access public
 	 * @returns array(pw,username,email)
 	 */
-	public function reset_password($code) {
+	public function reset_password($code) 
+    {
 		if (empty($code)) return false;
 		
 		//	get user email to send new pw
@@ -283,7 +284,8 @@ private $user		 			=	array();	//	user info in database
 	 * @access public
 	 * @returns int
 	 */
-	public function change_pw($userID, $old_pw, $new_pw) {
+	public function change_pw($userID, $old_pw, $new_pw) 
+    {
 		$this->db->where('userID', $userID);
 		$new_salt = $this->cp_auth->cp_generate_salt();
 		$this->db->update($this->db_auth_table, array('password' => $this->cp_auth->cp_hash_password($new_pw, $new_salt), 'salt' => $new_salt, 'is_initial' => 0));
@@ -319,7 +321,8 @@ private $user		 			=	array();	//	user info in database
 	 * @access public
 	 * @return array(userID, active)/false
 	 */
-	public function get_userid($username = '', $email = '') {
+	public function get_userid($username = '', $email = '') 
+    {
 		if (empty($username) && empty($email)) return false;
 		$un_added = false;
 		if (!empty($username)) {
@@ -365,29 +368,10 @@ private $user		 			=	array();	//	user info in database
 		return $arr_return;
 	}
 	
-	private function drop_userinfo() {
+	private function _drop_userinfo() 
+    {
 		delete_cookie($this->cookie_name_autologin);
 	}	
-	
-#	/**
-#	 * Autologin
-#	 *
-#	 * auto-login is not very secure, as if anyone can get access to the cookie in the client's browser they will be able to login with their identity. it is used for convenience.
-#	 * do not use auto-login if you are dealing with personal information that visitors will not want anyone to see.
-#	 * this is also a threat to people using public computers. allow the user to choose to save login data or not.
-#	 * to enhance security, enable cookie encryption and set a very unique encryption key
-#	 * also, encourage strong passwords
-#	 *
-#	 * @access public
-#	 */
-#	public function auto_login() {
-#		if (empty($this->user)) {
-#			$cookie_hash = get_cookie($this->cookie_name_autologin, TRUE);
-#			if (!empty($cookie_hash)) $result = $this->login(null, null, true, $cookie_hash);
-#			if (!empty($result)) if ($result['authorize'] == true) return true; else return false;
-#			
-#		}
-#	}
 	
 	/**
 	 * User merken
@@ -399,7 +383,8 @@ private $user		 			=	array();	//	user info in database
 	 * @access public
 	 * @returns boolean
 	 */
-	public function remember_user($user = null, $reset_cookie = false) {
+	public function remember_user($user = null, $reset_cookie = false) 
+    {
 		$user = (empty($user)) ? $this->user : $user;
 		if (empty($user)) return false;
 		
@@ -438,7 +423,7 @@ private $user		 			=	array();	//	user info in database
 	}	
 	
 	// generate activation_code from userdata
-	private function generate_activation_code($phrase)
+	private function _generate_activation_code($phrase)
 	{	
 		return $this->cp_auth->cp_generate_hash($phrase);	
 	}	

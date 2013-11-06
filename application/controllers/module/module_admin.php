@@ -68,18 +68,6 @@ class Module_Admin extends CP_Controller {
 		else redirect($this->session->userdata('settingliste_redirect'), 'refresh');
 	 }
 	
-	private function verify_setting()
-	{		
-		$this->load->library('form_validation');
-		
-		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
-		
-		$this->form_validation->set_rules('constant', 'Konstante', 'required|max_length[255]|xss_clean');	
-		$this->form_validation->set_rules('value', 'Wert', 'required|max_length[255]|xss_clean');	
-
-		return $this->form_validation->run();	
-	}
-	
 	public function rewrite_settings()
 	{
         if(!$this->cp_auth->is_privileged(SETTINGS_PRIV_EDIT)) redirect('admin/401', 'refresh');
@@ -204,7 +192,7 @@ class Module_Admin extends CP_Controller {
         if(!$this->cp_auth->is_privileged(ROUTE_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
-			if($verify= $this->verify_route())
+			if($verify= $this->_verify_route())
 			{
 				$this->module->update_route($id);
 				$this->write_routes();
@@ -231,7 +219,7 @@ class Module_Admin extends CP_Controller {
 		else redirect($this->session->userdata('routeliste_redirect'), 'refresh');
 	}
 	
-	private function verify_route()
+	private function _verify_route()
 	{		
 		$this->load->library('form_validation');
 		

@@ -261,7 +261,7 @@ class User_Admin extends CP_Controller {
         
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{
-			if($verify = $this->verify_user())
+			if($verify = $this->_verify_user())
 			{
                 $this->load->helper('string');
 				$this->admin->insert_log(str_replace('%USER%', $this->input->post('username'), lang('log_admin_createUser')));
@@ -316,7 +316,7 @@ class User_Admin extends CP_Controller {
         
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{
-			if($verify = $this->verify_user($id))
+			if($verify = $this->_verify_user($id))
 			{
 				$this->admin->insert_log(str_replace('%USER%', $this->input->post('username'), lang('log_admin_editUser')));
                 $userdata = array(
@@ -388,7 +388,7 @@ class User_Admin extends CP_Controller {
         
         if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{
-			if($verify = $this->verify_priv())
+			if($verify = $this->_verify_priv())
 			{
                 $this->load->helper('string');
 				$this->admin->insert_log(str_replace('%PRIV%', $this->input->post('name'), lang('log_admin_createPriv')));
@@ -432,7 +432,7 @@ class User_Admin extends CP_Controller {
         
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{
-			if($verify = $this->verify_priv($id))
+			if($verify = $this->_verify_priv($id))
 			{
 				$this->admin->insert_log(str_replace('%PRIV%', $this->input->post('name'), lang('log_admin_editPriv')));
                 $privdata = array(
@@ -500,7 +500,7 @@ class User_Admin extends CP_Controller {
         
         if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{
-			if($verify = $this->verify_group())
+			if($verify = $this->_verify_group())
 			{
                 $this->load->helper('string');
 				$this->admin->insert_log(str_replace('%GROUP%', $this->input->post('name'), lang('log_admin_createGroup')));
@@ -549,7 +549,7 @@ class User_Admin extends CP_Controller {
         
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{
-			if($verify = $this->verify_group($id))
+			if($verify = $this->_verify_group($id))
 			{
 				$this->admin->insert_log(str_replace('%GROUP%', $this->input->post('name'), lang('log_admin_editGroup')));
                 $groupdata = array(
@@ -650,12 +650,12 @@ class User_Admin extends CP_Controller {
 	}
 	
 	/**
-	 * User_Admin::verify_user()
+	 * User_Admin::_verify_user()
 	 * 
 	 * @param integer $id
 	 * @return
 	 */
-	public function verify_user($id = 0)
+	private function _verify_user($id = 0)
 	{
         if(!$this->cp_auth->is_privileged(USER_PRIV_EDIT)) redirect('admin/401', 'refresh');
         
@@ -682,12 +682,12 @@ class User_Admin extends CP_Controller {
 	}
 	
 	/**
-	 * User_Admin::verify_priv()
+	 * User_Admin::_verify_priv()
 	 * 
 	 * @param integer $id
 	 * @return
 	 */
-	public function verify_priv($id = 0)
+	private function _verify_priv($id = 0)
 	{
         if(!$this->cp_auth->is_privileged(PRIV_PRIV_EDIT)) redirect('admin/401', 'refresh');
         
@@ -709,12 +709,12 @@ class User_Admin extends CP_Controller {
 	}
 	
 	/**
-	 * User_Admin::verify_group()
+	 * User_Admin::_verify_group()
 	 * 
 	 * @param integer $id
 	 * @return
 	 */
-	public function verify_group($id = 0)
+	private function _verify_group($id = 0)
 	{
         if(!$this->cp_auth->is_privileged(GROUP_PRIV_EDIT)) redirect('admin/401', 'refresh');
         

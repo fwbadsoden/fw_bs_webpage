@@ -86,5 +86,6 @@ class Terminimport extends CP_Controller {
 		}
      }
 }
+
 /* End of file Terminimport.php */
 /* Location: ./application/controllers/terminimport/Terminimport.php */

@@ -70,7 +70,7 @@ class Fahrzeug_Admin extends CP_Controller {
         if(!$this->cp_auth->is_privileged(FAHRZEUG_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
-			if($verify = $this->verify())
+			if($verify = $this->_verify())
 			{
 				$this->admin->insert_log(str_replace('%FAHRZEUG%', $this->input->post('fahrzeugName'), lang('log_admin_createFahrzeug')));
 				$this->fahrzeug->create_fahrzeug();
@@ -107,7 +107,7 @@ class Fahrzeug_Admin extends CP_Controller {
         if(!$this->cp_auth->is_privileged(FAHRZEUG_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
-			if($verify = $this->verify())
+			if($verify = $this->_verify())
 			{
 				$this->admin->insert_log(str_replace('%FAHRZEUG%', $this->input->post('fahrzeugName'), lang('log_admin_editFahrzeug')));
 				$this->fahrzeug->update_fahrzeug($id);
@@ -152,11 +152,11 @@ class Fahrzeug_Admin extends CP_Controller {
 	}
 	
 	/**
-	 * Fahrzeug_Admin::verify()
+	 * Fahrzeug_Admin::_verify()
 	 * 
 	 * @return
 	 */
-	private function verify()
+	private function _verify()
 	{		
 		$this->load->library('form_validation');
 		
@@ -249,9 +249,9 @@ class Fahrzeug_Admin extends CP_Controller {
 			else if($this->input->post('img_manager') == 'img_edit')
 			{
 				if($this->input->post('image_submit') == 'img_save')
-					$this->update_image_details();
+					$this->_update_image_details();
 				else if($this->input->post('image_submit') == 'img_delete')
-					$this->image_delete();
+					$this->_image_delete();
 			}
             
 			// Rekursion, um die Liste wieder anzuzeigen
@@ -279,21 +279,21 @@ class Fahrzeug_Admin extends CP_Controller {
 	}
 	
 	/**
-	 * Fahrzeug_Admin::image_delete()
+	 * Fahrzeug_Admin::_image_delete()
 	 * 
 	 * @return
 	 */
-	private function image_delete()
+	private function _image_delete()
 	{
 		$this->fahrzeug->delete_image($this->input->post('img_id'));
 	}
 	
 	/**
-	 * Fahrzeug_Admin::update_image_details()
+	 * Fahrzeug_Admin::_update_image_details()
 	 * 
 	 * @return
 	 */
-	private function update_image_details()
+	private function _update_image_details()
 	{
 		$this->fahrzeug->update_image($this->input->post('img_id'), $this->input->post('img_alt'), $this->input->post('img_small_pic'));
 	}
@@ -326,5 +326,6 @@ class Fahrzeug_Admin extends CP_Controller {
 		return ( ! preg_match("1\/[1-8]{1}", $str)) ? FALSE : TRUE;
 	}
 }
+
 /* End of file fahrzeug_admin.php */
 /* Location: ./application/controllers/fahrzeug/fahrzeug_admin.php */

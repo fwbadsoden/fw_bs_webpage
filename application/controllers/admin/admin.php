@@ -41,7 +41,7 @@ class Admin extends CP_Controller {
 	 **/
 	public function index()
 	{				
-		if($this->cp_auth->is_logged_in_admin()) $this->dashboard();
+		if($this->cp_auth->is_logged_in_admin()) $this->_dashboard();
 		else $this->login();
 	}
 	
@@ -184,12 +184,12 @@ class Admin extends CP_Controller {
 	}
 	
 	/**
-	 * Admin::dashboard()
+	 * Admin::_dashboard()
 	 * Zeigt das Admindashboard an mit dem Admin log, den Quicklinks und der Admin-Nachricht
 	 *
 	 * @return
 	 */
-	private function dashboard()
+	private function _dashboard()
 	{
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
         

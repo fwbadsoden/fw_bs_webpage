@@ -26,10 +26,10 @@ class Maps extends CP_Controller {
         $this->lat_lng_2 = '8.502216';
         $this->zoom      = '14';
         
-        $this->set_config();
+        $this->_set_config();
 	}
     
-    private function set_config()
+    private function _set_config()
     {
         $this->_config = array();
         $this->_config['api_key']            = $this->api_key;

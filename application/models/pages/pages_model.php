@@ -226,7 +226,7 @@ class Pages_model extends CI_Model {
     {
         // aktuelle Anzahl der "vollen" Spalten in der Zeile und noch freie Spalten ermitteln
         $columns = $this->get_row_columns($id);
-        $ids = $this->get_superIDs_from_rowID($id);
+        $ids = $this->_get_superIDs_from_rowID($id);
         
         $this->db->order_by('page_box.column_count', 'desc');
         $this->db->join('page_box_allowed_templates_mapping batm', 'batm.boxID = page_box.boxID', 'inner');
@@ -253,7 +253,7 @@ class Pages_model extends CI_Model {
         return $boxes;
     }
     
-    private function get_superIDs_from_rowID($rowID)
+    private function _get_superIDs_from_rowID($rowID)
     {
         $this->db->join('page', 'page.pageID = page_row.pageID');
         $query = $this->db->get_where('page_row', array('rowID' => $rowID));
@@ -314,7 +314,7 @@ class Pages_model extends CI_Model {
             $fullColumns += $row->column_count;
         }
         
-        $ids = $this->get_superIDs_from_rowID($rowID);
+        $ids = $this->_get_superIDs_from_rowID($rowID);
         
         $query = $this->db->get_where('page', array('templateID' => $ids['templateID']));
         $row   = $query->row();
@@ -529,13 +529,13 @@ class Pages_model extends CI_Model {
         {
             foreach($query->result() as $row)
             {
-                $this->delete_box_content($rowContentID);
+                $this->_delete_box_content($rowContentID);
             }
         }   
         $this->db->delete('page_row_content', array('rowContentID' => $rowContentID));         
     }
     
-    private function delete_box_content($rowContentID)
+    private function _delete_box_content($rowContentID)
     {
         $this->db->delete('page_box_content', array('rowContentID' => $rowContentID)); 
     }

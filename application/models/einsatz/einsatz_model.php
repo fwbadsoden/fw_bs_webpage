@@ -30,7 +30,8 @@ class Einsatz_Model extends CI_Model {
 	 *
 	 * @access public
 	 */
-	public function __construct() {
+	public function __construct() 
+    {
 		parent::__construct();		
 		$this->load->helper('html');
 	}	
@@ -389,12 +390,12 @@ class Einsatz_Model extends CI_Model {
 		);
 		$this->db->insert('einsatz_content', $einsatzContent);
 		
-		array_walk($this->input->post(), array($this, 'callback_einsatz_find_mappings'));
+		array_walk($this->input->post(), array($this, '_callback_einsatz_find_mappings'));
 		foreach($this->arr_fahrzeuge_db as $f)
 		{
 			$this->db->insert('einsatz_fahrzeug_mapping', array('einsatzID' => $einsatzID, 'fahrzeugID' => $f));	
 		}		
-		$this->recalc_einsatznr(substr($einsatz['datum_beginn'],0,4));
+		$this->_recalc_einsatznr(substr($einsatz['datum_beginn'],0,4));
 		
 		$this->db->trans_complete();
 		// ++++ TRANSAKTION ENDE ++++ //
@@ -439,12 +440,12 @@ class Einsatz_Model extends CI_Model {
 		$this->db->where('einsatzID', $id);
 		$this->db->delete('einsatz_fahrzeug_mapping', array('einsatzID' => $id));
 		
-		array_walk($this->input->post(), array($this, 'callback_einsatz_find_mappings'));
+		array_walk($this->input->post(), array($this, '_callback_einsatz_find_mappings'));
 		foreach($this->arr_fahrzeuge_db as $f)
 		{
 			$this->db->insert('einsatz_fahrzeug_mapping', array('einsatzID' => $id, 'fahrzeugID' => $f));	
 		}
-		$this->recalc_einsatznr(substr($einsatz['datum_beginn'],0,4));
+		$this->_recalc_einsatznr(substr($einsatz['datum_beginn'],0,4));
 		
 		$this->db->trans_complete();
 		// ++++ TRANSAKTION ENDE ++++ //
@@ -459,7 +460,7 @@ class Einsatz_Model extends CI_Model {
 		$tables = array('einsatz', 'einsatz_content', 'einsatz_fahrzeug_mapping');
 		$this->db->where('einsatzID', $id);
 		$this->db->delete($tables);
-		$return = $this->recalc_einsatznr(substr($row->datum_beginn,0,4));
+		$return = $this->_recalc_einsatznr(substr($row->datum_beginn,0,4));
 	}
 	
 	public function insert_image($id, $desc, $file, $thumb, $type, $photographer) 
@@ -516,7 +517,7 @@ class Einsatz_Model extends CI_Model {
 		return $templates;
 	}
 	
-	private function callback_einsatz_find_mappings($value, $key)
+	private function _callback_einsatz_find_mappings($value, $key)
 	{ 	
 		$check = explode('_', $key);
 		if($check[0] == 'f') // Fahrzeug
@@ -530,7 +531,7 @@ class Einsatz_Model extends CI_Model {
 		}
 	}
 	
-	private function recalc_einsatznr($year)
+	private function _recalc_einsatznr($year)
 	{
 		$this->db->order_by('datum_beginn', 'asc');
         $this->db->order_by('uhrzeit_beginn','asc');
@@ -570,7 +571,7 @@ class Einsatz_Model extends CI_Model {
     
     public function recalc_maintain($year)
     {
-        $this->recalc_einsatznr($year);
+        $this->_recalc_einsatznr($year);
     }
 	
 	public function switch_online_state($einsatzID, $online)

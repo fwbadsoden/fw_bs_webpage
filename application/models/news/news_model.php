@@ -22,7 +22,8 @@ class News_model extends CI_Model {
 	 *
 	 * @access public
 	 */
-	public function __construct() {
+	public function __construct() 
+    {
 		parent::__construct();
 		$this->load->library('CP_auth');
 		$this->load->helper('html');

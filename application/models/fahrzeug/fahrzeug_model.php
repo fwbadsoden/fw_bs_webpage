@@ -97,7 +97,7 @@ class Fahrzeug_Model extends CI_Model {
 			else
 				$arr_fahrzeug[$i]['fahrzeugRufname'] = 'n/a';
 			$arr_fahrzeug[$i]['online'] 		= $row->online;
-			$arr_fahrzeug[$i]['delete'] 		= $this->is_deletable($row->fahrzeugID);
+			$arr_fahrzeug[$i]['delete'] 		= $this->_is_deletable($row->fahrzeugID);
 			$arr_fahrzeug[$i]['row_color']		= $this->color = cp_get_color($this->color);
 			$i++;
 		}
@@ -280,9 +280,9 @@ class Fahrzeug_Model extends CI_Model {
 	
 	public function delete_fahrzeug($id)
 	{	
-		if($this->is_deletable($id))
+		if($this->_is_deletable($id))
 		{
-			$this->delete_images($id);
+			$this->_delete_images($id);
 		
 			$tables = array('fahrzeug', 'fahrzeug_content');
 			$this->db->where('fahrzeugID', $id);
@@ -315,7 +315,7 @@ class Fahrzeug_Model extends CI_Model {
         if($row->small_pic == 1) $this->db->update('fahrzeug_img', array('small_pic' => 1), array('fahrzeugID' => $row->fahrzeugID), 1);
 	}
 	
-	private function delete_images($id)
+	private function _delete_images($id)
 	{
 		$query = $this->db->get_where('fahrzeug_img', array('fahrzeugID' => $id));
 		
@@ -328,7 +328,7 @@ class Fahrzeug_Model extends CI_Model {
 		}
 	}
 	
-	private function is_deletable($fahrzeugID)
+	private function _is_deletable($fahrzeugID)
 	{
 		$query = $this->db->get_where('einsatz_fahrzeug_mapping', array('fahrzeugID' => $fahrzeugID));
 		if($query->num_rows() == 0) return 1; else return 0;

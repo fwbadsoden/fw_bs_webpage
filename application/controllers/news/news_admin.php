@@ -199,7 +199,7 @@ class News_Admin extends CP_Controller {
         if(!$this->cp_auth->is_privileged(NEWS_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
-			if($verify = $this->verify_kategorie())
+			if($verify = $this->_verify_kategorie())
 			{
 				$this->admin->insert_log(str_replace('%NEWSCAT%', $this->input->post('title'), lang('log_admin_createNewsKategorie')));
 				$this->news->create_kategorie();
@@ -229,7 +229,7 @@ class News_Admin extends CP_Controller {
         if(!$this->cp_auth->is_privileged(NEWS_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
-			if($verify = $this->verify_kategorie())
+			if($verify = $this->_verify_kategorie())
 			{
 				$this->admin->insert_log(str_replace('%NEWSCAT%', $this->input->post('title'), lang('log_admin_editNewsKategorie')));
 				$this->news->update_kategorie($id);
@@ -255,7 +255,7 @@ class News_Admin extends CP_Controller {
 		else redirect($this->session->userdata('kategorieliste_redirect'), 'refresh');        
     }	
     
-    private function verify_kategorie()
+    private function _verify_kategorie()
 	{		
 		$this->load->library('form_validation');
 		
@@ -303,5 +303,6 @@ class News_Admin extends CP_Controller {
 		redirect($this->session->userdata('newsliste_redirect'), 'refresh');
 	}
 }
+
 /* End of file news_admin.php */
 /* Location: ./application/controllers/news/news_admin.php */

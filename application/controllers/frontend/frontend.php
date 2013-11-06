@@ -71,7 +71,7 @@ class Frontend extends CP_Controller {
      */
     public function send_email()
     {
-        $result = $this->validate_form();
+        $result = $this->_validate_form();
         
         if($result == true)
         {
@@ -95,12 +95,12 @@ class Frontend extends CP_Controller {
     }
     
     /**
-     * Frontend::validate_form()
+     * Frontend::_validate_form()
      * Validiert die Emailadresse und das Captcha
      * 
      * @return
      */
-    private function validate_form()
+    private function _validate_form()
     {
         $this->load->library('form_validation');
         $this->load->helper('captcha');

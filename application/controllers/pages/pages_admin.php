@@ -68,7 +68,7 @@ class Pages_Admin extends CP_Controller {
         if(!$this->cp_auth->is_privileged(PAGES_PRIV_EDIT)) redirect('admin/401', 'refresh');
        	if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
-			if($verify= $this->verify_create())
+			if($verify= $this->_verify_create())
 			{
 				$this->pageID = $this->pages->create_page();
                 redirect(site_url('admin/content/page/edit/'.$this->pageID));
@@ -110,7 +110,7 @@ class Pages_Admin extends CP_Controller {
         
         if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
-			if($verify= $this->verify_edit())
+			if($verify= $this->_verify_edit())
 			{
 				$this->pages->update_page($this->pageID);
 			}
@@ -382,11 +382,11 @@ class Pages_Admin extends CP_Controller {
     }
 	
 	/**
-	 * Pages_Admin::verify_create()
+	 * Pages_Admin::_verify_create()
 	 * 
 	 * @return
 	 */
-	private function verify_create()
+	private function _verify_create()
 	{		
 		$this->load->library('form_validation');		
 		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');		
@@ -396,11 +396,11 @@ class Pages_Admin extends CP_Controller {
 	}
     
     /**
-     * Pages_Admin::verify_edit()
+     * Pages_Admin::_verify_edit()
      * 
      * @return
      */
-    private function verify_edit()
+    private function _verify_edit()
     {
         $this->load->library('form_validation');		
 		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');		

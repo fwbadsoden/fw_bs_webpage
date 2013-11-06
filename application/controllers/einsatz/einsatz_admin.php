@@ -76,7 +76,7 @@ class Einsatz_Admin extends CP_Controller {
         
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
-			if($verify= $this->verify())
+			if($verify= $this->_verify())
 			{
 				$this->admin->insert_log(str_replace('%EINSATZ%', $this->input->post('einsatzname'), lang('log_admin_createEinsatz')));
 				$this->einsatz->create_einsatz();
@@ -118,7 +118,7 @@ class Einsatz_Admin extends CP_Controller {
         
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{				
-			if($verify = $this->verify())
+			if($verify = $this->_verify())
 			{
 				$this->admin->insert_log(str_replace('%EINSATZ%', $this->input->post('einsatzname'), lang('log_admin_editEinsatz')));
 				$this->einsatz->update_einsatz($id);
@@ -191,11 +191,11 @@ class Einsatz_Admin extends CP_Controller {
 	}
 	
 	/**
-	 * Einsatz_Admin::verify()
+	 * Einsatz_Admin::_verify()
 	 * 
 	 * @return
 	 */
-	private function verify()
+	private function _verify()
 	{		
 		$this->load->library('form_validation');
 		
@@ -281,9 +281,9 @@ class Einsatz_Admin extends CP_Controller {
 			else if($this->input->post('img_manager') == 'img_edit')
 			{
 				if($this->input->post('image_submit') == 'img_save')
-					$this->update_image_details();
+					$this->_update_image_details();
 				else if($this->input->post('image_submit') == 'img_delete')
-					$this->image_delete();
+					$this->_image_delete();
 			}
 				
 			// Rekursion, um die Liste wieder anzuzeigen
@@ -311,11 +311,11 @@ class Einsatz_Admin extends CP_Controller {
 	}
 	
 	/**
-	 * Einsatz_Admin::image_delete()
+	 * Einsatz_Admin::_image_delete()
 	 * 
 	 * @return
 	 */
-	private function image_delete()
+	private function _image_delete()
 	{
 		$this->load->helper('file');
 
@@ -323,11 +323,11 @@ class Einsatz_Admin extends CP_Controller {
 	}
 	
 	/**
-	 * Einsatz_Admin::update_image_details()
+	 * Einsatz_Admin::_update_image_details()
 	 * 
 	 * @return
 	 */
-	private function update_image_details()
+	private function _update_image_details()
 	{
 		$this->einsatz->update_image($this->input->post('img_id'), $this->input->post('img_alt'), $this->input->post('photographer'));
 	}
