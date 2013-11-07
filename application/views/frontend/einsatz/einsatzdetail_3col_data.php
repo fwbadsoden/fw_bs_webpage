@@ -1,4 +1,4 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); 
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
     $einsatzkraefte = explode(',', strip_tags($einsatz['einsatzkraefteFreitext'])); 
     $slide_count = 0;
 ?>
@@ -67,7 +67,7 @@
                 </ul>
             </div>
 <? endif; ?>            
-<? if(count($einsatzkraefte) > 0) : ?>           
+<? if($einsatz['einsatzkraefteFreitext'] != '') : ?>           
             <div class="SBListe">
                 <h1>Alarmierte Einsatzkräfte</h1>
                 <ul>
@@ -76,6 +76,13 @@
 <? endforeach; ?>
                </ul>
            	</div>    
+<? else:  ?>
+            <div class="SBListe">
+                <h1>Alarmierte Einsatzkräfte</h1>
+                <ul>          
+                    <li>keine weiteren Kräfte</li>
+               </ul>
+           	</div> 
 <? endif; ?>                       
         </div>
         <hr class="clear" />
