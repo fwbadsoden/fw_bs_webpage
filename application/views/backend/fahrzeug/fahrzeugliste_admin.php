@@ -69,6 +69,7 @@ switch(ID) {
 	<tr>
 		<th class="headline_funkrufname">Funkrufname</th>
 		<th class="headline_titel">Fahrzeugname</th>
+		<th colspan="2" class="headline_pos">Position</th>
 		<th colspan="4" class="headline_edit">Edit</th>
 	</tr>
 </thead>
@@ -77,6 +78,24 @@ switch(ID) {
 <tr bgcolor="<?=$item['row_color']?>">
 	<td><?=$item['fahrzeugRufnamePrefix']." ".$item['fahrzeugRufname'];?></td>
 	<td><?=$item['fahrzeugName']?></td>
+<?  if($item['orderID'] == 1) :    ?>
+		<td class="button"><span id='jquery-tools-tooltip'><a class="button_mini"></a></span></td>
+<?  else :                          
+        if($privileged['edit']) :   ?>
+		<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/fahrzeug/order/up/'.$item['fahrzeugID'])?>" class="button_mini" title="Men&uuml;punkt nach oben schieben"><span class='button_up_small'></span></a></span></td>
+<?      else :                      ?>
+        <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Fahrzeugposition zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
+<?      endif;                      ?>        
+<?  endif;                          ?>
+<?  if($item['orderID'] == count($fahrzeug)) : ?>
+		<td class="button"><span id='jquery-tools-tooltip'><a class="button_mini"></a></span></td>
+<?  else :                          
+        if($privileged['edit']) :   ?>		
+		<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/fahrzeug/order/down/'.$item['fahrzeugID'])?>" class="button_mini" title="Men&uuml;punkt nach unten schieben"><span class='button_down_small'></span></a></span></td>
+<?      else :                      ?>
+        <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Fahrzeugposition zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
+<?      endif;                      ?> 
+<?  endif;                          ?>
 <?	if($item['online']==1) :        	
         if($privileged['edit']) :   ?>
 	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/fahrzeug/status/'.$item['fahrzeugID'].'/1')?>" class="button_mini" title="Fahrzeug offline schalten"><span class='button_online_small'></span></a></span></td>

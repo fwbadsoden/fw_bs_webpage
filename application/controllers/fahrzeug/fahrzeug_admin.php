@@ -299,6 +299,20 @@ class Fahrzeug_Admin extends CP_Controller {
 	}
 	
 	/**
+	 * Fahrzeug_Admin::change_order()
+	 * 
+	 * @param mixed $dir
+	 * @param mixed $id
+	 * @return
+	 */
+	public function change_order($dir, $id)
+	{
+        if(!$this->cp_auth->is_privileged(FAHRZEUG_PRIV_EDIT)) redirect('admin/401', 'refresh');
+		$this->fahrzeug->change_order($dir, $id);		
+		redirect($this->session->userdata('fahrzeugliste_redirect'), 'refresh');	
+	}
+	
+	/**
 	 * Fahrzeug_Admin::switch_online_state()
 	 * 
 	 * @param integer $id

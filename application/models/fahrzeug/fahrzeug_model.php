@@ -77,8 +77,8 @@ class Fahrzeug_Model extends CI_Model {
 	
 	public function get_fahrzeug_list($online = 'all')
 	{		
-		$this->db->order_by('online', 'desc');
-		$this->db->order_by('rufname', 'asc');
+	//	$this->db->order_by('online', 'desc');
+		$this->db->order_by('orderID', 'asc');
         if($online != 'all') $this->db->where('online', $online);
 		$query = $this->db->get('fahrzeug');
 		$i = 0;
@@ -98,6 +98,7 @@ class Fahrzeug_Model extends CI_Model {
 				$arr_fahrzeug[$i]['fahrzeugRufname'] = 'n/a';
 			$arr_fahrzeug[$i]['online'] 		= $row->online;
 			$arr_fahrzeug[$i]['delete'] 		= $this->_is_deletable($row->fahrzeugID);
+            $arr_fahrzeug[$i]['orderID']        = $row->orderID;
 			$arr_fahrzeug[$i]['row_color']		= $this->color = cp_get_color($this->color);
 			$i++;
 		}
@@ -332,6 +333,25 @@ class Fahrzeug_Model extends CI_Model {
 	{
 		$query = $this->db->get_where('einsatz_fahrzeug_mapping', array('fahrzeugID' => $fahrzeugID));
 		if($query->num_rows() == 0) return 1; else return 0;
+	}
+	
+	public function change_order($dir, $id)
+	{
+		$query = $this->db->get_where('fahrzeug', array('fahrzeugID' => $id));
+		$row = $query->row();	
+		
+		$orderID  = $row->orderID;
+		
+		if($dir == 'up') $newOrderID = $orderID-1;
+		else $newOrderID = $orderID+1;
+		
+		$query2 = $this->db->get_where('fahrzeug', array('orderID'  => $newOrderID));	
+		$row2 = $query2->row();
+		
+		$this->db->trans_start();
+		$this->db->update('fahrzeug', array('orderID' => $orderID), 'fahrzeugID = '.$row2->fahrzeugID);
+		$this->db->update('fahrzeug', array('orderID' => $newOrderID), 'fahrzeugID = '.$id);
+		$this->db->trans_complete();		
 	}
 	
 	public function switch_online_state($id, $online)
