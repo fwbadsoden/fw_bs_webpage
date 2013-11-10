@@ -156,14 +156,6 @@ $(function() {
 				}
 			);
 	});
-    
-    var availableTags = new Array();
-<? foreach($weitere_kraefte as $key => $wert): 
-      echo "availableTags['$key'] = '$wert';\n";
-   endforeach; ?>
-    $( "#weitereeinsatzkraefte" ).autocomplete({
-      source: availableTags
-    });
 });
 
         

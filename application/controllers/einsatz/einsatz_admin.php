@@ -102,6 +102,7 @@ class Einsatz_Admin extends CP_Controller {
 			$this->load->view('backend/templates/admin/tiny_mce_inc');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);
+            $this->load->view('backend/einsatz/autosuggest', $einsatz);
 			$this->load->view('backend/einsatz/createEinsatz_admin', $einsatz);
 			$this->load->view('backend/templates/admin/footer');
 		}
@@ -145,6 +146,7 @@ class Einsatz_Admin extends CP_Controller {
 			$this->load->view('backend/templates/admin/tiny_mce_inc');
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);
+            $this->load->view('backend/einsatz/autosuggest', $einsatz);
 			$this->load->view('backend/einsatz/editEinsatz_admin', $einsatz); 
 			$this->load->view('backend/templates/admin/footer');
 		}

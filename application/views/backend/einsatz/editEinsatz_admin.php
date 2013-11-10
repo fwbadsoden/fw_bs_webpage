@@ -158,18 +158,6 @@
 
 ?>
 
-<script type="text/javascript">
-$(function() {     
-    var availableTags = new Array();
-<? foreach($weitere_kraefte as $key => $wert): 
-      echo "availableTags['$key'] = '$wert';\n";
-   endforeach; ?>
-    $( "#weitereeinsatzkraefte" ).autocomplete({
-      source: availableTags
-    });
-});          
-</script>
-
 <div id='content'>
 <div id='einsatz_create'>
 <?=form_open($this->session->userdata('einsatzedit_submit').'/save', $form);?>
