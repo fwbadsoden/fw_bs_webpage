@@ -7,7 +7,9 @@
                 <div class="wrapper">    
                    <!-- <div class="icon"><?=$weather['weather_img']?></div>-->
                     <div class="text">
+<? if($weather['weather_cond']['temp'] != '_') : ?>                    
                         <p class="grad"><?=$weather['weather_cond']['temp']?>&deg;<span class="celsius">Celsius</span></p>
+<? endif; ?>                        
                         <p class="status"><?=$weather['weather_cond']['text']?></p>
                     </div>
                 </div>

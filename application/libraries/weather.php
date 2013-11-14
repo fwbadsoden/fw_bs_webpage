@@ -99,7 +99,7 @@ class Weather {
         $this->condition_code_mapping['46']['img']                = '';
         $this->condition_code_mapping['47']['description_DE']     = 'vereinzelt Gewitterregen';
         $this->condition_code_mapping['47']['img']                = 'weather_rainy.png';
-        $this->condition_code_mapping['3200']['description_DE']   = 'nicht verf&uuml;gbar';
+        $this->condition_code_mapping['3200']['description_DE']   = 'Wetterdienst nicht verf&uuml;gbar';
         $this->condition_code_mapping['3200']['img']              = '';
     }
  
@@ -122,35 +122,44 @@ class Weather {
         */
         $weather_contents = $weather->channel->item->description;
         preg_match_all('/<img[^>]+>/i',$weather_contents, $img);
-        $image_yahoo = $img[0][0];
-        str_replace('<img src="', '', $image_yahoo);
-        str_replace('"/>', '', $image_yahoo);    
-     
-        /* Get clean parts */
-        $weather_unit                       = $weather->channel->xpath('yweather:units');
-        $weather_cond                       = $weather->channel->item->xpath('yweather:condition');
-        $weather_wind                       = $weather->channel->xpath('yweather:wind');
-        
-        $weather_unit_atts_object           = $weather_unit[0]->attributes();
-        $weather_unit_atts_array            = (array) $weather_unit_atts_object;
-        $weather_unit_atts_array            = $weather_unit_atts_array['@attributes'];
-        $return['weather_unit']             = $weather_unit_atts_array;
-        
-        $weather_wind_atts_object           = $weather_wind[0]->attributes();
-        $weather_wind_atts_array            = (array) $weather_wind_atts_object;
-        $weather_wind_atts_array            = $weather_wind_atts_array['@attributes'];
-        $return['weather_wind']             = $weather_wind_atts_array;
-        
-        $weather_cond_atts_object           = $weather_cond[0]->attributes();
-        $weather_cond_atts_array            = (array) $weather_cond_atts_object;
-        $weather_cond_atts_array            = $weather_cond_atts_array['@attributes'];
-        $weather_cond_atts_array['text']    = $this->condition_code_mapping[$weather_cond_atts_array['code']]['description_DE'];
-        $return['weather_cond']             = $weather_cond_atts_array;
-        if($this->condition_code_mapping[$weather_cond_atts_array['code']]['img'] == '')
-            $return['weather_img']          = $image_yahoo;
+        if(isset($img[0][0]))
+        {
+            $image_yahoo = $img[0][0];
+            str_replace('<img src="', '', $image_yahoo);
+            str_replace('"/>', '', $image_yahoo);    
+         
+            /* Get clean parts */
+            $weather_unit                       = $weather->channel->xpath('yweather:units');
+            $weather_cond                       = $weather->channel->item->xpath('yweather:condition');
+            $weather_wind                       = $weather->channel->xpath('yweather:wind');
+            
+    //        $weather_unit_atts_object           = $weather_unit[0]->attributes();
+    //        $weather_unit_atts_array            = (array) $weather_unit_atts_object;
+    //        $weather_unit_atts_array            = $weather_unit_atts_array['@attributes'];
+    //        $return['weather_unit']             = $weather_unit_atts_array;
+    //        
+    //        $weather_wind_atts_object           = $weather_wind[0]->attributes();
+    //        $weather_wind_atts_array            = (array) $weather_wind_atts_object;
+    //        $weather_wind_atts_array            = $weather_wind_atts_array['@attributes'];
+    //        $return['weather_wind']             = $weather_wind_atts_array;
+            
+            $weather_cond_atts_object           = $weather_cond[0]->attributes();
+            $weather_cond_atts_array            = (array) $weather_cond_atts_object;
+            $weather_cond_atts_array            = $weather_cond_atts_array['@attributes'];
+            $weather_cond_atts_array['text']    = $this->condition_code_mapping[$weather_cond_atts_array['code']]['description_DE'];
+            $return['weather_cond']             = $weather_cond_atts_array;
+            if($this->condition_code_mapping[$weather_cond_atts_array['code']]['img'] == '')
+                $return['weather_img']          = $image_yahoo;
+            else
+                $return['weather_img']          = '<img id="'.$weather_cond_atts_array['code'].'" src="'.base_url(WEATHER_IMAGE_PATH.$this->condition_code_mapping[$weather_cond_atts_array['code']]['img']).'" title="'.$weather_cond_atts_array['text'].'">';                 
+        }
         else
-            $return['weather_img']          = '<img id="'.$weather_cond_atts_array['code'].'" src="'.base_url(WEATHER_IMAGE_PATH.$this->condition_code_mapping[$weather_cond_atts_array['code']]['img']).'" title="'.$weather_cond_atts_array['text'].'">';                 
-
+        {
+            $weather_cond_atts_array['text']   = $this->condition_code_mapping['3200']['description_DE'];
+            $weather_cond_atts_array['temp']    = '_';
+            $return['weather_cond']             = $weather_cond_atts_array;
+            $return['weather_img']              = '';
+        }
         return $return;
     }
     
