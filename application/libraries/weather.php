@@ -10,7 +10,7 @@ class Weather {
   */
  
     /* Set up some location WOEIDs */
-    private $MTK = 12835281; 
+    private $MTK = '12835281'; 
     private $condition_code_mapping = array();
  
     public function __construct()
@@ -106,7 +106,7 @@ class Weather {
     public function get_weather() {
         /* Use cURL to query the API for some XML */
         $location = $this->MTK;
-        
+      //  echo 'http://weather.yahooapis.com/forecastrss?w='.$location.'&u=c';
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, 'http://weather.yahooapis.com/forecastrss?w='.$location.'&u=c');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
