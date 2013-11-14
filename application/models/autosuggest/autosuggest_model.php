@@ -27,14 +27,13 @@ class Autosuggest_model extends CI_Model {
         $this->db->where('keyword', $key);
         $query = $this->db->get('autosuggest_values');
         
-        $values = array();
-        $i = 0;
+        $values = '';
         
         foreach($query->result() as $row)
         {
-            $values[$i] = $row->value;
-            $i++;
+            $values.= $row->value.',';
         }
+        rtrim($values, ",");        
         
         return $values;
     }

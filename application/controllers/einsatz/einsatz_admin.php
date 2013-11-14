@@ -96,13 +96,12 @@ class Einsatz_Admin extends CP_Controller {
 			$einsatz['types'] 		    = $this->einsatz->get_einsatz_type_list();
 			$einsatz['templates']	    = $this->einsatz->get_einsatz_templates();
             $einsatz['cues']            = $this->einsatz->get_einsatz_cue_list();
-            $einsatz['weitere_kraefte'] = $this->autosuggest->get_values('einsatz_weitere_kraefte');
+            $tinymce['weitere_kraefte'] = $this->autosuggest->get_values('einsatz_weitere_kraefte');
 		
 			$this->load->view('backend/templates/admin/header', $header);
-			$this->load->view('backend/templates/admin/tiny_mce_inc');
+			$this->load->view('backend/templates/admin/tiny_mce_inc', $tinymce);
 			$this->load->view('backend/templates/admin/menue', $menue);	
 			$this->load->view('backend/templates/admin/submenue', $menue);
-            $this->load->view('backend/einsatz/autosuggest', $einsatz);
 			$this->load->view('backend/einsatz/createEinsatz_admin', $einsatz);
 			$this->load->view('backend/templates/admin/footer');
 		}

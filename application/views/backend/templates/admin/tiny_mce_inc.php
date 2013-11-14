@@ -9,11 +9,12 @@ $tinymce['default'] = '
     width: "500",
     height: "400",
     doctype: "",
-    plugins : [ "advlist autolink autoresize charmap code contextmenu fullscreen hr link lists nonbreaking pagebreak paste preview spellchecker table visualblocks visualchars wordcount" ],
+    plugins : [ "advlist autolink autoresize autocomplete charmap code contextmenu fullscreen hr link lists nonbreaking pagebreak paste preview spellchecker table visualblocks visualchars wordcount" ],
     menu: "newdocument undo redo visualaid cut copy paste selectall bold italic underline strikethrough subscript superscript removeformat formats link charmap print preview hr pagebreak spellchecker searchreplace visualblocks visualchars code fullscreen insertdatetime nonbreaking inserttable tableprops deletetable cell row column",
     pagebreak_separator: "<br>",
     save_onsavecallback : "ajaxSave",
-    toolbar: "undo redo cut copy paste | link nonbreaking charmap | preview fullscreen | code | spellchecker | bold italic underline",     
+    toolbar: "undo redo cut copy paste | link nonbreaking charmap | preview fullscreen | code | spellchecker | bold italic underline",   
+    autocomplete_options: "'.$weitere_kraefte.'"  
 ';
 
 $tinymce['pages'] = '
@@ -24,11 +25,12 @@ $tinymce['pages'] = '
     width: "500",
     height: "400",
     doctype: "",
-    plugins : [ "advlist autolink autoresize charmap code contextmenu fullscreen hr link lists nonbreaking pagebreak paste preview spellchecker table visualblocks visualchars wordcount" ],
+    plugins : [ "advlist autolink autoresize autocomplete charmap code contextmenu fullscreen hr link lists nonbreaking pagebreak paste preview spellchecker table visualblocks visualchars wordcount" ],
     menu: "newdocument undo redo visualaid cut copy paste selectall bold italic underline strikethrough subscript superscript removeformat formats link charmap print preview hr pagebreak spellchecker searchreplace visualblocks visualchars code fullscreen insertdatetime nonbreaking inserttable tableprops deletetable cell row column",
     pagebreak_separator: "<br>",
     save_onsavecallback : "ajaxSave",
-    toolbar: "undo redo cut copy paste | link nonbreaking hr charmap | preview fullscreen | visualblocks visualchars code | spellchecker | styleselect | bold italic underline strikethrough subscript superscript | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent",     
+    toolbar: "undo redo cut copy paste | link nonbreaking hr charmap | preview fullscreen | visualblocks visualchars code | spellchecker | styleselect | bold italic underline strikethrough subscript superscript | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent", 
+    autocomplete_options: "'.$weitere_kraefte.'"       
 ';
 
 ?>
