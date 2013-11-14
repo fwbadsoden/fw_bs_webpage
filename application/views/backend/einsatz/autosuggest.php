@@ -8,7 +8,9 @@ $(function() {
       echo "availableTags['$key'] = '$wert';\n";
    endforeach; ?>
     $( "#weitereeinsatzkraefte" ).autocomplete({
-      source: availableTags
+      source: availableTags,
+      position: { my : "left top", at: "right top" },
+      autofocus: true,
     });
 });
         

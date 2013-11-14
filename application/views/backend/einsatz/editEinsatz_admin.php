@@ -88,7 +88,7 @@
 	$einsatzKraefteW = array(
 		'name' 	=> 'weitereeinsatzkraefte',
 		'id'	=> 'weitereeinsatzkraefte',
-		'class' => 'tinymce',
+		'class' => 'input_textarea',
 		'value' => $value
 	);
 	if(!$value = set_value('anzahl')) $value = $einsatz['anzahlEinsatzkraefte'];
