@@ -794,8 +794,9 @@ class Pages extends CP_Controller {
         $statistik['einsatz_anzahl']  = $c_einsatz->get_einsatz_anzahl(date('Y'));
         
         $this->load->view('frontend/templates/sidebar_header');  
-        $this->load->view('frontend/templates/sidebar_report', $statistik);     
-        $c_termin->overview_1col(TERMIN_STARTPAGE_LIMIT);
+        $this->load->view('frontend/templates/sidebar_report', $statistik);    
+        $c_termin->overview_1col(TERMIN_STARTPAGE_LIMIT); 
+        $this->load->view('frontend/templates/sidebar_facebook');
         $this->load->view('frontend/templates/weather', $weather_data);
         $this->load->view('frontend/templates/sidebar_footer');   
     }    
