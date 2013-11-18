@@ -13,7 +13,6 @@ class Searchengine extends CP_Controller
 	{
 		parent::__construct();
         $this->search_index = APPPATH . 'cache/search_index/index';
-
         $this->load->library('zend');
         $this->zend->load('Zend/Search/Lucene');
         Zend_Search_Lucene_Analysis_Analyzer::setDefault(new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8());
@@ -21,6 +20,7 @@ class Searchengine extends CP_Controller
     
     public function build_index()
     {
+        echo "Anfang<br>";
         // Index erstellen, bisheriger Index wird gelöscht
         $index = Zend_Search_Lucene::create($this->search_index);
         
@@ -37,15 +37,38 @@ class Searchengine extends CP_Controller
  			$doc->addField(Zend_Search_Lucene_Field::Text('path', base_url('aktuelles/einsatz/'.$row->einsatzID)));
             // dieser Inhalt wird neben dem Titel indexiert
             $doc->addField(Zend_Search_Lucene_Field::UnStored('content', htmlentities($row->lage.$row->bericht.$row->weitere_kraefte.$row->ort)));
+            $doc->addField(Zend_Search_Lucene_Field::unIndexed('content_type', 'Einsatz'));
             // zum Index hinzufügen
             $index->addDocument($doc);
             
             echo 'Einsatz ' . $row->name . ' zum Index hinzugefügt.<br />';
         }
         
+        $query = $this->db->get('v_news');
+        foreach($query->result() as $row)
+        {
+            // neues Suchindex-Dokument erzeugen
+            $doc = new Zend_Search_Lucene_Document();
+            
+            // Titel für die Anzeige in der Ergebnisliste
+            $doc->addField(Zend_Search_Lucene_Field::Text('title', htmlentities($row->title)));
+            // mit diesem Pfad wird das Suchergebnis verknüpft
+ 			$doc->addField(Zend_Search_Lucene_Field::Text('path', base_url('aktuelles/news/'.$row->newsID)));
+            // dieser Inhalt wird neben dem Titel indexiert
+            $doc->addField(Zend_Search_Lucene_Field::UnStored('content', htmlentities($row->teaser.$row->text)));
+            $doc->addField(Zend_Search_Lucene_Field::unIndexed('content_type', 'News'));
+            // zum Index hinzufügen
+            $index->addDocument($doc);
+            
+            echo 'News ' . $row->title . ' zum Index hinzugefügt.<br />';
+        }
+        
         // Index optimieren
         $index->optimize();
+        
+        echo "Ende";
     }	
+    
     function result() 
     {
 		$data['results'] = array();

@@ -12,7 +12,7 @@
 <p><?php echo count($results) ?> Ergebnis(se) f&uuml;r die Suchanfrage <b><?php echo $_POST['search_query'];?></b></p>
 <ul>
 	<?php foreach($results as $result):?>
-	<li><?=anchor($result->path, html_entity_decode($result->title));?> (<?php echo round($result->score, 2) * 100;?>%)</li>
+	<li><?=anchor($result->path, html_entity_decode($result->title));?> (<?php echo round($result->score, 2) * 100;?>%) - <?=$result->content_type?></li>
 	<?php endforeach;?>
 </ul>
 	<?php else:?>
