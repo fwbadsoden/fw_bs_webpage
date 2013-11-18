@@ -8,111 +8,6 @@
 	$menue_shortlink   = $menue_arr['menue_shortlink'];
 ?>
 
-<script type="text/javascript">
-
-$(document).ready(function() {
-	
- $("#jquery-tools-tooltip a[title]").tooltip({
- 	offset: [5, 2]
- 	}).dynamic({ bottom: { direction: 'down', bounce: true } });;
- 
- $('a.button_mini').click(function(e) {
- 	 	
-var ID = $(this).attr("id");
-var targetUrl = ' ';
-
-switch(ID) {
-<? foreach($menue as $item1) { ?>	
-	case "confirm_link_<?=$item1["menueID"]?>":	targetUrl = "<?=base_url('admin/menue/delete/'.$item1['menueID'])?>"; 
-													var $dialog = $('<div></div>')
-													 .html('Wollen Sie den Men&uuml;punkt wirklich l&ouml;schen?<br>Bei Hauptpunkten werden alle Unterpunkte mitgel&ouml;scht!')
-													  .dialog({
-													   autoOpen: false,
-													   title: 'Men&uuml;punkt l&ouml;schen',
-													   width: '600px',
-													   modal: true,
-													   buttons: {
-													    "L&ouml;schen": function() {
-													             window.location.href = targetUrl;
-													    },
-													    "Zur&uuml;ck": function() {
-													     $( this ).dialog( "close" );
-													    }
-													   }
-													  });
-													$dialog.dialog('open'); return false; 
-													break;
-<? 
-	if($item1['subItems'] != 0) {
-	foreach($item1['submenue'] as $item2) { 
-?>
-	case "confirm_link_<?=$item2["menueID"]?>":	targetUrl = "<?=base_url('admin/menue/delete/'.$item2['menueID'])?>"; 
-													var $dialog = $('<div></div>')
-													 .html('Wollen Sie den Men&uuml;punkt wirklich l&ouml;schen?')
-													  .dialog({
-													   autoOpen: false,
-													   title: 'Men&uuml;punkt l&ouml;schen',
-													   width: '600px',
-													   modal: true,
-													   buttons: {
-													    "L&ouml;schen": function() {
-													             window.location.href = targetUrl;
-													    },
-													    "Zur&uuml;ck": function() {
-													     $( this ).dialog( "close" );
-													    }
-													   }
-													  });
-													$dialog.dialog('open'); return false; 
-													break;
-<? } } } ?>
-<? foreach($menue_meta as $item3) { ?>	
-    case "confirm_link_<?=$item3["menueID"]?>":	targetUrl = "<?=base_url('admin/menue/delete/'.$item3['menueID'])?>"; 
-													var $dialog = $('<div></div>')
-													 .html('Wollen Sie den Men&uuml;punkt wirklich l&ouml;schen?')
-													  .dialog({
-													   autoOpen: false,
-													   title: 'Men&uuml;punkt l&ouml;schen',
-													   width: '600px',
-													   modal: true,
-													   buttons: {
-													    "L&ouml;schen": function() {
-													             window.location.href = targetUrl;
-													    },
-													    "Zur&uuml;ck": function() {
-													     $( this ).dialog( "close" );
-													    }
-													   }
-													  });
-													$dialog.dialog('open'); return false; 
-													break;
-<? } ?>
-<? foreach($menue_shortlink as $item4) { ?>	
-    case "confirm_link_<?=$item4["menueID"]?>":	targetUrl = "<?=base_url('admin/menue/delete/'.$item4['menueID'])?>"; 
-													var $dialog = $('<div></div>')
-													 .html('Wollen Sie den Men&uuml;punkt wirklich l&ouml;schen?')
-													  .dialog({
-													   autoOpen: false,
-													   title: 'Men&uuml;punkt l&ouml;schen',
-													   width: '600px',
-													   modal: true,
-													   buttons: {
-													    "L&ouml;schen": function() {
-													             window.location.href = targetUrl;
-													    },
-													    "Zur&uuml;ck": function() {
-													     $( this ).dialog( "close" );
-													    }
-													   }
-													  });
-													$dialog.dialog('open'); return false; 
-													break;
-<? } ?>
-}
- });
-});
-</script> 
-
 <div id="content">
 <? if($privileged['edit']) :        ?>
 <p class="thirdMenue">
@@ -136,42 +31,42 @@ switch(ID) {
 <tr bgcolor="<?=$item1['row_color']?>">
 	<td class="menuepunkt"><strong><?=$item1['name']?></strong></td>
 <?  if($item1['orderID'] == 1) :    ?>
-		<td class="button"><span id='jquery-tools-tooltip'><a class="button_mini"></a></span></td>
+		<td class="button"><a class="button_mini"></a></span></td>
 <?  else :                          
         if($privileged['edit']) :   ?>
-		<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/order/up/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach oben schieben"><span class='button_up_small'></span></a></span></td>
+		<td class="button"><a href="<?=base_url('admin/menue/order/up/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach oben schieben"><span class='button_up_small'></span></a></td>
 <?      else :                      ?>
-        <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
+        <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></td>
 <?      endif;                      ?>        
 <?  endif;                          ?>
 <?  if($item1['orderID'] == $menue_arr['count']) : ?>
-		<td class="button"><span id='jquery-tools-tooltip'><a class="button_mini"></a></span></td>
+		<td class="button"><a class="button_mini"></a></span></td>
 <?  else :                          
         if($privileged['edit']) :   ?>		
-		<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/order/down/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach unten schieben"><span class='button_down_small'></span></a></span></td>
+		<td class="button"><a href="<?=base_url('admin/menue/order/down/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach unten schieben"><span class='button_down_small'></span></a></td>
 <?      else :                      ?>
-        <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
+        <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></td>
 <?      endif;                      ?> 
 <?  endif;                          ?>
 <?	if($item1['online']==1) :	    
         if($privileged['edit']) :   ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/0')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/0')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></td>
 <?      else :                      ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_online_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_online_small'></span></a></td>
 <?      endif;
   	else :                          
         if($privileged['edit']) :   ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/1')?>" class="button_mini" title="Men&uuml;punkt online schalten"><span class='button_offline_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/1')?>" class="button_mini" title="Men&uuml;punkt online schalten"><span class='button_offline_small'></span></a></td>
 <?      else :                      ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_offline_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_offline_small'></span></a></td>
 <?      endif;
 	endif;                         
     if($privileged['edit']) :       ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/edit/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt bearbeiten"><span class='button_edit_small'></span></a></span></td>
-	<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item1['menueID']?>" href="<?=base_url('admin/menue/delete/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt löschen"><span class='button_delete_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/menue/edit/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt bearbeiten"><span class='button_edit_small'></span></a></td>
+	<td class="button"><a id="confirm_link_<?=$item1['menueID']?>" href="<?=base_url('admin/menue/checkdel/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt löschen"><span class='button_delete_small'></span></a></td>
 <?  else :                          ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu löschen"><span class='button_lock_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu bearbeiten"><span class='button_lock_small'></span></a></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu löschen"><span class='button_lock_small'></span></a></td>
 <?  endif;                          ?>
 </tr> 
 <!-- Unterpunkte -->
@@ -184,42 +79,42 @@ switch(ID) {
 				<tr bgcolor="<?=$item2['row_color']?>">				
 					<td class="menuepunkt"><?=$item2['name']?></td> 
 <?          if($item2['orderID'] == 1) : ?>
-						<td class="button"><span id='jquery-tools-tooltip'><a class="button_mini"></a></span></td>
+						<td class="button"><a class="button_mini"></a></span></td>
 <?          else :                       
                 if($privileged['edit']) : ?>
-						<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/order/up/'.$item2['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach oben schieben"><span class='button_up_small'></span></a></span></td>
+						<td class="button"><a href="<?=base_url('admin/menue/order/up/'.$item2['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach oben schieben"><span class='button_up_small'></span></a></td>
 <?              else :                   ?>
-                        <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
+                        <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></td>
 <?              endif;
             endif;                       
             if($item2['orderID'] == $item1['subItems']) : ?>
-						<td class="button"><span id='jquery-tools-tooltip'><a class="button_mini"></a></span></td>
+						<td class="button"><a class="button_mini"></a></span></td>
 <?          else :                       
                 if($privileged['edit']) : ?>		
-						<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/order/down/'.$item2['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach unten schieben"><span class='button_down_small'></span></a></span></td>
+						<td class="button"><a href="<?=base_url('admin/menue/order/down/'.$item2['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach unten schieben"><span class='button_down_small'></span></a></td>
 <?              else :                   ?>                        
-                        <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
+                        <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></td>
 <?              endif;
             endif;                 
 	        if($item2['online']==1) :	
                 if($privileged['edit']) : ?>
-				<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item2['menueID'].'/0')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></span></td>
+				<td class="button"><a href="<?=base_url('admin/menue/status/'.$item2['menueID'].'/0')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></td>
 <?              else :                   ?>       
-                <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_online_small'></span></a></span></td>
+                <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_online_small'></span></a></td>
 <?              endif;         
 	        else :                       
                 if($privileged['edit']) : ?>
-				<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item2['menueID'].'/1')?>" class="button_mini" title="Men&uuml;punkt online schalten"><span class='button_offline_small'></span></a></span></td>
+				<td class="button"><a href="<?=base_url('admin/menue/status/'.$item2['menueID'].'/1')?>" class="button_mini" title="Men&uuml;punkt online schalten"><span class='button_offline_small'></span></a></td>
 <?              else :                   ?>                 
-                <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_offline_small'></span></a></span></td>
+                <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_offline_small'></span></a></td>
 <?              endif;         
 	        endif;                       
             if($privileged['edit']) :    ?>
-				<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/edit/'.$item2['menueID'])?>" class="button_mini" title="Men&uuml;punkt bearbeiten"><span class='button_edit_small'></span></a></span></td>
-				<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item2['menueID']?>" href="<?=base_url('admin/menue/delete/'.$item2['menueID'])?>" class="button_mini" title="Men&uuml;punkt löschen"><span class='button_delete_small'></span></a></span></td>
+				<td class="button"><a href="<?=base_url('admin/menue/edit/'.$item2['menueID'])?>" class="button_mini" title="Men&uuml;punkt bearbeiten"><span class='button_edit_small'></span></a></td>
+				<td class="button"><a id="confirm_link_<?=$item2['menueID']?>" href="<?=base_url('admin/menue/checkdel/'.$item2['menueID'])?>" class="button_mini" title="Men&uuml;punkt löschen"><span class='button_delete_small'></span></a></td>
 <?          else :                       ?>
-                <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
-                <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu löschen"><span class='button_lock_small'></span></a></span></td>
+                <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu bearbeiten"><span class='button_lock_small'></span></a></td>
+                <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu löschen"><span class='button_lock_small'></span></a></td>
 <?          endif;                       ?>
 				</tr>
 <? endforeach;
@@ -251,42 +146,42 @@ switch(ID) {
 <tr bgcolor="<?=$item1['row_color']?>">
 	<td class="menuepunkt"><?=$item1['name']?></td>
 	<? if($item1['orderID'] == 1) : ?>
-		<td class="button"><span id='jquery-tools-tooltip'><a class="button_mini"></a></span></td>
+		<td class="button"><a class="button_mini"></a></span></td>
 	<? else : 
             if($privileged['edit']) : ?>	
-		<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/order/up/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach oben schieben"><span class='button_up_small'></span></a></span></td>
+		<td class="button"><a href="<?=base_url('admin/menue/order/up/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach oben schieben"><span class='button_up_small'></span></a></td>
 <?          else :                    ?>
-        <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
+        <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></td>
 <?          endif;        
 	   endif; ?>
 	<? if($item1['orderID'] == $menue_arr['count_meta']) : ?>
-		<td class="button"><span id='jquery-tools-tooltip'><a class="button_mini"></a></span></td>
+		<td class="button"><a class="button_mini"></a></span></td>
 	<? else : 
             if($privileged['edit']) : ?>			
-		<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/order/down/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach unten schieben"><span class='button_down_small'></span></a></span></td>
+		<td class="button"><a href="<?=base_url('admin/menue/order/down/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach unten schieben"><span class='button_down_small'></span></a></td>
 <?          else :                    ?>        
-        <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
+        <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></td>
 <?          endif;
        endif; ?>
 <?	if($item1['online']==1) :   	
         if($privileged['edit']) : ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/1')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/1')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></td>
 <?      else :                    ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_online_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_online_small'></span></a></td>
 <?      endif;                    ?>
 <?	else :   	
         if($privileged['edit']) : ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/0')?>" class="button_mini" title="Men&uuml;punkt online schalten"><span class='button_offline_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/0')?>" class="button_mini" title="Men&uuml;punkt online schalten"><span class='button_offline_small'></span></a></td>
 <?      else :                    ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_offline_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_offline_small'></span></a></td>
 <?      endif;                    ?>
 <?	endif;                        
     if($privileged['edit']) :     ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/edit/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt bearbeiten"><span class='button_edit_small'></span></a></span></td>
-	<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item1['menueID']?>" href="<?=base_url('admin/menue/delete/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt löschen"><span class='button_delete_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/menue/edit/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt bearbeiten"><span class='button_edit_small'></span></a></td>
+	<td class="button"><a id="confirm_link_<?=$item1['menueID']?>" href="<?=base_url('admin/menue/checkdel/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt löschen"><span class='button_delete_small'></span></a></td>
 <?  else :                        ?>
-                <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
-                <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu löschen"><span class='button_lock_small'></span></a></span></td>
+                <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu bearbeiten"><span class='button_lock_small'></span></a></td>
+                <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu löschen"><span class='button_lock_small'></span></a></td>
 <?  endif;                        ?>
 </tr>
 <? endforeach; ?>
@@ -310,42 +205,42 @@ switch(ID) {
 <tr bgcolor="<?=$item1['row_color']?>">
 	<td class="menuepunkt"><?=$item1['name']?></td>
 <?  if($item1['orderID'] == 1) : ?>
-		<td class="button"><span id='jquery-tools-tooltip'><a class="button_mini"></a></span></td>
+		<td class="button"><a class="button_mini"></a></span></td>
 <?  else :                     
         if($privileged['edit']) : ?>
-		<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/order/up/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach oben schieben"><span class='button_up_small'></span></a></span></td>
+		<td class="button"><a href="<?=base_url('admin/menue/order/up/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach oben schieben"><span class='button_up_small'></span></a></td>
 <?      else :                  ?>
-        <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
+        <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></td>
 <?      endif;
     endif;                      
     if($item1['orderID'] == $menue_arr['count_shortlink']) : ?>
-		<td class="button"><span id='jquery-tools-tooltip'><a class="button_mini"></a></span></td>
+		<td class="button"><a class="button_mini"></a></span></td>
 <?  else :                    
         if($privileged['edit']) : ?>			
-		<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/order/down/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach unten schieben"><span class='button_down_small'></span></a></span></td>
+		<td class="button"><a href="<?=base_url('admin/menue/order/down/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt nach unten schieben"><span class='button_down_small'></span></a></td>
 <?      else :                  ?>
-        <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
+        <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Menüpunktposition zu bearbeiten"><span class='button_lock_small'></span></a></td>
 <?      endif;
     endif;                        
 	if($item1['online']==1) :	
         if($privileged['edit']) : ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/1')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/1')?>" class="button_mini" title="Men&uuml;punkt offline schalten"><span class='button_online_small'></span></a></td>
 <?      else :                  ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_online_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_online_small'></span></a></td>
 <?      endif;
     else :                      
         if($privileged['edit']) : ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/0')?>" class="button_mini" title="Men&uuml;punkt online schalten"><span class='button_offline_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/menue/status/'.$item1['menueID'].'/0')?>" class="button_mini" title="Men&uuml;punkt online schalten"><span class='button_offline_small'></span></a></td>
 <?      else :                  ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_offline_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunktstatus zu bearbeiten"><span class='button_offline_small'></span></a></td>
 <?      endif;
     endif;
     if($privileged['edit']) :   ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/menue/edit/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt bearbeiten"><span class='button_edit_small'></span></a></span></td>
-	<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item1['menueID']?>" href="<?=base_url('admin/menue/delete/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt löschen"><span class='button_delete_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/menue/edit/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt bearbeiten"><span class='button_edit_small'></span></a></td>
+	<td class="button"><a id="confirm_link_<?=$item1['menueID']?>" href="<?=base_url('admin/menue/checkdel/'.$item1['menueID'])?>" class="button_mini" title="Men&uuml;punkt löschen"><span class='button_delete_small'></span></a></td>
 <?  else :                      ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu löschen"><span class='button_lock_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu bearbeiten"><span class='button_lock_small'></span></a></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Menüpunkt zu löschen"><span class='button_lock_small'></span></a></td>
 <?  endif;                      ?>
 </tr>
 <? endforeach;                  ?>

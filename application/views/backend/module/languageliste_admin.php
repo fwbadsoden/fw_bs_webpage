@@ -5,55 +5,16 @@
 ?>
 
 <script type="text/javascript">
-
-$(document).ready(function() {
- $("#lang_table").tablesorter({
- 	// pass the headers argument and assing a object 
-    headers: { 
-        3:  { 
-            // disable it by setting the property sorter to false 
-            sorter: false 
-            }, 
-        4:  { 
-            // disable it by setting the property sorter to false 
-            sorter: false 
-            }
- });	
-	
- $("#jquery-tools-tooltip a[title]").tooltip({
- 	offset: [5, 2]
- 	}).dynamic({ bottom: { direction: 'down', bounce: true } });;
- 
- $('a.button_mini').click(function(e) {
- 	 	
-var ID = $(this).attr("id");
-var targetUrl = ' ';
-
-switch(ID) {
-<? foreach($language as $item) { ?>	
-	case "confirm_link_<?=$item["langID"]?>":	targetUrl = "<?=base_url('admin/system/language/delete/'.$item['langID'])?>"; 
-													var $dialog = $('<div></div>')
-													 .html('Wollen Sie diesen Text wirklich löschen?')
-													  .dialog({
-													   autoOpen: false,
-													   title: 'Text löschen',
-													   width: '600px',
-													   modal: true,
-													   buttons: {
-													    "Löschen": function() {
-													             window.location.href = targetUrl;
-													    },
-													    "Zurück": function() {
-													     $( this ).dialog( "close" );
-													    }
-													   }
-													  });
-													$dialog.dialog('open'); return false; 
-													break;
-<? } ?>
-}
- });
-});
+$(document).ready(function() 
+    { 
+        $("#lang_table").tablesorter({
+            headers: { 
+                3:  { sorter: false },  
+                4:  { sorter: false }  
+            } 
+        }); 
+    } 
+); 
 </script> 
 
 <div id="content">
@@ -89,11 +50,11 @@ switch(ID) {
 	<td><?=$item['text']?></td>
 	<td><?=$item['desc']?></td>
 <?  if($privileged['edit']) :       ?>
-	<td><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/system/language/edit/'.$item['langID'])?>" class="button_mini" title="Text bearbeiten"><span class='button_edit_small'></span></a></span></td>
-	<td><a id="confirm_link_<?=$item['langID']?>" href="<?=base_url('admin/system/language/delete/'.$item['langID'])?>" class="button_mini" title="Text löschen"><span class='button_delete_small'></span></a></span></td>
+	<td><a href="<?=base_url('admin/system/language/edit/'.$item['langID'])?>" class="button_mini" title="Text bearbeiten"><span class='button_edit_small'></span></a></td>
+	<td><a id="confirm_link_<?=$item['langID']?>" href="<?=base_url('admin/system/language/delete/'.$item['langID'])?>" class="button_mini" title="Text löschen"><span class='button_delete_small'></span></a></td>
 <?  else :                          ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Text zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Text zu löschen"><span class='button_lock_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Text zu bearbeiten"><span class='button_lock_small'></span></a></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Text zu löschen"><span class='button_lock_small'></span></a></td>
 <?  endif;                          ?>
 </tr>
 <? endforeach; ?>

@@ -5,16 +5,6 @@
     $i = 1;
 ?>
 
-<script type="text/javascript">
-
-$(document).ready(function() {	
-	
- $("#jquery-tools-tooltip a[title]").tooltip({
- 	offset: [5, 2]
- 	}).dynamic({ bottom: { direction: 'down', bounce: true } });;
-});
-</script> 
-
 <div id="content">
 <p class="thirdMenue">
 	<a href="<?=base_url('admin/content/news/kategorie/create')?>" class="button_gross"><span class="button_add">Neue Kategorie anlegen</span></a>
@@ -22,7 +12,7 @@ $(document).ready(function() {
 <p>&nbsp;</p>
 <h1>News-Kategorien verwalten</h1>
 
-<table cellpadding="0" cellspacing="1" id="news_category_table" class="tablesorter">
+<table cellpadding="0" cellspacing="1" id="news_category_table">
 <thead>
 	<tr>
 		<th class="headline_id">ID</th>
@@ -37,8 +27,8 @@ $(document).ready(function() {
 <tr bgcolor="<?=$item['row_color']?>">
 	<td><?=str_pad($i, 5 ,'0', STR_PAD_LEFT);?></td>
 	<td><?=$item['title']?></td>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/news/kategorie/edit/'.$item['categoryID'])?>" class="button_mini" title="Kategorie bearbeiten"><span class='button_edit_small'></span></a></span></td>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/news/kategorie/checkdel/'.$item['categoryID'])?>" class="button_mini" title="Kategorie l&ouml;schen"><span class='button_delete_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/content/news/kategorie/edit/'.$item['categoryID'])?>" class="button_mini" title="Kategorie bearbeiten"><span class='button_edit_small'></span></a></td>
+	<td class="button"><a href="<?=base_url('admin/content/news/kategorie/checkdel/'.$item['categoryID'])?>" class="button_mini" title="Kategorie l&ouml;schen"><span class='button_delete_small'></span></a></td>
 </tr>
 <? $i++; } ?>
 </tbody>

@@ -4,14 +4,16 @@
 ?>
 
 <script type="text/javascript">
-
-$(document).ready(function() {
- $("#email_table").tablesorter({
- 	// pass the headers argument and assing a object 
-    headers: { 
- });	
-});	
-});
+$(document).ready(function() 
+    { 
+        $("#email_table").tablesorter({
+            headers: { 
+                0:  { sorter: false },
+                4:  { sorter: false }
+            } 
+        }); 
+    } 
+); 
 </script> 
 
 <div id="content">

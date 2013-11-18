@@ -12,18 +12,15 @@
 ?>
 
 <script type="text/javascript">
-
-$(document).ready(function() {
- $("#setting_table").tablesorter({
- 	// pass the headers argument and assing a object 
-    headers: { 
-        2:  { 
-            // disable it by setting the property sorter to false 
-            sorter: false 
+$(document).ready(function() 
+    { 
+        $("#setting_table").tablesorter({
+            headers: { 
+                2:  { sorter: false }  
             } 
-        } 	
- });	
-});
+        }); 
+    } 
+); 
 </script> 
 
 <div id="content">

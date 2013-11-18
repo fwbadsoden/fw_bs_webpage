@@ -61,6 +61,7 @@ class News_Admin extends CP_Controller {
 		$this->load->view('backend/templates/admin/header', $header);
 		$this->load->view('backend/templates/admin/menue', $menue);	
 		$this->load->view('backend/templates/admin/submenue', $menue);	
+		$this->load->view('backend/templates/admin/jquery-tablesorter-cp');
 		$this->load->view('backend/news/newsliste_admin', $data);
 		$this->load->view('backend/templates/admin/footer');	
 	}

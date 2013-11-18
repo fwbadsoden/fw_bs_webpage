@@ -11,28 +11,16 @@
 ?>
 
 <script type="text/javascript">
-
-$(document).ready(function() {
- $("#news_table").tablesorter({
- 	// pass the headers argument and assing a object 
-    headers: { 
-        // (we start counting zero) 
-        0:  { 
-            // disable it by setting the property sorter to false 
-            sorter: false 
-            }, 
-        6:  { 
-            // disable it by setting the property sorter to false 
-            sorter: false 
-            }  
-        } 	
- });	
-	
- $("#jquery-tools-tooltip a[title]").tooltip({
- 	offset: [5, 2]
- 	}).dynamic({ bottom: { direction: 'down', bounce: true } });;
- 
-});
+$(document).ready(function() 
+    { 
+        $("#news_table").tablesorter({
+            headers: { 
+                0:  { sorter: false },
+                5:  { sorter: false }
+            } 
+        }); 
+    } 
+); 
 </script> 
 
 <div id="content">
@@ -66,23 +54,23 @@ $(document).ready(function() {
 	<td><?=cp_get_ger_date($item['valid_from'])?></td>
 <?	if($item['online']==1) :	
         if($privileged['edit']) :   ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/news/status/'.$item['newsID'].'/1/'.$pagination_start)?>" class="button_mini" title="News offline schalten"><span class='button_online_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/content/news/status/'.$item['newsID'].'/1/'.$pagination_start)?>" class="button_mini" title="News offline schalten"><span class='button_online_small'></span></a></td>
 <?      else :                      ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Newsstatus zu bearbeiten"><span class='button_online_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Newsstatus zu bearbeiten"><span class='button_online_small'></span></a></td>
 <?      endif;
     else :                          
         if($privileged['edit']) :   ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/news/status/'.$item['newsID'].'/0/'.$pagination_start)?>" class="button_mini" title="News online schalten"><span class='button_offline_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/content/news/status/'.$item['newsID'].'/0/'.$pagination_start)?>" class="button_mini" title="News online schalten"><span class='button_offline_small'></span></a></td>
 <?      else :                      ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Newsstatus zu bearbeiten"><span class='button_offline_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Newsstatus zu bearbeiten"><span class='button_offline_small'></span></a></td>
 <?      endif;
 	endif;                          
     if($privileged['edit']) :       ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/news/edit/'.$item['newsID'])?>" class="button_mini" title="News bearbeiten"><span class='button_edit_small'></span></a></span></td>
-	<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item['newsID']?>" href="<?=base_url('admin/content/news/checkdel/'.$item['newsID'])?>" class="button_mini" title="News löschen"><span class='button_delete_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/content/news/edit/'.$item['newsID'])?>" class="button_mini" title="News bearbeiten"><span class='button_edit_small'></span></a></td>
+	<td class="button"><a id="confirm_link_<?=$item['newsID']?>" href="<?=base_url('admin/content/news/checkdel/'.$item['newsID'])?>" class="button_mini" title="News löschen"><span class='button_delete_small'></span></a></td>
 <?  else :                          ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die News zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die News zu löschen"><span class='button_lock_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die News zu bearbeiten"><span class='button_lock_small'></span></a></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die News zu löschen"><span class='button_lock_small'></span></a></td>
 <?  endif;                          ?>
 </tr>
 <?  endforeach; ?>

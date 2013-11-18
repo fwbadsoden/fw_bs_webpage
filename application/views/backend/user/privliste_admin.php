@@ -3,29 +3,17 @@
 ?>
 
 <script type="text/javascript">
-
-$(document).ready(function() {
- $("#priv_table").tablesorter({
- 	// pass the headers argument and assing a object 
-    headers: { 
-            // (we start counting zero) 
-        0:  { 
-            // disable it by setting the property sorter to false 
-            sorter: false 
-            },
-        4:  { 
-            // disable it by setting the property sorter to false 
-            sorter: false 
+$(document).ready(function() 
+    { 
+        $("#priv_table").tablesorter({
+            headers: { 
+                0:  { sorter: false },
+                4:  { sorter: false }
             } 
-        } 	
- });
- 
- $("#jquery-tools-tooltip a[title]").tooltip({
- 	offset: [5, 2]
- 	}).dynamic({ bottom: { direction: 'down', bounce: true } 
- });
-});
-</script>
+        }); 
+    } 
+); 
+</script> 
 
 <div id="content">
 <? if($privileged['edit']) :        ?>
@@ -58,11 +46,11 @@ $(document).ready(function() {
 			<td><?=$p->upriv_name?></td>
 			<td><?=$p->upriv_desc?></td>
 <? if($privileged['edit']) :        ?>            
-			<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/user/priv/edit/'.$p->upriv_id)?>" class="button_mini" title="Berechtigung bearbeiten"><span class='button_edit_small'></span></a></span></td>
-			<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/user/priv/checkdelete/'.$p->upriv_id)?>" class="button_mini" title="Berechtigung löschen"><span class='button_delete_small'></span></a></span></td>
+			<td class="button"><a href="<?=base_url('admin/user/priv/edit/'.$p->upriv_id)?>" class="button_mini" title="Berechtigung bearbeiten"><span class='button_edit_small'></span></a></td>
+			<td class="button"><a href="<?=base_url('admin/user/priv/checkdelete/'.$p->upriv_id)?>" class="button_mini" title="Berechtigung löschen"><span class='button_delete_small'></span></a></td>
 <? else :                           ?>            
-            <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Berechtigung zu bearbeiten"><span class='button_lock_small'></span></a></span></td>              
-            <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Berechtigung zu löschen"><span class='button_lock_small'></span></a></span></td>
+            <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Berechtigung zu bearbeiten"><span class='button_lock_small'></span></a></td>              
+            <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Berechtigung zu löschen"><span class='button_lock_small'></span></a></td>
 <? endif;                           ?>
 		</tr>
 	<? } ?>

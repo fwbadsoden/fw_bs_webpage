@@ -3,29 +3,17 @@
 ?>
 
 <script type="text/javascript">
-
-$(document).ready(function() {
- $("#user_table").tablesorter({
- 	// pass the headers argument and assing a object 
-    headers: { 
-            // (we start counting zero) 
-        0:  { 
-            // disable it by setting the property sorter to false 
-            sorter: false 
-            },
-        6:  { 
-            // disable it by setting the property sorter to false 
-            sorter: false 
+$(document).ready(function() 
+    { 
+        $("#user_table").tablesorter({
+            headers: { 
+                0:  { sorter: false },
+                7:  { sorter: false }  
             } 
-        } 	
- });
- 
- $("#jquery-tools-tooltip a[title]").tooltip({
- 	offset: [5, 2]
- 	}).dynamic({ bottom: { direction: 'down', bounce: true } 
- });
-});
-</script>
+        }); 
+    } 
+); 
+</script> 
 
 <div id="content">
 <? if($privileged['edit']) :        ?>
@@ -71,23 +59,23 @@ $(document).ready(function() {
 			</td>
 		<?	if($u->uacc_active==1) :	?>
 <? if($privileged['edit']) :        ?>        
-			<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/user/status/'.$u->uacc_id.'/1')?>" class="button_mini" title="Benutzer offline schalten"><span class='button_online_small'></span></a></span></td>
+			<td class="button"><a href="<?=base_url('admin/user/status/'.$u->uacc_id.'/1')?>" class="button_mini" title="Benutzer offline schalten"><span class='button_online_small'></span></a></td>
 <? else :                           ?>
-            <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Benutzerstatus zu bearbeiten"><span class='button_online_small'></span></a></span></td>
+            <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Benutzerstatus zu bearbeiten"><span class='button_online_small'></span></a></td>
 <? endif;                           ?>            
 		<?	else : ?>
 <? if($privileged['edit']) :        ?>                
-			<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/user/status/'.$u->uacc_id.'/0')?>" class="button_mini" title="Benutzer online schalten"><span class='button_offline_small'></span></a></span></td>
+			<td class="button"><a href="<?=base_url('admin/user/status/'.$u->uacc_id.'/0')?>" class="button_mini" title="Benutzer online schalten"><span class='button_offline_small'></span></a></td>
 <? else :                           ?>
-            <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Benutzerstatus zu bearbeiten"><span class='button_offline_small'></span></a></span></td>
+            <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Benutzerstatus zu bearbeiten"><span class='button_offline_small'></span></a></td>
 <? endif;                           ?>
 		<?	endif; ?>
 <? if($privileged['edit']) :        ?>        
-			<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/user/edit/'.$u->uacc_id)?>" class="button_mini" title="Benutzer bearbeiten"><span class='button_edit_small'></span></a></span></td>           
-			<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/user/checkdelete/'.$u->uacc_id)?>" class="button_mini" title="Benutzer löschen"><span class='button_delete_small'></span></a></span></td>
+			<td class="button"><a href="<?=base_url('admin/user/edit/'.$u->uacc_id)?>" class="button_mini" title="Benutzer bearbeiten"><span class='button_edit_small'></span></a></td>           
+			<td class="button"><a href="<?=base_url('admin/user/checkdelete/'.$u->uacc_id)?>" class="button_mini" title="Benutzer löschen"><span class='button_delete_small'></span></a></td>
 <? else :                           ?> 
-            <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Benutzer zu bearbeiten"><span class='button_lock_small'></span></a></span></td>           
-            <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Benutzer zu löschen"><span class='button_lock_small'></span></a></span></td>
+            <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Benutzer zu bearbeiten"><span class='button_lock_small'></span></a></td>           
+            <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Benutzer zu löschen"><span class='button_lock_small'></span></a></td>
 <? endif;                           ?>            
 		</tr>
 	<? endforeach; ?>

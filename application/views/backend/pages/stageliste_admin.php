@@ -18,7 +18,7 @@
 
 <h1>Bildb&uuml;hnen verwalten</h1>
 
-<table cellpadding="0" cellspacing="1" id="stage_table" class="tablesorter">
+<table cellpadding="0" cellspacing="1" id="stage_table">
 <thead>
 	<tr>
 		<th class="headline_id">ID</th>
@@ -33,23 +33,23 @@
 	<td><?=$item['name']?></td>
 <?	if($item['online']==1) :	
         if($privileged['edit']) : ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/stage/status/'.$item['stageID'].'/1')?>" class="button_mini" title="Bildb&uuml;hne offline schalten"><span class='button_online_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/content/stage/status/'.$item['stageID'].'/1')?>" class="button_mini" title="Bildb&uuml;hne offline schalten"><span class='button_online_small'></span></a></td>
 <?      else :                  ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Bildbühnenstatus zu bearbeiten"><span class='button_online_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Bildbühnenstatus zu bearbeiten"><span class='button_online_small'></span></a></td>
 <?      endif;
 	else : 
         if($privileged['edit']) : ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/stage/status/'.$item['stageID'].'/0')?>" class="button_mini" title="Bildb&uuml;hne online schalten"><span class='button_offline_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/content/stage/status/'.$item['stageID'].'/0')?>" class="button_mini" title="Bildb&uuml;hne online schalten"><span class='button_offline_small'></span></a></td>
 <?      else :                  ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Bildbühnenstatus zu bearbeiten"><span class='button_offline_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Bildbühnenstatus zu bearbeiten"><span class='button_offline_small'></span></a></td>
 <?      endif;
 	endif; 
     if($privileged['edit']) :   ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/stage/edit/'.$item['stageID'])?>" class="button_mini" title="Bildb&uuml;hne bearbeiten"><span class='button_edit_small'></span></a></span></td>
-	<td class="button"><span id='jquery-tools-tooltip'><a id="confirm_link_<?=$item['stageID']?>" href="<?=base_url('admin/content/stage/checkdelete/'.$item['stageID'])?>" class="button_mini" title="Bildb&uuml;hne l&ouml;schen"><span class='button_delete_small'></span></a></span></td> 
+	<td class="button"><a href="<?=base_url('admin/content/stage/edit/'.$item['stageID'])?>" class="button_mini" title="Bildb&uuml;hne bearbeiten"><span class='button_edit_small'></span></a></td>
+	<td class="button"><a id="confirm_link_<?=$item['stageID']?>" href="<?=base_url('admin/content/stage/checkdelete/'.$item['stageID'])?>" class="button_mini" title="Bildb&uuml;hne l&ouml;schen"><span class='button_delete_small'></span></a></td> 
 <?  else :                      ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Bildbühne zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Bildbühne zu löschen"><span class='button_lock_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Bildbühne zu bearbeiten"><span class='button_lock_small'></span></a></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Bildbühne zu löschen"><span class='button_lock_small'></span></a></td>
 <?  endif;                      ?>
 </tr>
 <?  $i++; 

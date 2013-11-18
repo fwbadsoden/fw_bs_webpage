@@ -7,8 +7,8 @@
         'name'  => 'search'
     );   
     $search_input = array(
-        'id'    => 'searchitem',
-        'name'  => 'searchitem',
+        'id'    => 'search_query',
+        'name'  => 'search_query',
         'class' => 'searchtext'
     );
     $meta = array(
@@ -236,15 +236,15 @@
 <? if(current_url() == base_url('verein')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
                 <li><a href="<?=base_url('verein')?>"<?=$class?>>Verein</a>  
                 </li> 
-           <!--     <li><a href="#" class="desktopsearch">&nbsp;</a>
+                <li><a href="#" class="desktopsearch">&nbsp;</a>
                     <div class="dropdown">
                         <?=form_open(base_url(FRONTEND_SEARCH_LINK), $search_form);?>
                         <div class="search">	
                             <?=form_input($search_input);?>
                         </div>
-                        <input type="button" value="Suchen &raquo;" class="searchbutton" />
+                        <input type="submit" value="Suchen &raquo;" class="searchbutton" />
                     </div>
-                </li>-->
+                </li>
             </ul>
        	</nav>
         

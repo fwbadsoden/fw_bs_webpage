@@ -4,56 +4,6 @@
 	$this->load->library('CP_auth');
 ?>
 
-
-<script type="text/javascript">
-
-$(document).ready(function() {
- $("#fahrzeug_table").tablesorter({
- 	// pass the headers argument and assing a object 
-    headers: { 
-        2:  { 
-            // disable it by setting the property sorter to false 
-            sorter: false 
-            } 
-        } 	
- });	
-	
- $("#jquery-tools-tooltip a[title]").tooltip({
- 	offset: [5, 2]
- 	}).dynamic({ bottom: { direction: 'down', bounce: true } });;
- 
- $('a.button_mini').click(function(e) {
- 	 	
-var ID = $(this).attr("id");
-var targetUrl = ' ';
-
-switch(ID) {
-<? foreach($fahrzeug as $item) :    ?>	
-	case "confirm_link_<?=$item["fahrzeugID"]?>":	targetUrl = "<?=base_url('admin/content/fahrzeug/delete/'.$item['fahrzeugID'])?>"; 
-													var $dialog = $('<div></div>')
-													 .html('Wollen Sie das Fahrzeug wirklich löschen?')
-													  .dialog({
-													   autoOpen: false,
-													   title: 'Fahrzeug löschen',
-													   width: '600px',
-													   modal: true,
-													   buttons: {
-													    "Löschen": function() {
-													             window.location.href = targetUrl;
-													    },
-													    "Zurück": function() {
-													     $( this ).dialog( "close" );
-													    }
-													   }
-													  });
-													$dialog.dialog('open'); return false; 
-													break;
-<? endforeach;                      ?>
-}
- });
-});
-</script> 
-
 <div id="content">
 <? if($privileged['edit']) :        ?>
 <p class="thirdMenue">
@@ -64,7 +14,7 @@ switch(ID) {
 
 <h1>Fahrzeuge verwalten</h1>
 
-<table cellpadding="0" cellspacing="1" id="fahrzeug_table" class="tablesorter">
+<table cellpadding="0" cellspacing="1" id="fahrzeug_table">
 <thead>
 	<tr>
 		<th class="headline_funkrufname">Funkrufname</th>
@@ -79,51 +29,51 @@ switch(ID) {
 	<td><?=$item['fahrzeugRufnamePrefix']." ".$item['fahrzeugRufname'];?></td>
 	<td><?=$item['fahrzeugName']?></td>
 <?  if($item['orderID'] == 1) :    ?>
-		<td class="button"><span id='jquery-tools-tooltip'><a class="button_mini"></a></span></td>
+		<td class="button"><a class="button_mini"></a></span></td>
 <?  else :                          
         if($privileged['edit']) :   ?>
-		<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/fahrzeug/order/up/'.$item['fahrzeugID'])?>" class="button_mini" title="Men&uuml;punkt nach oben schieben"><span class='button_up_small'></span></a></span></td>
+		<td class="button"><a href="<?=base_url('admin/content/fahrzeug/order/up/'.$item['fahrzeugID'])?>" class="button_mini" title="Fahrzeug nach oben schieben"><span class='button_up_small'></span></a></td>
 <?      else :                      ?>
-        <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Fahrzeugposition zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
+        <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Fahrzeugposition zu bearbeiten"><span class='button_lock_small'></span></a></td>
 <?      endif;                      ?>        
 <?  endif;                          ?>
 <?  if($item['orderID'] == count($fahrzeug)) : ?>
-		<td class="button"><span id='jquery-tools-tooltip'><a class="button_mini"></a></span></td>
+		<td class="button"><a class="button_mini"></a></span></td>
 <?  else :                          
         if($privileged['edit']) :   ?>		
-		<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/fahrzeug/order/down/'.$item['fahrzeugID'])?>" class="button_mini" title="Men&uuml;punkt nach unten schieben"><span class='button_down_small'></span></a></span></td>
+		<td class="button"><a href="<?=base_url('admin/content/fahrzeug/order/down/'.$item['fahrzeugID'])?>" class="button_mini" title="Fahrzeug nach unten schieben"><span class='button_down_small'></span></a></td>
 <?      else :                      ?>
-        <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Fahrzeugposition zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
+        <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Fahrzeugposition zu bearbeiten"><span class='button_lock_small'></span></a></td>
 <?      endif;                      ?> 
 <?  endif;                          ?>
 <?	if($item['online']==1) :        	
         if($privileged['edit']) :   ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/fahrzeug/status/'.$item['fahrzeugID'].'/1')?>" class="button_mini" title="Fahrzeug offline schalten"><span class='button_online_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/content/fahrzeug/status/'.$item['fahrzeugID'].'/1')?>" class="button_mini" title="Fahrzeug offline schalten"><span class='button_online_small'></span></a></td>
 <?      else :                      ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Fahrzeugstatus zu bearbeiten"><span class='button_online_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Fahrzeugstatus zu bearbeiten"><span class='button_online_small'></span></a></td>
 <?      endif;                      
  	else :                         
         if($privileged['edit']) :   ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/fahrzeug/status/'.$item['fahrzeugID'].'/0')?>" class="button_mini" title="Fahrzeug online schalten"><span class='button_offline_small'></span></a></span></td>
+	<td class="button"><a href="<?=base_url('admin/content/fahrzeug/status/'.$item['fahrzeugID'].'/0')?>" class="button_mini" title="Fahrzeug online schalten"><span class='button_offline_small'></span></a></td>
 <?      else:                       ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung den Fahrzeugstatus zu bearbeiten"><span class='button_offline_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Fahrzeugstatus zu bearbeiten"><span class='button_offline_small'></span></a></td>
 <?      endif;
   	endif;             
     if($privileged['edit']) :       ?>
-	<td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/fahrzeug/edit/'.$item['fahrzeugID'])?>" class="button_mini" title="Fahrzeug bearbeiten"><span class='button_edit_small'></span></a></span></td>
-    <td class="button"><span id='jquery-tools-tooltip'><a href="<?=base_url('admin/content/fahrzeug/image/edit/'.$item['fahrzeugID'])?>" class="button_mini" title="Fahrzeugbilder bearbeiten"><span class='button_image_edit_small'></span></a></span></td>
-	<td class="button"><span id='jquery-tools-tooltip'>
+	<td class="button"><a href="<?=base_url('admin/content/fahrzeug/edit/'.$item['fahrzeugID'])?>" class="button_mini" title="Fahrzeug bearbeiten"><span class='button_edit_small'></span></a></td>
+    <td class="button"><a href="<?=base_url('admin/content/fahrzeug/image/edit/'.$item['fahrzeugID'])?>" class="button_mini" title="Fahrzeugbilder bearbeiten"><span class='button_image_edit_small'></span></a></td>
+	<td class="button">
 <?      if($item['delete']==1) :	?>	
-		<a id="confirm_link_<?=$item['fahrzeugID']?>" href="<?=base_url('admin/content/fahrzeug/delete/'.$item['fahrzeugID'])?>" class="button_mini" title="Fahrzeug löschen"><span class='button_delete_small'></span></a></span>
+		<a id="confirm_link_<?=$item['fahrzeugID']?>" href="<?=base_url('admin/content/fahrzeug/checkdel/'.$item['fahrzeugID'])?>" class="button_mini" title="Fahrzeug löschen"><span class='button_delete_small'></span></a>
 <?      else :                      ?>
 		<a class="button_mini" title="Fahrzeug kann nicht gelöscht werden. 
-Wird bereits verwendet."><span class='button_lock_small'></span></a></span>
+Wird bereits verwendet."><span class='button_lock_small'></span></a>
 <?      endif;                      ?>
     </td>
 <?  else :                          ?>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung das Fahrzeug zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung die Fahrzeugbilder zu bearbeiten"><span class='button_lock_small'></span></a></span></td>
-    <td class="button"><span id='jquery-tools-tooltip'><a class="button_mini" title="Sie haben keine Berechtigung das Fahrzeug zu löschen"><span class='button_lock_small'></span></a></span></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung das Fahrzeug zu bearbeiten"><span class='button_lock_small'></span></a></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Fahrzeugbilder zu bearbeiten"><span class='button_lock_small'></span></a></td>
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung das Fahrzeug zu löschen"><span class='button_lock_small'></span></a></td>
 <?  endif;                          ?>
 </tr>
 <? endforeach;                      ?>

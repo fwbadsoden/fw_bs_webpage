@@ -161,7 +161,7 @@ class Module_Admin extends CP_Controller {
         if(!$this->cp_auth->is_privileged(ROUTE_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{		
-			if($verify= $this->verify_route())
+			if($verify = $this->_verify_route())
 			{
 				$this->module->create_route();
 				$this->write_routes();
