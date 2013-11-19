@@ -48,7 +48,7 @@
                     </li>
                     </a>-->
                     <a href="<?=base_url('informationen/buergerinformationen/nachdembrand')?>">
-                    <li class="text third">
+                    <li class="text">
                         <figure class="border">
                             <img src="<?=base_url('images/content/content_buergerinfos/nachdembrand.jpg')?>" />
                         </figure>
@@ -57,7 +57,7 @@
                     </li>
                     </a>
                     <a href="<?=base_url('informationen/buergerinformationen/hausnummern')?>">
-                    <li class="text">
+                    <li class="text third">
                         <figure class="border">
                             <img src="<?=base_url('images/content/content_buergerinfos/hausnummer.jpg')?>" />
                         </figure>

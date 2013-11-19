@@ -128,7 +128,7 @@ class Pages_model extends CI_Model {
                 $content['title']            = $row->title;
                 $content['column_count']     = $row->column_count;
                 $content['stage_file']       = $row->stage_file;
-                $content['stage_images']     = $this->get_stage_images($row->stageID); 
+                $content['stage_images']     = $this->get_stage_images($row->stageID, $row->random_stage_img); 
                 $content['special_page']     = $row->special_page;
                 $content['special_function'] = $row->special_function; 
                 $content['sidebar']          = $row->sidebar; 
@@ -346,7 +346,7 @@ class Pages_model extends CI_Model {
         return $stages;
     }
     
-    public function get_stage_images($id)
+    public function get_stage_images($id, $random = 0)
     {
         $this->db->select('page_stage_images.text as text, page_stage_images.class_text as class_text, page_stage_images.class_outer as class_outer, page_stage_images.class_inner as class_inner, page_stage_images.link as link, page_stage_images.orderID as orderID, file.fullpath, file.title');
         $this->db->order_by('page_stage_images.orderID', 'asc');
@@ -359,19 +359,37 @@ class Pages_model extends CI_Model {
         $i = 0;
         
         $stage_images['count_images'] = $query->num_rows();
-        foreach($query->result() as $row)
+        
+        if($random == 1 && $stage_images['count_images'] > 1)
         {
-            $stage_images['images'][$i]['text']         = explode(PAGES_STAGE_TEXT_SEPARATOR, $row->text);
-            $stage_images['images'][$i]['title']        = $row->title;
-            $stage_images['images'][$i]['file']         = $row->fullpath;
-            $stage_images['images'][$i]['class_text']   = $row->class_text;
-            $stage_images['images'][$i]['class_outer']  = $row->class_outer;
-            $stage_images['images'][$i]['class_inner']  = $row->class_inner;
-            $stage_images['images'][$i]['link']         = $row->link;
-            $stage_images['images'][$i]['orderID']      = $row->orderID;
-            $i++;
+            $key = array_rand($query->result(), 1);
+            $rows = $query->result();
+            $row = $rows[$key];
+            $stage_images['images'][0]['text']         = explode(PAGES_STAGE_TEXT_SEPARATOR, $row->text);
+            $stage_images['images'][0]['title']        = $row->title;
+            $stage_images['images'][0]['file']         = $row->fullpath;
+            $stage_images['images'][0]['class_text']   = $row->class_text;
+            $stage_images['images'][0]['class_outer']  = $row->class_outer;
+            $stage_images['images'][0]['class_inner']  = $row->class_inner;
+            $stage_images['images'][0]['link']         = $row->link;
+            $stage_images['images'][0]['orderID']      = $row->orderID;
         }
-        if(count($stage_images) > 1) shuffle($stage_images['images']);
+        else
+        {
+            foreach($query->result() as $row)
+            {
+                $stage_images['images'][$i]['text']         = explode(PAGES_STAGE_TEXT_SEPARATOR, $row->text);
+                $stage_images['images'][$i]['title']        = $row->title;
+                $stage_images['images'][$i]['file']         = $row->fullpath;
+                $stage_images['images'][$i]['class_text']   = $row->class_text;
+                $stage_images['images'][$i]['class_outer']  = $row->class_outer;
+                $stage_images['images'][$i]['class_inner']  = $row->class_inner;
+                $stage_images['images'][$i]['link']         = $row->link;
+                $stage_images['images'][$i]['orderID']      = $row->orderID;
+                $i++;
+            }
+            if(count($stage_images) > 1) shuffle($stage_images['images']);
+        }
         return $stage_images;
     }
     
