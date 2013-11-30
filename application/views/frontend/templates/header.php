@@ -252,6 +252,7 @@
                             <?=form_input($search_input);?>
                         </div>
                         <input type="submit" value="Suchen &raquo;" class="searchbutton" />
+                        </form>
                     </div>
                 </li>
             </ul>
