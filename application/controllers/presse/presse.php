@@ -1,4 +1,7 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+<?php
+
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
 /**
  * Presse
@@ -12,71 +15,46 @@
  */
 class Presse extends CP_Controller {
 
-	/**
-	 * Presse::__construct()
-	 * 
-	 * @return
-	 */
-	public function __construct()
-	{
-		parent::__construct();
-        $this->load->model('presse/presse_model', 'm_presse');  
-	}
-    
+    /**
+     * Presse::__construct()
+     * 
+     * @return
+     */
+    public function __construct() {
+        parent::__construct();
+        $this->load->model('presse/presse_model', 'm_presse');
+    }
+
     /**
      * Presse::get_presse_overview()
      * 
      * @return
      */
-    public function get_presse_overview()
-    {
+    public function get_presse_overview() {
         return $this->m_presse->get_articles($limit = PRESSE_DEFAULT_LIMIT, $offset = PRESSE_DEFAULT_OFFSET);
     }
-    
+
     /**
      * Presse::overview_2col()
      * 
      * @return
      */
-    public function overview_2col()
-    {
+    public function overview_2col() {
         $presse['articles'] = $this->m_presse->get_articles();
-		
-		$this->load->view('frontend/presse/overview_2col_contact');
-		$this->load->view('frontend/presse/overview_2col_articles', $presse);
+
+        $this->load->view('frontend/presse/overview_2col_contact');
+        $this->load->view('frontend/presse/overview_2col_articles', $presse);
     }
-    
+
     /**
      * Presse::overview_sidebar()
      * 
      * @return
      */
-    public function overview_sidebar()
-    {
-		$this->load->view('frontend/presse/overview_2col_sidebar');        
+    public function overview_sidebar() {
+        $this->load->view('frontend/presse/overview_2col_sidebar');
     }
-    
-    /**
-     * Presse::send_email()
-     * 
-     * @return
-     */
-    public function send_email()
-    {
-        $this->load->library('email');
-        $this->email->from($this->input->post('email'), $this->input->post('name'));
-        $this->email->to('pressestelle@feuerwehr-bs.de');
-        $this->email->subject($this->input->post('betreff'));
-        $message = 'Name: '.$this->input->post('name').'<br />';
-        $message.= 'Redaktion: '.$this->input->post('redaktion').'<br />';
-        $message.= 'Email-Adresse: '.$this->input->post('email').'<br />';
-        $message.= 'Telefon: '.$this->input->post('telefon').'<br />';
-        $message.= 'Nachricht: <br />'.$this->input->post('message').'<br />';
-        $this->email->message($message);
-        $this->email->send();
-        //echo $this->email->print_debugger();
-        redirect($this->input->server('HTTP_REFERER', TRUE).'/gesendet'); 
-    }
+
 }
 
 /* End of file presse.php */
