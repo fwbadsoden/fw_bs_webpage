@@ -375,13 +375,14 @@ class Einsatz_Model extends CI_Model {
         if($this->input->post('anzahl_einsaetze') == 0 || $this->input->post('anzahl_einsaetze') == '')
             $anzahl_einsaetze = 1;
         else $anzahl_einsaetze = $this->input->post('anzahl_einsaetze');
+        $weitere_kraefte = trim(rtrim($this->input->post('weitereeinsatzkraefte'),','));
 		$einsatzContent = array(
 			'einsatzID'			=> $einsatzID,
             'lage'              => $this->input->post('einsatzlage'),
 			'bericht'			=> $this->input->post('einsatzbericht'),
             'ort'               => $this->input->post('einsatzort'),
             'display_ort'       => $this->input->post('display_einsatzort'),
-			'weitere_kraefte'	=> rtrim($this->input->post('weitereeinsatzkraefte'),','),
+			'weitere_kraefte'	=> $weitere_kraefte,
 			'anzahl_kraefte'	=> $this->input->post('anzahl'),
             'anzahl_einsaetze'  => $anzahl_einsaetze,
             'ueberoertlich'     => $this->input->post('ueberoertlich'),
@@ -415,12 +416,14 @@ class Einsatz_Model extends CI_Model {
         if($this->input->post('anzahl_einsaetze') == 0 || $this->input->post('anzahl_einsaetze') == '')
             $anzahl_einsaetze = 1;
         else $anzahl_einsaetze = $this->input->post('anzahl_einsaetze');
+        $weitere_kraefte = trim(rtrim($this->input->post('weitereeinsatzkraefte'),','));
+        
 		$einsatzContent = array(
             'lage'              => $this->input->post('einsatzlage'),
 			'bericht'			=> $this->input->post('einsatzbericht'),
             'ort'               => $this->input->post('einsatzort'),
             'display_ort'       => $this->input->post('display_einsatzort'),
-			'weitere_kraefte'	=> rtrim($this->input->post('weitereeinsatzkraefte'),','),
+			'weitere_kraefte'	=> $weitere_kraefte,
 			'anzahl_kraefte'	=> $this->input->post('anzahl'),
             'anzahl_einsaetze'  => $anzahl_einsaetze,
             'ueberoertlich'     => $this->input->post('ueberoertlich'),
