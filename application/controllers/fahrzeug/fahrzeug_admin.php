@@ -164,11 +164,14 @@ class Fahrzeug_Admin extends CP_Controller {
 		$this->form_validation->set_rules('fahrzeugname', 'Fahrzeugname', 'required|max_length[255]|xss_clean');	
 		$this->form_validation->set_rules('fahrzeugprefix', 'Präfix Funkrufname', 'required|max_length[100]|xss_clean'); 
 		$this->form_validation->set_rules('fahrzeugrufname', 'Fahrzeugrufname', 'required|max_length[10]|xss_clean'); 
-		$this->form_validation->set_rules('fahrzeugrufnamelang', 'Fahrzeugrufname (lang)', 'required|max_length[50]|xss_clean'); 
+		$this->form_validation->set_rules('fahrzeugnamelang', 'Fahrzeugname (lang)', 'required|max_length[50]|xss_clean'); 
 		$this->form_validation->set_rules('fahrzeugtext', 'Fahrzeugbeschreibung', 'required|xss_clean'); 
 		$this->form_validation->set_rules('fahrzeugbesatzung', 'Fahrzeugbesatzung', 'max_length[3]|xss_clean'); 
 		$this->form_validation->set_rules('fahrzeughersteller', 'Fahrzeughersteller', 'required|max_length[50]|xss_clean'); 
 		$this->form_validation->set_rules('fahrzeugaufbau', 'Fahrzeugaufbau', 'max_length[50]|xss_clean'); 
+		$this->form_validation->set_rules('fahrzeugpumpe', 'Pumpe(n)', 'max_length[255]|xss_clean'); 
+		$this->form_validation->set_rules('fahrzeugloeschmittel', 'Löschmittel', 'max_length[255]|xss_clean'); 
+		$this->form_validation->set_rules('fahrzeugbesonderheit', 'Fahrzeugbesonderheit', 'max_length[255]|xss_clean'); 
 		$this->form_validation->set_rules('fahrzeugleistungkw', 'Fahrzeugleistung in KW', 'is_natural_no_zero|xss_clean');
 		$this->form_validation->set_rules('fahrzeugleistungps', 'Fahrzeugleistung in PS', 'is_natural_no_zero|xss_clean');
 		$this->form_validation->set_rules('fahrzeughoehe', 'Fahrzeughöhe', 'decimal|xss_clean');

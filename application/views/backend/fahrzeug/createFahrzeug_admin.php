@@ -68,6 +68,27 @@
 		'value' 	=> set_value('fahrzeugaufbau')
 	);
 	
+	$fahrzeugPumpe = array(
+		'name'		=> 'fahrzeugpumpe',
+		'id'		=> 'fahrzeugpumpe',
+		'class' 	=> 'input_text',
+		'value' 	=> set_value('fahrzeugpumpe')
+	);
+	
+	$fahrzeugLoeschmittel = array(
+		'name'		=> 'fahrzeugloeschmittel',
+		'id'		=> 'fahrzeugloeschmittel',
+		'class' 	=> 'input_text',
+		'value' 	=> set_value('fahrzeugloeschmittel')
+	);
+	
+	$fahrzeugBesonderheit = array(
+		'name'		=> 'fahrzeugbesonderheit',
+		'id'		=> 'fahrzeugbesonderheit',
+		'class' 	=> 'input_text',
+		'value' 	=> set_value('fahrzeugbesonderheit')
+	);
+	
 	$fahrzeugLeistungKW = array(
 		'name'		=> 'fahrzeugleistungkw',
 		'id'		=> 'fahrzeugleistungkw',
@@ -194,7 +215,51 @@
     </table>
 	</p>
     <?=form_fieldset_close();?>
-    <p></p>
+    <p></p>    
+    <?=form_fieldset('&nbsp;&nbsp;&nbsp;Zusatzdaten Löschfahrzeug (nur bei Löschfahrzeugen pflegen):&nbsp;&nbsp;&nbsp;');?>
+   	<p>
+   	<table>
+        <tr>
+            <td>Bei mehreren Einträgen pro Feld sind die Einträge durch | zu trennen.</td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td class='form_label'><?=form_label('Pumpe(n):', $fahrzeugPumpe['id']); ?></td>
+                        <td><?=form_input($fahrzeugPumpe); ?></td>
+                    </tr>
+                    <tr>
+                        <td class='form_label'><?=form_label('Löschmittel:', $fahrzeugLoeschmittel['id']); ?></td>
+                        <td><?=form_input($fahrzeugLoeschmittel); ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+	</p>
+    <?=form_fieldset_close();?>
+    <p></p>    
+    <?=form_fieldset('&nbsp;&nbsp;&nbsp;Zusatzdaten sonstige Fahrzeuge (nicht bei Löschfahrzeugen pflegen):&nbsp;&nbsp;&nbsp;');?>
+   	<p>
+   	<table>
+        <tr>
+            <td>Bei mehreren Einträgen pro Feld sind die Einträge durch | zu trennen.</td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td class='form_label'><?=form_label('Besonderheit:', $fahrzeugBesonderheit['id']); ?></td>
+                        <td><?=form_input($fahrzeugBesonderheit); ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+	</p>
+    <?=form_fieldset_close();?>    
+    <p></p>    
     <?=form_fieldset('&nbsp;&nbsp;&nbsp;Fahrzeugwerte:&nbsp;&nbsp;&nbsp;');?>
    	<p>
     <table>
@@ -237,6 +302,7 @@
     </table>   	
 	</p>
     <?=form_fieldset_close();?>
+    <p></p>
     <script type="text/javascript" language="JavaScript">
     	document.forms['<?=$form['id']?>'].elements['<?=$fahrzeugName['id']?>'].focus();
     </script>
