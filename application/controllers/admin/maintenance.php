@@ -73,6 +73,44 @@ class Maintenance extends CP_Controller {
         $this->einsatz->recalc_maintain($year);   
     }
     
+    public function cache_liste()
+    {
+        // Berechtigungsprüfung TEIL 1: eingelogged und Admin
+		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');        
+        if(!$this->cp_auth->is_privileged(CACHE_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
+        
+        $this->load->helper('file');
+        $files = get_dir_file_info($this->config->item('cache_path'));
+		$this->session->set_userdata('cacheliste_redirect', current_url()); 
+        
+        $header['title']                = "Cache anzeigen";
+		$menue['menue']	                = $this->admin->get_menue();
+        $menue['userdata']              = $this->cp_auth->cp_get_user_by_id();
+		$menue['submenue']	            = $this->admin->get_submenue(); 
+        $data['files']                  = $files;
+        $data['privileged']['delete']   = $this->cp_auth->is_privileged(CACHE_PRIV_DELETE);
+		
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/menue', $menue);
+		$this->load->view('backend/templates/admin/submenue', $menue);
+		$this->load->view('backend/maintenance/cache_liste', $data);
+		$this->load->view('backend/templates/admin/footer');
+    }
+    
+    public function delete_cache($file)
+    {
+        if($file == 'all')
+        {
+            delete_files($this->config->item('cache_path')); 
+        }
+        else
+        {
+            unlink($this->config->item('cache_path').$file);
+            
+        }
+        redirect($this->session->userdata('cacheliste_redirect'), 'refresh');
+    }
+    
     public function phpinfo()
     {
         // Berechtigungsprüfung TEIL 1: eingelogged und Admin
