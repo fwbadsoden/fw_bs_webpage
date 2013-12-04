@@ -73,6 +73,7 @@ class Fahrzeug_Admin extends CP_Controller {
 			{
 				$this->admin->insert_log(str_replace('%FAHRZEUG%', $this->input->post('fahrzeugName'), lang('log_admin_createFahrzeug')));
 				$this->fahrzeug->create_fahrzeug();
+                delete_files($this->config->item('cache_path'));
 			}
 		}
 		else
@@ -110,6 +111,7 @@ class Fahrzeug_Admin extends CP_Controller {
 			{
 				$this->admin->insert_log(str_replace('%FAHRZEUG%', $this->input->post('fahrzeugName'), lang('log_admin_editFahrzeug')));
 				$this->fahrzeug->update_fahrzeug($id);
+                delete_files($this->config->item('cache_path'));
 			}
 		}
 		else

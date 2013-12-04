@@ -142,6 +142,8 @@ class Pages extends CP_Controller {
      */
     public function einsatz_overview()
     {
+        if(ENVIRONMENT=='production') $this->output->cache(60);
+        
         $c_einsatz = load_controller('einsatz/einsatz');
         
         $this->_site_header();    
@@ -201,6 +203,7 @@ class Pages extends CP_Controller {
      */
     public function news_overview()
     {
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $c_news = load_controller('news/news');
         
         $this->_site_header();    
@@ -222,6 +225,7 @@ class Pages extends CP_Controller {
     
     public function news_detail()
     {
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $id = $this->uri->segment($this->uri->total_segments());
         $c_news = load_controller('news/news');
         $text = $c_news->get_news_stage_text($id);
@@ -277,6 +281,7 @@ class Pages extends CP_Controller {
      */
     public function termin_overview()
     {
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $c_termin = load_controller('termin/termin');
         
         $this->_site_header();
@@ -299,6 +304,7 @@ class Pages extends CP_Controller {
      */
     public function presse_overview()
     {
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $c_presse = load_controller('presse/presse');
         
         $this->_site_header();
