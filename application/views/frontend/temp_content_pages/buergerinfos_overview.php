@@ -11,17 +11,8 @@
                         <p>Licht- und Tonsignal sind vorgeschrieben wenn die Feuerwehr von ihrem Sonderrecht gebrauch macht.</p>
                     </li>
                     </a>
-                    <!--<a href="<?=base_url('informationen/buergerinformationen/sonderrechte')?>">
-                    <li class="text">
-                        <figure class="border">
-                            <img src="<?=base_url('images/content/content_buergerinfos/sonderrechte.jpg')?>" />
-                        </figure>
-                        <h1>Sonderrechte</h1>
-                        <p>Das Sonderrecht erlaubt es den Einsatzkräften im Notfall, sich schneller im Straßenverkehr zu bewegen.</p>
-                    </li>
-                    </a>
                     <a href="<?=base_url('informationen/buergerinformationen/notfaelle')?>">
-                    <li class="text third">
+                    <li class="text">
                         <figure class="border">
                             <img src="<?=base_url('images/content/content_buergerinfos/notfall.jpg')?>" />
                         </figure>
@@ -30,7 +21,7 @@
                     </li>
                     </a>
                     <a class="fancybox-metaLayer" href="#notruflayer_js" >
-                    <li class="text">
+                    <li class="text third">
                         <figure class="border">
                             <img src="<?=base_url('images/content/content_buergerinfos/notruf.jpg')?>" />
                         </figure>
@@ -46,7 +37,7 @@
                         <h1>Hinweise bei Unwettern</h1>
                         <p>In den letzten Jahren werden Unwetter in Deutschland immer stärker.</p>
                     </li>
-                    </a>-->
+                    </a>
                     <a href="<?=base_url('informationen/buergerinformationen/nachdembrand')?>">
                     <li class="text">
                         <figure class="border">
