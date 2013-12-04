@@ -75,6 +75,7 @@ class News_Admin extends CP_Controller {
 			{
 				$this->admin->insert_log(str_replace('%NEWS%', $this->input->post('title'), lang('log_admin_createNews')));
 				$this->news->create_news();
+                delete_files($this->config->item('cache_path'));
 			}
 		}
 		else

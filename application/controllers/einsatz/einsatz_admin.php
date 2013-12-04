@@ -81,6 +81,7 @@ class Einsatz_Admin extends CP_Controller {
 			{
 				$this->admin->insert_log(str_replace('%EINSATZ%', $this->input->post('einsatzname'), lang('log_admin_createEinsatz')));
 				$this->einsatz->create_einsatz();
+                delete_files($this->config->item('cache_path'));
 			}
 		}
 		else
