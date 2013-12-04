@@ -88,6 +88,7 @@ class Pages extends CP_Controller {
      */
     public function fahrzeug_overview()
     {
+        if(ENVIRONMENT=='production') $this->output->cache(60);    
         $c_fahrzeug = load_controller('fahrzeug/fahrzeug');
         
         $this->_site_header();
@@ -110,6 +111,8 @@ class Pages extends CP_Controller {
      */
     public function fahrzeug_detail()
     {
+        if(ENVIRONMENT=='production') $this->output->cache(60);        
+        
         $id = $this->uri->segment($this->uri->total_segments());
         $c_fahrzeug = load_controller('fahrzeug/fahrzeug');
         $text = $c_fahrzeug->get_fahrzeug_stage_text($id);
@@ -163,8 +166,10 @@ class Pages extends CP_Controller {
      */
     public function einsatz_detail()
     {
+        if(ENVIRONMENT=='production') $this->output->cache(60);
+        
         $id = $this->uri->segment($this->uri->total_segments());
-       // $this->debug->dump($this->page_content['stage_images']['images']);
+        
         $c_einsatz = load_controller('einsatz/einsatz');
         $text = $c_einsatz->get_einsatz_stage_text($id);
         foreach($this->page_content['stage_images']['images'] as &$value) {
@@ -796,7 +801,7 @@ class Pages extends CP_Controller {
         $this->load->view('frontend/templates/sidebar_header');  
         $this->load->view('frontend/templates/sidebar_report', $statistik);    
         $c_termin->overview_1col(TERMIN_STARTPAGE_LIMIT); 
-        $this->load->view('frontend/templates/sidebar_facebook');
+ //       $this->load->view('frontend/templates/sidebar_facebook');
         $this->load->view('frontend/templates/weather', $weather_data);
         $this->load->view('frontend/templates/sidebar_footer');   
     }    
