@@ -158,7 +158,6 @@ class News_model extends CI_Model {
         
         $images = array();
         $i=0;
-        
         foreach($query->result() as $row)
         {
             $image['name']          = $row->name;
@@ -169,6 +168,26 @@ class News_model extends CI_Model {
             $images[$i] = $image;
             $i++;
         }
+        return $images;
+    }
+    
+    public function get_teaser_images()
+    {
+        $this->db->select('file.fileID, file.name');
+        $this->db->where('file_category.slug', 'news_teaser');
+        $this->db->join('file_category', 'file.categoryID = file_category.categoryID');
+        $query = $this->db->get('file');
+        
+        $i=0;
+        $images = array();
+        
+        foreach($query->result() as $row)
+        {
+            $images[$i]['fileID']   = $row->fileID;
+            $images[$i]['name']         = $row->name;
+            $i++;
+        }
+        
         return $images;
     }
     
@@ -224,7 +243,8 @@ class News_model extends CI_Model {
         $news_content = array(
             'newsID'        => $id,
             'teaser'        => $this->input->post('teaser'),
-            'text'          => $this->input->post('text')
+            'text'          => $this->input->post('text'),
+            'teaser_image'  => $this->input->post('teaser_img')
         );  
         
         $this->db->where('newsID', $id); 
@@ -321,6 +341,7 @@ class News_model extends CI_Model {
         $news['valid_to_time']  = $row->valid_to_time;
         $news['teaser']         = $row->teaser;
         $news['text']           = $row->text;
+        $news['teaser_image']   = $row->teaser_image;
         
         return $news;
     }

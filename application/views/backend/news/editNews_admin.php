@@ -71,7 +71,18 @@
 		'id'		=> 'text',
 		'class' 	=> 'tinymce',
 		'value' 	=> $value
-	);
+	);    
+    
+	if(isset($_POST['teaser_img'])) 		       	$teaser_selected = $_POST['teaser_img'];
+	else if(isset($news['teaser_image']))	        $teaser_selected = $news['teaser_image'];
+	else											$teaser_selected = 0;	
+    $teaser_options = array();
+	$teaser_attr = "class = 'input_dropdown' id = 'input_dropdown'";
+    $teaser_options[0] = 'kein Bild';
+	foreach($teaser_images as $image)
+	{
+		$teaser_options[$image['fileID']] = $image['name'];	
+	} 
     
 	if(isset($_POST['category_id'])) 		       	$cat_selected = $_POST['category_id'];
 	else if(isset($news['categoryID']))	            $cat_selected = $news['categoryID'];
@@ -145,6 +156,10 @@ $(function() {
                         <td class='form_label'><?=form_label('Gültig bis:', $valid_to['id']); ?></td>
                         <td><?=form_input($valid_to); ?> <?=form_input($valid_to_time); ?></td>
                     </tr>-->
+                	<tr>
+                        <td class='form_label'><?=form_label('Teaserbild:', 'teaser_img'); ?></td>
+                    	<td><?=form_dropdown('teaser_img', $teaser_options, $teaser_selected, $teaser_attr)?></td>
+                    </tr>
                     <tr>
                         <td class='form_label'><?=form_label('Teaser:', $teaser['id']); ?></td>
                         <td><?=form_textarea($teaser); ?></td>

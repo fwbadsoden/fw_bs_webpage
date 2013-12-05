@@ -65,6 +65,14 @@
 		'value' 	=> set_value('text')
 	);
     
+    $teaser_options = array();
+	$teaser_attr = "class = 'input_dropdown' id = 'input_dropdown'";
+    $teaser_options[0] = 'kein Bild';
+	foreach($teaser_images as $image)
+	{
+		$teaser_options[$image['fileID']] = $image['name'];	
+	} 
+    
     $cat_options = array();
 	$cat_attr = "class = 'input_dropdown' id = 'input_dropdown'";
 	foreach($categories as $cat)
@@ -134,6 +142,10 @@ $(function() {
                         <td class='form_label'><?=form_label('Gültig bis:', $valid_to['id']); ?></td>
                         <td><?=form_input($valid_to); ?> <?=form_input($valid_to_time); ?></td>
                     </tr>-->
+                	<tr>
+                        <td class='form_label'><?=form_label('Teaserbild:', 'teaser_img'); ?></td>
+                    	<td><?=form_dropdown('teaser_img', $teaser_options, 0, $teaser_attr)?></td>
+                    </tr>
                     <tr>
                         <td class='form_label'><?=form_label('Teaser:', $teaser['id']); ?></td>
                         <td><?=form_textarea($teaser); ?></td>
