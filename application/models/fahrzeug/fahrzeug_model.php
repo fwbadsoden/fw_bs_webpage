@@ -125,6 +125,7 @@ class Fahrzeug_Model extends CI_Model {
     
     public function get_fahrzeug_anzahl()
     {
+        $this->db->select('fahrzeugID');
         $this->db->where('online', 1);
         $query = $this->db->get('fahrzeug');
         return $query->num_rows();
