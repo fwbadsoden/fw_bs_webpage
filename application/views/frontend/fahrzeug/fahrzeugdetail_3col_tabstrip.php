@@ -1,8 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed'); 
     $this->load->helper('html'); 
-    $pumpe        = explode('|', $fahrzeug['fahrzeugPumpe']);
-    $loeschmittel = explode('|', $fahrzeug['fahrzeugLoeschmittel']);
-    $besonderheit = explode('|', $fahrzeug['fahrzeugBesonderheit']);
     $tab_index_1  = 1;
     $tab_index_2  = 1;
     if($fahrzeug['fahrzeugRufname'] == 'n/a') : $rufname = 'n/a'; 
@@ -30,18 +27,14 @@
                         <div class="facttable">   
                             <div class="left">
                                 <h1>Pumpe</h1>
-                                <ul>
-<? foreach($pumpe as $p) : ?>                                
-                                    <li><?=trim($p)?></li>
-<? endforeach; ?>                                    
+                                <ul>               
+                                    <li><?=str_replace("\n", "<br />", trim($fahrzeug['fahrzeugPumpe']));?></li>                                 
                                 </ul>
                             </div>                            
                             <div class="right">
                                 <h1>Löschmittelvorrat</h1>
-                                <ul>
-<? foreach($loeschmittel as $l) : ?>                                
-                                    <li><?=trim($l)?></li>
-<? endforeach; ?>                                    
+                                <ul>     
+                                    <li><?=str_replace("\n", "<br />", trim($fahrzeug['fahrzeugLoeschmittel']));?></li>                          
                                 </ul>
                             </div>                         
                             <hr class="clear" />
@@ -50,10 +43,8 @@
                         <div class="facttable">   
                             <div class="left">
                                 <h1>Besondere Ausrüstung</h1>
-                                <ul>
-<? foreach($besonderheit as $b) : ?>                                
-                                    <li><?=trim($b)?></li>
-<? endforeach; ?>          
+                                <ul>                              
+                                    <li><?=str_replace("\n", "<br />", trim($fahrzeug['fahrzeugBesonderheit']));?></li>       
                                 </ul>
                             </div>                           
                             <hr class="clear" />

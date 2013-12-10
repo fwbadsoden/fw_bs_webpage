@@ -80,7 +80,7 @@
 	$fahrzeugPumpe = array(
 		'name'		=> 'fahrzeugpumpe',
 		'id'		=> 'fahrzeugpumpe',
-		'class' 	=> 'input_text',
+		'class' 	=> 'textarea',
 		'value' 	=> $value
 	);
 	
@@ -88,7 +88,7 @@
 	$fahrzeugLoeschmittel = array(
 		'name'		=> 'fahrzeugloeschmittel',
 		'id'		=> 'fahrzeugloeschmittel',
-		'class' 	=> 'input_text',
+		'class' 	=> 'textarea',
 		'value' 	=> $value
 	);
 	
@@ -96,7 +96,7 @@
 	$fahrzeugBesonderheit = array(
 		'name'		=> 'fahrzeugbesonderheit',
 		'id'		=> 'fahrzeugbesonderheit',
-		'class' 	=> 'input_text',
+		'class' 	=> 'textarea',
 		'value' 	=> $value
 	);
 	
@@ -234,18 +234,15 @@
    	<p>
    	<table>
         <tr>
-            <td>Bei mehreren Einträgen pro Feld sind die Einträge durch | zu trennen.</td>
-        </tr>
-        <tr>
             <td>
                 <table>
                     <tr>
-                        <td class='form_label'><?=form_label('Pumpe(n):', $fahrzeugPumpe['id']); ?></td>
-                        <td><?=form_input($fahrzeugPumpe); ?></td>
+                        <td class='form_label'><?=form_label('Pumpe(n):<br/>(Pro Eintrag eine Zeile!)', $fahrzeugPumpe['id']); ?></td>
+                        <td><?=form_textarea($fahrzeugPumpe); ?></td>
                     </tr>
                     <tr>
-                        <td class='form_label'><?=form_label('Löschmittel:', $fahrzeugLoeschmittel['id']); ?></td>
-                        <td><?=form_input($fahrzeugLoeschmittel); ?></td>
+                        <td class='form_label'><?=form_label('Löschmittel:<br/>(Pro Eintrag eine Zeile!)', $fahrzeugLoeschmittel['id']); ?></td>
+                        <td><?=form_textarea($fahrzeugLoeschmittel); ?></td>
                     </tr>
                 </table>
             </td>
@@ -258,14 +255,11 @@
    	<p>
    	<table>
         <tr>
-            <td>Bei mehreren Einträgen pro Feld sind die Einträge durch | zu trennen.</td>
-        </tr>
-        <tr>
             <td>
                 <table>
                     <tr>
-                        <td class='form_label'><?=form_label('Besonderheit:', $fahrzeugBesonderheit['id']); ?></td>
-                        <td><?=form_input($fahrzeugBesonderheit); ?></td>
+                        <td class='form_label'><?=form_label('Besonderheit:<br/>(Pro Eintrag eine Zeile!)', $fahrzeugBesonderheit['id']); ?></td>
+                        <td><?=form_textarea($fahrzeugBesonderheit); ?></td>
                     </tr>
                 </table>
             </td>
