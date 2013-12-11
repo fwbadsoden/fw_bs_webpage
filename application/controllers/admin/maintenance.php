@@ -117,11 +117,28 @@ class Maintenance extends CP_Controller {
 		if(!$this->cp_auth->is_logged_in_admin() or ENVIRONMENT != 'development') redirect('admin', 'refresh');
         phpinfo();   
     }
-    
-    public function generate_names($name)
+        
+    public function show_buttons()
     {
-        echo strtoupper(md5($name));
+        // Berechtigungsprüfung TEIL 1: eingelogged und Admin
+		if(!$this->cp_auth->is_logged_in_admin() or ENVIRONMENT != 'development') redirect('admin', 'refresh');
+        
+        $header['title']                = 'Buttons';       
+		$menue['menue']	                = $this->admin->get_menue();
+        $menue['userdata']              = $this->cp_auth->cp_get_user_by_id();
+		$menue['submenue']	            = $this->admin->get_submenue();          
+    
+        $this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/menue', $menue);
+		$this->load->view('backend/templates/admin/submenue', $menue);
+        $this->load->view('backend/maintenance/show_icons');
+        $this->load->view('backend/templates/admin/footer');
     }
+    
+//    public function generate_names($name)
+//    {
+//        echo strtoupper(md5($name));
+//    }
 }
 
 /* End of file maintenance.php */

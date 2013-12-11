@@ -66,8 +66,7 @@
 <?      if($item['delete']==1) :	?>	
 		<a id="confirm_link_<?=$item['fahrzeugID']?>" href="<?=base_url('admin/content/fahrzeug/checkdel/'.$item['fahrzeugID'])?>" class="button_mini" title="Fahrzeug löschen"><span class='button_delete_small'></span></a>
 <?      else :                      ?>
-		<a class="button_mini" title="Fahrzeug kann nicht gelöscht werden. 
-Wird bereits verwendet."><span class='button_lock_small'></span></a>
+		<a class="button_mini" title="Fahrzeug kann nicht gelöscht werden. Wird bereits verwendet."><span class='button_lock_small'></span></a>
 <?      endif;                      ?>
     </td>
 <?  else :                          ?>

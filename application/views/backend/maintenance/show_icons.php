@@ -12,7 +12,8 @@ $dir[] = $file;
 closedir($handle); 
 sort($dir); 
 
-echo "<ul>";
+
+echo "<div id='content'><ul>";
 foreach($dir as $d) {
    $info = getImageSize($verzeichnis.$d);
    // Bild anzeigen
@@ -21,7 +22,7 @@ foreach($dir as $d) {
    echo " width=".$info[0]." height=".$info[1]." alt = ".base_url($verzeichnis.$d)."> ".base_url($verzeichnis.$d)."</li>";
   
 }
-echo "</ul>";
+echo "</ul></div>";
 
 /* End of file show_icons.php */
 /* Location: ./application/views/backend/maintenance/show_icons.php */

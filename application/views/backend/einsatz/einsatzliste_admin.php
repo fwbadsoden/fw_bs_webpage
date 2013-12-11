@@ -22,9 +22,14 @@ $(document).ready(function()
 <div id="content">
 <? if($privileged['edit']) :        ?>
 <p class="thirdMenue">
-	<a href="<?=base_url('admin/content/einsatz/create')?>" class="button_gross"><span class="button_add">Neuen Einsatz anlegen</span></a>
+	<table>
+        <tr>
+            <td><a href="<?=base_url('admin/content/einsatz/create')?>" class="button_gross"><span class="button_add">Neuen Einsatz anlegen</span></a></td>
+            <? if($this->cp_auth->is_privileged(EINSATZCUE_PRIV_DISPLAY)) : ?> <td><a href="<?=base_url('admin/content/einsatz/cue')?>" class="button_gross"><span class="button_key">Einsatzstichwörter</span></a></td> <? endif; ?>
+            <? if($this->cp_auth->is_privileged(EINSATZMOFO_PRIV_DISPLAY)) : ?><td><a href="<?=base_url('admin/content/einsatz/cue')?>" class="button_gross"><span class="button_page_white_text">Vorschlagswerte weitere Einsatzkräfte</span></a></td> <? endif; ?>
+        </tr>
+    </table>
 </p>
-<p>&nbsp;</p>
 <? endif;                           ?>
 
 <h1>Einsätze verwalten</h1>

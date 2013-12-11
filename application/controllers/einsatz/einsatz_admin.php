@@ -25,6 +25,7 @@ class Einsatz_Admin extends CP_Controller {
 		parent::__construct();
 		$this->load->library('CP_auth');
 		$this->load->model('einsatz/einsatz_model', 'einsatz');
+		$this->load->model('einsatz/einsatz_cue_model', 'einsatz_cue');
 		$this->load->model('fahrzeug/fahrzeug_model', 'fahrzeug');
 		$this->load->model('admin/admin_model', 'admin');
 		$this->load->model('autosuggest/autosuggest_model', 'autosuggest');
@@ -220,6 +221,136 @@ class Einsatz_Admin extends CP_Controller {
 		$this->form_validation->set_rules('weitereeinsatzkraefte', 'Weitere Einsatzkräfte', 'xss_clean'); 
 		$this->form_validation->set_rules('einsatztyp', 'Einsatzart', 'required|is_natural_no_zero'); 
 		$this->form_validation->set_rules('einsatzstichwort', 'Einsatzstichwort', 'required|is_natural_no_zero');
+
+		return $this->form_validation->run();	
+	}
+    
+    /**
+     * Einsatz_Admin::cue_liste()
+     * 
+     * @return void
+     */
+    public function cue_liste()
+    {
+        if(!$this->cp_auth->is_privileged(EINSATZCUE_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
+		$this->session->set_userdata('cueliste_redirect', current_url()); 
+				
+		$header['title']    = 'Einsatzstichwörter';	
+		$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
+		$menue['submenue']	= $this->admin->get_submenue();
+		$data['cues']	    = $this->einsatz_cue->get_einsatz_cue_list();	
+        
+        // Berechtigungen für Übersichtsseite weiterreichen
+        $data['privileged']['edit'] = $this->cp_auth->is_privileged(EINSATZCUE_PRIV_EDIT);
+        $data['privileged']['delete'] = $this->cp_auth->is_privileged(EINSATZCUE_PRIV_DELETE);
+	
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/menue', $menue);	
+		$this->load->view('backend/templates/admin/submenue', $menue);	
+		$this->load->view('backend/einsatz/cueliste_admin', $data);
+		$this->load->view('backend/templates/admin/footer');        
+    }
+	
+	/**
+	 * Einsatz_Admin::create_cue()
+	 * 
+	 * @return
+	 */
+	public function create_cue()
+	{		
+        if(!$this->cp_auth->is_privileged(EINSATZCUE_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
+		if($this->uri->segment($this->uri->total_segments()) == 'save')
+		{		
+			if($verify= $this->_verify_cue())
+			{
+				$this->admin->insert_log(str_replace('%EINSATZSTICHWORT%', $this->input->post('stichwortname'), lang('log_admin_createEinsatzStichwort')));
+				$this->einsatz_cue->create_cue();
+			}
+		}
+		else
+			$this->session->set_userdata('cuecreate_submit', current_url());
+			
+		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
+		{			
+			$header['title'] 		    = 'Einsatzstichwörter';		
+    		$menue['menue']	            = $this->admin->get_menue();
+			$menue['submenue']		    = $this->admin->get_submenue();
+            $menue['userdata']          = $this->cp_auth->cp_get_user_by_id();
+		
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/einsatz/createCue_admin');
+			$this->load->view('backend/templates/admin/footer');
+		}
+		else redirect($this->session->userdata('cueliste_redirect'), 'refresh');
+	}
+	
+	/**
+	 * Einsatz_Admin::edit_cue()
+	 * 
+	 * @param integer $id
+	 * @return
+	 */
+	public function edit_cue($id)
+	{				
+        if(!$this->cp_auth->is_privileged(EINSATZCUE_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
+		if($this->uri->segment($this->uri->total_segments()) == 'save')
+		{				
+			if($verify = $this->_verify_cue($id))
+			{
+				$this->admin->insert_log(str_replace('%EINSATZSTICHWORT%', $this->input->post('stichwortname'), lang('log_admin_editEinsatzStichwort')));
+				$this->einsatz_cue->update_cue($id);
+			}
+		}
+		else
+			$this->session->set_userdata('cueedit_submit', current_url());
+			
+		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
+		{			
+			$header['title'] 		    = 'Einsatzstichwörter';		
+            $menue['menue']	            = $this->admin->get_menue();
+            $menue['userdata']          = $this->cp_auth->cp_get_user_by_id();
+			$menue['submenue']		    = $this->admin->get_submenue();
+			$cue['cue']		            = $this->einsatz_cue->get_cue($id);
+		
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/einsatz/editCue_admin', $cue); 
+			$this->load->view('backend/templates/admin/footer');
+		}
+		else redirect($this->session->userdata('cueliste_redirect'), 'refresh');	
+	}
+	
+	/**
+	 * Einsatz_Admin::_verify_cue()
+	 * 
+	 * @return
+	 */
+	private function _verify_cue($id = 0)
+	{		
+		$this->load->library('form_validation');
+		
+		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
+		
+        if($id > 0)
+        {
+            $value = $this->input->post('stichwortname');
+            $params[0] = 'einsatz_cue';
+            $params[1] = 'name';
+            $params[2] = $id;
+            $params[3] = 'cueID';
+            $this->form_validation->set_rules('stichwortname', 'Stichwort', 'required|max_length[15]|edit_unique['.$value.', '.$params.']|xss_clean');
+        }
+        else
+            $this->form_validation->set_rules('stichwortname', 'Stichwort', 'required|max_length[15]|is_unique[einsatz_cue.name]|xss_clean');  
+		$this->form_validation->set_rules('stichwortbeschreibung','Beschreibung', 'required|max_length[255]|xss_clean');	
+		$this->form_validation->set_rules('stichwortbeispiel', 'Beispiel', 'xss_clean');	
+		$this->form_validation->set_rules('stichwortaao', 'AAO', 'max_length[255]|xss_clean');		
 
 		return $this->form_validation->run();	
 	}

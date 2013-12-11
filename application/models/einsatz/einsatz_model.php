@@ -203,6 +203,11 @@ class Einsatz_Model extends CI_Model {
 		}
 		return $arr_einsatz_list;
 	}
+    
+    public function get_einsatz_cue_list()
+    {
+        
+    }
 	
 	public function get_einsatz($id)
 	{
@@ -261,24 +266,6 @@ class Einsatz_Model extends CI_Model {
         
 		return $einsatz;
 	}
-	
-    
-    public function get_einsatz_cue_list()
-    {
-        $query = $this->db->get('einsatz_cue');
-        $i = 0;
-        $arr_cue = array();
-        
-        foreach($query->result() as $row)
-        {
-            $arr_cue[$i]['cue_id']          = $row->cueID;
-            $arr_cue[$i]['name']            = $row->name;
-            $arr_cue[$i]['mimic']           = $row->mimic;
-            $i++;
-        }
-        
-        return $arr_cue;
-    }
 	
 	public function get_einsatz_type_list()
 	{
