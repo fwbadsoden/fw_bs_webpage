@@ -1,25 +1,36 @@
 <?php
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
-$api_key = 'AIzaSyCIdNCnXP0RCrhpGxjGuS_qZEnz7QCLns4';
-$lat_lng_1 = '50.145006';
-$lat_lng_2 = '8.49844';
-$zoom = '13';
-$visual_refresh = 'true';
-$sensor = 'false';
+if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+    $api_key = 'AIzaSyCIdNCnXP0RCrhpGxjGuS_qZEnz7QCLns4';
+    $lat_lng_1 = '50.150016';
+    $lat_lng_2 = '8.49044';
+    $visual_refresh = 'true';
+    $sensor = 'true';
+    $map_type_id = 'SATELLITE';
+    $map_type_control = 'true';
+    $map_type_control_style = 'DROPDOWN_MENU';
+    $map_type_control_position = 'TOP_RIGHT';
+    $zoom_control = 'true';
+    $zoom_control_style = 'LARGE';
+    $zoom_control_position = 'LEFT_TOP';
+    $zoom = '13';
+    $scale_control = 'true';
+    $pan_control = 'true';
+    $pan_control_position = 'TOP_LEFT';
+    $streetview_control = 'false';
 ?>
 
-<div class="slidewrapper smallstage"><script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCIdNCnXP0RCrhpGxjGuS_qZEnz7QCLns4&sensor=false"></script>
+<div class="slidewrapper smallstage">
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=<?=$api_key?>&sensor=<?=$sensor?>"></script>
 
     <div class="oneColumnBox">  
         <div class="article" id="anker_allgemein">
             <p>
-                Wie alle Feuerwehren haben auch wir bei der Feuerwehr Bad Soden ein bestimmtes Einsatzgebiet, für das wir zuständig sind. Das Gebiet umfasst das Stadtgebiet der Stadt Bad Soden am Taunus mit den Stadtteilen 
+                Wie alle Feuerwehren haben auch wir bei der Feuerwehr Bad Soden ein bestimmtes Einsatzgebiet, für das wir zuständig sind.<br /> Das Gebiet umfasst das Stadtgebiet der Stadt Bad Soden am Taunus mit den Stadtteilen 
                 Neuenhain und Altenhain. Darüber hinaus werden wir für überörtliche Einsätze im gesamten Main-Taunus-Kreis eingesetzt.
             </p>
-
+            <h1>Unser Einsatzgebiet</h1>
             <div id="map_canvas" style="width: 100%; height: 500px; "></div>
-
         </div>
         <h1 class="module" id="anker_schwerpunkte">Schwerpunkte</h1>
         <div class="article"> 
@@ -61,6 +72,8 @@ $sensor = 'false';
         </div>
 
         <script type="text/javascript">
+
+            var einsatzgebiet = new google.maps.LatLng(<?=$lat_lng_1?>, <?=$lat_lng_2?>);
 
             // Marker
             var locations = [
@@ -111,10 +124,27 @@ $sensor = 'false';
             ];
 
             var mapOptions = {
-                center: new google.maps.LatLng(50.145006, 8.49844),
-                zoom: 13,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+                center: einsatzgebiet,
+                zoom: <?=$zoom?>,
+                mapTypeId: google.maps.MapTypeId.<?=$map_type_id?>,
+                mapTypeControl: <?=$map_type_control?>,
+                mapTypeControlOptions: {
+                  style: google.maps.MapTypeControlStyle.<?=$map_type_control_style?>,
+                  position: google.maps.ControlPosition.<?=$map_type_control_position?>
+                },
+                zoomControl: <?=$zoom_control?>,
+                zoomControlOptions: {
+                  style: google.maps.ZoomControlStyle.<?=$zoom_control_style?>,
+                  position: google.maps.ControlPosition.<?=$zoom_control_position?>
+                },
+                scaleControl: <?=$scale_control?>,
+                panControl: <?=$pan_control?>,
+                panControlOptions: {
+                    position: google.maps.ControlPosition.<?=$pan_control_position?>
+                },
+                streetViewControl: <?=$streetview_control?>
             };
+            
             var map = new google.maps.Map(document.getElementById("map_canvas"),
                     mapOptions);
 
@@ -152,5 +182,69 @@ $sensor = 'false';
             });
 
             overlay.setMap(map);
+            
+            /**
+             * The HomeControl adds a control to the map that
+             * returns the user to the control's defined home.
+             */
+             
+             // Define a property to hold the Home state
+            HomeControl.prototype.home_ = null;
+            
+            // Define setters and getters for this property
+            HomeControl.prototype.getHome = function() {
+              return this.home_;
+            }
+
+            /** @constructor */
+            function HomeControl(controlDiv, map, home) {
+            
+              // We set up a variable for this since we're adding
+              // event listeners later.
+              var control = this;
+            
+              // Set the home property upon construction
+              control.home_ = home;
+            
+              // Set CSS styles for the DIV containing the control
+              // Setting padding to 5 px will offset the control
+              // from the edge of the map
+              controlDiv.style.padding = '5px';
+            
+              // Set CSS for the control border
+              var goHomeUI = document.createElement('div');
+              goHomeUI.style.backgroundColor = 'white';
+              goHomeUI.style.borderStyle = 'solid';
+              goHomeUI.style.borderWidth = '2px';
+              goHomeUI.style.cursor = 'pointer';
+              goHomeUI.style.textAlign = 'center';
+              goHomeUI.title = 'Klicken, um die Karte auf den Startpunkt zurückzusetzen';
+              controlDiv.appendChild(goHomeUI);
+            
+              // Set CSS for the control interior
+              var goHomeText = document.createElement('div');
+              goHomeText.style.fontFamily = 'Arial,sans-serif';
+              goHomeText.style.fontSize = '12px';
+              goHomeText.style.paddingLeft = '4px';
+              goHomeText.style.paddingRight = '4px';
+              goHomeText.innerHTML = '<b>zum Einsatzgebiet</b>';
+              goHomeUI.appendChild(goHomeText);
+            
+              // Setup the click event listener for Home:
+              // simply set the map to the control's current home property.
+              google.maps.event.addDomListener(goHomeUI, 'click', function() {
+                var currentHome = control.getHome();
+                map.setCenter(currentHome);
+              });
+            }
+            
+            // Create the DIV to hold the control and
+            // call the HomeControl() constructor passing
+            // in this DIV.
+            var homeControlDiv = document.createElement('div');
+            var homeControl = new HomeControl(homeControlDiv, map, einsatzgebiet);
+            
+            homeControlDiv.index = 1;
+            map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
 
         </script>   

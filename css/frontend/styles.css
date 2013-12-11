@@ -1144,6 +1144,8 @@ input.button_black:hover {
 	float: right; 
 }
 
+#content #map_canvas img { max-width: none; }
+
 
 @media only screen and (max-width: 1000px) {
 	
