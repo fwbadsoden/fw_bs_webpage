@@ -376,18 +376,6 @@
                 </div>
 				<div class="row">
                     <div class="wappen">
-                    	<img src="<?=base_url('images/content/wappen/nassau.png')?>" />
-                    </div>
-                    <div class="links">
-                        <h2>Nassauischer Feuerwehrverband</h2>
-                        <ul class="linktable_first">
-                            <li><a href="http://www.feuerwehr-offenbach.de/" target="_blank">Nassauischer Feuerwehrverband</a> &raquo;</li>
-                        </ul>
-                    </div>
-                    <hr class="clear" />
-                </div>
-				<div class="row">
-                    <div class="wappen">
                     	<img src="<?=base_url('images/content/wappen/ffm.png')?>" />
                     </div>
                     <div class="links">
@@ -397,6 +385,7 @@
                             <li><a href="http://www.hlfs.hessen.de/irj/HLFS_Internet" target="_blank">Hessische Landesfeuerwehrschule</a> &raquo;</li>
                             <li><a href="http://www.jf-hessen.de/" target="_blank">Hessische Jugendfeuerwehr</a> &raquo;</li>
                             <li><a href="http://www.dfv.org/" target="_blank">Deutscher Feuerwehrverband</a> &raquo;</li>
+                            <li><a href="http://www.nassauischer-feuerwehrverband.de/" target="_blank">Nassauischer Feuerwehrverband</a> &raquo;</li>
                         </ul>
                     </div>
                     <hr class="clear" />

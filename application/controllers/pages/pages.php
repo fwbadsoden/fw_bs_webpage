@@ -144,7 +144,7 @@ class Pages extends CP_Controller {
      */
     public function einsatz_overview()
     {
-        if(ENVIRONMENT=='production') $this->output->cache(60);
+       // if(ENVIRONMENT=='production') $this->output->cache(60);
         
         $c_einsatz = load_controller('einsatz/einsatz');
         
@@ -205,7 +205,7 @@ class Pages extends CP_Controller {
      */
     public function news_overview()
     {
-        if(ENVIRONMENT=='production') $this->output->cache(60);
+    //    if(ENVIRONMENT=='production') $this->output->cache(60);
         $c_news = load_controller('news/news');
         
         $this->_site_header();    
