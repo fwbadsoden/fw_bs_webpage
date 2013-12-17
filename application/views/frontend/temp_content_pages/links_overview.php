@@ -232,31 +232,31 @@
                 </div>
 				<div class="row">
                     <div class="wappen">
-                    	<img src="<?=base_url('images/content/wappen/ffm.png')?>" />
+                    	<img src="<?=base_url('images/content/wappen/berlin.png')?>" />
                     </div>
                     <div class="links">
-                        <h2>Mainz</h2>
+                        <h2>Berlin</h2>
                         <ul class="linktable_first">
-                            <li><a href="http://www.berufsfeuerwehr-mainz.de/" target="_blank">Berufsfeuerwehr Mainz</a> &raquo;</li>
+                            <li><a href="http://www.berliner-feuerwehr.de/" target="_blank">Berufsfeuerwehr Berlin</a> &raquo;</li>
                         </ul>
                     </div>
                     <hr class="clear" />
                 </div>
 				<div class="row">
                     <div class="wappen">
-                    	<img src="<?=base_url('images/content/wappen/ffm.png')?>" />
+                    	<img src="<?=base_url('images/content/wappen/hh.png')?>" />
                     </div>
                     <div class="links">
-                        <h2>Mainz</h2>
+                        <h2>Hamburg</h2>
                         <ul class="linktable_first">
-                            <li><a href="http://www.berufsfeuerwehr-mainz.de/" target="_blank">Berufsfeuerwehr Mainz</a> &raquo;</li>
+                            <li><a href="http://www.hamburg.de/feuerwehr/" target="_blank">Berufsfeuerwehr Hamburg</a> &raquo;</li>
                         </ul>
                     </div>
                     <hr class="clear" />
                 </div>
 				<div class="row">
                     <div class="wappen">
-                    	<img src="<?=base_url('images/content/wappen/ffm.png')?>" />
+                    	<img src="<?=base_url('images/content/wappen/mainz.png')?>" />
                     </div>
                     <div class="links">
                         <h2>Mainz</h2>
@@ -376,7 +376,7 @@
                 </div>
 				<div class="row">
                     <div class="wappen">
-                    	<img src="<?=base_url('images/content/wappen/ffm.png')?>" />
+                    	<img src="<?=base_url('images/content/wappen/feuerwehr.png')?>" />
                     </div>
                     <div class="links">
                         <h2>Feuerwehr allgemein</h2>
