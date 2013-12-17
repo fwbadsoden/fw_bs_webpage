@@ -81,6 +81,7 @@
             <div id="metanavigation"> 
                 <ul>
                     <li class="first"><a href="<?=base_url('admin')?>" target='_blank'>Login</a></li>
+                    <li><a href="https://portal-fwbs.de/" target="_blank">Infoportal</a></li>
 <? if(current_url() == base_url('kontakt')) : $class = ' class="active"'; else : $class = ''; endif; ?>   
                     <li><a href="<?=base_url('kontakt')?>"<?=$class?> target="_top">Kontakt</a></li>
 <? if(current_url() == base_url('links')) : $class = ' class="active"'; else : $class = ''; endif; ?>                     
@@ -304,6 +305,7 @@
       <li class="metanav">
       	<ul>
           <li><a href="<?=base_url('admin')?>" target="_blank">Login</a></li>
+          <li><a href="https://portal-fwbs.de/" target="_blank">Infoportal</a></li>
           <li><a href="<?=base_url('kontakt')?>">Kontakt</a></li>
           <li><a class="fancybox-metaLayer" href="#notruflayerjs">Notfall</a></li>
         </ul>
