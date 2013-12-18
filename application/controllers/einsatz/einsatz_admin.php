@@ -97,7 +97,7 @@ class Einsatz_Admin extends CP_Controller {
 			$einsatz['fahrzeuge'] 	    = $this->fahrzeug->get_fahrzeug_list_id_name(1);
 			$einsatz['types'] 		    = $this->einsatz->get_einsatz_type_list();
 			$einsatz['templates']	    = $this->einsatz->get_einsatz_templates();
-            $einsatz['cues']            = $this->einsatz->get_einsatz_cue_list();
+            $einsatz['cues']            = $this->einsatz_cue->get_einsatz_cue_list();
             $autosuggest['weitere_kraefte'] = $this->autosuggest->get_values('einsatz_weitere_kraefte');
 		
 			$this->load->view('backend/templates/admin/header', $header);
@@ -142,7 +142,7 @@ class Einsatz_Admin extends CP_Controller {
 			$einsatz['fahrzeuge'] 	    = $this->fahrzeug->get_fahrzeug_list_id_name(1);
 			$einsatz['types'] 		    = $this->einsatz->get_einsatz_type_list();
 			$einsatz['einsatz']		    = $this->einsatz->get_einsatz($id);
-            $einsatz['cues']            = $this->einsatz->get_einsatz_cue_list();
+            $einsatz['cues']            = $this->einsatz_cue->get_einsatz_cue_list();
             $autosuggest['weitere_kraefte'] = $this->autosuggest->get_values('einsatz_weitere_kraefte');
 		
 			$this->load->view('backend/templates/admin/header', $header);
@@ -297,11 +297,10 @@ class Einsatz_Admin extends CP_Controller {
 	public function edit_cue($id)
 	{				
         if(!$this->cp_auth->is_privileged(EINSATZCUE_PRIV_EDIT)) redirect('admin/401', 'refresh');
-        
 		if($this->uri->segment($this->uri->total_segments()) == 'save')
 		{				
 			if($verify = $this->_verify_cue($id))
-			{
+			{ 
 				$this->admin->insert_log(str_replace('%EINSATZSTICHWORT%', $this->input->post('stichwortname'), lang('log_admin_editEinsatzStichwort')));
 				$this->einsatz_cue->update_cue($id);
 			}
@@ -325,6 +324,48 @@ class Einsatz_Admin extends CP_Controller {
 		}
 		else redirect($this->session->userdata('cueliste_redirect'), 'refresh');	
 	}
+
+	/**
+	 * Einsatz_Admin::delete_cue_verify()
+	 * 
+	 * @param integer $einsatzId
+	 * @return
+	 */
+	public function delete_cue_verify($cueID)
+    {
+        if(!$this->cp_auth->is_privileged(EINSATZCUE_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
+        $header['title']    = 'Einsatzstichwort l&ouml;schen';		
+    	$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
+    	$menue['submenue']	= $this->admin->get_submenue();
+		
+        $data['cue'] = $this->einsatz_cue->get_cue($cueID);
+    	
+    	$this->load->view('backend/templates/admin/header', $header);
+    	$this->load->view('backend/templates/admin/menue', $menue);	
+    	$this->load->view('backend/templates/admin/submenue', $menue);	
+    	$this->load->view('backend/einsatz/verifyDeleteCue_admin', $data);
+    	$this->load->view('backend/templates/admin/footer');
+    }
+	
+	/**
+	 * Einsatz_Admin::delete_cue()
+	 * 
+	 * @param integer $id
+	 * @return
+	 */
+	public function delete_cue($id)
+	{		
+        if(!$this->cp_auth->is_privileged(EINSATZCUE_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
+        $cue = $this->einsatz_cue->get_cue($id);
+		$this->admin->insert_log(str_replace('%EINSATZSTICHWORT%', $cue->name, lang('log_admin_deleteEinsatzStichwort')));
+
+		$this->einsatz_cue->delete_cue($id);
+		
+		redirect($this->session->userdata('cueliste_redirect'), 'refresh');
+	}
 	
 	/**
 	 * Einsatz_Admin::_verify_cue()
@@ -339,12 +380,8 @@ class Einsatz_Admin extends CP_Controller {
 		
         if($id > 0)
         {
-            $value = $this->input->post('stichwortname');
-            $params[0] = 'einsatz_cue';
-            $params[1] = 'name';
-            $params[2] = $id;
-            $params[3] = 'cueID';
-            $this->form_validation->set_rules('stichwortname', 'Stichwort', 'required|max_length[15]|edit_unique['.$value.', '.$params.']|xss_clean');
+            $params = 'einsatz_cue.name.'.$id.'.cueID';
+            $this->form_validation->set_rules('stichwortname', 'Stichwort', 'required|max_length[15]|edit_unique['.$params.']|xss_clean');
         }
         else
             $this->form_validation->set_rules('stichwortname', 'Stichwort', 'required|max_length[15]|is_unique[einsatz_cue.name]|xss_clean');  

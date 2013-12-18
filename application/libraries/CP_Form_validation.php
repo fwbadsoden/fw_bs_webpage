@@ -42,9 +42,9 @@ Class CP_Form_validation extends CI_Form_validation
 	
 	    $query = $CI->db->select()->from($table)->where($field, $value)->limit(1)->get();
 	    if ($query->row() && $query->row()->$db_id_field != $current_id)
-	    {
 	        return FALSE;
-	    }
+        else 
+            return true;
 	}   
 	
 	/**

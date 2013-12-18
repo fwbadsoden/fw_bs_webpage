@@ -37,13 +37,12 @@
 
 <div id='content'>
 <div id='cue_create'>
-<?=form_open($this->session->userdata('cuecreate_submit').'/save', $form);?>
+<?=form_open($this->session->userdata('cueedit_submit').'/save', $form);?>
 
     <table>
         <tr>
-            <td><button type='submit' name='cue_submit' id='cue_submit' class='button_gross'><span class='button_save'>Einsatzstichwort anlegen</span></button></td>
+            <td><button type='submit' name='cue_submit' id='cue_submit' class='button_gross'><span class='button_save'>Speichern</span></button></td>
             <td><a href='<?=$this->session->userdata('cueliste_redirect')?>' target='_top' class="button_gross"><span class="button_cancel">Zurück</span></a></td>
-            <td><button type='reset' name='cue_submit' id='cue_submit' class='button_gross'><span class='button_reset'>Zurücksetzen</span></button></td>
         </tr>
     </table>
     <br>
@@ -53,7 +52,7 @@
         <tr><td colspan="2"><?=validation_errors();?></td></tr>
                     <tr>
                         <td class='form_label'><?=form_label('Stichwort:', $cueName['id']); ?></td>
-                        <td><?=form_input($einsatzName); ?></td>
+                        <td><?=form_input($cueName); ?></td>
                     </tr>
                     <tr>
                         <td class='form_label'><?=form_label('Beschreibung', $cueBeschreibung['id']); ?></td>

@@ -63,7 +63,7 @@ class Einsatz_cue_Model extends CI_Model {
     public function get_cue($id)
     {
         $this->db->where('cueID', $id);
-        $query = $this->get('einsatz_cue');
+        $query = $this->db->get('einsatz_cue');
         
         $row = $query->row();
         
@@ -76,6 +76,35 @@ class Einsatz_cue_Model extends CI_Model {
         
         return $cue;
     }
+    
+    public function create_cue()
+    {
+        $cue = array(
+            'name'      => $this->input->post('stichwortname'),
+            'mimic'     => $this->input->post('stichwortbeschreibung'),
+            'example'   => $this->input->post('stichwortbeispiel'),
+            'aao'       => $this->input->post('stichwortaao')
+        );
+		$this->db->insert('einsatz_cue', $cue);
+    }
+    
+    public function update_cue($id)
+    {
+        $cue = array(
+            'name'      => $this->input->post('stichwortname'),
+            'mimic'     => $this->input->post('stichwortbeschreibung'),
+            'example'   => $this->input->post('stichwortbeispiel'),
+            'aao'       => $this->input->post('stichwortaao')
+        );		
+		$this->db->where('cueID', $id);
+		$this->db->update('einsatz_cue', $cue);        
+    }
+	
+	public function delete_cue($id)
+	{		
+		$this->db->where('cueID', $id);
+		$this->db->delete('einsatz_cue');
+	}
 }
 
 /* End of file einsatz_model.php */

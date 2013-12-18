@@ -203,11 +203,6 @@ class Einsatz_Model extends CI_Model {
 		}
 		return $arr_einsatz_list;
 	}
-    
-    public function get_einsatz_cue_list()
-    {
-        
-    }
 	
 	public function get_einsatz($id)
 	{

@@ -153,7 +153,7 @@
     $cues_attr = "class = 'input_dropdown' id = 'input_dropdown'";
     foreach($cues as $cue)
     {
-        $cues_options[$cue['cue_id']] = $cue['name'];
+        $cues_options[$cue->id] = $cue->name;
     }
 
 ?>

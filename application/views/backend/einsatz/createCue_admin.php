@@ -49,7 +49,7 @@
         <tr><td colspan="2"><?=validation_errors();?></td></tr>
                     <tr>
                         <td class='form_label'><?=form_label('Stichwort:', $cueName['id']); ?></td>
-                        <td><?=form_input($einsatzName); ?></td>
+                        <td><?=form_input($cueName); ?></td>
                     </tr>
                     <tr>
                         <td class='form_label'><?=form_label('Beschreibung', $cueBeschreibung['id']); ?></td>
