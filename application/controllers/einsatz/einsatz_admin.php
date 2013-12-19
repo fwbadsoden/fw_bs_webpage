@@ -98,7 +98,7 @@ class Einsatz_Admin extends CP_Controller {
 			$einsatz['types'] 		    = $this->einsatz->get_einsatz_type_list();
 			$einsatz['templates']	    = $this->einsatz->get_einsatz_templates();
             $einsatz['cues']            = $this->einsatz_cue->get_einsatz_cue_list();
-            $autosuggest['weitere_kraefte'] = $this->autosuggest->get_values('einsatz_weitere_kraefte');
+            $autosuggest['weitere_kraefte'] = $this->autosuggest->get_values(AUTOSUGGEST_KEY_MOFO);
 		
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/tiny_mce_inc');
@@ -143,7 +143,7 @@ class Einsatz_Admin extends CP_Controller {
 			$einsatz['types'] 		    = $this->einsatz->get_einsatz_type_list();
 			$einsatz['einsatz']		    = $this->einsatz->get_einsatz($id);
             $einsatz['cues']            = $this->einsatz_cue->get_einsatz_cue_list();
-            $autosuggest['weitere_kraefte'] = $this->autosuggest->get_values('einsatz_weitere_kraefte');
+            $autosuggest['weitere_kraefte'] = $this->autosuggest->get_values(AUTOSUGGEST_KEY_MOFO);
 		
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/tiny_mce_inc');
@@ -328,7 +328,7 @@ class Einsatz_Admin extends CP_Controller {
 	/**
 	 * Einsatz_Admin::delete_cue_verify()
 	 * 
-	 * @param integer $einsatzId
+	 * @param integer $cueID
 	 * @return
 	 */
 	public function delete_cue_verify($cueID)
@@ -388,6 +388,166 @@ class Einsatz_Admin extends CP_Controller {
 		$this->form_validation->set_rules('stichwortbeschreibung','Beschreibung', 'required|max_length[255]|xss_clean');	
 		$this->form_validation->set_rules('stichwortbeispiel', 'Beispiel', 'xss_clean');	
 		$this->form_validation->set_rules('stichwortaao', 'AAO', 'max_length[255]|xss_clean');		
+
+		return $this->form_validation->run();	
+	}
+    
+    /**
+     * Einsatz_Admin::mofo_liste()
+     * autosuggest values for "more forces"
+     * 
+     * @return void
+     */
+    public function mofo_liste()
+    {
+        if(!$this->cp_auth->is_privileged(EINSATZMOFO_PRIV_DISPLAY)) redirect('admin/401', 'refresh');
+		$this->session->set_userdata('mofoliste_redirect', current_url()); 
+				
+		$header['title']    = 'Weitere Einsatzkräfte';	
+		$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
+		$menue['submenue']	= $this->admin->get_submenue();
+        $order = array('value', 'ASCENDING');
+        $data['mofos']      = $this->autosuggest->get_value_list(AUTOSUGGEST_KEY_MOFO, $order);
+        
+        // Berechtigungen für Übersichtsseite weiterreichen
+        $data['privileged']['edit'] = $this->cp_auth->is_privileged(EINSATZMOFO_PRIV_EDIT);
+        $data['privileged']['delete'] = $this->cp_auth->is_privileged(EINSATZMOFO_PRIV_DELETE);
+	
+		$this->load->view('backend/templates/admin/header', $header);
+		$this->load->view('backend/templates/admin/menue', $menue);	
+		$this->load->view('backend/templates/admin/submenue', $menue);	
+		$this->load->view('backend/einsatz/mofoliste_admin', $data);
+		$this->load->view('backend/templates/admin/footer');        
+    }
+	
+	/**
+	 * Einsatz_Admin::create_mofo()
+     * autosuggest values for "more forces"
+	 * 
+	 * @return
+	 */
+	public function create_mofo()
+	{		
+        if(!$this->cp_auth->is_privileged(EINSATZMOFO_PRIV_EDIT)) redirect('admin/401', 'refresh');
+        
+		if($this->uri->segment($this->uri->total_segments()) == 'save')
+		{		
+			if($verify= $this->_verify_mofo())
+			{
+				$this->autosuggest->create_value(AUTOSUGGEST_KEY_MOFO);
+			}
+		}
+		else
+			$this->session->set_userdata('mofocreate_submit', current_url());
+			
+		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
+		{			
+			$header['title'] 		    = 'Einsatzstichwörter';		
+    		$menue['menue']	            = $this->admin->get_menue();
+			$menue['submenue']		    = $this->admin->get_submenue();
+            $menue['userdata']          = $this->cp_auth->cp_get_user_by_id();
+		
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/einsatz/createMofo_admin');
+			$this->load->view('backend/templates/admin/footer');
+		}
+		else redirect($this->session->userdata('mofoliste_redirect'), 'refresh');
+	}
+	
+	/**
+	 * Einsatz_Admin::edit_mofo()
+     * autosuggest values for "more forces"
+	 * 
+	 * @param integer $id
+	 * @return
+	 */
+	public function edit_mofo($id)
+	{				
+        if(!$this->cp_auth->is_privileged(EINSATZMOFO_PRIV_EDIT)) redirect('admin/401', 'refresh');
+		if($this->uri->segment($this->uri->total_segments()) == 'save')
+		{				
+			if($verify = $this->_verify_mofo($id))
+			{ 
+				$this->autosuggest->update_value($id);
+			}
+		}
+		else
+			$this->session->set_userdata('mofoedit_submit', current_url());
+			
+		if($this->uri->segment($this->uri->total_segments()) != 'save' || $verify == false)
+		{			
+			$header['title'] 		    = 'Einsatzstichwörter';		
+            $menue['menue']	            = $this->admin->get_menue();
+            $menue['userdata']          = $this->cp_auth->cp_get_user_by_id();
+			$menue['submenue']		    = $this->admin->get_submenue();
+			$mofo['mofo']		        = $this->autosuggest->get_value($id);
+		
+			$this->load->view('backend/templates/admin/header', $header);
+			$this->load->view('backend/templates/admin/menue', $menue);	
+			$this->load->view('backend/templates/admin/submenue', $menue);
+			$this->load->view('backend/einsatz/editMofo_admin', $mofo); 
+			$this->load->view('backend/templates/admin/footer');
+		}
+		else redirect($this->session->userdata('mofoliste_redirect'), 'refresh');	
+	}
+
+	/**
+	 * Einsatz_Admin::delete_mofo_verify()
+     * autosuggest values for "more forces"
+	 * 
+	 * @param integer $autosuggestID
+	 * @return
+	 */
+	public function delete_mofo_verify($autosuggestID)
+    {
+        if(!$this->cp_auth->is_privileged(EINSATZMOFO_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
+        $header['title']    = 'Vorschlagswert l&ouml;schen';		
+    	$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
+    	$menue['submenue']	= $this->admin->get_submenue();
+		
+        $data['mofo'] = $this->autosuggest->get_value($autosuggestID);
+    	
+    	$this->load->view('backend/templates/admin/header', $header);
+    	$this->load->view('backend/templates/admin/menue', $menue);	
+    	$this->load->view('backend/templates/admin/submenue', $menue);	
+    	$this->load->view('backend/einsatz/verifyDeleteMofo_admin', $data);
+    	$this->load->view('backend/templates/admin/footer');
+    }
+	
+	/**
+	 * Einsatz_Admin::delete_mofo()
+     * autosuggest values for "more forces"
+	 * 
+	 * @param integer $id
+	 * @return
+	 */
+	public function delete_mofo($id)
+	{		
+        if(!$this->cp_auth->is_privileged(EINSATZMOFO_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
+		$this->autosuggest->delete_value($id);
+		
+		redirect($this->session->userdata('mofoliste_redirect'), 'refresh');
+	}
+	
+	/**
+	 * Einsatz_Admin::_verify_mofo()
+     * autosuggest values for "more forces"
+	 * 
+	 * @return
+	 */
+	private function _verify_mofo($id = 0)
+	{		
+		$this->load->library('form_validation');
+		
+		$this->form_validation->set_error_delimiters('<div class="ui-widget"><div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"><p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>', '</p></div></div><div class="error">');
+			
+		$this->form_validation->set_rules('value', 'Wert', 'max_length[255]|xss_clean');		
 
 		return $this->form_validation->run();	
 	}

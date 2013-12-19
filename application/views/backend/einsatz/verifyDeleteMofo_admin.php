@@ -1,12 +1,12 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');    
     $headline   = 'ACHTUNG: Wollen Sie den Datensatz wirklich l&ouml;schen?';
-	$text       = 'Sind Sie sicher, dass der <strong>Einsatz</strong> <strong>'.$einsatzName .'</strong> gel&ouml;scht werden soll?<br>Im Falle der L&ouml;schung werden <strong>s&auml;mtliche</strong> Daten des Einsatzes <strong>gel&ouml;scht</strong>!<br><strong>Bitte pr&uuml;fen Sie sorgf&auml;ltig</strong>, ob es sich genau um den Einsatz handelt, welchen Sie l&ouml;schen m&ouml;chten.';
-	$del_link   = 'admin/content/einsatz/delete/'.$einsatzID;
-    $redirect   = 'einsatzliste_redirect';
+	$text       = 'Sind Sie sicher, dass der <strong>Vorschlagswert für weitere Einsatzkräfte</strong> <strong>'.$mofo->value .'</strong> gel&ouml;scht werden soll?';
+	$del_link   = 'admin/content/einsatz/mofo/delete/'.$mofo->id;
+    $redirect   = 'mofoliste_redirect';
 ?>
 
 <div id='content'>
-<div id='einsatz_delete_verify'>
+<div id='mofo_delete_verify'>
 
 <h1><?=$headline?></h1>
 <p><?=$text?></p>

@@ -6,7 +6,7 @@
 ?>
 
 <div id='content'>
-<div id='page_delete_verify'>
+<div id='cue_delete_verify'>
 
 <h1><?=$headline?></h1>
 <p><?=$text?></p>
