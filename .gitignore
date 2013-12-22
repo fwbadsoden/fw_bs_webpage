@@ -43,4 +43,5 @@ WS_FTP.LOG
 #*/cache/.htaccess
 #*/cache/index.html
 index.php
-images/content/einsatz/*
+images/content/einsatz
+images/content/fahrzeug
