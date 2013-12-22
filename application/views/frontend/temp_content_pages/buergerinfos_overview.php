@@ -11,13 +11,13 @@
                         <p>Licht- und Tonsignal sind vorgeschrieben wenn die Feuerwehr von ihrem Sonderrecht gebrauch macht.</p>
                     </li>
                     </a>
-                    <a href="<?=base_url('informationen/buergerinformationen/notfaelle')?>">
+                    <a href="<?=base_url('informationen/buergerinformationen/nachdembrand')?>">
                     <li class="text">
                         <figure class="border">
-                            <img src="<?=base_url('images/content/content_buergerinfos/notfall.jpg')?>" />
+                            <img src="<?=base_url('images/content/content_buergerinfos/nachdembrand.jpg')?>" />
                         </figure>
-                        <h1>Tipps bei Notfällen</h1>
-                        <p>In Notfällen muss es schnell gehen. Die schnellste Hilfe sind die Ersthelfer vor Ort.</p>
+                        <h1>Nach dem Brand</h1>
+                        <p class="text">Das Feuer ist gelöscht. Doch wie geht es weiter? Hier finden Sie erste Tipps.</p>
                     </li>
                     </a>
                     <a class="fancybox-metaLayer" href="#notruflayer_js" >
@@ -29,7 +29,7 @@
                         <p>Denken Sie an alle wichtigen Informationen, um der Feuerwehr ein konkretes Bild der Gefahr zu geben.</p>
                     </li>
                     </a>
- 					<a href="<?=base_url('informationen/buergerinformationen/unwetter')?>">
+ 				<!--	<a href="<?=base_url('informationen/buergerinformationen/unwetter')?>">
                     <li class="text">
                         <figure class="border">
                             <img src="<?=base_url('images/content/content_buergerinfos/unwetter.jpg')?>" />
@@ -37,18 +37,18 @@
                         <h1>Hinweise bei Unwettern</h1>
                         <p>In den letzten Jahren werden Unwetter in Deutschland immer stärker.</p>
                     </li>
-                    </a>
-                    <a href="<?=base_url('informationen/buergerinformationen/nachdembrand')?>">
+                    </a>-->
+                    <a href="<?=base_url('informationen/buergerinformationen/rauchmelder')?>">
                     <li class="text">
                         <figure class="border">
-                            <img src="<?=base_url('images/content/content_buergerinfos/nachdembrand.jpg')?>" />
+                            <img src="<?=base_url('images/content/content_buergerinfos/content_teaser_rauchmelder.jpg')?>" />
                         </figure>
-                        <h1>Nach dem Brand</h1>
-                        <p class="text">Das Feuer ist gelöscht. Doch wie geht es weiter? Hier finden Sie erste Tipps.</p>
+                        <h1>Rauchwarnmelder</h1>
+                        <p>RAUCHWARNMELDER werden in Hessen zur PFLICHT!</p>
                     </li>
                     </a>
                     <a href="<?=base_url('informationen/buergerinformationen/hausnummern')?>">
-                    <li class="text third">
+                    <li class="text">
                         <figure class="border">
                             <img src="<?=base_url('images/content/content_buergerinfos/hausnummer.jpg')?>" />
                         </figure>
@@ -56,6 +56,15 @@
                         <p>Helfen Sie den Rettungskräften und sorgen sie dafür das Ihre Hausnummer gut lesbar ist.</p>
                     </li>
                     </a>
+                  <!--  <a href="<?=base_url('informationen/buergerinformationen/notfaelle')?>">
+                    <li class="text">
+                        <figure class="border">
+                            <img src="<?=base_url('images/content/content_buergerinfos/notfall.jpg')?>" />
+                        </figure>
+                        <h1>Tipps bei Notfällen</h1>
+                        <p>In Notfällen muss es schnell gehen. Die schnellste Hilfe sind die Ersthelfer vor Ort.</p>
+                    </li>
+                    </a>-->
 
             	</ul>
             <hr class="clear" />

@@ -73,7 +73,7 @@
                                 Der Hundeführer tritt, falls er mit seinem Hund eine Einsatztätigkeit anstrebt, einer Feuerwehr bei und absolviert dort seine Feuerwehrgrundausbildung. 
                                 Des Weiteren erhält er unter anderem eine Ausbildung in den Bereichen Suchtaktik, Funken, Erste Hilfe Hund und Mensch, Kynologie und Navigation.
                             </p>
-                            <img src="http://rettungshundeeinheit.de/ausbildungsablauf_rettungshund_feuerwehr.png" />
+                            <p><img src="<?=base_url('images/content/content_rettungshunde_ausbildung.png')?>" /></p>
                             <p>    
                                 Sobald der Hund über Grundfertigkeiten in den Bereichen Gehorsam, Gewandtheit und Sucharbeit verfügt, demonstriert er diese in einer Rettungshundeprüfung RH1. 
                                 Aus dieser folgt noch keine Einsatztauglichkeit, sie dient lediglich als Zwischenprüfung.

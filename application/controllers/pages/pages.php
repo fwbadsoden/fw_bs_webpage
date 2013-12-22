@@ -651,6 +651,26 @@ class Pages extends CP_Controller {
     } 
     
     /**
+     * Pages::rauchmelder_overview()
+     * 
+     * @return
+     */
+    public function rauchmelder_overview()
+    {
+        if(ENVIRONMENT=='production') $this->output->cache(60);
+        $this->_site_header();
+        $this->_site_stage();
+        
+        $this->_site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->_site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/buergerinfos_rauchmelder_overview');
+        $this->_site_footer();  
+    } 
+    
+    /**
      * Pages::blaulicht_overview()
      * 
      * @return

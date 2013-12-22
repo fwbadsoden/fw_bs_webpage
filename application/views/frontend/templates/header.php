@@ -178,9 +178,12 @@
                             	<li><a href="<?=base_url('informationen/buergerinformationen/blaulicht')?>"<?=$class?>>Blaulicht und Martinshorn</a></li>
     <? if(current_url() == base_url('informationen/buergerinformationen/nachdembrand')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
                                 <li><a href="<?=base_url('informationen/buergerinformationen/nachdembrand')?>"<?=$class?>>Nach dem Brand</a></li>
+                                <li><a class="fancybox-metaLayer" href="#notruflayer_js" >Notruf richtig absetzen</a></li>
+    <? if(current_url() == base_url('informationen/buergerinformationen/rauchmelder')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
+                                <li><a href="<?=base_url('informationen/buergerinformationen/rauchmelder')?>"<?=$class?>>Rauchwarnmelder</a></li>
     <? if(current_url() == base_url('informationen/buergerinformationen/hausnummern')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
                                 <li><a href="<?=base_url('informationen/buergerinformationen/hausnummern')?>"<?=$class?>>Sichtbare Hausnummern</a></li>
-                    	</ul>   
+                    	</ul>  
                         <ul>
 <? if(current_url() == base_url('informationen/einsatzgebiet')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
                         	<li class="headline"><a href="<?=base_url('informationen/einsatzgebiet')?>"<?=$class?>>Einsatzgebiet</a></li>
@@ -201,39 +204,6 @@
                         </ul>
                     </div>  
                 </li>
-<!--
-<? if(current_url() == base_url('informationen')) : $class = ' class="active"'; else : $class = ''; endif; ?>                 
-                <li><a href="<?=base_url('informationen')?>"<?=$class?>>Infos</a>  
-                    <div class="dropdown">  
-                    	<ul>
-<? if(current_url() == base_url('informationen/buergerinformationen')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
-                        	<li class="headline"><a href="<?=base_url('informationen/buergerinformationen')?>"<?=$class?>>B&uuml;rgerinfos</a></li>
-<? if(current_url() == base_url('informationen/buergerinformationen/blaulicht')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
-                        	<li><a href="<?=base_url('informationen/buergerinformationen/blaulicht')?>"<?=$class?>>Blaulicht und Martinshorn</a></li>
-<? if(current_url() == base_url('informationen/buergerinformationen/sonderrechte')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
-                            <li><a href="<?=base_url('informationen/buergerinformationen/sonderrechte')?>"<?=$class?>>Sonderrechte</a></li>
-<? if(current_url() == base_url('informationen/buergerinformationen/notfaelle')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
-                            <li><a href="<?=base_url('informationen/buergerinformationen/notfaelle')?>"<?=$class?>>Tipps bei Notfällen</a></li>
-                    	</ul> 
-                    	<ul>
-                        	<li class="headline"><a href="<?=base_url('informationen/buergerinformationen')?>">&nbsp;</a></li>
-<? if(current_url() == base_url('informationen/buergerinformationen/unwetter')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
-                            <li><a href="<?=base_url('informationen/buergerinformationen/unwetter')?>"<?=$class?>>Hinweise zu Unwettern</a></li>
-<? if(current_url() == base_url('informationen/buergerinformationen/nachdembrand')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
-                            <li><a href="<?=base_url('informationen/buergerinformationen/nachdembrand')?>"<?=$class?>>Nach dem Brand</a></li>
-<? if(current_url() == base_url('informationen/buergerinformationen/hausnummern')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
-                            <li><a href="<?=base_url('informationen/buergerinformationen/hausnummern')?>"<?=$class?>>Sichtbare Hausnummern</a></li>
-                    	</ul>   
-                    	<ul class="special">
-<? if(current_url() == base_url('informationen/einsatzgebiet')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
-                        	<li class="headline"><a href="<?=base_url('informationen/einsatzgebiet')?>"<?=$class?>>Einsatzgebiet</a></li>
-<? if(current_url() == base_url('informationen/aufgaben')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
-                        	<li class="headline"><a href="<?=base_url('informationen/aufgaben')?>"<?=$class?>>Aufgaben, Gesetze & Richtlinien</a></li>
-<? if(current_url() == base_url('informationen/aao')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
-                        	<li class="headline"><a href="<?=base_url('informationen/aao')?>"<?=$class?>>Alarm- und Ausrückeordnung</a></li>
-                    	</ul>  
-                    </div>  
-                </li>  -->
 <? if(current_url() == base_url('verein')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
                 <li><a href="<?=base_url('verein')?>"<?=$class?>>Verein</a>  
                 </li> 
@@ -297,7 +267,8 @@
       	<ul>
           <li><a href="<?=base_url('admin')?>" target="_blank">Login</a></li>
           <li><a href="https://portal-fwbs.de/" target="_blank">Infoportal</a></li>
-          <li><a href="<?=base_url('kontakt')?>">Kontakt</a></li>
+          <li><a href="<?=base_url('kontakt')?>">Kontakt</a></li>               
+   	      <li><a href="<?=base_url('links')?>">Links</a></li>
           <li><a class="fancybox-metaLayer" href="#notruflayerjs">Notfall</a></li>
         </ul>
       </li>
