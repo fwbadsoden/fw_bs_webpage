@@ -28,6 +28,7 @@
                     stark verrauchen, dass Lebensgefahr besteht. 95 Prozent der Brandtoten sterben an den Folgen einer Rauchvergiftung! Ursache für die etwa 200.000 Brände im Jahr 
                     ist aber im Gegensatz zur landläufigen Meinung nicht nur Fahrlässigkeit. Sehr oft lösen technische Defekte Brände aus.
                 </p>
+                <p><img src="<?=base_url('images/content/content_rauchmelder.jpg')?>" />
                 <p>
                     Trotz gutem baulichen Brandschutz und aller Vorsicht und Aufmerksamkeit, ist letztlich niemand davor geschützt, dass nicht auch in der eigenen Wohnung ein Brand 
                     entstehen kann. Ein Defekt an einer elektrischen Leitung oder einem Gerät, eine Unachtsamkeit im Haushalt, eine brennende Zigarette im Bett oder mit Feuer spielende 
@@ -56,8 +57,8 @@
                     Für mehrstöckige Häuser oder Wohnungen empfehlen sich besonders vernetzte Rauchwarnmelder, per Funk oder bei einem Neubau oder einer Sanierung auch als 230 V-Melder. Dies bedeutet, dass alle miteinander verbundenen Melder Alarm geben, wenn einer der Melder auslöst.
                     Optimalen Schutz erzielen Sie, indem Sie jedes Zimmer und den Flur in jedem Stockwerk mit je einem Rauchwarnmelder ausrüsten. Dabei sollten Keller und Dachboden nicht vergessen werden.
            		</p>
-                <p><img src="<?=base_url('images/content/content_rauchmelder_wohnung.jpg')?>" />
                 <h1>Eine kleine Investition für ein kostbares Gut – Ihr Leben !</h1>
+                <p><img src="<?=base_url('images/content/content_rauchmelder_wohnung.jpg')?>" />
                 <h1>Die gefährlichsten Irrtümer:</h1>
                 <ul>
                 	<li>„Wenn es brennt, habe ich genug Zeit, um meine Wohnung zu verlassen.“<br />
