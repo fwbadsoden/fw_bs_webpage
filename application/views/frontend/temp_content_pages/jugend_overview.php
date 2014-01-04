@@ -78,10 +78,18 @@
 
             <h1 class="module" id="anker_mannschaft">Presse</h1>
             <div class="listContent">
-
+                <div class="row">
+                    <a href="<?=base_url('files/content/871asda634hjasd.jpg')?>" class="fancybox-gallery" rel="gallery1">
+                	<div class="date_small trenner"><span class="inline_date">03. Sep. 2013</span></div>                    
+                 	<div class="size trenner"><p>JPG</p><p class="bytes">653 KB</p></div>                    
+	               	<div class="headline smallBoxHead"><span class="medium">Frankfurter Neue Presse</span><br/> Berufsfeuerwehrtag der Jugendfeuerwehr</div>
+                    <div class="moreButton_arrow"></div>
+               		</a>
+                </div>
 				<div class="row">
                 	<a href="http://www.fnp.de/rhein-main/main-taunus/Durchblick-in-der-dunklen-Halle;art676,332507" target="_blank">
                 	<div class="date_small trenner"><span class="inline_date">04. Juni 2012</span></div>
+                    <div class="size trenner"><p>URL&nbsp;&nbsp;</p><p class="bytes"></p></div>
 	               	<div class="headline smallBoxHead"><span class="medium">Höchster Kreisblatt</span><br/>Bericht über den Grundschultag</div>
                     <div class="moreButton_arrow"></div>
                		</a>
