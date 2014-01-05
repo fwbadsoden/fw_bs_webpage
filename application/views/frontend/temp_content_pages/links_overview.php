@@ -297,7 +297,7 @@
                     <div class="links">
                         <h2>Idstein</h2>
                         <ul class="linktable_first">
-                            <li><a href="http://www.feuerwehr-offenbach.de/" target="_blank">Feuerwehr Idstein</a> &raquo;</li>
+                            <li><a href="http://www.feuerwehr-idstein.de/" target="_blank">Feuerwehr Idstein</a> &raquo;</li>
                         </ul>
                     </div>
                     <hr class="clear" />
