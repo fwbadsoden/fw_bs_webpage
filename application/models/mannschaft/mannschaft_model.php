@@ -15,8 +15,8 @@ class Mannschaft_Model extends CI_Model {
 	
 	private $color = '';
     private $upload_path = CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH;
-    public $mannschaftID, $name, $img, $geburtstag, $beruf, $dienstgrad_name, $dienstgrad_img, 
-           $funktion_name, $teamID, $team_name, $anzahl, $anzahl_m, $anzahl_w;
+    public $mannschaftID, $name, $vorname, $img, $geburtstag, $beruf, $dienstgrad_name, $dienstgrad_img, 
+           $funktion_name, $teamID, $team_name, $anzahl, $anzahl_m, $anzahl_w, $row_color, $online;
 	
 	/**
 	 * Konstruktor
@@ -26,11 +26,33 @@ class Mannschaft_Model extends CI_Model {
 	 */
 	public function __construct() {
 		parent::__construct();
-        
+		$this->load->helper('html');        
 	}
+    
+    public function get_mannschaft_liste()
+    {
+        $this->db->select('mannschaftID, name, vorname, online');
+        $query = $this->db->get('v_mannschaft');
+        
+        $team = array();
+        $i    = 0;
+        foreach($query->result() as $row)
+        {
+            $mannschaft = new Mannschaft_Model();
+            $mannschaft->mannschaftID   = $row->mannschaftID;
+            $mannschaft->name           = $row->name;
+            $mannschaft->vorname        = $row->vorname;
+            $mannschaft->online         = $row->online;
+			$mannschaft->row_color	    = $this->color = cp_get_color($this->color);
+            $team[$i] = $mannschaft;
+            $i++;
+        }
+        return $team;
+    }
     
     public function get_mannschaft_overview($teamID = 'all')
     {
+        $this->db->where('online', 1);
         if($teamID == TEAM_ID_LEADER) {
             $this->db->where('teamID', $teamID);
             $this->db->order_by('funktion_orderID', 'DESC');
