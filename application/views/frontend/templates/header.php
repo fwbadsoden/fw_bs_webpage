@@ -63,6 +63,10 @@
 </script>
 <? endif; ?>
 
+<!-- Facebook socialshare BEGIN -->
+
+    <script type="text/javascript" charset="utf-8" src="<?=base_url('js/jquery.socialshareprivacy.min.js')?>"></script>
+<!-- Facebook socialshare END   -->
 <header>
 	<div class="site" id="top">
     	<h1>
