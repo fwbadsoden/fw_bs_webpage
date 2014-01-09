@@ -13,7 +13,7 @@
     );
     $meta = array(
         array('name' => 'keywords', 'content' => 'feuerwehr-bs.de, Feuerwehr, Freiwillige Feuerwehr, Bad Soden'),
-        array('name' => 'description', 'content' => 'Alle Infos rund um die freiwillige Feuerwehr der Stadt Bad Soden am Taunus'),
+        array('name' => 'description', 'content' => 'Alle Infos rund um die Freiwillige Feuerwehr der Stadt Bad Soden am Taunus'),
         array('name' => 'page-topic', 'content' => 'feuerwehr-bs.de - Freiwillige Feuerwehr der Stadt Bad Soden am Taunus'),
         array('name' => 'revisit-after', 'content' => '1 days'),
         array('name' => 'language', 'content' => 'de'),
