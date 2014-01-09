@@ -865,7 +865,6 @@ class Pages extends CP_Controller {
         $c_presse = load_controller('presse/presse');
         
         $this->menue                    = $this->m_menue->get_menue_list('online');
-        $header_data['title']           = FRONTEND_TITLE;
         $header_data['menue_meta']      = $this->menue['menue_meta'];
         $header_data['menue']           = $this->menue['menue'];
         $header_data['einsaetze']       = $c_einsatz->get_einsatz_overview(1,5,0);

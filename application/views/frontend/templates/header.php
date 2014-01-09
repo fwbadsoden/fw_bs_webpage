@@ -12,30 +12,30 @@
         'class' => 'searchtext'
     );
     $meta = array(
-        array('name' => 'keywords', 'content' => 'feuerwehr-bs.de, Feuerwehr, Freiwillige Feuerwehr, Bad Soden'),
-        array('name' => 'description', 'content' => 'Alle Infos rund um die Freiwillige Feuerwehr der Stadt Bad Soden am Taunus'),
-        array('name' => 'page-topic', 'content' => 'feuerwehr-bs.de - Freiwillige Feuerwehr der Stadt Bad Soden am Taunus'),
-        array('name' => 'revisit-after', 'content' => '1 days'),
-        array('name' => 'language', 'content' => 'de'),
-        array('name' => 'copyright', 'content' => 'feuerwehr-bs.de'),
-        array('name' => 'author', 'content' => 'info[at]feuerwehr-bs.de'),
-        array('name' => 'publisher', 'content' => 'Freiwillige Feuerwehr Bad Soden am Taunus'),
-        array('name' => 'audience', 'content' => 'Alle'),
-        array('name' => 'expires', 'content' => 'never'),
-        array('name' => 'page-type', 'content' => 'Portal'),
-        array('name' => 'robots', 'content' => 'INDEX,FOLLOW'),
-        array('name' => 'rating', 'content' => 'General'),
-        array('name' => 'Content-type', 'content' => 'text/html; charset=utf-8', 'type' => 'equiv'),
-        array('name' => 'viewport', 'content' => 'width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;'),
-        array('name' => 'X-UA-Compatible', 'content' => 'edge'),
-        array('name' => 'imagetoolbar', 'content' => 'no', 'type' => 'equiv')
+        array('name' => 'keywords', 'content' => META_KEYWORDS),
+        array('name' => 'description', 'content' => META_DESCRIPTION),
+        array('name' => 'page-topic', 'content' => META_PAGE_TOPIC),
+        array('name' => 'revisit-after', 'content' => META_REVISIT_AFTER),
+        array('name' => 'language', 'content' => META_LANGUAGE),
+        array('name' => 'copyright', 'content' => META_COPYRIGHT),
+        array('name' => 'author', 'content' => META_AUTHOR),
+        array('name' => 'publisher', 'content' => META_PUBLISHER),
+        array('name' => 'audience', 'content' => META_AUDIENCE),
+        array('name' => 'expires', 'content' => META_EXPIRES),
+        array('name' => 'page-type', 'content' => META_PAGE_TYPE),
+        array('name' => 'robots', 'content' => META_ROBOTS),
+        array('name' => 'rating', 'content' => META_RATING),
+        array('name' => 'Content-type', 'content' => META_EQUIV_CONTENT_TYPE, 'type' => 'equiv'),
+        array('name' => 'viewport', 'content' => META_VIEWPORT),
+        array('name' => 'X-UA-Compatible', 'content' => META_X_UA_COMPATIBLE),
+        array('name' => 'imagetoolbar', 'content' => META_EQUIV_IMAGE_TOOLBAR, 'type' => 'equiv')
     );
     echo doctype('html5');
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de-de" lang="de-de">
 <head>
-<title><?=$title?></title>
+<title><?=FRONTEND_TITLE?></title>
 <?=meta($meta)?>	
 <link rel="shortcut icon" href="<?=base_url('images/favicon.ico')?>" type="image/x-icon" />
 
