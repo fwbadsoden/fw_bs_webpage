@@ -185,7 +185,9 @@ class Pages extends CP_Controller {
             else                        $value['class_einsatz'] = '';
         }
         
-        $this->_site_header();
+        $meta_description = $c_einsatz->get_einsatz_title($id);
+ 
+        $this->_site_header($meta_description);
         $this->_site_stage();
         
         $this->_site_content_header();
@@ -856,22 +858,23 @@ class Pages extends CP_Controller {
      * 
      * @return
      */
-    private function _site_header()
+    private function _site_header($meta_description = null)
     {           
-        $c_einsatz = load_controller('einsatz/einsatz');
-        $c_termin  = load_controller('termin/termin');
-        $c_news    = load_controller('news/news');
+        $c_einsatz  = load_controller('einsatz/einsatz');
+        $c_termin   = load_controller('termin/termin');
+        $c_news     = load_controller('news/news');
         $c_fahrzeug = load_controller('fahrzeug/fahrzeug');
-        $c_presse = load_controller('presse/presse');
+        $c_presse   = load_controller('presse/presse');
         
-        $this->menue                    = $this->m_menue->get_menue_list('online');
-        $header_data['menue_meta']      = $this->menue['menue_meta'];
-        $header_data['menue']           = $this->menue['menue'];
-        $header_data['einsaetze']       = $c_einsatz->get_einsatz_overview(1,5,0);
-        $header_data['news']            = $c_news->get_news_overview(5,0);
-        $header_data['termine']         = $c_termin->get_termin_overview(5,0);
-        $header_data['fahrzeuge']       = $c_fahrzeug->get_fahrzeug_overview(1);
-        $header_data['articles']        = $c_presse->get_presse_overview();
+        $this->menue                        = $this->m_menue->get_menue_list('online');
+        $header_data['menue_meta']          = $this->menue['menue_meta'];
+        $header_data['menue']               = $this->menue['menue'];
+        $header_data['einsaetze']           = $c_einsatz->get_einsatz_overview(1,5,0);
+        $header_data['news']                = $c_news->get_news_overview(5,0);
+        $header_data['termine']             = $c_termin->get_termin_overview(5,0);
+        $header_data['fahrzeuge']           = $c_fahrzeug->get_fahrzeug_overview(1);
+        $header_data['articles']            = $c_presse->get_presse_overview();
+        $header_data['meta_description']    = $meta_description;
                         
         $this->load->view('frontend/templates/header', $header_data);
     }

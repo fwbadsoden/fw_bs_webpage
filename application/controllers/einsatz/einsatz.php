@@ -135,6 +135,23 @@ class Einsatz extends CP_Controller {
         return $this->m_einsatz->get_einsatz_stage_text($id);
     }
     
+    /**
+     * Einsatz::get_einsatz_title()
+     * 
+     * @param mixed $id
+     * @return
+     */    
+    public function get_einsatz_title($id)
+    {
+        return $this->m_einsatz->get_einsatz_title($id);
+    }    
+    
+    /**
+     * Einsatz::get_einsatz_anzahl()
+     * 
+     * @param mixed $year
+     * @return
+     */
     public function get_einsatz_anzahl($year)
     {
         return $this->m_einsatz->get_einsatz_anzahl($year);

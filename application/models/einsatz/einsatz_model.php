@@ -502,6 +502,15 @@ class Einsatz_Model extends CI_Model {
 		return $templates;
 	}
 	
+    public function get_einsatz_title($id)
+    {
+        $this->db->where('einsatzID', $id);
+        $this->db->select('name');
+        $query = $this->db->get('v_einsatz');
+        $row = $query->row();
+        return $row->name;
+    }
+    
 	private function _callback_einsatz_find_mappings($value, $key)
 	{ 	
 		$check = explode('_', $key);

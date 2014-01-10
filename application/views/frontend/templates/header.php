@@ -11,9 +11,13 @@
         'name'  => 'search_query',
         'class' => 'searchtext'
     );
+    if($meta_description == null)   
+        $meta_desc = META_DESCRIPTION;
+    else    
+        $meta_desc = $meta_description;
     $meta = array(
         array('name' => 'keywords', 'content' => META_KEYWORDS),
-        array('name' => 'description', 'content' => META_DESCRIPTION),
+        array('name' => 'description', 'content' => $meta_desc),
         array('name' => 'page-topic', 'content' => META_PAGE_TOPIC),
         array('name' => 'revisit-after', 'content' => META_REVISIT_AFTER),
         array('name' => 'language', 'content' => META_LANGUAGE),
