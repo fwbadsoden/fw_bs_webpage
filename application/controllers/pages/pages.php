@@ -185,9 +185,9 @@ class Pages extends CP_Controller {
             else                        $value['class_einsatz'] = '';
         }
         
-        $meta_description = $c_einsatz->get_einsatz_title($id);
+        $facebook_infos = $c_einsatz->get_facebook_infos($id);
  
-        $this->_site_header($meta_description);
+        $this->_site_header($facebook_infos);
         $this->_site_stage();
         
         $this->_site_content_header();
@@ -858,7 +858,7 @@ class Pages extends CP_Controller {
      * 
      * @return
      */
-    private function _site_header($meta_description = null)
+    private function _site_header($facebook_infos = null)
     {           
         $c_einsatz  = load_controller('einsatz/einsatz');
         $c_termin   = load_controller('termin/termin');
@@ -874,7 +874,7 @@ class Pages extends CP_Controller {
         $header_data['termine']             = $c_termin->get_termin_overview(5,0);
         $header_data['fahrzeuge']           = $c_fahrzeug->get_fahrzeug_overview(1);
         $header_data['articles']            = $c_presse->get_presse_overview();
-        $header_data['meta_description']    = $meta_description;
+        $header_data['facebook_infos']      = $facebook_infos;
                         
         $this->load->view('frontend/templates/header', $header_data);
     }

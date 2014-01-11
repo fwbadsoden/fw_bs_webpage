@@ -11,13 +11,9 @@
         'name'  => 'search_query',
         'class' => 'searchtext'
     );
-    if($meta_description == null)   
-        $meta_desc = META_DESCRIPTION;
-    else    
-        $meta_desc = $meta_description;
     $meta = array(
         array('name' => 'keywords', 'content' => META_KEYWORDS),
-        array('name' => 'description', 'content' => $meta_desc),
+        array('name' => 'description', 'content' => META_DESCRIPTION),
         array('name' => 'page-topic', 'content' => META_PAGE_TOPIC),
         array('name' => 'revisit-after', 'content' => META_REVISIT_AFTER),
         array('name' => 'language', 'content' => META_LANGUAGE),
@@ -40,7 +36,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de-de" lang="de-de">
 <head>
 <title><?=FRONTEND_TITLE?></title>
-<?=meta($meta)?>	
+<?
+    echo meta($meta);
+    if($facebook_infos != null) {
+        foreach($facebook_infos as $f) {
+            echo $f;
+        }
+    }
+?>	
 <link rel="shortcut icon" href="<?=base_url('images/favicon.ico')?>" type="image/x-icon" />
 
 <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css' />

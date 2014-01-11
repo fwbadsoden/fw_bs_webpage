@@ -502,13 +502,21 @@ class Einsatz_Model extends CI_Model {
 		return $templates;
 	}
 	
-    public function get_einsatz_title($id)
+    public function get_facebook_infos($id)
     {
         $this->db->where('einsatzID', $id);
         $this->db->select('name');
         $query = $this->db->get('v_einsatz');
         $row = $query->row();
-        return $row->name;
+        $facebook_infos = array(
+            "<meta property='og:title' 'content'='Einsatzinfos - ".FRONTEND_TITLE."' />",
+            "<meta property='og:site_name' 'content'='Freiwillige Feuerwehr Bad Soden am Taunus' />",
+            "<meta property='og:description' 'content'='".$row->name."' />",
+            "<meta property='og:type' 'content'='website' />",
+            "<meta property='og:url' 'content'='".current_url()."' />",
+            "<meta property='fb:app_id' content='1389865491270726' />"
+        );
+        return $facebook_infos;
     }
     
 	private function _callback_einsatz_find_mappings($value, $key)

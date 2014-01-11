@@ -128,7 +128,7 @@ class Einsatz extends CP_Controller {
      * Einsatz::get_einsatz_stage_text()
      * 
      * @param mixed $id
-     * @return
+     * @return string
      */
     public function get_einsatz_stage_text($id)
     {
@@ -136,21 +136,21 @@ class Einsatz extends CP_Controller {
     }
     
     /**
-     * Einsatz::get_einsatz_title()
+     * Einsatz::get_facebook_infos()
      * 
      * @param mixed $id
-     * @return
+     * @return array
      */    
-    public function get_einsatz_title($id)
+    public function get_facebook_infos($id)
     {
-        return $this->m_einsatz->get_einsatz_title($id);
+        return $this->m_einsatz->get_facebook_infos($id);
     }    
     
     /**
      * Einsatz::get_einsatz_anzahl()
      * 
      * @param mixed $year
-     * @return
+     * @return integer
      */
     public function get_einsatz_anzahl($year)
     {
