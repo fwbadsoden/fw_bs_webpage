@@ -67,6 +67,10 @@ class News extends CP_Controller {
         if($category_id == 0) $category_id = 'all';
         $i = 0;
         
+        // provisorisch
+        $year = 'all';
+        $category_id = 'all';
+        
         $news_arr             = $this->m_news->get_news_overview('all', 'all', $year, $category_id);
         $filter['categories'] = $this->m_news->get_news_categories();
         
@@ -85,6 +89,9 @@ class News extends CP_Controller {
         $news['news']           = $this->m_news->get_news($id);
         $news['liste']          = $this->m_news->get_latest_news();
         $news['images']         = $this->m_news->get_news_images($id);
+        
+        if($news['news']->link != "")
+            redirect(base_url($news['news']->link));
         
         $this->load->view('frontend/news/newsdetail_3col_header');
         $this->load->view('frontend/news/newsdetail_3col_data', $news);
