@@ -5,14 +5,26 @@
 ?> 
             <div class="oneColumnBox">
                 <ul id="anker_fuehrung" class="TeaserListe">
-<? foreach($fuehrung as $f) :
+<? 
+$nonLineBreakingFunktionen = array("Stadtbrandinspektor", "Wehrführer", "stellv. Wehrführer");
+$lastFunktion = "";
+
+    foreach($fuehrung as $f) :
     if($listcount > 3) $listcount = 1;
+    
+    if($f->funktion_name != $lastFunktion && array_search($f->funktion_name, $nonLineBreakingFunktionen) === false){
+        $class = '';
+    $listcount = 1;
+    }
+    else{
     switch($listcount)
     {
         case '1': $class = ''; break;
         case '2': $class = ' class="second"'; break;
         case '3': $class = ' class="third"'; break;
     }
+    }
+    $lastFunktion=$f->funktion_name;
     $listcount++;
     if($f->geschlecht == 'm') $dienstgrad_name = $f->dienstgrad_name_m;
     elseif($f->geschlecht == 'w') $dienstgrad_name = $f->dienstgrad_name_w;
