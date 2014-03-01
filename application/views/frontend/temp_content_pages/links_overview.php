@@ -433,7 +433,7 @@
                     	<li><a href="http://www.atemschutzunfaelle.de/" target="_blank">Viele Infos rund um Atemschutz</a> &raquo;</li>
                     	<li><a href="http://www.rth-christoph2.de/" target="_blank">Rettungshubschrauber Christoph 2 BGU Frankfurt</a> &raquo;</li>
                     	<li><a href="http://www.wiesbaden112.de/" target="_blank">Feuerwehrportal wiesbaden112.de</a> &raquo;</li>
-                    	<li><a href="http://drk-rettungsdienst-rmt.de/" target="_blank">Presseinformationen der Polizei in Deutschland</a> &raquo;</li>
+                    	<li><a href="http://www.presseportal.de/polizeipresse/p_dienststellen.htx" target="_blank">Presseinformationen der Polizei in Deutschland</a> &raquo;</li>
                     </ul>
                     <hr class="clear" />
                 </div>
