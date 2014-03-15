@@ -40,27 +40,25 @@ $lastFunktion = "";
                         </figure>
                         <h1><?=$f->vorname?> <?=$f->name?></h1>
                         <h2><?=$rang_text?></h2>
-<!--<? if($f->funktion_name != '') : ?>
-                        <h2><?=$f->funktion_name?></h2>
-<? else : ?>    
-                        <h2>&nbsp;</h2>
-<? endif; ?>       -->                                                             
-<? if($f->geburtstag != '' and $f->geburtstag != '0000-00-00') : ?>                        
-                        <p><?=cp_get_alter($f->geburtstag)?> Jahre
-<? endif; ?>                        
-<? if($f->beruf != '') : ?>
-<?    if($f->geburtstag != '' and $f->geburtstag != '0000-00-00') : ?>
-                        <?=', '.$f->beruf?></p>
-<?    else : ?>
-                        <p><?=$f->beruf?></p>
-<?    endif; ?>
-<? else : ?>
-<?    if($f->geburtstag != '' and $f->geburtstag != '0000-00-00') : ?>
+                        <p>
+                            <?php                              
+    if($f->geburtstag != '' && $f->geburtstag != '0000-00-00' && $f->beruf != ''){                      
+        echo cp_get_alter($f->geburtstag) . " Jahre, " .$f->beruf;
+    }      
+    else{
+       if($f->geburtstag != '' and $f->geburtstag != '0000-00-00'  && $f->beruf == '') {                  
+        echo cp_get_alter($f->geburtstag) . " Jahre, " .$f->beruf;
+       }else{
+           if($f->beruf != ''){
+               echo $f->beruf;
+           }
+           else{ 
+               echo '&nbsp;';       
+           }
+       }        
+   }
+                            ?>         
                         </p>
-<?    else : ?>         
-                        <p>&nbsp;</p>
-<?    endif; ?>
-<? endif; ?>                                       
                     </li>
 <? endforeach; 
    $listcount = 1;
@@ -92,22 +90,25 @@ $lastFunktion = "";
                         </figure>
                         <h1><?=$t->vorname?> <?=$t->name?></h1>
                         <h2><?=$dienstgrad_name?></h2>
-<? if($t->geburtstag != '' and $t->geburtstag != '0000-00-00') : ?>                        
-                        <p><?=cp_get_alter($t->geburtstag)?> Jahre 
-<? endif; ?>                        
-<? if($t->beruf != '') : ?>
-<?    if($t->geburtstag != '' and $t->geburtstag != '0000-00-00') : ?>
-                        <?=', '.$t->beruf?></p>
-<?    else : ?>
-                        <p><?=$t->beruf?></p>
-<?    endif; ?>
-<? else : ?>
-<?    if($t->geburtstag != '' and $t->geburtstag != '0000-00-00') : ?>
-                        </p>
-<?    else : ?>         
-                        <p>&nbsp;</p>
-<?    endif; ?>
-<? endif; ?>                                   
+                         <p>
+                             <?php                              
+    if($t->geburtstag != '' && $t->geburtstag != '0000-00-00' && $t->beruf != ''){                      
+        echo cp_get_alter($t->geburtstag) . " Jahre, " .$t->beruf;
+    }      
+    else{
+       if($t->geburtstag != '' and $t->geburtstag != '0000-00-00'  && $t->beruf == '') {                  
+        echo cp_get_alter($t->geburtstag) . " Jahre, " .$t->beruf;
+       }else{
+           if($t->beruf != ''){
+               echo $t->beruf;
+           }
+           else{ 
+               echo '&nbsp;'; 
+           }
+       }        
+   }
+                            ?>
+                         </p>
                     </li>
 <? endforeach; ?>                    
                 </ul>
