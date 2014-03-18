@@ -83,6 +83,12 @@ class Termin extends CP_Controller {
             $this->load->view('frontend/termin/terminliste_1col_footer');
             $j++;
         }
+        
+        // Dienstplan
+        $monat['monat'] = "Dienstplan";        
+        $this->load->view('frontend/termin/terminliste_1col_anchor', $monat);
+        $this->load->view('frontend/termin/terminliste_1col_month', $monat);
+        $this->load->view('frontend/termin/terminliste_1col_dienstplan');
     }
 }
 /* End of file termin.php */
