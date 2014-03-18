@@ -20,8 +20,8 @@
             <div class="listContent">
 				<div class="row">
                 	<a href="<?=base_url('files/content/Dienstplan_JFW_Aktuell.pdf')?>" target="_blank">
-                	<div class="date_small trenner"><span class="inline_date">13. Januar 2014</span></div>
-                 	<div class="size trenner"><p>PDF</p><p class="bytes">100 KB</p></div>
+                	<div class="date_small trenner"><span class="inline_date">16. März 2014</span></div>
+                 	<div class="size trenner"><p>PDF</p><p class="bytes">116 KB</p></div>
 	               	<div class="headline smallBoxHead"><span class="medium">Jugendfeuerwehr Bad Soden</span><br/>Dienstplan</div>
                     <div class="moreButton_arrow">&nbsp;</div>
                		</a>
@@ -59,14 +59,9 @@
                 <h1 class="name">Dirk Stehning</h1>
                 <h2 class="titel">Jugendgruppenleiter</h2>
            </div>
-            <div class="BildTextTeaser first">
-            	<figure><img src="<?=base_url('images/content/mannschaft/800F61E5203D0C64AF5D81E2FD6E6914.jpg')?>"></figure>
-                <h1 class="name">Dirk Zengeler</h1>
-                <h2 class="titel">Jugendgruppenleiter</h2>
-            </div>
-        	<div class="BildTextTeaser">
-            	<figure><img src="<?=base_url('images/content/mannschaft/96D0803A0C06B566C1336D65BC35D936.jpg')?>"></figure>
-                <h1 class="name">Alexander Haase</h1>
+        	<div class="BildTextTeaser first">
+            	<figure><img src="<?=base_url('images/content/mannschaft/A6526918662992F415D0CBB119DD242A.jpg')?>"></figure>
+                <h1 class="name">Jonathan Raschke</h1>
                 <h2 class="titel">Betreuer</h2>
            </div>
         	<div class="BildTextTeaser">
