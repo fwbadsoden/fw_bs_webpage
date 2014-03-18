@@ -218,7 +218,7 @@
 <? if(current_url() == base_url('verein')) : $class = ' class="active"'; else : $class = ''; endif; ?>  
                 <li><a href="<?=base_url('verein')?>"<?=$class?>>Verein</a>  
                 </li> 
-                <li><a href="#" class="desktopsearch">&nbsp;</a>
+<!--                <li><a href="#" class="desktopsearch">&nbsp;</a>
                     <div class="dropdown">
                         <?=form_open(base_url(FRONTEND_SEARCH_LINK), $search_form);?>
                         <div class="search">	
@@ -227,7 +227,7 @@
                         <input type="submit" value="Suchen &raquo;" class="searchbutton" />
                         </form>
                     </div>
-                </li>
+                </li>-->
             </ul>
        	</nav>
         
