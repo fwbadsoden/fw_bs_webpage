@@ -15,8 +15,8 @@ class Mannschaft_Model extends CI_Model {
 	
 	private $color = '';
     private $upload_path = CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH;
-    public $mannschaftID, $name, $vorname, $img, $geburtstag, $beruf, $dienstgrad_name, $dienstgrad_img, 
-           $funktion_name, $teamID, $team_name, $anzahl, $anzahl_m, $anzahl_w, $row_color, $online;
+    public $mitgliedID, $name, $vorname, $img, $show_img, $geburtstag, $show_geburtstag, $beruf, $show_beruf, $dienstgrad_name, $dienstgrad_img, 
+           $geschlecht, $funktion_name, $teamID, $team_name, $anzahl, $anzahl_m, $anzahl_w, $row_color, $online;
 	
 	/**
 	 * Konstruktor
@@ -39,7 +39,7 @@ class Mannschaft_Model extends CI_Model {
         foreach($query->result() as $row)
         {
             $mannschaft = new Mannschaft_Model();
-            $mannschaft->mannschaftID   = $row->mannschaftID;
+            $mannschaft->mitgliedID     = $row->mannschaftID;
             $mannschaft->name           = $row->name;
             $mannschaft->vorname        = $row->vorname;
             $mannschaft->online         = $row->online;
@@ -70,7 +70,7 @@ class Mannschaft_Model extends CI_Model {
         foreach($query->result() as $row)
         {
             $mitglied = new Mannschaft_model();
-            $mitglied->mannschaftID     = $row->mannschaftID;
+            $mitglied->mitgliedID       = $row->mannschaftID;
             $mitglied->name             = $row->name;
             $mitglied->vorname          = $row->vorname;
             $mitglied->img              = $row->img;
@@ -110,6 +110,116 @@ class Mannschaft_Model extends CI_Model {
         }
         return $mitglied;
     }
+    
+    public function get_mitglied($id) {
+        
+        $this->db->where('mannschaftID', $id);
+        $query = $this->db->get('mannschaft');
+        $row = $query->row();
+        
+        $mitglied = new Mannschaft_Model();
+        $mitglied->mitgliedID       = $row->mannschaftID;
+        $mitglied->name             = $row->name;
+        $mitglied->vorname          = $row->vorname;
+        $mitglied->img              = $row->img;
+        $mitglied->show_img         = $row->show_img;
+        $mitglied->geschlecht       = $row->geschlecht;
+        $mitglied->geburtstag       = $row->geburtstag;
+        $mitglied->show_geburtstag  = $row->show_geburtstag;
+        $mitglied->show_beruf       = $row->show_beruf;
+        $mitglied->beruf            = $row->beruf;
+        $mitglied->geschlecht       = $row->geschlecht;
+        $mitglied->abteilungID      = $row->abteilungID;
+        $mitglied->dienstgradID     = $row->dienstgradID;
+        $mitglied->funktionID       = $row->funktionID;
+        $mitglied->teamID           = $row->teamID;
+        
+        return $mitglied;
+    }
+    
+    public function create_mitglied() {
+        
+        if($this->input->post('funktionID') != 0)
+            $teamID = TEAM_ID_LEADER;
+        else
+            $teamID = TEAM_ID_TEAM;
+            
+        $mitglied = array(
+            'abteilungID'       => 1,
+            'dienstgradID'      => $this->input->post('dienstgradID'),
+            'funktionID'        => $this->input->post('funktionID'),
+            'teamID'            => $teamID,
+            'img'               => 'dummy.jpg',
+            'name'              => $this->input->post('name'),
+            'vorname'           => $this->input->post('vorname'),
+            'show_img'          => $this->input->post('show_img'),
+            'geschlecht'        => $this->input->post('geschlecht'),
+            'geburtstag'        => $this->input->post('geburtstag'),
+            'show_geburtstag'   => $this->input->post('show_geburtstag'),
+            'beruf'             => $this->input->post('beruf'),
+            'show_beruf'        => $this->input->post('show_beruf'),
+            'online'            => $this->input->post('online')
+        );
+        
+        $this->db->insert('mannschaft', $mitglied);
+    }
+    
+    public function update_mitglied($id) {
+        
+        if($this->input->post('funktionID') != 0)
+            $teamID = TEAM_ID_LEADER;
+        else
+            $teamID = TEAM_ID_TEAM;
+        
+        $mitglied = array(
+            'dienstgradID'      => $this->input->post('dienstgradID'),
+            'funktionID'        => $this->input->post('funktionID'),
+            'teamID'            => $teamID,
+            'name'              => $this->input->post('name'),
+            'vorname'           => $this->input->post('vorname'),
+            'show_img'          => $this->input->post('show_img'),
+            'geschlecht'        => $this->input->post('geschlecht'),
+            'geburtstag'        => $this->input->post('geburtstag'),
+            'show_geburtstag'   => $this->input->post('show_geburtstag'),
+            'beruf'             => $this->input->post('beruf'),
+            'show_beruf'        => $this->input->post('show_beruf')
+        );
+        
+        $this->db->where('mannschaftID', $id);
+        $this->db->update('mannschaft', $mitglied);
+    }
+    
+    public function delete_mitglied($id) {
+        
+        $this->db->where('mannschaftID', $id);
+        $query = $this->db->get('mannschaft');
+        $row = $query->row();
+        
+        if($row->img != "" && $row->img != "dummy.jgp")
+            $this->_delete_image($id);
+        $this->db->where('mannschaftID', $id);
+        $this->db->delete("mannschaft");
+    }
+    
+    public function update_image($id, $filename) {
+        
+        $this->db->where('mannschaftID', $id);
+        $this->db->update('mannschaft', array('img' => $filename));
+    }
+    
+    private function _delete_image($id) {
+        
+        $this->db->select('img');
+        $query = $this->db->get_where('mannschaft', array('mannschaftID' => $id));
+		
+		$row = $query->row();
+		unlink($this->upload_path.$row->img);
+    }
+	
+	public function switch_online_state($id, $online)
+	{
+		$this->db->update('mannschaft', array('online' => $online), 'mannschaftID = '.$id);
+	}
 }
 
 /* End of file mannschaft_model.php */

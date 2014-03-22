@@ -85,13 +85,13 @@
                     <div class="moreButton_arrow">&nbsp;</div>
                		</a>
                 </div>
-				<div class="row">
+			<!--	<div class="row">
                 	<a href="<?=base_url('files/content/Chronik.pdf')?>" target="_blank">
                  	<div class="size trenner"><p>PDF</p><p class="bytes">85 KB</p></div>
 	               	<div class="headline smallBoxHead"><span class="medium">Freiwilligen Feuerwehr Bad Soden e.V.</span><br/>Chronik</div>
                     <div class="moreButton_arrow">&nbsp;</div>
                		</a>
-                </div>
+                </div>-->
           </div>
           <hr class="clear" />
 

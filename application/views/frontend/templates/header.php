@@ -274,6 +274,12 @@
                	<li><a href="<?=base_url('informationen/aao')?>"<?=$class?>>Alarm- und Ausrückeordnung</a></li>
           </ul>
       </li>
+      <li><a href="<?=base_url('verein')?>">Verein</a></li>
+      <li class="subnavi">    
+          <ul>  
+            <li><a href="<?=base_url('verein')?>" class="first">Verein</a></li>
+          </ul>
+      </li>
       <li class="metanav">
       	<ul>
           <li><a href="<?=base_url('admin')?>" target="_blank">Login</a></li>
