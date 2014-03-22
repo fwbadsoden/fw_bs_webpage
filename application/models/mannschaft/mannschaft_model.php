@@ -84,6 +84,9 @@ class Mannschaft_Model extends CI_Model {
             $mitglied->funktion_name    = $row->funktion_name;
             $mitglied->teamID           = $row->teamID;
             $mitglied->team_name        = $row->team_name;
+            $mitglied->show_img         = $row->show_img;
+            $mitglied->show_beruf       = $row->show_beruf;
+            $mitglied->show_geburtstag  = $row->show_geburtstag;
             
             $mannschaft[$i] = $mitglied;
             $i++;
