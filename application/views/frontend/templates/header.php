@@ -54,6 +54,46 @@
 <![endif]-->
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+<!-- socialshareprivacy -->
+<script type="text/javascript" src="<?=base_url('js/socialshareprivacy/socialshareprivacy.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('js/socialshareprivacy/modules/facebook.js')?>"></script>
+<script type="application/x-social-share-privacy-settings"> {
+    "info_link":"http://www.heise.de/extras/socialshareprivacy/",
+    "path_prefix":"",
+    "language":"de",
+    "layout":"box",
+    "css_path":"<?=base_url("css/frontend/socialshareprivacy/socialshareprivacy.css")?>",
+    "uri":"http://www.feuerwehr-bs.de",
+    "services": { 
+        "facebook": {
+		  'dummy_line_img'    : '<?=base_url("images/layout/socialshareprivacy/de/dummy_facebook.png")?>',
+		  'dummy_box_img'     : '<?=base_url("images/layout/socialshareprivacy/de/dummy_box_facebook.png")?>'
+        },
+        "buffer": {"status":false },
+        "delicious": {"status":false },
+        "disqus": {"status":false },
+        "fbshare": {"status":false },
+        "flattr": {"status":false },
+        "gplus": {"status":false },
+        "hackernews": {"status":false},
+        "linkedin":{"status":false},
+        "mail":{"status":false},
+        "pinterest":{"status":false},
+        "reddit":{"status":false},
+        "stumbleupon":{"status":false},
+        "tumblr":{"status":false},
+        "twitter":{"status":false},
+        "xing":{"status":false}
+    } }
+</script>
+<script type="text/javascript">
+$(document).ready(function () {
+    $('.share').socialSharePrivacy();
+});
+</script>
+<!-- socialshareprivacy END -->
+
 </head>
 <body>
 
@@ -70,10 +110,6 @@
 </script>
 <? endif; ?>
 
-<!-- Facebook socialshare BEGIN -->
-
-    <script type="text/javascript" charset="utf-8" src="<?=base_url('js/jquery.socialshareprivacy.min.js')?>"></script>
-<!-- Facebook socialshare END   -->
 <header>
 	<div class="site" id="top">
     	<h1>

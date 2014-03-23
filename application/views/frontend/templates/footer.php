@@ -15,7 +15,7 @@
         	<!--<li><a href="<?=base_url('mitmachen')?>">Mitmachen</a></li>-->
         	<li><a href="<?=base_url('links')?>">Links</a></li>
         	<li><a href="<?=base_url('impressum')?>">Impressum</a></li>
-            <li id="socialshareprivacy"></li>
+            <li class="share"></li>
         </ul>
     </div>
     <div id="sitemap">
@@ -116,19 +116,5 @@
  
     <script type="text/javascript">
         $( function() { $( '#menu li:has(div)' ).doubleTapToGo(); });      
-        $(document).ready(function($){
-          if($('#socialshareprivacy').length > 0){
-            $('#socialshareprivacy').socialSharePrivacy({
-                services: {
-                    twitter:    { 'status' : 'off' },
-                    gplus:      { 'status' : 'off' },
-                    facebook:   { 'dummy_img' : '<?=base_url('images/layout/socialprivacy/dummy_facebook.png')?>' }
-                },
-                'info_link' : 'http://www.heise.de/ct/artikel/2-Klicks-fuer-mehr-Datenschutz-1333879.html',
-                'uri' : 'http://www.feuerwehr-bs.de',
-                'css' : '<?=base_url('css/frontend/styles.css')?>'
-            }); 
-          }
-        });
       </script>
 </body>
