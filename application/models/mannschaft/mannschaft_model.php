@@ -207,7 +207,7 @@ class Mannschaft_Model extends CI_Model {
     public function update_image($id, $filename) {
         
         $this->db->where('mannschaftID', $id);
-        $this->db->update('mannschaft', array('img' => $filename));
+        $this->db->update('mannschaft', array('img' => $filename, 'show_img' => 1));
     }
     
     private function _delete_image($id) {
