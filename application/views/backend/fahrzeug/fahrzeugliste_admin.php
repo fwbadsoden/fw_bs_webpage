@@ -28,7 +28,7 @@
 <tr bgcolor="<?=$item['row_color']?>">
 	<td><?=$item['fahrzeugRufnamePrefix']." ".$item['fahrzeugRufname'];?></td>
 	<td><?=$item['fahrzeugName']?></td>
-<?  if($item['orderID'] == 1) :    ?>
+<?  if($item['orderID'] == 0) :    ?>
 		<td class="button"><a class="button_mini"></a></span></td>
 <?  else :                          
         if($privileged['edit']) :   ?>
@@ -37,7 +37,7 @@
         <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Fahrzeugposition zu bearbeiten"><span class='button_lock_small'></span></a></td>
 <?      endif;                      ?>        
 <?  endif;                          ?>
-<?  if($item['orderID'] == count($fahrzeug)) : ?>
+<?  if($item['orderID'] == (count($fahrzeug)-1)) : ?>
 		<td class="button"><a class="button_mini"></a></span></td>
 <?  else :                          
         if($privileged['edit']) :   ?>		

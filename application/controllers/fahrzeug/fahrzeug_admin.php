@@ -148,6 +148,7 @@ class Fahrzeug_Admin extends CP_Controller {
 		$this->admin->insert_log(str_replace('%FAHRZEUG%', $fahrzeugdata['fahrzeugName'], lang('log_admin_deleteFahrzeug')));
 		
 		$this->fahrzeug->delete_fahrzeug($id);
+                delete_files($this->config->item('cache_path'));
 
 		redirect($this->session->userdata('fahrzeugliste_redirect'), 'refresh');
 	}
@@ -313,6 +314,7 @@ class Fahrzeug_Admin extends CP_Controller {
 	{
         if(!$this->cp_auth->is_privileged(FAHRZEUG_PRIV_EDIT)) redirect('admin/401', 'refresh');
 		$this->fahrzeug->change_order($dir, $id);		
+                delete_files($this->config->item('cache_path'));
 		redirect($this->session->userdata('fahrzeugliste_redirect'), 'refresh');	
 	}
 	
@@ -329,6 +331,7 @@ class Fahrzeug_Admin extends CP_Controller {
 		if($state == 1) $online = 0; else $online = 1;
 		
 		$this->fahrzeug->switch_online_state($id, $online);
+                delete_files($this->config->item('cache_path'));
 		redirect($this->session->userdata('fahrzeugliste_redirect'), 'refresh');
 	}
 	
