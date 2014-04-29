@@ -77,7 +77,6 @@ class Fahrzeug_Model extends CI_Model {
 	
 	public function get_fahrzeug_list($online = 'all')
 	{		
-	//	$this->db->order_by('online', 'desc');
 		$this->db->order_by('orderID', 'asc');
         if($online != 'all') $this->db->where('online', $online);
 		$query = $this->db->get('fahrzeug');
@@ -221,6 +220,12 @@ class Fahrzeug_Model extends CI_Model {
 		// ++++ TRANSAKTION START ++++ //
 		$this->db->trans_start();
 		
+        // höchste orderID aus DB holen
+        $this->db->select_max('orderID');
+        $query = $this->db->get('fahrzeug');
+        $row = $query->row();
+        $fahrzeug['orderID'] = $row->orderID + 1;
+        
 		$this->db->insert('fahrzeug',  $fahrzeug);
 		$fahrzeugID = $this->db->insert_id();	
 		
@@ -291,10 +296,13 @@ class Fahrzeug_Model extends CI_Model {
 		if($this->_is_deletable($id))
 		{
 			$this->_delete_images($id);
+            $orderID = $this->_get_orderID($id);
 		
 			$tables = array('fahrzeug', 'fahrzeug_content');
 			$this->db->where('fahrzeugID', $id);
 			$this->db->delete($tables);
+            
+            $this->_recalc_orderID($orderID);
 		}
 	}
 	
@@ -365,6 +373,27 @@ class Fahrzeug_Model extends CI_Model {
 	{
 		$this->db->update('fahrzeug', array('online' => $online), 'fahrzeugID = '.$id);
 	}
+    
+    private function _get_orderID($id) {
+        $this->db->select('orderID');
+        $this->db->where('fahrzeugID', $id);
+        $query = $this->db->get('fahrzeug');
+        $row = $query->row();
+        return $row->orderID;
+    }
+    
+    private function _recalc_orderID($orderID) {
+        
+        $this->db->order_by('orderID', 'asc');
+        $this->db->where('orderID >', $orderID);
+        $query = $this->db->get('fahrzeug');
+        
+        foreach($query->result() as $row) {
+            $this->db->where('orderID', $row->orderID);
+            $this->db->update('fahrzeug', array('orderID' => $row->orderID -1));
+        }
+        
+    }
 }
 
 /* End of file fahrzeug_model.php */
