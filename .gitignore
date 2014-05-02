@@ -44,5 +44,6 @@ WS_FTP.LOG
 #*/cache/index.html
 images/content
 files/content
+application/logs
 application/cache
 .htaccess
