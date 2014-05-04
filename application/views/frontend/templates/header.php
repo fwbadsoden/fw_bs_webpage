@@ -38,19 +38,14 @@
 <title><?=FRONTEND_TITLE?></title>
 <?
     echo meta($meta);
-    if($facebook_infos != null) {
-        foreach($facebook_infos as $f) {
-            echo $f;
-        }
-    }
 ?>	
 <link rel="shortcut icon" href="<?=base_url('images/favicon.ico')?>" type="image/x-icon" />
 
 <link href='http://fonts.googleapis.com/css?family=Cabin' rel='stylesheet' type='text/css' />
 <link rel="stylesheet" href="<?=base_url('css/frontend/styles.css')?>" type="text/css" />
 <!--[if lt IE 9]>
-    <script type="text/javascript" src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <script type="text/javascript" src="<?=base_url('js/respond.js')?>"></script>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
