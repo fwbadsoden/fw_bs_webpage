@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/feuerwehr-bs.de';
+$config['base_url']	= 'http://fw_bs_webpage/';
 /*
 |--------------------------------------------------------------------------
 | Index File
