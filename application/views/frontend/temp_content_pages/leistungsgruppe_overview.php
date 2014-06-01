@@ -40,7 +40,7 @@
                     Besonderes Augenmerk wird auf die Einhaltung der geltenden Dienstvorschriften und die saubere Abwicklung der Funkgespräche und Rückmeldungen gelegt.
                 </p>
                 <p>
-                    Auch in diesem Jahr gelang es einer Mannschaft aus dem Stadtgebiet, den Kreismeistertitel nach Bad Soden zu holen  - herzlichen Glückwunsch!
+                    2014 wurde die Feuerwehr Bad Soden wieder Kreismeister und wird den Main-Taunus-Kreis auf Bezirksebene in Freigericht-Horbach vertreten.
                 </p>
             </div>
             
@@ -137,7 +137,8 @@
                 <ul> 
                 	<li>
                     	<h2>2014</h2>
-                        <p><span class="platzierung">1. Platz</span> auf Kreisebene</p>
+                        <p><span class="platzierung">1. Platz</span> auf Kreisebene<br />Bad Soden 1</p>
+                        <p><span class="platzierung">3. Platz</span> auf Kreisebene<br />Bad Soden 2</p>
                     </li>
                 	<li>
                     	<h2>2013</h2>
