@@ -134,6 +134,29 @@ class Fahrzeug_Admin extends CP_Controller {
 		}
 		else redirect($this->session->userdata('fahrzeugliste_redirect'), 'refresh');		
 	}
+    
+    /**
+     * Fahrzeug_Admin::delete_fahrzeug_verify()
+     * 
+     * @param integer $id
+     * @return 
+     */
+     public function delete_fahrzeug_verify($id) {
+        if(!$this->cp_auth->is_privileged(FAHRZEUG_PRIV_DELETE)) redirect('admin/401', 'refresh');
+        
+        $header['title']    = 'Fahrzeug l&ouml;schen';		
+    	$menue['menue']	    = $this->admin->get_menue();
+        $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
+    	$menue['submenue']	= $this->admin->get_submenue();
+		
+        $data = $this->fahrzeug->get_fahrzeug($id);
+    	
+    	$this->load->view('backend/templates/admin/header', $header);
+    	$this->load->view('backend/templates/admin/menue', $menue);	
+    	$this->load->view('backend/templates/admin/submenue', $menue);	
+    	$this->load->view('backend/fahrzeug/verifyDelete_admin', $data);
+    	$this->load->view('backend/templates/admin/footer');
+     }
 	
 	/**
 	 * Fahrzeug_Admin::delete_fahrzeug()
@@ -148,7 +171,7 @@ class Fahrzeug_Admin extends CP_Controller {
 		$this->admin->insert_log(str_replace('%FAHRZEUG%', $fahrzeugdata['fahrzeugName'], lang('log_admin_deleteFahrzeug')));
 		
 		$this->fahrzeug->delete_fahrzeug($id);
-                delete_files($this->config->item('cache_path'));
+        delete_files($this->config->item('cache_path'));
 
 		redirect($this->session->userdata('fahrzeugliste_redirect'), 'refresh');
 	}

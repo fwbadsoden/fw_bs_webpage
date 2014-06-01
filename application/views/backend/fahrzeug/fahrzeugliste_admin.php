@@ -20,7 +20,7 @@
 		<th class="headline_funkrufname">Funkrufname</th>
 		<th class="headline_titel">Fahrzeugname</th>
 		<th colspan="2" class="headline_pos">Position</th>
-		<th colspan="3" class="headline_edit">Edit</th>
+		<th colspan="4" class="headline_edit">Edit</th>
 	</tr>
 </thead>
 <tbody>
@@ -62,17 +62,17 @@
     if($privileged['edit']) :       ?>
 	<td class="button"><a href="<?=base_url('admin/content/fahrzeug/edit/'.$item['fahrzeugID'])?>" class="button_mini" title="Fahrzeug bearbeiten"><span class='button_edit_small'></span></a></td>
     <td class="button"><a href="<?=base_url('admin/content/fahrzeug/image/edit/'.$item['fahrzeugID'])?>" class="button_mini" title="Fahrzeugbilder bearbeiten"><span class='button_image_edit_small'></span></a></td>
-	 <!--<td class="button">
+    <td class="button">
 <?      if($item['delete']==1) :	?>	
 		<a id="confirm_link_<?=$item['fahrzeugID']?>" href="<?=base_url('admin/content/fahrzeug/checkdel/'.$item['fahrzeugID'])?>" class="button_mini" title="Fahrzeug löschen"><span class='button_delete_small'></span></a>
 <?      else :                      ?>
 		<a class="button_mini" title="Fahrzeug kann nicht gelöscht werden. Wird bereits verwendet."><span class='button_lock_small'></span></a>
 <?      endif;                      ?>
-    </td>-->
+    </td>
 <?  else :                          ?>
     <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung das Fahrzeug zu bearbeiten"><span class='button_lock_small'></span></a></td>
     <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung die Fahrzeugbilder zu bearbeiten"><span class='button_lock_small'></span></a></td>
-    <!--<td class="button"><a class="button_mini" title="Sie haben keine Berechtigung das Fahrzeug zu löschen"><span class='button_lock_small'></span></a></td>-->
+    <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung das Fahrzeug zu löschen"><span class='button_lock_small'></span></a></td>
 <?  endif;                          ?>
 </tr>
 <? endforeach;                      ?>
