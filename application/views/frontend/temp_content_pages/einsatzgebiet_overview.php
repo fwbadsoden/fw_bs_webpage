@@ -59,9 +59,9 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             <h1>Industrie und Gewerbe</h1>
             <ul>
                 <li>City-Arkaden</li>
-                <li>Aventis-Pharma Deutschland</li>
                 <li>Krupp-Uhde</li>
                 <li>Messer</li>
+                <li>Main-Taunus-Zentrum</li>
                 <li>Radiologen und chemische Labore</li>
                 <li>Aussiedlerhöfe</li>
             </ul>
@@ -77,11 +77,15 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
             // Marker
             var locations = [
-                ['Kliniken des Main-Taunus-Kreises<br/>Bad Soden am Taunus', 50.151331, 8.514133],
-                ['Feuerwehr Bad Soden', 50.139131, 8.511029],
-                ['Feuerwehr Neuenhain', 50.158639, 8.495477],
-                ['Feuerwehr Altenhain', 50.156875, 8.468608],
-                ['Taunusresidenzen', 50.143738, 8.511266]
+                ['Kliniken des Main-Taunus-Kreises<br/>Bad Soden am Taunus', 50.151331, 8.514133, '<?=base_url("images/icons/mapIcon_hospital.png")?>'],
+                ['Feuerwache<br/>Bad Soden', 50.139131, 8.511029, '<?=base_url("images/icons/mapIcon_fire.png")?>'],
+                ['Feuerwache<br/>Stadtteil Neuenhain', 50.158639, 8.495477, '<?=base_url("images/icons/mapIcon_fire.png")?>'],
+                ['Feuerwache<br/>Stadtteil Altenhain', 50.156875, 8.468608, '<?=base_url("images/icons/mapIcon_fire.png")?>'],
+                ['Taunusresidenzen', 50.143738, 8.511266, '<?=base_url("images/icons/mapIcon_senioren.png")?>'],
+                ['Augustinum Seniorenresidenz', 50.153375, 8.503919, '<?=base_url("images/icons/mapIcon_senioren.png")?>'],
+                ['Seniorenresidenz<br/>Bad Soden am Taunus', 50.134313, 8.506416, '<?=base_url("images/icons/mapIcon_senioren.png")?>'],
+                ['City Arkaden<br/>Bad Soden am Taunus', 50.143863, 8.501900, '<?=base_url("images/icons/mapIcon_mtz.png")?>'],
+                ['Main-Taunus-Zentrum', 50.116511, 8.530810, '<?=base_url("images/icons/mapIcon_mtz2.png")?>'],
             ];
 
             var overlayCoord = [
@@ -156,10 +160,18 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
             // Länge und Breite und Festlegung für welche div-ID dies gilt
             for (i = 0; i < locations.length; i++)
             {
+                var pinIcon = new google.maps.MarkerImage(
+                        locations[i][3],
+                        null, /* size is determined at runtime */
+                        null, /* origin is 0,0 */
+                        null, /* anchor is bottom center of the scaled image */
+                        new google.maps.Size(32,40)
+                    ); 
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(locations[i][1], locations[i][2]),
                     map: map,
                 });
+                marker.setIcon(pinIcon);
 
                 // Infofenster: Wie wird es angesprochen und was befindet sich in ihm
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
