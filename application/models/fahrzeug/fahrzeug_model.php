@@ -310,14 +310,14 @@ class Fahrzeug_Model extends CI_Model {
 	public function insert_image($id, $desc, $file, $thumb, $type, $small_pic = 0) 
 	{
 	    if($small_pic == 1) $this->db->update('fahrzeug_img', array('small_pic' => 0));
-		$this->db->insert('fahrzeug_img', array('fahrzeugID' => $id, 'description' => $desc, 'small_pic' => 1, 'img_file' => $file, 'thumb_file' => $thumb, 'filetype' => $type));	
+		$this->db->insert('fahrzeug_img', array('fahrzeugID' => $id, 'description' => $desc, 'small_pic' => $small_pic, 'img_file' => $file, 'thumb_file' => $thumb, 'filetype' => $type));	
 	}
 	
 	public function update_image($id, $desc, $small_pic = 0)
 	{
 	    if($small_pic == 1) $this->db->update('fahrzeug_img', array('small_pic' => 0));
 		$this->db->where('imgID', $id);
-		$this->db->update('fahrzeug_img', array('description' => $desc, 'small_pic' => 1));	
+		$this->db->update('fahrzeug_img', array('description' => $desc, 'small_pic' => $small_pic));	
 	}
 	
 	public function delete_image($id)
