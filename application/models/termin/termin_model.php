@@ -9,6 +9,7 @@
  */
 class Termin_model extends CI_Model {
 	
+    public $terminID, $name, $description, $datum, $beginn, $ende, $ort, $ort_short, $category_name, $superCatName, $superCatId;
 	private $color = '';
 	
 	/**
@@ -85,6 +86,35 @@ class Termin_model extends CI_Model {
             $termine[$month][$i]['super_category_name'] = $row->super_category_name;
             $termine[$month][$i]['super_category_id']   = $row->super_category_id;
             $i++;
+        }
+        
+        return $termine;
+    }
+    
+    public function get_termin_whole_year($year) {
+        $this->db->where('datum <=', $year.'-12-31');
+        $this->db->where('datum >=', $year.'-01-01');
+        $this->db->order_by('datum', 'ASC');
+        $query = $this->db->get('v_termin');
+        
+        $termine = array();
+        
+        foreach($query->result() as $row) {
+            $termin = new Termin_model();
+            
+            $termin->terminID       = $row->terminID;
+            $termin->name           = $row->name;
+            $termin->description    = $row->description;
+            $termin->datum          = $row->datum;
+            $termin->beginn         = $row->beginn;
+            $termin->ende           = $row->ende;
+            $termin->ort            = $row->ort;
+            $termin->ort_short      = $row->ort_short;
+            $termin->category_name  = $row->category_name;
+            $termin->superCatName   = $row->super_category_name;
+            $termin->superCatId     = $row->super_category_id;
+            
+            array_push($termine,$termin);
         }
         
         return $termine;

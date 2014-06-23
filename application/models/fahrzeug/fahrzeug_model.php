@@ -108,6 +108,7 @@ class Fahrzeug_Model extends CI_Model {
 	public function get_fahrzeug_list_id_name($active = 1)
 	{
 		$this->db->select('fahrzeugID, name')->where('online', $active);
+        $this->db->order_by('orderID', 'asc');
 		$query = $this->db->get('fahrzeug');
 		$i = 0;
 		$arr_fahrzeug = array();
