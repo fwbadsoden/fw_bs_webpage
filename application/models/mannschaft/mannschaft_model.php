@@ -198,7 +198,7 @@ class Mannschaft_Model extends CI_Model {
         $query = $this->db->get('mannschaft');
         $row = $query->row();
         
-        if($row->img != "" && $row->img != "dummy.jgp")
+        if($row->img != "" && $row->img != "dummy.jpg")
             $this->_delete_image($id);
         $this->db->where('mannschaftID', $id);
         $this->db->delete("mannschaft");
@@ -216,7 +216,7 @@ class Mannschaft_Model extends CI_Model {
         $query = $this->db->get_where('mannschaft', array('mannschaftID' => $id));
 		
 		$row = $query->row();
-		unlink($this->upload_path.$row->img);
+        unlink($this->upload_path.$row->img);
     }
 	
 	public function switch_online_state($id, $online)
