@@ -41,6 +41,14 @@
 		'value' 	=> set_value('fahrzeugtext')
 	);
 	
+	$fahrzeugBaujahr = array(
+		'name'		=> 'fahrzeugbaujahr',
+		'id'		=> 'fahrzeugbaujahr',
+		'class' 	=> 'input_leistung',
+		'maxlength' => '4',
+		'value' 	=> set_value('fahrzeugbaujahr')
+	);
+	
 	$fahrzeugBesatzung = array(
 		'name'		=> 'fahrzeugbesatzung',
 		'id'		=> 'fahrzeugbesatzung',
@@ -203,6 +211,10 @@
                     <tr>
                         <td class='form_label'><?=form_label('Aufbauhersteller:', $fahrzeugAufbau['id']); ?></td>
                         <td><?=form_input($fahrzeugAufbau); ?></td>
+                    </tr>
+                    <tr>
+                        <td class='form_label'><?=form_label('Baujahr:', $fahrzeugBaujahr['id']); ?></td>
+                        <td><?=form_input($fahrzeugBaujahr); ?></td>
                     </tr>
 					<tr><td></td></tr>
                     <tr>

@@ -97,6 +97,7 @@ class Fahrzeug_Model extends CI_Model {
 				$arr_fahrzeug[$i]['fahrzeugRufname'] = 'n/a';
 			$arr_fahrzeug[$i]['online'] 		= $row->online;
 			$arr_fahrzeug[$i]['delete'] 		= $this->_is_deletable($row->fahrzeugID);
+            $arr_fahrzeug[$i]['ready']          = $this->_is_ready_for_online($row->fahrzeugID);
             $arr_fahrzeug[$i]['orderID']        = $row->orderID;
 			$arr_fahrzeug[$i]['row_color']		= $this->color = cp_get_color($this->color);
 			$i++;
@@ -233,6 +234,7 @@ class Fahrzeug_Model extends CI_Model {
 		$fahrzeugContent = array(
             'fahrzeugID'    => $fahrzeugID,
 			'text'			=> $this->input->post('fahrzeugtext'),
+            'baujahr'       => $this->input->post('fahrzeugbaujahr'),
 			'besatzung'		=> $this->input->post('fahrzeugbesatzung'),
 			'hersteller'	=> $this->input->post('fahrzeughersteller'),
 			'aufbau'		=> $this->input->post('fahrzeugaufbau'),
@@ -265,6 +267,7 @@ class Fahrzeug_Model extends CI_Model {
 		
 		$fahrzeugContent = array(
 			'text'			=> $this->input->post('fahrzeugtext'),
+            'baujahr'       => $this->input->post('fahrzeugbaujahr'),
 			'besatzung'		=> $this->input->post('fahrzeugbesatzung'),
 			'hersteller'	=> $this->input->post('fahrzeughersteller'),
 			'aufbau'		=> $this->input->post('fahrzeugaufbau'),
@@ -344,6 +347,13 @@ class Fahrzeug_Model extends CI_Model {
 			$this->db->delete('fahrzeug_img', array('imgID' => $row->imgID));	
 		}
 	}
+    
+    private function _is_ready_for_online($fahrzeugID) {
+        $this->db->where('small_pic', "1");
+        $this->db->where('fahrzeugID', $fahrzeugID);
+        $query = $this->db->get('fahrzeug_img');
+        if($query->num_rows() == 0) return 0; else return 1;
+    }
 	
 	private function _is_deletable($fahrzeugID)
 	{

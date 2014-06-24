@@ -192,6 +192,7 @@ class Fahrzeug_Admin extends CP_Controller {
 		$this->form_validation->set_rules('fahrzeugrufname', 'Fahrzeugrufname', 'required|max_length[10]|xss_clean'); 
 		$this->form_validation->set_rules('fahrzeugnamelang', 'Fahrzeugname (lang)', 'required|max_length[50]|xss_clean'); 
 		$this->form_validation->set_rules('fahrzeugtext', 'Fahrzeugbeschreibung', 'required|xss_clean'); 
+        $this->form_validation->set_rules('fahrzeugbaujahr', 'Fahrzeugbaujahr', 'required|max_length[4]|is_natural_no_zero|xss_clean');
 		$this->form_validation->set_rules('fahrzeugbesatzung', 'Fahrzeugbesatzung', 'max_length[3]|xss_clean'); 
 		$this->form_validation->set_rules('fahrzeughersteller', 'Fahrzeughersteller', 'required|max_length[50]|xss_clean'); 
 		$this->form_validation->set_rules('fahrzeugaufbau', 'Fahrzeugaufbau', 'max_length[50]|xss_clean'); 

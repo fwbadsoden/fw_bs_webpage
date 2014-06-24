@@ -46,6 +46,15 @@
 		'value' 	=> $value
 	);
 	
+	if(!$value = set_value('fahrzeugbaujahr')) $value = $fahrzeug['fahrzeugBaujahr'];
+	$fahrzeugBaujahr = array(
+		'name'		=> 'fahrzeugbaujahr',
+		'id'		=> 'fahrzeugbaujahr',
+		'class' 	=> 'input_leistung',
+		'maxlength' => '4',
+		'value' 	=> $value
+	);
+	
 	if(!$value = set_value('fahrzeugbesatzung')) $value = $fahrzeug['fahrzeugBesatzung'];
 	$fahrzeugBesatzung = array(
 		'name'		=> 'fahrzeugbesatzung',
@@ -186,6 +195,7 @@
                         <td class='form_label'><?=form_label('Fahrzeugname (lang):', $fahrzeugNameLang['id']); ?></td>
                         <td><?=form_input($fahrzeugNameLang); ?></td>
                     </tr>
+					<tr><td></td></tr>
                     <tr>
                         <td class='form_label'><?=form_label('Präfix Funkrufname:', 'fahrzeugprefix'); ?></td>
                         <td><?=form_dropdown('fahrzeugprefix', $prefix_options, $prefix_selected, $prefix_attr)?></td>
@@ -211,6 +221,7 @@
                         <td><?=form_label('Beschreibung:', $fahrzeugText['id']); ?></td>
                         <td><?=form_textarea($fahrzeugText); ?></td>
                     </tr>
+					<tr><td></td></tr>
                     <tr>
                         <td class='form_label'><?=form_label('Hersteller:', 'fahrzeughersteller'); ?></td>
                         <td><?=form_dropdown('fahrzeughersteller', $hersteller_options, $hersteller_selected, $hersteller_attr)?></td>
@@ -219,6 +230,11 @@
                         <td class='form_label'><?=form_label('Aufbauhersteller:', $fahrzeugAufbau['id']); ?></td>
                         <td><?=form_input($fahrzeugAufbau); ?></td>
                     </tr>
+                    <tr>
+                        <td class='form_label'><?=form_label('Baujahr:', $fahrzeugBaujahr['id']); ?></td>
+                        <td><?=form_input($fahrzeugBaujahr); ?></td>
+                    </tr>
+					<tr><td></td></tr>
                     <tr>
                         <td class='form_label'><?=form_label('Besatzung:', $fahrzeugBesatzung['id']); ?></td>
                         <td><?=form_input($fahrzeugBesatzung); ?></td>

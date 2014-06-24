@@ -53,9 +53,13 @@
     <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Fahrzeugstatus zu bearbeiten"><span class='button_online_small'></span></a></td>
 <?      endif;                      
  	else :                         
-        if($privileged['edit']) :   ?>
+        if($privileged['edit']) :           
+            if($item['ready']==1) :?>
 	<td class="button"><a href="<?=base_url('admin/content/fahrzeug/status/'.$item['fahrzeugID'].'/0')?>" class="button_mini" title="Fahrzeug online schalten"><span class='button_offline_small'></span></a></td>
-<?      else:                       ?>
+<?          else :                  ?>
+    <td class="button"><a class="button_mini" title="Fahrzeug kann nicht online geschaltet werden. Das kleine Bild für die Fahrzeugübersicht fehlt noch!"><span class='button_offline_small'></span></a></td>
+<?          endif; 
+        else:                       ?>
     <td class="button"><a class="button_mini" title="Sie haben keine Berechtigung den Fahrzeugstatus zu bearbeiten"><span class='button_offline_small'></span></a></td>
 <?      endif;
   	endif;             
