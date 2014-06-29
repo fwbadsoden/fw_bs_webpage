@@ -139,6 +139,7 @@
                     	<h2>2014</h2>
                         <p><span class="platzierung">1. Platz</span> auf Kreisebene<br />Bad Soden 1</p>
                         <p><span class="platzierung">3. Platz</span> auf Kreisebene<br />Bad Soden 2</p>
+                        <p><span class="platzierung">11. Platz</span> auf dem Bezirksentscheid<br />in Freigericht Horbach</p>
                     </li>
                 	<li>
                     	<h2>2013</h2>
