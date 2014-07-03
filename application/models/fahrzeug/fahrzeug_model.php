@@ -211,11 +211,17 @@ class Fahrzeug_Model extends CI_Model {
 	
 	public function create_fahrzeug()
 	{
+        if($this->input->post('show_einsaetze') == "1")
+            $show_einsaetze = "1";
+        else
+            $show_einsaetze = "0";
+            
 		$fahrzeug = array(
 			'name'			 => $this->input->post('fahrzeugname'),
 			'name_lang'	     => $this->input->post('fahrzeugnamelang'),
 			'rufname'		 => $this->input->post('fahrzeugrufname'),
 			'prefix_rufname' => $this->input->post('fahrzeugprefix'),
+            'show_einsaetze' => $show_einsaetze,
 			'online'		 => 0
 		);
 		
@@ -258,11 +264,17 @@ class Fahrzeug_Model extends CI_Model {
 	
 	public function update_fahrzeug($id)
 	{
+        if($this->input->post('show_einsaetze') == "1")
+            $show_einsaetze = "1";
+        else
+            $show_einsaetze = "0";
+            
 		$fahrzeug = array(
 			'name'			 => $this->input->post('fahrzeugname'),
 			'name_lang'	     => $this->input->post('fahrzeugnamelang'),
 			'rufname'		 => $this->input->post('fahrzeugrufname'),
 			'prefix_rufname' => $this->input->post('fahrzeugprefix'),
+            'show_einsaetze' => $show_einsaetze,
 		);
 		
 		$fahrzeugContent = array(

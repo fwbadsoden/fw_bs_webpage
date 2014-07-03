@@ -30,6 +30,8 @@ class Fahrzeug_Admin extends CP_Controller {
 		if(!$this->cp_auth->is_logged_in_admin()) redirect('admin', 'refresh');
 		
 		$this->upload_path = CONTENT_IMG_FAHRZEUG_UPLOAD_PATH;
+        
+        if(ENVIRONMENT=='development') $this->output->enable_profiler(TRUE);
 	}
 	
 	/**

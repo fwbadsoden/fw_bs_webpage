@@ -29,6 +29,19 @@
 		'class' 	=> 'input_rufname',
 		'value' 	=> $value
 	);
+        
+    $fahrzeugEinsaetze['formAttr']['name'] = 'show_einsaetze';
+	$fahrzeugEinsaetze['formAttr']['id'] = 'show_einsaetze';
+	$fahrzeugEinsaetze['formAttr']['class'] = '';
+	$fahrzeugEinsaetze['formAttr']['value'] = '1';		
+	if(!$this->input->post('show_einsaetze') == $fahrzeugEinsaetze['formAttr']['value']) 
+	{
+        if($fahrzeug['show_einsaetze'] == "1") {
+	       $fahrzeugEinsaetze['formAttr']['checked'] = 'checked'; 
+        }
+	} else {	   
+	   $fahrzeugEinsaetze['formAttr']['checked'] = 'checked'; 
+	}
 	
 	$prefix_options = array();
 	if(isset($_POST['fahrzeugprefix'])) 				$prefix_selected = $_POST['fahrzeugprefix']; 
@@ -178,7 +191,7 @@
             <td><a href='<?=$this->session->userdata('fahrzeugliste_redirect')?>' target='_top' class="button_gross"><span class="button_cancel">Zurück</span></a></td>
         </tr>
     </table>
-    <br>
+    <br/>
     
     <?=form_fieldset('&nbsp;&nbsp;&nbsp;Grunddaten:&nbsp;&nbsp;&nbsp;');?>
    	<p>
@@ -326,6 +339,30 @@
     </table>   	
 	</p>
     <?=form_fieldset_close();?>
+    <p></p>
+    <?=form_fieldset('&nbsp;&nbsp;&nbsp;Steuerungsdaten:&nbsp;&nbsp;&nbsp;');?>
+   	<p>
+    <table>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td class='form_label'><?=form_label('Letzte Einsätze zeigen:', $fahrzeugEinsaetze['formAttr']['id']); ?></td>
+                        <td><?=form_checkbox($fahrzeugEinsaetze['formAttr']); ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+	</p>
+    <?=form_fieldset_close();?>
+    <p></p>
+    <table>
+        <tr>
+            <td><button type='submit' name='fahrzeug_submit' id='fahrzeug_submit' class='button_gross'><span class='button_save'>Speichern</span></button></td>
+            <td><a href='<?=$this->session->userdata('fahrzeugliste_redirect')?>' target='_top' class="button_gross"><span class="button_cancel">Zurück</span></a></td>
+        </tr>
+    </table>
     <p></p>
     <script type="text/javascript" language="JavaScript">
     	document.forms['<?=$form['id']?>'].elements['<?=$fahrzeugName['id']?>'].focus();

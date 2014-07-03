@@ -162,13 +162,13 @@
 <div id='einsatz_create'>
 <?=form_open($this->session->userdata('einsatzedit_submit').'/save', $form);?>
 
-<table>
-	<tr>
-		<td><button type='submit' name='einsatz_submit' id='einsatz_submit' class='button_gross'><span class='button_save'>Speichern</span></button></td>
-		<td><a href='<?=$this->session->userdata('einsatzliste_redirect')?>' target='_top' class="button_gross"><span class="button_cancel">Zurück</span></a></td>
-	</tr>
-</table>
-    <br>
+    <table>
+    	<tr>
+    		<td><button type='submit' name='einsatz_submit' id='einsatz_submit' class='button_gross'><span class='button_save'>Speichern</span></button></td>
+    		<td><a href='<?=$this->session->userdata('einsatzliste_redirect')?>' target='_top' class="button_gross"><span class="button_cancel">Zurück</span></a></td>
+    	</tr>
+    </table>
+    <br/>
     <?=form_fieldset('&nbsp;&nbsp;&nbsp;Einsatzdaten:&nbsp;&nbsp;&nbsp;');?>
    	<p>
 <table>
@@ -261,6 +261,14 @@
 </table>
     </p>
     <?=form_fieldset_close();?>
+    <p></p>
+    <table>
+    	<tr>
+    		<td><button type='submit' name='einsatz_submit' id='einsatz_submit' class='button_gross'><span class='button_save'>Speichern</span></button></td>
+    		<td><a href='<?=$this->session->userdata('einsatzliste_redirect')?>' target='_top' class="button_gross"><span class="button_cancel">Zurück</span></a></td>
+    	</tr>
+    </table>
+    <p></p>
 </div>
 
 <div style="clear:both;"></div>

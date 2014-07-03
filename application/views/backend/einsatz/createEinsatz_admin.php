@@ -173,7 +173,7 @@ $(function() {
             <td><button type='reset' name='einsatz_submit' id='einsatz_submit' class='button_gross'><span class='button_reset'>Zurücksetzen</span></button></td>
         </tr>
     </table>
-    <br>
+    <br/>
     <?=form_fieldset('&nbsp;&nbsp;&nbsp;Einsatzdaten:&nbsp;&nbsp;&nbsp;');?>
    	<p>
     <table>
@@ -268,6 +268,15 @@ $(function() {
     </table>
     </p>
     <?=form_fieldset_close();?>
+    <p></p>
+    <table>
+        <tr>
+            <td><button type='submit' name='einsatz_submit' id='einsatz_submit' class='button_gross'><span class='button_save'>Einsatz anlegen</span></button></td>
+            <td><a href='<?=$this->session->userdata('einsatzliste_redirect')?>' target='_top' class="button_gross"><span class="button_cancel">Zurück</span></a></td>
+            <td><button type='reset' name='einsatz_submit' id='einsatz_submit' class='button_gross'><span class='button_reset'>Zurücksetzen</span></button></td>
+        </tr>
+    </table>
+    <p></p>
 </div>
 
 <div style="clear:both;"></div>
