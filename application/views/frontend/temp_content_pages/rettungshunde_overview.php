@@ -37,8 +37,8 @@
                             <p><img src="<?=base_url('images/content/content_rettungshunde_flaechensuche.jpg')?>" /></p>
                             <ul>
                             	<li>Bellen: Der Hund bellt bei der gefundenen Person so lange, bis sein Hundeführer bei ihm ist</li>
-                                <li>Bringseln: Der Hund nimmt einen Gegenstand der Person auf und bringt ihn seinem Hundeführer. Anschließend führt er den Hundeführer zurück zu der vermissten Person.</li>
-                                <li>Freiverweisen: Der Hund führt seinen Hundeführer durch Pendeln zwischen Opfer und Hundeführer zur Fundstelle.</li>
+                                <li>Bringseln: Der Hund nimmt einen Gegenstand in sein Maul und begibt sich zurück zu seinem Hundeführer. Anschließend führt er den Hundeführer zurück zu der vermissten Person.</li>
+                                <li>Freiverweisen: Der Hund führt seinen Hundeführer durch Pendeln zwischen Opfer und Hundeführer oder an der Leine zurück Fundstelle.</li>
                             </ul>
                         </div>
                         <h1 class="reiter"><a href="#details_3" func="tab" class="noActive">Trümmersuche</a></h1>
