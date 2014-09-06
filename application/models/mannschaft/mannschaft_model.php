@@ -56,11 +56,13 @@ class Mannschaft_Model extends CI_Model {
         if($teamID == TEAM_ID_LEADER) {
             $this->db->where('teamID', $teamID);
             $this->db->order_by('funktion_orderID', 'DESC');
-            $this->db->order_by('name', 'ASC');         
+            $this->db->order_by('name', 'ASC'); 
+            $this->db->order_by('vorname', 'ASC');                 
         }
         if($teamID == TEAM_ID_TEAM) {
             $this->db->where('teamID', $teamID);
             $this->db->order_by('name', 'ASC');
+            $this->db->order_by('vorname', 'ASC');     
         }
        
         $query = $this->db->get('v_mannschaft');
