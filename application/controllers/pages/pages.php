@@ -194,7 +194,7 @@ class Pages extends CP_Controller {
     public function einsatz_detail()
     {
         //if(ENVIRONMENT=='production') $this->output->cache(60);
-        
+       
         $id = $this->uri->segment($this->uri->total_segments());
         
         $c_einsatz = load_controller('einsatz/einsatz');
@@ -207,12 +207,9 @@ class Pages extends CP_Controller {
             if(isset($text['class']))   $value['class_einsatz'] = $text['class'];
             else                        $value['class_einsatz'] = '';
         }
-        
-        $facebook_infos = $c_einsatz->get_facebook_infos($id);
  
         $this->_site_header($facebook_infos);
         $this->_site_stage();
-        
         $this->_site_content_header();
         
         if($this->page_content['stage_images']['count_images'] > 1)
