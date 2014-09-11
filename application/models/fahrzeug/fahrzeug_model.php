@@ -27,10 +27,12 @@ class Fahrzeug_Model extends CI_Model {
 		$this->load->helper('html');
 	}
 	
-	public function get_fahrzeug($id)
+	public function get_fahrzeug($id, $admin = 0)
 	{	
 		$this->db->join('fahrzeug_content', 'fahrzeug.fahrzeugID = fahrzeug_content.fahrzeugID');
 		$this->db->where('fahrzeug.fahrzeugID', $id);
+        if($admin == 0)
+            $this->db->where('online', 1);
 		$query = $this->db->get('fahrzeug');
 		
 		$row = $query->row();	
@@ -58,13 +60,14 @@ class Fahrzeug_Model extends CI_Model {
 		$fahrzeug['fahrzeugLeermasse']		= $row->leermasse;
 		$fahrzeug['fahrzeugGesamtmasse']	= $row->gesamtmasse;
         $fahrzeug['show_einsaetze']         = $row->show_einsaetze;
+        $fahrzeug['retired']                = $row->retired;
 				
 		return $fahrzeug;
 	}
     
     public function get_fahrzeug_stage_text($id)
     {
-        $this->db->select('name, name_lang, short_text');
+        $this->db->select('name, name_lang, short_text, retired');
         $this->db->where('fahrzeug.fahrzeugID', $id);
         $this->db->join('fahrzeug_content', 'fahrzeug.fahrzeugID = fahrzeug_content.fahrzeugID');
         $query = $this->db->get('fahrzeug');
@@ -72,17 +75,28 @@ class Fahrzeug_Model extends CI_Model {
         $text['name']       = $row->name;
         $text['name_lang']  = $row->name_lang;
         $text['short_text'] = $row->short_text;
+        if($row->retired == "1")
+            $text['retired'] = " a.D.";
+        
         return $text;
     }
 	
-	public function get_fahrzeug_list($online = 'all')
-	{		
+	public function get_fahrzeug_list($online, $retired, $showAll = 0)
+	{	
 		$this->db->order_by('orderID', 'asc');
-        if($online != 'all') $this->db->where('online', $online);
+        if($online == 1) {
+            $this->db->where('online', 1);
+        }
+        if($retired == 0) {
+            $this->db->where('retired', 0);
+        }
+        if($retired == 1 && $showAll == 0)  {
+            $this->db->where('retired', 1);
+        }
 		$query = $this->db->get('fahrzeug');
 		$i = 0;
 		$arr_fahrzeug = array();
-		
+        
 		foreach($query->result() as $row)
 		{
 			$arr_fahrzeug[$i]['fahrzeugID'] 	= $row->fahrzeugID;
@@ -100,11 +114,24 @@ class Fahrzeug_Model extends CI_Model {
             $arr_fahrzeug[$i]['ready']          = $this->_is_ready_for_online($row->fahrzeugID);
             $arr_fahrzeug[$i]['orderID']        = $row->orderID;
 			$arr_fahrzeug[$i]['row_color']		= $this->color = cp_get_color($this->color);
+            $arr_fahrzeug[$i]['retired']        = $row->retired;
 			$i++;
 		}
 		
 		return $arr_fahrzeug;
 	}
+    
+    public function hasRetired() {
+        
+        $this->db->where('online', 1);
+        $this->db->where('retired', 1);
+        $query = $this->db->get('fahrzeug');
+        
+        if($query->num_rows() > 0)
+            return true;
+        else 
+            return false;
+    }
 	
 	public function get_fahrzeug_list_id_name($active = 1)
 	{
@@ -222,7 +249,8 @@ class Fahrzeug_Model extends CI_Model {
 			'rufname'		 => $this->input->post('fahrzeugrufname'),
 			'prefix_rufname' => $this->input->post('fahrzeugprefix'),
             'show_einsaetze' => $show_einsaetze,
-			'online'		 => 0
+			'online'		 => 0,
+            'retired'        => 0
 		);
 		
 		// ++++ TRANSAKTION START ++++ //
@@ -268,6 +296,10 @@ class Fahrzeug_Model extends CI_Model {
             $show_einsaetze = "1";
         else
             $show_einsaetze = "0";
+        if($this->input->post('retired') == "1")
+            $retired = 1;
+        else
+            $retired = 0;
             
 		$fahrzeug = array(
 			'name'			 => $this->input->post('fahrzeugname'),
@@ -275,6 +307,7 @@ class Fahrzeug_Model extends CI_Model {
 			'rufname'		 => $this->input->post('fahrzeugrufname'),
 			'prefix_rufname' => $this->input->post('fahrzeugprefix'),
             'show_einsaetze' => $show_einsaetze,
+            'retired'        => $retired
 		);
 		
 		$fahrzeugContent = array(

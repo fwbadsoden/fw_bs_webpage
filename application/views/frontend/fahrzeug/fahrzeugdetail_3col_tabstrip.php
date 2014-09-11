@@ -21,6 +21,7 @@
                     <h1 class="reiter"><a href="#details_<?=$tab_index_2?>" func="tab" class="active">Beschreibung</a></h1>
                     <div id="box_details_<?=$tab_index_2?>" style="">
 <?     if($fahrzeug['fahrzeugRufname'] == 'n/a') : $rufname = $fahrzeug['fahrzeugNameLang']; else : $rufname = $fahrzeug['fahrzeugRufnamePrefix'].' '.$fahrzeug['fahrzeugRufname']; endif; ?>
+<?     if($fahrzeug['retired'] == 1) : $rufname .= " (ausser Dienst)"; endif; ?>
                         <h1><?=$tab_index_2?>: <?=$rufname?></h1>
                         <p><?=$fahrzeug['fahrzeugText']?></p>                     
 <? if($fahrzeug['fahrzeugPumpe'] != '' && $fahrzeug['fahrzeugLoeschmittel'] != '') : ?>                        

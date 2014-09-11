@@ -17,7 +17,7 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-	define('ENVIRONMENT', 'habib_lcl');
+	define('ENVIRONMENT', 'development');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
@@ -32,13 +32,13 @@ if (defined('ENVIRONMENT'))
 	switch (ENVIRONMENT)
 	{
 		case 'habib_lcl':
-			error_reporting(E_ALL);
+			error_reporting(E_ALL^E_NOTICE);
 		break;
 		case 'development':
-			error_reporting(E_ALL);
+			error_reporting(E_ALL^E_NOTICE);
 		break;	
 		case 'testing':
-			error_reporting(E_ALL);
+			error_reporting(E_ALL^E_NOTICE);
 		break;
 		case 'production':
 			error_reporting(0);

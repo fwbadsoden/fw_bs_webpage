@@ -29,9 +29,13 @@ class Fahrzeug extends CP_Controller {
      * @param string $online
      * @return
      */
-    public function get_fahrzeug_overview($online = 'all')
+    public function get_fahrzeug_overview($online = 'all', $retired)
     {
-        return $this->m_fahrzeug->get_fahrzeug_list($online);
+        return $this->m_fahrzeug->get_fahrzeug_list($online, $retired);
+    }
+    
+    public function hasRetired() {
+        return $this->m_fahrzeug->hasRetired();
     }
     
     /**
@@ -39,9 +43,14 @@ class Fahrzeug extends CP_Controller {
      * 
      * @return
      */
-    public function fahrzeugliste_3col()
+    public function fahrzeugliste_3col($retired)
     {
-        $fahrzeuge = $this->m_fahrzeug->get_fahrzeug_list(1);
+        if($retired == 1) {
+            $fahrzeuge = $this->get_fahrzeug_overview(1, 1);  
+        }          
+        else {
+            $fahrzeuge = $this->get_fahrzeug_overview(1, 0);
+        }
         $i = 1;
         
         $this->load->view('frontend/fahrzeug/fahrzeugliste_3col_header');
@@ -66,7 +75,7 @@ class Fahrzeug extends CP_Controller {
     public function fahrzeug_detail_3col($id)
     {
         $fahrzeug['fahrzeug']   = $this->m_fahrzeug->get_fahrzeug($id);
-        $fahrzeuge              = $this->m_fahrzeug->get_fahrzeug_list(1);
+        $fahrzeuge              = $this->m_fahrzeug->get_fahrzeug_list(1, 0);
         $einsaetze['einsaetze'] = $this->m_fahrzeug->get_fahrzeug_einsaetze($id);
         $fahrzeug['images']     = $this->m_fahrzeug->get_fahrzeug_images($id);
         

@@ -199,14 +199,33 @@ $(document).ready(function () {
                     	<ul>
 <? if(current_url() == base_url('technik/fahrzeuge')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
                         	<li class="headline"><a href="<?=base_url('technik/fahrzeuge')?>"<?=$class?>>Fahrzeuge</a></li>
-<?  $i = 0; $count = count($fahrzeuge);
-    foreach($fahrzeuge as $f) : ?>                        
+<?  $counter = 0;
+    foreach($fahrzeuge as $f) : 
+        if($f['retired'] == 0) : 
+            if($counter == 9) :
+                $counter = 0; ?>
+                        </ul><ul>                                  
+                        	<li class="headline"><a href="<?=base_url('technik/fahrzeuge')?>"<?=$class?>>&nbsp;</a></li>
+<?          endif; ?>            
 <? if(current_url() == base_url('technik/fahrzeug/'.$f['fahrzeugID'])) : $class = ' class="active"'; else : $class = ''; endif; ?>     
                         	<li><a href="<?=base_url('technik/fahrzeug/'.$f['fahrzeugID'])?>"<?=$class?>>
                             <? if($f['fahrzeugNameLang'] != '') : echo $f['fahrzeugName'].' - '.$f['fahrzeugNameLang']; else : echo $f['fahrzeugName']; endif; ?>
-                            </a></li>
-    <? if ($i == 3) { $i = 0; echo "</ul><ul><li class='headline'><a href='".base_url('technik/fahrzeuge')."'>&nbsp;</a></li>"; } else $i++; ?>    
-<? endforeach; ?>
+                            </a></li>  
+<?          $counter++;
+        endif;
+    endforeach; ?>
+                    	</ul>  
+   	                    <ul>
+<? if(current_url() == base_url('technik/fahrzeuge/ausserdienst')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
+                        	<li class="headline"><a href="<?=base_url('technik/fahrzeuge/ausserdienst')?>"<?=$class?>>Fahrzeuge a.D.</a></li>
+<?  if($hasRetiredFahrzeuge) :
+        foreach($fahrzeugeAusserDienst as $f) : ?>                        
+<? if(current_url() == base_url('technik/fahrzeug/'.$f['fahrzeugID'])) : $class = ' class="active"'; else : $class = ''; endif; ?>     
+                        	<li><a href="<?=base_url('technik/fahrzeug/'.$f['fahrzeugID'])?>"<?=$class?>>
+                            <? if($f['fahrzeugNameLang'] != '') : echo $f['fahrzeugName'].' - '.$f['fahrzeugNameLang']; else : echo $f['fahrzeugName']; endif; ?>
+                            </a></li>  
+<?      endforeach; 
+    endif; ?>
                     	</ul>  
                     </div>  
                 </li>  

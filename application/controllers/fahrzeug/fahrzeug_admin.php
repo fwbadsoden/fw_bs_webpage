@@ -48,8 +48,8 @@ class Fahrzeug_Admin extends CP_Controller {
 		$menue['menue']	      = $this->admin->get_menue();
         $menue['userdata']    = $this->cp_auth->cp_get_user_by_id();
 		$menue['submenue']	  = $this->admin->get_submenue();
-		$data['fahrzeug']     = $this->fahrzeug->get_fahrzeug_list();
-        
+		$data['fahrzeug']     = $this->fahrzeug->get_fahrzeug_list('all', 1, 1);
+ 
         // Berechtigungen für Übersichtsseite weiterreichen
         $data['privileged']['edit'] = $this->cp_auth->is_privileged(FAHRZEUG_PRIV_EDIT);
         $data['privileged']['delete'] = $this->cp_auth->is_privileged(FAHRZEUG_PRIV_DELETE);
@@ -125,7 +125,7 @@ class Fahrzeug_Admin extends CP_Controller {
 		    $menue['menue']	        = $this->admin->get_menue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
-			$fahrzeug['fahrzeug'] 	= $this->fahrzeug->get_fahrzeug($id);
+			$fahrzeug['fahrzeug'] 	= $this->fahrzeug->get_fahrzeug($id, 1);
 		
 			$this->load->view('backend/templates/admin/header', $header);
 			$this->load->view('backend/templates/admin/tiny_mce_inc');
@@ -151,7 +151,7 @@ class Fahrzeug_Admin extends CP_Controller {
         $menue['userdata']  = $this->cp_auth->cp_get_user_by_id();
     	$menue['submenue']	= $this->admin->get_submenue();
 		
-        $data = $this->fahrzeug->get_fahrzeug($id);
+        $data = $this->fahrzeug->get_fahrzeug($id, 1);
     	
     	$this->load->view('backend/templates/admin/header', $header);
     	$this->load->view('backend/templates/admin/menue', $menue);	
@@ -169,7 +169,7 @@ class Fahrzeug_Admin extends CP_Controller {
 	public function delete_fahrzeug($id)
 	{
         if(!$this->cp_auth->is_privileged(FAHRZEUG_PRIV_DELETE)) redirect('admin/401', 'refresh');
-		$fahrzeugdata = $this->fahrzeug->get_fahrzeug($id);
+		$fahrzeugdata = $this->fahrzeug->get_fahrzeug($id, 1);
 		$this->admin->insert_log(str_replace('%FAHRZEUG%', $fahrzeugdata['fahrzeugName'], lang('log_admin_deleteFahrzeug')));
 		
 		$this->fahrzeug->delete_fahrzeug($id);
@@ -296,7 +296,7 @@ class Fahrzeug_Admin extends CP_Controller {
 		    $menue['menue']	        = $this->admin->get_menue();
             $menue['userdata']      = $this->cp_auth->cp_get_user_by_id();
 			$menue['submenue']		= $this->admin->get_submenue();
-			$fahrzeug['fahrzeug']	= $this->fahrzeug->get_fahrzeug($id);
+			$fahrzeug['fahrzeug']	= $this->fahrzeug->get_fahrzeug($id, 1);
 			$fahrzeug['images']		= $this->fahrzeug->get_images($id);
 			$fahrzeug['error']		= $error;
 		

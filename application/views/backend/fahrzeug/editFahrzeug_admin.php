@@ -42,6 +42,19 @@
 	} else {	   
 	   $fahrzeugEinsaetze['formAttr']['checked'] = 'checked'; 
 	}
+        
+    $fahrzeugRetired['formAttr']['name'] = 'retired';
+	$fahrzeugRetired['formAttr']['id'] = 'retired';
+	$fahrzeugRetired['formAttr']['class'] = '';
+	$fahrzeugRetired['formAttr']['value'] = '1';		
+	if(!$this->input->post('retired') == $fahrzeugRetired['formAttr']['value']) 
+	{
+        if($fahrzeug['retired'] == "1") {
+	       $fahrzeugRetired['formAttr']['checked'] = 'checked'; 
+        }
+	} else {	   
+	   $fahrzeugRetired['formAttr']['checked'] = 'checked'; 
+	}
 	
 	$prefix_options = array();
 	if(isset($_POST['fahrzeugprefix'])) 				$prefix_selected = $_POST['fahrzeugprefix']; 
@@ -349,6 +362,16 @@
                     <tr>
                         <td class='form_label'><?=form_label('Letzte Einsätze zeigen:', $fahrzeugEinsaetze['formAttr']['id']); ?></td>
                         <td><?=form_checkbox($fahrzeugEinsaetze['formAttr']); ?></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td class='form_label'><?=form_label('Fahrzeug außer Dienst:', $fahrzeugRetired['formAttr']['id']); ?></td>
+                        <td><?=form_checkbox($fahrzeugRetired['formAttr']); ?></td>
                     </tr>
                 </table>
             </td>
