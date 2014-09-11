@@ -4,10 +4,10 @@
 
 <div class="SmallBox secondColumn">   
             <div class="menueBox">
-                <h1>Alle Fahrzeuge</h1>
+                <h1><?=$headline?></h1>
                 <ul>
-<? foreach($fahrzeuge as $key => $fahrzeug) : ?>      
-<? if(count($fahrzeuge) == ($key + 1)) : ?>
+<? foreach($fahrzeugliste as $key => $fahrzeug) : ?>      
+<? if(count($fahrzeugliste) == ($key + 1)) : ?>
                     <li class="last">
 <? else : ?>
                     <li>
@@ -18,8 +18,8 @@
                 </ul>
                 <h1 class="subnavi_opener_mobile">Alle Fahrzeuge</h1>
                 <ul class="subnavi_content_mobile">
-<? foreach($fahrzeuge as $key => $fahrzeug) : ?>      
-<? if(count($fahrzeuge) == ($key + 1)) : ?>
+<? foreach($fahrzeugliste as $key => $fahrzeug) : ?>      
+<? if(count($fahrzeugliste) == ($key + 1)) : ?>
                     <li class="last">
 <? else : ?>
                     <li>

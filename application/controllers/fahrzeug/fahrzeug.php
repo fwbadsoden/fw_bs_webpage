@@ -74,8 +74,15 @@ class Fahrzeug extends CP_Controller {
      */
     public function fahrzeug_detail_3col($id)
     {
-        $fahrzeug['fahrzeug']   = $this->m_fahrzeug->get_fahrzeug($id);
-        $fahrzeuge              = $this->m_fahrzeug->get_fahrzeug_list(1, 0);
+        $fahrzeug['fahrzeug']   = $this->m_fahrzeug->get_fahrzeug($id);     
+
+        if($fahrzeug['fahrzeug']['retired'] == 1) {
+            $fahrzeuge['fahrzeugliste'] = $this->m_fahrzeug->get_fahrzeug_list(1, 1); 
+            $fahrzeuge['headline'] = "Ausser Dienst";            
+        } else {
+            $fahrzeuge['fahrzeugliste'] = $this->m_fahrzeug->get_fahrzeug_list(1, 0); 
+            $fahrzeuge['headline'] = "Alle Fahrzeuge";                       
+        }
         $einsaetze['einsaetze'] = $this->m_fahrzeug->get_fahrzeug_einsaetze($id);
         $fahrzeug['images']     = $this->m_fahrzeug->get_fahrzeug_images($id);
         
