@@ -115,7 +115,7 @@ class Einsatz extends CP_Controller {
      * @return
      */
     public function einsatz_detail_3col($id)
-    {
+    { 
         $einsatz['einsatz']   = $this->m_einsatz->get_einsatz($id);
         $einsatz['fahrzeuge'] = $this->m_einsatz->get_einsatz_fahrzeuge($id);
         $einsatz['bilder']    = $this->m_einsatz->get_einsatz_images($id);
@@ -133,18 +133,7 @@ class Einsatz extends CP_Controller {
     public function get_einsatz_stage_text($id)
     {
         return $this->m_einsatz->get_einsatz_stage_text($id);
-    }
-    
-    /**
-     * Einsatz::get_facebook_infos()
-     * 
-     * @param mixed $id
-     * @return array
-     */    
-    public function get_facebook_infos($id)
-    {
-        return $this->m_einsatz->get_facebook_infos($id);
-    }    
+    } 
     
     /**
      * Einsatz::get_einsatz_anzahl()

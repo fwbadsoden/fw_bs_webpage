@@ -37,7 +37,7 @@ class Einsatz_Model extends CI_Model {
 	}	
     
     public function get_einsatz_overview($online, $limit = EINSATZ_DEFAULT_LIMIT, $offset = EINSATZ_DEFAULT_OFFSET, $year = 'all', $type = 'all')
-    {
+    { 
         if(is_numeric($limit) && is_numeric($offset)) 
             $this->db->limit($limit, $offset);
         if($online != 'all')
@@ -501,23 +501,6 @@ class Einsatz_Model extends CI_Model {
 		}
 		return $templates;
 	}
-	
-    public function get_facebook_infos($id)
-    {
-        $this->db->where('einsatzID', $id);
-        $this->db->select('name');
-        $query = $this->db->get('v_einsatz');
-        $row = $query->row();
-        $facebook_infos = array(
-            "<meta property='og:title' 'content'='Einsatzinfos - ".FRONTEND_TITLE."' />",
-            "<meta property='og:site_name' 'content'='Freiwillige Feuerwehr Bad Soden am Taunus' />",
-            "<meta property='og:description' 'content'='".$row->name."' />",
-            "<meta property='og:type' 'content'='website' />",
-            "<meta property='og:url' 'content'='".current_url()."' />",
-            "<meta property='fb:app_id' content='1389865491270726' />"
-        );
-        return $facebook_infos;
-    }
     
 	private function _callback_einsatz_find_mappings($value, $key)
 	{ 	
