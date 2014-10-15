@@ -36,7 +36,7 @@ Nun wurde der Stoff mithilfe von Wannen aufgefangen. Zum Schluss wurde noch eine
                     Nachdem im Anschluss noch ein Mittagessen eingenommen wurde, konnten die Jugendlichen in ihren wohlverdienten Feierabend.
                 </p>
                 <p>
-                    Einen Zeitungsartikel des Höchster Kreisblatt über die Übung finden Sie hier.
+                    Einen Zeitungsartikel des Höchster Kreisblatt über die Übung finden Sie <a href="http://www.fnp.de/lokales/main-taunus-kreis/Kleine-Wehr-loest-grosse-Aufgaben;art676,1055292" target="_blank">hier</a>.
                 </p>
             </div>
             <div class="slideshow">
