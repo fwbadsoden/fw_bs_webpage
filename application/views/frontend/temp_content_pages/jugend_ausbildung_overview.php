@@ -10,6 +10,93 @@
                 </p>
             </div>
            <hr class="clear" />
+
+        	<h1 class="module">Großübung der Jugendfeuerwehr</h1>
+            <div class="article">
+                <p>
+                    Die Kreisjugendfeuerwehr des MTK veranstaltete eine Großübung, bei welcher der Sodener Nachwuchs mit einer Gefahrgutlage zu kämpfen hatte.
+                </p>
+                <p>
+                    Am Samstag, dem 27.09.2014 fand eine Großübung in der Konrad-Adenauer-Schule in Kriftel statt. Initiiert wurde diese durch die Kreisjugendfeuerwehr des Main-Taunus-Kreis, um die Zusammenarbeit unter den Jugendlichen zu fördern. Jede Gruppe hatte ihren eigenen Teilabschnitt, den sie selbstständig abarbeiten musste.
+Die Jungs und Mädels aus Altenhain, Bad Soden und Neuenhain mussten eine durchaus anspruchsvolle Übung bearbeiten. Ein Tanklastzug wollte Material für den Chemieunterricht der hiesigen Schule anliefern und hatte durch eine Unaufmerksamkeit einen Unfall gebaut, welcher zu einem Leck am Tank führte. Dieser war mit einem ätzenden Stoff beladen und musste gesichert bzw. umgefüllt werden. Nun plätscherte eine Flüssigkeit aus dem Leck und Rauch stieg auf - alles ungiftig!
+                </p>                
+                <p><img src="<?=base_url('images/content/content_jugend/jf_großuebung01.jpg')?>" /></p>
+                <p>
+                    Nachdem die Jugendlichen vom Bereitstellungsraum abgerufen wurden, legten sie zunächst den Absperrbereich von 50m fest. Dies ist der "Standard-Abstand", der bei einem unbekannten Stoff im Ernstfall eingehalten wird. Anschließend ging es mit einem Trupp zum Erkunden an die Unglücksstelle vor, um sich ein Bild von der Einsatzstelle zu verschaffen. Parallel wurde der sogenannte Dekontaminationsplatz aufgebaut. Jeder Trupp, der im Gefahrenbereich gearbeitet hat, muss dekontaminiert, also gewaschen, werden. Somit kann sichergestellt werden, dass der austretende Stoff nicht verschleppt bzw. weiter verbreitet wird.
+                </p>
+                <p>
+Nachdem klar war, um welchen Stoff es sich handelt, konnte nun mit der Schadensbekämpfung begonnen werden. Das Leck wurde so gut als möglich mit Holzkeilen abgedichtet. Bei brennbaren Stoffen muss bei allen Arbeiten im Gefahrenbereich mit "nicht-funkenreißendem" Werkzeug gearbeitet werden, sodass keine Funken und damit keine Brandgefahr entsteht. In Kriftel hatten es die Jugendlichen mit einem nicht-brennbaren Stoff zu tun.
+Nun wurde der Stoff mithilfe von Wannen aufgefangen. Zum Schluss wurde noch eine Pumpstrecke von den Auffangwannen in größere Behälter aufgebaut. Nachdem mehrere Trupps am Tank gearbeitet hatten, wurden diese schließlich noch dekontaminiert.
+                </p>
+                <p><img src="<?=base_url('images/content/content_jugend/jf_großuebung02.jpg')?>" /></p>
+                <p>
+                    Ganz schön viel auf einmal, für die jungen Nachwuchskräfte! Trotzdem wurden die in den Übungsdiensten zuvor erlernten Kenntnisse und Fertigkeiten super umgesetzt, berichteten die Bad Sodener G-ABC Ausbilder Thomas Thaut und Patrick Ritter. Die beiden begleiteten die Vorbereitung sowie die Übung und waren mit dem Ergebnis sehr zufrieden.
+                </p>
+                <p>
+                    Nachdem im Anschluss noch ein Mittagessen eingenommen wurde, konnten die Jugendlichen in ihren wohlverdienten Feierabend.
+                </p>
+                <p>
+                    Einen Zeitungsartikel des Höchster Kreisblatt über die Übung finden Sie hier.
+                </p>
+            </div>
+            <div class="slideshow">
+
+                <div class="prevPic"><a href="#slideshow_car" id="slideshow_prev"><img src="<?=base_url('images/layout/button_detailShow_previous.png')?>" /></a></div>
+                <div class="nextPic"><a href="#slideshow_car" id="slideshow_next"><img src="<?=base_url('images/layout/button_detailShow_next.png')?>" /></a></div>
+                
+                <ul id="slideshow_car">
+                    <li id="slideshow_car_1" class="active">
+                        <figure>
+                        	<img src="<?=base_url('images/content/content_jugend/jf_großuebung03.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/content_jugend/jf_großuebung03.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        </figure>
+                        <p>1: Großübung der Jugendfeuerwehr</p>
+                    </li>
+                    <li id="slideshow_car_2" class="noActive">
+                        <figure>
+                        	<img src="<?=base_url('images/content/content_jugend/jf_großuebung04.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/content_jugend/jf_großuebung04.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        </figure>
+                        <p>2: Großübung der Jugendfeuerwehr</p>
+                    </li>
+                    <li id="slideshow_car_3" class="noActive">
+                        <figure>
+                        	<img src="<?=base_url('images/content/content_jugend/jf_großuebung05.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/content_jugend/jf_großuebung05.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        </figure>
+                        <p>3: Großübung der Jugendfeuerwehr</p>
+                    </li>
+                    <li id="slideshow_car_4" class="noActive">
+                        <figure>
+                        	<img src="<?=base_url('images/content/content_jugend/jf_großuebung06.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/content_jugend/jf_großuebung06.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        </figure>
+                        <p>4: Großübung der Jugendfeuerwehr</p>
+                    </li>
+                    <li id="slideshow_car_5" class="noActive">
+                        <figure>
+                        	<img src="<?=base_url('images/content/content_jugend/jf_großuebung07.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/content_jugend/jf_großuebung07.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        </figure>
+                        <p>5: Großübung der Jugendfeuerwehr</p>
+                    </li>
+                    <li id="slideshow_car_6" class="noActive">
+                        <figure>
+                        	<img src="<?=base_url('images/content/content_jugend/jf_großuebung08.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/content_jugend/jf_großuebung08.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        </figure>
+                        <p>6: Großübung der Jugendfeuerwehr</p>
+                    </li>
+                    <li id="slideshow_car_7" class="noActive">
+                        <figure>
+                        	<img src="<?=base_url('images/content/content_jugend/jf_großuebung09.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
+                        	<div class="zoom"><a href="<?=base_url('images/content/content_jugend/jf_großuebung09.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        </figure>
+                        <p>7: Großübung der Jugendfeuerwehr</p>
+                    </li>
+                </ul>
+            </div>
+           <hr class="clear" />
           
         	<h1 class="module">Berufsfeuerwehrtag 2013</h1>
             <div class="article">
@@ -131,29 +218,6 @@
                 </p>
                 <p>
                     Die Jugendfeuerwehr bedankt sich bei den beiden Kameraden für einen spannenden und informativen Abend und freut sich schon auf den nächsten Vortrag dieser Art.
-                </p>
-            </div>
-           <hr class="clear" />
-
-        	<h1 class="module">Übung nach FwDV 13.1: Allgemeine Hilfeleistung</h1>
-            <div class="article">
-                <p>
-                    Nach einem ausgedehnten Theoriedienst, mussten die Jugendlichen ihre Kenntnisse über die FwDV 13.1 in einer praktischen Übung unter Beweis stellen.
-                </p>
-                <p>
-                    Angenomme Lage war ein Verkehrsunfall zwischen einem Kleinbus und einem Traktor mit Anhänger, mit insgesamt 4 verletzten Personen; 2 Personen waren noch im Kleinbus, eine Person auf dem Anhänger 
-                    unter der Ladung verschüttet und eine weitere Person auf einem nahe gelegenen Erdhügel geflogen. Die Einheitsführer der beiden Fahrzeuge erteilten nach einer Erkundung der Einsatzstelle ihren 
-                    Mannschaften die Einsatzbefehle.
-                </p>
-                <p>
-                    Zunächst musste die Unfallstelle gegen den weiteren Verkehr abgesichert und wegen der Dunkelheit ausgeleuchtet werden. Hierzu kamen der Lichtmast des Rüstwagen sowie die Umfeldbeleuchtungen der 
-                    beiden Fahrzeuge zum Einsatz, weiterhin wurde die "Straße" mit Verkehrsleitkegeln und Blitzleuchten abgesichert. Zur Sicherstellung des Brandschutzes wurde ein Dreifachschutz mit den drei 
-                    Löschmitteln Wasser, Schaum und Pulver aufgebaut.
-                </p>
-                <p>
-                    Hiernach begaben sich die Mannschaften zur Rettung und Betreuung der Personen. Die Person auf dem Erdhügel wurde über eine Schleifkorbtrage gerettet, die Person auf dem Anhänger über eine 
-                    Krankentrage vom Anhänger gehoben. Hierbei sollten die Jugendlichen lernen, wie wichtig Teamarbeit ist. Die beiden Personen im Kleinbus wurden von ihren Sitzen gehoben und ebenfalls auf 
-                    Krankentragen aus dem Gefahrenbereich gebracht.
                 </p>
             </div>
            <hr class="clear" />
