@@ -90,7 +90,7 @@ class Pages extends CP_Controller {
      */
     public function fahrzeug_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);    
+        if(ENVIRONMENT=='production') $this->output->cache(60);    
         $c_fahrzeug = load_controller('fahrzeug/fahrzeug');
         
         $this->_site_header();
@@ -113,7 +113,7 @@ class Pages extends CP_Controller {
      */
     public function fahrzeug_overview_ad()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);    
+        if(ENVIRONMENT=='production') $this->output->cache(60);    
         $c_fahrzeug = load_controller('fahrzeug/fahrzeug');
         
         $this->_site_header();
@@ -136,7 +136,7 @@ class Pages extends CP_Controller {
      */
     public function fahrzeug_detail()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);        
+        if(ENVIRONMENT=='production') $this->output->cache(60);        
         
         $id = $this->uri->segment($this->uri->total_segments());
         $c_fahrzeug = load_controller('fahrzeug/fahrzeug');
@@ -167,7 +167,7 @@ class Pages extends CP_Controller {
      */
     public function einsatz_overview()
     {
-       // if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         
         $c_einsatz = load_controller('einsatz/einsatz');
         
@@ -193,7 +193,7 @@ class Pages extends CP_Controller {
      */
     public function einsatz_detail()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
        
         $id = $this->uri->segment($this->uri->total_segments());
         
@@ -227,7 +227,7 @@ class Pages extends CP_Controller {
      */
     public function news_overview()
     {
-    //    if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $c_news = load_controller('news/news');
         
         $this->_site_header();    
@@ -249,7 +249,7 @@ class Pages extends CP_Controller {
     
     public function news_detail()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $id = $this->uri->segment($this->uri->total_segments());
         $c_news = load_controller('news/news');
         $text = $c_news->get_news_stage_text($id);
@@ -282,7 +282,7 @@ class Pages extends CP_Controller {
      */
     public function mannschaft_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $c_mannschaft = load_controller('mannschaft/mannschaft');
         
         $this->_site_header();    
@@ -305,7 +305,7 @@ class Pages extends CP_Controller {
      */
     public function termin_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $c_termin = load_controller('termin/termin');
         
         $this->_site_header();
@@ -328,7 +328,7 @@ class Pages extends CP_Controller {
      */
     public function presse_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $c_presse = load_controller('presse/presse');
         
         $this->_site_header();
@@ -359,7 +359,7 @@ class Pages extends CP_Controller {
      */
     public function leistungsgruppe_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -379,7 +379,7 @@ class Pages extends CP_Controller {
      */
     public function rettungshunde_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage(); 
         
@@ -399,7 +399,7 @@ class Pages extends CP_Controller {
      */
     public function verein_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();    
         
@@ -419,7 +419,7 @@ class Pages extends CP_Controller {
      */
     public function geschichte_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -439,7 +439,7 @@ class Pages extends CP_Controller {
      */
     public function aao_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -459,7 +459,7 @@ class Pages extends CP_Controller {
      */
     public function einsatzgebiet_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -479,7 +479,7 @@ class Pages extends CP_Controller {
      */
     public function gesetze_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -499,7 +499,7 @@ class Pages extends CP_Controller {
      */
     public function aufgaben_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -519,7 +519,7 @@ class Pages extends CP_Controller {
      */
     public function impressum_overview()
     {   
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -539,7 +539,7 @@ class Pages extends CP_Controller {
      */
     public function jugend_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -559,7 +559,7 @@ class Pages extends CP_Controller {
      */
     public function jugend_aktivitaeten_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -579,7 +579,7 @@ class Pages extends CP_Controller {
      */
     public function jugend_ausbildung_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -599,7 +599,7 @@ class Pages extends CP_Controller {
      */
     public function mitmachen_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -619,7 +619,7 @@ class Pages extends CP_Controller {
      */
     public function tippsbeinotfaellen_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -639,7 +639,7 @@ class Pages extends CP_Controller {
      */
     public function buergerinfos_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -659,7 +659,7 @@ class Pages extends CP_Controller {
      */
     public function hausnummern_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -679,7 +679,7 @@ class Pages extends CP_Controller {
      */
     public function rauchmelder_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -699,7 +699,7 @@ class Pages extends CP_Controller {
      */
     public function blaulicht_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -719,7 +719,7 @@ class Pages extends CP_Controller {
      */
     public function sonderrechte_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -739,7 +739,7 @@ class Pages extends CP_Controller {
      */
     public function unwetter_overview()
     {
-       // if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -759,7 +759,7 @@ class Pages extends CP_Controller {
      */
     public function kontakt_overview()
     {
-        //if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -779,7 +779,7 @@ class Pages extends CP_Controller {
      */
     public function links_overview()
     {
-       // if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -799,7 +799,7 @@ class Pages extends CP_Controller {
      */
     public function nachdembrand_overview()
     {
-       // if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
@@ -814,7 +814,7 @@ class Pages extends CP_Controller {
     
     public function ifrt_overview()
     {
-       // if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
         $this->_site_stage();
         
