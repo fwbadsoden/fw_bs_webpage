@@ -151,6 +151,17 @@ class News_model extends CI_Model {
         return $news_arr;
     }
     
+    public function get_og_image($id) {
+        
+        $this->db->where('newsID', $id);
+        $this->db->select('fullpath');
+        $this->db->join('file', 'file.fileID = news_content.og_image');
+        $query = $this->db->get('news_content');
+        
+        $row = $query->row(); 
+        return $row->fullpath;
+    }
+    
     public function get_news_images($id)
     {
         $this->db->where('newsID', $id);

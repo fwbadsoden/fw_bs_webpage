@@ -262,7 +262,11 @@ class Pages extends CP_Controller {
             else                        $value['class_news'] = '';
         }
         
-        $this->_site_header();
+        $og_image = $c_news->get_og_image($id);
+        $facebook_infos = array();
+        $facebook_infos[0] = $og_image;
+        
+        $this->_site_header($facebook_infos);
         $this->_site_stage();
         
         $this->_site_content_header('slidewrapper smallstage');

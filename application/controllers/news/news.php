@@ -102,6 +102,19 @@ class News extends CP_Controller {
     {
         return $this->m_news->get_news_stage_text($id);
     }
+    
+    public function get_og_image($id)
+    { 
+        $this->load->library('opengraph'); 
+        $image = $this->m_news->get_og_image($id); 
+        
+        if($image != "" && $image != null) {
+            $og_image = $this->opengraph->create_ogImage($image);
+            return $og_image;
+        } else {
+            return null;
+        }
+    }
 } 
 /* End of file news.php */
 /* Location: ./application/controllers/news/news.php */

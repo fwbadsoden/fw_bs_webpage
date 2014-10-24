@@ -30,6 +30,13 @@
         array('name' => 'X-UA-Compatible', 'content' => META_X_UA_COMPATIBLE),
         array('name' => 'imagetoolbar', 'content' => META_EQUIV_IMAGE_TOOLBAR, 'type' => 'equiv')
     );
+    
+    // Open Graph Tags
+    if($facebook_infos != null) {
+        foreach($facebook_infos as $info) {
+            array_push($meta, array('name' => $info["property"], 'content' => $info["content"], 'type' => 'property'));
+        }
+    }
     echo doctype('html5');
 ?>
 
