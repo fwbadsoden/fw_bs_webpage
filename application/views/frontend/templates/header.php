@@ -186,14 +186,14 @@ $(document).ready(function () {
                     	</ul> 
                     	<ul>
 <? if(current_url() == base_url('menschen/jugend')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
-                        	<li class="headline"><a href="<?=base_url('menschen/jugend')?>"<?=$class?>>Jugendfeuerwehr</a></li>
-<? if(current_url() == base_url('menschen/jugend/aktivitaeten')) : $class = ' class="active"'; else : $class = ''; endif; ?>                             
-                        	<li><a href="<?=base_url('menschen/jugend/aktivitaeten')?>"<?=$class?>>Aktivitäten</a></li>
-<? if(current_url() == base_url('menschen/jugend/ausbildung')) : $class = ' class="active"'; else : $class = ''; endif; ?>                             
-                            <li><a href="<?=base_url('menschen/jugend/ausbildung')?>"<?=$class?>>Ausbildung</a></li>
+                        	<li class="headline"><a href="<?=base_url('menschen/jugend')?>"<?=$class?>>Nachwuchs</a></li>
+<? if(strpos(current_url(), 'menschen/jugend' !== false)) : $class = ' class="active"'; else : $class = ''; endif; ?>                             
+                        	<li><a href="<?=base_url('menschen/jugend')?>"<?=$class?>>Jugendfeuerwehr</a></li>
+<? if(strpos(current_url(), 'menschen/minifeuerwehr' !== false)) : $class = ' class="active"'; else : $class = ''; endif; ?>                             
+                            <li><a href="<?=base_url('menschen/minifeuerwehr')?>"<?=$class?>>Minifeuerwehr</a></li>
                     	</ul>   
                     	<ul>
-<? if(strpos(current_url(), base_url('menschen/jugend')) !== false) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
+<? if(strpos(current_url(), base_url('menschen/leistungsgruppe')) !== false) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
                         	<li class="headline"><a href="<?=base_url('menschen/leistungsgruppe')?>"<?=$class?>>Leistungsgruppe</a></li>
                         	<li><a href="<?=base_url('menschen/leistungsgruppe#anker_theorie')?>">Theorie</a></li>
                             <li><a href="<?=base_url('menschen/leistungsgruppe#anker_praxis')?>">Praxis</a></li>

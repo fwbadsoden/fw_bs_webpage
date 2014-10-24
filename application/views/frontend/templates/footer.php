@@ -33,6 +33,7 @@
                 <li><a href="<?=base_url('menschen/mannschaft')?>">Mannschaft</a></li>
                 <li><a href="<?=base_url('menschen/rettungshunde')?>">Rettungshundeeinheit</a></li>
                 <li><a href="<?=base_url('menschen/jugend')?>">Jugendfeuerwehr</a></li>
+                <li><a href="<?=base_url('menschen/minifeuerwehr')?>">Minifeuerwehr</a></li>
                 <li><a href="<?=base_url('menschen/leistungsgruppe')?>">Leistungsgruppe</a></li>
             </ul>
             <ul>
@@ -43,7 +44,7 @@
                 <li class="headline"><a href="<?=base_url('informationen')?>">Infos</a></li>
                 <li><a href="<?=base_url('informationen/buergerinformationen')?>">Bürgerinfos</a></li>
                 <li><a href="<?=base_url('informationen/einsatzgebiet')?>">Einsatzgebiet</a></li>
-                <li><a href="<?=base_url('informationen/aufgaben')?>"<?=$class?>>Aufgaben & Gesetze</a></li>
+                <li><a href="<?=base_url('informationen/aufgaben')?>"<?=$class?>>Aufgaben &amp; Gesetze</a></li>
                 <li><a href="<?=base_url('informationen/aao')?>">Alarm- und Ausrückeordnung</a></li>
             </ul>
             <ul>
