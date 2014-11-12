@@ -167,7 +167,7 @@ class Pages extends CP_Controller {
      */
     public function einsatz_overview()
     {
-        if(ENVIRONMENT=='production') $this->output->cache(60);
+        if(ENVIRONMENT=='production') $this->output->cache(0);
         
         $c_einsatz = load_controller('einsatz/einsatz');
         
