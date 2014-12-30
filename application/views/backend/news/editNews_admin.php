@@ -84,6 +84,17 @@
 		$teaser_options[$image['fileID']] = $image['name'];	
 	} 
     
+    if(isset($_POST['og_img']))                     $ogimg_selected = $_POST['og_img'];
+    else if(isset($news['og_image']))               $ogimg_selected = $news['og_image'];
+	else											$ogimg_selected = 0;
+    $ogimg_options = array();
+    $ogimg_attr = "class = 'input_dropdown' id = 'input_dropdown'";
+    $ogimg_options[0] = 'kein Bild';
+	foreach($ogimg_images as $image)
+	{
+		$ogimg_options[$image['fileID']] = $image['name'];	
+	} 
+    
 	if(isset($_POST['category_id'])) 		       	$cat_selected = $_POST['category_id'];
 	else if(isset($news['categoryID']))	            $cat_selected = $news['categoryID'];
 	else											$cat_selected = 0;	
@@ -152,13 +163,13 @@ $(function() {
                         <td class='form_label'><?=form_label('Gültig ab:', $valid_from['id']); ?></td>
                         <td><?=form_input($valid_from); ?><!-- <?=form_input($valid_from_time); ?>--></td>
                     </tr>
-                   <!-- <tr>
-                        <td class='form_label'><?=form_label('Gültig bis:', $valid_to['id']); ?></td>
-                        <td><?=form_input($valid_to); ?> <?=form_input($valid_to_time); ?></td>
-                    </tr>-->
                 	<tr>
                         <td class='form_label'><?=form_label('Teaserbild:', 'teaser_img'); ?></td>
                     	<td><?=form_dropdown('teaser_img', $teaser_options, $teaser_selected, $teaser_attr)?></td>
+                    </tr>
+                	<tr>
+                        <td class='form_label'><?=form_label('Facebookbild:', 'og_img'); ?></td>
+                    	<td><?=form_dropdown('og_img', $ogimg_options, $ogimg_selected, $ogimg_attr)?></td>
                     </tr>
                     <tr>
                         <td class='form_label'><?=form_label('Teaser:', $teaser['id']); ?></td>

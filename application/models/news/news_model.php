@@ -182,8 +182,28 @@ class News_model extends CI_Model {
         return $images;
     }
     
-    public function get_teaser_images()
-    {
+    public function get_og_images() {
+        
+        $this->db->select('file.fileID, file.name');
+        $this->db->where('file_category.slug', 'content');
+        $this->db->join('file_category', 'file.categoryID = file_category.categoryID');
+        $query = $this->db->get('file');
+        
+        $i=0;
+        $images = array();
+        
+        foreach($query->result() as $row)
+        {
+            $images[$i]['fileID']   = $row->fileID;
+            $images[$i]['name']         = $row->name;
+            $i++;
+        }
+        
+        return $images;
+    }
+    
+    public function get_teaser_images() {
+        
         $this->db->select('file.fileID, file.name');
         $this->db->where('file_category.slug', 'news_teaser');
         $this->db->join('file_category', 'file.categoryID = file_category.categoryID');
@@ -225,7 +245,8 @@ class News_model extends CI_Model {
             'newsID'        => $id,
             'teaser'        => $this->input->post('teaser'),
             'text'          => $this->input->post('text'),
-            'teaser_image'  => $this->input->post('teaser_img')
+            'teaser_image'  => $this->input->post('teaser_img'),
+            'og_image'      => $this->input->post('og_img')
         );  
         
         $this->db->insert('news_content', $news_content);
@@ -255,7 +276,8 @@ class News_model extends CI_Model {
             'newsID'        => $id,
             'teaser'        => $this->input->post('teaser'),
             'text'          => $this->input->post('text'),
-            'teaser_image'  => $this->input->post('teaser_img')
+            'teaser_image'  => $this->input->post('teaser_img'),
+            'og_image'      => $this->input->post('og_img')
         );  
         
         $this->db->where('newsID', $id); 
@@ -353,6 +375,7 @@ class News_model extends CI_Model {
         $news['teaser']         = $row->teaser;
         $news['text']           = $row->text;
         $news['teaser_image']   = $row->teaser_image;
+        $news['og_image']       = $row->og_image;
         
         return $news;
     }

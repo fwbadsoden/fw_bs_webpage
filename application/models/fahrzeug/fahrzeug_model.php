@@ -155,6 +155,7 @@ class Fahrzeug_Model extends CI_Model {
     {
         $this->db->select('fahrzeugID');
         $this->db->where('online', 1);
+        $this->db->where('retired', 0);
         $query = $this->db->get('fahrzeug');
         return $query->num_rows();
     }

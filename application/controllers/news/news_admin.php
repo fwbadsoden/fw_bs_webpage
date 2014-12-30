@@ -89,6 +89,7 @@ class News_Admin extends CP_Controller {
 			$menue['submenue']		= $this->admin->get_submenue();
             $news['categories']     = $this->news->get_news_categories();
             $news['teaser_images']  = $this->news->get_teaser_images();
+            $news['ogimg_images']   = $this->news->get_og_images();
 		
 			$this->load->view('backend/templates/admin/header', $header);            
 			$this->load->view('backend/templates/admin/tiny_mce_inc');
@@ -124,6 +125,7 @@ class News_Admin extends CP_Controller {
             $news['news']           = $this->news->get_news_admin($id);
             $news['categories']     = $this->news->get_news_categories();
             $news['teaser_images']  = $this->news->get_teaser_images();
+            $news['ogimg_images']   = $this->news->get_og_images();
             		
 			$this->load->view('backend/templates/admin/header', $header);      
 			$this->load->view('backend/templates/admin/tiny_mce_inc');
