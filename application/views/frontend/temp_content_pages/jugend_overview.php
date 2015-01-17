@@ -20,8 +20,8 @@
             <div class="listContent">
 				<div class="row">
                 	<a href="<?=base_url('files/content/Dienstplan_JFW_Aktuell.pdf')?>" target="_blank">
-                	<div class="date_small trenner"><span class="inline_date">2. Halbjahr 2014</span></div>
-                 	<div class="size trenner"><p>PDF</p><p class="bytes">116 KB</p></div>
+                	<div class="date_small trenner"><span class="inline_date">1. Halbjahr 2015</span></div>
+                 	<div class="size trenner"><p>PDF</p><p class="bytes">107 KB</p></div>
 	               	<div class="headline smallBoxHead"><span class="medium">Jugendfeuerwehr Bad Soden</span><br/>Dienstplan</div>
                     <div class="moreButton_arrow">&nbsp;</div>
                		</a>
