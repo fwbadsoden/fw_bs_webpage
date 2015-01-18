@@ -2542,7 +2542,6 @@ input.button_black:hover {
 	font-size: 12px;
 	text-decoration: none;
 	color: #FFFFFF;
-	white-space: nowrap;
 }
 #content .menueBox ul li a span {
 	color: #b1b1b1;
