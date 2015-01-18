@@ -136,7 +136,8 @@ $(document).ready(function () {
                     	<ul>
 <? if(current_url() == base_url('aktuelles/news')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
                         	<li class="headline"><a href="<?=base_url('aktuelles/news')?>"<?=$class?>>News</a></li>
-<? foreach($news as $n) : ?>             
+<? foreach($news as $n) : ?>  
+<? if(strlen($n->title) > 32) $n->title = substr($n->title,0,32).'...'; ?>              
 <? if(current_url() == base_url('aktuelles/news/'.$n->id)) : $class = ' class="active"'; else : $class = ''; endif; ?>                
                         	<li><a href="<?=base_url('aktuelles/news/'.$n->id)?>"<?=$class?>><span class="subline"><?=cp_get_ger_date($n->valid_from)?></span><br /><?=$n->title?></a></li>
 <? endforeach; ?>                            
@@ -144,7 +145,8 @@ $(document).ready(function () {
                     	<ul>
 <? if(current_url() == base_url('aktuelles/einsaetze')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
                         	<li class="headline"><a href="<?=base_url('aktuelles/einsaetze')?>"<?=$class?>>Einsätze</a></li>
-<? foreach($einsaetze['einsaetze'] as $e) : ?>             
+<? foreach($einsaetze['einsaetze'] as $e) : ?> 
+<? if(strlen($e->name) > 32) $e->name = substr($e->name,0,32).'...'; ?>             
 <? if(current_url() == base_url('aktuelles/einsatz/'.$e->id)) : $class = ' class="active"'; else : $class = ''; endif; ?>                
                         	<li><a href="<?=base_url('aktuelles/einsatz/'.$e->id)?>"<?=$class?>><span class="subline"><?=cp_get_ger_date($e->datum_beginn)?> / <?=$e->type_name?></span><br /><?=$e->name?></a></li>
 <? endforeach; ?>                            
@@ -152,7 +154,8 @@ $(document).ready(function () {
                     	<ul>
 <? if(current_url() == base_url('aktuelles/termine')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
                         	<li class="headline"><a href="<?=base_url('aktuelles/termine')?>"<?=$class?>>Termine</a></li>
-<? foreach($termine as $t) : ?>                               
+<? foreach($termine as $t) : ?>                           
+<? if(strlen($t['name']) > 32) $t['name'] = substr($t['name'],0,32).'...'; ?>         
                         	<li><a><span class="subline"><?=cp_get_ger_date($t['datum'])?> / <?=$t['beginn']?> Uhr</span><br /><?=$t['name']?></a></li>
 <? endforeach; ?>  
                     	</ul>  
