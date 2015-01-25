@@ -66,6 +66,7 @@ $this->load->helper('captcha');
             <li class="mail"><?= safe_mailto('wehrfuehrung@feuerwehr-bs.de', 'Wehrführung') ?></li>
             <li class="mail"><?= safe_mailto('pressestelle@feuerwehr-bs.de', 'Pressestelle') ?></li>
             <li class="mail"><?= safe_mailto('jugendfeuerwehr@feuerwehr-bs.de', 'Jugendfeuerwehr') ?></li>
+            <li class="mail"><?= safe_mailto('minifeuerwehr@feuerwehr-bs.de', 'Minifeuerwehr') ?></li>
             <li class="mail"><?= safe_mailto('verein@feuerwehr-bs.de', 'Verein') ?></li>
         </ul>
         <br />
