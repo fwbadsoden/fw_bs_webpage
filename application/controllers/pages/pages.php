@@ -74,7 +74,8 @@ class Pages extends CP_Controller {
         
         $this->_site_mainContent_header();
         
-        $this->load->view('frontend/templates/staticContent', $content);
+        $c["content"] = $content;
+        $this->load->view('frontend/templates/staticContent', $c);
         
         $this->_site_mainContent_footer();
         
