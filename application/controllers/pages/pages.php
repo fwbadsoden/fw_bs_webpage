@@ -40,7 +40,11 @@ class Pages extends CP_Controller {
         $this->page_content = $this->m_pages->get_page_content_frontend($pageID);
         if($this->page_content == '404') redirect(base_url('404_override'));
         
-        if($this->page_content['special_page'] == 1) {
+        if($this->page_content['contentID'] > 0) {
+            $content = $this->m_pages->get_static_content($this->page_content['contentID']);
+            $this->static_content($content);
+        }
+        else if($this->page_content['special_page'] == 1) {
             $this->{$this->page_content['special_function']}();
         }
         else {
@@ -49,6 +53,33 @@ class Pages extends CP_Controller {
         
         if(ENVIRONMENT=='development') $this->output->enable_profiler(TRUE);
     }
+    
+    /**
+     * Pages:static_content()
+     * 
+     * @return
+     */
+     public function static_content($content) {
+        
+        $this->_site_header();    
+        $this->_site_stage();        
+        
+        $this->_site_content_header();
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->_site_stage_slider();    
+        
+        $this->_site_mainContent_header();
+        
+        $this->load->view('frontend/templates/staticContent', $content);
+        
+        $this->_site_mainContent_footer();
+        
+        $this->_site_sidebar_homepage();
+    
+        $this->_site_footer();
+        
+     }
     
     /**
      * Pages::homepage()

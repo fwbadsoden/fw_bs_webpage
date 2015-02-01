@@ -28,6 +28,14 @@ class Pages_model extends CI_Model {
 		$this->load->helper('html');
 	}	
     
+    public function get_static_content($id) {
+        $this->db->where(array('ID' => $id));
+        $query = $this->db->get('page_static_content');
+        $row = $query->row();
+        
+        return $row['content'];
+    }
+    
     public function get_templates($online = 'all')
     {
         if($online != 'all') $this->db->where(array('online' => $online));
@@ -130,6 +138,7 @@ class Pages_model extends CI_Model {
                 $content['stage_file']       = $row->stage_file;
                 $content['stage_images']     = $this->get_stage_images($row->stageID, $row->random_stage_img); 
                 $content['special_page']     = $row->special_page;
+                $content['contentID']        = $row->contentID;
                 $content['special_function'] = $row->special_function; 
                 $content['sidebar']          = $row->sidebar; 
             }

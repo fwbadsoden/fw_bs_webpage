@@ -65,7 +65,7 @@
                 <h2 class="titel">Betreuer</h2>
            </div>
         	<div class="BildTextTeaser">
-            	<figure><img src="<?=base_url('images/content/mannschaft/A72E90E71B3077EF71A1573523BF6E46.jpg')?>"></figure>
+            	<figure><img src="<?=base_url('images/content/mannschaft/NDEwMTE5MmMzMjUxMjY3ODM1ZjI0NmMxY2I4OTY5Mjk0ZjI0YmRhYmRjMzdiMWY4MmE0NTZlMWExYjc0ZTdlZTg1NWRjMjBiNjBjOGZiMTYxYzEwOGZmMjhjNjIyYThkZjYwYmQ1NmM2YmU0MDIwOTlkMmYyYTdiZjFkODIyMjc.JPG')?>"></figure>
                 <h1 class="name">Tobias Wagner</h1>
                 <h2 class="titel">Betreuer</h2>
            </div>
@@ -74,10 +74,18 @@
             <h1 class="module" id="anker_mannschaft">Presse</h1>
             <div class="listContent">
                 <div class="row">
+                    <a href="<?=base_url('/files/content/FNP_2014-09-27_JFW Großübung.jpg')?>" class="fancybox-gallery" rel="gallery1">
+                	<div class="date_small trenner"><span class="inline_date">27. Sep. 2014</span></div>                    
+                 	<div class="size trenner"><p>JPG</p><p class="bytes">202 KB</p></div>                    
+	               	<div class="headline smallBoxHead"><span class="medium">Frankfurter Neue Presse</span><br/>Kleine Wehr löst große Aufgaben</div>
+                    <div class="moreButton_arrow"></div>
+               		</a>
+                </div>
+                <div class="row">
                     <a href="<?=base_url('files/content/871asda634hjasd.jpg')?>" class="fancybox-gallery" rel="gallery1">
                 	<div class="date_small trenner"><span class="inline_date">03. Sep. 2013</span></div>                    
                  	<div class="size trenner"><p>JPG</p><p class="bytes">653 KB</p></div>                    
-	               	<div class="headline smallBoxHead"><span class="medium">Frankfurter Neue Presse</span><br/> Berufsfeuerwehrtag der Jugendfeuerwehr</div>
+	               	<div class="headline smallBoxHead"><span class="medium">Frankfurter Neue Presse</span><br/>Berufsfeuerwehrtag der Jugendfeuerwehr</div>
                     <div class="moreButton_arrow"></div>
                		</a>
                 </div>
