@@ -33,7 +33,7 @@ class Pages_model extends CI_Model {
         $query = $this->db->get('page_static_content');
         $row = $query->row();
         
-        return $row['content'];
+        return $row->content;
     }
     
     public function get_templates($online = 'all')
@@ -130,19 +130,18 @@ class Pages_model extends CI_Model {
         $rowID = 0;
         $boxContentID = 0;
         
-        foreach($query->result() as $key => $row) {
-            if($key == 0) {
-                $content['pageID']           = $id;
-                $content['title']            = $row->title;
-                $content['column_count']     = $row->column_count;
-                $content['stage_file']       = $row->stage_file;
-                $content['stage_images']     = $this->get_stage_images($row->stageID, $row->random_stage_img); 
-                $content['special_page']     = $row->special_page;
-                $content['contentID']        = $row->contentID;
-                $content['special_function'] = $row->special_function; 
-                $content['sidebar']          = $row->sidebar; 
-            }
-            if($row->special_page == 0) {
+        $row  = $query->row();
+        $content['pageID']           = $id;
+        $content['title']            = $row->title;
+        $content['column_count']     = $row->column_count;
+        $content['stage_file']       = $row->stage_file;
+        $content['stage_images']     = $this->get_stage_images($row->stageID, $row->random_stage_img); 
+        $content['special_page']     = $row->special_page;
+        $content['contentID']        = $row->contentID;
+        $content['special_function'] = $row->special_function; 
+        $content['sidebar']          = $row->sidebar; 
+        
+            if($row->special_page == 0 && $row->contentID == 0) {
                 if($row->rowID != $rowID) {
                     $rowID = $row->rowID;
                     $row_counter++;
@@ -162,8 +161,7 @@ class Pages_model extends CI_Model {
                     $content['row'][$row_counter]['box'][$box_counter]['box_image_height']  = $row->box_image_height;
                 }
                 $box_counter++;                                           
-            }    
-        }
+            }  
         return $content;
     }
     

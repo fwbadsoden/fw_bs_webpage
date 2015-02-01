@@ -39,10 +39,13 @@ class Pages extends CP_Controller {
     {
         $this->page_content = $this->m_pages->get_page_content_frontend($pageID);
         if($this->page_content == '404') redirect(base_url('404_override'));
-        
         if($this->page_content['contentID'] > 0) {
             $content = $this->m_pages->get_static_content($this->page_content['contentID']);
-            $this->static_content($content);
+            if($content == "") {
+                redirect(base_url('404_override'));
+            } else {
+                $this->static_content($content);
+            }
         }
         else if($this->page_content['special_page'] == 1) {
             $this->{$this->page_content['special_function']}();
