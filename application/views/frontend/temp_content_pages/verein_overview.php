@@ -110,7 +110,7 @@
            	<div class="textTeaser">
 				<h1>Bankverbindung</h1>
 				<p>Ihre Spende unterstützt die Feuerwehr</p>
-                <p>Frankfurter Volksbank<br/>IBAN DE52501900000000044105<br/>BIC FFVBDEFF</p>
+                <p>Frankfurter Volksbank<br/>IBAN DE52 5019 0000 0000 0441 05<br/>BIC FFVBDEFF</p>
 			</div>    
 			<div class="textTeaser">    
 				<h1>Ehrenmitglieder</h1>
