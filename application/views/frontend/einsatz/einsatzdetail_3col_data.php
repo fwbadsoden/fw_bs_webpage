@@ -53,7 +53,7 @@
                         <div class="info">
                             <h2><?=$f['name']?></h2>
 <? if($f['name_lang'] != '') : 
-    if(strlen($f['name_lang']) > 21) : $f['name_lang'] = substr($f['name_lang'],0,17).'.'; endif;
+    if(mb_strlen($f['name_lang'],'utf-8') > 20) : $f['name_lang'] = mb_substr($f['name_lang'],0,17,'utf-8').'.'; endif;
 ?>                            
                             <h3><?=$f['name_lang']?></h3>
 <? endif; ?>
