@@ -572,11 +572,11 @@ class Pages extends CP_Controller {
     }
     
     /**
-     * Pages::mfw_overview()
+     * Pages::minis_overview()
      * 
      * @return
      */
-    public function mfw_overview()
+    public function minis_overview()
     {
         if(ENVIRONMENT=='production') $this->output->cache(60);
         $this->_site_header();
@@ -587,7 +587,27 @@ class Pages extends CP_Controller {
         if($this->page_content['stage_images']['count_images'] > 1)
             $this->_site_stage_slider();    
         
-        $this->load->view('frontend/temp_content_pages/mfw_overview');
+        $this->load->view('frontend/temp_content_pages/minis_overview');
+        $this->_site_footer();  
+    }
+    
+    /**
+     * Pages::minis_aktivitaeten_overview()
+     * 
+     * @return
+     */
+    public function minis_aktivitaeten_overview()
+    {
+        if(ENVIRONMENT=='production') $this->output->cache(60);
+        $this->_site_header();
+        $this->_site_stage();
+        
+        $this->_site_content_header('slidewrapper smallstage');
+        
+        if($this->page_content['stage_images']['count_images'] > 1)
+            $this->_site_stage_slider();    
+        
+        $this->load->view('frontend/temp_content_pages/minis_aktivitaeten_overview');
         $this->_site_footer();  
     }
     

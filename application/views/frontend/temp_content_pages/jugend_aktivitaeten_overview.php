@@ -4,7 +4,7 @@
             <div class="article">
                 <h1 class="first">Aktivitäten in der Jugendfeuerwehr</h1>
                 <p>
-                    Die kinder und Jugendlichen sollen Spaß in der Feuerwehr haben und ein Gemeinschaftsgefühl entwickeln. Desswegen bieten wir neben der feuerwehrtechnischen Ausbildung regelmäßig Freizeitaktivitäten an. 
+                    Die Kinder und Jugendlichen sollen Spaß in der Feuerwehr haben und ein Gemeinschaftsgefühl entwickeln. Deswegen bieten wir neben der feuerwehrtechnischen Ausbildung regelmäßig Freizeitaktivitäten an. 
                     Dazu zählen verschiedene Besuche oder Partys zu Fasching und Halloween, aber auch das jährlich stattfindende Zeltlager zusammen mit den Stadtteilen Altenhain und Neuenhain. 
                 </p>
             </div>
