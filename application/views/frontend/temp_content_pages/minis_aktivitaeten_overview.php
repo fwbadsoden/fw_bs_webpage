@@ -4,7 +4,9 @@
             <div class="article">
                 <h1 class="first">Aktivitäten in der Minifeuerwehr</h1>
                 <p>
-                    Die Kinder sollen spielerisch Spaß in der Feuerwehr erleben und an das Thema Brandschutz herangeführt werden. Bei den Minis steht hierbei das Gruppenerlebnis und das Spielen im Vordergrund, um dadurch die Bereiche Verantwortungsbewusstsein, Teamfähigkeit und Gefahrenerkennung zu stärken. 
+                    Die Minifeuerwehr wird spielerisch an die Themen der Feuerwehr herangeführt.
+                    Zudem wird viel Wert auf gruppendynamische Spiele und Aktivitäten gelegt.
+                    Dazu zählt am Ende eines jeden Dienstes das Ritual, bei dem die Kinder sich gegenseitig die Hand abklatschen müssen. 
                 </p>
             </div>
            <hr class="clear" />  

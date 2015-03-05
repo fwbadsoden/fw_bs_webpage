@@ -42,32 +42,42 @@
            <hr class="clear" />
 
             <div class="BildTextTeaser first">
-            	<figure><img src="<?=base_url('images/content/mannschaft/9C639050D58568444430BEC3F3684B58.jpg')?>" /></figure>
-                <h1 class="name">Alexander Zengeler</h1>
-                <h2 class="titel">Jugendfeuerwehrwart</h2>
+            	<figure><img src="<?=base_url('images/content/mannschaft/F95BAA448DA414B821293610E83BB4D4.jpg')?>" /></figure>
+                <h1 class="name">Boris Klug</h1>
+                <h2 class="titel">Minifeuerwehrwart</h2>
             </div>
         	<div class="BildTextTeaser">
-            	<figure><img src="<?=base_url('images/content/mannschaft/B112D7E3E6AFC45F59A7F1EFF4A1D112.jpg')?>"></figure>
-                <h1 class="name">Daniel Thieme</h1>
-                <h2 class="titel">stellv. Jugendfeuerwehrwart</h2>
+            	<figure><img src="<?=base_url('images/content/mannschaft/dummy.jpg')?>" /></figure>
+                <h1 class="name">Linda Pastor-Moreno</h1>
+                <h2 class="titel">stellv. Minifeuerwehrwartin</h2>
            </div>
-            <div class="BildTextTeaser first">
-            	<figure><img src="<?=base_url('images/content/mannschaft/D682B0AF2528F90501D278A08E5038D7.jpg')?>"></figure>
-                <h1 class="name">Florian Becker</h1>
-                <h2 class="titel">Jugendgruppenleiter</h2>
-            </div>
         	<div class="BildTextTeaser">
-            	<figure><img src="<?=base_url('images/content/mannschaft/A990635E2C071025F6E078277D29A617.jpg')?>"></figure>
-                <h1 class="name">Dirk Stehning</h1>
-                <h2 class="titel">Jugendgruppenleiter</h2>
+            	<figure><img src="<?=base_url('images/content/mannschaft/dummy.jpg')?>" /></figure>
+                <h1 class="name">Simona Gabriel</h1>
+                <h2 class="titel">Betreuer</h2>
            </div>
-        	<div class="BildTextTeaser first">
-            	<figure><img src="<?=base_url('images/content/mannschaft/A6526918662992F415D0CBB119DD242A.jpg')?>"></figure>
+        	<div class="BildTextTeaser">
+            	<figure><img src="<?=base_url('images/content/mannschaft/23DBA1BD9E1FC2096E8299518FAA6EF4.jpg')?>" /></figure>
+                <h1 class="name">Tatjana Langolf</h1>
+                <h2 class="titel">Betreuer</h2>
+           </div>
+        	<div class="BildTextTeaser">
+            	<figure><img src="<?=base_url('images/content/mannschaft/A6526918662992F415D0CBB119DD242A.jpg')?>" /></figure>
                 <h1 class="name">Jonathan Raschke</h1>
                 <h2 class="titel">Betreuer</h2>
            </div>
         	<div class="BildTextTeaser">
-            	<figure><img src="<?=base_url('images/content/mannschaft/NDEwMTE5MmMzMjUxMjY3ODM1ZjI0NmMxY2I4OTY5Mjk0ZjI0YmRhYmRjMzdiMWY4MmE0NTZlMWExYjc0ZTdlZTg1NWRjMjBiNjBjOGZiMTYxYzEwOGZmMjhjNjIyYThkZjYwYmQ1NmM2YmU0MDIwOTlkMmYyYTdiZjFkODIyMjc.JPG')?>"></figure>
+            	<figure><img src="<?=base_url('images/content/mannschaft/05774FA9E5BA2C72941E70B3B3C394DC.jpg')?>" /></figure>
+                <h1 class="name">Philipp Röschinger</h1>
+                <h2 class="titel">Betreuer</h2>
+           </div>
+        	<div class="BildTextTeaser">
+            	<figure><img src="<?=base_url('images/content/mannschaft/Mjg3NWMxYzBlMzdmMGVlMDMzNmQxN2Q4NGI2NmIyZWFhYmU0Yzk2MDM0NDIwZWQwNjVkMDJiNzc3ODZlODc4NmQ1ZWUzMzUxZjJlY2NhOWNlODA1ZjFmOGZiODgxYzlhZjhmYTU4MTMyNWY2ZjZhYTg0N2E2N2NiMTM4YTNhZTg.JPG')?>" /></figure>
+                <h1 class="name">Dominik von Heißen</h1>
+                <h2 class="titel">Betreuer</h2>
+           </div>
+        	<div class="BildTextTeaser">
+            	<figure><img src="<?=base_url('images/content/mannschaft/NDEwMTE5MmMzMjUxMjY3ODM1ZjI0NmMxY2I4OTY5Mjk0ZjI0YmRhYmRjMzdiMWY4MmE0NTZlMWExYjc0ZTdlZTg1NWRjMjBiNjBjOGZiMTYxYzEwOGZmMjhjNjIyYThkZjYwYmQ1NmM2YmU0MDIwOTlkMmYyYTdiZjFkODIyMjc.JPG')?>" /></figure>
                 <h1 class="name">Tobias Wagner</h1>
                 <h2 class="titel">Betreuer</h2>
            </div>
