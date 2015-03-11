@@ -3641,16 +3641,9 @@ input.button_black:hover {
 	margin-top: 30px;
 }
 
-#endOfPage #share {
-    width: 100%;
-	text-align: center;
-	border-bottom: 1px #464646 solid;
-	background-color: #191919;
-}
-
 #endOfPage #shortlinks {
 	width: 100%;
-	/* border-bottom: 1px #464646 solid;*/
+	border-bottom: 1px #464646 solid;
 	background-color: #191919;
 }
 #endOfPage #shortlinks h1 {

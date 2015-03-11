@@ -14,10 +14,10 @@
         	<li class="first"><a href="<?=base_url('kontakt')?>">Kontakt</a></li>
         	<!--<li><a href="<?=base_url('mitmachen')?>">Mitmachen</a></li>-->
         	<li><a href="<?=base_url('links')?>">Links</a></li>
-        	<li><a href="<?=base_url('impressum')?>">Impressum</a></li>
-            <li class="share"></li>
+        	<li><a href="<?=base_url('impressum')?>">Impressum</a></li>            
         </ul>
     </div>
+    <div id="share"></div>
     <div id="sitemap">
         
         <div class="completeSitemap"> 
@@ -63,7 +63,7 @@
         
     </div>
     <div id="copyright">
-    	<p>&copy;2013 Freiwillige Feuerwehr Bad Soden am Taunus 1868 e.V. / Hunsrückstraße 5-7 / 65812 Bad Soden am Taunus</p>
+    	<p>&copy;<?php echo date("Y"); ?> Freiwillige Feuerwehr Bad Soden am Taunus 1868 e.V. / Hunsrückstraße 5-7 / 65812 Bad Soden am Taunus</p>
     </div>
 
 </footer>

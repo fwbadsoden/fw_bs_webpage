@@ -1,0 +1,39 @@
+/* Mixins */
+
+@mixin font($font, $weight, $size, $style) {
+    @if $font   != "" { font-family: $font; }
+	@if $weight != "" { font-weight: $weight; }
+	@if $size   != "" { font-size: $size; }
+    @if $style  != "" { font-style: $style; }
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin linear_gradient($args...) {
+    background: -webkit-linear-gradient($args);
+	background: -moz-linear-gradient($args);
+	background: -o-linear-gradient($args);
+	background: linear-gradient($args);
+}    
+
+@mixin text($align, $transform, $decoration, $indent, $shadow) {
+    @if $align      != "" { text-align: $align; };
+    @if $transform  != "" { text-transform: $transform; };
+    @if $decoration != "" { text-decoration: $decoration; };
+    @if $indent     != "" { text-indent: $indent; };
+    @if $shadow     != "" { text-shadow: $shadow; };
+}
+
+@mixin background($image, $repeat, $position, $color, $size) {
+    @if $image      != "" { background-image: url($image); };
+    @if $repeat     != "" { background-repeat: $repeat; };
+    @if $position   != "" { background-position: $position; };
+    @if $color      != "" { background-color: $color; };
+    @if $size       != "" { background-size: $size; };
+}

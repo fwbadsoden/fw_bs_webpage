@@ -1,11 +1,31 @@
+@import "mixins";
+
+/* Farben */
+$background_color:  #f4f4f4;
+$dark_red:          #9a0000;
+$dark_grey:         #474747;
+$middle_grey:       #6b6b6b;
+$light_grey:        #b1b1b1;
+$filter_bg:         #1f1f1f;
+$red:               #bc1a1f;
+$gradient_red_light:#990000;
+$gradient_red_dark: #880000;
+$white:             #ffffff;
+$hover_menue:       #ffd200;
+$hover_menue_dark:  #f2b600;
+$grey:              #a1a1a1;
+$black_cust:        #121212;
+$black_cust2:       #191919;
+$black:             #000000;
+
 @charset "utf-8";
 /* CSS Document */
 
 body {
 	top: 0;
 	left: 0;
-	background-color: #f4f4f4;
-	font-family:Arial, Helvetica, sans-serif;
+    @include background("", "", "", $background_color, "");
+    @include font("Arial, Helvetica, sans-serif", "", "", "");
 	width: 100%;
 	padding: 0 0 0 0;
 	margin: 0 0 0 0;
@@ -22,17 +42,17 @@ img {
 	border: 0;
 }
 ::selection {
-	background: #bc1a1f;
-	color: white;
-	text-shadow: none;
+    @include background("", "", "", $red, "");
+	color: $white; 
+    @include text("", "", "", "", "none");
 }
 .fixed {
 	position: fixed;
 	top: 0;
 	margin: 0 10px 0 0;
 	z-index: 999999;
-	background-color: #FFF;
-	border-bottom: 1px solid #474747;
+    @include background("", "", "", $white, "");
+	border-bottom: 1px solid $dark_grey;
 }
 .error_msg {margin:0; padding:5px; color:#FFAAAA;}
 
@@ -44,7 +64,7 @@ hr.clear {
 	overflow: hidden;
 	border: 0;
 	line-height: 0;
-	font-size: 0;	
+	@include font("", "", "0", "");	
 }
 
 /* ------- ------- ------- ------- ------- -------- */
@@ -52,113 +72,86 @@ hr.clear {
 
 a.button_red {
 	height: 24px;
-	text-align: center;
-	text-transform: uppercase;
-	text-decoration: none;
+    @include text("center", "uppercase", "none", "", "");
+    @include font("Arial, sans-serif", "normal", "14px", "");
+	@include linear_gradient($gradient_red_light,  $gradient_red_dark 90%);
 	padding: 10px 15px;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
-	color: #FFF;
+	color: $white;
 	white-space:nowrap;
-	background: -webkit-linear-gradient(#990000,  #880000 90%);
-	background: -moz-linear-gradient(#990000,  #880000 90%);
-	background: -o-linear-gradient(#990000,  #880000 90%);
-	background: linear-gradient(#990000,  #880000 90%);
 }
 a.button_red:hover {
-	background: #f2b600;
-	background: -webkit-linear-gradient(#f2b600,  #f2b600 90%);
-	background: -moz-linear-gradient(#f2b600,  #f2b600 90%);
-	background: -o-linear-gradient(#f2b600,  #f2b600 90%);
-	background: linear-gradient(#f2b600,  #f2b600 90%);
-	color: #FFF;
+    @include background("", "", "", $hover_menue_dark, "");
+	@include linear_gradient($hover_menue_dark,  $hover_menue_dark 90%);
+	color: $white;
 }
 a.button_black_gross {
-	background: #121212;
+    @include background("", "", "", $black_cust, "");
 	height: 24px;
-	text-align: center;
-	text-transform: uppercase;
-	text-decoration: none;
+    @include text("center", "uppercase", "none", "", "");
+    @include font("Arial, sans-serif", "normal", "14px", "");
 	padding: 10px 15px;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
-	color: #FFF;
+	color: $white;
 	white-space:nowrap;
 }
 a.button_black_gross:hover {
-	background: #f2b600;
-	color: #FFF;
+    @include background("", "", "", $hover_menue_dark, "");
+	color: $white;
 }
 a.button_black {
 	width: 90px;
 	height: 24px;
-	background-color: #121212;
-	text-align: center;
-	text-transform: uppercase;
-	text-decoration: none;
+	@include background("", "", "", $black_cust, "");
+    @include text("center", "uppercase", "none", "", "");
+    @include font("Arial, sans-serif", "normal", "12px", "");
 	padding: 5px 10px;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #FFF;
+	color: $white;
 	white-space:nowrap;
 }
 a.button_blackarrow_mobile {
 	width: 12px;
 	height: 26px;
 	padding: 13px 6px;
-	background-image: url(../../images/layout/more_button_mobile.png);
-	background-repeat:no-repeat;
+    @include background("../../images/layout/more_button_mobile.png", "no-repeat", "", "", "");
 }
 a.button_black:hover {
-	background-color: #f2b600;
-	color: #FFF;
+    @include background("", "", "", $hover_menue_dark, "");
+	color: $white;
 }
 a.button_white {
 	width: 90px;
 	height: 24px;
-	background-color: #FFFFFF;
-	text-align: center;
-	text-transform: uppercase;
-	text-decoration: none;
+    @include background("", "", "", $white, "");
+    @include text("center", "uppercase", "none", "", "");
+    @include font("Arial, sans-serif", "normal", "12px", "");
 	padding: 5px 10px;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #121212;
+	color: $black_cust;
 	white-space:nowrap;
 }
 a.button_white:hover {
-	background-color: #f2b600;
-	color: #FFF;
+    @include background("", "", "", $hover_menue_dark, "");
+	color: $white;
 }
 
 input.button_black {
 	height: 24px;
-	background-color: #121212;
-	text-align: center;
-	text-transform: uppercase;
-	text-decoration: none;
+	@include background("", "", "", $black_cust, "");
+    @include text("center", "uppercase", "none", "", "");
+    @include font("Arial, sans-serif", "normal", "12px", "");
 	padding: 5px 10px;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #FFF;
+	color: $white;
 	border: 0;
 	white-space:nowrap;
 }
 input.button_black:hover {
-	background-color: #f2b600;
-	color: #FFF;
+    @include background("", "", "", $hover_menue_dark, "");
+	color: $white;
 }
 
 .selectBox {
 	width: 130px;
 	padding: 6px;
 	margin: 10px 1px 10px 10px;
-	background-color: #1f1f1f;
+    @include background("", "", "", $filter_bg, "");
 	float: left;
 }
 .selectBox:hover { cursor: pointer; }
@@ -167,34 +160,29 @@ input.button_black:hover {
 	padding: 0;
 	margin: 0;
 	border: 0;
-	background-color: #1f1f1f;
-	color: #ffffff;	
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
+    @include background("", "", "", $filter_bg, "");
+    @include font("Arial, sans-serif", "normal", "14px", "");
+	color: $white;	
 	float: left;
 	cursor: pointer;
 }
 .selectBoxArrow {
 	padding: 14px 11px;
 	margin: 10px 10px 10px 0;
-	background-color: #1f1f1f;
-	background-image: url(../../images/layout/select_arrow_down.png);
-	background-position: center;
-	background-repeat: no-repeat;	
+    @include background("../../images/layout/select_arrow_down.png", "no-repeat", "center", $filter_bg, "");
 	display: inline-block;
 	cursor: pointer;
 }
 .selectBoxOptions {
 	display: none;
-	background-color: #0F9;
+    @include background("", "", "", "#0F9", "");
 	position: absolute;
 	margin: 10px 0 0 -175px;	
 }
 .selectBoxOptions ul {
 	list-style: none;
-	background-color: #3FF;
-	box-shadow: 2px 2px 4px #000000;
+    @include background("", "", "", "#3FF", "");
+	box-shadow: 2px 2px 4px $black;
 	padding: 0;
 	margin: 0;
 }
@@ -202,21 +190,11 @@ input.button_black:hover {
 	width: 132px;
 	padding: 6px;
 	border: 0;
-	/* background-color: #1f1f1f; */
-	color: #ffffff;	
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
+	color: $white;	
+    @include font("Arial, sans-serif", "normal", "14px", "");
 	cursor: pointer;
 }
-/*
-.selectBoxOptions li.selected {
-	background-color: #f2b600;
-}
-.selectBoxOptions li:hover {
-	background-color: #f2b600;
-}
-*/
+
 /* ------- ------- ------- ------- ------- -------- */
 
 #searchBox {
@@ -226,17 +204,15 @@ input.button_black:hover {
 	margin: 58px 0 0 0;
 	z-index: 100;
 	position: absolute;
-	background-color: #9a0000;
+    @include background("", "", "", $dark_red, "");
 	overflow: hidden;
 	height: 0px;
 }
 #searchBox .closeSearch {
-	text-decoration: none;
-	text-align: center;
-	font-family: 'Cabin', sans-serif;
-	font-weight: normal;
-	font-size: 13px;
-	color: #b1b1b1;
+    @include text("", "", "none", "", "");
+    @include text("center", "", "", "", "");
+    @include font("Cabin, sans-serif", "normal", "13px", "");
+	color: $light_grey;
 	margin: 0 0 0 0;
 }
 #searchBox input.button_black {
@@ -246,11 +222,9 @@ input.button_black:hover {
 #searchBox input.text {
 	margin: 5px 0 5px 5px;
 	width: 150px;
-	font-size: 12px;
-	font-style: normal;
-	font-weight: normal;
+    @include font("", "normal", "12px", "normal");
 	padding: 3px 4px 3px 4px;
-	border: 1px #474747 solid;
+	border: 1px $dark_grey solid;
 }
 
 /* ------- ------- ------- ------- ------- -------- */
@@ -260,7 +234,7 @@ input.button_black:hover {
 		left: 0;
 		height: 83px;
 		width: 100%;
-		background: #9a0000;
+        @include background("", "", "", $dark_red, "");
 	}
 	header .site {
 		max-width: 960px;
@@ -277,8 +251,8 @@ input.button_black:hover {
 		display: block;
 		width: 215px;
 		height: 53px;
-		background: url(../../images/layout/logo.png) no-repeat;
-		text-indent: -9999em;
+        @include background("url(../../images/layout/logo.png)", "no-repeat", "", "", "");
+        @include text("", "", "", "-9999em", "");
 	}
 	header nav {
 		float: right;
@@ -293,7 +267,7 @@ input.button_black:hover {
 		margin: 0 0 0 0;
 		float: right;
 		list-style: none;
-		background-color: #474747;	
+        @include background("", "", "", $dark_grey, "");
 		border-bottom-left-radius: 2px;
 		-moz-border-bottom-left-radius: 2px;
 		border-bottom-right-radius: 2px;
@@ -305,27 +279,22 @@ input.button_black:hover {
 	#metanavigation li a {
 		z-index: 1;
 		height: 20px;
-		text-decoration: none;
-		color: white;
+        @include text("", "", "none", "", "");
+		color: $white;
 		padding: 5px 10px 0 10px;
 		float: left;
 		display: block;
-		font-family: Arial, Helvetica, sans-serif;
-		font-size: 12px;
-		font-style: normal;
-		font-weight: normal;
-		background-image: url("../../images/layout/metaNav_trenner.png");
-		background-repeat: no-repeat;
-		background-position: 0px 8px;
+        @include font("Arial, Helvetica, sans-serif", "normal", "12px", "normal");
+        @include background("../../images/layout/metaNav_trenner.png", "no-repeat", "px 8px", "", "");
 	}
 	#metanavigation li.first a {
-		background-image: none;
+        @include background("none", "", "", "", "");
 	}
 	#metanavigation li a:hover {
-		color: #ffd200;
+		color: $hover_menue;
 	}
 	#metanavigation li a.active {
-	color: #ffd200;
+	color: $hover_menue;
     }
     
 	#menu {  
@@ -333,44 +302,41 @@ input.button_black:hover {
 		list-style:none;  
 		margin: 0;	
 		padding: 12px 0 0 0;  
-		background: #9a0000; 
+        @include background("", "", "", $dark_red, "");
 		height: 35px; 
 	}
 	
 	#menu li {  
 		display: inline-block;  
-		text-align:center;  
+        @include text("center", "", "", "", "");
 		padding: 4px 10px 4px 10px;  
 		margin: 0px;  
 		border:none;
 	}
 	
 	#menu li a {  
-		font-size: 18px;
-		font-family: Arial, Helvetica, sans-serif;
-		text-transform: uppercase;
-		text-decoration: none;
-		color: #FFF;
+        @include font("Arial, Helvetica, sans-serif", "", "18px", "");
+        @include text("", "uppercase", "none", "", "");
+		color: $white;
 	}
 	#menu .desktopsearch {
 		padding: 5px 10px 5px 5px;  
 		margin: 0 0 0 0;
 		border: 0;
-		background-image: url("../../images/layout/nav_searchButton.png");
-		background-repeat: no-repeat;
-		text-indent: -9999em;
+        @include background("../../images/layout/nav_searchButton.png", "no-repeat", "", "", "");
+        @include text("", "", "", "-9999em", "");
 	}
 	
 	#menu li:hover {  
-		background: #1f1f1f;  
+        @include background("", "", "", $filter_bg, "");
 		padding-bottom: 10px;
 	}  
 	
 	#menu li:hover a {  
-		color:#ffd200;  
+		color:$hover_menue;  
 	}
     #menu li a.active {  
-    	color:#ffd200;  
+    	color:$hover_menue;  
     }
     
 	.dropdown {  
@@ -381,20 +347,16 @@ input.button_black:hover {
 		left: 0;
         margin: 0 0 0 -10px;
 		z-index: 9999;
-		text-align: left;
+        @include text("left", "", "", "", "");
 	 
 		opacity: 1;
 		visibility: hidden;
 		overflow: hidden;
 	 
-		background: #1f1f1f;
-		color: #fff;
+        @include background("", "", "", $filter_bg, "");
+		color: $white;
 	 
-		-webkit-transition: all .3s ease .15s;
-		-moz-transition: all .3s ease .15s;
-		-o-transition: all .3s ease .15s;
-		-ms-transition: all .3s ease .15s;
-		transition: all .3s ease .15s;
+		@include transition(all .3s ease .15s);
 	}
 	
 	#menu li:hover .dropdown {  
@@ -421,34 +383,32 @@ input.button_black:hover {
 		float: left;
 		margin: 25px 0 20px 20px;
 		padding: 0 0 0 20px;
-		border-left: 1px solid #b1b1b1;
+		border-left: 1px solid $light_grey;
 	}
 	.navTeaser { display: block; }
 	
 	#menu .dropdown li {  
 		width: 210px;
 		display: block;
-		text-align:left;  
+        @include text("left", "", "", "", ""); 
 		padding: 0px;  
 		margin: 0px;  
-		border-bottom: 1px solid #b1b1b1;
+		border-bottom: 1px solid $light_grey;
 	}
 	#menu .dropdown li a {  
-		font-size: 12px;
-		font-family: Arial, Helvetica, sans-serif;
-		text-transform: none;
-		text-decoration: none;
-		color: #b1b1b1;
+	    @include font("Arial, Helvetica, sans-serif", "", "12px", "");
+        @include text("", "none", "none", "", "");
+		color: $light_grey;
 		margin: 7px 0 0 0;
 		padding: 0 0 7px 0;
 		display: block;
 		width: 210px;
 	}
 	#menu .dropdown li a span.subline {  
-		font-size: 10px;
+	    @include font("", "", "10px", "");
 	}
 	#menu .dropdown li:hover a {  
-		color:#ffd200;  
+		color:$hover_menue;  
 	}
 		
 	#menu .dropdown li.headline {  
@@ -456,39 +416,30 @@ input.button_black:hover {
 		border: none;
 	}
 	#menu .dropdown li.headline a {  
-		font-size: 18px;
-		font-family: Cabin, Arial, Helvetica, sans-serif;
-		text-transform: uppercase;
-		color: #FFFFFF;
+	    @include font("Cabin, Arial, Helvetica, sans-serif", "", "18px", "");
+        @include text("", "uppercase", "", "", "");
+		color: $white;
 	}
 	#menu .dropdown li.headline:hover a {  
-		color:#ffd200;  
+		color:$hover_menue;  
 	}
 
 	#menu .dropdown .search {
 		margin: 5px 0 5px 5px;
 		width: 80%;
-		background-color: #ffffff;
-		font-size: 24px;
-		font-style: normal;
-		font-weight: normal;
+        @include background("../../images/layout/search_icon.png", "no-repeat", "left", $white, "");
+        @include font("", "normal", "24px", "normal");
 		padding: 0 0 0 45px;
-		border: 1px #b1b1b1 solid;
+		border: 1px $light_grey solid;
 		margin: 10px 0 10px 10px;
-		background-image:url(../../images/layout/search_icon.png);
-		background-repeat: no-repeat;
-		background-position: left;
 		float: left;
 	}
 	#menu .dropdown .search input.searchtext {
 		margin: 0;
 		width: 97%;
-		font-size: 24px;
 		padding: 4px;
-		text-transform: uppercase;
-		font-family: Cabin, Arial, Helvetica, sans-serif;
-		font-style: normal;
-		font-weight: normal;
+        @include text("", "uppercase", "", "", "");
+        @include font("Cabin, Arial, Helvetica, sans-serif", "normal", "24px", "normal");
 		border: 0px;
 	}
 	#menu .dropdown .searchtext:focus { border: 0; outline: 0; }
@@ -497,15 +448,11 @@ input.button_black:hover {
 	.searchbutton {
 		width: 100px;
 		height: 40px;
-		background-color: #9a0000;
-		text-align: center;
-		text-transform: uppercase;
-		text-decoration: none;
+        @include background("", "", "", $dark_red, "");
+        @include text("center", "uppercase", "none", "", "");
 		padding: 5px 10px;
-		font-family: Arial, sans-serif;
-		font-weight: normal;
-		font-size: 12px;
-		color: #FFF;
+        @include font("Arial, sans-serif", "normal", "12px", "");
+		color: $white;
 		white-space:nowrap;
 		border: 0px;
 		float: left;
@@ -523,7 +470,7 @@ input.button_black:hover {
 	}
 	#mobileNavigation {
 		height: 0px;
-		background-color: #191919;
+        @include background("", "", "", $black_cust2, "");
 		width: 100%;
 		overflow: hidden;
 		z-index: 9998;
@@ -535,120 +482,102 @@ input.button_black:hover {
 		list-style: none;	
 	}
 	#mobileNavigation li {
-		text-align: center;
+        @include text("center", "", "", "", "");
 	}
 	#mobileNavigation li.search {
-		text-align: center;
+        @include text("center", "", "", "", "");
+        @include background("", "", "", $dark_grey, "");
 		height: 46px;
 		padding: 4px 0 0 0;
-		background-color: #474747;
 	}
 
 	#mobileNavigation li a {
+        @include text("center", "uppercase", "none", "", "");
+        @include font("", "normal", "16px", "normal");
 		width: 100%;
 		height: 22px;
-		text-transform: uppercase;
-		text-decoration: none;
-		text-align: center;
-		color: white;
+		color: $white;
 		padding: 10px 0 10px 0;
 		margin: 0 0 0 0;
 		display: block;
-		font-size: 16px;
-		font-style: normal;
-		font-weight: normal;
-		border-bottom: 1px #474747 solid;
+		border-bottom: 1px $dark_grey solid;
 	}
 	#mobileNavigation li a:hover {
-		color: #ffd200;
+		color: $hover_menue;
 	}
 	#mobileNavigation li.search input.text {
 		width: 200px;
-		font-size: 18px;
-		font-style: normal;
-		font-weight: normal;
+        @include font("", "normal", "18px", "normal");
 		padding: 4px 4px 4px 4px;
-		border: 1px #474747 solid;
+		border: 1px $dark_grey solid;
 	}
 	#mobileNavigation li.search input.button_black {
 		width: 44px;
 		height: 32px;
-		background-color: #121212;
-		text-align: center;
-		text-transform: uppercase;
-		text-decoration: none;
+        @include background("", "", "", $black_cust, "");
+        @include text("center", "uppercase", "none", "", "");
+        @include font("Arial, sans-serif", "normal", "12px", "");
 		padding: 5px 10px;
-		font-family: Arial, sans-serif;
-		font-weight: normal;
-		font-size: 12px;
-		color: #FFF;
+		color: $white;
 		border: 0;
 	}
 	#mobileNavigation li.search input.button_black:hover {
-		background-color: #f2b600;
-		color: #FFF;
+        @include background("", "", "", $hover_menue_dark, "");
+		color: $white;
 	}
 	
 	
 	#mobileNavigation .subnavi ul {
 		padding: 0;
 		margin: 0 5%;
-		list-style: none;	
-		test-align: left;
+		list-style: none;
+        @include text("left", "", "", "", "");
 	}
 	#mobileNavigation .subnavi li a {
 		width: 100%;
 		height: 18px;
-		text-transform: inherit;
-		text-decoration: none;
-		text-align: center;
-		color: white;
+        @include text("center", "inherit", "none", "", "");
+        @include font("", "normal", "14px", "normal");
+        @include background("", "", "", "#2d2d2d", "");
+		color: $white;
 		padding: 10px 0 10px 0;
 		margin: 0 0 0 0;
 		display: block;
-		font-size: 14px;
-		font-style: normal;
-		font-weight: normal;
-		background-color: #2d2d2d;
-		border-bottom: 1px #191919 solid;
+		border-bottom: 1px $black_cust2 solid;
 	}
 	#mobileNavigation .subnavi li a:hover {
-		color: #ffd200;
+		color: $hover_menue;
 	}
 	
 	
 	#mobileNavigation li.metanav {
-		text-align: left;
-		background-color: #474747;
+        @include text("left", "", "", "", "");
+        @include background("", "", "", $dark_grey, "");
 	}
 	#mobileNavigation .metanav ul {
 		padding: 0;
 		margin: 0 5%;
 		list-style: none;	
-		test-align: left;
+        @include text("left", "", "", "", "");
 	}
 	#mobileNavigation .metanav ul li {
-		text-align: left;
+        @include text("left", "", "", "", "");
 		display: inline-block;
 		width: 46%;
 	}
 	#mobileNavigation .metanav ul li a {
 		width: 100%;
 		height: 18px;
-		text-transform: none;
-		text-decoration: none;
-		text-align: center;
-		color: white;
+        @include text("center", "none", "none", "", "");
+		color: $white;
 		padding: 10px 0 10px 0;
 		margin: 0 0 0 0;
 		display: block;
-		font-size: 14px;
-		font-style: normal;
-		font-weight: normal;
+        @include font("", "normal", "14px", "normal");
 		border: 0;
 	}
 	#mobileNavigation .metanav ul li a:hover {
-		color: #ffd200;
+		color: $hover_menue;
 	}
 
 @media only screen and (max-width: 1000px) {
@@ -656,7 +585,7 @@ input.button_black:hover {
 }
 @media only screen and (max-width: 970px) {
 
-	.dropdown { max-width: 100%; text-align: center; }
+	.dropdown { max-width: 100%; @include text("center", "", "", "", ""); }
 	.navTeaser { display: none; }
 	#menu .dropdown ul.special { width: 150px; margin: 25px 0 20px 10px; padding: 0 0 0 10px; }
 	#menu .dropdown ul.special li.headline a { width: 150px; font-size: 14px; }
@@ -687,7 +616,7 @@ input.button_black:hover {
 
 	header { height: 65px; }
 	header h1 { width: 165px; height: 40px;  }
-	header h1 a { width: 165px; heigth: 40px; background-size: contain; }
+	header h1 a { width: 165px; heigth: 40px; @include background("", "", "", "", "contain"); }
 	#mobileHeader { margin: 18px 15px 0 0; }
 
 }
@@ -700,15 +629,15 @@ input.button_black:hover {
 .notruf_layer {
 	max-width: 880px;
 	margin: 0;
-	background-color:#FFF;
-	text-align:left;
+    @include background("", "", "", $white, "");
+    @include text("left", "", "", "", "");
 	display:none;
 }
 
 .notruf_layer .tele {
 	float: left;
 	max-width: 320px;
-	border-right: 1px solid #474747;
+	border-right: 1px solid $dark_grey;
 	margin: 15px 0;
 }
 .notruf_layer .faq {
@@ -718,11 +647,9 @@ input.button_black:hover {
 	padding: 0;
 }
 .notruf_layer h3 {
-	font-family: 'Cabin', sans-serif;
-	font-size: 24px;
-	text-transform: uppercase;
-	color: #000000;
-	text-align: center;
+    @include font("Cabin, sans-serif", "", "24px", "");
+    @include text("center", "uppercase", "", "", "");
+	color: $black;
 	padding: 0;
 	margin: 0;
 }
@@ -733,32 +660,26 @@ input.button_black:hover {
 	margin: 15px 0 10px 0;
 }
 .notruf_layer .boxtrenner {
-	border-right: 1px solid #b1b1b1;
+	border-right: 1px solid $light_grey;
 }
 .notruf_layer .box p {
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-	text-transform: normal;
-	color: #474747;
+	@include font("Arial, sans-serif", "", "14px", "");
+    @include text("center", "normal", "", "", "");
+	color: $dark_grey;
 	margin: 0;
-	text-align: center;
 }
 .notruf_layer .box p.number {
-	font-family: 'Cabin', sans-serif;
-	font-size: 65px;
-	text-transform: uppercase;
-	color: #9a0000;
+    @include text("Cabin, sans-serif", "uppercase", "65px", "", "");
+	color: $dark_red;
 	margin: 0;
 }
 .notruf_layer .box p.linked_number {
 	display: none;
 }
 .notruf_layer .box p.linked_number a {
-	font-family: 'Cabin', sans-serif;
-	font-size: 60px;
-	text-transform: uppercase;
-	text-decoration: none;
-	color: #9a0000;
+	@include font("Cabin, sans-serif", "", "60px", "");
+    @include text("", "uppercase", "none", "", "");
+	color: $dark_red;
 	margin: 0;
 }
 
@@ -768,33 +689,31 @@ input.button_black:hover {
 	padding: 0;
 }
 .notruf_layer .faq ul li {
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-	text-transform: normal;
-	color: #474747;
+	@include font("Arial, sans-serif", "", "14px", "");
+    @include text("", "normal", "", "", "");
+	color: $dark_grey;
 	margin: 0;
 	padding: 0;
 }
 .notruf_layer .faq span.hightlight {	
-	color: #9a0000;
-	font-weight: bold;
+	color: $dark_red;
+    @include font("", "bold", "", "");
 	line-height: 24px;
 }
 
 .notruf_layer .greybox {
-	background-color: #b1b1b1;
+    @include background("", "", "", $light_grey, "");
 }
 .notruf_layer .greybox p.number {
 	float: left;
-	font-family: 'Cabin', sans-serif;
-	font-size: 20px;
-	text-transform: uppercase;
-	color: #000000;
+	@include font("Cabin, sans-serif", "", "20px", "");
+    @include text("", "uppercase", "", "", "");
+	color: $black;
 	margin: 18px 20px;
 	display: inline-block;
 }
 .notruf_layer .greybox p.number span {
-	font-weight: bold;
+	@include font("", "bold", "", "");
 	margin-left: 20px;
 	white-space:nowrap;
 }
@@ -809,13 +728,13 @@ input.button_black:hover {
 @media only screen and (max-width: 800px) {
 	
 	.notruf_layer .box { width: 120px; }
-	.notruf_layer .box p.number { font-size: 60px; }
+	.notruf_layer .box p.number { @include font("", "", "60px", ""); }
 
 }
 @media only screen and (max-width: 690px) {
 	
 	.notruf_layer .faq { clear: both; margin: 0; min-width: 100%; }
-	.notruf_layer h3 { font-size: 18px; }
+	.notruf_layer h3 { @include font("", "", "18px", ""); }
 	.notruf_layer .greybox p.number { display: none; }
 	.notruf_layer .greybox p.button { float: left; }
 	.notruf_layer .tele { border-right: 0px; min-width: 100%; }
@@ -832,15 +751,15 @@ input.button_black:hover {
 	
 }
 @media only screen and (max-width: 350px) {
-	.notruf_layer h3 { font-size: 14px; }
+	.notruf_layer h3 { @include font("", "", "14px", ""); }
 	.notruf_layer .faq ul li { font-size: 12px; margin: 0 0 0 0; }
 	.notruf_layer .faq ul { margin: 5px 10px; }
 	.notruf_layer .box { margin-top: 5px; }
-	.notruf_layer .box p { font-size: 11px; }
-	.notruf_layer .box p.linked_number a { font-size: 36px; }
+	.notruf_layer .box p { @include font("", "", "11px", ""); }
+	.notruf_layer .box p.linked_number a { @include font("", "", "36px", ""); }
 	.notruf_layer .box { width: 47%; }
 	.notruf_layer .greybox p.button { padding: 0px 10px; }
-	.notruf_layer .greybox .button_red { font-size: 12px; }
+	.notruf_layer .greybox .button_red { @include font("", "", "12px", ""); }
 }
 @media only screen and (max-width: 300px) {
 	
@@ -856,7 +775,7 @@ input.button_black:hover {
 	width: 100%;	
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
-	background-color: #000;
+    @include background("", "", "", $black, "");
 }
 #stage #stagewrapper {
 	max-width: 980px;	
@@ -868,9 +787,8 @@ input.button_black:hover {
 	width: 100%;
 	height: 720px;
 	margin: 0;
-	padding: 0;
-	background-repeat: no-repeat;	
-	background-position: top, center;
+	padding: 0;    
+    @include background("", "no-repeat", "top, center", "", "");
 	overflow: hidden;
 }
 #stage div.redBG {
@@ -884,8 +802,8 @@ input.button_black:hover {
 	height: 600px;
 }
 #stage .stageQuoteRight {
-	background-image: url(../../images/layout/quote_bg.png);
-	text-align: left;
+    @include background("../../images/layout/quote_bg.png", "", "", "", "");
+    @include text("left", "", "", "", "");
 	width: 280px;
 	padding: 10px;
 	position: relative;
@@ -894,8 +812,8 @@ input.button_black:hover {
 	margin: 0 0 0 auto;
 }
 #stage .stageQuoteLeft {
-	background-image: url(../../images/layout/quote_bg.png);
-	text-align: left;
+    @include background("../../images/layout/quote_bg.png", "", "", "", "");
+    @include text("left", "", "", "", "");
 	width: 280px;
 	padding: 10px;
 	position: relative;
@@ -903,15 +821,15 @@ input.button_black:hover {
 	margin: 0 0 0 5%;
 }
 #stage .stageContentListen {
-	text-align: left;
+    @include text("left", "", "", "", "");
 	padding: 10px;
 	position: relative;
 	top: 200px;
 	margin: 0 0 0 0;
 }
 #stage .stageContentCar {
-	background-image: url(../../images/layout/quote_bg.png);
-	text-align: left;
+    @include background("../../images/layout/quote_bg.png", "", "", "", "");
+    @include text("left", "", "", "", "");
 	width: 280px;
 	padding: 10px;
 	position: relative;
@@ -923,15 +841,15 @@ input.button_black:hover {
 }
 #stage .stageContentHeadline {
 	width: auto;
-	text-align: left;
+    @include text("left", "", "", "", "");
 	position: relative;
 	top: 345px;
 	margin: 0 0 0 0;
 	padding: 0 0 10px 10px;
 }
 #stage .stageContentHeadlineTop {
-	background-image: url(../../images/layout/quote_bg.png);
-	text-align: left;
+    @include background("../../images/layout/quote_bg.png", "", "", "", "");
+    @include text("left", "", "", "", "");
 	width: 280px;
 	padding: 10px;
 	position: relative;
@@ -943,11 +861,11 @@ input.button_black:hover {
 	margin: 12px 15px 0 0;
 }
 #stage .blackBG {
-	background-image: url(../../images/layout/quote_bg.png);	
+    @include background("../../images/layout/quote_bg.png", "", "", "", "");
 }
 #stage .half_blackBG {
 	width: 400px;
-	background-image: url(../../images/layout/quote_bg.png);	
+    @include background("../../images/layout/quote_bg.png", "", "", "", "");
 }
 #stage .smallstage {
 	top: 300px;	
@@ -955,45 +873,34 @@ input.button_black:hover {
 
 #stage h1 {
 	margin: 0 10px 0 0;
-	color: #FFF;
-	font-family: 'Cabin', sans-serif;
-	font-size: 40px;
-	text-transform: uppercase;
-	color: #FFF;
+	color: $white;
+    @include font("Cabin, sans-serif", "", "40px", "");
+    @include text("", "uppercase", "", "", "");
 }
 #stage h2 {
 	margin: 0 10px 0 0;
-	color: #FFF;
-	font-family: 'Cabin', sans-serif;
-	font-size: 18px;
-	text-transform: uppercase;
-	color: #FFF;
+	color: $white;
+    @include font("Cabin, sans-serif", "", "18px", "");
+    @include text("", "uppercase", "", "", "");
 }
 #stage p {
 	margin: 30px 0 0 0;
-	color: #FFF;
-	font-family: Arial, sans-serif;
-	font-size: 12px;
-	color: #FFF;
+	color: $white;
+    @include font("Arial, sans-serif", "", "12px", "");
 }
 
 #stage .quote {
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
-	text-transform: uppercase;
-	text-decoration: none;
-	font-family: 'Cabin', sans-serif;
-	font-size: 30px;
-	color: #FFF;
+    @include text("", "uppercase", "none", "", "");
+    @include font("Cabin, sans-serif", "", "30px", "");
+	color: $white;
 }
 #stage .quotePerson {
 	margin: 0 0 0 0;
-	color: #FFF;
-	text-transform: none;
-	font-weight: normal;
-	font-family: 'Cabin', sans-serif;
-	font-size: 14px;
-	color: #FFF;
+	color: $white;
+    @include text("", "none", "", "", "");
+    @include font("Cabin, sans-serif", "normal", "14px", "");
 }
 #stage .button {
 	margin: 10px 0 0 0;
@@ -1017,10 +924,10 @@ input.button_black:hover {
 	#stage #stagewrapper { margin: 0 2%; }
 	#stage .stageContentHeadline { top: 380px; }
 	#stage .stageContentHeadline figure { width: 48px; margin-right: 10px; }	
-	#stage h1 { font-size: 26px; padding: 5px 0 0 0; }	
-	#stage h2 { font-size: 16px; }	
-	#stage .stageContentListen h1 {	font-size: 40px; }
-	#stage .stageContentListen h2 {	font-size: 18px; }
+	#stage h1 { @include font("", "", "26px", ""); padding: 5px 0 0 0; }	
+	#stage h2 { @include font("", "", "16px", ""); }	
+	#stage .stageContentListen h1 {	@include font("", "", "40px", ""); }
+	#stage .stageContentListen h2 {	@include font("", "", "18px", ""); }
 	#stage .stageContentHeadline h1 {	margin: 0 10px 0 62px; }
 	#stage .stageContentHeadline h2 {	margin: 0 10px 0 62px; }
 }
@@ -1034,7 +941,7 @@ input.button_black:hover {
 	#stage div.pictures {
 		align: center;
 		height: 300px;
-		background-size: 525px;
+        @include background("", "", "", "", "525px");
 	}
 	#stage div.small {
 		height: 260px;
@@ -1052,10 +959,10 @@ input.button_black:hover {
 		margin: 0 0 0 5%;
 	}
 	#stage .quote {
-		font-size: 20px;
+		@include font("", "", "20px", "");
 	}
 	#stage .quotePerson {
-		font-size: 11px;
+		@include font("", "", "11px", "");
 	}
 	
 	#stage #stagewrapper { margin: 0 1%; }
@@ -1063,16 +970,16 @@ input.button_black:hover {
 	#stage .stageContentHeadline figure { width: 33px; }
 	
 	#stage .stageContentCar { width: auto; margin: 0 2% 20px 0; top: 160px; }
-	#stage h1 { font-size: 18px; }
-	#stage h2 { font-size: 12px; }
-	#stage p { margin: 10px 0 0 0; font-size: 11px; }
+	#stage h1 { @include font("", "", "18px", ""); }
+	#stage h2 { @include font("", "", "12px", ""); }
+	#stage p { margin: 10px 0 0 0; @include font("", "", "11px", ""); }
 	
 	#stage .stageContentHeadline h1 { margin: 0 0 0 48px; }
 	#stage .stageContentHeadline h2 { margin: 0 0 0 48px; }
 	
 	#stage .stageContentListen { top: 60px; }
-	#stage .stageContentListen h1 { font-size: 30px; }
-	#stage .stageContentListen h2 { font-size: 18px; }
+	#stage .stageContentListen h1 { @include font("", "", "30px", ""); }
+	#stage .stageContentListen h2 { @include font("", "", "18px", ""); }
 	#stage div.redBG { height: 200px; }
 	#stage .smallstage { top: 180px; }
 	#stage .half_blackBG { width: 92%; margin: 0; }
@@ -1082,8 +989,8 @@ input.button_black:hover {
 @media only screen and (max-width: 275px) {
 
 	#stage .stageContentCar { width: auto; margin: 0 2%; top: 220px; }
-	#stage h1 { font-size: 18px; }
-	#stage h2 { font-size: 12px; }
+	#stage h1 { @include font("", "", "18px", ""); }
+	#stage h2 { @include font("", "", "12px", ""); }
 	#stage p { display: none; }
 	#stage .stageQuoteRight { width: auto; margin: 0 auto; }
 	#stage .stageQuoteLeft { width: auto; margin: 0 auto; }
@@ -1120,7 +1027,7 @@ input.button_black:hover {
 }
 #content #SidebarContent {
 	width: 313px;
-	background-color: #121212;	
+    @include background("", "", "", $black_cust, "");
 	float: right;
 }
 
@@ -1230,25 +1137,21 @@ input.button_black:hover {
 /* ------------] Übergeordnete Styles [--------------- */
 
 #content h1.module {
-	font-family: 'Cabin', sans-serif;
-	text-transform: uppercase;
-	font-weight:bold;
-	font-size: 24px;
-	color: #121212;
-	border-left: 4px #9a0000 solid;
+    @include font("Cabin, sans-serif", "bold", "24px", "");
+    @include text("", "uppercase", "", "", "");
+	color: $black_cust;
+	border-left: 4px $dark_red solid;
 	padding-left: 15px;
 	margin: 40px 0 20px 0;
 }
 #content h1.module_white {
-	font-family: 'Cabin', sans-serif;
-	text-transform: uppercase;
-	font-weight:bold;
-	font-size: 24px;
-	color: #121212;
-	border-left: 4px #9a0000 solid;
+    @include font("Cabin, sans-serif", "bold", "24px", "");
+    @include text("", "uppercase", "", "", "");
+    @include background("", "", "", $white, "");
+	color: $black_cust;
+	border-left: 4px $dark_red solid;
 	padding: 5px 0 5px 15px;
 	margin: 40px 0 20px 0;
-	background-color: #FFF;
 }
 
 /* ------------] MainContent - Slider [--------------- */
@@ -1256,7 +1159,7 @@ input.button_black:hover {
 #content #slider  {
 	margin: 0 0 25px 0;
 	padding-right: 15px;
-	text-align: center;
+    @include text("center", "", "", "", "");
 }
 #content #slider ul {
 	list-style: none;	
@@ -1271,11 +1174,11 @@ input.button_black:hover {
 	height: 10px;
 	border: 0;
 	line-height: 0;
-	font-size: 0;	
+	@include font("", "", "0", "");	
+    @include background("", "", "", $white, "");
 	list-style-type: none;
 	display: inline-block;
 	margin: 0 0 0 4px;
-	background-color: #FFFFFF;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	-ms-border-radius: 4px;
@@ -1283,7 +1186,7 @@ input.button_black:hover {
 	border-radius: 4px;
 }
 #content #slider li a.active  {
-	background-color: #9a0000;
+    @include background("", "", "", $dark_red, "");
 	cursor: auto;
 }
 #content #slider li a.first  {
@@ -1308,17 +1211,15 @@ input.button_black:hover {
 #content .listContent {
 	width: 100%;
 	height: auto;
-	background-color:#FFF;
+    @include background("", "", "", $white, "");
 	margin: 0 0 0 0;	
 	float: left;
 	box-shadow: 1px 1px 2px #d9d9d9;
 }
 #content .listContent a {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
-	text-decoration: none;
-	color: #000000;
+	@include font("Arial, sans-serif", "normal", "14px", "");
+    @include text("", "", "none", "", "");
+	color: $black;
 	margin: 0;
 	padding: 0;
 }
@@ -1326,26 +1227,24 @@ input.button_black:hover {
 #content .listContent .row {
 	margin: 0 0 0 0;
 	display: table-row;	
-	border-bottom: solid 0px #a1a1a1;
+	border-bottom: solid 0px $grey;
 }
-#content .listContent .row:hover { background-color: #ebebeb; }
+#content .listContent .row:hover { @include background("", "", "", "#ebebeb", ""); }
 
 #content .listContent .number {
 	margin: 0;
 	padding: 10px 10px;
-	border-bottom: solid 1px #a1a1a1;
+	border-bottom: solid 1px $grey;
 	display: table-cell; 
 }
-#content .listContent .number a { color: #a1a1a1; }
+#content .listContent .number a { color: $grey; }
 
 #content .listContent .date {
 	height: 26px;
 	width: 195px;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
-	color: #000000;
-	border-bottom: solid 1px #a1a1a1;  
+    @include font("Arial, sans-serif", "normal", "14px", "");
+	color: $black;
+	border-bottom: solid 1px $grey;  
 	display: table-cell;
 	white-space: nowrap;
 	margin: 0;
@@ -1354,11 +1253,9 @@ input.button_black:hover {
 #content .listContent .date_small {
 	height: 26px;
     width: 100px;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
-	color: #000000;
-	border-bottom: solid 1px #a1a1a1;  
+    @include font("Arial, sans-serif", "normal", "14px", "");
+	color: $black;
+	border-bottom: solid 1px $grey;  
 	display: table-cell;
 	white-space: nowrap;
 	margin: 0;
@@ -1367,17 +1264,15 @@ input.button_black:hover {
 #content .listContent .icon {
 	margin: 0;
 	padding: 0;
-	border-bottom: solid 1px #a1a1a1;
+	border-bottom: solid 1px $grey;
 	display: table-cell;  
 }
 #content .listContent .icon a {
 	padding: 16px 18px;
-	text-indent: -9999em;
-	font-size: 0px;
-	background-repeat: no-repeat; 
-	background-position: center;
-	background-size: 26px;
-	background-position: top; 
+    @include text("", "", "", "-9999em", "");
+	@include font("", "", "0px", "");
+    background-position: center;
+    @include background("", "no-repeat", "top", "", "");
 }
 #content .listContent .icon a.fire { background-image: url(../../images/icon_einsaetze/fire_small.png); }
 #content .listContent .icon a.saw { background-image: url(../../images/icon_einsaetze/saw_small.png); }
@@ -1388,19 +1283,17 @@ input.button_black:hover {
 #content .listContent .size {
 	margin: 5px 0 0 0;
 	padding: 10px 10px;
-	border-bottom: solid 1px #a1a1a1;
+	border-bottom: solid 1px $grey;
 	display: table-cell; 
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
-	color: #000000;
+    @include font("Arial, sans-serif", "normal", "14px", "");
+	color: $black;
 }
 #content .listContent .size p {
 	margin: 0;
 	padding: 0;
 }
 #content .listContent p.bytes {
-	font-size: 11px;
+	@include font("", "", "11px", "");
 	white-space: nowrap;
 }
 #content .listContent .smallBoxHead {
@@ -1412,60 +1305,50 @@ input.button_black:hover {
 	width: 565px;
 	margin: 5px 0 0 0;
 	padding: 10px 10px;
-	border-bottom: solid 1px #a1a1a1;
+	border-bottom: solid 1px $grey;
 	display: table-cell; 
-	font-family: Arial, sans-serif;
-	font-weight: bold;
-	font-size: 14px;
-	color: #9a0000;
+    @include font("Arial, sans-serif", "bold", "14px", "");
+	color: $dark_red;
 }
 #content .listContent .headline .medium {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #000000;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $black;
 }
 #content .listContent .headline a {
-	font-family: Arial, sans-serif;
-	font-weight: bold;
-	font-size: 14px;
-	color: #9a0000;
+    @include font("Arial, sans-serif", "bold", "14px", "");
+	color: $dark_red;
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
 }
 #content .listContent .moreButton {
 	height: auto;
 	padding: 0 10px 0 10px;
-	border-bottom: solid 1px #a1a1a1;
+	border-bottom: solid 1px $grey;
 	display: table-cell;  
 }
 #content .listContent .moreButton_arrow {
 	padding: 0 10px 0 10px;
-	border-bottom: solid 1px #a1a1a1;
+	border-bottom: solid 1px $grey;
 	display: table-cell;  
 	width: 12px;
 	padding: 13px 6px;
-	background-image: url(../../images/layout/more_button_mobile.png);
-	background-repeat:no-repeat;
-	background-position: center;
+    @include background("../../images/layout/more_button_mobile.png", "no-repeat", "center", "", "");
 }
 #content .listContent .moreButton_mobile {	
 	height: auto;
 	margin: 0 0 0 0;
 	padding: 10px 10px 26px 10px;
-	border-bottom: solid 1px #a1a1a1;
+	border-bottom: solid 1px $grey;
 	display: none; 
 }
 #content .listContent .moreButton_mobile a {	
 	padding: 10px 10px;
-	text-indent: -9999em;
+    @include text("", "", "", "-9999em", "");
 	font-size: 0;
 }
-#content .listContent .moreButton a { color: #FFFFFF; padding: 6px 15px; margin: 10px 0 0 0; } 
+#content .listContent .moreButton a { color: $white; padding: 6px 15px; margin: 10px 0 0 0; } 
 #content .listContent .trenner {
-	background-image: url(../../images/layout/listen_trenner.png);
-	background-repeat: no-repeat;
-	background-position: right; 
+    @include background("../../images/layout/listen_trenner.png", "no-repeat", "right", "", "");
 }
 #content .listContent .inline_date { white-space:nowrap; }
 #content .listContent .inline_time { white-space:nowrap; }
@@ -1473,8 +1356,8 @@ input.button_black:hover {
 
 @media only screen and (max-width: 750px) {
 	
-	#content .listContent .number a { font-size: 12px; margin: 0; }
-	#content .listContent .date a { font-size: 12px; }
+	#content .listContent .number a { @include font("", "", "12px", ""); margin: 0; }
+	#content .listContent .date a { @include font("", "", "12px", ""); }
 	#content .listContent .date { width: 80px; white-space: normal; padding: 0 10px 10px 10px; }
 	#content .listContent .inline_slash { display: none; }
 	#content .listContent .icon a { background-position: center; }
@@ -1487,7 +1370,7 @@ input.button_black:hover {
 
 	#content .listContent .number a {  }
 	#content .listContent .inline_slash { display: none; }
-	#content .listContent .row { display: block; padding: 10px 0; border-bottom: solid 1px #a1a1a1; }
+	#content .listContent .row { display: block; padding: 10px 0; border-bottom: solid 1px $grey; }
 		
 	#content .listContent .number { display: block; border: 0; float: left; margin: 0; padding: 0 5px; }
 	#content .listContent .date { white-space: nowrap; display: block; border: 0; clear: right; margin: 0 0 0 40px; padding: 2px 5px 0 0; }
@@ -1512,75 +1395,63 @@ input.button_black:hover {
 	padding: 0;	
 }
 #content ul.terminListe li {
-	background-color: #FFFFFF;
-	border-bottom: solid 0px #a1a1a1;		
+    @include background("", "", "", $white, "");
+	border-bottom: solid 0px $grey;		
 }
 #content .terminListe a {
-	font-family: Arial, sans-serif;
-	text-decoration: none;
-	font-weight: normal;
-	font-size: 12px;
-	color: #000000;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+    @include text("", "", "none", "", "");
+	color: $black;
 }
 #content .terminListe .termin_date {
 	min-width: 75px;
-	text-align: center;
-	background-color: #1f1f1f;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #FFF;
+    @include text("center", "", "", "", "");
+    @include background("", "", "", $filter_bg, "");
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $white;
 	display: table-cell;
-	border-bottom: solid 1px #a1a1a1; 
+	border-bottom: solid 1px $grey; 
 }
 #content .terminListe .termin_details {
 	display: none; 
 }
 #content .terminListe .red {
-	background-color: #9a0000;
+    @include background("", "", "", $dark_red, "");
 }
 #content .terminListe .termin_date p {
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
 }
 #content .terminListe .termin_date p.day {
-	font-size: 24px;
+	@include font("", "", "24px", "");
 	margin: 8px 0 0 0;
 	padding: 0 0 0 0;
 }
 
 #content .terminListe .termin_headline {
 	width: 100%;
-	text-align: left;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
+    @include text("left", "", "", "", "");
+    @include font("Arial, sans-serif", "normal", "12px", "");
 	display: table-cell;
 	padding: 0 15px; 
-	border-bottom: solid 1px #a1a1a1;
+	border-bottom: solid 1px $grey;
 }
 #content .terminListe .termin_headline h1 {
-	text-align: left;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 24px;
+    @include text("left", "", "", "", "");
+    @include font("Arial, sans-serif", "normal", "24px", "");
 	margin: 12px 0 0 0;
 	padding: 0 0 0 0;
 }
 #content .terminListe .termin_headline h2 {
-	text-align: left;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
+    @include text("left", "", "", "", "");
+    @include font("Arial, sans-serif", "normal", "14px", "");
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
 }
 
 #content .terminListe .termin_headline p {
-	text-align: left;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
+    @include text("left", "", "", "", "");
+    @include font("Arial, sans-serif", "normal", "12px", "");
 }
 
 #content .terminListe .termin_headline .linkleiste {
@@ -1590,63 +1461,44 @@ input.button_black:hover {
 }
 #content .terminListe .termin_headline .linkleiste p {
 	width: 105px;
-	background-repeat: no-repeat;
-	background-position: right;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	text-transform: uppercase;
-	font-size: 14px;
+    @include background("", "no-repeat", "right", "", "");
+    @include font("Arial, sans-serif", "normal", "14px", "");
+    @include text("", "uppercase", "", "", "");
 	display: none;
 }
-#content .terminListe .termin_headline .linkleiste p.link_open {
-	background-image: url(../../images/layout/link_arrow_down.png);
-}
-#content .terminListe .termin_headline .linkleiste p.link_close {
-	background-image: url(../../images/layout/link_arrow_up.png);
-}
+#content .terminListe .termin_headline .linkleiste p.link_open { @include background("../../images/layout/link_arrow_down.png", "", "", "", ""); }
+#content .terminListe .termin_headline .linkleiste p.link_close { @include background("../../images/layout/link_arrow_up.png", "", "", "", ""); }
 
 #content .terminListe .time {
 	width: 350px;
 	height: 70px;
-	background-color: #ebebeb;
+    @include background("../../images/layout/termin_time.png", "no-repeat", "left", "#ebebeb", "");
 	display: inline-block;
 	margin: 10px 20px 15px 0;
-	background-image: url(../../images/layout/termin_time.png);
-	background-repeat: no-repeat;
-	background-position: left;
 }
 #content .terminListe .time .datum {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	text-transform: normal;
-	font-size: 12px;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+    @include text("", "normal", "", "", "");
 	margin: 10px 0 0 60px;
 }
 #content .terminListe .time .clock {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	text-transform: normal;
-	font-size: 24px;
+    @include font("Arial, sans-serif", "normal", "24px", "");
+    @include text("", "normal", "", "", "");
 	margin: 5px 0 10px 60px;
 	white-space:nowrap;
 }
 #content .terminListe .time .clock .word {
-	font-size: 14px;
+	@include font("", "", "14px", "");
 }
 #content .terminListe .loction {
 	width: 350px;
 	height: 70px;
-	background-color: #ebebeb;
+    @include background("../../images/layout/termin_location.png", "no-repeat", "left", "#ebebeb", "");
 	display: inline-block;
-	background-image: url(../../images/layout/termin_location.png);
-	background-repeat: no-repeat;
-	background-position: left;
 }
 #content .terminListe .loction p {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	text-transform: normal;
-	font-size: 12px;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+    @include text("", "normal", "", "", "");
 	margin: 10px 0 10px 60px;
 }
 
@@ -1657,7 +1509,7 @@ input.button_black:hover {
 	display: block;	
 }
 #content .terminListe .lastRow {
-	border-bottom: solid 0px #a1a1a1;
+	border-bottom: solid 0px $grey;
 }
 
 @media only screen and (max-width: 490px) {
@@ -1674,7 +1526,7 @@ input.button_black:hover {
 
 #content .filter {
 	max-width: 980px;
-	background-color:#FFF;
+    @include background("", "", "", $white, "");
 	margin: 0 0 20px 0;	
 }
 #content .jsplatzhalter {
@@ -1695,18 +1547,15 @@ input.button_black:hover {
     border: 0;
     border-radius: 0;
     height: 28px;
-	background-color: #1f1f1f;
+    @include background("", "", "", $filter_bg, "");
 	
-	color: #FFFFFF;
-	font-size: 14px;
+	color: $white;
+	@include font("", "", "14px", "");
 }
 #content .filter .backToTop {
 	padding: 14px 11px;
 	margin: 10px 10px 10px 0;
-	background-color: #1f1f1f;
-	background-image: url(../../images/layout/select_arrow_up.png);
-	background-position: center;
-	background-repeat: no-repeat;	
+    @include background("../../images/layout/select_arrow_up.png", "no-repeat", "center", $filter_bg, "");	
 	display: inline-block;
 	cursor: pointer;
 	float: right;
@@ -1722,7 +1571,7 @@ input.button_black:hover {
 	#content .filter .thirdnavi_button { margin: 15px 0 15px 15px;	}
 }
 @media only screen and (max-width: 400px) {
-	#content .filter .thirdnavi_button { margin: 12px 0; clear: both; width: 100%; text-align: center; }
+	#content .filter .thirdnavi_button { margin: 12px 0; clear: both; width: 100%; @include text("center", "", "", "", ""); }
 }
 
 
@@ -1730,7 +1579,7 @@ input.button_black:hover {
 
 #content .factSheet {
 	width: 100%;
-	background-color:#FFF;
+    @include background("", "", "", $white, "");
 	margin: 0 0 20px 0;	
 	float: left;
 }
@@ -1750,21 +1599,17 @@ input.button_black:hover {
 	width: 85px;
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;	
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #000000;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $black;
 	display: table-cell;
 	border-bottom: #ababab 1px solid;
 }
 #content .factSheet .table .red {
 	width: 100%;
 	margin: 0 0 0 3%;	
-	padding: 5px 0 5px 10px;	
-	font-family: Arial, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-	color: #9a0000;
+	padding: 5px 0 5px 10px;
+    @include font("Arial, sans-serif", "bold", "12px", "");
+	color: $dark_red;
 	display: table-cell;
 	border-bottom: #ababab 1px solid;
 }
@@ -1782,28 +1627,22 @@ input.button_black:hover {
 #content .factSheet .data h1 {
 	margin: 5px 10px 0 10px;
 	padding: 0 0 5px 0;
-	font-family: Arial, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-	color: #000000;
+    @include font("Arial, sans-serif", "bold", "12px", "");
+	color: $black;
 	border-bottom: 1px #000 solid;
 }
 #content .factSheet .data h2 {
 	margin: 5px 10px 0 10px;
 	padding: 0 0 5px 0;
-	font-family: 'Cabin', sans-serif;
-	font-weight: bold;
-	font-size: 24px;
-	color: #9a0000;
+    @include font("Cabin, sans-serif", "bold", "24px", "");
+	color: $dark_red;
 }
 #content .factSheet .data .icon {
 	margin: 5px 10px 0 10px;
 	padding: 0 0 5px 0;
-	font-family: 'Cabin', Helvetica, sans-serif;
-	text-transform: uppercase;
-	font-weight: bold;
-	font-size: 11px;
-	color: #474747;
+    @include font("Cabin, Helvetica, sans-serif", "bold", "11px", "");
+    @include text("", "uppercase", "", "", "");
+	color: $dark_grey;
 }
 #content .factSheet .data .icon span {
 	float: right;
@@ -1819,7 +1658,7 @@ input.button_black:hover {
 	}
 	#content .factSheet .data h2 {
 		margin: 5px 5px 0 5px;
-		font-size: 20px;
+		@include font("", "", "20px", "");
 	}
 	#content .factSheet .data .icon {
 		margin: 5px 5px 0 5px;
@@ -1905,14 +1744,14 @@ input.button_black:hover {
 	
 	#content .factSheet .data { margin: 5px 0 10px 6%; width: 40%; }
 	#content .factSheet .data .icon { width: 30px; margin: 0 0 0 0; }
-	#content .factSheet .data h2 { font-size: 14px; width: 60%; }
+	#content .factSheet .data h2 { @include font("", "", "14px", ""); width: 60%; }
 }
 
 /* ------------] MainContent - FactSheet EINSATZ [--------------- */
 
 #content .factSheet_einsatz {
 	width: 100%;
-	background-color:#FFF;
+    @include background("", "", "", $white, "");
 	margin: 0 0 20px 0;	
 	float: left;
 }
@@ -1932,21 +1771,17 @@ input.button_black:hover {
 	width: 85px;
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;	
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #000000;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $black;
 	display: table-cell;
 	border-bottom: #ababab 1px solid;
 }
 #content .factSheet_einsatz .table .red {
 	width: 65%;
 	margin: 0 0 0 3%;	
-	padding: 5px 0 5px 10px;	
-	font-family: Arial, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-	color: #9a0000;
+	padding: 5px 0 5px 10px;
+    @include font("Arial, sans-serif", "bold", "12px", "");
+	color: $dark_red;
 	display: table-cell;
 	border-bottom: #ababab 1px solid;
 }
@@ -1964,51 +1799,43 @@ input.button_black:hover {
 #content .factSheet_einsatz .data h1 {
 	margin: 5px 10px 0 10px;
 	padding: 0 0 5px 0;
-	font-family: Arial, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-	color: #000000;
+    @include font("Arial, sans-serif", "bold", "12px", "");
+	color: $black;
 	border-bottom: 1px #000 solid;
 }
 #content .factSheet_einsatz .data h2 {
 	margin: 0;
 	padding: 0 0 0 10px;
-	font-family: 'Cabin', sans-serif;
-	font-weight: bold;
-	font-size: 24px;
-	color: #9a0000;
+    @include font("Cabin, sans-serif", "bold", "24px", "");
+	color: $dark_red;
 	white-space:nowrap;
 }
 #content .factSheet_einsatz .data h3 {
 	margin: 0;
 	padding: 0;
-	font-family: Arial, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-	color: #9a0000;
+    @include font("Arial, sans-serif", "bold", "12px", "");
+	color: $dark_red;
 	white-space:nowrap;
 }
 #content .factSheet_einsatz .data h4 {
 	margin: 0;
 	padding: 0;
-	font-family: Arial, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-	color: #474747;
+    @include font("Arial, sans-serif", "bold", "12px", "");
+	color: $dark_grey;
 	white-space:nowrap;
 }
 #content .factSheet_einsatz .data .icon {
 	width: 30px;
 	margin: 10px 0 0 10px;
 	padding: 0 0 0 0;
-	color: #474747;
+	color: $dark_grey;
 	float: left;
 }
 #content .factSheet_einsatz .data .info {
 	margin: 10px 0 0 0;
 	width: 65px;
 	padding: 0 0 0 0;
-	color: #474747;
+	color: $dark_grey;
 	float: left;
 }
 #content .factSheet_einsatz .showIcon { display: inline; }
@@ -2058,9 +1885,9 @@ input.button_black:hover {
 
 @media only screen and (max-width: 230px) {
 
-	#content .factSheet_einsatz .table .black { font-size: 11px; }
+	#content .factSheet_einsatz .table .black { @include font("", "", "11px", ""); }
 	#content .factSheet_einsatz .data .icon { display: none;  }
-	#content .factSheet_einsatz .data h1  { width: 75px; font-size: 11px; }
+	#content .factSheet_einsatz .data h1  { width: 75px; @include font("", "", "11px", ""); }
 
 }
 
@@ -2068,7 +1895,7 @@ input.button_black:hover {
 
 #content .factSheet_einsatzListe {
 	width: 100%;
-	background-color:#FFF;
+    @include background("", "", "", $white, "");
 	padding: 10px 0 10px 0;
 	margin: 0 0 0 0;	
 	float: left;
@@ -2090,9 +1917,9 @@ input.button_black:hover {
 	display: table-cell;
 	border-bottom: #ababab 1px solid;
 	overflow: hidden;
-	text-indent: -9999em;
-	font-size: 0px;
-	background-repeat: no-repeat;
+    @include text("", "", "", "-9999em", "");
+	@include font("", "", "0px", "");
+    @include background("", "no-repeat", "", "", "");
 }
 #content .factSheet_einsatzListe .fire { background-image: url(../../images/icon_einsaetze/fire_small.png); }
 #content .factSheet_einsatzListe .saw { background-image: url(../../images/icon_einsaetze/saw_small.png); }
@@ -2105,10 +1932,8 @@ input.button_black:hover {
 	width: 180px;
 	margin: 0 0 0 0;
 	padding: 11px 0 0 10px;	
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #000000;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $black;
 	display: table-cell;
 	border-bottom: #ababab 1px solid;
 }
@@ -2116,13 +1941,11 @@ input.button_black:hover {
 	width: 30px;
 	margin: 0 0 0 0;	
 	padding: 0 5px 0 0;	
-	font-family: Arial, sans-serif;
-	font-weight: bold;
-	font-size: 16px;
-	color: #9a0000;
+    @include font("Arial, sans-serif", "bold", "16px", "");
+	color: $dark_red;
 	display: table-cell;
 	border-bottom: #ababab 1px solid;
-	text-align: right;
+    @include text("right", "", "", "", "");
 }
 #content .factSheet_einsatz .table .lastRow {
 	border-bottom: 0;
@@ -2188,7 +2011,7 @@ input.button_black:hover {
 #content .googlemaps {
 	margin: 0 0 20px 0;
 	width: auto;
-	background-color:#FFF;
+    @include background("", "", "", $white, "");
 	padding: 10px;
 	box-shadow: 1px 1px 2px #d9d9d9;
 	clear: left;	
@@ -2216,26 +2039,22 @@ input.button_black:hover {
 #content .article {
 	margin: 0 0 20px 0;
 	width: auto;
-	background-color:#FFF;
+    @include background("", "", "", $white, "");
 	padding: 10px;
 	box-shadow: 1px 1px 2px #d9d9d9;
 	clear: left;	
 }
 #content .article h1 {
-	font-family: Arial, sans-serif;
-	font-weight: bold;
-	font-size: 18px;
-	color: #121212;
+    @include font("Arial, sans-serif", "bold", "18px", "");
+	color: $black_cust;
 	margin: 25px 0 0 0;
 }
 #content .article h1.first {
 	margin: 10px 0 0 0;
 }
 #content .article p {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #121212;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $black_cust;
 	margin: 10px 0 15px 0;
 }
 #content .article p.smallimages img {
@@ -2243,40 +2062,34 @@ input.button_black:hover {
 	margin: 0 15px 0 0;
 }
 #content .article ul {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #121212;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $black_cust;
 	margin: 15px 0 15px 0;
 	list-style: square;
 }
 #content .article ul li {
 	margin: 5px 0 0 0;
 }
+
 #content .article h1.einsatzIcon_prefire {
-	background-image: url(../../images/icon_einsaetze/prefire_small.png);
-	background-repeat: no-repeat;
-	padding: 6px 0 4px 40px;
+    @include background("../../images/icon_einsaetze/prefire_small.png", "no-repeat", "", "", "");
+    padding: 6px 0 4px 40px;
 }
 #content .article h1.einsatzIcon_fire {
-	background-image: url(../../images/icon_einsaetze/fire_small.png);
-	background-repeat: no-repeat;
-	padding: 6px 0 4px 40px;
+    @include background("../../images/icon_einsaetze/fire_small.png", "no-repeat", "", "", "");
+    padding: 6px 0 4px 40px;
 }
 #content .article h1.einsatzIcon_saw {
-	background-image: url(../../images/icon_einsaetze/saw_small.png);
-	background-repeat: no-repeat;
-	padding: 6px 0 4px 40px;
+    @include background("../../images/icon_einsaetze/saw_small.png", "no-repeat", "", "", "");
+    padding: 6px 0 4px 40px;
 }
 #content .article h1.einsatzIcon_tools {
-	background-image: url(../../images/icon_einsaetze/tools_small.png);
-	background-repeat: no-repeat;
-	padding: 6px 0 4px 40px;
+    @include background("../../images/icon_einsaetze/tools_small.png", "no-repeat", "", "", "");
+    padding: 6px 0 4px 40px;
 }
 #content .article h1.einsatzIcon_gas {
-	background-image: url(../../images/icon_einsaetze/gas_small.png);
-	background-repeat: no-repeat;
-	padding: 6px 0 4px 40px;
+    @include background("../../images/icon_einsaetze/gas_small.png", "no-repeat", "", "", "");
+    padding: 6px 0 4px 40px;
 }
 
 #content .article div.wappen {
@@ -2284,24 +2097,20 @@ input.button_black:hover {
 	float: left;
 	margin: 0 0 0 0;
 	padding: 0;
-	text-align:center;
+    @include text("center", "", "", "", "");
 }
 #content .article div.links {
 	float: left;
 	margin: 0 0 0 0;
 	padding: 0;
-	border-left: 1px solid #b1b1b1;
+	border-left: 1px solid $light_grey;
 	margin: 0 0 0 20px;
 	padding: 0 0 0 20px;
 }
 #content .article div.links h2 {
-	font-family: 'Cabin', Arial, sans-serif;
-	font-size: 18px;
-	font-weight: normal;
-	font-style: normal;
-	text-decoration: none;
-	text-transform: uppercase;
-	color: #000000;
+    @include font("Cabin, Arial, sans-serif", "normal", "18px", "normal");
+    @include text("", "uppercase", "none", "", "");
+	color: $black;
 	margin: 0 0 10px 0;
 	padding: 0;
 }
@@ -2330,18 +2139,15 @@ input.button_black:hover {
 	margin: 0 0 30px 0;
 }
 #content .article a {
-	font-family: Arial, sans-serif;
-	font-size: 12px;
-	font-weight: normal;
-	font-style: normal;
-	text-decoration: underline;
-	color: #000000;
+    @include font("Arial, sans-serif", "normal", "12px", "normal");
+    @include text("", "", "underline", "", "");
+	color: $black;
 }
 #content .article a:hover {
-	color: #ffd200;
+	color: $hover_menue;
 }
 #content .article a:active {
-	color: #ffd200;
+	color: $hover_menue;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -2387,54 +2193,45 @@ input.button_black:hover {
 	display: block;
 	padding: 12px;
 	margin: 0 0 0 0;
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-	font-weight: normal;
-	font-style: normal;
-	text-decoration: none;
-	color: #000000;
-	background-color: #b1b1b1;
+    @include font("Arial, sans-serif", "normal", "14px", "normal");
+    @include text("", "", "none", "", "");
+    @include background("", "", "", $light_grey, "");
+	color: $black;
 }
 #content .TabBox li a.active {
-	background-color: #9a0000;
-	color: #FFFFFF;
+    @include background("", "", "", $dark_red, "");
+	color: $white;
 }
 #content .TabBox li a:hover {
-	background-color: #9a0000;
-	color: #ffd200;
+    @include background("", "", "", $dark_red, "");
+	color: $hover_menue;
 }
 
 
 #content .TabBox .TabBoxContent {
 	margin: 0 0 20px 0;
 	width: auto;
-	background-color:#FFF;
+    @include background("", "", "", $white, "");
 	padding: 10px;
 	box-shadow: 1px 1px 2px #d9d9d9;
 	clear: left;	
 }
 #content .TabBox .TabBoxContent h1 {
-	font-family: Arial, sans-serif;
-	font-weight: bold;
-	font-size: 18px;
-	color: #121212;
+    @include font("Arial, sans-serif", "bold", "18px", "");
+	color: $black_cust;
 	margin: 10px 0 0 0;
 }
 #content .TabBox .TabBoxContent p {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #121212;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $black_cust;
 	margin: 15px 0 15px 0;
 }
 #content .TabBox .TabBoxContent ul {
 	list-style: square;
 }
 #content .TabBox .TabBoxContent ul li {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #121212;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $black_cust;
 	margin: 0 0 10px 0;
 }
 #content .TabBox .TabBoxContent .facttable {
@@ -2451,24 +2248,19 @@ input.button_black:hover {
 }
 
 #content .TabBox .TabBoxContent .facttable h1 {
-	font-family: Arial, sans-serif;
-	font-weight: bold;
-	font-size: 12px;
-	color: #121212;
+    @include font("Arial, sans-serif", "bold", "12px", "");
+	color: $black_cust;
 	margin: 20px 0 0 0;
 	padding: 0 0 5px 0;
-	border-bottom: 1px solid #000000;
+	border-bottom: 1px solid $black;
 }
 #content .TabBox .TabBoxContent .facttable ul {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
+    @include font("Arial, sans-serif", "normal", "", "");
 	margin: 10px 0 0 0;
 }
 #content .TabBox .TabBoxContent .facttable ul li {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #9a0000;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $dark_red;
 	margin: 0 0 5px 0;
 	clear: left;
 }
@@ -2478,24 +2270,21 @@ input.button_black:hover {
 	position: relative;
 	margin: 0 0 0 0;
 	display: none;
-	border-bottom: 1px #FFF solid;
+	border-bottom: 1px $white solid;
 }
 
 #content .TabBoxContent h1.reiter a {
 	display: block;
 	padding: 12px;
 	margin: 0 0 0 0;
-	font-family: Arial, sans-serif;
-	font-size: 14px;
-	font-weight: normal;
-	font-style: normal;
-	text-decoration: none;
-	color: #000000;
-	background-color: #b1b1b1;
+    @include font("Arial, sans-serif", "normal", "14px", "normal");
+    @include background("", "", "", $light_grey, "");
+    @include text("", "", "none", "", "");
+	color: $black;
 }
 #content .TabBoxContent h1.reiter a.active {
-	background-color: #9a0000;
-	color: #FFFFFF;
+    @include background("", "", "", $dark_red, "");
+	color: $white;
 }
 
 
@@ -2504,18 +2293,15 @@ input.button_black:hover {
 #content .menueBox {
 	margin-bottom: 20px;
 	width: auto;
-	background-color:#191919;
+    @include background("", "", "", $black_cust2, "");
 	padding: 15px;
 }
 #content .menueBox .subnavi_opener_mobile { display: none; }
 #content .menueBox .subnavi_content_mobile { display: none; }
 #content .menueBox h1 {
-	text-align: center;
-	font-family: 'Cabin', sans-serif;
-	font-weight:bold;
-	font-size: 18px;
-	text-transform: uppercase;
-	color: #FFFFFF;
+    @include text("center", "uppercase", "", "", "");
+    @include font("Cabin, sans-serif", "bold", "18px", "");
+	color: $white;
 	border-bottom: 2px #464646 solid;
 	margin: 5px 0 0 0;
 	padding: 0 0 10px 0;
@@ -2531,23 +2317,21 @@ input.button_black:hover {
 	border-bottom: 1px #464646 solid;
 }
 #content .menueBox ul li a.active {
-	color: #ffd200;
+	color: $hover_menue;
 }
 #content .menueBox ul li.last {
 	border-bottom: none;
 }
 #content .menueBox ul li a {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	text-decoration: none;
-	color: #FFFFFF;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+    @include text("", "", "none", "", "");
+	color: $white;
 }
 #content .menueBox ul li a span {
-	color: #b1b1b1;
+	color: $light_grey;
 }
 #content .menueBox ul li a:hover {
-	color: #ffd200;
+	color: $hover_menue;
 }
 
 
@@ -2571,12 +2355,10 @@ input.button_black:hover {
 	
 	#content .menueBox h1.subnavi_opener_mobile {
 		display: block;
-		text-align: left;
+        @include text("left", "", "", "", "");
+        @include background("url(../../images/layout/content_mobileButton.png", "no-repeat", "0 8px", "", "");
 		padding: 12px 0 0 40px;
 		margin: 0 0 0 0;
-		background-image: url(../../images/layout/content_mobileButton.png);
-		background-repeat: no-repeat;
-		background-position: 0 8px;
 		border-bottom: 0px;
 	}
 	#content .menueBox ul.subnavi_content_mobile {
@@ -2594,7 +2376,7 @@ input.button_black:hover {
 		margin: 0 0 1px 0;
 	}
 	#content .menueBox h1.subnavi_opener_mobile {
-		font-size: 14px;
+		@include font("", "", "14px", "");
 	}
 	#content .TabBox .tabNav_details { display: none; }
 	#content .TabBox .TabBoxContent h1.reiter { display: block; }
@@ -2605,31 +2387,26 @@ input.button_black:hover {
 
 #content .backtooverview {
 	width: 100%;
-	background-color:#FFF;
+    @include background("", "", "", $white, "");
 	margin: 0 0 20px 0;
 	padding: 8px 0;	
 	float: left;
 	box-shadow: 1px 1px 2px #d9d9d9;	
 }
 #content .backtooverview a.backlink {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	text-decoration: none;
-	text-transform: normal;
-	color: #000000;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+    @include text("", "normal", "none", "", "");
+    @include background("../../images/layout/link_arrow_left.png", "no-repeat", "5px", "", "");
+	color: $black;
 	margin: 0 0 0 10px;
 	padding: 0 0 0 20px;
-	background-image:url(../../images/layout/link_arrow_left.png);
-	background-repeat: no-repeat;
-	background-position: 5px;
 }
 
 /* ------------] MainContent - DetailShow [--------------- */
 
 #content .detailShow {
 	width: 100%;
-	background-color:#FFF;
+    @include background("", "", "", $white, "");
 	margin: 0 0 20px 0;
 	padding: 0 0 0 0;	
 	float: left;
@@ -2663,58 +2440,49 @@ input.button_black:hover {
 }
 
 #content .detailShow .text h1 {
-	font-family: 'Cabin', Arial, sans-serif;
-	font-weight: bold;
-	font-size: 24px;
-	text-decoration: none;
-	text-transform: uppercase;
-	color: #9a0000;
+    @include font("Cabin, Arial, sans-serif", "bold", "24px", "");
+    @include text("", "uppercase", "none", "", "");
+	color: $dark_red;
 	margin: 0 0 0 0;
 }
 #content .detailShow .text h2 {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 18px;
-	text-decoration: none;
-	color: #000000;
+    @include font("Arial, sans-serif", "normal", "18px", "");
+    @include text("", "", "none", "", "");
+	color: $black;
 	margin: 0 0 0 0;
 }
 #content .detailShow .text p {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	text-decoration: none;
-	color: #000000;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+    @include text("", "", "none", "", "");
+	color: $black;
 }
 #content .detailShow .text ul {
 	list-style-image: url(../../images/layout/listenElement_white.png);
 	margin: 20px 0 0 10px;
 }
 #content .detailShow .text ul li {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
-	text-decoration: none;
-	color: #000000;
+    @include font("Arial, sans-serif", "normal", "14px", "");
+    @include text("", "", "none", "", "");
+	color: $black;
 	margin: 5px 0 5px 0;
 }
 
 #content .detailShow .interactionBar {
 	height: 30px;
 	margin: 0 0 0 0;
-	background-color: #191919; 
-	border-top: 1px #FFF solid;
+    @include background("", "", "", $black_cust2, "");
+	border-top: 1px $white solid;
 }
 #content .detailShow .previous a {
 	float: left;	
 	width: 30px;
 	height: 30px;
-	border-right: 1px #FFF solid;
-	background-image: url(../../images/layout/button_detailShow_previous.png); 
-	text-indent: -9999em;
+	border-right: 1px $white solid;
+    @include background("../../images/layout/button_detailShow_previous.png", "", "", "", "");
+    @include text("", "", "", "-9999em", "");
 }
 #content .detailShow .tableofcontent {
-	text-align: center;
+    @include text("center", "", "", "", "");
 	width: 920px; 
 	margin: 0 0 0 30px;
 }
@@ -2722,7 +2490,7 @@ input.button_black:hover {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	text-align: center;
+    @include text("center", "", "", "", "");
 }
 #content .detailShow .tableofcontent ul li {
 	display: inline-block;
@@ -2731,30 +2499,28 @@ input.button_black:hover {
 }
 #content .detailShow .tableofcontent ul li a {
 	display: inline-block;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
-	text-decoration: none;
-	color: #FFFFFF;
+    @include font("Arial, sans-serif", "normal", "14px", "");
+    @include text("", "", "none", "", "");
+	color: $white;
 	padding: 7px 10px 7px 10px;
 	margin: 0;
 }
 #content .detailShow .tableofcontent ul li a:hover {
-	color: #FFFFFF;
-	background-color: #9a0000;
+	color: $white;
+    @include background("", "", "", $dark_red, "");
 }
 #content .detailShow .tableofcontent ul li a.active {
-	color: #FFFFFF;
-	background-color: #9a0000;
+	color: $white;
+    @include background("", "", "", $dark_red, "");
 }
 #content .detailShow .next a {
 	float: right;
 	width: 30px;
 	height: 30px;
 	margin-top: -30px;
-	border-left: 1px #FFF solid;
-	background-image: url(../../images/layout/button_detailShow_next.png); 
-	text-indent: -9999em;
+	border-left: 1px $white solid;
+    @include background("../../images/layout/button_detailShow_next.png", "", "", "", "");
+    @include text("", "", "", "-9999em", "");
 }
 
 @media only screen and (max-width: 1000px) {
@@ -2769,7 +2535,7 @@ input.button_black:hover {
 		width: 71%;
 	}
 	#content .detailShow .tableofcontent {
-		text-align: center;
+        @include text("center", "", "", "", "");
 		width: 97%; 
 		margin: 0 0 0 30px;
 	}
@@ -2800,12 +2566,12 @@ input.button_black:hover {
 /* ------------] MainContent - Slideshow [--------------- */
 
 #content .slideshow {
-	background-color:#FFF;
+    @include background("", "", "", $white, "");
+    @include text("center", "", "", "", "");
 	margin: 0 0 20px 0;
 	padding: 0 0 0 0;	
 	box-shadow: 1px 1px 2px #d9d9d9;
 	position: relative;
-	text-align: center;
 }
 #content .slideshow ul {
 	margin: 0 0 0 0;
@@ -2819,12 +2585,10 @@ input.button_black:hover {
 	display: inline;
 }
 #content .slideshow p {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #000000;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $black;
 	margin: 15px 10px 15px 10px;
-	text-align: left;
+    @include text("left", "", "", "", "");
 }
 
 #content .slideshow .prevPic {
@@ -2881,22 +2645,16 @@ input.button_black:hover {
 	margin: 0;
 	padding: 0 0 0 0;
 	display: block;	
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	text-transform: uppercase;
-	font-size: 18px;
+    @include font("Arial, sans-serif", "normal", "18px", "");
+    @include text("", "uppercase", "", "", "");
 }
 #content .kontaktformularOpener p.link_open {
-	background-repeat: no-repeat;
-	background-position: right;
-	background-image: url(../../images/layout/link_arrow_down.png);
+    @include background("../../images/layout/link_arrow_down.png", "no-repeat", "right", "", "");
 	width: 200px;
 	display: none;
 }
 #content .kontaktformularOpener p.link_close {
-	background-repeat: no-repeat;
-	background-position: right;
-	background-image: url(../../images/layout/link_arrow_up.png);
+    @include background("../../images/layout/link_arrow_up.png", "no-repeat", "right", "", "");
 	width: 230px;
 	display: none;
 }
@@ -2905,57 +2663,47 @@ input.button_black:hover {
 	margin: 0 20px;
 	padding: 0 0 0 0;
 	display: none;
-	border-top: 1px solid #b1b1b1;	
+	border-top: 1px solid $light_grey;	
 }
 #content .kontaktformular p.label {
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
-	text-transform: uppercase;
-	color: #000000;
+    @include font("Arial, Helvetica, sans-serif", "normal", "14px", "");
+    @include text("", "uppercase", "", "", "");
+	color: $black;
 	margin: 0;
 	padding: 5px 0 0 0;
 }
 #content .kontaktformular p.form {
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
-	text-transform: uppercase;
-	color: #000000;
+    @include font("Arial, Helvetica, sans-serif", "normal", "14px", "");
+    @include text("", "uppercase", "", "", "");
+	color: $black;
 	margin: 0 0 15px 0;
 	padding: 0;
 }
 #content .kontaktformular p.button {
-	text-align: center;
+    @include text("center", "", "", "", "");
 }
 #content .kontaktformular input {
 	width: 96%;
-	border: 1px solid #b1b1b1;
-	background-color: #ebebeb;
+	border: 1px solid $light_grey;
 	padding: 5px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
+    @include background("", "", "", "#ebebeb", "");
+    @include font("Arial, Helvetica, sans-serif", "normal", "14px", "");
 }
 #content .kontaktformular textarea {
 	width: 96%;
 	height: 120px;
-	border: 1px solid #b1b1b1;
-	background-color: #ebebeb;
+	border: 1px solid $light_grey;
 	padding: 5px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
+    @include background("", "", "", "#ebebeb", "");
+    @include font("Arial, Helvetica, sans-serif", "normal", "14px", "");
 }
 #content .kontaktformular input.submitButton {
 	width: 185px;
-	background-color: #191919;
+    @include background("", "", "", $black_cust2, "");
+    @include font("Arial, Helvetica, sans-serif", "normal", "14px", "");
+    @include text("", "uppercase", "", "", "");
 	padding: 12px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: normal;
-	font-size: 14px;
-	color: #FFFFFF;
-	text-transform: uppercase;
+	color: $white;
 	cursor: pointer;
 }
 #content .kontaktformularOpener p.active {
@@ -2967,16 +2715,13 @@ input.button_black:hover {
 #content .dateBox {
 	margin-bottom: 20px;
 	min-width: 250px;
-	background-color:#191919;
+    @include background("", "", "", $black_cust2, "");
 	padding: 15px;
 }
 #content .dateBox h1 {
-	text-align: center;
-	font-family: 'Cabin', sans-serif;
-	font-weight:bold;
-	font-size: 18px;
-	text-transform: uppercase;
-	color: #FFFFFF;
+    @include text("center", "uppercase", "", "", "");
+    @include font("Cabin, sans-serif", "bold", "18px", "");
+	color: $white;
 	border-bottom: 2px #464646 solid;
 	margin: 5px 0 0 0;
 	padding: 0 0 10px 0;
@@ -2992,33 +2737,29 @@ input.button_black:hover {
 	padding: 0;
 }
 #content .dateBox ul li a {
-	color: #FFFFFF;
-	text-decoration: none;
+	color: $white;
+    @include text("", "", "none", "", "");
 }
 #content .dateBox ul li a:hover {
-	color: #ffd200;
+	color: $hover_menue;
 }
 #content .dateBox ul li h2 {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #9a0000;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $dark_red;
 	margin: 10px 0 5px 0;
 	padding: 0;
 }
 #content .dateBox ul li a p {
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #FFFFFF;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $white;
 	margin: 0 0 10px 0;
 	padding: 0;
 }
 #content .dateBox ul li a:hover p {
-	color: #ffd200;
+	color: $hover_menue;
 }
 #content .dateBox ul li a:hover h2 {
-	color: #ffd200;
+	color: $hover_menue;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -3052,7 +2793,7 @@ input.button_black:hover {
 }
 #content .TeaserListe li {
 	width: 310px;
-	background-color:#FFF;
+    @include background("", "", "", $white, "");
 	margin: 0 25px 20px 0;
 	padding: 0 0 15px 0;	
 	float: left;
@@ -3066,11 +2807,11 @@ input.button_black:hover {
 }
 
 #content .TeaserListe a li:hover {
-	background-color:#ffd200;
+    @include background("", "", "", $hover_menue, "");
 }
 
 #content .TeaserListe li figure {
-	text-align: left;
+    @include text("left", "", "", "", "");
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
 	margin: 0px;
@@ -3079,30 +2820,23 @@ input.button_black:hover {
 #content .TeaserListe li h1 {
 	margin: 10px 0 0 15px;
 	padding: 0;
-	text-decoration: none;
-	font-family: 'Cabin', Arial, sans-serif;
-	text-transform: uppercase;
-	font-weight:bold;
-	color: #121212;
-	font-size: 18px;
+    @include text("", "uppercase", "none", "", "");
+    @include font("Cabin, Arial, sans-serif", "bold", "18px", "");
+	color: $black_cust;
 }
 #content .TeaserListe li h2 {
 	margin: 0 0 15px 15px;
 	padding: 0;
-	text-decoration: none;
-	font-family: Arial, sans-serif;
-	font-weight:bold;
-	font-size: 12px;
-	color: #121212;
+    @include text("", "", "none", "", "");
+    @include font("Arial, sans-serif", "bold", "12px", "");
+	color: $black_cust;
 }
 #content .TeaserListe li p {
 	margin: 0 15px 0 15px;
 	padding: 0;
-	text-decoration: none;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #474747;
+    @include text("", "", "none", "", "");
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $dark_grey;
 }
 #content .TeaserListe li .abzeichen {
 	margin: -33px 0 0 5px;
@@ -3129,8 +2863,8 @@ input.button_black:hover {
 	
 	#content .TeaserListe {	margin-top: 30px; }
     #content .TeaserListe li.text { height: 200px; }
-	#content .TeaserListe li h1 { font-size: 14px; }
-	#content .TeaserListe li h2 { font-size: 11px; }
+	#content .TeaserListe li h1 { @include font("", "", "14px", ""); }
+	#content .TeaserListe li h2 { @include font("", "", "11px", ""); }
 	#content .TeaserListe li .abzeichen { width: 40px; margin: -33px 0 0 5px; }
 	#content .TeaserListe li .abzeichen { top: 100%; left: 1%; }
 }
@@ -3140,7 +2874,7 @@ input.button_black:hover {
 	#content .TeaserListe li .abzeichen { width: 50px; margin: -43px 0 0 5px; }
 	#content .TeaserListe li { width: 100%; margin: 0 0 20px 0; }
     #content .TeaserListe li.text { height: auto; }
-	#content .TeaserListe li h1 { font-size: 18px; }
+	#content .TeaserListe li h1 { @include font("", "", "18px", ""); }
 
 }
 
@@ -3149,7 +2883,7 @@ input.button_black:hover {
 
 #content #MainContent .BildTextTeaser {
 	width: 313px;
-	background-color:#FFF;
+    @include background("", "", "", $white, "");
 	margin: 0 0px 0 0;	
 	float: left;
 	box-shadow: 1px 1px 2px #d9d9d9;	
@@ -3163,33 +2897,26 @@ input.button_black:hover {
 }
 
 #content #MainContent .BildTextTeaser figure {
-	text-align: center;
+    @include text("center", "", "", "", "");
 	margin: 10px;
 }
 #content #MainContent .BildTextTeaser h1 {
-	text-align: center;
+    @include text("center", "", "", "", "");
+    @include font("Cabin, sans-serif", "bold", "18px", "");
 	margin: 10px;
-	font-family: 'Cabin', sans-serif;
-	font-weight:bold;
-	font-size: 18px;
-	color: #121212;
+	color: $black_cust;
 }
 #content #MainContent .BildTextTeaser h2 {
-	text-align: center;
+    @include text("center", "uppercase", "", "", "");
+    @include font("Cabin, sans-serif", "bold", "12px", "");
 	margin: -8px 0 15px 0;
-	font-family: 'Cabin', sans-serif;
-	font-weight:bold;
-	text-transform: uppercase;
-	font-size: 12px;
-	color: #474747;
+	color: $dark_grey;
 }
 #content #MainContent .BildTextTeaser p {
-	text-align: center;
+    @include text("center", "", "", "", "");
+    @include font("Arial, sans-serif", "normal", "12px", "");
 	margin: 10px;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #121212;
+	color: $black_cust;
 }
 #content #MainContent .BildTextTeaser p.more {
 	margin: 20px 0 20px 0;
@@ -3203,57 +2930,45 @@ input.button_black:hover {
 	list-style: none;	
 }
 #content #MainContent ul.news a {
-	text-decoration: none;	
+    @include text("", "", "none", "", "");
 }
 #content #MainContent ul.news li {
 	padding: 10px;
 	margin: 0 0 1px 0;
 	width: auto;
-	background-color: #FFF;
+    @include background("../../images/layout/more_button_mobile.png", "no-repeat", "98%", $white, "");
 	box-shadow: 1px 1px 2px #d9d9d9;
-    background-image: url(../../images/layout/more_button_mobile.png);
-    background-repeat:no-repeat;
-    background-position: 98%;	
 }
-#content #MainContent ul.news li:hover { background-color: #ebebeb; }
+#content #MainContent ul.news li:hover { @include background("", "", "", "#ebebeb", ""); }
 #content #MainContent ul.news li h1 {
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 18px;
-	color: #121212;
+    @include font("Arial, sans-serif", "normal", "18px", "");
+    @include text("", "normal", "", "", "");
+	color: $black_cust;
 	margin: 5px 0 0 0;
 }
 #content #MainContent ul.news li h2 {
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 11px;
-	color: #121212;
+    @include font("Arial, sans-serif", "normal", "11px", "");
+    @include text("", "normal", "", "", "");
+	color: $black_cust;
 	margin: 0 0 0 0;
 }
 #content #MainContent ul.news li h2 .date {
-	color: #9a0000;
-	font-weight: bold;	
+	color: $dark_red;
+	@include font("", "bold", "", "");	
 }
 #content #MainContent ul.news li p {
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 12px;
-	color: #121212;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+    @include text("", "normal", "", "", "");
+	color: $black_cust;
     margin: 0 5% 0 0;
 }
 
 /* --------] SideBar - Statistic [-------- */
 
 #content #SidebarContent h1 {
-	text-align: center;
-	font-family: 'Cabin', sans-serif;
-	font-weight:bold;
-	font-size: 18px;
-	text-transform: uppercase;
-	color: #FFFFFF;
+    @include text("center", "uppercase", "", "", "");
+    @include font("Cabin, sans-serif", "bold", "18px", "");
+	color: $white;
 	border-bottom: 2px #464646 solid;
 	padding: 5px 0 10px 0;
 	margin: 70px 15px 0 15px;
@@ -3268,29 +2983,20 @@ input.button_black:hover {
 	margin: 0 0 30px 0;
 }
 #content #SidebarContent .textTeaser p {
-	text-align: center;
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 12px;
-	color: #FFFFFF;
+	@include font("Arial, sans-serif", "normal", "12px", "");
+    @include text("center", "normal", "", "", ""); 
+	color: $white;
 	padding: 0 20px;
 }
 #content #SidebarContent .textTeaser h2 {
-	text-align: center;
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: bold;
-	font-size: 14px;
-	color: #FFFFFF;
+    @include font("Arial, sans-serif", "bold", "14px", "");
+    @include text("center", "normal", "", "", "");
+	color: $white;
 }
 #content #SidebarContent .textTeaser a {
-	text-align: center;
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 12px;
-	color: #FFFFFF;
+    @include text("center", "normal", "", "", "");
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $white;
 }
 #content #SidebarContent .textTeaser ul {
 	list-style: none;
@@ -3304,52 +3010,44 @@ input.button_black:hover {
 #content #SidebarContent .textTeaser ul li p {
 	margin: 0 0 0 0;
 	padding: 0 0 0 0;
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 12px;
-	color: #b1b1b1;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+    @include text("", "normal", "", "", "");
+	color: $light_grey;
 }
 #content #SidebarContent .textTeaser ul li p span.platzierung {
-	color: #FFFFFF;
-	font-weight: bold;
+	color: $white;
+    @include font("", "bold", "", "");
 }
 #content #SidebarContent .textTeaser ul li h2 {
-	font-family: 'Cabin', Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 16px;
+    @include font("Cabin, Arial, sans-serif", "normal", "16px", "");
+    @include text("", "normal", "", "", "");
 	margin: 15px 0 5px 0;
 	padding: 0 0 0 0;
-	color: #FFFFFF;
+	color: $white;
 }
-#content #SidebarContent .textTeaser a:hover { color: #ffd200; }
-#content #SidebarContent .textTeaser a:focus { color: #ffd200; }
+#content #SidebarContent .textTeaser a:hover { color: $hover_menue; }
+#content #SidebarContent .textTeaser a:focus { color: $hover_menue; }
 
 
 /* --------] SideBar - Address [-------- */
 
 #content #SidebarContent .address p {
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 12px;
-	color: #FFFFFF;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+    @include text("", "normal", "", "", "");
+	color: $white;
 	padding: 0 30px;
 }
 #content #SidebarContent .address ul {
 	list-style: none;
 	margin: 0 30px;
 	padding: 0;
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 12px;
-	color: #FFFFFF;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+    @include text("", "normal", "", "", "");
+	color: $white;
 }
 #content #SidebarContent .address ul li {
 	height: 18px;
-	background-repeat: no-repeat;	
+    @include background("", "no-repeat", "", "", "");
 	padding: 0 0 0 25px;
 	margin: 4px 0 0 0;
 }
@@ -3359,29 +3057,23 @@ input.button_black:hover {
 #content #SidebarContent .address ul li.pdf { background-image: url(../../images/icons/pdf_mini.png); }
 
 #content #SidebarContent .address h2 {
-	text-align: center;
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: bold;
-	font-size: 14px;
-	color: #FFFFFF;
+    @include text("center", "normal", "", "", "");
+    @include font("Arial, sans-serif", "bold", "14px", "");
+	color: $white;
 }
 
 #content #SidebarContent .address a {
-	text-align: center;
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 12px;
-	color: #FFFFFF;
+    @include text("center", "normal", "", "", "");
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $white;
 }
-#content #SidebarContent .address a:hover { color: #ffd200; }
-#content #SidebarContent .address a:focus { color: #ffd200; }
+#content #SidebarContent .address a:hover { color: $hover_menue; }
+#content #SidebarContent .address a:focus { color: $hover_menue; }
 
 /* --------] SideBar - Statistic [-------- */
 
 #content #SidebarContent .statistic p {
-	text-align: center;
+    @include text("center", "", "", "", "");
 }
 #content #SidebarContent .statistic table {
 	width: 265px;
@@ -3389,25 +3081,19 @@ input.button_black:hover {
 }
 #content #SidebarContent .statistic td {
 	width: 240px;
-	text-align: left;
+    @include text("left", "normal", "", "", "");
 	border-bottom: 1px #464646 solid;
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 12px;
-	color: #FFFFFF;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $white;
 	padding: 5px 0 5px 0;
 	margin: 0;
 }
 #content #SidebarContent .statistic td.value {
 	width: 25px;
-	text-align: right;
+    @include text("right", "normal", "", "", "");
 	border-bottom: 1px #464646 solid;
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 12px;
-	color: #9a0000;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $dark_red;
 }
 
 /* --------] SideBar - Dates [-------- */
@@ -3428,28 +3114,22 @@ input.button_black:hover {
 	border-bottom: 1px #464646 solid;	
 }
 #content #SidebarContent .dates ul li h3 {
-	text-align: center;
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 11px;
-	color: #b1b1b1;
+    @include text("center", "normal", "", "", "");
+    @include font("Arial, sans-serif", "normal", "11px", "");
+	color: $light_grey;
 	margin: 10px 0 0 0;
 }
 #content #SidebarContent .dates ul li h3 span.date {
-	color: #9a0000;
+	color: $dark_red;
 }
 #content #SidebarContent .dates ul li h2 {
-	text-align: center;
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 14px;
-	color: #FFFFFF;
+    @include text("center", "normal", "", "", "");
+    @include font("Arial, sans-serif", "normal", "14px", "");
+	color: $white;
 	margin: 5px 0 10px 0;
 }
 #content #SidebarContent .dates .more {
-	text-align: center;
+    @include text("center", "", "", "", "");
 }
 
 /* --------] SideBar - Fahrzeuge [-------- */
@@ -3479,19 +3159,15 @@ input.button_black:hover {
 	float: left;
 }
 #content .SBfahrzeugListe ul li h2 {
-	font-family: 'Cabin', Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 20px;
-	color: #FFFFFF;
+    @include font("Cabin, Arial, sans-serif", "normal", "20px", "");
+    @include text("", "normal", "", "", "");
+	color: $white;
 	margin: 20px 0 0 0;
 }
 #content .SBfahrzeugListe ul li h3 {
-	font-family: 'Cabin', Arial, sans-serif;
-	text-transform: uppercase;
-	font-weight: normal;
-	font-size: 11px;
-	color: #b1b1b1;
+    @include font("Cabin, Arial, sans-serif", "normal", "11px", "");
+    @include text("", "uppercase", "", "", "");
+	color: $light_grey;
 	margin: 0 0 0 0;
 }
 
@@ -3512,11 +3188,9 @@ input.button_black:hover {
 	padding: 0 0 10px 0;
 	width: 100%;
 	border-bottom: 1px #464646 solid;	
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 12px;
-	color: #FFFFFF;
+    @include font("Arial, sans-serif", "normal", "12px", "");
+    @include text("", "normal", "", "", "");
+	color: $white;
 }
 
 
@@ -3527,7 +3201,7 @@ input.button_black:hover {
 }
 #content #SidebarContent .weather .wrapper {
 	width: 265px;
-	text-align:center;
+    @include text("center", "", "", "", "");
 	margin: 10px 0 0 0;
 }
 #content #SidebarContent .weather div.icon {
@@ -3539,34 +3213,25 @@ input.button_black:hover {
 	float: left;
 }
 #content #SidebarContent .weather div.text p.grad {
-	text-align: center;
-	font-family: 'Cabin', sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 48px;
-	color: #FFFFFF;
+    @include text("center", "normal", "", "", "");
+    @include font("Cabin, sans-serif", "normal", "48px", "");
+	color: $white;
 	margin: 5px 0 10px 0;
 }
 #content #SidebarContent .weather div.text p.grad span.celsius {
-	text-align: center;
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 18px;
-	color: #FFFFFF;
+    @include text("center", "normal", "", "", "");
+    @include font("Arial, sans-serif", "normal", "18px", "");
+	color: $white;
 	margin: 5px 0 10px 0;
 }
 #content #SidebarContent .weather div.text p.status {
-	text-align: center;
-	font-family: Arial, sans-serif;
-	text-transform: normal;
-	font-weight: normal;
-	font-size: 14px;
-	color: #9a0000;
+    @include text("center", "normal", "", "", "");
+    @include font("Arial, sans-serif", "normal", "14px", "");
+	color: $dark_red;
 	margin: 5px 0 10px 0;
 }
 #content #SidebarContent .weather .more {
-	text-align: center;
+    @include text("center", "", "", "", "");
 }
 
 /* ---------------- */
@@ -3606,12 +3271,18 @@ input.button_black:hover {
 
 @media only screen and (max-width: 810px) {
 	#content .SBfahrzeugListe figure { width: 30%; }
-	#content .SBfahrzeugListe ul li h2 { font-size: 18px; margin: 15px 0 0 0; }
-	#content .SBfahrzeugListe ul li h3 { font-size: 11px; margin: 0 0 5px 0;}
+	#content .SBfahrzeugListe ul li h2 { 	   
+       @include font("", "", "18px", "");
+       margin: 15px 0 0 0; 
+    }
+	#content .SBfahrzeugListe ul li h3 { 	   
+       @include font("", "", "11px", "");
+       margin: 0 0 5px 0;
+    }
 }
 
 @media only screen and (max-width: 730px) {
-	#content .SBfahrzeugListe ul { text-align: center; }
+	#content .SBfahrzeugListe ul { @include text("center", "", "", "", ""); }
 	#content .SBfahrzeugListe ul li .info { width: 100%; }
 	#content .SBfahrzeugListe figure { width: 100%; }
 	#content .SBfahrzeugListe ul li h2 { margin: 5px 0 0 0; }
@@ -3626,7 +3297,7 @@ input.button_black:hover {
 		position: static;
 	}
 	#content #slider li a  {
-		background-color: #b1b1b1;	
+        @include background("", "", "", $light_grey, "");
 	}
 }
 
@@ -3637,29 +3308,25 @@ input.button_black:hover {
 
 #endOfPage {
 	width: 100%;
-	background-color: #191919;
+    @include background("", "", "", $black_cust2, "");
 	margin-top: 30px;
 }
 
 #endOfPage #share {
-    width: 100%;
-	text-align: center;
-	border-bottom: 1px #464646 solid;
-	background-color: #191919;
+	width: 100%;
+	border-bottom: 1px $middle_grey solid;
+    @include background("", "", "", $black_cust2, "");
 }
 
 #endOfPage #shortlinks {
 	width: 100%;
-	/* border-bottom: 1px #464646 solid;*/
-	background-color: #191919;
+	/* border-bottom: 1px $middle_grey solid; */
+    @include background("", "", "", $black_cust2, "");
 }
 #endOfPage #shortlinks h1 {
-	text-align: center;
-	font-family: 'Cabin', sans-serif;
-	text-transform: uppercase;
-	font-weight: normal;
-	font-size: 24px;
-	color: #FFFFFF;
+    @include text("left", "uppercase", "", "", "");
+    @include font("Cabin, sans-serif", "normal", "24px", "");
+	color: $white;
 	padding: 30px 0 0 0;
 }
 
@@ -3668,10 +3335,10 @@ input.button_black:hover {
 	padding: 0;
 	margin: 15px auto 30px auto;
 	list-style: none;	
-	text-align: center;
+    @include text("center", "", "", "", "");
 }
 #endOfPage #shortlinks ul li {
-	border-left: 1px #FFF solid;
+	border-left: 1px $white solid;
 	display: inline-block;	
 }
 #endOfPage #shortlinks ul li.first {
@@ -3679,17 +3346,14 @@ input.button_black:hover {
 }
 #endOfPage #shortlinks ul li a {
 	height: 16px;
-	text-transform: normal;
-	text-decoration: none;
-	color: #9a0000;
+    @include text("", "normal", "none", "", "");
+    @include font("", "normal", "14px", "normal");
+	color: $dark_red;
 	padding: 0 10px 0 10px;
-	display: block;
-	font-size: 14px;
-	font-style: normal;
-	font-weight: normal;
+	display: block;	   
 }
 #endOfPage #shortlinks ul li a:hover {
-	color: #ffd200;
+	color: $hover_menue;
 }
 
 
@@ -3699,7 +3363,7 @@ input.button_black:hover {
 #endOfPage #sitemap .completeSitemap .sitemapBox {
 	max-width: 980px;
 	margin: 0 auto;
-	text-align: center;
+    @include text("center", "", "", "", "");
 }
 
 #endOfPage #sitemap .smallSitemap {
@@ -3709,7 +3373,7 @@ input.button_black:hover {
     padding: 0;
 	margin: 0 25px 0 25px;
 	list-style: none;	
-	text-align: center;
+    @include text("center", "", "", "", "");
 	display: inline-block;
 	vertical-align: top;
 
@@ -3721,20 +3385,17 @@ input.button_black:hover {
 	margin: 30px 0 20px 0;
 }
 #endOfPage #sitemap ul li a {
-	text-transform: normal;
-	text-decoration: none;
-	color: #FFFFFF;
-	padding: 0 10px 0 10px;
-	font-size: 12px;
-	font-style: normal;
-	font-weight: normal;
+    @include text("", "normal", "none", "", "");
+    @include font("", "normal", "12px", "normal");
+	color: $white;
+	padding: 0 10px 0 10px;	   
 }
 #endOfPage #sitemap ul li.headline a {
-	text-transform: uppercase;
-	color: #b1b1b1;
+    @include text("", "uppercase", "", "", "");
+	color: $light_grey;
 }
 #endOfPage #sitemap ul li a:hover {
-	color: #ffd200;
+	color: $hover_menue;
 }
 
 
@@ -3744,11 +3405,9 @@ input.button_black:hover {
 }
 
 #endOfPage #copyright p {
-	text-align: center;
-	font-family: Arial, sans-serif;
-	font-weight: normal;
-	font-size: 12px;
-	color: #6b6b6b;
+    @include text("center", "", "", "", ""); 
+    @include font("Arial, sans-serif", "normal", "12px", "");
+	color: $middle_grey;
 	padding: 0 10px 0 10px;
 	margin: 0;
 }
@@ -3762,28 +3421,25 @@ input.button_black:hover {
 	#endOfPage #sitemap .smallSitemap {
 		width: 100%;
 		display: block;
-		text-align:center;
+        @include text("center", "", "", "", "");
 		margin: 30px 0 0 0;
 	}
 	#endOfPage #sitemap .smallSitemap a {
-		text-transform: uppercase;
-		text-decoration: none;
-		color: #b1b1b1;
-		padding: 0 2% 0 2%;
-		font-size: 12px;
-		font-style: normal;
-		font-weight: normal;
+        @include text("", "uppercase", "none", "", "");
+        @include font("", "normal", "12px", "normal");
+		color: $light_grey;
+		padding: 0 2% 0 2%;	   
 	}
 	#endOfPage #sitemap .smallSitemap a:hover {
-		color: #ffd200;
+		color: $hover_menue;
 	}
-
+ 
 }
 
 @media only screen and (max-width: 600px) {
 
-	#endOfPage #shortlinks h1 {
-		font-size: 18px;
+	#endOfPage #shortlinks h1 {	   
+        @include font("", "", "18px", "");
 	}
 
 }
@@ -3798,7 +3454,7 @@ input.button_black:hover {
 	#endOfPage #shortlinks ul li {
 		width: 100%;
 		border: 0;
-		text-align: center;
+        @include text("center", "", "", "", "");
 		margin: 0 auto 5px auto;
 		clear: left;
 	}

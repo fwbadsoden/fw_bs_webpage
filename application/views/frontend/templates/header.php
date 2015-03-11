@@ -58,41 +58,44 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 
 <!-- socialshareprivacy -->
-<script type="text/javascript" src="<?=base_url('js/socialshareprivacy/socialshareprivacy.js')?>"></script>
-<script type="text/javascript" src="<?=base_url('js/socialshareprivacy/modules/facebook.js')?>"></script>
-<script type="application/x-social-share-privacy-settings"> {
-    "info_link":"http://www.heise.de/extras/socialshareprivacy/",
-    "path_prefix":"",
-    "language":"de",
-    "layout":"box",
-    "css_path":"<?=base_url("css/frontend/socialshareprivacy/socialshareprivacy.css")?>",
-    "uri":"http://www.feuerwehr-bs.de",
-    "services": { 
-        "facebook": {
-		  'dummy_line_img'    : '<?=base_url("images/layout/socialshareprivacy/de/dummy_facebook.png")?>',
-		  'dummy_box_img'     : '<?=base_url("images/layout/socialshareprivacy/de/dummy_box_facebook.png")?>'
-        },
-        "buffer": {"status":false },
-        "delicious": {"status":false },
-        "disqus": {"status":false },
-        "fbshare": {"status":false },
-        "flattr": {"status":false },
-        "gplus": {"status":false },
-        "hackernews": {"status":false},
-        "linkedin":{"status":false},
-        "mail":{"status":false},
-        "pinterest":{"status":false},
-        "reddit":{"status":false},
-        "stumbleupon":{"status":false},
-        "tumblr":{"status":false},
-        "twitter":{"status":false},
-        "xing":{"status":false}
-    } }
-</script>
+<script type="text/javascript" src="<?=base_url('js/socialshareprivacy/jquery.socialshareprivacy.min.js')?>"></script>
+<script type="text/javascript" src="<?=base_url('js/socialshareprivacy/jquery.socialshareprivacy.min.de.js')?>"></script>
+
 <script type="text/javascript">
-$(document).ready(function () {
-    $('.share').socialSharePrivacy();
-});
+$(document).ready(function () {    
+    if($('#share').length > 0) {
+        $('#share').socialSharePrivacy({
+            
+            "path_prefix"       : "js/socialshareprivacy/",
+            "info_link_target"  : "_blank",
+            "uri"               : "https://www.facebook.com/feuerwehr.badsoden",
+            "services" : {
+                "facebook"      : {
+                    "dummy_line_img"    : "images/de/dummy_facebook.png",
+                    "dummy_box_img"     : "images/de/dummy_box_facebook.png"
+                },
+                "buffer"        : {"status":false },
+                "delicious"     : {"status":false },
+                "disqus"        : {"status":false },
+                "fbshare"       : {"status":false },
+                "flattr"        : {"status":false },
+                "gplus"         : {"status":false },
+                "hackernews"    : {"status":false},
+                "linkedin"      :{"status":false},
+                "mail"          :{"status":false},
+                "pinterest"     :{"status":false},
+                "reddit"        :{"status":false},
+                "stumbleupon"   :{"status":false},
+                "tumblr"        :{"status":false},
+                "twitter"       :{"status":false},
+                "xing"          :{"status":false}
+            },
+            "css_path"  : "socialshareprivacy.css",
+            "language"  : "de"
+            
+        });
+    }
+});    
 </script>
 <!-- socialshareprivacy END -->
 
