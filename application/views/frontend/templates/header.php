@@ -66,13 +66,13 @@ $(document).ready(function () {
     if($('#share').length > 0) {
         $('#share').socialSharePrivacy({
             
-            "path_prefix"       : "js/socialshareprivacy/",
+            "path_prefix"       : "http://feuerwehr-bs.de/js/socialshareprivacy/",
             "info_link_target"  : "_blank",
             "uri"               : "https://www.facebook.com/feuerwehr.badsoden",
             "services" : {
                 "facebook"      : {
                     "dummy_line_img"    : "images/de/dummy_facebook.png",
-                    "dummy_box_img"     : "images/de/dummy_box_facebook.png"
+                    "dummy_box_img"     : "images/de/dummy_facebook.png"
                 },
                 "buffer"        : {"status":false },
                 "delicious"     : {"status":false },
