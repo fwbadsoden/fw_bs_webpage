@@ -118,7 +118,7 @@
 			<div class="textTeaser">    
 				<h1>Interesse bekommen?</h1>
 				<p>Dann bist Du herzlich eingeladen, einfach bei uns vorbei zu schauen.</p>
-                <p>Wir treffen uns alle 14 Tage Dienstags ab 17:30 Uhr in der Feuerwehr Bad Soden.</p>
+                <p>Wir treffen uns alle 14 Tage dienstags ab 17:00 Uhr in der Feuerwehr Bad Soden.</p>
 			</div>
         </div>
     <hr class="clear" />   
