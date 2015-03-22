@@ -9,7 +9,26 @@
                     Dazu zählt am Ende eines jeden Dienstes das Ritual, bei dem die Kinder sich gegenseitig die Hand abklatschen müssen. 
                 </p>
             </div>
-           <hr class="clear" />  
+           <hr class="clear" /> 
+           
+           <h1 class="module">Minifeuerwehr besucht die Rettungshunde</h1>
+            <div class="article">
+                <p>
+                	Das letzte Treffen der Minifeuerwehr wurde von den Kindern sehnsüchtig erwartet - die Rettungshunde sollten besucht werden.
+                </p>
+                <p><img src="<?=base_url('images/content/content_minis/mfw_rettungshunde_001.jpg')?>" /></p>
+                <p>
+                    Auf dem Programm stand zunächst eine kleine theoretische Einheit über die Besonderheiten der Hundenase, die lange Ausbildung für Mensch und Hund und nicht zuletzt eine Vorstellung unserer Hunde und Hundeführer.
+                </p>
+                <p><img src="<?=base_url('images/content/content_minis/mfw_rettungshunde_002.jpg')?>" /></p>
+                <p>
+                    Sich selbst zu verstecken, von den Vierbeinern finden zu lassen und die gute Arbeit dann mit Leckerlis zu belohnen war das Grösste für die Minifeuerwehrler.
+Auch wie mutig sich die Hunde im speziellen Geschirr von der Drehleiter in die Höhe ziehen lassen, wurde bestaunt. 
+                </p>
+                <p><img src="<?=base_url('images/content/content_minis/mfw_rettungshunde_003.jpg')?>" /></p>
+			</div>
+           <hr class="clear" /> 
+           
         	<h1 class="module">Erster Übungsdienst der Minifeuerwehr Bad Soden am 09.09.2014</h1>
             <div class="article">
                 <p>
