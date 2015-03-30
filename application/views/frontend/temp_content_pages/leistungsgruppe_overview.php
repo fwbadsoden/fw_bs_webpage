@@ -40,7 +40,7 @@
                     Besonderes Augenmerk wird auf die Einhaltung der geltenden Dienstvorschriften und die saubere Abwicklung der Funkgespräche und Rückmeldungen gelegt.
                 </p>
                 <p>
-                    2014 wurde die Feuerwehr Bad Soden wieder Kreismeister und wird den Main-Taunus-Kreis auf Bezirksebene in Freigericht-Horbach vertreten.
+                    Auch 2015 wird die Mannschaft der Leistungsgruppe bei den Wettbewerben antreten. Der erste Entscheid findet am 17.05.2015 in Wiesbaden Nordenstadt an der dortigen Taunushalle (Heerstraße 60) ab 9 Uhr statt.
                 </p>
             </div>
             
