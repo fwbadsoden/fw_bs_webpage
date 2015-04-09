@@ -51,12 +51,17 @@
                 <h1 class="name">Linda Pastor-Moreno</h1>
                 <h2 class="titel">stellv. Minifeuerwehrwartin</h2>
            </div>
-        	<div class="BildTextTeaser">
+        	<div class="BildTextTeaser first">
             	<figure><img src="<?=base_url('images/content/mannschaft/dummy.jpg')?>" /></figure>
                 <h1 class="name">Simona Gabriel</h1>
                 <h2 class="titel">Betreuer</h2>
            </div>
         	<div class="BildTextTeaser">
+            	<figure><img src="<?=base_url('images/content/mannschaft/203557E6DB32D6A15683F3D7B67BCA48.jpg')?>" /></figure>
+                <h1 class="name">Alexander Hahn</h1>
+                <h2 class="titel">Betreuer</h2>
+           </div>
+        	<div class="BildTextTeaser first">
             	<figure><img src="<?=base_url('images/content/mannschaft/23DBA1BD9E1FC2096E8299518FAA6EF4.jpg')?>" /></figure>
                 <h1 class="name">Tatjana Langolf</h1>
                 <h2 class="titel">Betreuer</h2>
@@ -66,7 +71,7 @@
                 <h1 class="name">Jonathan Raschke</h1>
                 <h2 class="titel">Betreuer</h2>
            </div>
-        	<div class="BildTextTeaser">
+        	<div class="BildTextTeaser first">
             	<figure><img src="<?=base_url('images/content/mannschaft/05774FA9E5BA2C72941E70B3B3C394DC.jpg')?>" /></figure>
                 <h1 class="name">Philipp Röschinger</h1>
                 <h2 class="titel">Betreuer</h2>
@@ -76,7 +81,7 @@
                 <h1 class="name">Dominik von Heißen</h1>
                 <h2 class="titel">Betreuer</h2>
            </div>
-        	<div class="BildTextTeaser">
+        	<div class="BildTextTeaser first">
             	<figure><img src="<?=base_url('images/content/mannschaft/NDEwMTE5MmMzMjUxMjY3ODM1ZjI0NmMxY2I4OTY5Mjk0ZjI0YmRhYmRjMzdiMWY4MmE0NTZlMWExYjc0ZTdlZTg1NWRjMjBiNjBjOGZiMTYxYzEwOGZmMjhjNjIyYThkZjYwYmQ1NmM2YmU0MDIwOTlkMmYyYTdiZjFkODIyMjc.JPG')?>" /></figure>
                 <h1 class="name">Tobias Wagner</h1>
                 <h2 class="titel">Betreuer</h2>
