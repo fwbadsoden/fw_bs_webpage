@@ -40,7 +40,7 @@
                     Besonderes Augenmerk wird auf die Einhaltung der geltenden Dienstvorschriften und die saubere Abwicklung der Funkgespräche und Rückmeldungen gelegt.
                 </p>
                 <p>
-                    Auch 2015 wird die Mannschaft der Leistungsgruppe bei den Wettbewerben antreten. Der erste Entscheid findet am 17.05.2015 in Wiesbaden Nordenstadt an der dortigen Taunushalle (Heerstraße 60) ab 9 Uhr statt.
+                    Auch 2015 tritt die Mannschaft der Leistungsgruppe bei den Wettbewerben an. Den Kreisentscheid am 17.05.2015 in Wiesbaden Nordenstadt sowie den Bezirksentscheid am 27.06.2015 in Liederbach am Taunus konnte bereits gewonnen werden. Somit tritt die Mannschaft am 13.09.2015 zum „Endspiel", dem Landesentscheid, in Lorsch (Landkreis Bergstraße) an.
                 </p>
             </div>
             
@@ -139,6 +139,7 @@
                     	<h2>2015</h2>
                         <p><span class="platzierung">1. Platz</span> auf Kreisebene<br />Bad Soden 1</p>
                         <p><span class="platzierung">4. Platz</span> auf Kreisebene<br />Bad Soden 2</p>
+                        <p><span class="platzierung">1. Platz</span> auf dem Bezirksentscheid<br />in Liederbach am Taunus</p>
                     </li>
                 	<li>
                     	<h2>2014</h2>
