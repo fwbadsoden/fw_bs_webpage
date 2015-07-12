@@ -11,6 +11,21 @@
             </div>
            <hr class="clear" /> 
            
+           <h1 class="module">Die Minifeuerwehr auf der Atemschutzstrecke</h1>
+            <div class="article">
+                <p>
+                	Beim letzten Dienst besuchten die Minifeuerwehrler die Atemschutzstrecke in Hochheim. 
+                    Nach einer ausführlichen Lehreinheit über das Thema Atemschutz, mussten unsere jüngsten Feuerwehrmänner -und frauen in Zweierteams ganz wie ihre großen Kameraden durch die Strecke. 
+                </p>
+                <p><img src="<?=base_url('images/content/content_minis/mfw_agt_001.jpg')?>" /></p>
+                <p>
+                    Um den ersten Streckendurchgang zu erleichtern, wurde natürlich auf Atemschutzgeräte, Dunkelheit und Verrauchung verzichtet. 
+                    Dennoch war der Spaß groß und ein erster Vorgeschmack auf das Feuerwehrleben gegeben.
+                </p>
+                <p><img src="<?=base_url('images/content/content_minis/mfw_agt_002.jpg')?>" /></p>
+			</div>
+           <hr class="clear" /> 
+           
            <h1 class="module">Minifeuerwehr besucht die Rettungshunde</h1>
             <div class="article">
                 <p>
