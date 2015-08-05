@@ -135,10 +135,161 @@ class Maintenance extends CP_Controller {
         $this->load->view('backend/templates/admin/footer');
     }
     
-//    public function generate_names($name)
-//    {
-//        echo strtoupper(md5($name));
-//    }
+    public function migrate_vehicles() {
+        
+        redirect('admin', 'refresh');
+        
+        $this->db->join('fahrzeug_content', 'fahrzeug.fahrzeugID = fahrzeug_content.fahrzeugID');
+		$query = $this->db->get('fahrzeug');
+       
+        foreach($query->result() as $row) {
+            
+            $f = array();
+            $f["id"] = $row->id;
+            $f['name'] = $row->name;
+            $f["name_lang"] = $row->name_lang;
+            $f["prefix_rufname"] = $row->prefix_rufname;
+            $f["rufname"] =$row->rufname;
+            $f["text_stage"] = $row->short_text;
+            $f["text"] = $row->text;
+          $f["besatzung"] = $row->besatzung;
+          $f["hersteller"] = $row->hersteller;
+          $f["aufbau"] = $row->aufbau;
+          $f["pumpe"] = $row->pumpe;
+          $f["loeschmittel"] = $row->loeschmittel;
+          $f["besonderheit"] = $row->besonderheit;
+          $f["baujahr"] = $row->baujahr;
+          $f["kw"] = $row->kw;
+          $f["ps"] = $row->ps;
+          $f["laenge"] = str_replace(",",".",$row->laenge);
+          $f["breite"] = str_replace(",",".",$row->breite);
+          $f["hoehe"] = str_replace(",",".",$row->hoehe);
+          $f["leermasse"] = str_replace(",",".",$row->leermasse);
+          $f["gesamtmasse"] = str_replace(",",".",$row->gesamtmasse);
+          $f["einsaetze_zeigen"] = $row->show_einsaetze;
+          $f["precedence"] = $row->orderID;
+          $f["retired"] = $row->retired;
+          $f["published"] = $row->online;
+          
+          $this->db->insert('fahrzeuge_fuel', $f);
+        }
+        
+    }
+    
+    public function migrate_einsatz() {
+        
+        $this->db->join("einsatz_content", "einsatz.einsatzID = einsatz_content.einsatzID");
+        $query = $this->db->get("einsatz");
+        
+        foreach($query->result() as $row) {
+            
+            $e = array();
+            $e["id"] = $row->einsatzID;
+            $e["type_id"] = $row->typeID;
+            $e["cue_id"] = $row->cueID;
+            $e["name"] = $row->name;
+            $e["datum_beginn"] = $row->datum_beginn;
+            $e["datum_ende"] = $row->datum_ende;
+            $e["uhrzeit_beginn"] = $row->uhrzeit_beginn;
+            $e["uhrzeit_ende"] = $row->uhrzeit_ende;
+            $e["lfd_nr"] = $row->lfd_nr;
+            $e["einsatz_nr"] = $row->einsatz_nr;
+            $e["bericht"] = $row->bericht;
+            $e["lage"] = $row->lage;
+            $e["ort"] = $row->ort;
+            $e["weitere_kraefte"] = $row->weitere_kraefte;
+            $e["anzahl_kraefte"] = $row->anzahl_kraefte;
+            $e["anzahl_einsaetze"] = $row->anzahl_einsaetze;
+            if($row->ueberoertlich == 1) {
+                $e["ueberoertlich"] = "yes";
+            } else {
+                $e["ueberoertlich"] = "no";
+            }
+            if($row->display_ort == 1) {
+                $e["ort_zeigen"] = "yes";
+            } else {
+                $e["ort_zeigen"] = "no";
+            }
+            if($row->online ==  1) {
+                $e["published"] = "yes";
+            } else {
+                $e["published"] = "no";
+            }
+            $this->db->insert("missions_fuel", $e);
+        }
+        
+        $query = $this->db->get("einsatz_fahrzeug_mapping");
+        foreach($query->result() as $row) {
+            
+            $r = array();
+            
+            $r["candidate_table"] = "fw_missions";
+            $r["candidate_key"] = $row->einsatzID;
+            $r["foreign_table"] = "fw_fahrzeuge";
+            $r["foreign_key"] = $row->fahrzeugID;
+            
+            $this->db->insert("relationships_fuel", $r);
+        }
+    }
+    
+    public function migrate_news() {
+        
+        $this->db->join("news_content", "news.newsID = news_content.newsID");
+        $query = $this->db->get("news");
+        
+        foreach($query->result() as $row) {
+            
+            $n = array();
+            switch($row->categoryID) {
+                case 1: $n["category_id"] = 13; break;
+                case 2: $n["category_id"] = 14; break;
+                case 3: $n["category_id"] = 15; break;
+                case 4: $n["category_id"] = 16; break;
+            }
+            
+            $n["title"] = $row->title;
+            $n["id"] = $row->newsID;
+            $n["stage_title"] = $row->stage_title;
+            $n["valid_from"] = $row->valid_from;
+            $n["valid_from_time"] = $row->valid_from_time;
+            $n["valid_to"] = $row->valid_to;
+            $n["valid_to_time"] = $row->valid_to_time;
+            $n["last_modified"] = $row->modified;
+            $n["last_modified_by"] = 1;
+            if($row->online ==  1) {
+                $n["published"] = "yes";
+            } else {
+                $n["published"] = "no";
+            }
+            $n["link"] = $row->link;
+            $n["text"] = $row->text;
+            $n["teaser"] = $row->teaser;
+            
+            $this->db->where("fileID", $row->teaser_image);
+            $query2 = $this->db->get("file");
+            $row2 = $query2->row();
+            $n["teaser_image"] = $row2->filename;
+            
+            $this->db->where("fileID", $row->og_image);
+            $query2 = $this->db->get("file");
+            $row2 = $query2->row();
+            $n["og_image"] = $row2->filename;
+            
+            $this->db->insert("news_fuel", $n);
+        }
+        
+        $this->db->join("file", "news_images.fileID = file.fileID");
+        $query = $this->db->get("news_images");
+        
+        foreach($query->result() as $row) {
+            
+            $ni = array();
+            $ni["news_id"] = $row->newsID;
+            $ni["image"] = $row->filename;
+            
+            $this->db->insert("news_images_fuel", $ni);
+        }
+    }
 }
 
 /* End of file maintenance.php */

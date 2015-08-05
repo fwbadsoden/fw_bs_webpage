@@ -20,7 +20,7 @@
                 </p>
             </div>
            <hr class="clear" />
-          
+          <!--
             <div class="listContent">
 				<div class="row">
                 	<a href="<?=base_url('files/content/Dienstplan_MFW_Aktuell.pdf')?>" target="_blank">
@@ -31,7 +31,7 @@
                		</a>
                 </div>
           </div>
-          <hr class="clear" />
+          <hr class="clear" />-->
           
         	<h1 class="module">Unser Team</h1>
             <div class="article">
