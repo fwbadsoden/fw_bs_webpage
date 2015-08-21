@@ -54,7 +54,7 @@
         	<div class="BildTextTeaser first">
             	<figure><img src="<?=base_url('images/content/mannschaft/dummy.jpg')?>" /></figure>
                 <h1 class="name">Simona Gabriel</h1>
-                <h2 class="titel">Betreuer</h2>
+                <h2 class="titel">Betreuerin</h2>
            </div>
         	<div class="BildTextTeaser">
             	<figure><img src="<?=base_url('images/content/mannschaft/203557E6DB32D6A15683F3D7B67BCA48.jpg')?>" /></figure>
@@ -64,7 +64,7 @@
         	<div class="BildTextTeaser first">
             	<figure><img src="<?=base_url('images/content/mannschaft/23DBA1BD9E1FC2096E8299518FAA6EF4.jpg')?>" /></figure>
                 <h1 class="name">Tatjana Langolf</h1>
-                <h2 class="titel">Betreuer</h2>
+                <h2 class="titel">Betreuerin</h2>
            </div>
         	<div class="BildTextTeaser">
             	<figure><img src="<?=base_url('images/content/mannschaft/A6526918662992F415D0CBB119DD242A.jpg')?>" /></figure>
@@ -84,6 +84,11 @@
         	<div class="BildTextTeaser first">
             	<figure><img src="<?=base_url('images/content/mannschaft/NDEwMTE5MmMzMjUxMjY3ODM1ZjI0NmMxY2I4OTY5Mjk0ZjI0YmRhYmRjMzdiMWY4MmE0NTZlMWExYjc0ZTdlZTg1NWRjMjBiNjBjOGZiMTYxYzEwOGZmMjhjNjIyYThkZjYwYmQ1NmM2YmU0MDIwOTlkMmYyYTdiZjFkODIyMjc.JPG')?>" /></figure>
                 <h1 class="name">Tobias Wagner</h1>
+                <h2 class="titel">Betreuer</h2>
+           </div>
+		<div class="BildTextTeaser">
+                <figure><img src="<?=base_url('images/content/mannschaft/NzE1MDE4MGRmYjg4ZmJlZDAwMjk2OGI0Mjk0NjY4NGMxYjg3ZjY3ZmU1MmEzNTRjNWI3MTI3YjJhNmQyMWQzYTQ1ZjM1OWNmM2MyNzk2OTEyODUyM2VkMjdhYzg4Nzc5M2M3MDc4NDdkYjE3MTk2MTY0NjUzOGEwMGRjZmJjMmQ.JPG')?>" /></figure>
+                <h1 class="name">Lukas Becker</h1>
                 <h2 class="titel">Betreuer</h2>
            </div>
            <hr class="clear" />
