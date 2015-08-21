@@ -137,15 +137,17 @@ class Maintenance extends CP_Controller {
     
     public function migrate_vehicles() {
         
-        redirect('admin', 'refresh');
-        
         $this->db->join('fahrzeug_content', 'fahrzeug.fahrzeugID = fahrzeug_content.fahrzeugID');
 		$query = $this->db->get('fahrzeug');
        
         foreach($query->result() as $row) {
             
+            $this->db->where(array('small_pic' => 1, 'fahrzeugID' => $row->fahrzeugID));
+            $query_img = $this->db->get('fahrzeug_img');
+            $row_img = $query_img->row();
+            
             $f = array();
-            $f["id"] = $row->id;
+            $f["id"] = $row->fahrzeugID;
             $f['name'] = $row->name;
             $f["name_lang"] = $row->name_lang;
             $f["prefix_rufname"] = $row->prefix_rufname;
@@ -166,12 +168,40 @@ class Maintenance extends CP_Controller {
           $f["hoehe"] = str_replace(",",".",$row->hoehe);
           $f["leermasse"] = str_replace(",",".",$row->leermasse);
           $f["gesamtmasse"] = str_replace(",",".",$row->gesamtmasse);
+          if($row_img->img_file != null) {
+            $f["setcard_image"] = $row_img->img_file;
+          } else {
+            $f["setcard_image"] = "";
+          }
           $f["einsaetze_zeigen"] = $row->show_einsaetze;
           $f["precedence"] = $row->orderID;
-          $f["retired"] = $row->retired;
-          $f["published"] = $row->online;
+          if($row->retired == 1) $f["retired"] = 'yes';
+          else $f["retired"] = 'no';
+          if($row->online == 1) $f["published"] = 'yes';
+          else $f["published"] = 'no';
           
           $this->db->insert('fahrzeuge_fuel', $f);
+          
+          $this->db->where(array("fahrzeugID" => $row->fahrzeugID, 'small_pic' => 0));
+          $query2 = $this->db->get("fahrzeug_img");
+          
+          foreach($query2->result() as $row2) {
+            $i = array();
+            $i["fahrzeug_id"] = $row->fahrzeugID;
+            $i["description"] = $row2->description;
+            $i["text"] = $row2->text;
+            $i["image"] = $row2->img_file;
+            $i["image_thumbnail"] = $row2->thumb_file;
+            
+            $this->db->insert("fahrzeug_images_fuel", $i);
+            
+            $r["candidate_table"] = "fw_fahrzeuge";
+            $r["candidate_key"] = $row->fahrzeugID;
+            $r["foreign_table"] = "fw_fahrzeug_images";
+            $r["foreign_key"] = $this->db->insert_id();
+            
+            $this->db->insert("relationships_fuel", $r);
+          }
         }
         
     }
@@ -288,6 +318,35 @@ class Maintenance extends CP_Controller {
             $ni["image"] = $row->filename;
             
             $this->db->insert("news_images_fuel", $ni);
+        }
+    }
+    
+    public function migrate_presse() {
+        
+        $this->db->join("file", "file.fileID = press_article.fileID", 'left');
+        $this->db->select("press_article.name as name, press_article.source as source, press_article.datum as datum, press_article.online as online, press_article.link as link, file.filename as filename");
+        $query = $this->db->get("press_article");
+        
+        foreach($query->result() as $row) {
+            
+            $a = array();
+            $a["name"] = $row->name;
+            $a["category_id"] = 17;
+            switch($row->source) {
+                case "Bad Sodener Zeitung": $a["source_id"] = 2; break;
+                case "Frankfurter Neue Presse": $a["source_id"] = 1; break;
+                case "Rhein-Main Extratipp": $a["source_id"] = 5; break;
+                case "Sulzbacher Anzeiger":  $a["source_id"] = 6; break;
+                case "Hessenschau": $a["source_id"] = 4; break;
+            }
+            $a["datum"] = $row->datum;
+            $a["online_article"] = $row->link;
+            if($row->online == 1) $a["published"] = "yes";
+            else $a["published"] = "no";
+            if($row->filename != NULL)
+                $a["asset"] = $row->filename;
+            
+            $this->db->insert("pressarticles", $a);
         }
     }
 }

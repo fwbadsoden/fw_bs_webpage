@@ -1,6 +1,4 @@
-<?php if (!defined('BASEPATH')) exit('No direct script access allowed'); ?>
-
- <div id="MainContent">
+<div id="MainContent">
             <div class="article">
                 <h1 class="first">Ausbildung in der Jugendfeuerwehr</h1>
                 <p>
@@ -20,7 +18,7 @@
                     Am Samstag, dem 27.09.2014 fand eine Großübung in der Konrad-Adenauer-Schule in Kriftel statt. Initiiert wurde diese durch die Kreisjugendfeuerwehr des Main-Taunus-Kreis, um die Zusammenarbeit unter den Jugendlichen zu fördern. Jede Gruppe hatte ihren eigenen Teilabschnitt, den sie selbstständig abarbeiten musste.
 Die Jungs und Mädels aus Altenhain, Bad Soden und Neuenhain mussten eine durchaus anspruchsvolle Übung bearbeiten. Ein Tanklastzug wollte Material für den Chemieunterricht der hiesigen Schule anliefern und hatte durch eine Unaufmerksamkeit einen Unfall gebaut, welcher zu einem Leck am Tank führte. Dieser war mit einem ätzenden Stoff beladen und musste gesichert bzw. umgefüllt werden. Nun plätscherte eine Flüssigkeit aus dem Leck und Rauch stieg auf - alles ungiftig!
                 </p>                
-                <p><img src="<?=base_url('images/content/content_jugend/jf_großuebung01.jpg')?>" /></p>
+                <p><img src="<?=img_path('nachwuchs/jf_großuebung01.jpg')?>" /></p>
                 <p>
                     Nachdem die Jugendlichen vom Bereitstellungsraum abgerufen wurden, legten sie zunächst den Absperrbereich von 50m fest. Dies ist der "Standard-Abstand", der bei einem unbekannten Stoff im Ernstfall eingehalten wird. Anschließend ging es mit einem Trupp zum Erkunden an die Unglücksstelle vor, um sich ein Bild von der Einsatzstelle zu verschaffen. Parallel wurde der sogenannte Dekontaminationsplatz aufgebaut. Jeder Trupp, der im Gefahrenbereich gearbeitet hat, muss dekontaminiert, also gewaschen, werden. Somit kann sichergestellt werden, dass der austretende Stoff nicht verschleppt bzw. weiter verbreitet wird.
                 </p>
@@ -28,7 +26,7 @@ Die Jungs und Mädels aus Altenhain, Bad Soden und Neuenhain mussten eine durcha
 Nachdem klar war, um welchen Stoff es sich handelt, konnte nun mit der Schadensbekämpfung begonnen werden. Das Leck wurde so gut als möglich mit Holzkeilen abgedichtet. Bei brennbaren Stoffen muss bei allen Arbeiten im Gefahrenbereich mit "nicht-funkenreißendem" Werkzeug gearbeitet werden, sodass keine Funken und damit keine Brandgefahr entsteht. In Kriftel hatten es die Jugendlichen mit einem nicht-brennbaren Stoff zu tun.
 Nun wurde der Stoff mithilfe von Wannen aufgefangen. Zum Schluss wurde noch eine Pumpstrecke von den Auffangwannen in größere Behälter aufgebaut. Nachdem mehrere Trupps am Tank gearbeitet hatten, wurden diese schließlich noch dekontaminiert.
                 </p>
-                <p><img src="<?=base_url('images/content/content_jugend/jf_großuebung02.jpg')?>" /></p>
+                <p><img src="<?=img_path('nachwuchs/jf_großuebung02.jpg')?>" /></p>
                 <p>
                     Ganz schön viel auf einmal, für die jungen Nachwuchskräfte! Trotzdem wurden die in den Übungsdiensten zuvor erlernten Kenntnisse und Fertigkeiten super umgesetzt, berichteten die Bad Sodener G-ABC Ausbilder Thomas Thaut und Patrick Ritter. Die beiden begleiteten die Vorbereitung sowie die Übung und waren mit dem Ergebnis sehr zufrieden.
                 </p>
@@ -41,56 +39,56 @@ Nun wurde der Stoff mithilfe von Wannen aufgefangen. Zum Schluss wurde noch eine
             </div>
             <div class="slideshow">
 
-                <div class="prevPic"><a href="#slideshow_car" id="slideshow_prev"><img src="<?=base_url('images/layout/button_detailShow_previous.png')?>" /></a></div>
-                <div class="nextPic"><a href="#slideshow_car" id="slideshow_next"><img src="<?=base_url('images/layout/button_detailShow_next.png')?>" /></a></div>
+                <div class="prevPic"><a href="#slideshow_jfw" id="slideshow_prev"><img src="<?=assets_path('button_detailShow_previous.png', 'layout')?>" /></a></div>
+                <div class="nextPic"><a href="#slideshow_jfw" id="slideshow_next"><img src="<?=assets_path('button_detailShow_next.png', 'layout')?>" /></a></div>
                 
-                <ul id="slideshow_car">
-                    <li id="slideshow_car_1" class="active">
+                <ul id="slideshow_jfw">
+                    <li id="slideshow_jfw_1" class="active">
                         <figure>
-                        	<img src="<?=base_url('images/content/content_jugend/jf_großuebung03.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
-                        	<div class="zoom"><a href="<?=base_url('images/content/content_jugend/jf_großuebung03.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        	<img src="<?=img_path('nachwuchs/jf_großuebung03.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
+                        	<div class="zoom"><a href="<?=img_path('nachwuchs/jf_großuebung03.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=assets_path('button_zoom.png', 'layout')?>" /></a></div>
                         </figure>
                         <p>1: Großübung der Jugendfeuerwehr</p>
                     </li>
-                    <li id="slideshow_car_2" class="noActive">
+                    <li id="slideshow_jfw_2" class="noActive">
                         <figure>
-                        	<img src="<?=base_url('images/content/content_jugend/jf_großuebung04.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
-                        	<div class="zoom"><a href="<?=base_url('images/content/content_jugend/jf_großuebung04.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        	<img src="<?=img_path('nachwuchs/jf_großuebung04.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
+                        	<div class="zoom"><a href="<?=img_path('nachwuchs/jf_großuebung04.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=assets_path('button_zoom.png', 'layout')?>" /></a></div>
                         </figure>
                         <p>2: Großübung der Jugendfeuerwehr</p>
                     </li>
-                    <li id="slideshow_car_3" class="noActive">
+                    <li id="slideshow_jfw_3" class="noActive">
                         <figure>
-                        	<img src="<?=base_url('images/content/content_jugend/jf_großuebung05.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
-                        	<div class="zoom"><a href="<?=base_url('images/content/content_jugend/jf_großuebung05.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        	<img src="<?=img_path('nachwuchs/jf_großuebung05.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
+                        	<div class="zoom"><a href="<?=img_path('nachwuchs/jf_großuebung05.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                         <p>3: Großübung der Jugendfeuerwehr</p>
                     </li>
-                    <li id="slideshow_car_4" class="noActive">
+                    <li id="slideshow_jfw_4" class="noActive">
                         <figure>
-                        	<img src="<?=base_url('images/content/content_jugend/jf_großuebung06.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
-                        	<div class="zoom"><a href="<?=base_url('images/content/content_jugend/jf_großuebung06.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        	<img src="<?=img_path('nachwuchs/jf_großuebung06.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
+                        	<div class="zoom"><a href="<?=img_path('nachwuchs/jf_großuebung06.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                         <p>4: Großübung der Jugendfeuerwehr</p>
                     </li>
-                    <li id="slideshow_car_5" class="noActive">
+                    <li id="slideshow_jfw_5" class="noActive">
                         <figure>
-                        	<img src="<?=base_url('images/content/content_jugend/jf_großuebung07.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
-                        	<div class="zoom"><a href="<?=base_url('images/content/content_jugend/jf_großuebung07.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        	<img src="<?=img_path('nachwuchs/jf_großuebung07.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
+                        	<div class="zoom"><a href="<?=img_path('nachwuchs/jf_großuebung07.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                         <p>5: Großübung der Jugendfeuerwehr</p>
                     </li>
-                    <li id="slideshow_car_6" class="noActive">
+                    <li id="slideshow_jfw_6" class="noActive">
                         <figure>
-                        	<img src="<?=base_url('images/content/content_jugend/jf_großuebung08.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
-                        	<div class="zoom"><a href="<?=base_url('images/content/content_jugend/jf_großuebung08.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        	<img src="<?=img_path('nachwuchs/jf_großuebung08.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
+                        	<div class="zoom"><a href="<?=img_path('nachwuchs/jf_großuebung08.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                         <p>6: Großübung der Jugendfeuerwehr</p>
                     </li>
-                    <li id="slideshow_car_7" class="noActive">
+                    <li id="slideshow_jfw_7" class="noActive">
                         <figure>
-                        	<img src="<?=base_url('images/content/content_jugend/jf_großuebung09.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
-                        	<div class="zoom"><a href="<?=base_url('images/content/content_jugend/jf_großuebung09.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
+                        	<img src="<?=img_path('nachwuchs/jf_großuebung09.jpg')?>" alt="Großübung der Jugendfeuerwehr" />
+                        	<div class="zoom"><a href="<?=img_path('nachwuchs/jf_großuebung09.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                         <p>7: Großübung der Jugendfeuerwehr</p>
                     </li>
@@ -109,7 +107,7 @@ Nun wurde der Stoff mithilfe von Wannen aufgefangen. Zum Schluss wurde noch eine
                     Nach dem Frühstück stand eine praktische Übung mit Stationsausbildung auf dem Programm. Hierbei wurde Strahlrohrtraining, das Bedienen von Gerätschaften, Führungskräfteausbildung 
                     sowie das Absperren von Unfallstellen geübt.
                 </p>
-                <p><img src="<?=base_url('images/content/content_jugend/content_jugend_C.jpg')?>" /></p>
+                <p><img src="<?=img_path('nachwuchs/content_jugend_C.jpg')?>" /></p>
                 <p>
                     Nach dem Mittagessen sollte es eigentlich zum Dienstsport gehen, doch drei Fahrzeuge wurden durch eine Ölspur in Neuenhain vom Sport befreit. Nachmittags fand eine Unterrichtseinheit zum Thema 
                     Sprechfunk statt. Da die Jugendlichen mit eigenen Funkgeräten übten, musste der Umgang damit gelernt sein. Die Theoriestunde wurde mit dem Gong beendet - Einsatz! Durch den Lautsprecher ertöhnt 
@@ -147,46 +145,46 @@ Nun wurde der Stoff mithilfe von Wannen aufgefangen. Zum Schluss wurde noch eine
             </div>
             <div class="slideshow">
 
-                <div class="prevPic"><a href="#slideshow_car" id="slideshow_prev"><img src="<?=base_url('images/layout/button_detailShow_previous.png')?>" /></a></div>
-                <div class="nextPic"><a href="#slideshow_car" id="slideshow_next"><img src="<?=base_url('images/layout/button_detailShow_next.png')?>" /></a></div>
+                <div class="prevPic"><a href="#slideshow_jfw" id="slideshow_prev"><img src="<?=base_url('images/layout/button_detailShow_previous.png')?>" /></a></div>
+                <div class="nextPic"><a href="#slideshow_jfw" id="slideshow_next"><img src="<?=base_url('images/layout/button_detailShow_next.png')?>" /></a></div>
                 
-                <ul id="slideshow_car">
-                    <li id="slideshow_car_1" class="active">
+                <ul id="slideshow_jfw">
+                    <li id="slideshow_jfw_1" class="active">
                         <figure>
                         	<img src="<?=base_url('images/content/bftag2013_00.jpg')?>" alt="BF Tag der Jugend" />
                         	<div class="zoom"><a href="<?=base_url('images/content/bftag2013_00.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                         <p>1: BF Tag der Jugend</p>
                     </li>
-                    <li id="slideshow_car_2" class="noActive">
+                    <li id="slideshow_jfw_2" class="noActive">
                         <figure>
                         	<img src="<?=base_url('images/content/bftag2013_01.jpg')?>" alt="BF Tag der Jugend" />
                         	<div class="zoom"><a href="<?=base_url('images/content/bftag2013_01.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                         <p>2: BF Tag der Jugend</p>
                     </li>
-                    <li id="slideshow_car_3" class="noActive">
+                    <li id="slideshow_jfw_3" class="noActive">
                         <figure>
                         	<img src="<?=base_url('images/content/bftag2013_02.jpg')?>" alt="BF Tag der Jugend" />
                         	<div class="zoom"><a href="<?=base_url('images/content/bftag2013_02.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                         <p>3: BF Tag der Jugend</p>
                     </li>
-                    <li id="slideshow_car_4" class="noActive">
+                    <li id="slideshow_jfw_4" class="noActive">
                         <figure>
                         	<img src="<?=base_url('images/content/bftag2013_03.jpg')?>" alt="BF Tag der Jugend" />
                         	<div class="zoom"><a href="<?=base_url('images/content/bftag2013_03.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                         <p>4: BF Tag der Jugend</p>
                     </li>
-                    <li id="slideshow_car_5" class="noActive">
+                    <li id="slideshow_jfw_5" class="noActive">
                         <figure>
                         	<img src="<?=base_url('images/content/bftag2013_04.jpg')?>" alt="BF Tag der Jugend" />
                         	<div class="zoom"><a href="<?=base_url('images/content/bftag2013_04.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
                         </figure>
                         <p>5: BF Tag der Jugend</p>
                     </li>
-                    <li id="slideshow_car_6" class="noActive">
+                    <li id="slideshow_jfw_6" class="noActive">
                         <figure>
                         	<img src="<?=base_url('images/content/bftag2013_05.jpg')?>" alt="BF Tag der Jugend" />
                         	<div class="zoom"><a href="<?=base_url('images/content/bftag2013_05.jpg')?>" class="fancybox-gallery" rel="gallery1"><img src="<?=base_url('images/layout/button_zoom.png')?>" /></a></div>
@@ -206,8 +204,8 @@ Nun wurde der Stoff mithilfe von Wannen aufgefangen. Zum Schluss wurde noch eine
                     wie man ihn wieder löschen kann, aber vor allem, mit welchem Löschmittel man keinen Erfolg haben würde. Das ist im besonders Bereich der Gefahrstoffe ein wichtiger Punkt, aber hierzu später mehr.
                 </p>
                	<p class="smallimages">
-                    <img src="<?=base_url('images/content/content_jugend/content_jugend_A_small.jpg')?>" style="float: left;" />
-                    <img src="<?=base_url('images/content/content_jugend/content_jugend_B_small.jpg')?>" style="float: left;" />
+                    <img src="<?=img_path('nachwuchs/content_jugend_A_small.jpg')?>" style="float: left;" />
+                    <img src="<?=img_path('nachwuchs/content_jugend_B_small.jpg')?>" style="float: left;" />
                     <hr class="clear" />
                 </p>
                 <p>
@@ -227,13 +225,10 @@ Nun wurde der Stoff mithilfe von Wannen aufgefangen. Zum Schluss wurde noch eine
         <div id="SidebarContent">
            	<div class="menueBox">
                 <h1 class="first">Weitere Informationen</h1>
-                <ul>
-<? if(current_url() == base_url('menschen/jugend')) : $class = ' class="active"'; else : $class = ''; endif; ?>               
-                    <li><a href="<?=base_url('menschen/jugend')?>"<?=$class?>>Über uns</a></li>
-<? if(current_url() == base_url('menschen/jugend/aktivitaeten')) : $class = 'class="active"'; else : $class = ''; endif; ?>    
-                    <li><a href="<?=base_url('menschen/jugend/aktivitaeten')?>"<?=$class?>>Aktivitäten</a></li>
-<? if(current_url() == base_url('menschen/jugend/ausbildung')) : $class = 'class="active"'; else : $class = ''; endif; ?>    
-                    <li><a href="<?=base_url('menschen/jugend/ausbildung')?>"<?=$class?>>Ausbildung</a></li>
+                <ul>           
+                    <li><a href="{base_url('menschen/jugend')}">Über uns</a></li> 
+                    <li><a href="{base_url('menschen/jugend/aktivitaeten')}">Aktivitäten</a></li>  
+                    <li><a href="{base_url('menschen/jugend/ausbildung')}" class="active">Ausbildung</a></li>
                 </ul>
 			</div>
            	<div class="address">
