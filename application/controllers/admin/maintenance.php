@@ -260,6 +260,29 @@ class Maintenance extends CP_Controller {
             
             $this->db->insert("relationships_fuel", $r);
         }
+        
+        $query = $this->db->get('einsatz_img');
+        foreach($query->result() as $row) {
+            
+            $i = array(); 
+            
+            $i["mission_id"] = $row->einsatzID;
+            $i["description"] = $row->description;
+            $i["image"] = $row->img_file;
+            $i["image_thumbnail"] = $row->thumb_file;
+            $i["photographer"] = $row->photographer;
+            
+            $this->db->insert("mission_images_fuel", $i);
+            
+            $r = array();
+            
+            $r["candidate_table"] = "fw_missions";
+            $r["candidate_key"] = $row->einsatzID;
+            $r["foreign_table"] = "fw_mission_images";
+            $r["foreign_key"] = $this->db->insert_id();
+            
+            $this->db->insert("relationships_fuel", $r);
+        }
     }
     
     public function migrate_news() {
