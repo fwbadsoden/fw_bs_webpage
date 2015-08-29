@@ -185,10 +185,9 @@ $(document).ready(function () {
                             <li><a href="<?=base_url('menschen/mannschaft#anker_mannschaft')?>">Mannschaft</a></li>
                     	</ul>  
                     	<ul>
-<? if(strpos(current_url(), base_url('menschen/rettungshunde')) !== false) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
-                        	<li class="headline"><a href="<?=base_url('menschen/rettungshunde')?>"<?=$class?>>Rettungshunde</a></li>
-                        	<li><a href="<?=base_url('menschen/rettungshunde#anker_einleitung')?>">Einleitung</a></li>
-                            <li><a href="<?=base_url('menschen/rettungshunde#anker_ausbildung')?>">Ablauf der Ausbildung</a></li>
+<? if(strpos(current_url(), base_url('menschen/altersundehrenabteilung')) !== false) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
+                        	<li class="headline"><a href="<?=base_url('menschen/altersundehrenabteilung')?>"<?=$class?>>Alters &amp; Ehrenabt.</a></li>                        
+                            <li><a href="<?=base_url('menschen/altersundehrenabteilung')?>">Alters &amp; Ehrenabteilung</a></li>
                     	</ul> 
                     	<ul>
 <? if(current_url() == base_url('menschen/jugend')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
@@ -212,10 +211,16 @@ $(document).ready(function () {
                     	<ul>
 <? if(current_url() == base_url('technik/fahrzeuge')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
                         	<li class="headline"><a href="<?=base_url('technik/fahrzeuge')?>"<?=$class?>>Fahrzeuge</a></li>
-<?  $counter = 0;
+<?  $anz_fahrzeuge = 0; $counter = 0;
+    foreach($fahrzeuge as $f) : 
+        if($f["retired"] == 0) $anz_fahrzeuge++;
+    endforeach;
+    $break = $anz_fahrzeuge / 2;
+    $break = ceil($break);
+    
     foreach($fahrzeuge as $f) : 
         if($f['retired'] == 0) : 
-            if($counter == 9) :
+            if($counter == $break) :
                 $counter = 0; ?>
                         </ul><ul>                                  
                         	<li class="headline"><a href="<?=base_url('technik/fahrzeuge')?>"<?=$class?>>&nbsp;</a></li>
@@ -239,6 +244,11 @@ $(document).ready(function () {
                             </a></li>  
 <?      endforeach; 
     endif; ?>
+                    	</ul>  
+                    	<ul>                     
+                        	<li class="headline"><a>Spezialeinheiten</a></li>
+                        	<li><a href="<?=base_url('technik/rettungshunde')?>">Rettungshunde-Ortungstechnik</a></li>
+                            <li><a href="<?=base_url('menschen/gabc')?>">Gefahrstoffzug</a></li>
                     	</ul>  
                     </div>  
                 </li>  
