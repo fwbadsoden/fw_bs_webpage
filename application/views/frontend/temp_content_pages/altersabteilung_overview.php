@@ -24,79 +24,94 @@
             <hr class="clear" />
         </div>        
     </div>
-    <div class="jsplatzhalter"></div>
-    
+    <div class="jsplatzhalter"></div>    
     
     <div class="oneColumnBox">
    	    <h1 class="module">Altersabteilung</h1>
         <ul id="anker_a" class="TeaserListe">
-            <li>          
-                <h1>Peter Zengeler</h1>
-                <p>01.03.1969 (JF)</p>
-            </li>
-            <li class="second">          
-                <h1>Hans Zengeler</h1>
-                <p>10.01.1951 (EA)</p>
-            </li>
-            <li class="third">          
-                <h1>Paul Zengeler</h1>
-                <p>24.04.1952 (EA)</p>
-            </li>
-            <li>          
-                <h1>Helmut Rothländer</h1>
-                <p>07.05.1958 (EA)</p>
-            </li>
-            <li class="second">          
-                <h1>Gerhard Dickler</h1>
-                <p>01.02.1962 (EA)</p>
-            </li>
-            <li class="third">          
-                <h1>Klaus Buch</h1>
-                <p>14.03.1969 (JF)</p>
-            </li>
-            <li>          
-                <h1>Heinrich Hörold</h1>
-                <p>10.05.1954 (EA)</p>
-            </li>
-            <li class="second">          
+            <li> 
+                <figure>
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy.jpg')?>" />  
+                </figure>        
                 <h1>Thomas Böhler</h1>
-                <p>01.02.1975 (EA)</p>
+                <p>Zugehörigkeit: <?=cp_get_alter('1975-02-01')?> Jahre</p>
             </li>
-            <li class="third">          
+            <li class="second">  
+                <figure>
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy.jpg')?>" />  
+                </figure>        
+                <h1>Klaus Buch</h1>
+                <p>Zugehörigkeit: <?=cp_get_alter('1969-03-14')?> Jahre</p>
+            </li>
+            <li class="third">   
+                <figure>
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy.jpg')?>" />  
+                </figure>       
+                <h1>Gerhard Dickler</h1>
+                <p>Zugehörigkeit: <?=cp_get_alter('1962-02-01')?> Jahre</p>
+            </li>
+            <li> 
+                <figure>
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'eb3f424b966514913e46d6374a415ed1.jpg')?>" />  
+                </figure>        
                 <h1>Karl-August Eckardt</h1>
-                <p>10.05.1954 (EA)</p>
+                <p>Zugehörigkeit: <?=cp_get_alter('1954-05-10')?> Jahre</p>
             </li>
-            <li>          
+            <li class="second">          
+                <figure>
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy.jpg')?>" />  
+                </figure>
                 <h1>Peter Gießel</h1>
-                <p>10.07.1970 (JF)</p>
-            </li>
-            <li class="second">          
-                <h1>Michael Gottschalk</h1>
-                <p>15.04.1986 (EA)</p>
+                <p>Zugehörigkeit: <?=cp_get_alter('1970-07-10')?> Jahre</p>
             </li>
             <li class="third">          
-                <h1>Werner Höll</h1>
-                <p>31.12.1987 (EA)</p>
+                <figure>
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'e67e985a75c3d08933aca5c2ff4aa6a8.jpg')?>" />  
+                </figure>
+                <h1>Heinrich Hörold</h1>
+                <p>Zugehörigkeit: <?=cp_get_alter('1954-05-10')?> Jahre</p>
             </li>
-            <li>          
+            <li>         
+                <figure>
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy.jpg')?>" />  
+                </figure>
                 <h1>Heinz Mechsner</h1>
-                <p>01.03.1970 (EA)</p>
+                <p>Zugehörigkeit: <?=cp_get_alter('1970-03-01')?> Jahre</p>
             </li>
-            <li class="second">          
+            <li class="second"> 
+                <figure>
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy.jpg')?>" />  
+                </figure>         
                 <h1>Jürgen Rademacher</h1>
-                <p>10.11.1988 (EA)</p>
+                <p>Zugehörigkeit: <?=cp_get_alter('1988-11-10')?> Jahre</p>
             </li>
             <li class="third">          
-                <h1>Uwe Raschke</h1>
-                <p>01.03.1982 (EA)</p>
+                <figure>
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'1b140fa05dea7564a859f7e6b2f84c6b.jpg')?>" />  
+                </figure>
+                <h1>Helmut Rothländer</h1>
+                <p>Zugehörigkeit: <?=cp_get_alter('1958-05-07')?> Jahre</p>
             </li>
-            <li>          
-                <h1>Melanie Wagner</h1>
-                <p>26.02.1997 (EA)</p>
+            <li> 
+                <figure>
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'6b575e88655a86faf0b996895a886a59.jpg')?>" />  
+                </figure>        
+                <h1>Hans Zengeler</h1>
+                <p>Zugehörigkeit: <?=cp_get_alter('1951-01-10')?> Jahre</p>
             </li>
-            <li class="second">          
-                <h1>Kurt Wolf</h1>
-                <p>01.01.2002 (EA)</p>
+            <li class="second"> 
+                <figure>
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'9ab942d802206fd5338293a93f425d4a.jpg')?>" />  
+                </figure>         
+                <h1>Paul Zengeler</h1>
+                <p>Zugehörigkeit: <?=cp_get_alter('1952-04-24')?> Jahre</p>
+            </li>
+            <li class="third">        
+                <figure>
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'911e1c6b3c901912f4b0b3d697ca9032.jpg')?>" />  
+                </figure>
+                <h1>Peter Zengeler</h1>
+                <p>Zugehörigkeit: <?=cp_get_alter('1969-03-01')?> Jahre</p>
             </li>
         </ul>
     </div>
@@ -104,23 +119,23 @@
     <div class="oneColumnBox">           
         <h1 class="module">Ehrenabteilung</h1>
         <ul id="anker_e" class="TeaserListe">
-            <li>          
+            <li>         
                 <h1>Norbert Altenkamp</h1>
             </li>
             <li class="second">          
-                <h1>Irmelin Helgard Linke</h1>
-            </li>
-            <li class="third">          
                 <h1>Concetto Dàmbrogio</h1>
             </li>
-            <li>          
+            <li class="third">          
                 <h1>Dr. Peter Frank</h1>
             </li>
-            <li class="second">          
+            <li>         
                 <h1>Karl Heidrich</h1>
             </li>
-            <li class="third">          
+            <li class="second">          
                 <h1>Dr. Ulrich Jürgens</h1>
+            </li>
+            <li class="third">          
+                <h1>Irmelin Helgard Linke</h1>
             </li>
             <li>          
                 <h1>Günther Menze</h1>
@@ -140,10 +155,7 @@
             <li class="third">          
                 <h1>Helmut Witt</h1>
             </li>
-            <li>          
-                <h1>Theo Dörr</h1>
-            </li>
         </ul>
     </div>
 </div>
-<hr class="clear" />   
+<hr class="clear" />  
