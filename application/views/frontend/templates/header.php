@@ -187,7 +187,8 @@ $(document).ready(function () {
                     	<ul>
 <? if(strpos(current_url(), base_url('menschen/altersundehrenabteilung')) !== false) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
                         	<li class="headline"><a href="<?=base_url('menschen/altersundehrenabteilung')?>"<?=$class?>>Alters &amp; Ehrenabt.</a></li>                        
-                            <li><a href="<?=base_url('menschen/altersundehrenabteilung')?>">Alters &amp; Ehrenabteilung</a></li>
+                            <li><a href="<?=base_url('menschen/altersundehrenabteilung#anker_a')?>">Altersabteilung</a></li>                       
+                            <li><a href="<?=base_url('menschen/altersundehrenabteilung#anker_e')?>">Ehrenabteilung</a></li>
                     	</ul> 
                     	<ul>
 <? if(current_url() == base_url('menschen/jugend')) : $class = ' class="active"'; else : $class = ''; endif; ?>                         
