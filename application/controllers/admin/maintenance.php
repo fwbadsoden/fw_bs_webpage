@@ -189,9 +189,7 @@ class Maintenance extends CP_Controller {
             $i = array();
             $i["fahrzeug_id"] = $row->fahrzeugID;
             $i["description"] = $row2->description;
-            $i["text"] = $row2->text;
             $i["image"] = $row2->img_file;
-            $i["image_thumbnail"] = $row2->thumb_file;
             
             $this->db->insert("fahrzeug_images_fuel", $i);
             
@@ -222,7 +220,6 @@ class Maintenance extends CP_Controller {
             $e["datum_ende"] = $row->datum_ende;
             $e["uhrzeit_beginn"] = $row->uhrzeit_beginn;
             $e["uhrzeit_ende"] = $row->uhrzeit_ende;
-            $e["lfd_nr"] = $row->lfd_nr;
             $e["einsatz_nr"] = $row->einsatz_nr;
             $e["bericht"] = $row->bericht;
             $e["lage"] = $row->lage;
@@ -269,7 +266,6 @@ class Maintenance extends CP_Controller {
             $i["mission_id"] = $row->einsatzID;
             $i["description"] = $row->description;
             $i["image"] = $row->img_file;
-            $i["image_thumbnail"] = $row->thumb_file;
             $i["photographer"] = $row->photographer;
             
             $this->db->insert("mission_images_fuel", $i);
@@ -293,20 +289,11 @@ class Maintenance extends CP_Controller {
         foreach($query->result() as $row) {
             
             $n = array();
-            switch($row->categoryID) {
-                case 1: $n["category_id"] = 13; break;
-                case 2: $n["category_id"] = 14; break;
-                case 3: $n["category_id"] = 15; break;
-                case 4: $n["category_id"] = 16; break;
-            }
             
             $n["title"] = $row->title;
             $n["id"] = $row->newsID;
             $n["stage_title"] = $row->stage_title;
-            $n["valid_from"] = $row->valid_from;
-            $n["valid_from_time"] = $row->valid_from_time;
-            $n["valid_to"] = $row->valid_to;
-            $n["valid_to_time"] = $row->valid_to_time;
+            $n["datum"] = $row->valid_from;
             $n["last_modified"] = $row->modified;
             $n["last_modified_by"] = 1;
             if($row->online ==  1) {
@@ -317,6 +304,8 @@ class Maintenance extends CP_Controller {
             $n["link"] = $row->link;
             $n["text"] = $row->text;
             $n["teaser"] = $row->teaser;
+            
+            str_replace('<img src="../../../../images/content/', '<img src="assets/images/news/', $n["text"]);
             
             $this->db->where("fileID", $row->teaser_image);
             $query2 = $this->db->get("file");

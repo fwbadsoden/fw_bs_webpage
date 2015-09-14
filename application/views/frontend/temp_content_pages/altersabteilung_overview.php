@@ -31,21 +31,21 @@
         <ul id="anker_a" class="TeaserListe">
             <li> 
                 <figure>
-                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy.jpg')?>" />  
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy_aue.jpg')?>" />  
                 </figure>        
                 <h1>Thomas Böhler</h1>
                 <p>Zugehörigkeit: <?=cp_get_alter('1975-02-01')?> Jahre</p>
             </li>
             <li class="second">  
                 <figure>
-                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy.jpg')?>" />  
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy_aue.jpg')?>" />  
                 </figure>        
                 <h1>Klaus Buch</h1>
                 <p>Zugehörigkeit: <?=cp_get_alter('1969-03-14')?> Jahre</p>
             </li>
             <li class="third">   
                 <figure>
-                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy.jpg')?>" />  
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy_aue.jpg')?>" />  
                 </figure>       
                 <h1>Gerhard Dickler</h1>
                 <p>Zugehörigkeit: <?=cp_get_alter('1962-02-01')?> Jahre</p>
@@ -59,7 +59,7 @@
             </li>
             <li class="second">          
                 <figure>
-                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy.jpg')?>" />  
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy_aue.jpg')?>" />  
                 </figure>
                 <h1>Peter Gießel</h1>
                 <p>Zugehörigkeit: <?=cp_get_alter('1970-07-10')?> Jahre</p>
@@ -73,14 +73,14 @@
             </li>
             <li>         
                 <figure>
-                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy.jpg')?>" />  
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy_aue.jpg')?>" />  
                 </figure>
                 <h1>Heinz Mechsner</h1>
                 <p>Zugehörigkeit: <?=cp_get_alter('1970-03-01')?> Jahre</p>
             </li>
             <li class="second"> 
                 <figure>
-                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy.jpg')?>" />  
+                    <img src="<?=base_url(CONTENT_IMG_MANNSCHAFT_UPLOAD_PATH.'dummy_aue.jpg')?>" />  
                 </figure>         
                 <h1>Jürgen Rademacher</h1>
                 <p>Zugehörigkeit: <?=cp_get_alter('1988-11-10')?> Jahre</p>

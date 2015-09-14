@@ -31,7 +31,7 @@
             <ul>
                 <li class="headline"><a href="<?=base_url('menschen')?>">Menschen</a></li>
                 <li><a href="<?=base_url('menschen/mannschaft')?>">Mannschaft</a></li>
-                <li><a href="<?=base_url('menschen/rettungshunde')?>">Rettungshundeeinheit</a></li>
+                <li><a href="<?=base_url('menschen/altersundehrenabteilung')?>">Alters- und Ehrenabteilung</a></li>
                 <li><a href="<?=base_url('menschen/jugend')?>">Jugendfeuerwehr</a></li>
                 <li><a href="<?=base_url('menschen/minifeuerwehr')?>">Minifeuerwehr</a></li>
                 <li><a href="<?=base_url('menschen/leistungsgruppe')?>">Leistungsgruppe</a></li>
@@ -39,6 +39,8 @@
             <ul>
                 <li class="headline"><a href="<?=base_url('technik')?>">Technik</a></li>
                 <li><a href="<?=base_url('technik/fahrzeuge')?>">Fahrzeuge</a></li>
+                <li><a href="<?=base_url('technik/fahrzeuge/ausserdienst')?>">Fahrzeuge a. D.</a></li>
+                <li><a href="<?=base_url('technik/rettungshunde')?>">Rettungshundeeinheit</a></li>
             </ul>
             <ul>
                 <li class="headline"><a href="<?=base_url('informationen')?>">Infos</a></li>

@@ -20,10 +20,10 @@
                 </p>
             </div>
            <hr class="clear" />
-          <!--
+          
             <div class="listContent">
 				<div class="row">
-                	<a href="<?=base_url('files/content/Dienstplan_MFW_Aktuell.pdf')?>" target="_blank">
+                	<a href="<?=base_url('files/content/Dienstplan_MFW.pdf')?>" target="_blank">
                 	<div class="date_small trenner"><span class="inline_date">2015</span></div>
                  	<div class="size trenner"><p>PDF</p><p class="bytes">80 KB</p></div>
 	               	<div class="headline smallBoxHead"><span class="medium">Minifeuerwehr Bad Soden</span><br/>Dienstplan</div>
@@ -31,7 +31,7 @@
                		</a>
                 </div>
           </div>
-          <hr class="clear" />-->
+          <hr class="clear" />
           
         	<h1 class="module">Unser Team</h1>
             <div class="article">
