@@ -328,7 +328,7 @@ $(document).ready(function () {
       <li class="subnavi">    
           <ul> 
               <li><a href="<?=base_url('menschen/mannschaft')?>">Mannschaft</a></li>
-              <li><a href="<?=base_url('menschen/rettungshunde')?>">Rettungshunde</a></li>
+              <li><a href="<?=base_url('menschen/altersundehrenabteilung')?>">Alters- und Ehrenabteilung</a></li>
               <li><a href="<?=base_url('menschen/jugend')?>">Jugendfeuerwehr</a></li>
               <li><a href="<?=base_url('menschen/minifeuerwehr')?>">Minifeuerwehr</a></li>
               <li><a href="<?=base_url('menschen/leistungsgruppe')?>">Leistungsgruppe</a></li>
@@ -338,6 +338,7 @@ $(document).ready(function () {
       <li class="subnavi">    
           <ul>  
             <li><a href="<?=base_url('technik/fahrzeuge')?>" class="first">Fahrzeuge</a></li>
+              <li><a href="<?=base_url('technik/rettungshunde')?>">Rettungshunde-Ortungstechnik</a></li>
           </ul>
       </li>
       <li><a href="<?=base_url('informationen')?>">Infos</a></li>
@@ -345,7 +346,7 @@ $(document).ready(function () {
           <ul>  
                 <li><a href="<?=base_url('informationen/buergerinformationen')?>">Bürgerinfos</a></li>
                 <li><a href="<?=base_url('informationen/einsatzgebiet')?>"<?=$class?>>Einsatzgebiet</a></li>
-               	<li><a href="<?=base_url('informationen/aufgaben')?>"<?=$class?>>Aufgaben & Gesetze</a></li>
+               	<li><a href="<?=base_url('informationen/aufgaben')?>"<?=$class?>>Aufgaben &amp; Gesetze</a></li>
                	<li><a href="<?=base_url('informationen/aao')?>"<?=$class?>>Alarm- und Ausrückeordnung</a></li>
           </ul>
       </li>
