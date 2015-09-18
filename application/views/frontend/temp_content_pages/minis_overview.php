@@ -57,19 +57,9 @@
                 <h2 class="titel">Betreuerin</h2>
            </div>
         	<div class="BildTextTeaser">
-            	<figure><img src="<?=base_url('images/content/mannschaft/203557E6DB32D6A15683F3D7B67BCA48.jpg')?>" /></figure>
-                <h1 class="name">Alexander Hahn</h1>
-                <h2 class="titel">Betreuer</h2>
-           </div>
-        	<div class="BildTextTeaser first">
             	<figure><img src="<?=base_url('images/content/mannschaft/23DBA1BD9E1FC2096E8299518FAA6EF4.jpg')?>" /></figure>
                 <h1 class="name">Tatjana Langolf</h1>
                 <h2 class="titel">Betreuerin</h2>
-           </div>
-        	<div class="BildTextTeaser">
-            	<figure><img src="<?=base_url('images/content/mannschaft/A6526918662992F415D0CBB119DD242A.jpg')?>" /></figure>
-                <h1 class="name">Jonathan Raschke</h1>
-                <h2 class="titel">Betreuer</h2>
            </div>
         	<div class="BildTextTeaser first">
             	<figure><img src="<?=base_url('images/content/mannschaft/05774FA9E5BA2C72941E70B3B3C394DC.jpg')?>" /></figure>
